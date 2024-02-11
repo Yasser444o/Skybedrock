@@ -1,4 +1,4 @@
-# Welcome to Skybedrock repository.<br>
+## Welcome to Skybedrock repository.<br>
 - Below you can find the past releases of the map.<br>
 - This map is posted in <a href="https://www.planetminecraft.com/project/skybedrock-1-0-3/">Planet Minecraft</a>.<br>
 - For a brief summary of the map features visit the map page on <a href="https://www.planetminecraft.com/project/skybedrock-1-0-3/">PMC</a>.<br>
