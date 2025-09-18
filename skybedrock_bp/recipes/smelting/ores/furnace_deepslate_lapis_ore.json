@@ -1,0 +1,11 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_furnace": {
+		"description": {
+			"identifier": "yasser444:furnace_deepslate_lapis_ore"
+		},
+		"tags": [ "furnace", "blast_furnace" ],
+		"input": "yasser444:deepslate_lapis_lazuli_ore",
+		"output": "minecraft:dye:4"
+	}
+}

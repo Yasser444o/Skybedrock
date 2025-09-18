@@ -1,0 +1,17 @@
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "yasser444:stone_diamond_ore"
+		},
+		"tags": [ "crafting_table" ],
+		"ingredients": [
+			{ "item": "minecraft:diamond" },
+			{ "item": "minecraft:stone", "data": 0 }
+		],
+		"unlock": [
+			{ "item": "minecraft:diamond" }
+		],
+		"result": "minecraft:diamond_ore"
+	}
+}

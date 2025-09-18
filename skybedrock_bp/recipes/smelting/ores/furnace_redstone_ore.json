@@ -1,0 +1,11 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_furnace": {
+		"description": {
+			"identifier": "yasser444:furnace_redstone_ore"
+		},
+		"tags": [ "furnace", "blast_furnace" ],
+		"input": "yasser444:redstone_ore",
+		"output": "minecraft:redstone"
+	}
+}

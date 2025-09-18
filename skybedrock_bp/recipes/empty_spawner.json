@@ -1,0 +1,22 @@
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "yasser444:empty_spawner"
+		},
+		"tags": [ "crafting_table" ],
+		"pattern": [
+			"###",
+			"#S#",
+			"###"
+		],
+		"key": {
+			"#": { "item": "minecraft:chain" },
+			"S": { "item": "trials:spawner_core" }
+		},
+		"unlock": [
+			{ "item": "trials:spawner_core" }
+		],
+		"result": { "item": "yasser444:empty_spawner" }
+	}
+}
