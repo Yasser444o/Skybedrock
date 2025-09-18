@@ -1,0 +1,16 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:fog_settings": {
+		"description": {
+			"identifier": "skybedrock:vision_limit"
+		},
+		"distance": {
+			"air": {
+				"fog_color": "#ABD2FF",
+				"fog_start": 240,
+				"fog_end": 256,
+				"render_distance_type": "fixed"
+			}
+		}
+	}
+}

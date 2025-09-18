@@ -1,0 +1,21 @@
+{
+	"entity_sounds": {
+		"entities": {
+			"skybedrock:end_phantom": {
+				"events": {
+					"ambient": "mob.phantom.idle",
+					"attack": "mob.phantom.bite",
+					"death": "mob.phantom.death",
+					"flap": "mob.phantom.flap",
+					"hurt": "mob.phantom.hurt",
+					"swoop": {
+						"pitch": [ 0.950, 1.050 ],
+						"sound": "mob.phantom.swoop"
+					}
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 10.0
+			}
+		}
+	}
+}

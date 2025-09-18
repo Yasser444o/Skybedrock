@@ -1,0 +1,115 @@
+{
+  "namespace": "how_to_play_common",
+  
+  "how_to_play_content": {
+    "type": "panel",
+    "$map": "assets.empty",
+    "controls": [
+      {
+        "header@how_to_play_common.how_to_play_header": {
+          "size": [ "100%", "23px" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left"
+        }
+      },
+      {
+        "container": {
+          "type": "panel",
+          "size": "$store_screen_size",
+          "controls": [
+            { "$dialog_content@$dialog_content": {} }
+          ]
+        }
+      },
+      {
+        "overlay": {
+          "type": "panel",
+          "controls": [
+            { "$screen_overlay@$screen_overlay": {} }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "header": {
+    "type": "panel",
+	  "$icon": [],
+	  "$collapse_toggle": "collapse_toggle",
+    "size": [ "100%", "28px" ],
+    "controls": [
+      { "header": {
+        "type": "image",
+        "size": [ "100%", "20px" ],
+        "offset": [ 0, "-2px" ],
+        "anchor_from": "left_middle",
+        "anchor_to": "left_middle",
+        "texture": "textures/ui/banners_no_border",
+        "controls": [
+          {
+            "header_icon": {
+              "type": "panel",
+              "controls": "$icon",
+              "anchor_from": "left_middle",
+              "anchor_to": "left_middle",
+              "size": [ 16, 16 ],
+              "offset": [ 8, 0 ]
+            }
+          },
+          {
+            "$collapse_toggle@assets.toggle": {
+              "toggle_name": "collapse",
+              "anchor_from": "right_middle",
+              "anchor_to": "right_middle",
+              "ignored": "($collapse_toggle = 'collapse_toggle')",
+              "size": [ 16, 16 ],
+              "offset": [ -8, 0 ],
+              "controls": [
+                {"unchecked": {
+                  "type": "image",
+                  "size": [18, 18],
+                  "texture": "textures/ui/buttons/expand"
+                }},
+                {"checked": {
+                  "type": "image",
+                  "size": [18, 18],
+                  "texture": "textures/ui/buttons/collapse"
+                }},
+                {"unchecked_hover": {
+                  "type": "image",
+                  "size": [18, 18],
+                  "texture": "textures/ui/buttons/expand_hover"
+                }},
+                {"checked_hover": {
+                  "type": "image",
+                  "size": [18, 18],
+                  "texture": "textures/ui/buttons/collapse_hover"
+                }}
+              ]
+            }
+          },
+          {
+            "header_label": {
+              "type": "label",
+              "color": "$body_text_color",
+              "layer": 1,
+              "anchor_from": "left_middle",
+              "anchor_to": "left_middle",
+              "text_alignment": "center",
+              "max_size": [ "95%", 10 ],
+              "offset": [ 32, 0 ],
+              "text": "$text"
+            }
+          }
+        ]
+      }}
+    ]
+  },
+  
+  "screen_background": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "color": [ 0.06, 0.06, 0.07 ],
+    "layer": -1
+  }
+}

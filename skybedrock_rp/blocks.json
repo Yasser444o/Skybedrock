@@ -1,0 +1,101 @@
+{
+	"format_version": [ 1, 1, 0 ],
+	"copper_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "rich_copper_ore"
+	},
+	"lapis_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "rich_lapis_ore"
+	},
+	"redstone_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "rich_redstone_ore"
+	},
+	"lit_redstone_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "rich_redstone_ore"
+	},
+	"deepslate_copper_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "rich_deepslate_copper_ore"
+	},
+	"deepslate_lapis_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "rich_deepslate_lapis_ore"
+	},
+	"deepslate_redstone_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "rich_deepslate_redstone_ore"
+	},
+	"lit_deepslate_redstone_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "rich_deepslate_redstone_ore"
+	},
+	"nether_gold_ore": {
+		"isotropic": false,
+		"sound": "nether_gold_ore",
+		"textures": "rich_nether_gold_ore"
+	},
+	"yasser444:copper_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "copper_ore"
+	},
+	"yasser444:lapis_lazuli_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "lapis_ore"
+	},
+	"yasser444:redstone_ore": {
+		"isotropic": false,
+		"sound": "stone",
+		"textures": "redstone_ore"
+	},
+	"yasser444:deepslate_copper_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "deepslate_copper_ore"
+	},
+	"yasser444:deepslate_lapis_lazuli_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "deepslate_lapis_ore"
+	},
+	"yasser444:deepslate_redstone_ore": {
+		"isotropic": false,
+		"sound": "deepslate",
+		"textures": "deepslate_redstone_ore"
+	},
+	"yasser444:nether_gold_ore": {
+		"isotropic": false,
+		"sound": "nether_gold_ore",
+		"textures": "nether_gold_ore"
+	},
+	"deprecated_purpur_block_1": {
+		"textures": "chiseled_purpur"
+	},
+	"deprecated_purpur_block_2": {
+		"textures": "smooth_purpur"
+	},
+	"petrified_oak_slab": {
+		"textures": "petrified_oak_slab"
+	},
+	"petrified_oak_double_slab": {
+		"textures": "petrified_oak_slab"
+	},
+	"yasser444:empty_spawner": {
+		"sound": "mob_spawner"
+	},
+	"skybedrock:sand_support": {
+		"textures": "none"
+	}
+}

@@ -1,0 +1,77 @@
+{
+  "namespace": "server_form",
+
+	"main_screen_content": {
+		"type": "panel",
+		"size": ["100%","100%"],
+		"controls": [
+			{
+				"server_form_factory": {
+					"type": "factory",
+					"control_ids": {
+						"long_form": "@server_form.forms",
+						"custom_form": "@server_form.custom_forms"
+					}
+				}
+			}
+		]
+	},
+	"forms" : {
+		"type": "panel",
+		"controls": [
+			{
+				"default@server_form.long_form": {
+				  	"$condition": "(#title_text = (#title_text - '§book_ui§' - '§quests_ui§' - '§quest_screen§' - '§map_ui§' - 'Treasure Map'))",
+				  	"bindings": "$visible_by_title"
+				}
+			},
+			{
+				"guidebook@guidebook.main_panel": {
+					"$tag": "§book_ui§",
+					"bindings": "$has_title_tag"
+				}
+			},
+			{
+				"quests_form@quests.quests_menu": {
+					"$tag": "§quests_ui§",
+					"bindings": "$has_title_tag"
+				}
+			},
+			{
+				"quest_screen@quests.quest_screen": {
+				  	"$tag": "§quest_screen§",
+				  	"bindings": "$has_title_tag"
+				}
+			},
+			{
+				"map_form@maps.map_paper": {
+					"$tag": "Treasure Map",
+					"bindings": "$has_title_tag"
+				}
+			},
+			{
+				"world_map_form@maps.world_map_form": {
+					"$tag": "§map_ui§",
+					"bindings": "$has_title_tag"
+				}
+			}
+		]
+	},
+	"custom_forms" : {
+		"type": "panel",
+		"controls": [
+			{
+				"default@server_form.custom_form": {
+				  "$condition": "(#title_text = (#title_text - '§6Settings'))",
+				  "bindings": "$visible_by_title"
+				}
+			},
+			{
+				"guidebook@guidebook.main_panel": {
+				  "$condition": "(not (#title_text = (#title_text - '§6Settings')))",
+				  "bindings": "$visible_by_title"
+				}
+			}
+		]
+	}
+}

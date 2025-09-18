@@ -1,0 +1,132 @@
+{
+  "namespace": "hud",
+
+  "biome_text": {
+    "type": "image",
+  	"anchor_from": "top_left",
+  	"anchor_to": "top_left",
+    "size": [ "100%c + 6px", "100%c + 2px" ],
+    "texture": "textures/ui/Black",
+  	"alpha": 0.6,
+  	"$action_text": "$actionbar_text",
+  	"$direction": "($action_text - 'structure:d')",
+  	"$structure": "($action_text - 'structure:' - ('d' + $direction) - ':s')",
+  	"visible": "(not ($action_text - 'biome:' = $action_text))",
+    "controls": [
+      {
+        "biome": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 31,
+		      "$biome": "($action_text - 'structure:' - ('d' + $direction) - (':s' + $structure) - 'biome:')",
+          "text": "('Biome: ' + $biome)",
+          "localize": false,
+          "alpha": "@hud.anim_actionbar_text_alpha_out"
+        }
+      }
+    ]
+  },
+  "structure_locator": {
+    "type": "image",
+    "size": [ "100%c + 12px", 16 ],
+    "offset": [ 0, "50%-68px" ],
+    "texture": "textures/ui/hud_tip_text_background",
+    "alpha": "@hud.anim_actionbar_text_background_alpha_out",
+	  "$action_text": "$actionbar_text",
+	  "$direction": "($action_text - 'structure:d')",
+	  "$structure": "($action_text - 'structure:' - ('d' + $direction) - ':s')",
+	  "visible": "(not($action_text - 'structure:' = $action_text))",
+    "controls": [
+	    {
+		    "stack_panel": {
+		      "type": "stack_panel",
+		      "orientation": "horizontal",
+		      "controls": [
+		    	  {
+		    	    "structure_direction": {
+		    	      "type": "image",
+		    	      "size": [16, 16],
+		    	      "texture": "('textures/ui/directions/compass' + $direction)",
+		    	      "layer": 31,
+		    	  	  "alpha": "@hud.anim_actionbar_text_alpha_out"
+		    	    }
+		    	  },
+		    	  {
+		    	    "text": {
+		    	      "type": "panel",
+		    	      "size": ["100%c", 16],
+		    	      "controls": [
+		    	        {"s01@hud.structure_name": {"$name": " Igloo", "visible": "($structure = 0)"}},
+		    	        {"s02@hud.structure_name": {"$name": " Jungle Temple", "visible": "($structure = 1)"}},
+		    	        {"s03@hud.structure_name": {"$name": " Desert Pyramid", "visible": "($structure = 2)"}},
+		    	        {"s04@hud.structure_name": {"$name": " Ocean Monument", "visible": "($structure = 3)"}},
+		    	        {"s05@hud.structure_name": {"$name": " Swamp Hut", "visible": "($structure = 4)"}},
+		    	        {"s06@hud.structure_name": {"$name": " Mineshaft", "visible": "($structure = 5)"}},
+		    	        {"s07@hud.structure_name": {"$name": " Pillager Outpost", "visible": "($structure = 6)"}},
+		    	        {"s08@hud.structure_name": {"$name": " Woodland Mansion", "visible": "($structure = 7)"}},
+		    	        {"s09@hud.structure_name": {"$name": " Ancient City", "visible": "($structure = 8)"}},
+		    	        {"s10@hud.structure_name": {"$name": " Ocean Ruins", "visible": "($structure = 9)"}},
+		    	        {"s11@hud.structure_name": {"$name": " Trail Ruins", "visible": "($structure = 10)"}},
+		    	        {"s15@hud.structure_name": {"$name": " Trial Chambers", "visible": "($structure = 11)"}},
+		    	        {"s12@hud.structure_name": {"$name": " Nether Fortress", "visible": "($structure = 12)"}},
+		    	        {"s13@hud.structure_name": {"$name": " Bastian Remnants", "visible": "($structure = 13)"}},
+		    	        {"s14@hud.structure_name": {"$name": " Ruined Portal", "visible": "($structure = 14)"}}
+		    	      ]
+		    	    }
+		    	  }
+		      ]
+		    }
+	    }
+    ]
+  },
+  "structure_name": {
+    "type": "label",
+    "layer": 31,
+    "text": "$name",
+    "alpha": "@hud.anim_actionbar_text_alpha_out"
+  },
+
+  //vanilla elements
+  "hud_actionbar_text": {
+    "$action_text": "$actionbar_text",
+    "visible": "(($action_text - 'biome:' - 'structure:' = $action_text))"
+  },
+
+  "root_panel": {
+    "modifications": [{
+      "array_name": "controls",
+      "operation": "insert_front",
+      "value": {
+        "structure_locator": {
+          "type": "panel",
+          "factory": {
+            "name": "hud_actionbar_text_factory",
+            "control_ids": {
+              "hud_actionbar_text": "hud_actionbar_text@hud.structure_locator"
+            }
+          }
+        }
+      }
+    }]
+  },
+  "root_panel/chat_stack": {
+    "modifications": [{
+      "array_name": "controls",
+      "operation": "insert_after",
+      "where": { "number_of_days_played@hud.number_of_days_played": {} },
+      "value": {
+        "biome_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100%c" ],
+          "factory": {
+            "name": "hud_actionbar_text_factory",
+            "control_ids": {
+              "hud_actionbar_text": "hud_actionbar_text@hud.biome_text"
+            }
+          }
+        }
+      }
+    }]
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.diamond_feather": {
+			"textures": [ "Texture.diamond_feather" ],
+			"materials": [ { "*": "Material.default" } ],
+			"geometry": "Geometry.diamond_feather",
+			"part_visibility": [
+				{ "*": "query.property('skybedrock:diamond_chicken')" }
+			]
+		}
+	}
+}

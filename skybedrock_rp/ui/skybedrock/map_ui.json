@@ -1,0 +1,664 @@
+{
+	"namespace": "maps",
+
+	"map_paper": {
+		"type": "image",
+		"texture": "textures/map/map_background",
+		"size": ["100%y", 256],
+		"max_size": ["100%y", "100% - 40px"],
+		"layer": 2,
+		"controls": [
+			{ "close@common.close_button": {
+				"offset": [-5, 5]
+			} },
+			{
+				"map_marks@server_form.long_form_dynamic_buttons_panel": {
+					"factory":{
+						"name": "buttons",
+						"control_name": "maps.markings"
+					}
+				}
+			}
+		]
+	},
+	"markings": {
+		"type": "panel",
+		"size": [8, 8],
+		"anchor_to": "top_left",
+		"anchor_from": "top_left",
+		"controls": [
+			{ "x_mark": {
+				"type": "panel",
+				"size": [16, 16],
+				"anchor_to": "top_left",
+				"anchor_from": "top_left",
+				"offset": [-4, 0],
+				"bindings": [
+					{
+						"binding_type": "collection_details",
+						"binding_collection_name": "form_buttons"
+					},
+					{
+						"binding_name": "#form_button_text",
+						"binding_type": "collection",
+						"binding_collection_name": "form_buttons"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "('%.1s' * #form_button_text = 'T')",
+						"target_property_name": "#visible"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "(#form_button_text - '%.3s' * #form_button_text)",
+						"target_property_name": "#size_binding_x"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "(#form_button_text - ('%.6s' * #form_button_text)",
+						"target_property_name": "#size_binding_y"
+					}
+				],
+				"controls": [
+					{
+						"x_mark_image": {
+							"type": "image",
+							"texture": "textures/map/map_icons",
+							"uv": [0, 16],
+							"uv_size": [16, 16],
+							"size": [16, 16],
+							"anchor_from": "bottom_right",
+							"anchor_to": "center"
+						}
+					}
+				]
+			}},
+			{
+				"player": {
+					"type": "panel",
+					"size": [16, 16],
+					"anchor_to": "top_left",
+					"anchor_from": "top_left",
+					"offset": [-4, -8],
+					"bindings": [
+						{
+							"binding_type": "collection_details",
+							"binding_collection_name": "form_buttons"
+						},
+						{
+							"binding_name": "#form_button_text",
+							"binding_type": "collection",
+							"binding_collection_name": "form_buttons"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "('%.1s' * #form_button_text = 'P')",
+							"target_property_name": "#visible"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(#form_button_text - '%.5s' * #form_button_text)",
+							"target_property_name": "#size_binding_x"
+						},
+						{
+							"binding_type": "view",
+							"source_property_name": "(#form_button_text - ('%.8s' * #form_button_text)",
+							"target_property_name": "#size_binding_y"
+						}
+					],
+					"controls": [
+						{
+							"direction": {
+								"type": "image",
+								"texture": "#texture",
+								"size": [16, 16],
+								"anchor_to": "center",
+								"anchor_from": "bottom_right",
+								"bindings": [
+									{
+										"binding_type": "collection_details",
+										"binding_collection_name": "form_buttons"
+									},
+									{
+										"binding_name": "#form_button_text",
+										"binding_type": "collection",
+										"binding_collection_name": "form_buttons"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "('textures/ui/map/player' + (#form_button_text - 'P d'))",
+										"target_property_name": "#texture"
+									}
+								]
+							} 
+						}
+					]
+				} 
+			}
+		]	
+	},
+
+	"biome_box": {
+        "type": "panel",
+        "size": [1, 1],
+		"anchor_to": "top_left",
+		"anchor_from": "top_left",
+        "bindings": "$get_biome_box_data",
+		"$source1": "#x", "$target1": "#size_binding_x",
+		"$source2": "#y", "$target2": "#size_binding_y",
+		"controls": [{
+			"size_unit": {
+				"type": "panel",
+				"size": ["0.1%", "0.1%"],
+				"anchor_from": "bottom_right",
+				"anchor_to": "top_left",
+				"controls": [{
+					"bounds": {
+						"type": "button",
+						"hover_control": "hover",
+						"pressed_control": "hover",
+						"focus_enabled": true,
+						"default_focus_precedence": -10,
+						"size": [1, 1],
+						"anchor_to": "top_left",
+						"anchor_from": "top_left",
+						"bindings": "$get_biome_box_data",
+						"$source1": "(1000 * #l / #x)", "$target1": "#size_binding_x",
+						"$source2": "(1000 * #w / #y)", "$target2": "#size_binding_y",
+						"controls": [
+							{ "hover": {
+								"type": "image",
+								"texture": "textures/ui/buttons/selection_hover",
+								"controls": [
+									{ "hover@assets.hovering_text": {
+										"$text_bindings": "$get_biome_box_data",
+										"$source1": "#name", "$target1": "#text",
+										"$source2": "#null", "$target2": "#null"
+									}}
+								]
+							}}
+						]
+					}
+				}]
+			}
+		}]
+	},
+
+	"landmark": {
+        "type": "panel",
+        "size": [1, 1],
+		"anchor_to": "top_left",
+		"anchor_from": "top_left",
+        "bindings": [
+			{
+				"binding_name": "#form_button_text",
+				"binding_type": "collection",
+				"binding_collection_name": "form_buttons"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(not (#form_button_text = #form_button_text - '§landmark§ '))",
+				"target_property_name": "#visible"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#form_button_text - '§landmark§ ')",
+				"target_property_name": "#data"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#data - 'x')",
+				"target_property_name": "#x"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#data - ('x' + #x + 'y'))",
+				"target_property_name": "#y"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "#x",
+				"target_property_name": "#size_binding_x"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "#y",
+				"target_property_name": "#size_binding_y"
+			}
+		],
+		"controls": [
+			{ "landmark@assets.button": {
+				"size": [20, 20],
+				"anchor_from": "bottom_right",
+				"controls": [
+					{ "default": {
+						"type": "image",
+						"bindings": "$get_button_image"
+					}},
+					{ "hover": {
+						"type": "image",
+						"bindings": [
+							{
+								"binding_name": "#form_button_texture",
+								"binding_type": "collection",
+								"binding_collection_name": "form_buttons"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#form_button_texture + '_hover')",
+								"target_property_name": "#texture"
+							}
+						],
+						"controls": [
+							{ "hovering_text@assets.hovering_text": {
+								"$text_bindings": [
+									{
+										"binding_name": "#form_button_text",
+										"binding_type": "collection",
+										"binding_collection_name": "form_buttons"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "(#form_button_text - '§landmark§ ')",
+										"target_property_name": "#data"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "(#data - 'x')",
+										"target_property_name": "#x"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "(#data - ('x' + #x + 'y'))",
+										"target_property_name": "#y"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "(#data - ('x' + #x + 'y' + #y))",
+										"target_property_name": "#text"
+									}
+								]
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	},
+
+	"decoration": {
+        "type": "panel",
+        "size": [1, 1],
+		"anchor_to": "top_left",
+		"anchor_from": "top_left",
+        "bindings": [
+			{
+				"binding_name": "#form_button_text",
+				"binding_type": "collection",
+				"binding_collection_name": "form_buttons"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(not (#form_button_text = #form_button_text - '§deco§'))",
+				"target_property_name": "#visible"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#form_button_text - '§deco§ ')",
+				"target_property_name": "#data"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#data - 'x')",
+				"target_property_name": "#x"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#data - ('x' + #x + 'y'))",
+				"target_property_name": "#y"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "#x",
+				"target_property_name": "#size_binding_x"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "#y",
+				"target_property_name": "#size_binding_y"
+			}
+		],
+		"controls": [
+			{ "decoration": {
+				"type": "button",
+				"hover_control": "hover",
+				"pressed_control": "hover",
+				"focus_enabled": true,
+				"default_focus_precedence": -10,
+				"size": [16, 16],
+				"anchor_from": "bottom_right",
+				"controls": [
+					{ "image": {
+						"type": "image",
+						"bindings": "$get_button_image"
+					}},
+					{ "hover@assets.hovering_text": {
+						"$text_bindings": [
+							{
+								"binding_name": "#form_button_text",
+								"binding_type": "collection",
+								"binding_collection_name": "form_buttons"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#form_button_text - '§deco§ ')",
+								"target_property_name": "#data"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - 'x')",
+								"target_property_name": "#x"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - ('x' + #x + 'y'))",
+								"target_property_name": "#y"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - ('x' + #x + 'y' + #y))",
+								"target_property_name": "#text"
+							}
+						]
+					}}
+				]
+			}}
+		]
+	},
+
+	"world_map_form": {
+		"type": "panel",
+		"size": ["100%y", 400],
+		"offset": [0, 9],
+		"max_size": ["100%y", "100% - 40px"],
+		"controls": [
+			{ "map_picture": {
+				"type": "collection_panel",
+				"collection_name": "form_buttons",
+				"controls": [
+					{ "background": {
+						"type": "image",
+						"collection_index": 10,
+						"bindings": [{
+							"binding_type": "collection",
+							"binding_collection_name": "form_buttons",
+							"binding_name": "#form_button_text",
+							"binding_name_override": "#texture"
+						}]
+					}},
+					{ "foreground": {
+						"type": "image",
+						"collection_index": 11,
+						"bindings": [{
+							"binding_type": "collection",
+							"binding_collection_name": "form_buttons",
+							"binding_name": "#form_button_text",
+							"binding_name_override": "#texture"
+						}]
+					}}
+				]
+			}},
+			{ "biomes": {
+				"type": "panel",
+				"size": ["6.25%", "6.25%"],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"controls": [
+					{"biomes": {
+						"type": "collection_panel",
+						"collection_name": "form_buttons",
+						"bindings": [
+							{
+								"binding_name": "#form_button_length",
+								"binding_name_override": "#collection_length"
+							}
+						],
+						"factory":{
+							"name": "buttons",
+							"control_name": "maps.biome_box"
+						}
+					}}
+				]
+			}},
+			{ "landmarks": {
+				"type": "collection_panel",
+				"collection_name": "form_buttons",
+				"size": ["0.390625%", "0.390625%"],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"bindings": [{
+					"binding_name": "#form_button_length",
+					"binding_name_override": "#collection_length"
+				}],
+				"factory":{
+					"name": "buttons",
+					"control_name": "maps.landmark"
+				}
+			}},
+			{ "decorations": {
+				"type": "collection_panel",
+				"collection_name": "form_buttons",
+				"size": ["0.390625%", "0.390625%"],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"bindings": [{
+					"binding_name": "#form_button_length",
+					"binding_name_override": "#collection_length"
+				}],
+				"factory":{
+					"name": "buttons",
+					"control_name": "maps.decoration"
+				}
+			}},
+			{ "body_text": {
+				"type": "label",
+				"text": "#form_text",
+				"color": [0.3, 0.3, 0.3],
+				"text_alignment": "center",
+				"size": ["80%", "default"],
+				"offset": [0, -20]
+			}},
+			{ "player_mark": {
+				"type": "collection_panel",
+				"collection_name": "form_buttons",
+				"size": ["0.390625%", "0.390625%"],
+				"anchor_to": "top_left",
+				"anchor_from": "top_left",
+				"controls": [{
+					"player": {
+						"type": "panel",
+						"collection_index": 12,
+						"size": [1, 1],
+						"anchor_to": "top_left",
+						"anchor_from": "top_left",
+						"bindings": [
+							{
+								"binding_type": "collection_details",
+								"binding_collection_name": "form_buttons"
+							},
+							{
+								"binding_name": "#form_button_text",
+								"binding_type": "collection",
+								"binding_collection_name": "form_buttons"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(not #form_button_text = '')",
+								"target_property_name": "#visible"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "#form_button_text",
+								"target_property_name": "#data"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - 'X')",
+								"target_property_name": "#x"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - ('X' + #x + 'Z'))",
+								"target_property_name": "#y"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "#x",
+								"target_property_name": "#size_binding_x"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "#y",
+								"target_property_name": "#size_binding_y"
+							}
+						],
+						"controls": [
+							{
+								"direction": {
+									"type": "image",
+									"texture": "#texture",
+									"size": [16, 16],
+									"anchor_from": "bottom_right",
+									"bindings": [
+										{
+											"binding_type": "collection_details",
+											"binding_collection_name": "form_buttons"
+										},
+										{
+											"binding_name": "#form_button_text",
+											"binding_type": "collection",
+											"binding_collection_name": "form_buttons"
+										},
+										{
+											"binding_type": "view",
+											"source_property_name": "(not #form_button_text = '')",
+											"target_property_name": "#visible"
+										},
+										{
+											"binding_type": "view",
+											"source_property_name": "#form_button_text",
+											"target_property_name": "#data"
+										},
+										{
+											"binding_type": "view",
+											"source_property_name": "(#data - 'X')",
+											"target_property_name": "#x"
+										},
+										{
+											"binding_type": "view",
+											"source_property_name": "(#data - ('X' + #x + 'Z'))",
+											"target_property_name": "#y"
+										},
+										{
+											"binding_type": "view",
+											"source_property_name": "(#data - ('X' + #x + 'Z' + #y + 'D'))",
+											"target_property_name": "#d"
+										},
+										{
+											"binding_type": "view",
+											"source_property_name": "('textures/ui/map/player' + #d)",
+											"target_property_name": "#texture"
+										}
+									]
+								} 
+							}
+						]
+					}
+				}]
+			}},
+			{"title_panel": {
+				"type": "image",
+				"texture": "textures/ui/TabTopFront",
+				"color": [1, 0.95, 0.8],
+				"anchor_from": "top_middle",
+				"anchor_to": "bottom_middle",
+				"size": ["100%c + 40px", 30],
+				"max_size": ["90%", 30],
+				"offset": [0, 12],
+				"layer": -1,
+				"controls": [
+					{ "title_text": {
+						"type": "label",
+						"text": "#text",
+						"color": [0.2, 0.2, 0.2],
+						"anchor_from": "top_middle",
+						"anchor_to": "top_middle",
+						"offset": [0, 6],
+						"bindings": [
+							{ "binding_name": "#form_title" },
+							{
+								"binding_type": "view",
+								"source_property_name": "(#title_text - '§map_ui§')",
+								"target_property_name": "#text"
+							}
+						]
+					}}
+				]
+			}},
+			{"side_panel": {
+				"type": "image",
+				"texture": "textures/ui/TabRightFront",
+				"color": [1, 0.95, 0.8],
+				"anchor_from": "top_right",
+				"anchor_to": "top_left",
+				"offset": [-7, 10],
+				"size": [29, "100%c + 5px"],
+				"layer": -1,
+				"controls": [
+					{"side_buttons": {
+						"type": "stack_panel",
+						"collection_name": "form_buttons",
+						"size": [20, "100%c"],
+						"anchor_from": "top_right",
+						"anchor_to": "top_right",
+						"offset": [-3, 2],
+						"controls": [
+							{"close@common.close_button": {}},
+							{"home@quests.side_button": {
+								"collection_index": 0,
+								"$name": "home",
+								"$texture": "textures/ui/buttons/home_button",
+								"$hover_text": "guidebook.button.home"
+							}},
+							{"back@quests.side_button": {
+								"collection_index": 1,
+								"$name": "back",
+								"$texture": "textures/ui/buttons/back_button",
+								"$hover_text": "guidebook.button.back"
+							}},
+							{"bookmark@quests.side_button": {
+								"collection_index": 2,
+								"$name": "bookmark",
+								"$texture": "textures/ui/buttons/bookmark_button",
+								"$hover_text": "guidebook.button.bookmark"
+							}},
+							{"switch_off@quests.side_button": {
+								"collection_index": 3,
+								"$name": "switch_off",
+								"$texture": "textures/ui/buttons/switch_button_off",
+								"$hover_text": "guidebook.button.switch_off",
+								"$mapping": []
+							}},
+							{"switch_on@quests.side_button": {
+								"collection_index": 3,
+								"$name": "switch_on",
+								"$texture": "textures/ui/buttons/switch_button_on",
+								"$hover_text": "guidebook.button.switch_on"
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	}
+}

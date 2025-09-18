@@ -1,0 +1,146 @@
+{
+	"namespace": "crafting",
+
+	"help_button@common.button": {
+		"$default_texture": "textures/ui/buttons/skypedia_default",
+		"$hover_texture": "textures/ui/buttons/skypedia_hover",
+		"$pressed_texture": "textures/ui/buttons/skypedia_pressed"
+	},
+
+	"debug_info_text": {
+		"type": "panel",
+		"size": [1000, "100%c + 10px"],
+		"bindings": [
+			{
+				"binding_type": "collection",
+				"binding_collection_name": "inventory_items",
+				"binding_name": "$bind_name"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "$source1",
+				"target_property_name": "$target1"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "$visibility",
+				"target_property_name": "#visible"
+			}
+		],
+		"controls": [{ "text": {
+			"type": "label",
+			"text": "#text",
+			"offset": [5, 0],
+			"size": [1000, "default"],
+			"bindings": [
+				{
+					"binding_type": "collection",
+					"binding_collection_name": "inventory_items",
+					"binding_name": "$bind_name"
+				},
+				{
+					"binding_type": "view",
+					"source_property_name": "$source1",
+					"target_property_name": "$target1"
+				},
+				{
+					"binding_type": "view",
+					"source_property_name": "$source2",
+					"target_property_name": "$target2"
+				}
+			]
+		}}]
+	},
+
+	"player_inventory": {
+		"modifications": [{
+			"array_name": "controls",
+			"operation": "insert_back",
+			"value": {
+				"debug_tab": {
+					"type": "collection_panel",
+					"collection_name": "hotbar_items",
+					"anchor_from": "top_right",
+					"anchor_to": "top_left",
+					"controls": [
+						{ "debug_stick": {
+							"collection_index": 0,
+							"type": "collection_panel",
+							"collection_name": "inventory_items",
+							"anchor_from": "left_middle",
+							"anchor_to": "top_left",
+							"bindings": [
+								{
+									"binding_type": "collection",
+									"binding_collection_name": "hotbar_items",
+									"binding_name": "#item_id_aux"
+								},
+								{
+									"binding_type": "view",
+									"source_property_name": "(#item_id_aux / 65536 = 258)",
+									"target_property_name": "#visible"
+								}
+							],
+							"controls": [
+								{ "debug_info": {
+									"collection_index": 0,
+									"type": "image",
+									"texture": "textures/ui/purpleBorder",
+									"size": ["100%", "100%c"],
+									"anchor_from": "top_left",
+									"anchor_to": "top_left",
+									"controls": [{ "test_item": {
+										"type": "stack_panel",
+										"controls": [
+											{ "icon@crafting.debug_info_text": {
+												"$bind_name": "#item_id_aux",
+												"$source1": "('Aux: ' + #item_id_aux / 65536)",
+												"$target1": "#text",
+												"$source2": "#null", "$target2": "#null",
+												"$visibility": "(not (#item_id_aux = -1))"
+											}},
+											{ "full@crafting.debug_info_text": {
+												"$bind_name": "#item_id_aux",
+												"$source1": "('Full: ' + #item_id_aux)",
+												"$target1": "#text",
+												"$source2": "#null", "$target2": "#null",
+												"$visibility": "(not (#item_id_aux = -1))"
+											}},
+											{ "data@crafting.debug_info_text": {
+												"$bind_name": "#item_id_aux",
+												"$source1": "((#item_id_aux - (#item_id_aux / 65536 * 65536))",
+												"$target1": "#data",
+												"$source2": "('Data: ' + #data)",
+												"$target2": "#text",
+												"$visibility": "(not (#data = 0 or #item_id_aux = -1))"
+											}},
+											{ "count@crafting.debug_info_text": {
+												"$bind_name": "#inventory_stack_count",
+												"$source1": "('Count: ' + #inventory_stack_count)", "$target1": "#text",
+												"$source2": "#null", "$target2": "#null",
+												"$visibility": "(not (#inventory_stack_count = ''))"
+											}},
+											{ "durability@crafting.debug_info_text": {
+												"$bind_name": "#item_durability_current_amount",
+												"$source1": "(#data + (#data < #item_durability_current_amount) - (#data > #item_durability_current_amount))",
+												"$target1": "#data",
+												"$source2": "('Durability: ' + #data)", "$target2": "#text",
+												"$visibility": "(not (#data = 0))"
+											}},
+											{ "name@crafting.debug_info_text": {
+												"$bind_name": "#hover_text",
+												"$source1": "(#hover_text - '§o' - '§f')", "$target1": "#name",
+												"$source2": "('Name: ' + #name)", "$target2": "#text",
+												"$visibility": "(not (#name = ''))"
+											}}
+										]
+									}}]
+								}}
+							]
+						}}
+					]
+				}
+			}
+		}]
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Skybedrock RP",
+	"texture_data": {
+		"rich_copper_ore": {
+			"textures": "textures/blocks/rich_copper_ore"
+		},
+		"rich_lapis_ore": {
+			"textures": "textures/blocks/rich_lapis_ore"
+		},
+		"rich_redstone_ore": {
+			"textures": "textures/blocks/rich_redstone_ore"
+		},
+		"rich_deepslate_copper_ore": {
+			"textures": "textures/blocks/rich_deepslate_copper_ore"
+		},
+		"rich_deepslate_lapis_ore": {
+			"textures": "textures/blocks/rich_deepslate_lapis_ore"
+		},
+		"rich_deepslate_redstone_ore": {
+			"textures": "textures/blocks/rich_deepslate_redstone_ore"
+		},
+		"rich_nether_gold_ore": {
+			"textures": "textures/blocks/rich_nether_gold_ore"
+		},
+		"empty_spawner": {
+			"textures": "textures/blocks/empty_spawner"
+		},
+		"chiseled_purpur": {
+			"textures": "textures/blocks/chiseled_purpur"
+		},
+		"smooth_purpur": {
+			"textures": "textures/blocks/purpur_smooth"
+		},
+		"petrified_oak_slab": {
+			"textures": "textures/blocks/planks_old"
+		},
+		"none": {
+			"textures": "textures/blocks/shade"
+		}
+	},
+	"texture_name": "atlas.terrain"
+}

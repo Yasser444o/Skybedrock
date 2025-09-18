@@ -1,0 +1,2895 @@
+{
+	"namespace": "assets",
+	
+//general {
+  	"factory": {
+		"type": "stack_panel",
+		"size": ["100%c", "100%c"],
+		"collection_name": "form_buttons",
+		"bindings": [
+			{
+				"binding_name": "#form_button_length",
+				"binding_name_override": "#collection_length"
+			}
+		],
+		"factory": {
+			"name": "$name",
+			"control_name": "$child"
+		}
+  	},
+  	"button": {
+		"type": "button",
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "hover",
+		"sound_name": "random.click",
+		"focus_enabled": true,
+		"button_mappings": [
+			{
+			  "from_button_id": "button.menu_select",
+			  "to_button_id": "button.form_button_click",
+			  "mapping_type": "pressed"
+			},
+			{
+			  "from_button_id": "button.menu_ok",
+			  "to_button_id": "button.form_button_click",
+			  "mapping_type": "pressed"
+			}
+		],
+		"bindings": "$form_button",
+		"controls": [
+			{"default@assets.empty": {}},
+			{"hover@assets.empty": {}}
+		]
+	},
+
+	"toggle": {
+		"type": "toggle",
+		"focus_identifier": "",
+		"focus_change_down": "",
+		"focus_change_up": "",
+		"focus_change_left": "",
+		"focus_change_right": "",
+		"focus_enabled": true,
+		"focus_magnet_enabled": true,
+		"default_focus_precedence": 0,
+		"layer": 1,
+		"sound_name": "random.click",
+		"checked_control": "checked",
+		"unchecked_control": "unchecked",
+		"checked_hover_control": "checked_hover",
+		"unchecked_hover_control": "unchecked_hover",
+		"radio_toggle_group": false,
+		"toggle_default_state": false,
+		"toggle_group_forced_index": -1,
+		"toggle_group_default_selected": 0,
+		"toggle_grid_collection_name": "custom_form",
+		"enable_directional_toggling": false,
+		"toggle_on_button": "toggle.toggle_on",
+		"toggle_off_button": "toggle.toggle_off",
+		"button_mappings": "$simple_button",
+		"property_bag": { "#toggle_state": true },
+		"bindings": [
+			{
+				"binding_type": "collection",
+				"binding_condition": "visible",
+				"binding_collection_name": "custom_form",
+				"binding_name": "#custom_toggle_state",
+				"binding_name_override": "#toggle_state"
+			},
+			{
+				"binding_type": "collection",
+				"binding_condition": "visible",
+				"binding_collection_name": "custom_form",
+				"binding_name": "#custom_toggle_enabled",
+				"binding_name_override": "#enabled"
+			}
+		],
+		"controls": [
+			{ "unchecked": {
+				"type": "image",
+				"size": [16, 16],
+				"texture": "textures/ui/buttons/unchecked"
+			}},
+			{ "checked": {
+				"type": "image",
+				"size": [16, 16],
+				"texture": "textures/ui/buttons/checked"
+			}},
+			{ "unchecked_hover": {
+				"type": "image",
+				"size": [16, 16],
+				"texture": "textures/ui/buttons/unchecked_hover"
+			}},
+			{ "checked_hover": {
+				"type": "image",
+				"size": [16, 16],
+				"texture": "textures/ui/buttons/checked_hover"
+			}}
+		]
+	},
+
+//toggles {
+	"overlay_toggle@common_toggles.light_template_toggle": {
+		"$unchecked_control": "assets.screen_overlay_image",
+		"$unchecked_hover_control": "assets.screen_overlay_image",
+		"$checked_control": "assets.screen_overlay_image",
+		"$checked_hover_control": "assets.screen_overlay_image",
+		"$button_type_panel": "assets.empty",
+		"$toggle_name": "overlay",
+    	"$radio_toggle_group": true,
+		"$toggle_group_forced_index": 0,
+		"layer": 100
+	},
+	"screen_overlay_image@assets.white_box": {
+		"alpha": 0.7,
+		"color": [0, 0, 0]
+	},
+//}
+
+//tables {
+	"black_text": {
+		"type": "label",
+		"layer": 10,
+		"color": [0, 0, 0]
+	},
+	"text_box": { 
+		"type": "panel",
+		"size": ["100%", "100%c + 10px"],
+		"$alignment": "left",
+		"$color": [1, 1, 1],
+		"controls": [ {"text": {
+			"type": "label",
+			"localize": true,
+			"text_alignment": "$alignment",
+			"color": "$color",
+			"size": ["100% -10px", "default"],
+			"text": "$text"
+		}}]
+	},
+	"xp_text@black_text": {
+		"font_size": "large",
+		"text": "$L",
+		"color": [0.125, 0.251, 0],
+		"controls": [
+			{ "text@black_text": {
+				"font_size": "large",
+				"offset": [-2, -2],
+				"text": "$L",
+				"color": [0.498, 1, 0]
+			}},
+			{ "levels_text@black_text": {
+				"font_size": "large",
+				"text": "Levels",
+				"offset": [0, 15],
+				"color": [0.125, 0.251, 0],
+				"controls": [
+					{ "text@black_text": {
+						"font_size": "large",
+						"offset": [-2, -2],
+						"text": "Levels",
+						"color": [0.498, 1, 0]
+					}}
+				]
+			}}
+		]
+	},
+	"white_box": {
+		"type": "image",
+		"texture": "textures/white",
+		"fill": true
+	},
+	"gray_box@assets.white_box": {
+		"texture": "textures/gray"
+	},
+	
+	"table_cell@assets.white_box": {
+		"color": [0.8, 0.8, 0.8],
+		"$color": [0.95, 0.95, 0.95],
+		"$content": [{ "text@assets.black_text": {
+			"text": "$text",
+			"text_alignment": "center",
+			"size": ["100%", "default"],
+			"max_size": ["100%", "100%"]
+		}}],
+		"controls": [
+			{ "background@assets.white_box": {
+				"color": "$color",
+				"anchor_from": "bottom_right",
+				"anchor_to": "bottom_right",
+				"size": ["100% - 2px", "100% - 2px"],
+				"controls": "$content"
+			}}
+		]
+	},
+	"table_header@assets.white_box": {
+		"color": [0.8, 0.8, 0.8],
+		"$color": [1, 1, 1],
+		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
+		"controls": [
+			{ "background@assets.gray_box": {
+				"color": "$color",
+				"anchor_from": "bottom_right",
+				"anchor_to": "bottom_right",
+				"size": ["100% - 2px", "100% - 2px"],
+				"controls": "$content"
+			}}
+		]
+	},
+	"table_border@assets.white_box": {
+		"color": [0.8, 0.8, 0.8],
+		"size": [2, "100%"]
+	},
+	"table_footer": {
+		"type": "panel",
+		"size": ["100%", 30],
+		"controls": [
+			{
+				"fotter_bar@assets.white_box": {
+					"color": [0.8, 0.8, 0.8],
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"size": ["100%", 2]
+				}
+			}
+		]
+	},
+	"drops_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$quantity": "1",
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["34%", "100%"],
+				"$color": "$color",
+				"$content": [{"i@assets.$item": {}}]
+			}},
+			{"quantity@assets.table_cell": {"size": ["33%", "100%"],
+				"$color": "$color",
+				"$text": "$quantity"
+			}},
+			{"chance@assets.table_cell": {"size": ["33%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"brushing_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["40%", "100%"],
+				"$color": "$color",
+				"$content": [{"i@assets.$item": {}}]
+			}},
+			{"chance@assets.table_cell": {"size": ["60%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"sniffing_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["50%", "100%"],
+				"$color": "$color",
+				"$content": [{"i@assets.$item": {}}]
+			}},
+			{"chance@assets.table_cell": {"size": ["50%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"bartering_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$quantity": "1",
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["25%", "100%"],
+				"$color": "$color",
+				"$content": [{"i@assets.$item": {}}]
+			}},
+			{"quantity@assets.table_cell": {"size": ["37.5%", "100%"],
+				"$color": "$color",
+				"$text": "$quantity"
+			}},
+			{"chance@assets.table_cell": {"size": ["37.5%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+  //}	
+//dropdowns
+	"dropdown": {
+		"type": "stack_panel",
+		"size": ["100%", "100%c"],
+		"$title": "",
+		"$icon": "",
+		"$collapse": "collapse_toggle",
+		"$content": [],
+		"controls": [
+			{ 
+				"header_padding": { "type": "panel", "size": [ "100%", "28px" ], "controls": [{ "header_image": {
+					"type": "image",
+					"texture": "textures/ui/banners_no_border",
+					"size": [ "100%", "20px" ],
+					"offset": [ 0, -2 ],
+					"controls": [
+					  	{
+							"header_icon": {
+								"type": "image",
+								"texture": "$icon",
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"allow_debug_missing_texture": false,
+								"size": [ 16, 16 ],
+								"offset": [ 8, 0 ]
+							}
+					  	},
+						{
+							"header_label": {
+								"type": "label",
+								"text": "$title",
+								"color": "$body_text_color",
+								"layer": 1,
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"text_alignment": "center",
+								"max_size": [ "95%", 10 ],
+								"offset": [ 32, 0 ]
+							}
+						},
+						{
+							"$collapse@assets.toggle": {
+								"toggle_name": "collapse",
+								"anchor_from": "right_middle",
+								"anchor_to": "right_middle",
+								"ignored": "($collapse = 'collapse_toggle')",
+								"size": [ 16, 16 ],
+								"offset": [ -8, 0 ],
+								"controls": [
+									{"unchecked": {
+										"type": "image",
+										"size": [18, 18],
+										"texture": "textures/ui/buttons/expand"
+									}},
+									{"checked": {
+										"type": "image",
+										"size": [18, 18],
+										"texture": "textures/ui/buttons/collapse"
+									}},
+									{"unchecked_hover": {
+										"type": "image",
+										"size": [18, 18],
+										"texture": "textures/ui/buttons/expand_hover"
+									}},
+									{"checked_hover": {
+										"type": "image",
+										"size": [18, 18],
+										"texture": "textures/ui/buttons/collapse_hover"
+									}}
+								]
+							}
+						}
+					]
+				}}]}
+			},
+			{
+				"content": {
+					"type": "stack_panel",
+					"size": ["100%", "100%c"],
+					"bindings": "$is_toggled",
+					"$toggle": "$collapse",
+					"controls": "$content"
+				}
+			}
+		]
+	},
+//renderers {
+	"aux_renderer": {
+		"type": "custom",
+		"renderer": "inventory_item_renderer",
+		"property_bag": {
+			"#item_id_aux": "$id"
+		}
+	},
+	"texture_renderer": {
+		"type": "image",
+		"allow_debug_missing_texture": false,
+		"texture": "$texture",
+		"uv": "$uv",
+		"uv_size": "$uv_size",
+		"color": "$color"
+	},
+	"hover_renderer": {
+		"type": "button",
+		"layer": 6,
+		"$text": "",
+		"focus_enabled": true,
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"hover_control": "hover",
+		"pressed_control": "hover",
+		"controls": [
+			{ "hover": { // this element can not be localized
+				"type": "custom",
+				"renderer": "hover_text_renderer",
+				"layer": 40,
+				"property_bag": {
+					"#hover_text": "$text"
+				}
+			}}//,
+			// { "hover@assets.hovering_text": { // this element can spillover
+			// 	"$label_text": "$text"
+			// }}
+		]
+	},
+	"hovering_text": {
+		"type": "button",
+		"follows_cursor": true,
+		"consume_hover_events": false,
+		"$text_bindings": [],
+		"$label_text": "#text",
+		"controls": [
+			{ "hover_area": {
+				"type": "image",
+				"texture": "textures/ui/purpleBorder",
+    			"size": [ "100%c + 10px", "100%c + 8px" ],
+				"anchor_to": "left_middle",
+				"offset": [5, 0],
+				"layer": 40,
+				"visible": "(not ($label_text = ''))",
+				"controls": [
+					{ "text": {
+						"type": "label",
+						"text": "$label_text",
+						"bindings": "$text_bindings"
+					}}
+				]
+			}}
+		]
+	},
+	"stack_count_renderer": {
+		"type": "label",
+		"font_size": "large",
+		"offset": [ 3, 5 ],
+		"anchor_to": "bottom_right",
+		"anchor_from": "bottom_right",
+		"layer": 7,
+		"shadow": true,
+		"$count": "",
+		"text": "$count"
+	},
+  
+	"item_renderer": {
+		"type": "panel",
+		"size": [ 32, 32 ],
+		"layer": 6,
+		"$texture": "textures/none",
+		"$uv_size": [ "default", "default" ],
+		"$uv": [0, 0],
+		"$color": [1, 1, 1],
+		"$text": "",
+		"$count": "",
+		"controls": [
+			{ "texture_renderer@assets.texture_renderer": {} },
+			{ "stack_count@assets.stack_count_renderer": {
+				"$count": "$count"
+				}
+			},
+			{ "hover_renderer@assets.hover_renderer": {
+				"$text": "$text"
+			} }
+		]
+	},
+	"map_renderer": {
+		"type": "image",
+		"texture": "$texture",
+		"size": [ "100%y", "100%" ],
+		"layer": 101,
+		"controls": [
+			{ "safe_area": {"type": "button"} }
+		]
+	},
+	"book_page": {
+		"type": "panel",
+		"$button_size": [40, "100%"],
+		"controls": [
+			{
+				"previous@common_toggles.light_ui_toggle": {
+					"$toggle_group_forced_index": "$p_page",
+					"$toggle_view_binding_name": "('back_to_' + $prev)",
+					"size": "$button_size",
+					"anchor_from": "bottom_left",
+					"anchor_to": "bottom_left",
+					"$radio_toggle_group": true,
+					"$toggle_name": "$book_name",
+					"$button_type_panel": "how_to_play.previous_label"
+				}
+			},
+			{
+				"element": {
+					"type": "panel",
+					"controls": "$page_content"
+				}
+			},
+			{
+				"next@common_toggles.light_ui_toggle": {
+					"$toggle_group_forced_index": "$n_page",
+					"$toggle_view_binding_name": "('go_to_' + $next)",
+					"size": "$button_size",
+					"$radio_toggle_group": true,
+					"anchor_from": "bottom_right",
+					"anchor_to": "bottom_right",
+					"$toggle_name": "$book_name",
+					"$button_type_panel": "how_to_play.next_label"
+				}
+			}
+		],
+		"bindings": [
+			{
+				"binding_type": "view",
+				"source_control_name": "('back_to_' + $name)",
+				"source_property_name": "#toggle_state",
+				"target_property_name": "#prev"
+			},
+			{
+				"binding_type": "view",
+				"source_control_name": "('go_to_' + $name)",
+				"source_property_name": "#toggle_state",
+				"target_property_name": "#next"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#prev or #next)",
+				"target_property_name": "#visible"
+			}
+		]
+	},
+	"entity_renderer": {
+		"type": "panel",
+		"size": [ 32, 32 ],
+		"layer": 10,
+		"$face": [],
+		"$name": "",
+		"controls": [
+			{ "entity_face@assets.empty": {
+				"controls": "$face"
+				}
+			},
+			{ "hover_renderer@assets.hover_renderer": {
+				"$text": "$name"
+			} }
+		]
+	},
+	"block_renderer": {
+		"type": "panel",
+		"size": [ 32, 32 ],
+		"layer": 6,
+		"$id": "",
+		"$text": "",
+		"$count": "",
+		"controls": [
+			{ "item_renderer@assets.aux_renderer": {} },
+			{ "stack_count@assets.stack_count_renderer": {
+				"$count": "$count"
+			} },
+			{ "hover_renderer@assets.hover_renderer": {
+				"$text": "$text"
+			} }
+		]
+	},
+	//}
+	
+//sticky notes {
+	"nothing@assets.item_renderer": {
+		"$texture": "textures/ui/elements/nothing",
+		"$text": "20% Chance to drop neither."
+	},
+	"pregnant@assets.item_renderer": {
+		"$texture": "textures/ui/elements/pregnant",
+		"$text": "If the frog was pregnant."
+	},
+	"in_nether@assets.item_renderer": {
+		"$texture": "textures/ui/elements/in_nether",
+		"$text": "If Spawned in the Nether."
+	},
+	"player_kill@assets.item_renderer": {
+		"$texture": "textures/ui/elements/player_kill",
+		"$text": "If killed by a Player or a tamed Wolf."
+	},
+	"skeleton_kill@assets.item_renderer": {
+		"$texture": "textures/ui/elements/skeleton_kill",
+		"$text": "If killed by a Skeleton."
+	},
+	"hoglin_kill@assets.item_renderer": {
+		"$texture": "textures/ui/elements/hoglin_kill",
+		"$text": "If killed by a Hoglin."
+	},
+	"selected_number@assets.item_renderer": {
+		"$texture": "textures/ui/elements/selected_number",
+		"$text": "Only 1 item of this group is selected."
+	},
+	"valley@assets.item_renderer": {
+		"$texture": "textures/ui/elements/soulsand_valley",
+		"$text": "If Spawned in the Soul Sand Valley"
+	},
+	"qol_addon@assets.item_renderer": {
+		"$texture": "textures/ui/elements/qol_addon",
+		"$text": ""
+	},
+	"extra_addon@assets.item_renderer": {
+		"$texture": "textures/ui/elements/extra_addon",
+		"$text": ""
+	},
+	//}
+
+//villagers {
+	"cartographer@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/cartographer",
+		"$text": "Job: Cartographer"
+	},
+	"librarian@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/librarian",
+		"$text": "Job: Librarian"
+	},
+	"cleric@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/cleric",
+		"$text": "Job: Cleric"
+	},
+	"mason@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/mason",
+		"$text": "Job: Mason"
+	},
+	"desert_villager@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/desert",
+		"$text": "Biome: Desert"
+	},
+	"savanna_villager@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/savanna",
+		"$text": "Biome: Savanna"
+	},
+  //}
+
+//header icons {
+	"crafting": {
+		"type": "image",
+		"texture": "textures/ui/craft_toggle_off",
+		"uv": [2, 2],
+		"uv_size": [11, 11]
+	},
+	"biome_detector@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/items/biome_detector"
+	},
+	"crafting_table_top@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/blocks/crafting_table_top"
+	},
+	"smelting@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/blocks/furnace_front_on"
+	},
+	"blast_smelting": {
+		"type": "image",
+		"texture": "textures/blocks/blast_furnace_front_on",
+		"uv_size": [16, 16]
+	},
+	"stonecutting": {
+		"type": "panel",
+		"size": [ 16, 16 ],
+		"controls": [
+			{
+				"saw": {
+					"type": "image",
+					"uv": [0, 8],
+					"uv_size": [16, 16],
+					"texture": "textures/blocks/stonecutter2_saw"
+				}
+			},
+			{
+				"base": {
+					"type": "image",
+					"texture": "textures/blocks/stonecutter2_side"
+				}
+			}
+		]
+	},
+	"brewing@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/items/brewing_stand"
+	},
+	"outpost@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/ui/structures/outpost"
+	},
+	"desert_well@assets.item_renderer": {
+		"$texture": "textures/ui/structures/desert_well",
+		"$text": "Desert Well",
+		"offset": [0, -4]
+	},
+	"ruined_portal@assets.item_renderer": {
+		"$texture": "textures/ui/structures/ruined_portal",
+		"$text": "Ruined Portal"
+	},
+	"treasure_chest@assets.item_renderer": {
+		"$texture": "textures/blocks/chest_front",
+		"$text": "Sky Treasure Chest",
+		"size": [24, 24]
+	},
+	"fortress@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/ui/structures/fortress"
+	},
+	"trident@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/items/trident"
+	},
+	//}
+	
+//biomes {
+	"taiga@assets.item_renderer": {
+		"$texture": "textures/biomes/taiga",
+		"$text": "Taiga"
+	},
+	"plains@assets.item_renderer": {
+		"size": [ 16, 16 ],
+		"$texture": "textures/biomes/plains"
+	},
+	"savanna@assets.item_renderer": {
+		"$texture": "textures/biomes/savanna",
+		"$text": "Savanna"
+	},
+	"crimson_forest@assets.item_renderer": {
+		"$texture": "textures/biomes/crimson_forest",
+		"$text": "Crimson Forest"
+	},
+	"cherry_grove@assets.item_renderer": {
+		"$texture": "textures/biomes/cherry_grove",
+		"$text": "Cherry Grove"
+	},
+	"lush_caves@assets.item_renderer": {
+		"$texture": "textures/biomes/lush_caves",
+		"$text": "Lush Caves"
+	},
+	"nether_wastes@assets.item_renderer": {
+		"$texture": "textures/biomes/nether_wastes",
+		"$text": "Nether Wastes"
+	},
+	"the_end@assets.item_renderer": {
+		"$texture": "textures/biomes/the_end",
+		"$text": "The End"
+	},
+	//}
+
+//blocks {
+	"cobbeled_deepslate@assets.block_renderer": {
+		"$id": "((-379) * 65536)",
+		"$text": "Cobbled Deepslate"
+	},
+	"cobblestone@assets.block_renderer": {
+		"$id": "((4) * 65536)",
+		"$text": "Cobblestone"
+	},
+	"stone@assets.block_renderer": {
+		"$id": "((1) * 65536)",
+		"$text": "Stone"
+	},
+	"deepslate@assets.block_renderer": {
+		"$id": "((-378) * 65536)",
+		"$text": "Deepslate"
+	},
+	"stone_bricks@assets.block_renderer": {
+		"$id": "((98) * 65536)",
+		"$text": "Stone Bricks"
+	},
+	"mossy_stone_bricks@assets.block_renderer": {
+		"$id": "((-868) * 65536)",
+		"$text": "Mossy Stone Bricks"
+	},
+	"cracked_stone_bricks@assets.block_renderer": {
+		"$id": "((-869) * 65536)",
+		"$text": "Cracked Stone Bricks"
+	},
+	"chiseled_stone_bricks@assets.block_renderer": {
+		"$id": "((-870) * 65536)",
+		"$text": "Chiseled Stone Bricks"
+	},
+	"granite@assets.block_renderer": {
+		"$id": "((-923) * 65536)",
+		"$text": "Granite"
+	},
+	"andesite@assets.block_renderer": {
+		"$id": "((-920) * 65536)",
+		"$text": "Andesite"
+	},
+	"diorite@assets.block_renderer": {
+		"$id": "((-921) * 65536)",
+		"$text": "Diorite"
+	},
+	"tuff@assets.block_renderer": {
+		"$id": "((-333) * 65536)",
+		"$text": "Tuff"
+	},
+	"calcite@assets.block_renderer": {
+		"$id": "((-326) * 65536)",
+		"$text": "Calcite"
+	},
+	"gold_block@assets.block_renderer": {
+		"$id": "((41) * 65536)",
+		"$text": "Blocks of Gold"
+	},
+	"sculk_shrieker@assets.block_renderer": {
+		"$id": "((-461) * 65536)",
+		"$text": "Sculk Shrieker"
+	},
+	"reinforced_deepslate@assets.block_renderer": {
+		"$id": "((-466) * 65536)",
+		"$text": "Reinforced Deepslate"
+	},
+	"mob_spawner@assets.block_renderer": {
+		"$id": "((52) * 65536)",
+		"$text": "Monster Spawner"
+	},
+	"empty_spawner@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/empty_spawner",
+		"$text": "Empty Spawner"
+	},
+	"empty_vault@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/empty_vault",
+		"$text": "Empty Vault"
+	},
+	"grass_block@assets.block_renderer": {
+		"$id": "((2) *65536)",
+		"$text": "Grass Block"
+	},
+	"sand@assets.block_renderer": {
+		"$id": "((12) * 65536)",
+		"$text": "Sand"
+	},
+	"red_sand@assets.block_renderer": {
+		"$id": "((12) * 65536 + 1)",
+		"$text": "Red Sand"
+	},
+	"tube_coral_block@assets.block_renderer": {
+		"$id": "((-132) * 65536)",
+		"$text": "Tube Coral Block"
+	},
+	"brian_coral_block@assets.block_renderer": {
+		"$id": "((-849) * 65536)",
+		"$text": "Brian Coral Block"
+	},
+	"bubble_coral_block@assets.block_renderer": {
+		"$id": "((-850) * 65536)",
+		"$text": "Bubble Coral Block"
+	},
+	"fire_coral_block@assets.block_renderer": {
+		"$id": "((-851) * 65536 + 3)",
+		"$text": "Fire Coral Block"
+	},
+	"horn_coral_block@assets.block_renderer": {
+		"$id": "((-852) * 65536 + 4)",
+		"$text": "Horn Coral Block"
+	},
+	"netherrack@assets.block_renderer": {
+		"$id": "((87) * 65536)",
+		"$text": "Netherrack"
+	},
+	"purpur_block@assets.block_renderer": {
+		"$id": "((201) * 65536)",
+		"$text": "Purpur Block"
+	},
+	"smooth_purpur@assets.block_renderer": {
+		"$id": "((201) * 65536 + 3)",
+		"$text": "Smooth Purpur"
+	},
+	"chiseled_purpur@assets.block_renderer": {
+		"$id": "((201) * 65536 + 1)",
+		"$text": "Chiseled Purpur"
+	},
+	"glass@assets.block_renderer": {
+		"$id": "((20) * 65536)",
+		"$text": "Glass"
+	},
+	//Terracotta {
+	"all_trims": {
+	  "type": "panel",
+	  "size": [32, 32],
+	  "controls": [
+		{"sentry@assets.item_renderer": {
+			"$texture": "textures/items/sentry_armor_trim_smithing_template",
+			"$text": "§eSentry Armor Trim",
+			"size": [0, 0],
+			"$time": 0, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"vex@assets.item_renderer": {
+			"$texture": "textures/items/vex_armor_trim_smithing_template",
+			"$text": "§bVex Armor Trim",
+			"size": [0, 0],
+			"$time": 1, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"wild@assets.item_renderer": {
+			"$texture": "textures/items/wild_armor_trim_smithing_template",
+			"$text": "§eWild Armor Trim",
+			"size": [0, 0],
+			"$time": 2, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"coast@assets.item_renderer": {
+			"$texture": "textures/items/coast_armor_trim_smithing_template",
+			"$text": "§eCoast Armor Trim",
+			"size": [0, 0],
+			"$time": 3, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"dune@assets.item_renderer": {
+			"$texture": "textures/items/dune_armor_trim_smithing_template",
+			"$text": "§eDune Armor Trim",
+			"size": [0, 0],
+			"$time": 4, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"wayfinder@assets.item_renderer": {
+			"$texture": "textures/items/wayfinder_armor_trim_smithing_template",
+			"$text": "§eWayfinder Armor Trim",
+			"size": [0, 0],
+			"$time": 5, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"shaper@assets.item_renderer": {
+			"$texture": "textures/items/shaper_armor_trim_smithing_template",
+			"$text": "§eShaper Armor Trim",
+			"size": [0, 0],
+			"$time": 6, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"raiser@assets.item_renderer": {
+			"$texture": "textures/items/raiser_armor_trim_smithing_template",
+			"$text": "§eRaiser Armor Trim",
+			"size": [0, 0],
+			"$time": 7, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"host@assets.item_renderer": {
+			"$texture": "textures/items/host_armor_trim_smithing_template",
+			"$text": "§eHost Armor Trim",
+			"size": [0, 0],
+			"$time": 8, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"ward@assets.item_renderer": {
+			"$texture": "textures/items/ward_armor_trim_smithing_template",
+			"$text": "§bWard Armor Trim",
+			"size": [0, 0],
+			"$time": 9, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"silence@assets.item_renderer": {
+			"$texture": "textures/items/silence_armor_trim_smithing_template",
+			"$text": "§dSilence Armor Trim",
+			"size": [0, 0],
+			"$time": 10, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"tide@assets.item_renderer": {
+			"$texture": "textures/items/tide_armor_trim_smithing_template",
+			"$text": "§eTide Armor Trim",
+			"size": [0, 0],
+			"$time": 11, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"snout@assets.item_renderer": {
+			"$texture": "textures/items/snout_armor_trim_smithing_template",
+			"$text": "§eSnout Armor Trim",
+			"size": [0, 0],
+			"$time": 12, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"rib@assets.item_renderer": {
+			"$texture": "textures/items/rib_armor_trim_smithing_template",
+			"$text": "§eRib Armor Trim",
+			"size": [0, 0],
+			"$time": 13, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"eye@assets.item_renderer": {
+			"$texture": "textures/items/eye_armor_trim_smithing_template",
+			"$text": "§bEye Armor Trim",
+			"size": [0, 0],
+			"$time": 14, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"spire@assets.item_renderer": {
+			"$texture": "textures/items/spire_armor_trim_smithing_template",
+			"$text": "§bSpire Armor Trim",
+			"size": [0, 0],
+			"$time": 15, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"flow@assets.item_renderer": {
+			"$texture": "textures/items/flow_armor_trim_smithing_template",
+			"$text": "§eFlow Armor Trim",
+			"size": [0, 0],
+			"$time": 16, "anims": [ "@assets.cycle_trims" ]
+		}},
+		{"bolt@assets.item_renderer": {
+			"$texture": "textures/items/bolt_armor_trim_smithing_template",
+			"$text": "§eBolt Armor Trim",
+			"size": [0, 0],
+			"$time": 17, "anims": [ "@assets.cycle_trims" ]
+		}}
+	  ]
+	},
+	"trim_material": {
+		"type": "panel",
+		"size": [32, 32],
+		"controls": [
+		  {"sentry@assets.cobblestone": {
+			  "size": [0, 0],
+			  "$time": 0, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"vex@assets.cobblestone": {
+			  "size": [0, 0],
+			  "$time": 1, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"wild@assets.block_renderer": {
+			"$id": "((48) * 65536)",
+			"$text": "Mossy Cobblestone",
+			"size": [0, 0],
+			"$time": 2, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"coast@assets.cobblestone": {
+			  "size": [0, 0],
+			  "$time": 3, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"dune@assets.sandstone": {
+			  "size": [0, 0],
+			  "$time": 4, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"wayfinder@assets.block_renderer": {
+			"$id": "((172) * 65536)",
+			"$text": "Terracotta",
+			"size": [0, 0],
+			"$time": 5, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"shaper@assets.block_renderer": {
+			"$id": "((172) * 65536)",
+			"$text": "Terracotta",
+			  "size": [0, 0],
+			  "$time": 6, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"raiser@assets.block_renderer": {
+			"$id": "((172) * 65536)",
+			"$text": "Terracotta",
+			  "size": [0, 0],
+			  "$time": 7, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"host@assets.block_renderer": {
+			"$id": "((172) * 65536)",
+			"$text": "Terracotta",
+			  "size": [0, 0],
+			  "$time": 8, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"ward@assets.cobbeled_deepslate": {
+			  "size": [0, 0],
+			  "$time": 9, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"silence@assets.cobbeled_deepslate": {
+			  "size": [0, 0],
+			  "$time": 10, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"tide@assets.block_renderer": {
+			"$id": "((168) * 65536)",
+			"$text": "Prismarine",
+			  "size": [0, 0],
+			  "$time": 11, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"snout@assets.blackstone": {
+			  "size": [0, 0],
+			  "$time": 12, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"rib@assets.netherrack": {
+			  "size": [0, 0],
+			  "$time": 13, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"eye@assets.block_renderer": {
+			"$id": "((121) * 65536)",
+			"$text": "End Stone",
+			  "size": [0, 0],
+			  "$time": 14, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"spire@assets.purpur_block": {
+			  "size": [0, 0],
+			  "$time": 15, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"flow@assets.item_renderer": {
+			  "$texture": "textures/items/breeze_rod",
+			  "$text": "Breeze Rod",
+			  "size": [0, 0],
+			  "$time": 16, "anims": [ "@assets.cycle_trims" ]
+		  }},
+		  {"bolt@assets.block_renderer": {
+			  "$id": "((-344) * 65536)",
+			  "$text": "Block of Copper",
+			  "size": [0, 0],
+			  "$time": 17, "anims": [ "@assets.cycle_trims" ]
+		  }}
+		]
+	},
+	"any_terracotta": {
+	  "type": "panel",
+	  "size": [32, 32],
+	  "controls": [
+      {
+        "item@assets.block_renderer": {
+          "$id": "0",
+          "$count": "4",
+          "$text": "Any Color of Terracotta\nor Glazed Terracotta"
+        }
+      },
+      {"white@assets.aux_renderer": {
+        "$id": "(159 * 65536)", "size": [0, 0],
+        "$time": 0, "anims": [ "@assets.init" ]
+      }},
+      {"whiteG@assets.aux_renderer": {
+        "$id": "(220 * 65536)", "size": [0, 0],
+        "$time": 1, "anims": [ "@assets.init" ]
+      }},
+      {"silver@assets.aux_renderer": {
+        "$id": "(-731 * 65536)", "size": [0, 0],
+        "$time": 2, "anims": [ "@assets.init" ]
+      }},
+      {"silverG@assets.aux_renderer": {
+        "$id": "(228 * 65536)", "size": [0, 0],
+        "$time": 3, "anims": [ "@assets.init" ]
+      }},
+      {"gray@assets.aux_renderer": {
+        "$id": "(-730 * 65536)", "size": [0, 0],
+        "$time": 4, "anims": [ "@assets.init" ]
+      }},
+      {"grayG@assets.aux_renderer": {
+        "$id": "(227 * 65536)", "size": [0, 0],
+        "$time": 5, "anims": [ "@assets.init" ]
+      }},
+      {"black@assets.aux_renderer": {
+        "$id": "(-738 * 65536)", "size": [0, 0],
+        "$time": 6, "anims": [ "@assets.init" ]
+      }},
+      {"blackG@assets.aux_renderer": {
+        "$id": "(235 * 65536)", "size": [0, 0],
+        "$time": 7, "anims": [ "@assets.init" ]
+      }},
+      {"brown@assets.aux_renderer": {
+        "$id": "(-735 * 65536)", "size": [0, 0],
+        "$time": 8, "anims": [ "@assets.init" ]
+      }},
+      {"brownG@assets.aux_renderer": {
+        "$id": "(232 * 65536)", "size": [0, 0],
+        "$time": 9, "anims": [ "@assets.init" ]
+      }},
+      {"red@assets.aux_renderer": {
+        "$id": "(-737 * 65536)", "size": [0, 0],
+        "$time": 10, "anims": [ "@assets.init" ]
+      }},
+      {"redG@assets.aux_renderer": {
+        "$id": "(234 * 65536)", "size": [0, 0],
+        "$time": 11, "anims": [ "@assets.init" ]
+      }},
+      {"orange@assets.aux_renderer": {
+        "$id": "(-724 * 65536)", "size": [0, 0],
+        "$time": 12, "anims": [ "@assets.init" ]
+      }},
+      {"orangeG@assets.aux_renderer": {
+        "$id": "(221 * 65536)", "size": [0, 0],
+        "$time": 13, "anims": [ "@assets.init" ]
+      }},
+      {"yellow@assets.aux_renderer": {
+        "$id": "(-727 * 65536)", "size": [0, 0],
+        "$time": 14, "anims": [ "@assets.init" ]
+      }},
+      {"yellowG@assets.aux_renderer": {
+        "$id": "(224 * 65536)", "size": [0, 0],
+        "$time": 15, "anims": [ "@assets.init" ]
+      }},
+      {"lime@assets.aux_renderer": {
+        "$id": "(-728 * 65536)", "size": [0, 0],
+        "$time": 16, "anims": [ "@assets.init" ]
+      }},
+      {"limeG@assets.aux_renderer": {
+        "$id": "(225 * 65536)", "size": [0, 0],
+        "$time": 17, "anims": [ "@assets.init" ]
+      }},
+      {"green@assets.aux_renderer": {
+        "$id": "(-736 * 65536)", "size": [0, 0],
+        "$time": 18, "anims": [ "@assets.init" ]
+      }},
+      {"greenG@assets.aux_renderer": {
+        "$id": "(233 * 65536)", "size": [0, 0],
+        "$time": 19, "anims": [ "@assets.init" ]
+      }},
+      {"cyan@assets.aux_renderer": {
+        "$id": "(-732 * 65536)", "size": [0, 0],
+        "$time": 20, "anims": [ "@assets.init" ]
+      }},
+      {"cyanG@assets.aux_renderer": {
+        "$id": "(229 * 65536)", "size": [0, 0],
+        "$time": 21, "anims": [ "@assets.init" ]
+      }},
+      {"sky@assets.aux_renderer": {
+        "$id": "(-726 * 65536)", "size": [0, 0],
+        "$time": 22, "anims": [ "@assets.init" ]
+      }},
+      {"skyG@assets.aux_renderer": {
+        "$id": "(223 * 65536)", "size": [0, 0],
+        "$time": 23, "anims": [ "@assets.init" ]
+      }},
+      {"blue@assets.aux_renderer": {
+        "$id": "(-734 * 65536)", "size": [0, 0],
+        "$time": 24, "anims": [ "@assets.init" ]
+      }},
+      {"blueG@assets.aux_renderer": {
+        "$id": "(231 * 65536)", "size": [0, 0],
+        "$time": 25, "anims": [ "@assets.init" ]
+      }},
+      {"purple@assets.aux_renderer": {
+        "$id": "(-733 * 65536)", "size": [0, 0],
+        "$time": 26, "anims": [ "@assets.init" ]
+      }},
+      {"purpleG@assets.aux_renderer": {
+        "$id": "(219 * 65536)", "size": [0, 0],
+        "$time": 27, "anims": [ "@assets.init" ]
+      }},
+      {"magenta@assets.aux_renderer": {
+        "$id": "(-725 * 65536)", "size": [0, 0],
+        "$time": 28, "anims": [ "@assets.init" ]
+      }},
+      {"magentaG@assets.aux_renderer": {
+        "$id": "(222 * 65536)", "size": [0, 0],
+        "$time": 29, "anims": [ "@assets.init" ]
+      }},
+      {"pink@assets.aux_renderer": {
+        "$id": "(-729 * 65536)", "size": [0, 0],
+        "$time": 30, "anims": [ "@assets.init" ]
+      }},
+      {"pinkG@assets.aux_renderer": {
+        "$id": "(226 * 65536)", "size": [0, 0],
+        "$time": 31, "anims": [ "@assets.init" ]
+      }}
+	  ]
+	},
+
+	"init": {
+		"anim_type": "wait",
+		"duration": "$time",
+		"next": "@assets.winter"
+	},
+	"winter": {
+		"anim_type": "size",
+		"duration": 0,
+		"from": [0, 0],
+		"to": [32, 32],
+		"next": "@assets.spring"
+	},
+	"spring": {
+		"anim_type": "wait",
+		"duration": 1,
+		"next": "@assets.summer"
+	},
+	"summer": {
+		"anim_type": "size",
+		"duration": 0,
+		"from": [32, 32],
+		"to": [0, 0],
+		"next": "@assets.fall"
+	},
+	"fall": {
+		"anim_type": "wait",
+		"duration": 31,
+		"next": "@assets.winter"
+	},
+
+	"cycle_trims": {
+		"anim_type": "wait",
+		"duration": "$time",
+		"next": "@assets.cycle_trims_winter"
+	},
+	"cycle_trims_winter": {
+		"anim_type": "size",
+		"duration": 0,
+		"from": [0, 0],
+		"to": [32, 32],
+		"next": "@assets.cycle_trims_spring"
+	},
+	"cycle_trims_spring": {
+		"anim_type": "wait",
+		"duration": 1,
+		"next": "@assets.cycle_trims_summer"
+	},
+	"cycle_trims_summer": {
+		"anim_type": "size",
+		"duration": 0,
+		"from": [32, 32],
+		"to": [0, 0],
+		"next": "@assets.cycle_trims_fall"
+	},
+	"cycle_trims_fall": {
+		"anim_type": "wait",
+		"duration": 17,
+		"next": "@assets.cycle_trims_winter"
+	},
+	//}
+	"quartz_block@assets.block_renderer": {
+		"$id": "((155) * 65536)",
+		"$text": "Block of Quartz"
+	},
+	"sandstone@assets.block_renderer": {
+		"$id": "((24) * 65536)",
+		"$text": "Sandstone"
+	},
+	"red_sandstone@assets.block_renderer": {
+		"$id": "((179) * 65536)",
+		"$text": "Red Sandstone"
+	},
+	"wet_sponge@assets.block_renderer": {
+		"$id": "((19) * 65536 + 1)",
+		"$text": "Wet Sponge"
+	},
+	"spore_blossom@assets.block_renderer": {
+		"$id": "((-321) * 65536)",
+		"$text": "Spore Blossom"
+	},
+	"sculk_catalyst@assets.block_renderer": {
+		"$id": "((-460) * 65536)",
+		"$text": "Sculk Catalyst"
+	},
+	"gilded_blackstone@assets.block_renderer": {
+		"$id": "((-281) * 65536)",
+		"$text": "Gilded Blackstone"
+	},
+	"real_diamond_ore@assets.block_renderer": {
+		"$id": "((56) * 65536)",
+		"$text": "Diamond Ore"
+	},
+	"gravel@assets.block_renderer": {
+		"$id": "((13) * 65536)",
+		"$text": "Gravel"
+	},
+	"ancient_debris@assets.block_renderer": {
+		"$id": "((-271) * 65536)",
+		"$text": "Ancient Debris"
+	},
+	"blackstone@assets.block_renderer": {
+		"$id": "((-273) * 65536)",
+		"$text": "Blackstone"
+	},
+	"soul_sand@assets.block_renderer": {
+		"$id": "((88) * 65536)",
+		"$text": "Soul Sand"
+	},
+	"soul_soil@assets.block_renderer": {
+		"$id": "((-236) * 65536)",
+		"$text": "Soul Soil"
+	},
+	"farmland@assets.block_renderer": {
+		"$id": "((60) * 65536)",
+		"$text": "Farmland"
+	},
+	"amethyst_block@assets.block_renderer": {
+		"$id": "((-327) * 65536)",
+		"$text": "Block of Amethyst"
+	},
+	"oxidized_copper@assets.block_renderer": {
+		"$id": "((-343) * 65536)",
+		"$text": "Waxed Oxidized Copper"
+	},
+	"budding_amethyst@assets.block_renderer": {
+		"$id": "((-328) * 65536)",
+		"$text": "Budding Amethyst"
+	},
+	"bamboo_block@assets.block_renderer": {
+		"$id": "((-527) * 65536)",
+		"$text": "Block of Bamboo"
+	},
+	"bamboo_planks@assets.block_renderer": {
+		"$id": "((-510) * 65536)",
+		"$text": "Bamboo Planks"
+	},
+	"dirt@assets.block_renderer": {
+		"$id": "((3) * 65536)",
+		"$text": "Dirt"
+	},
+	"petrified_slab@assets.block_renderer": {
+		"$id": "((-902) * 65536)",
+		"$text": "Petrified Slab"
+	},
+	"small_dripleaf@assets.block_renderer": {
+		"$id": "((-336) * 65536)",
+		"$text": "Small Dripleaf"
+	},
+	"chorus_plant@assets.block_renderer": {
+		"$id": "((240) * 65536)",
+		"$text": "Chorus Plant"
+	},
+	"chorus_flower@assets.block_renderer": {
+		"$id": "((200) * 65536)",
+		"$text": "Chorus Flower"
+	},
+	
+//items {
+	"dragon_head@assets.item_renderer": {
+		"$texture": "textures/ui/items/head_dragon",
+		"$text": "Dragon Head"
+	},
+	"wither_skull@assets.item_renderer": {
+		"$texture": "textures/ui/items/head_wither_skeleton",
+		"$text": "Wither Skeleton Skull"
+	},
+	"enchanted_book@assets.item_renderer": {
+		"$texture": "textures/ui/items/enchanted_book",
+		"$text": "Swift Sneak Enchanted Book"
+	},
+	"luck_of_the_sea@assets.item_renderer": {
+		"$texture": "textures/ui/items/enchanted_fishing_rod",
+		"$text": "Luck of the Sea I"
+	},
+	"coal@assets.item_renderer": {
+		"$texture": "textures/items/coal",
+		"$text": "Coal"
+	},
+	"raw_copper@assets.item_renderer": {
+		"$texture": "textures/items/raw_copper",
+		"$text": "Raw Copper"
+	},
+	"raw_iron@assets.item_renderer": {
+		"$texture": "textures/items/raw_iron",
+		"$text": "Raw Iron"
+	},
+	"raw_gold@assets.item_renderer": {
+		"$texture": "textures/items/raw_gold",
+		"$text": "Raw Gold"
+	},
+	"copper_ingot@assets.item_renderer": {
+		"$texture": "textures/items/copper_ingot",
+		"$text": "Copper Ingot"
+	},
+	"iron_ingot@assets.item_renderer": {
+		"$texture": "textures/items/iron_ingot",
+		"$text": "Iron Ingot"
+	},
+	"gold_ingot@assets.item_renderer": {
+		"$texture": "textures/items/gold_ingot",
+		"$text": "Gold Ingot"
+	},
+	"netherite_scrap@assets.item_renderer": {
+		"$texture": "textures/items/netherite_scrap",
+		"$text": "Netherite Scrap"
+	},
+	"emerald@assets.item_renderer": {
+		"$texture": "textures/items/emerald",
+		"$text": "Emerald"
+	},
+	"diamond@assets.item_renderer": {
+		"$texture": "textures/items/diamond",
+		"$text": "Diamond"
+	},
+	"lapis_lazuli@assets.item_renderer": {
+		"$texture": "textures/items/dye_powder_blue",
+		"$text": "Lapis Lazuli"
+	},
+	"redstone_dust@assets.item_renderer": {
+		"$texture": "textures/items/redstone_dust",
+		"$text": "Redstone Dust"
+	},
+	"quartz@assets.item_renderer": {
+		"$texture": "textures/items/quartz",
+		"$text": "Nether Quartz"
+	},
+	"amethyst_shard@assets.item_renderer": {
+		"$texture": "textures/items/amethyst_shard",
+		"$text": "Amethyst Shard"
+	},
+	"iron_nugget@assets.item_renderer": {
+		"$texture": "textures/items/iron_nugget",
+		"$text": "Iron Nugget"
+	},
+	"gold_nugget@assets.item_renderer": {
+		"$texture": "textures/items/gold_nugget",
+		"$text": "Gold Nugget"
+	},
+//**************************************************************
+	"coal_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_coal",
+		"$text": "Coal Ore"
+	},
+	"copper_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_copper",
+		"$text": "Copper Ore"
+	},
+	"iron_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_iron",
+		"$text": "Iron Ore"
+	},
+	"gold_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_gold",
+		"$text": "Gold Ore"
+	},
+	"emerald_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_emerald",
+		"$text": "Emerald Ore"
+	},
+	"diamond_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_diamond",
+		"$text": "Diamond Ore"
+	},
+	"lapis_lazuli_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_lapis_lazuli",
+		"$text": "Lapis Lazuli Ore"
+	},
+	"redstone_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_redstone",
+		"$text": "Redstone Ore"
+	},
+	"nether_quartz_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_nether_quartz",
+		"$text": "Nether Quartz Ore"
+	},
+	"nether_gold_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_nether_gold",
+		"$text": "Nether Gold Ore"
+	},
+//**************************************************************	
+	"infested_cobblestone@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_cobblestone",
+		"$text": "Infested Cobblestone"
+	},
+	"infested_stone@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_stone",
+		"$text": "Infested Stone"
+	},
+	"infested_deepslate@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_deepslate",
+		"$text": "Infested Deepslate"
+	},
+	"infested_stone_bricks@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_stone_bricks",
+		"$text": "Infested Stone Bricks"
+	},
+	"infested_mossy_stone_bricks@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_mossy_stone_bricks",
+		"$text": "Infested Mossy Stone Bricks"
+	},
+	"infested_cracked_stone_bricks@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_cracked_stone_bricks",
+		"$text": "Infested Cracked Stone Bricks"
+	},
+	"infested_chiseled_stone_bricks@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/infested_chiseled_stone_bricks",
+		"$text": "Infested Chiseled Stone Bricks"
+	},
+//**************************************************************	
+	"deepslate_coal_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_coal",
+		"$text": "Deepslate Coal Ore"
+	},
+	"deepslate_copper_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_copper",
+		"$text": "Deepslate Copper Ore"
+	},
+	"deepslate_iron_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_iron",
+		"$text": "Deepslate Iron Ore"
+	},
+	"deepslate_gold_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_gold",
+		"$text": "Deepslate Gold Ore"
+	},
+	"deepslate_emerald_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_emerald",
+		"$text": "Deepslate Emerald Ore"
+	},
+	"deepslate_diamond_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_diamond",
+		"$text": "Deepslate Diamond Ore"
+	},
+	"deepslate_lapis_lazuli_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_lapis_lazuli",
+		"$text": "Deepslate Lapis Lazuli Ore"
+	},
+	"deepslate_redstone_ore@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ore_deepslate_redstone",
+		"$text": "Deepslate Redstone Ore"
+	},
+//**************************************************************
+	"iron_horse_armor@assets.item_renderer": {
+		"$texture": "textures/items/iron_horse_armor",
+		"$text": "Iron Horse Armor"
+	},
+	"gold_horse_armor@assets.item_renderer": {
+		"$texture": "textures/items/gold_horse_armor",
+		"$text": "Gold Horse Armor"
+	},
+	"diamond_horse_armor@assets.item_renderer": {
+		"$texture": "textures/items/diamond_horse_armor",
+		"$text": "Diamond Horse Armor"
+	},
+//**************************************************************
+	"apple@assets.item_renderer": {
+		"$texture": "textures/items/apple",
+		"$text": "Apple"
+	},
+	"chain@assets.item_renderer": {
+		"$texture": "textures/items/chain",
+		"$text": "Chain"
+	},
+	"lily_of_the_vally@assets.item_renderer": {
+		"$texture": "textures/blocks/flower_lily_of_the_valley",
+		"$text": "Lily of the Valley"
+	},
+	"dead_bush@assets.item_renderer": {
+		"$texture": "textures/blocks/deadbush",
+		"$text": "Dead Bush"
+	},
+	"structure_locator@assets.item_renderer": {
+		"$texture": "textures/items/structure_locator",
+		"$text": "Structure Locator"
+	},
+	"skybedrock_guidebook@assets.item_renderer": {
+		"$texture": "textures/items/skybedrock_guidebook",
+		"$text": "Skybedrock Guidebook"
+	},
+	"book@assets.item_renderer": {
+		"$texture": "textures/items/book_normal",
+		"$text": "Book"
+	},
+	"netherite_upgrade@assets.item_renderer": {
+		"$texture": "textures/items/netherite_upgrade_smithing_template",
+		"$text": "Netherite Upgrade Smithing Template"
+	},
+	"resin_clump@assets.item_renderer": {
+		"$texture": "textures/items/resin_clump",
+		"$text": "Resin Clump"
+	},
+	"phantom_membrane@assets.item_renderer": {
+		"$texture": "textures/items/phantom_membrane",
+		"$text": "Phantom Membrane"
+	},
+	"elytra@assets.item_renderer": {
+		"$texture": "textures/items/elytra",
+		"$text": "Elytra"
+	},
+	"heart_of_the_sea@assets.item_renderer": {
+		"$texture": "textures/items/heartofthesea_closed",
+		"$text": "Heart of The Sea"
+	},
+	"cooked_cod@assets.item_renderer": {
+		"$texture": "textures/items/fish_cooked",
+		"$text": "Cooked Cod"
+	},
+	"cooked_chicken@assets.item_renderer": {
+		"$texture": "textures/items/chicken_cooked",
+		"$text": "Cooked Chicken"
+	},
+	"cooked_beef@assets.item_renderer": {
+		"$texture": "textures/items/beef_cooked",
+		"$text": "Steak"
+	},
+	"golden_carrot@assets.item_renderer": {
+		"$texture": "textures/items/carrot_golden",
+		"$text": "Golden Carrot"
+	},
+	"nether_wart@assets.item_renderer": {
+		"$texture": "textures/items/nether_wart",
+		"$text": "Nether Wart"
+	},
+	"pink_petals@assets.item_renderer": {
+		"$texture": "textures/items/pink_petals",
+		"$text": "Pink Petals"
+	},
+	"chain_helmet@assets.item_renderer": {
+		"$texture": "textures/items/chainmail_helmet",
+		"$text": "Chainmain Helmet"
+	},
+	"chain_chestplate@assets.item_renderer": {
+		"$texture": "textures/items/chainmail_chestplate",
+		"$text": "Chainmail Chestplate"
+	},
+	"chain_leggings@assets.item_renderer": {
+		"$texture": "textures/items/chainmail_leggings",
+		"$text": "Chainmail Leggings"
+	},
+	"chain_boots@assets.item_renderer": {
+		"$texture": "textures/items/chainmail_boots",
+		"$text": "Chainmail Boots"
+	},
+	"tube_coral_fan@assets.item_renderer": {
+		"$texture": "textures/blocks/coral_fan_blue",
+		"$text": "Tube Coral Fan"
+	},
+	"brian_coral_fan@assets.item_renderer": {
+		"$texture": "textures/blocks/coral_fan_pink",
+		"$text": "Brain Coral Fan"
+	},
+	"bubble_coral_fan@assets.item_renderer": {
+		"$texture": "textures/blocks/coral_fan_purple",
+		"$text": "Bubble Coral Fan"
+	},
+	"fire_coral_fan@assets.item_renderer": {
+		"$texture": "textures/blocks/coral_fan_red",
+		"$text": "Fire Coral Fan"
+	},
+	"horn_coral_fan@assets.item_renderer": {
+		"$texture": "textures/blocks/coral_fan_yellow",
+		"$text": "Horn Coral Fan"
+	},
+	"awkward_poion@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_drinkable",
+		"$text": "Awkward Potion"
+	},
+	"wither_rose@assets.item_renderer": {
+		"$texture": "textures/blocks/flower_wither_rose",
+		"$text": "Wither Rose"
+	},
+	"decay_potion@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_wither",
+		"$text": "Potion of Decay"
+	},
+	"infestation_potion@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_infested",
+		"$text": "Potion of Infestation"
+	},
+	"speed_potion@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_moveSpeed",
+		"$text": "Potion of Swiftness"
+	},
+	"regeneration_potion@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_regeneration",
+		"$text": "Potion of Regeneration"
+	},
+	"strength_potion@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_damageBoost",
+		"$text": "Potion of Strength"
+	},
+	"wood_tier_pickaxe@assets.item_renderer": {
+		"$texture": "textures/items/wood_pickaxe",
+		"$text": "Wooden Pickaxe or higher"
+	},
+	"stone_tier_pickaxe@assets.item_renderer": {
+		"$texture": "textures/items/stone_pickaxe",
+		"$text": "Stone Pickaxe or higher"
+	},
+	"iron_tier_pickaxe@assets.item_renderer": {
+		"$texture": "textures/items/iron_pickaxe",
+		"$text": "Iron Pickaxe or higher"
+	},
+	"compass@assets.item_renderer": {
+		"$texture": "textures/items/compass_item",
+		"$text": "Compass"
+	},
+	"treasure_map@assets.item_renderer": {
+		"$texture": "textures/items/map_nautilus",
+		"$text": "Sky Treasure Map"
+	},
+	"trial_inscription@assets.item_renderer": {
+		"$texture": "textures/items/map_trial_chambers",
+		"$text": "Trial Vault Inscription"
+	},
+	"map@assets.item_renderer": {
+		"$texture": "textures/items/map_empty",
+		"$text": "Empty Map"
+	},
+	"eye_of_ender@assets.item_renderer": {
+		"$texture": "textures/items/ender_eye",
+		"$text": "Eye of Ender"
+	},
+	"rotten_flesh@assets.item_renderer": {
+		"$texture": "textures/items/rotten_flesh",
+		"$text": "Rotten Flesh"
+	},
+	"carrot@assets.item_renderer": {
+		"$texture": "textures/items/carrot",
+		"$text": "Carrot"
+	},
+	"potato@assets.item_renderer": {
+		"$texture": "textures/items/potato",
+		"$text": "Potato"
+	},
+	"prismarine_shard@assets.item_renderer": {
+		"$texture": "textures/items/prismarine_shard",
+		"$text": "Prismarine Shard"
+	},
+	"prismarine_crystals@assets.item_renderer": {
+		"$texture": "textures/items/prismarine_crystals",
+		"$text": "Prismarine Crystals"
+	},
+	"cod@assets.item_renderer": {
+		"$texture": "textures/items/fish_raw",
+		"$text": "Raw Cod"
+	},
+	"salmon@assets.item_renderer": {
+		"$texture": "textures/items/fish_salmon_raw",
+		"$text": "Raw Salmon"
+	},
+	"pufferfish@assets.item_renderer": {
+		"$texture": "textures/items/fish_pufferfish_raw",
+		"$text": "Pufferfish"
+	},
+	"tropical_fish@assets.item_renderer": {
+		"$texture": "textures/items/fish_clownfish_raw",
+		"$text": "Tropical Fish"
+	},
+	"echo_shard@assets.item_renderer": {
+		"$texture": "textures/items/echo_shard",
+		"$text": "Echo Shard"
+	},
+	"disc5_fragment@assets.item_renderer": {
+		"$texture": "textures/items/disc_fragment_5",
+		"$text": "Disc 5 Fragment"
+	},
+	"silence@assets.item_renderer": {
+		"$texture": "textures/items/silence_armor_trim_smithing_template",
+		"$text": "Silence Armor Trim"
+	},
+	"guster_sherd@assets.item_renderer": {
+		"$texture": "textures/items/guster_pottery_sherd",
+		"$text": "Guster Pottery Sherd"
+	},
+	"scrape_sherd@assets.item_renderer": {
+		"$texture": "textures/items/scrape_pottery_sherd",
+		"$text": "Scrape Pottery Sherd"
+	},
+	"flow_sherd@assets.item_renderer": {
+		"$texture": "textures/items/flow_pottery_sherd",
+		"$text": "Flow Pottery Sherd"
+	},
+	"cobweb@assets.item_renderer": {
+		"$texture": "textures/blocks/web",
+		"$text": "Cobweb"
+	},
+	"spider_eye@assets.item_renderer": {
+		"$texture": "textures/items/spider_eye",
+		"$text": "Spider Eye"
+	},
+	"string@assets.item_renderer": {
+		"$texture": "textures/items/string",
+		"$text": "String"
+	},
+	"frog_spawn@assets.item_renderer": {
+		"$texture": "textures/blocks/frogspawn",
+		"$text": "Frogspawn"
+	},
+	"pigstep@assets.item_renderer": {
+		"$texture": "textures/items/record_pigstep",
+		"$text": "Pigstep Music Disc"
+	},
+	"creator_music_box@assets.item_renderer": {
+		"$texture": "textures/items/music_disc_creator_music_box",
+		"$text": "Creator (Music Box) Music Disc"
+	},
+	"snout_pattern@assets.item_renderer": {
+		"$texture": "textures/items/piglin_banner_pattern",
+		"$text": "Snout Banner Pattern"
+	},
+	"gunpowder@assets.item_renderer": {
+		"$texture": "textures/items/gunpowder",
+		"$text": "Gunpowder"
+	},
+	"otherside@assets.item_renderer": {
+		"$texture": "textures/items/record_otherside",
+		"$text": "Otherside Music Disc"
+	},
+	"blaze_rod@assets.item_renderer": {
+		"$texture": "textures/items/blaze_rod",
+		"$text": "Blaze Rod"
+	},
+	"bamboo@assets.item_renderer": {
+		"$texture": "textures/items/bamboo",
+		"$text": "Bamboo"
+	},
+	"ominous_banner@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/ominous_banner",
+		"$text": "§eOminous Banner"
+	},
+	"ominous_bottle@assets.item_renderer": {
+		"$texture": "textures/items/ominous_bottle",
+		"$text": "Ominous Bottle\n§7Bad Omen I"
+	},
+	"spawner_core@assets.item_renderer": {
+		"$texture": "textures/items/spawner_core",
+		"$text": "Spawner Core"
+	},
+	"sugar@assets.item_renderer": {
+		"$texture": "textures/items/sugar",
+		"$text": "Sugar"
+	},
+	"brush@assets.item_renderer": {
+		"$texture": "textures/items/brush",
+		"$text": "Brush"
+	},
+	"glowstone_dust@assets.item_renderer": {
+		"$texture": "textures/items/glowstone_dust",
+		"$text": "Glowstone Dust"
+	},
+	"glass_bottle@assets.item_renderer": {
+		"$texture": "textures/items/potion_bottle_empty",
+		"$text": "Glass Bottle"
+	},
+	"stick@assets.item_renderer": {
+		"$texture": "textures/items/stick",
+		"$text": "Stick"
+	},
+	"trial_key@assets.item_renderer": {
+		"$texture": "textures/items/trial_key",
+		"$text": "Trial Key"
+	},
+	"ominous_trial_key@assets.item_renderer": {
+		"$texture": "textures/items/ominous_trial_key",
+		"$text": "Ominous Trial Key"
+	},
+	"magma_cream@assets.item_renderer": {
+		"$texture": "textures/items/magma_cream",
+		"$text": "Magma Cream"
+	},
+	"bone@assets.item_renderer": {
+		"$texture": "textures/items/bone",
+		"$text": "Bone"
+	},
+	"bone_meal@assets.item_renderer": {
+		"$texture": "textures/items/dye_powder_white",
+		"$text": "Bone Meal"
+	},
+	"arrow@assets.item_renderer": {
+		"$texture": "textures/items/arrow",
+		"$text": "Arrow"
+	},
+	"slowness_arrow@assets.item_renderer": {
+		"$texture": "textures/items/tipped_arrow_slow",
+		"$text": "Arrow of Slowness"
+	},
+	"poison_arrow@assets.item_renderer": {
+		"$texture": "textures/items/tipped_arrow_poison",
+		"$text": "Arrow of Poison"
+	},
+	"ghast_tear@assets.item_renderer": {
+		"$texture": "textures/items/ghast_tear",
+		"$text": "Ghast Tear"
+	},
+	"lily_pad@assets.item_renderer": {
+		"$texture": "textures/blocks/carried_waterlily",
+		"$text": "Lily Pad"
+	},
+	"red_mushroom@assets.item_renderer": {
+		"$texture": "textures/blocks/mushroom_red",
+		"$text": "Red Mushroom"
+	},
+	"red_mushroom_on_podzol@assets.red_mushroom": {
+		"offset": [0, -6],
+		"$text": "Red Mushroom on Podzol"
+	},
+	"cobweb_on_stone@assets.cobweb": {
+		"$text": "Cobweb on Stone"
+	},
+	"glow_lichen@assets.item_renderer": {
+		"$texture": "textures/blocks/glow_lichen",
+		"$text": "Glow Lichen"
+	},
+	"fishing_rod@assets.item_renderer": {
+		"$texture": "textures/items/fishing_rod_uncast",
+		"$text": "Fishing Rod"
+	},
+	"zombie_spawn_egg@assets.item_renderer": {
+		"$texture": "textures/items/egg_zombie"
+	},
+	"totem@assets.item_renderer": {
+		"$texture": "textures/items/totem",
+		"$text": "Totem of Undying"
+	},
+	"sweet_berries@assets.item_renderer": {
+		"$texture": "textures/items/sweet_berries",
+		"$text": "Sweet Berries"
+	},
+	"tall_grass@assets.item_renderer": {
+		"$texture": "textures/blocks/double_plant_grass_carried",
+		"$text": "Tall Grass"
+	},
+	"large_fern@assets.item_renderer": {
+		"$texture": "textures/blocks/double_plant_fern_carried",
+		"$text": "Large Fern"
+	},
+	"pitcher_pod@assets.item_renderer": {
+		"$texture": "textures/items/pitcher_pod",
+		"$text": "Pitcher Pod"
+	},
+	"torchflower_seeds@assets.item_renderer": {
+		"$texture": "textures/items/torchflower_seeds",
+		"$text": "Torchflower Seeds"
+	},
+	//}
+
+//entities {
+	"zombie@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/zombie/zombie",
+			"uv": [8, 8],
+			"uv_size": [8, 8]
+		}}],
+		"$name": "Zombie"
+	},
+	"baby_zombie@assets.zombie": {
+		"size": [24, 24],
+		"$name": "Baby Zombie"
+	},
+	"slime@assets.entity_renderer": {
+		"$face": [
+			{"head": {
+				"type": "image",
+				"texture": "textures/entity/slime/slime",
+				"uv": [6, 22],
+				"uv_size": [6, 6],
+				"size": [24, 24],
+				"layer": 1
+			}},
+			{"left_eye": {
+				"type": "image",
+				"texture": "textures/entity/slime/slime",
+				"uv": [34, 2],
+				"uv_size": [2, 2],
+				"size": [8, 8],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"offset": [4, 8],
+				"layer": 2
+			}},
+			{"right_eye": {
+				"type": "image",
+				"texture": "textures/entity/slime/slime",
+				"uv": [34, 6],
+				"uv_size": [2, 2],
+				"size": [8, 8],
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"offset": [-4, 8],
+				"layer": 2
+			}},
+			{"mouth": {
+				"type": "image",
+				"texture": "textures/entity/slime/slime",
+				"uv": [33, 9],
+				"uv_size": [1, 1],
+				"size": [4, 4],
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"offset": [-12, 20],
+				"layer": 2
+			}},
+			{"face": {
+				"type": "image",
+				"texture": "textures/entity/slime/slime",
+				"uv": [8, 8],
+				"uv_size": [8, 8],
+				"size": [32, 32],
+				"layer": 3,
+				"alpha": 0.9
+			}}
+		],
+		"$name": "Slime"
+	},
+	"breeze@assets.entity_renderer": {
+		"$face": [
+			{"face": {
+				"type": "image",
+				"texture": "textures/entity/breeze/breeze",
+				"uv": [8, 8],
+				"uv_size": [8, 8],
+				"size": [32, 32]
+			}},
+			{"left_eyebrow": {
+				"type": "image",
+				"texture": "textures/entity/breeze/breeze",
+				"uv": [8, 29],
+				"uv_size": [4, 2],
+				"size": [16, 8],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"offset": [-4, 16]
+			}},
+			{"right_eyebrow": {
+				"type": "image",
+				"texture": "textures/entity/breeze/breeze",
+				"uv": [14, 29],
+				"uv_size": [4, 2],
+				"size": [16, 8],
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"offset": [4, 16]
+			}}
+		],
+		"$name": "Breeze"
+	},
+	"blaze@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/ui/entities/blaze"
+		}}],
+		"$name": "Blaze"
+	},
+	"pillager_captian@assets.entity_renderer": {
+		"$face": [
+			{ "head": {
+				"type": "panel",
+				"layer": 10,
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/pillager",
+						"uv": [8, 8],
+						"uv_size": [8, 10],
+						"size": [32, 40]
+					}},
+					{ "nose": {
+						"type": "image",
+						"texture": "textures/entity/pillager",
+						"uv": [26, 2],
+						"uv_size": [2, 4],
+						"size": [8, 16],
+						"offset": [0, 16]
+					}}
+				]
+			}}
+		],
+		"$name": "Pillager Captian"
+	},
+	"end_phantom@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/ui/entities/end_phantom"
+		}}],
+		"$name": "End Phantom"
+	},
+	"witch@assets.entity_renderer": {
+		"$face": [
+			{ "head": {
+				"type": "panel",
+				"layer": 10,
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/witch",
+						"uv": [8, 8],
+						"uv_size": [8, 10],
+						"size": [32, 40]
+					}},
+					{ "nose": {
+						"type": "image",
+						"texture": "textures/entity/witch",
+						"uv": [26, 2],
+						"uv_size": [2, 4],
+						"size": [8, 16],
+						"offset": [0, 16]
+					}},
+					{ "hat4": {
+						"type": "image",
+						"texture": "textures/entity/witch",
+						"uv": [1, 96],
+						"uv_size": [1, 2],
+						"size": [4, 8],
+						"offset": [3, -50]
+					}},
+					{ "hat3": {
+						"type": "image",
+						"texture": "textures/entity/witch",
+						"uv": [3, 91],
+						"uv_size": [4, 4],
+						"size": [16, 16],
+						"offset": [2, -40]
+					}},
+					{ "hat2": {
+						"type": "image",
+						"texture": "textures/entity/witch",
+						"uv": [7, 83],
+						"uv_size": [7, 4],
+						"size": [28, 16],
+						"offset": [1, -26]
+					}},
+					{ "hat1": {
+						"type": "image",
+						"texture": "textures/entity/witch",
+						"uv": [10, 74],
+						"uv_size": [10, 2],
+						"size": [40, 8],
+						"offset": [0, -16]
+					}}
+				]
+			}}
+		],
+		"$name": "Witch"
+	},
+	"skeleton@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/skeleton/skeleton",
+			"uv": [8, 8],
+			"uv_size": [8, 8]
+		}}],
+		"$name": "Skeleton"
+	},
+	"wither_skeleton@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/skeleton/wither_skeleton",
+			"uv": [8, 8],
+			"uv_size": [8, 8]
+		}}],
+		"$name": "Wither Skeleton"
+	},
+	"ghast@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/ghast/ghast",
+			"uv": [32, 32],
+			"uv_size": [32, 32],
+			"size": [48, 48]
+		}}],
+		"$name": "Ghast"
+	},
+	"stray@assets.entity_renderer": {
+		"$face": [
+			{"layer1": {
+				"type": "image",
+				"texture": "textures/entity/skeleton/stray",
+				"uv": [8, 8],
+				"uv_size": [8, 8]
+			}},
+			{"layer2": {
+				"type": "image",
+				"texture": "textures/entity/skeleton/stray_overlay",
+				"uv": [8, 8],
+				"uv_size": [8, 8]
+			}}
+		],
+		"$name": "Stray"
+	},
+	"bogged@assets.entity_renderer": {
+		"$face": [
+			{"layer1": {
+				"type": "image",
+				"texture": "textures/entity/skeleton/bogged",
+				"uv": [8, 8],
+				"uv_size": [8, 8]
+			}},
+			{"layer2": {
+				"type": "image",
+				"texture": "textures/entity/skeleton/bogged_clothes",
+				"uv": [8, 8],
+				"uv_size": [8, 8]
+			}}
+		],
+		"$name": "Bogged"
+	},
+	"magma_cube@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/ui/entities/magma_cube"
+		}}],
+		"$name": "Magma Cube"
+	},
+	"creeper@assets.entity_renderer": {
+		"$face": [
+			{ "face": {
+				"type": "image",
+				"texture": "textures/entity/creeper/creeper",
+				"uv": [8, 8],
+				"uv_size": [8, 8],
+				"size": [16, 16]
+			}}
+		],
+		"$name": "Creeper"
+	},
+	"sniffer@assets.entity_renderer": {
+		"$face": [
+			{ "face": {
+				"type": "image",
+				"texture": "textures/entity/sniffer/sniffer",
+				"offset": [-6, 0],
+				"uv": [8, 26],
+				"uv_size": [11, 18],
+				"size": [11, 18],
+				"controls": [
+					{"beak": {
+						"type": "image",
+						"texture": "textures/entity/sniffer/sniffer",
+						"anchor_from": "top_right",
+						"anchor_to": "top_left",
+						"offset": [0, 3],
+						"uv": [10, 66],
+						"uv_size": [9, 12],
+						"size": [9, 12]
+					}},
+					{"nose": {
+						"type": "image",
+						"texture": "textures/entity/sniffer/sniffer",
+						"anchor_from": "top_right",
+						"anchor_to": "top_left",
+						"offset": [0, 1],
+						"uv": [10, 54],
+						"uv_size": [9, 2],
+						"size": [9, 2]
+					}},
+					{"ear": {
+						"type": "image",
+						"texture": "textures/entity/sniffer/sniffer",
+						"anchor_from": "top_left",
+						"anchor_to": "top_left",
+						"uv": [48, 7],
+						"uv_size": [7, 19],
+						"size": [7, 19]
+					}}
+				]
+			}}
+		],
+		"$name": "Sniffer"
+	},
+	"charged_creeper@assets.entity_renderer": {
+		"$face": [
+			{ "face": {
+				"type": "image",
+				"texture": "textures/entity/creeper/creeper",
+				"uv": [8, 8],
+				"uv_size": [8, 8],
+				"size": [28, 28]
+			}},
+			{ "charge": {
+				"type": "image",
+				"texture": "textures/entity/creeper/creeper_armor",
+				"alpha": 0.5,
+				"uv": [0, 8],
+				"uv_size": [8, 8],
+				"anims": [{ "animation": {
+					"anim_type": "flip_book",
+					"fps": 10,
+					"frame_count": 64,
+					"frame_step": 1
+				}}]
+			}}
+		],
+		"$name": "Charged Creeper"
+	},
+	"husk@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/zombie/husk",
+			"uv": [8, 8],
+			"uv_size": [8, 8]
+		}}],
+		"$name": "Husk"
+	},
+	"axolotl@assets.entity_renderer": {
+		"size": [32, 20],
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "('textures/entity/axolotl/axolotl_' + $type)",
+			"uv": [5, 6],
+			"uv_size": [8, 5],
+			"size": [32, 20],
+			"controls": [
+				{ "left_fins": {
+					"type": "image",
+					"texture": "('textures/entity/axolotl/axolotl_' + $type)",
+					"uv": [0, 40],
+					"uv_size": [3, 7],
+					"size": [12, 28],
+					"anchor_from": "bottom_left",
+					"anchor_to": "bottom_right"
+				}},
+				{ "right_fins": {
+					"type": "image",
+					"texture": "('textures/entity/axolotl/axolotl_' + $type)",
+					"uv": [11, 40],
+					"uv_size": [3, 7],
+					"size": [12, 28],
+					"anchor_from": "bottom_right",
+					"anchor_to": "bottom_left"
+				}},
+				{ "top_fins": {
+					"type": "image",
+					"texture": "('textures/entity/axolotl/axolotl_' + $type)",
+					"uv": [3, 37],
+					"uv_size": [8, 3],
+					"size": [32, 12],
+					"anchor_from": "top_left",
+					"anchor_to": "bottom_left"
+				}}
+			]
+		}}]
+	},
+	"lucy_axolotl@assets.axolotl": {
+		"$type": "lucy",
+		"$name": "Leucistic Axolotl"
+	},
+	"cyan_axolotl@assets.axolotl": {
+		"$type": "cyan",
+		"$name": "Cyan Axolotl"
+	},
+	"gold_axolotl@assets.axolotl": {
+		"$type": "gold",
+		"$name": "Gold Axolotl"
+	},
+	"wild_axolotl@assets.axolotl": {
+		"$type": "wild",
+		"$name": "Wild Axolotl"
+	},
+	"piglin@assets.entity_renderer": {
+		"$face": [
+			{ "head": {
+				"type": "panel",
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/piglin/piglin",
+						"uv": [8, 8],
+						"uv_size": [10, 8],
+						"size": [30, 24]
+					}},
+					{ "nose": {
+						"type": "image",
+						"texture": "textures/entity/piglin/piglin",
+						"anchor_from": "bottom_middle",
+						"anchor_to": "bottom_middle",
+						"offset": [0, -4],
+						"uv": [32, 2],
+						"uv_size": [4, 4],
+						"size": [12, 12],
+						"controls": [
+							{ "left_tusk": {
+								"type": "image",
+								"texture": "textures/entity/piglin/piglin",
+								"anchor_from": "bottom_left",
+								"anchor_to": "bottom_right",
+								"uv": [3, 1],
+								"uv_size": [1, 2],
+								"size": [3, 6]
+							}},
+							{ "right_tusk": {
+								"type": "image",
+								"texture": "textures/entity/piglin/piglin",
+								"anchor_from": "bottom_right",
+								"anchor_to": "bottom_left",
+								"uv": [3, 5],
+								"uv_size": [1, 2],
+								"size": [3, 6]
+							}}
+						]
+					}}
+				]
+			}}
+		],
+		"$name": "Piglin"
+	},
+	"piglin_brute@assets.entity_renderer": {
+		"$face": [
+			{ "head": {
+				"type": "panel",
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/piglin/piglin_brute",
+						"uv": [8, 8],
+						"uv_size": [10, 8],
+						"size": [30, 24]
+					}},
+					{ "nose": {
+						"type": "image",
+						"texture": "textures/entity/piglin/piglin_brute",
+						"anchor_from": "bottom_middle",
+						"anchor_to": "bottom_middle",
+						"offset": [0, -4],
+						"uv": [32, 2],
+						"uv_size": [4, 4],
+						"size": [12, 12],
+						"controls": [
+							{ "left_tusk": {
+								"type": "image",
+								"texture": "textures/entity/piglin/piglin_brute",
+								"anchor_from": "bottom_left",
+								"anchor_to": "bottom_right",
+								"uv": [3, 1],
+								"uv_size": [1, 2],
+								"size": [3, 6]
+							}},
+							{ "right_tusk": {
+								"type": "image",
+								"texture": "textures/entity/piglin/piglin_brute",
+								"anchor_from": "bottom_right",
+								"anchor_to": "bottom_left",
+								"uv": [3, 5],
+								"uv_size": [1, 2],
+								"size": [3, 6]
+							}}
+						]
+					}}
+				]
+			}}
+		],
+		"$name": "Piglin Brute"
+	},
+	"zombie_piglin@assets.entity_renderer": {
+		"$face": [
+			{ "head": {
+				"type": "panel",
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/piglin/zombie_piglin",
+						"uv": [8, 8],
+						"uv_size": [10, 8],
+						"size": [30, 24]
+					}},
+					{ "nose": {
+						"type": "image",
+						"texture": "textures/entity/piglin/zombie_piglin",
+						"anchor_from": "bottom_middle",
+						"anchor_to": "bottom_middle",
+						"offset": [0, -4],
+						"uv": [32, 2],
+						"uv_size": [4, 4],
+						"size": [12, 12],
+						"controls": [
+							{ "left_tusk": {
+								"type": "image",
+								"texture": "textures/entity/piglin/zombie_piglin",
+								"anchor_from": "bottom_left",
+								"anchor_to": "bottom_right",
+								"uv": [3, 1],
+								"uv_size": [1, 2],
+								"size": [3, 6]
+							}},
+							{ "right_tusk": {
+								"type": "image",
+								"texture": "textures/entity/piglin/zombie_piglin",
+								"anchor_from": "bottom_right",
+								"anchor_to": "bottom_left",
+								"uv": [3, 5],
+								"uv_size": [1, 2],
+								"size": [3, 6]
+							}}
+						]
+					}}
+				]
+			}}
+		],
+		"$name": "Zombified Piglin"
+	},
+	"guardian@assets.entity_renderer": {
+		"$face": [
+			{ "body": {
+				"type": "panel",
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/guardian",
+						"uv": [16, 16],
+						"uv_size": [12, 12],
+						"size": [24, 24],
+						"controls": [
+							{ "eye": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"uv": [9, 1],
+								"uv_size": [2, 2],
+								"size": [4, 4]
+							}},
+							{ "sides": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"uv": [0, 16],
+								"uv_size": [16, 12],
+								"size": [32, 24]
+							}},
+							{ "top_bottom": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"uv": [16, 0],
+								"uv_size": [12, 16],
+								"size": [24, 32]
+							}},
+							{ "top_left_fin": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"anchor_from": "top_left",
+								"anchor_to": "bottom_right",
+								"uv": [4, 0],
+								"uv_size": [2, 2],
+								"size": [4, 4]
+							}},
+							{ "top_right_fin": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"anchor_from": "top_right",
+								"anchor_to": "bottom_left",
+								"uv": [4, 0],
+								"uv_size": [2, 2],
+								"size": [4, 4]
+							}},
+							{ "bottom_left_fin": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"anchor_from": "bottom_left",
+								"anchor_to": "top_right",
+								"uv": [4, 0],
+								"uv_size": [2, 2],
+								"size": [4, 4]
+							}},
+							{ "bottom_right_fin": {
+								"type": "image",
+								"texture": "textures/entity/guardian",
+								"anchor_from": "bottom_right",
+								"anchor_to": "top_left",
+								"uv": [4, 0],
+								"uv_size": [2, 2],
+								"size": [4, 4]
+							}}
+						]
+					}},
+					{ "top_fin": {
+						"type": "image",
+						"texture": "textures/entity/guardian",
+						"anchor_from": "top_middle",
+						"anchor_to": "center",
+						"uv": [4, 0],
+						"uv_size": [2, 2],
+						"size": [4, 4]
+					}},
+					{ "bottom_fin": {
+						"type": "image",
+						"texture": "textures/entity/guardian",
+						"anchor_from": "bottom_middle",
+						"anchor_to": "center",
+						"uv": [4, 0],
+						"uv_size": [2, 2],
+						"size": [4, 4]
+					}},
+					{ "left_fin": {
+						"type": "image",
+						"texture": "textures/entity/guardian",
+						"anchor_from": "left_middle",
+						"anchor_to": "center",
+						"uv": [4, 0],
+						"uv_size": [2, 2],
+						"size": [4, 4]
+					}},
+					{ "right_fin": {
+						"type": "image",
+						"texture": "textures/entity/guardian",
+						"anchor_from": "right_middle",
+						"anchor_to": "center",
+						"uv": [4, 0],
+						"uv_size": [2, 2],
+						"size": [4, 4]
+					}}
+				]
+			}}
+		],
+		"$name": "Guardian"
+	},
+	"warden@assets.entity_renderer": {
+		"$face": [
+			{ "head": {
+				"type": "panel",
+				"size": [32, 32],
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/warden/warden",
+						"uv": [10, 42],
+						"uv_size": [16, 16],
+						"size": [32, 32]
+					}},
+					{ "left_antenna": {
+						"type": "image",
+						"texture": "textures/entity/warden/warden",
+						"anchor_from": "top_left",
+						"anchor_to": "top_right",
+						"uv": [58, 38],
+						"uv_size": [10, 10],
+						"offset": [0, -6],
+						"size": [20, 20]
+					}},
+					{ "right_antenna": {
+						"type": "image",
+						"texture": "textures/entity/warden/warden",
+						"anchor_from": "top_right",
+						"anchor_to": "top_left",
+						"uv": [58, 6],
+						"uv_size": [10, 10],
+						"offset": [0, -6],
+						"size": [20, 20]
+					}}
+				]
+			}}
+		],
+		"$name": "Warden"
+	},
+	"spider@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/ui/entities/spider"
+		}}],
+		"$name": "Spider"
+	},
+	"cave_spider@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/ui/entities/cave_spider"
+		}}],
+		"$name": "Cave Spider"
+	},
+	"drowned@assets.entity_renderer": {
+		"$face": [
+			{ "layer1": {
+				"type": "image",
+				"texture": "textures/entity/zombie/drowned",
+				"uv": [8, 8],
+				"uv_size": [8, 8]
+			}},
+			{ "layer2": {
+				"type": "image",
+				"texture": "textures/entity/zombie/drowned",
+				"uv": [40, 8],
+				"uv_size": [8, 8]
+			}}
+		],
+		"$name": "Drowned"
+	},
+	"frog@assets.entity_renderer": {
+		"size": [28, 28],
+		"$face": [
+			{ "lip": {
+				"type": "image",
+				"texture": "textures/entity/frog/temperate_frog",
+				"uv": [9, 22],
+				"uv_size": [7, 3]
+			}},
+			{ "chin": {
+				"type": "image",
+				"texture": "textures/entity/frog/temperate_frog",
+				"uv": [12, 6],
+				"uv_size": [7, 7]
+			}},
+			{ "left_eye": {
+				"type": "image",
+				"texture": "textures/entity/frog/temperate_frog",
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"uv": [3, 3],
+				"uv_size": [3, 2],
+				"size": [12, 8]
+			}},
+			{ "right_eye": {
+				"type": "image",
+				"texture": "textures/entity/frog/temperate_frog",
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"uv": [3, 8],
+				"uv_size": [3, 2],
+				"size": [12, 8]
+			}}
+		],
+		"$name": "Frog"
+	},
+	"silverfish@assets.entity_renderer": {
+		"size": [24, 20],
+		"$face": [
+			{ "body": {
+				"type": "image",
+				"texture": "textures/entity/silverfish",
+				"uv": [2, 6],
+				"uv_size": [4, 3],
+				"size": [16, 12],
+				"anchor_from": "bottom_middle",
+				"anchor_to": "bottom_middle",
+				"controls": [
+					{ "face": {
+						"type": "image",
+						"texture": "textures/entity/silverfish",
+						"anchor_from": "bottom_middle",
+						"anchor_to": "bottom_middle",
+						"uv": [2, 2],
+						"uv_size": [3, 2],
+						"size": [13, 8]
+					}},
+					{ "spikes": {
+						"type": "image",
+						"texture": "textures/entity/silverfish",
+						"anchor_from": "bottom_middle",
+						"anchor_to": "bottom_middle",
+						"uv": [22, 20],
+						"uv_size": [6, 5],
+						"size": [24, 20]
+					}}
+				]
+			}}
+		],
+		"$name": "Silverfish"
+	},
+	"ender_dragon@assets.entity_renderer": {
+		"$face": [
+			{ "face": {
+				"type": "image",
+				"texture": "textures/entity/dragon/dragon",
+				"size": [32, 32],
+				"uv": [128, 46],
+				"uv_size": [16, 16],
+				"controls": [
+					{ "left_horn": {
+						"type": "image",
+						"texture": "textures/entity/dragon/dragon",
+						"size": [4, 6],
+						"offset": [4, 0],
+						"anchor_from": "top_left",
+						"anchor_to": "bottom_left",
+						"uv": [232, 66],
+						"uv_size": [2, 3]
+					}},
+					{ "right_horn": {
+						"type": "image",
+						"texture": "textures/entity/dragon/dragon",
+						"size": [4, 6],
+						"offset": [-4, 0],
+						"anchor_from": "top_right",
+						"anchor_to": "bottom_right",
+						"uv": [232, 66],
+						"uv_size": [2, 3]
+					}}
+				]
+			}},
+			{ "maxilla": {
+				"type": "image",
+				"texture": "textures/entity/dragon/dragon",
+				"size": [24, 10],
+				"offset": [0, 3],
+				"uv": [192, 60],
+				"uv_size": [12, 5],
+				"controls": [
+					{ "left_nostril": {
+						"type": "image",
+						"texture": "textures/entity/dragon/dragon",
+						"size": [4, 4],
+						"offset": [2, 1],
+						"anchor_from": "top_left",
+						"anchor_to": "bottom_left",
+						"uv": [194, 58],
+						"uv_size": [2, 2]
+					}},
+					{ "right_nostril": {
+						"type": "image",
+						"texture": "textures/entity/dragon/dragon",
+						"size": [4, 4],
+						"offset": [-2, 1],
+						"anchor_from": "top_right",
+						"anchor_to": "bottom_right",
+						"uv": [200, 58],
+						"uv_size": [2, 2]
+					}}
+				]
+			}},
+			{ "mandible": {
+				"type": "image",
+				"texture": "textures/entity/dragon/dragon",
+				"size": [24, 8],
+				"offset": [0, 14],
+				"uv": [192, 81],
+				"uv_size": [12, 4]
+			}}
+			
+		],
+		"$name": "Ender Dragon"
+	},
+	//}
+	"empty": { "type": "panel" }
+}

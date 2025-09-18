@@ -1,0 +1,23 @@
+{
+  "namespace": "crafting_pocket",
+
+  "right_tab_navigation_panel_pocket/content/close/close_button": {
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, -1 ]
+  },
+  "right_tab_navigation_panel_pocket/content/close": {
+    "size": [ "100%", 50 ],
+    "modifications": [{
+      "array_name": "controls",
+      "operation": "insert_back",
+      "value": {
+        "help_button@crafting.help_button": {
+          "anchor_from": "center",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 1 ],
+          "layer": 2
+        }
+      }
+    }]
+  }
+}

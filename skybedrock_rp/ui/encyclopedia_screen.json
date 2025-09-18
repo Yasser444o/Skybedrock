@@ -1,0 +1,13 @@
+{
+  "namespace": "encyclopedia",
+
+  "encyclopedia_screen@how_to_play_common.screen_base": {
+	"$screen_overlay": "how_to_play.screen_overlay",
+    "$selector_stack_panel": "how_to_play.selector_stack_panel",
+    "$section_content_panels": "how_to_play.section_content_panels",
+    "$header_safezone_control": "common_store.store_top_bar_filler",
+    "$header_bar_control": "common_store.store_top_bar",
+    "$is_full_screen_layout": true,
+    "$fill_alpha": 1.0
+  }
+}

@@ -1,0 +1,19 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minecraft:chicken",
+			"min_engine_version": "1.12.0",
+			"textures": {
+				"diamond_feather": "textures/entity/diamond_feather"
+			},
+			"geometry": {
+				"diamond_feather": "geometry.chicken.feather"
+			},
+			"render_controllers": [
+				"controller.render.chicken.v2",
+				"controller.render.diamond_feather"
+			]
+		}
+	}
+}

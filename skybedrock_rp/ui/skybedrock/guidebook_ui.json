@@ -1,0 +1,845 @@
+{
+  "namespace": "guidebook",
+  
+  "main_panel": {
+    "type": "image",
+    "texture": "textures/ui/buttons/guidebook_cover",
+    "size": [360, 250],
+    "max_size": ["100% - 20px", "100% - 10px"],
+    "controls": [
+      {"book_spine_image": {
+        "type": "image",
+        "size": [ 8, "100% - 2px" ],
+        "texture": "textures/ui/buttons/guidebook_spine"
+      }},
+      {"left_page": {
+        "type": "image",
+        "size": [ "50% - 4px", "100% - 16px" ],
+        "offset": [ 7, -1 ],
+        "anchor_from": "left_middle",
+        "anchor_to": "left_middle",
+        "texture": "textures/ui/book_pageedge_left"
+      }},
+      {"bookmark_button@assets.factory": {
+        "anchor_from": "top_middle",
+        "anchor_to": "top_right",
+        "$name": "bookmark_button",
+        "$child": "guidebook.bookmark_button"
+      }},
+      {"right_page": {
+        "type": "image",
+        "size": [ "50% - 4px", "100% - 16px" ],
+        "offset": [ -7, -1 ],
+        "anchor_from": "right_middle",
+        "anchor_to": "right_middle",
+        "texture": "textures/ui/book_pageedge_right"
+      }},
+      {"page_crease_left_image": {
+        "type": "image",
+        "size": [ "50% - 20px", "100% - 14px" ],
+        "offset": [ 0, -2 ],
+        "anchor_to": "right_middle",
+        "texture": "textures/ui/book_pagecrease_left"
+      }},
+      {"page_crease_right_image": {
+        "type": "image",
+        "size": [ "50% - 20px", "100% - 14px" ],
+        "offset": [ 0, -2 ],
+        "anchor_to": "left_middle",
+        "texture": "textures/ui/book_pagecrease_right"
+      }},
+      {"left_content@guidebook.left_page": {
+        "size": [ "50% - 23px", "100% - 27px" ],
+        "offset": [ -7, -1 ],
+        "anchor_to": "right_middle"
+      }},
+      {"right_content@guidebook.right_page": {
+        "size": [ "50% - 23px", "100% - 27px" ],
+        "offset": [ 7, -1 ],
+        "anchor_to": "left_middle"
+      }}
+    ]
+  },
+  "left_page": {
+    "type": "panel",
+    "controls": [
+      {"content": {
+        "type": "stack_panel",
+        "size": ["100%", "100%"],
+        "controls": [
+          {"title": {
+            "type": "label",
+            "text": "#text",
+            "color": [0, 0, 0],
+            "text_alignment": "center",
+            "font_size": "large",
+            "size": ["100%", "default"],
+            "anchor_from": "top_middle",
+            "anchor_to": "top_middle",
+            "offset": [0, 4],
+            "bindings": [
+              {
+                "binding_name": "#form_title"
+              },
+              {
+                "binding_type": "view",
+                "source_property_name": "(#title_text - '§book_ui§')",
+                "target_property_name": "#text"
+              },
+              {
+                "binding_type": "view",
+                "source_property_name": "(not (#title_text = '§6Settings'))",
+                "target_property_name": "#visible"
+              }
+            ]
+          }},
+          {"player_settings_title": {
+            "type": "label",
+            "text": "Player Settings",
+            "color": [0, 0, 0],
+            "text_alignment": "center",
+            "size": ["100%", "default"],
+            "anchor_from": "top_middle",
+            "anchor_to": "top_middle",
+            "offset": [0, 4],
+            "$condition": "(#title_text = '§6Settings')",
+            "bindings": "$visible_by_title"
+          }},
+          {"content": {
+            "type": "panel",
+            "size": [ "100%", "fill" ],
+            "controls": [
+              {"book_history@common.scrolling_panel": {
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "$show_background": false,
+                "$scrolling_content": "guidebook.book_history",
+                "$scroll_size": [ 5, "100% - 4px" ],
+                "$scrolling_pane_size": [ "100% - 4px", "100% - 2px" ],
+                "$scrolling_pane_offset": [ 2, 0 ],
+                "$scroll_bar_right_padding_size": [ 0, 0 ]
+              }},
+              {"settings@common.scrolling_panel": {
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "$show_background": false,
+                "$scrolling_content": "guidebook.player_settings",
+                "$scroll_size": [ 5, "100% - 4px" ],
+                "$scrolling_pane_size": [ "100% - 4px", "100% - 2px" ],
+                "$scrolling_pane_offset": [ 2, 0 ],
+                "$scroll_bar_right_padding_size": [ 0, 0 ]
+              }}
+            ]
+          }},
+          {"padding@assets.empty": {"size": [0, 10]}}
+        ]
+      }},
+      {"prev_button@assets.factory": {
+    	  "offset": [ -9, 6 ],
+        "anchor_from": "bottom_left",
+        "anchor_to": "bottom_left",
+    		"$name": "back_button",
+    		"$child": "guidebook.prev_button"
+      }},
+      {"back_button": {
+    	  "type": "panel",
+    	  "size": [ 24, 24 ],
+    	  "offset": [ -9, 6 ],
+        "anchor_from": "bottom_left",
+        "anchor_to": "bottom_left",
+        "$condition": "(#title_text = '§6Settings')",
+        "bindings": "$visible_by_title",
+    		"controls": [
+    			{"button@book.base_button": {
+            "focus_identifier": "back_button",
+            "focus_change_right": "save_button",
+            "sound_name": "item.book.page_turn",
+            "bindings": [],
+            "sound_volume": 4.0,
+            "sound_pitch": 1.0,
+            "$pressed_button_name": "button.menu_exit",
+            "$default_texture": "textures/ui/book_pageleft_default",
+            "$hover_texture": "textures/ui/book_pageleft_hover",
+            "$pressed_texture": "textures/ui/book_pageleft_pressed"
+        	}}
+    		]
+    	}}
+    ]
+  },
+  "right_page": {
+    "type": "panel",
+    "controls": [
+      {"close@common.close_button": {
+        "offset": [5, -5],
+        "$condition": "(#title_text = (#title_text - '§6Settings'))",
+        "bindings": "$visible_by_title"
+      }},
+      {"close_page@common.close_button": {
+        "sound_name": "item.book.page_turn",
+        "offset": [5, -5],
+        "$condition": "(#title_text = '§6Settings')",
+        "bindings": "$visible_by_title"
+      }},
+      {"title@assets.factory": {
+        "anchor_from": "top_left",
+        "anchor_to": "top_left",
+        "size": ["100%", 10],
+    		"$name": "title_button",
+    		"$child": "guidebook.title_button"
+      }},
+      {"page_body@common.scrolling_panel": {
+        "size": ["100%", "100% - 15px"],
+        "anchor_from": "bottom_left",
+        "anchor_to": "bottom_left",
+        "$show_background": false,
+        "$scrolling_content": "guidebook.body",
+        "$scroll_size": [ 5, "100% - 4px" ],
+        "$scrolling_pane_size": [ "100% - 4px", "100% - 2px" ],
+        "$scrolling_pane_offset": [ 2, 0 ],
+        "$scroll_bar_right_padding_size": [ 0, 0 ]
+      }},
+      {"world_settings": {
+        "type": "stack_panel",
+        "size": ["100%", "100%"],
+        "$condition": "(#title_text = '§6Settings')",
+        "bindings": "$visible_by_title",
+        "controls": [
+          {"title": {
+            "type": "label",
+            "text": "World Settings",
+            "color": [0, 0, 0],
+            "text_alignment": "center",
+            "size": ["100%", "default"],
+            "anchor_from": "top_middle",
+            "anchor_to": "top_middle",
+            "offset": [0, 4]
+          }},
+          {"settings@common.scrolling_panel": {
+            "anchor_from": "top_middle",
+            "anchor_to": "top_middle",
+            "size": [ "100%", "fill" ],
+            "$show_background": false,
+            "$scrolling_content": "guidebook.world_settings",
+            "$scroll_size": [ 5, "100% - 4px" ],
+            "$scrolling_pane_size": [ "100% - 4px", "100% - 2px" ],
+            "$scrolling_pane_offset": [ 2, 0 ],
+            "$scroll_bar_right_padding_size": [ 0, 0 ]
+          }},
+          {"padding@assets.empty": {"size": [0, 10]}}
+        ]
+      }},
+      {
+        "save_button@book.base_button": {
+					"focus_identifier": "save_button",
+          "focus_change_left": "back_button",
+          "sound_name": "item.book.page_turn",
+          "$default_texture": "textures/ui/buttons/page_save",
+          "$hover_texture": "textures/ui/buttons/page_save_hover",
+          "$pressed_texture": "textures/ui/buttons/page_save_hover",
+          "$pressed_button_name": "button.submit_custom_form",
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "size": [ 87, 24 ],
+          "offset": [9, 5],
+          "$condition": "(#title_text = '§6Settings')",
+          "bindings": "$visible_by_title"
+        }
+      }
+    ]
+  },
+
+	"book_history@assets.factory": {
+	  "size": ["100% - 4px", "100%c"],
+    "offset": [2,0],
+		"$name": "buttons",
+		"$child": "guidebook.book_entry"
+	},
+	"body": {
+	  "type": "label",
+	  "anchor_from": "top_left",
+	  "anchor_to": "top_left",
+	  "size": ["100%", "default"],
+	  "color": [0,0,0],
+	  "text": "#form_text"
+	},
+	"title_button": {
+	  "type": "panel",
+	  "size": ["100%", "100%c"],
+	  "$tag": "§title",
+	  "bindings": "$has_button_tag",
+	  "controls": [
+	    {"text": {
+	      "type": "label",
+	      "size": ["100%", "default"],
+	      "color": [0,0,0],
+	      "text": "#text",
+	      "$change": "(#form_button_text - '§title'))",
+	      "bindings": "$change_button_text"
+	    }}
+	   ]
+	},
+	"book_entry": {
+		"type": "panel",
+		"size": ["100%", 24],
+		"$tag": "§section",
+		"bindings": "$has_button_tag",
+		"controls": [
+			{
+				"button@common.button": {
+          "default_focus_precedence": 10,
+          "focus_change_left": "prev_button",
+          "focus_change_right": "book_mark",
+					"sound_name": "item.book.page_turn",
+          "offset": [2, 0],
+					"$pressed_button_name": "button.form_button_click",
+					"bindings": "$form_button",
+          "pressed_control": "hover",
+					"controls": [
+						{
+							"default": {
+								"type": "label",
+								"text": "#text",
+								"size": ["100%", "default"],
+								"color": [0, 0, 0],
+                "$change": "(#form_button_text - '§category ' - '§section ')",
+								"bindings": "$change_button_text"
+							}
+						},
+						{
+							"hover": {
+								"type": "label",
+								"text": "#text",
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+								"size": ["default", "default"],
+								"max_size": ["100%", "default"],
+								"color": [0, 0, 0],
+                "$change": "(#form_button_text - '§category ' - '§section ')",
+								"bindings": "$change_button_text",
+                "controls": [
+                  {
+                    "border": {
+                      "type": "image",
+                      "offset": [-0.5, 0],
+                      "size": ["100% + 7px", "100% + 8px"],
+                      "texture": "textures/ui/buttons/book_entry"
+                    }
+                  }
+                ]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	"prev_button": {
+	  "type": "panel",
+	  "size": [ 24, 24 ],
+	  "bindings": "$visible_button",
+	  "$condition": "(#form_button_text = 'Back')",
+		"controls": [
+			{"button@book.base_button": {
+        "focus_identifier": "prev_button",
+        "sound_name": "item.book.page_turn",
+        "sound_volume": 4.0,
+        "sound_pitch": 1.0,
+    
+        "$pressed_button_name": "button.form_button_click",
+        "bindings": "$form_button",
+        "$default_texture": "textures/ui/book_pageleft_default",
+        "$hover_texture": "textures/ui/book_pageleft_hover",
+        "$pressed_texture": "textures/ui/book_pageleft_pressed"
+    	}}
+		]
+	},
+	"bookmark_button": {
+	  "type": "panel",
+	  "size": [ 16, 32 ],
+	  "bindings": "$visible_button",
+	  "$condition": "(not (#form_button_text = #form_button_text - '§bookmark§'))",
+		"controls": [
+			{"button@book.base_button": {
+        "sound_name": "item.book.page_turn",
+        "focus_identifier": "book_mark",
+        "sound_volume": 4.0,
+        "sound_pitch": 1.0,
+    
+        "$pressed_button_name": "button.form_button_click",
+        "bindings": "$form_button",
+        "controls": [
+          {
+            "default": {
+              "type": "image",
+              "texture": "textures/ui/buttons/bookmark"
+            }
+          },
+          {
+            "hover": {
+              "type": "image",
+              "texture": "textures/ui/buttons/bookmark_hover",
+              "controls": [
+                {"label": {
+                  "type": "image",
+                  "texture": "textures/ui/purpleBorder",
+                  "size": ["100%c + 10px", "100%c + 8px"],
+                  "layer": 40,
+                  "controls": [{"text": {
+                    "type": "label",
+                    "text": "#text",
+                    "$change": "(#form_button_text - '§bookmark§')",
+                    "bindings": "$change_button_text"
+                  }}]
+                }}
+              ]
+            }
+          },
+          {
+            "pressed": {
+              "type": "image",
+              "texture": "textures/ui/buttons/bookmark_pressed",
+              "controls": [
+                {"label": {
+                  "type": "image",
+                  "texture": "textures/ui/purpleBorder",
+                  "size": ["100%c + 10px", "100%c + 8px"],
+                  "layer": 40,
+                  "controls": [{"text": {
+                    "type": "label",
+                    "text": "#text",
+                    "$change": "(#form_button_text - '§category ' - '§section ')",
+                    "bindings": "$change_button_text"
+                  }}]
+                }}
+              ]
+            }
+          }
+        ]
+    	}}
+		]
+	},
+	"player_settings@server_form.generated_contents": {
+	  "factory":{
+      "name": "buttons",
+      "control_ids": {
+        "toggle": "@guidebook.player_settings_toggle",
+        "dropdown": "@guidebook.player_settings_dropdown"
+      }
+    }
+	},
+	"world_settings@server_form.generated_contents": {
+	  "factory":{
+      "name": "buttons",
+      "control_ids": {
+        "toggle": "@guidebook.world_settings_toggle",
+        "dropdown": "@guidebook.world_settings_dropdown"
+      }
+    }
+	},
+	"player_settings_toggle": {
+	  "type": "panel",
+	  "size": ["100%", "100%c + 5px"],
+	  "$tag": "§player",
+	  "bindings": "$has_custom_tag",
+    "$left_page": "back_button",
+    "$right_page": "",
+	  "controls": [
+	    {"toggle_slot": {
+	      "type": "image",
+	      "texture": "textures/ui/checkbox_space",
+        "anchor_from": "left_middle",
+        "anchor_to": "left_middle",
+	      "size": [20, 20],
+	      "controls": [
+    	    {"toggle@assets.toggle": {
+            "toggle_name": "custom_toggle",
+            "focus_change_left": "$left_page",
+            "focus_change_right": "$right_page",
+    	      "size": [24, 24]
+    	    }}
+	       ]
+	    }},
+	    {"label": {
+	      "type": "label",
+				"text": "#text",
+				"size": ["100% - 25px", "default"],
+				"offset": [25, 0],
+	      "anchor_from": "left_middle",
+	      "anchor_to": "left_middle",
+				"color": [0, 0, 0],
+				"$change": "(#custom_text - '§player' - '§world')",
+				"bindings": "$change_custom_text"
+	    }}
+	  ]
+	},
+  
+  "player_settings_dropdown": {
+	  "type": "panel",
+	  "size": ["100%", "100%c + 5px"],
+    "$left_page": "back_button",
+    "$right_page": "",
+	  "$tag": "§player",
+	  "bindings": "$has_custom_tag",
+    "controls": [
+      {
+        "dropdown": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "option_label": {
+                "type": "label",
+                "text": "#text",
+                "color": [0, 0, 0],
+                "$change": "(#custom_text - '§player' - '§world')",
+                "bindings": "$change_custom_text"
+              }
+            },
+            {
+              "dropdown_button": {
+                "size": ["100%", "100%c"],
+                "type": "dropdown",
+                "dropdown_name": "dropdown_options",
+                "dropdown_content_control": "dropdown_content",
+                "dropdown_area": "inside_header_panel",
+
+                "focus_enabled": true,
+                "focus_wrap_enabled": true,
+                "focus_magnet_enabled": true,
+
+                "toggle_grid_collection_name": "custom_form",
+                "toggle_name": "custom_dropdown",
+                "default_focus_precedence": 0,
+                "toggle_group_forced_index": -1,
+                "toggle_group_default_selected": 0,
+                "toggle_on_button": "toggle.toggle_on",
+                "toggle_off_button": "toggle.toggle_off",
+                
+                "sound_name": "random.click",
+                "button_mappings": "$simple_button",
+                "bindings": [
+                  {
+                    "binding_type": "collection",
+                    "binding_condition": "visible",
+                    "binding_collection_name": "custom_form",
+                    "binding_name": "#custom_dropdown",
+                    "binding_name_override": "#toggle_state"
+                  }
+                ],
+
+                "unchecked_control": "default",
+                "unchecked_hover_control": "hover",
+                "controls": [
+                  {"default@guidebook.dropdown_radio_option": {
+                    "$state_texture": "textures/ui/radio_on",
+                    "$text": "#dropdown_option_text",
+                    "$text_bindings": [
+                      {
+                        "binding_name": "#dropdown_option_text",
+                        "binding_type": "collection",
+                        "binding_collection_name": "custom_form"
+                      }
+                    ]
+                  }},
+                  {"hover@guidebook.dropdown_radio_option": {
+                    "$state_texture": "textures/ui/radio_on_hover",
+                    "$text": "#dropdown_option_text",
+                    "$text_bindings": [
+                      {
+                        "binding_name": "#dropdown_option_text",
+                        "binding_type": "collection",
+                        "binding_collection_name": "custom_form"
+                      }
+                    ]
+                  }}
+                ]
+              }
+            },
+            {
+              "dropdown_options": {
+                "type": "input_panel",
+                "modal": true,
+                "property_bag": {
+                  "#is_dropdown": true
+                },
+                "layer": 43,
+                "size": [ "100%", "100%c" ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "dropdown_button",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible",
+                    "resolve_sibling_scope": true
+                  }
+                ],
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_cancel",
+                    "to_button_id": "button.dropdown_exit",
+                    "mapping_type": "global"
+                  },
+                  {
+                    "from_button_id": "button.menu_ok",
+                    "to_button_id": "button.dropdown_exit",
+                    "mapping_type": "global"
+                  },
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.dropdown_exit",
+                    "mapping_type": "global"
+                  },
+                  {
+                    "from_button_id": "button.menu_up",
+                    "to_button_id": "button.menu_up",
+                    "mapping_type": "global",
+                    "scope": "view"
+                  },
+                  {
+                    "from_button_id": "button.menu_down",
+                    "to_button_id": "button.menu_down",
+                    "mapping_type": "global",
+                    "scope": "view"
+                  },
+                  {
+                    "from_button_id": "button.menu_left",
+                    "to_button_id": "button.menu_left",
+                    "mapping_type": "global",
+                    "scope": "view"
+                  },
+                  {
+                    "from_button_id": "button.menu_right",
+                    "to_button_id": "button.menu_right",
+                    "mapping_type": "global",
+                    "scope": "view"
+                  }
+                ],
+                "controls": [
+                  {
+                    "radio_control_group": {
+                      "type": "stack_panel",
+                      "size": [ "100%", "100%c" ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "collection_name": "custom_dropdown",
+                      "factory": {
+                        "name": "buttons",
+                        "control_name": "guidebook.dropdown_radio"
+                      },
+                      "bindings": [
+                        {
+                          "binding_name": "#custom_dropdown_length",
+                          "binding_type": "collection",
+                          "binding_name_override": "#collection_length",
+                          "binding_collection_name": "custom_form"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "dropdown_radio": {
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ "100%", 17 ],
+    "offset": [ 3, 0 ],
+    "$enabled|default": true,
+    "controls": [
+      { "radio_with_label_core": {
+        "type": "toggle",
+        "$toggle_focus_enabled|default": true,
+        "focus_enabled": "$toggle_focus_enabled",
+        "focus_magnet_enabled": true,
+    
+        "$default_focus_precedence|default": 0,
+        "default_focus_precedence": "$default_focus_precedence",
+    
+        "layer": 1,
+        "sound_name": "random.click",
+        "sound_volume": 1.0,
+        "sound_pitch": 1.0,
+    
+        "checked_control": "checked",
+        "unchecked_control": "unchecked",
+        "checked_hover_control": "checked_hover",
+        "unchecked_hover_control": "unchecked_hover",
+    
+        "$radio_toggle_group|default": false,
+        "$toggle_default_state|default": false,
+        "$toggle_group_forced_index|default": -1,
+        "$toggle_group_default_selected|default": 0,
+        "$toggle_binding_type|default": "global",
+        "$toggle_binding_condition|default": "visible",
+        "$toggle_state_binding_name|default": "#toggle_state",
+        "$toggle_enabled_binding_type|default": "none",
+        "$toggle_enabled_binding_condition|default": "visible",
+        "$toggle_enabled_binding_name|default": "#toggle_enabled",
+        "$toggle_grid_collection_name|default": "",
+        "$toggle_collection_details_type|default": "none",
+        "$toggle_collection_detail_name|default": "",
+    
+        "$toggle_tts_name|default": "accessibility.toggle.tts.title",
+        "$toggle_tts_header_binding_type|default": "none",
+        "$toggle_tts_header_binding_condition|default": "visible",
+        "$toggle_tts_header_binding_collection_name|default": "",
+        "$toggle_tts_header|default": "",
+        "$toggle_tts_value_binding_type|default": "none",
+        "$toggle_tts_value_binding_condition|default": "visible",
+        "$toggle_tts_value_binding_collection_name|default": "",
+        "$toggle_tts_override_toggle_value|default": "",
+        "$toggle_tts_toggle_on_text|default": "accessibility.state.on",
+        "$toggle_tts_toggle_off_text|default": "accessibility.state.off",
+        "$toggle_tts_type_priority|default": -100,
+        "$toggle_tts_index_priority|default": 150,
+        "$toggle_tts_inherit_siblings|default": false,
+        "$tts_section_header|default": "",
+    
+        "$ignore_tts_enabled_bind|default": false,
+        "$toggle_focus_bind|default": "",
+    
+        "radio_toggle_group": "$radio_toggle_group",
+        "toggle_name": "$toggle_name",
+        "toggle_default_state": "$toggle_default_state",
+        "toggle_group_forced_index": "$toggle_group_forced_index",
+        "toggle_group_default_selected": "$toggle_group_default_selected",
+        "toggle_grid_collection_name": "$toggle_grid_collection_name",
+    
+        "$enable_directional_toggling|default": false,
+        "$toggle_on_button|default": "toggle.toggle_on",
+        "$toggle_off_button|default": "toggle.toggle_off",
+    
+        "$toggle_tts_enabled_binding_type|default": "none",
+    
+        "enable_directional_toggling": "$enable_directional_toggling",
+        "toggle_on_button": "$toggle_on_button",
+        "toggle_off_button": "$toggle_off_button",
+        "button_mappings": "$simple_button",
+        "$radio_toggle_group": true,
+        "size": [ "100%", "100%c" ],
+        "$toggle_name|default": "$toggle_state_binding_name",
+        "$toggle_enabled_binding_name": "#not_data_bound",
+    
+        "enabled": "$enabled",
+        "$toggle_enabled_binding_type": "global",
+        "variables": [
+          {
+            "requires": "(not #not_data_bound or not $enabled)",
+            "$toggle_enabled_binding_name": "#not_data_bound",
+            "$toggle_enabled_binding_type": "none"
+          }
+        ],
+    
+        "bindings": [
+          {
+            "binding_type": "$toggle_binding_type",
+            "binding_condition": "$toggle_binding_condition",
+            "binding_collection_name": "$toggle_grid_collection_name",
+            "binding_name": "$toggle_state_binding_name",
+            "binding_name_override": "#toggle_state"
+          },
+          {
+            "binding_type": "$toggle_enabled_binding_type",
+            "binding_condition": "$toggle_enabled_binding_condition",
+            "binding_collection_name": "$toggle_grid_collection_name",
+            "binding_name": "$toggle_enabled_binding_name",
+            "binding_name_override": "#enabled"
+          },
+          {
+            "binding_type": "$toggle_collection_details_type",
+            "binding_collection_name": "$toggle_collection_detail_name"
+          }
+        ],
+        "controls": [
+          {"unchecked@guidebook.dropdown_radio_option": {
+            "$state_texture": "textures/ui/radio_off",
+            "$text": "#custom_radio_text",
+            "$text_bindings": "$fetch_radio_text"
+          }},
+          { "checked@guidebook.dropdown_radio_option": {
+            "$state_texture": "textures/ui/radio_on",
+            "$text": "#custom_radio_text",
+            "$text_bindings": "$fetch_radio_text"
+          }},
+          { "unchecked_hover@guidebook.dropdown_radio_option": {
+            "$state_texture": "textures/ui/radio_off_hover",
+            "$text": "#custom_radio_text",
+            "$text_bindings": "$fetch_radio_text"
+          }},
+          { "checked_hover@guidebook.dropdown_radio_option": {
+            "$state_texture": "textures/ui/radio_on_hover",
+            "$text": "#custom_radio_text",
+            "$text_bindings": "$fetch_radio_text"
+          }}
+        ]
+      } }
+    ],
+
+
+    "$toggle_name": "custom_dropdown_radio_toggle",
+    "$toggle_state_binding_name": "#custom_radio_toggled",
+    "$toggle_binding_type": "collection",
+    "$toggle_grid_collection_name": "custom_dropdown",
+    "$toggle_collection_details_type": "collection_details",
+
+    "$radio_label_text": "#custom_radio_text",
+    "$radio_label_bindings": [
+      {
+        "binding_name": "#custom_radio_text",
+        "binding_type": "collection",
+        "binding_collection_name": "custom_dropdown"
+      },
+      {
+        "binding_type": "collection_details"
+      }
+    ]
+  },
+
+  "dropdown_radio_option": {
+    "type": "panel",
+    "size": [ "100%", 16 ],
+    "controls": [
+      {
+        "radio_image": {
+          "type": "image",
+          "texture": "$state_texture",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "size": [ 10, 10 ],
+          "layer": 2
+        }
+      },
+      {
+        "radio_label": {
+          "type": "label",
+          "text": "$text",
+          "color": [0, 0, 0],
+          "offset": [ 16, 0.5 ],
+          "size": [ "100% - 16px", "default" ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "bindings": "$text_bindings"
+        }
+      }
+    ]
+  },
+
+	"world_settings_toggle@guidebook.player_settings_toggle": {
+    "$tag": "§world",
+    "$left_page": "",
+    "$right_page": "save_button"
+  },
+	"world_settings_dropdown@guidebook.player_settings_dropdown": {
+    "$tag": "§world",
+    "$left_page": "",
+    "$right_page": "save_button"
+  }
+}

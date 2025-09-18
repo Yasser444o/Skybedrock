@@ -1,0 +1,302 @@
+{
+  // general bindings
+	// "$visible_if": [
+	// 	{
+	// 		"binding_type": "view",
+	// 		"source_property_name": "$condition",
+	// 		"target_property_name": "#visible"
+	// 	}
+	// ],
+
+  // toggles
+	"$is_toggled": [
+		{
+			"binding_type": "view",
+			"source_control_name": "$toggle",
+			"source_property_name": "#toggle_state",
+			"target_property_name": "#visible"
+		}
+	],
+
+	// forms
+	"$form_button": [
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		}
+	],
+	"$fetch_button_text": [
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_text",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "#form_button_text",
+			"target_property_name": "#text"
+		}
+	],
+	"$change_button_text": [ // $change
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_text",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "$change",
+			"target_property_name": "#text"
+		}
+	],
+	"$change_custom_text": [ // $change
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "custom_form"
+		},
+		{
+			"binding_name": "#custom_text",
+			"binding_type": "collection",
+			"binding_collection_name": "custom_form"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "$change",
+			"target_property_name": "#text"
+		}
+	],
+	"$get_button_image": [
+		{
+			"binding_name": "#form_button_texture",
+			"binding_name_override": "#texture",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_texture_file_system",
+			"binding_name_override": "#texture_file_system",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(not #texture = '')",
+			"target_property_name": "#visible"
+		}
+	],
+	"$has_button_tag": [
+	  {
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_text",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(not (#form_button_text = #form_button_text - $tag))",
+			"target_property_name": "#visible"
+		}
+	],
+	"$has_custom_tag": [
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "custom_form"
+		},
+		{
+			"binding_name": "#custom_text",
+			"binding_type": "collection",
+			"binding_collection_name": "custom_form"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(not (#custom_text = #custom_text - $tag))",
+			"target_property_name": "#visible"
+		}
+	],
+	"$has_title_tag": [
+		{
+			"binding_name": "#form_title"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(not (#title_text = #title_text - $tag))",
+			"target_property_name": "#visible"
+		}
+	],
+	"$visible_by_title": [
+		{
+			"binding_name": "#form_title"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "$condition",
+			"target_property_name": "#visible"
+		}
+	],
+	
+	// radios
+	"$fetch_radio_text": [
+		{
+			"binding_type": "collection_details"
+		},
+		{
+			"binding_name": "#custom_radio_text",
+			"binding_type": "collection",
+			"binding_collection_name": "custom_dropdown"
+		}
+	],
+
+	// buttons
+	"$simple_button": [
+		{
+			"from_button_id": "button.menu_select",
+			"to_button_id": "button.menu_select",
+			"mapping_type": "pressed"
+		},
+		{
+			"from_button_id": "button.menu_ok",
+			"to_button_id": "button.menu_ok",
+			"mapping_type": "focused"
+		}
+	],
+
+
+	// specialized bindings
+	"$get_biome_box_data": [ // $source1 $source2 $target1 $target2
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_text",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(not (#form_button_text = #form_button_text - '§biome§ '))",
+			"target_property_name": "#visible"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#form_button_text - '§biome§ ')",
+			"target_property_name": "#data"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#data - 'x')",
+			"target_property_name": "#x"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#data - ('x' + #x + 'y'))",
+			"target_property_name": "#y"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#data - ('x' + #x + 'y' + #y + 'l'))",
+			"target_property_name": "#l"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#data - ('x' + #x + 'y' + #y + 'l' + #l + 'w'))",
+			"target_property_name": "#w"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#data - ('x' + #x + 'y' + #y + 'l' + #l + 'w' + #w))",
+			"target_property_name": "#name"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "$source1",
+			"target_property_name": "$target1"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "$source2",
+			"target_property_name": "$target2"
+		}
+	],
+	
+	"$visible_button": [
+	  	{
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_text",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "$condition",
+			"target_property_name": "#visible"
+		}
+	],
+	//}
+	
+	//how to play bindings {
+	"$overlay_on": [
+		{
+			"binding_type": "view",
+			"source_control_name": "overworld_islands",
+			"source_property_name": "#toggle_state",
+			"target_property_name": "#i1"
+		},
+		{
+			"binding_type": "view",
+			"source_control_name": "nether_islands",
+			"source_property_name": "#toggle_state",
+			"target_property_name": "#i2"
+		},
+		{
+			"binding_type": "view",
+			"source_control_name": "the_end_islands",
+			"source_property_name": "#toggle_state",
+			"target_property_name": "#i3"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#i1 or #i2 or #i3)",
+			"target_property_name": "#visible"
+		}
+	],
+	
+	"$is_update_button": [
+		{
+			"binding_type": "collection_details",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_name": "#form_button_text",
+			"binding_type": "collection",
+			"binding_collection_name": "form_buttons"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(#form_button_text - '§update')",
+			"target_property_name": "#text"
+		},
+		{
+			"binding_type": "view",
+			"source_property_name": "(not (#form_button_text = #form_button_text - '§update'))",
+			"target_property_name": "#visible"
+		}
+	],
+	
+	"$fotter": ""
+}
+

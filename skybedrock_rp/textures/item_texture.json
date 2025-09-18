@@ -1,0 +1,21 @@
+{
+	"resource_pack_name": "Skybedrock RP",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"spawn_egg_end_phantom": {
+			"textures": "textures/items/spawn_egg_end_phantom"
+		},
+		"skybedrock:guidebook": {
+			"textures": "textures/items/skybedrock_guidebook"
+		},
+		"yasser444:treasure_map": {
+			"textures": "textures/items/map_nautilus"
+		},
+		"yasser444:trial_inscription": {
+			"textures": "textures/items/map_trial_chambers"
+		},
+		"update_item": {
+			"textures": "textures/items/update_item"
+		}
+	}
+}

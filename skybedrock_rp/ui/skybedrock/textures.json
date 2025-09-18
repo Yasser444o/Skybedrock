@@ -1,0 +1,213 @@
+{
+	"namespace": "textures",
+    
+    //--------------------------------------------------------------------
+	//textures
+	//--------------------------------------------------------------------	
+        
+    "rooted_dirt@assets.item_renderer": {
+        "$texture": "textures/blocks/dirt_with_roots",
+        "$text": "Rooted Dirt"
+    },
+    "cobblestone@assets.item_renderer": {
+        "$texture": "textures/blocks/cobblestone",
+        "$text": "Cobblestone"
+    },
+    "mossy_cobblestone@assets.item_renderer": {
+        "$texture": "textures/blocks/cobblestone_mossy",
+        "$text": "Mossy Cobblestone"
+    },
+    "moss@assets.item_renderer": {
+        "$texture": "textures/blocks/moss_block",
+        "$text": "Moss Block"
+    },
+    "packed_ice@assets.item_renderer": {
+        "$texture": "textures/blocks/ice_packed",
+        "$text": "Packed Ice"
+    },
+    "chiseled_sandstone@assets.item_renderer": {
+        "$texture": "textures/blocks/sandstone_top",
+        "$text": "Chiseled Sandstone"
+    },
+    "stone@assets.item_renderer": {
+        "$texture": "textures/blocks/stone",
+        "$text": "Stone"
+    },
+    "podzol@assets.item_renderer": {
+        "$texture": "textures/blocks/dirt_podzol_top",
+        "$text": "Podzol"
+    },
+    "bone_block@assets.item_renderer": {
+        "$texture": "textures/blocks/bone_block_top",
+        "$text": "Bone Block"
+    },
+    "stone_bricks@assets.item_renderer": {
+        "$texture": "textures/blocks/stonebrick",
+        "$text": "Stone Bricks"
+    },
+    "polished_tuff@assets.item_renderer": {
+        "$texture": "textures/blocks/polished_tuff",
+        "$text": "Polished Tuff"
+    },
+    "polished_tuff_slab@textures.polished_tuff": {
+        "$uv_size": [16, 8],
+        "$text": "Polished Tuff Slab"
+    },
+    "tuff_bricks@assets.item_renderer": {
+        "$texture": "textures/blocks/tuff_bricks",
+        "$text": "Tuff Bricks"
+    },
+    "chiseled_tuff@assets.item_renderer": {
+        "$texture": "textures/blocks/chiseled_tuff_top",
+        "$text": "Chiseled Tuff"
+    },
+    "chiseled_tuff_side@assets.item_renderer": {
+        "$texture": "textures/blocks/chiseled_tuff",
+        "$text": "Chiseled Tuff"
+    },
+    "copper_block@assets.item_renderer": {
+        "$texture": "textures/blocks/copper_block",
+        "$text": "Block of Copper"
+    },
+    "chiseled_copper@assets.item_renderer": {
+        "$texture": "textures/blocks/chiseled_copper",
+        "$text": "Chiseled Copper"
+    },
+    "cut_copper@assets.item_renderer": {
+        "$texture": "textures/blocks/cut_copper",
+        "$text": "Cut Copper"
+    },
+    "cut_copper_slab@textures.cut_copper": {
+        "$uv_size": [16, 8],
+        "$text": "Cut Copper Slab"
+    },
+    "copper_bulb@assets.item_renderer": {
+        "$texture": "textures/blocks/copper_bulb",
+        "$text": "Copper Bulb"
+    },
+    "red_glazed_terracotta@assets.item_renderer": {
+        "$texture": "textures/blocks/glazed_terracotta_red",
+        "$text": "Red Glazed Terracotta"
+    },
+    "oxidized_copper_grate@assets.item_renderer": {
+        "$texture": "textures/blocks/oxidized_copper_grate",
+        "$text": "Oxidized Copper Grate"
+    },
+    "empty_spawner@assets.item_renderer": {
+        "$texture": "textures/blocks/empty_spawner",
+        "$text": "Empty Spawner"
+    },
+    "mob_spawner@assets.item_renderer": {
+        "$texture": "textures/blocks/mob_spawner",
+        "$text": "Monster Spawner"
+    },
+    "trial_spawner@assets.item_renderer": {
+        "$texture": "textures/blocks/trial_spawner_side_inactive",
+        "$text": "Trial Spawner"
+    },
+    "active_trial_spawner@assets.item_renderer": {
+        "$texture": "textures/blocks/trial_spawner_side_active",
+        "$text": "Trial Spawner"
+    },
+    "ominous_trial_spawner@assets.item_renderer": {
+        "$texture": "textures/blocks/trial_spawner_side_active_ominous",
+        "$text": "Ominous Trial Spawner"
+    },
+    "empty_vault@assets.item_renderer": {
+        "$texture": "textures/blocks/vault_side_off",
+        "$text": "Empty Vault"
+    },
+    "vault@assets.item_renderer": {
+        "$texture": "textures/blocks/vault_front_on",
+        "$text": "Vault"
+    },
+    "ominous_vault@assets.item_renderer": {
+        "$texture": "textures/blocks/vault_front_on_ominous",
+        "$text": "Ominous Vault"
+    },
+    "red_candle@assets.item_renderer": {
+        "$texture": "textures/items/candles/red_candle",
+        "$text": "3 or 4 Red Candles",
+        "$uv": [5, 1],
+        "$uv_size": [7, 15]
+    },
+
+//**************************************************************
+    "coal_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/coal_ore",
+        "$text": "Coal Ore"
+    },
+    "copper_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/copper_ore",
+        "$text": "Copper Ore"
+    },
+    "iron_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/iron_ore",
+        "$text": "Iron Ore"
+    },
+    "gold_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/gold_ore",
+        "$text": "Gold Ore"
+    },
+    "emerald_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/emerald_ore",
+        "$text": "Emerald Ore"
+    },
+    "diamond_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/diamond_ore",
+        "$text": "Diamond Ore"
+    },
+    "lapis_lazuli_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/lapis_ore",
+        "$text": "Lapis Lazuli Ore"
+    },
+    "redstone_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/redstone_ore",
+        "$text": "Redstone Ore"
+    },
+    "nether_quartz_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/quartz_ore",
+        "$text": "Nether Quartz Ore"
+    },
+    "nether_gold_ore@assets.item_renderer": {
+        "$texture": "textures/blocks/nether_gold_ore",
+        "$text": "Nether Gold Ore"
+    },
+//**************************************************************
+	"deepslate_coal_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_coal_ore",
+		"$text": "Deepslate Coal Ore"
+	},
+	"deepslate_copper_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_copper_ore",
+		"$text": "Deepslate Copper Ore"
+	},
+	"deepslate_iron_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_iron_ore",
+		"$text": "Deepslate Iron Ore"
+	},
+	"deepslate_gold_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_gold_ore",
+		"$text": "Deepslate Gold Ore"
+	},
+	"deepslate_emerald_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_emerald_ore",
+		"$text": "Deepslate Emerald Ore"
+	},
+	"deepslate_diamond_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_diamond_ore",
+		"$text": "Deepslate Diamond Ore"
+	},
+	"deepslate_lapis_lazuli_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_lapis_ore",
+		"$text": "Deepslate Lapis Lazuli Ore"
+	},
+	"deepslate_redstone_ore@assets.item_renderer": {
+		"$texture": "textures/blocks/deepslate/deepslate_redstone_ore",
+		"$text": "Deepslate Redstone Ore"
+	},
+	
+	"fotter@assets.empty": {}
+}
+	
+	

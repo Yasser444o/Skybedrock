@@ -1,0 +1,91 @@
+## Items
+item.skybedrock:guidebook=Skybedrock Guidebook
+item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
+
+
+## Blocks
+tile.deprecated_purpur_block_2.name=Smooth Purpur
+tile.stone_slab.wood.name=Petrified Oak Slab
+
+
+## Entities
+entity.skybedrock:end_phantom.name=End Phantom
+entity.skybedrock:end_sickness.name=End Phantom Spawn
+
+
+## How to Play
+howtoplay.category.features=Skybedrock Features
+
+howtoplay.recipes=Recipes
+howtoplay.recipes.title=Skybedrock Recipes
+
+howtoplay.lootTables=Loot Tables
+howtoplay.lootTables.title=Skybedrock Loot Tables
+
+howtoplay.otherFeatures=Game Features
+howtoplay.otherFeatures.title=Skybedrock Features
+
+howtoplay.addons=Optional Addons
+howtoplay.addons.title=Skybedrock Optional Addons
+
+howtoplay.category.general_information=General Information
+
+howtoplay.biomes=Skybedrock Biomes
+howtoplay.biomes.title=Skybedrock Biomes
+howtoplay.commands.title=Skybedrock Commands
+
+howtoplay.islands=Islands & Structures
+howtoplay.islands.title= Islands and Structures
+
+
+## Guidebook
+guidebook.achievements.button=Achievements
+guidebook.maps.button=World Maps
+guidebook.settings.button=Settings
+guidebook.history.button=History
+guidebook.support.button=Support The Map
+guidebook.trader.button=Request a Wandering Trader
+
+guidebook.intro_message=If you lose your starter items, you can use the /recover command to retrieve them.~LINEBREAK~~LINEBREAK~All the map information can be found in the How to Play screen.~LINEBREAK~Click the ? in the top right corner of your inventory to access them.
+guidebook.support_message=I'm glad you are enjoying my map :D~LINEBREAK~~LINEBREAK~If you want to support this project visit the map page on §3Planet Minecraft§r and leave me your §2lovely comments§r.~LINEBREAK~You could also §6share§r the map with your friends.~LINEBREAK~~LINEBREAK~To find the map, search for "Skybedrock" or use this link:~LINEBREAK~~LINEBREAK~§9planetminecraft.com/project/\nskybedrock-1-0-3
+guidebook.help_message=If you find any inaccuracies or typos in this section please let me know.~LINEBREAK~Use this link to report them to me:~LINEBREAK~~LINEBREAK~§9github.com/Yasser444o/\nSkybedrock/issues/16
+
+guidebook.button.bookmark=Save Bookmark
+guidebook.button.remove_bookmarks=Remove Bookmarks
+guidebook.button.home=Home Page
+guidebook.button.back=Return
+guidebook.button.switch_on=Click to Turn Off
+guidebook.button.switch_off=Click a Structure
+
+guidebook.trader_request.message=A Wandering Trader will arrive at spawn at the morning of the next day.
+guidebook.trader_request.already=A Wandering Trader has already been requested.
+guidebook.trader_request.failed=Looks like no body is around, imma head out.
+guidebook.trader_request.late=Somebody has beaten me to it, maybe next time.
+
+guidebook.maps.no_structures=You haven't unlock any structures yet
+
+achievements.announcement.message=%s has completed §a[%s]
+
+quests.category.skyblock=Skyblock Path
+quests.category.explorer=Explorer Path
+quests.category.farmer=Farmer Path
+quests.category.challanges=Challanges
+
+quests.view.all=View All
+quests.view.locked=View Locked
+quests.view.done=View Completed
+
+quests.action.detect=Detect
+quests.action.submit=Submit
+quests.action.start=Start
+quests.action.complete=Complete
+quests.action.claim=Claim Reward
+
+command.quests.description=Opens the quests menu screen
+command.visit.description=Teleports the player to a structure or an island
+command.restore.description=Restores a structure or an island to its original shape
+command.ach.description=Grants or revokes an achievement or all of them for a player
+command.recover.description=Gives you back the items or blocks you have lost
+command.settings.description=Enables or disables extra skybedrock features
+command.inform.description=Gives you basic information about your player and location
+command.request_trader.description=Requests a Wandering Trader to visit spawn in the next day.
