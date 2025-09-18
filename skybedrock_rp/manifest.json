@@ -1,0 +1,18 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "§cDo Not Disable.\n§sSkybedrock assets. This pack is compatible with most resource packs. It only changes the chicken model, how to play screen, ore textures, and server forms.",
+        "name": "SkyBedrock RP",
+        "uuid": "3c547789-f28e-41e2-8a9e-0b0333ff0967",
+        "version": [1, 21, 13],
+        "min_engine_version": [ 1, 21, 90 ]
+    },
+    "modules": [
+        {
+            "description": "§6Skybedrock Resources§r",
+            "type": "resources",
+            "uuid": "6f99b130-821e-4f6d-ad79-56d6b5167d69",
+            "version": [1, 21, 0]
+        }
+    ]
+}
