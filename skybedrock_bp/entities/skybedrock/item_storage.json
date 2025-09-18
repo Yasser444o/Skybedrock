@@ -1,0 +1,35 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "skybedrock:item_storage",
+			"is_summonable": true
+		},
+		"components": {
+			"minecraft:inventory": {
+				"container_type": "container",
+				"private": true,
+				"inventory_size": 50
+			},
+			"minecraft:collision_box": {
+				"width": 0.5,
+				"height": 1
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"deals_damage": "no"
+				}
+			},
+			"minecraft:physics": {
+				"has_collision": false,
+				"has_gravity": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:transient": {},
+			"minecraft:conditional_bandwidth_optimization": {}
+		}
+	}
+}

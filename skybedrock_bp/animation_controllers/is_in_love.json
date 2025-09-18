@@ -1,0 +1,32 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.is_in_love": {
+			"initial_state": "initial",
+			"states": {
+				"initial": {
+					"transitions": [
+						{ "in_love": "q.is_in_love" },
+						{ "default": "1.0" }
+					]
+				},
+				"in_love": {
+					"transitions": [
+						{ "initial": "1.0" }
+					],
+					"on_entry": [
+						"/tag @s add fed"
+					]
+				},
+				"default": {
+					"transitions": [
+						{ "initial": "1.0" }
+					],
+					"on_entry": [
+						"/tag @s remove fed"
+					]
+				}
+			}
+		}
+	}
+}
