@@ -1,0 +1,48 @@
+{
+	"format_version": "1.20.60",
+	"minecraft:biome": {
+		"description": {
+			"identifier": "minecraft:soulsand_valley"
+		},
+		"components": {
+			"minecraft:climate": {
+				"downfall": 0.0,
+				"snow_accumulation": [ 0.0, 0.125 ],
+				"temperature": 2.0,
+				"ash": 0.05
+			},
+			"minecraft:multinoise_generation_rules": {
+				"target_temperature": 0.0,
+				"target_humidity": -0.5,
+				"target_altitude": 0.0,
+				"target_weirdness": 0.0,
+				"weight": 0.0
+			},
+			"minecraft:surface_builder": {
+				"builder": {
+					"type": "minecraft:capped",
+					"floor_materials": [
+						"minecraft:air",
+						"minecraft:air"
+					],
+					"ceiling_materials": [
+						"minecraft:air",
+						"minecraft:air"
+					],
+					"sea_material": "minecraft:air",
+					"beach_material": "minecraft:air",
+					"foundation_material": "minecraft:air"
+				}
+			},
+			"minecraft:tags": {
+				"tags": [
+					"nether",
+					"soulsand_valley",
+					"spawn_ghast",
+					"spawn_endermen",
+					"spawns_warm_variant_farm_animals"
+				]
+			}
+		}
+	}
+}

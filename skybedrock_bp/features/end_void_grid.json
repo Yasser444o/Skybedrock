@@ -1,0 +1,22 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:scatter_feature": {
+		"description": {
+			"identifier": "skybedrock:end_void_grid"
+		},
+		"iterations": 62976,
+		"places_feature": "skybedrock:end_void",
+		"x": {
+			"extent": [ 0, 15 ],
+			"distribution": "fixed_grid"
+		},
+		"y": {
+			"extent": [ 10, 255 ],
+			"distribution": "fixed_grid"
+		},
+		"z": {
+			"extent": [ 0, 15 ],
+			"distribution": "fixed_grid"
+		}
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"format_version": "1.20.60",
+	"minecraft:biome": {
+		"description": {
+			"identifier": "minecraft:hell"
+		},
+		"components": {
+			"minecraft:climate": {
+				"downfall": 0.0,
+				"snow_accumulation": [ 0.0, 0.125 ],
+				"temperature": 2.0
+			},
+			"minecraft:multinoise_generation_rules": {
+				"target_temperature": 0.0,
+				"target_humidity": 0.0,
+				"target_altitude": 0.0,
+				"target_weirdness": 0.0,
+				"weight": 0.0
+			},
+			"minecraft:surface_builder": {
+				"builder": {
+					"type": "minecraft:overworld",
+					"sea_floor_depth": 7,
+					"sea_floor_material": "minecraft:air",
+					"foundation_material": "minecraft:air",
+					"mid_material": "minecraft:air",
+					"top_material": "minecraft:air",
+					"sea_material": "minecraft:air"
+				}
+			},
+			"minecraft:tags": {
+				"tags": [
+					"nether",
+					"nether_wastes",
+					"spawn_endermen",
+					"spawn_few_piglins",
+					"spawn_ghast",
+					"spawn_magma_cubes",
+					"spawns_nether_mobs",
+					"spawn_zombified_piglin",
+					"spawns_warm_variant_farm_animals"
+				]
+			}
+		}
+	}
+}

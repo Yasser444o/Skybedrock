@@ -1,0 +1,22 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:scatter_feature": {
+		"description": {
+			"identifier": "yasser444:void_grid"
+		},
+		"iterations": 32512,
+		"places_feature": "yasser444:void",
+		"x": {
+			"extent": [ 0, 15 ],
+			"distribution": "fixed_grid"
+		},
+		"z": {
+			"extent": [ 0, 15 ],
+			"distribution": "fixed_grid"
+		},
+		"y": {
+			"extent": [ 0, 126 ],
+			"distribution": "fixed_grid"
+		}
+	}
+}

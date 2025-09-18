@@ -1,0 +1,22 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:scatter_feature": {
+		"description": {
+			"identifier": "yasser444:nether_ceiling"
+		},
+		"iterations": 512,
+		"places_feature": "yasser444:bedrock",
+		"x": {
+			"extent": [ 0, 15 ],
+			"distribution": "fixed_grid"
+		},
+		"z": {
+			"extent": [ 0, 15 ],
+			"distribution": "fixed_grid"
+		},
+		"y": {
+			"extent": [ 127, 128 ],
+			"distribution": "fixed_grid"
+		}
+	}
+}

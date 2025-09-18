@@ -1,0 +1,11 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:single_block_feature": {
+		"description": {
+			"identifier": "yasser444:bedrock"
+		},
+		"places_block": "minecraft:bedrock",
+		"enforce_placement_rules": false,
+		"enforce_survivability_rules": false
+	}
+}

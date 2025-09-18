@@ -1,0 +1,11 @@
+{
+	"format_version": "1.20.20",
+	"minecraft:single_block_feature": {
+		"description": {
+			"identifier": "yasser444:void"
+		},
+		"places_block": "minecraft:air",
+		"enforce_placement_rules": false,
+		"enforce_survivability_rules": false
+	}
+}

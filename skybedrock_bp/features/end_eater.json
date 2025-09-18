@@ -1,0 +1,13 @@
+{
+	"format_version": "1.13.0",
+	"minecraft:single_block_feature": {
+		"description": {
+			"identifier": "skybedrock:end_eater"
+		},
+		"enforce_survivability_rules": false,
+		"enforce_placement_rules": false,
+		"places_block": {
+			"name": "skybedrock:end_eater"
+		}
+	}
+}
