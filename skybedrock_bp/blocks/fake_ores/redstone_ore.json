@@ -1,0 +1,38 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yasser444:redstone_ore",
+			"menu_category": { "category": "nature", "group": "minecraft:itemGroup.name.ore" },
+			"states": {
+				"yasser444:glow": [ false, true ],
+				"yasser444:mining_speed": [ "normal", "slow" ]
+			}
+		},
+		"components": {
+			"minecraft:display_name": "tile.redstone_ore.name",
+			"minecraft:loot": "loot_tables/blocks/redstone.json",
+			"tag:require_iron_pickaxe": {},
+			"skybedrock:redstone_ore": {},
+			"minecraft:tick": {
+				"looping": true,
+				"interval_range": [ 40, 80 ]
+			},
+			"minecraft:map_color": [ 112, 112, 112 ],
+			"minecraft:destructible_by_mining": { "seconds_to_destroy": 1 },
+			"minecraft:destructible_by_explosion": { "explosion_resistance": 12 }
+		},
+		"permutations": [
+			{
+				"condition": "query.block_state('yasser444:glow') == true",
+				"components": { "minecraft:light_emission": 9 }
+			},
+			{
+				"condition": "q.block_state('yasser444:mining_speed') == 'slow'",
+				"components": {
+					"minecraft:destructible_by_mining": { "seconds_to_destroy": 10 }
+				}
+			}
+		]
+	}
+}

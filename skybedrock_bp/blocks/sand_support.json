@@ -1,0 +1,32 @@
+{
+	"format_version": "1.21.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "skybedrock:sand_support",
+			"menu_category": { "category": "none", "is_hidden_in_commands": true }
+		},
+		"components": {
+			"minecraft:display_name": "Sand Support",
+			"minecraft:destructible_by_mining": { "seconds_to_destroy": 0 },
+			"minecraft:loot": "loot_tables/empty.json",
+			"minecraft:collision_box": false,
+			"minecraft:replaceable": {},
+			"minecraft:movable": { "movement_type": "popped" },
+			"minecraft:light_dampening": 0,
+			"minecraft:selection_box": {
+				"origin": [ -8, 15.9, -8 ],
+				"size": [ 16, 0.1, 16 ]
+			},
+			"minecraft:placement_filter": {
+				"conditions": [{
+					"block_filter": [ "minecraft:sand", "minecraft:red_sand", "gravel" ],
+					"allowed_faces": [ "down" ]
+				}]
+			},
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:material_instances": {
+				"*": { "texture": "none", "render_method": "alpha_test" }
+			}
+		}
+	}
+}

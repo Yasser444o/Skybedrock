@@ -1,0 +1,28 @@
+{
+	"format_version": "1.20.60",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yasser444:nether_gold_ore",
+			"menu_category": { "category": "nature", "group": "itemGroup.name.ore" },
+			"states": {
+				"yasser444:mining_speed": [ "normal", "slow" ]
+			}
+		},
+		"components": {
+			"minecraft:display_name": "tile.nether_gold_ore.name",
+			"minecraft:loot": "loot_tables/blocks/gold_nuggets.json",
+			"tag:require_wooden_pickaxe": {},
+			"minecraft:map_color": [ 112, 2, 0 ],
+			"minecraft:destructible_by_mining": { "seconds_to_destroy": 1 },
+			"minecraft:destructible_by_explosion": { "explosion_resistance": 12 }
+		},
+		"permutations": [
+			{
+				"condition": "q.block_state('yasser444:mining_speed') == 'slow'",
+				"components": {
+					"minecraft:destructible_by_mining": { "seconds_to_destroy": 10 }
+				}
+			}
+		]
+	}
+}

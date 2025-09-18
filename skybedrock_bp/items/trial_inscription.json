@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "yasser444:trial_inscription",
+			"menu_category": {
+				"category": "Equipment"
+			}
+		},
+		"components": {
+			"minecraft:icon": "yasser444:trial_inscription",
+			"minecraft:display_name": {
+				"value": "Trial Vault Inscription"
+			}
+		}
+	}
+}

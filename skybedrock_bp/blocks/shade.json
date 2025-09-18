@@ -1,0 +1,24 @@
+{
+	"format_version": "1.21.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yasser444:shade",
+			"menu_category": { "category": "none", "is_hidden_in_commands": true }
+		},
+		"components": {
+			"minecraft:display_name": "Shade",
+			"minecraft:destructible_by_mining": false,
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:collision_box": false,
+			"minecraft:selection_box": false,
+			"minecraft:light_dampening": 15,
+			"minecraft:replaceable": {},
+			"minecraft:loot": "loot_tables/empty.json",
+			"minecraft:movable": { "movement_type": "popped" },
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:material_instances": {
+				"*": { "texture": "none", "render_method": "alpha_test" }
+			}
+		}
+	}
+}

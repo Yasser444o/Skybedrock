@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "skybedrock:guidebook",
+			"menu_category": {
+				"category": "Equipment"
+			}
+		},
+		"components": {
+			"skybedrock:guidebook": {},
+			"minecraft:icon": "skybedrock:guidebook",
+			"minecraft:interact_button": "action.interact.read",
+			"minecraft:max_stack_size": 1
+		}
+	}
+}

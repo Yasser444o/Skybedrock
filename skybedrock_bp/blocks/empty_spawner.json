@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "yasser444:empty_spawner",
+			"menu_category": { "category": "items" }
+		},
+		"components": {
+			"minecraft:display_name": "§bEmpty Spawner",
+			"minecraft:destructible_by_mining": { "seconds_to_destroy": 1 },
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:movable": { "movement_type": "immovable" },
+			"skybedrock:monster_spawner": {},
+			"skybedrock:trial_spawner": {},
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:material_instances": {
+				"*": { "texture": "empty_spawner", "render_method": "alpha_test" }
+			}
+		}
+	}
+}

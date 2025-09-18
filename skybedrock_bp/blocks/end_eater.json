@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:block": {
+		"description": {
+			"identifier": "skybedrock:end_eater",
+			"menu_category": { "category": "none", "is_hidden_in_commands": true }
+		},
+		"components": {
+			"minecraft:display_name": "§4END EATER",
+			"minecraft:destructible_by_mining": false,
+			"minecraft:destructible_by_explosion": false,
+			"skybedrock:biome_cleaner": {},
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:tick": {
+				"looping": true,
+				"interval_range": [ 1, 1 ]
+			},
+			"minecraft:material_instances": {
+				"*": { "texture": "none", "render_method": "alpha_test" }
+			}
+		}
+	}
+}
