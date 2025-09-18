@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "all ominous bottles dropped from pillagers are of level I",
+        "name": "Ominous Bottle I",
+        "uuid": "71926d3f-8cc1-4f16-b13e-749266eeef6d",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "601ed8b1-a856-4fe5-87fa-fa8265597396",
+            "version": [1, 0, 0]
+        }
+    ]
+}

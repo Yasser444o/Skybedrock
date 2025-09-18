@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "blazes drop quartz when killed by a player",
+        "name": "Blaze Quartz",
+        "uuid": "1b7b8096-e082-4db4-bb26-b9396a825772",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "b033d564-c3d6-44d9-85a0-c330cbd8e2c4",
+            "version": [1, 0, 0]
+        }
+    ]
+}

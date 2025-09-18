@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "ender pearls tick the 5 by 5 chunks centered around them",
+        "name": "Ender Loader",
+        "uuid": "2a772a18-b25a-45e3-b403-33c2a5002c61",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "de6b16b2-5ac2-475b-8d31-8bd7e5d9fce4",
+            "version": [1, 0, 0]
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "granite and diorite crafting recipes yield more items",
+        "name": "Granite & Diorite",
+        "uuid": "7bd44591-a42c-4946-8c77-ae52e0093a70",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "b425ce63-5239-4cae-b3d5-270c4177faa3",
+            "version": [1, 0, 0]
+        }
+    ]
+}

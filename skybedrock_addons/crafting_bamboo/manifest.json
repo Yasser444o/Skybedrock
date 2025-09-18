@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "bamboo planks can be crafted using 4 bamboo, and bamboo blocks can be crafted back into 9 bamboo",
+        "name": "Crafting Bamboo",
+        "uuid": "0f26c46c-6b2a-448d-868c-fe31fd372e80",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "6ac6de04-db60-4f1c-a40d-87b3b640a168",
+            "version": [1, 0, 0]
+        }
+    ]
+}

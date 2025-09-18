@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "librarians sell more glass",
+        "name": "More Glass",
+        "uuid": "5c54f03b-6ed8-4579-b74b-5726bad22392",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "9364ab73-22a7-48e7-bf03-d4c7e9772164",
+            "version": [1, 0, 0]
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "pregnant frogs can drop frogspawns",
+        "name": "Frog Spawns",
+        "uuid": "e42e224b-2dfc-4c8f-91b8-fbf40c8bf3e9",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "5719384d-e6ad-4741-8c0e-ff655165583a",
+            "version": [1, 0, 0]
+        }
+    ]
+}

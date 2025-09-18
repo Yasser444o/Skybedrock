@@ -1,0 +1,35 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "minecraft:infested_mossy_stone_bricks"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "###",
+      "#P#",
+      "###"
+    ],
+    "key": {
+	  "#": {
+        // "item": "minecraft:mossy_stone_bricks"
+        "item": "minecraft:stonebrick",
+        "data": 1
+      },
+      "P": {
+        "item": "minecraft:potion",
+        "data": 46
+      }
+    },
+    "unlock": {
+        "context": "None"
+    },
+    "result": [
+      // { "item": "minecraft:infested_mossy_stone_bricks", "count": 8 },
+      { "item": "minecraft:monster_egg", "data": 3, "count": 8 },
+      { "item": "minecraft:glass_bottle" }
+    ]
+  }
+}

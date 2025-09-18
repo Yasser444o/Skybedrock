@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "adds a crafting recipe for reinforced deepslate",
+        "name": "Reinforced Deepslate",
+        "uuid": "fab4425f-6662-4b40-bf59-b56aa5d6a03d",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "b4161731-aec5-46c7-8747-b269f10ff079",
+            "version": [1, 0, 0]
+        }
+    ]
+}

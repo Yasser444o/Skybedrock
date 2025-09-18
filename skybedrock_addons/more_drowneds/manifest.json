@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "up to 8 surface and 8 cave drowneds can spawn in dripstone caves instead of only 5 cave drowneds",
+        "name": "More Drowneds",
+        "uuid": "bdc2c953-c36e-47fc-8ae5-1c7294b7277e",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "620e389a-cba0-4bd9-afb8-3c73f838385e",
+            "version": [1, 0, 0]
+        }
+    ]
+}

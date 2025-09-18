@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "drowneds have a higher chance of dropping copper",
+        "name": "More Copper",
+        "uuid": "3a1ae77e-2dcc-446c-829f-e34fbca0a329",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "d02d5538-aa23-49ac-b738-a210a61688ae",
+            "version": [1, 0, 0]
+        }
+    ]
+}

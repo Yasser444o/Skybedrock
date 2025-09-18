@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "sniffers can extract chorus plants from end stone",
+        "name": "Chorus Plants",
+        "uuid": "7a40d68e-b511-40f9-ba0e-da273a1eaab0",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "d5d64170-ed32-4e13-b863-df2c993355b3",
+            "version": [1, 0, 0]
+        }
+    ]
+}

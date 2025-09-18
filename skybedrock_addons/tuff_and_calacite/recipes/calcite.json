@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+    "identifier": "minecraft:calcite"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "DA",
+      "AD"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:amethyst_shard"
+      },
+      "D": {
+        "item": "minecraft:stone",
+        "data": 3
+      }
+    },
+	"unlock": [
+        {
+            "item": "minecraft:amethyst_shard"
+        }
+    ],
+    "result": {
+      "item": "minecraft:calcite",
+      "count": 4
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "skeletons who spawned in the soulsand valley can drop soul sand",
+        "name": "Valley Skeletons",
+        "uuid": "23e5dde3-ea46-420a-a161-3995ad61c348",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "cf6f86e3-67a5-4408-869a-77f9721049b9",
+            "version": [1, 0, 0]
+        }
+    ]
+}

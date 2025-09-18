@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "clerics can sell more redstone and lapis lazuli",
+        "name": "Generous Clerics",
+        "uuid": "b161678b-01a7-46f2-81d7-a259e89c9da9",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "8ebafda6-48a4-4971-9edc-411877c2c981",
+            "version": [1, 0, 0]
+        }
+    ]
+}

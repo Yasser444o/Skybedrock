@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "adds crafting recipes for tuff and calcite",
+        "name": "Tuff & Calcite",
+        "uuid": "d0a072ba-5f29-411e-883b-feeecda5c9bc",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "146ef021-534b-4af4-b353-f12251c2b161",
+            "version": [1, 0, 0]
+        }
+    ]
+}

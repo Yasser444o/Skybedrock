@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "husks drop more sand",
+        "name": "More Sand",
+        "uuid": "9f6d4b34-b2af-4f8c-9a99-38d4c46c5f25",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "e2c5e8d1-6883-487e-9b31-65d723d05fc8",
+            "version": [1, 0, 0]
+        }
+    ]
+}

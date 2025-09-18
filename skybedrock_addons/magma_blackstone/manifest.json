@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "magma cubes can drop blackstone",
+        "name": "Magma Blackstone",
+        "uuid": "a3407f41-5141-4296-a661-e06458eff518",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "35b1fde0-6963-4cbe-b4a0-bcc295929655",
+            "version": [1, 0, 0]
+        }
+    ]
+}

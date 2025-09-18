@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "makes chiseled and smooth purpur blocks obtainable",
+        "name": "Purpur Blocks",
+        "uuid": "c92fea7d-5e41-48c6-88a9-35294f888436",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "ccb4fe2e-017c-4406-a96f-93eaf13890de",
+            "version": [1, 0, 0]
+        }
+    ]
+}

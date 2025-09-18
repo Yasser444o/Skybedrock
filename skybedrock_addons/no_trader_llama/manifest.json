@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "wandering trader spawn without their llamas",
+        "name": "No Trader Llama",
+        "uuid": "06bca650-9bd1-4e4a-bb6b-71c7539a2319",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "85156604-4396-4068-ad3f-542840ac1ca8",
+            "version": [1, 0, 0]
+        }
+    ]
+}

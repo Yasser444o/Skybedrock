@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "adds a brewing recipe for potions of decay",
+        "name": "Decay Potions",
+        "uuid": "7f44626a-2486-427a-a487-5cfae6bd7312",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "5cf39e03-97b2-4aa5-9896-0f2be3c63a82",
+            "version": [1, 0, 0]
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+    "identifier": "minecraft:reinforced_deepslate"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "S",
+      "D",
+      "S"
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:sculk_shrieker"
+      },
+	  "D": {
+        "item": "minecraft:deepslate"
+      }
+    },
+    "unlock": {
+        "context": "None"
+    },
+    "result": {
+      "item": "minecraft:reinforced_deepslate"
+    }
+  }
+}

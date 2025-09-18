@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "adds crafting recipes for infested blocks",
+        "name": "Infested Blocks",
+        "uuid": "32499fe4-6504-46bc-96fb-89584d615c00",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "68707762-9bec-48f5-95b4-1b8c46bda6b9",
+            "version": [1, 0, 0]
+        }
+    ]
+}

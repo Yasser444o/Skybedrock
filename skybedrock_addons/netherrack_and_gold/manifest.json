@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "zombiefied piglens drop more gold nuggets and can drop nettherrack if they spawned in the nether",
+        "name": "Netherrack & Gold",
+        "uuid": "34ad0292-c3c4-443c-8f69-80edcfd869dd",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "74bd938d-bb8a-4ff5-a6b6-a5d92260b53e",
+            "version": [1, 0, 0]
+        }
+    ]
+}

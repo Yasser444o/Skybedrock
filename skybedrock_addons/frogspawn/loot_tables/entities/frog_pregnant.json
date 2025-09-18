@@ -1,0 +1,24 @@
+{
+	"pools": [
+		{
+		    "conditions": [
+		        {
+					"condition": "killed_by_player_or_pets"
+				},
+				{
+					"condition": "random_chance_with_looting",
+					"chance": 0.5,
+					"looting_multiplier": 0.1
+				}
+		    ],
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "frog_spawn",
+					"weight": 1
+				}
+			]	
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "zombies can drop gravel",
+        "name": "Zombie Gravel",
+        "uuid": "24ae0bc6-c8dd-4044-93cf-fe161676e28d",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "a66c4994-68e0-4f46-bc72-72c68a84f225",
+            "version": [1, 0, 0]
+        }
+    ]
+}

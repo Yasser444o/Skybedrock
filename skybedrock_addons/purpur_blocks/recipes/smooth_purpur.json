@@ -1,0 +1,13 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_furnace": {
+        "description": {
+            "identifier": "smooth_purpur"
+        },
+        "input": "minecraft:purpur_block:0",
+        "output": "minecraft:purpur_block:3",
+        "tags": [
+            "furnace"
+        ]
+    }
+}

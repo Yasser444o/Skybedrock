@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "ghasts can drop soul soil",
+        "name": "Ghast Soul Soil",
+        "uuid": "505b54f2-8b3a-4710-96c2-fe1a77e55327",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "3df99a8d-cd86-4e6c-899a-88ab74cf1203",
+            "version": [1, 0, 0]
+        }
+    ]
+}
