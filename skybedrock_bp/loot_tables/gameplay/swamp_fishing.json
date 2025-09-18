@@ -1,0 +1,27 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "loot_table",
+					"name": "loot_tables/gameplay/fishing/swamp_junk.json",
+					"weight": 30,
+					"quality": -2
+				},
+				{
+					"type": "loot_table",
+					"name": "loot_tables/gameplay/fishing/treasure.json",
+					"weight": 5,
+					"quality": 2
+				},
+				{
+					"type": "loot_table",
+					"name": "loot_tables/gameplay/fishing/fish.json",
+					"weight": 65,
+					"quality": -1
+				}
+			]
+		}
+	]
+}

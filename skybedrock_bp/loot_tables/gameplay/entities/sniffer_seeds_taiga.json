@@ -1,0 +1,29 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:torchflower_seeds",
+					"weight": 30
+				},
+				{
+					"type": "item",
+					"name": "minecraft:pitcher_pod",
+					"weight": 30
+				},
+				{
+					"type": "item",
+					"name": "minecraft:sweet_berries",
+					"weight": 10
+				},
+				{
+					"type": "item",
+					"name": "minecraft:double_plant:3",
+					"weight": 30
+				}
+			]
+		}
+	]
+}

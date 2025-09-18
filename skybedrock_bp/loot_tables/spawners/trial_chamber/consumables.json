@@ -1,0 +1,57 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:copper_ingot",
+					"weight": 3,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": { "min": 24, "max": 32 }
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:cooked_chicken",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": 28
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": 14
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:guster_pottery_sherd",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:scrape_pottery_sherd",
+					"weight": 1
+				}
+			]
+		}
+	]
+}
