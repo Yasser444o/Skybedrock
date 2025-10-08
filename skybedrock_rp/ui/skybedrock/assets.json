@@ -1600,6 +1600,10 @@
 		"$text": "Deepslate Redstone Ore"
 	},
 //**************************************************************
+	"copper_horse_armor@assets.item_renderer": {
+		"$texture": "textures/items/copper_horse_armor",
+		"$text": "Copper Horse Armor"
+	},
 	"iron_horse_armor@assets.item_renderer": {
 		"$texture": "textures/items/iron_horse_armor",
 		"$text": "Iron Horse Armor"

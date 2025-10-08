@@ -2,7 +2,7 @@
 	"format_version": "1.20.10",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "minecraft:golden_horse_armor"
+			"identifier": "minecraft:copper_horse_armor"
 		},
 		"tags": [ "crafting_table" ],
 		"pattern": [
@@ -11,11 +11,11 @@
 			"X X"
 		],
 		"key": {
-			"X": { "item": "minecraft:gold_ingot" }
+			"X": { "item": "minecraft:copper_ingot" }
 		},
 		"unlock": [
-			{ "item": "minecraft:gold_ingot" }
+			{ "item": "minecraft:copper_ingot" }
 		],
-		"result": { "item": "minecraft:golden_horse_armor" }
+		"result": { "item": "minecraft:copper_horse_armor" }
 	}
 }

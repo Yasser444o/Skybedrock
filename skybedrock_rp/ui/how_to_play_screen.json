@@ -1640,6 +1640,18 @@
 							"$icon": "textures/blocks/crafting_table_top",
 							"$content": [
 								{
+									"copper_horse_armor@how_to_play.crafting3x3_feature": {
+										"$input1": [{"i@assets.copper_ingot":{}}],
+										"$input3": [{"i@assets.copper_ingot":{}}],
+										"$input4": [{"i@assets.copper_ingot":{}}],
+										"$input5": [{"i@assets.copper_ingot":{}}],
+										"$input6": [{"i@assets.copper_ingot":{}}],
+										"$input7": [{"i@assets.copper_ingot":{}}],
+										"$input9": [{"i@assets.copper_ingot":{}}],
+										"$output": [{"i@assets.copper_horse_armor":{}}]
+									}
+								},
+								{
 									"iron_horse_armor@how_to_play.crafting3x3_feature": {
 										"$input1": [{"i@assets.iron_ingot":{}}],
 										"$input3": [{"i@assets.iron_ingot":{}}],
@@ -1874,6 +1886,150 @@
 								{
 									"no fortune@assets.text_box": {
 										"$text": "These ores are not affected by the Fortune enchantment"
+									}
+								}
+							]
+						}
+					},
+					{
+						"smelting@assets.dropdown": {
+							"$title": "Smelting Recipes",
+							"$icon": "textures/blocks/furnace_front_on",
+							"$content": [
+								{
+									"copper_equipment@assets.white_box": { //index 1 should be skipped
+										"layer": -3,
+										"color": [0.3, 0.3, 0.3], 
+										"size": ["100%", 82],
+										"$book_name": "copper_equipment_smelting",
+										"controls": [
+											{
+												"copper_sword@assets.book_page": {
+													"$name": "copper_sword",
+													"$p_page": 9, "$prev": "copper_boots",
+													"$n_page": 2, "$next": "copper_pickaxe",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_sword",
+															"$text": "Copper Sword"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_pickaxe@assets.book_page": {
+													"$name": "copper_pickaxe",
+													"$p_page": 0, "$prev": "copper_sword",
+													"$n_page": 3, "$next": "copper_axe",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_pickaxe",
+															"$text": "Copper Pickaxe"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_axe@assets.book_page": {
+													"$name": "copper_axe",
+													"$p_page": 2, "$prev": "copper_pickaxe",
+													"$n_page": 4, "$next": "copper_shovel",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_axe",
+															"$text": "Copper Axe"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_shovel@assets.book_page": {
+													"$name": "copper_shovel",
+													"$p_page": 3, "$prev": "copper_axe",
+													"$n_page": 5, "$next": "copper_hoe",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_shovel",
+															"$text": "Copper Shovel"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_hoe@assets.book_page": {
+													"$name": "copper_hoe",
+													"$p_page": 4, "$prev": "copper_shovel",
+													"$n_page": 6, "$next": "copper_helmet",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_hoe",
+															"$text": "Copper Hoe"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_helmet@assets.book_page": {
+													"$name": "copper_helmet",
+													"$p_page": 5, "$prev": "copper_hoe",
+													"$n_page": 7, "$next": "copper_chestplate",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_helmet",
+															"$text": "Copper Helmet"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_chestplate@assets.book_page": {
+													"$name": "copper_chestplate",
+													"$p_page": 6, "$prev": "copper_helmet",
+													"$n_page": 8, "$next": "copper_leggings",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_chestplate",
+															"$text": "Copper Chestplate"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_leggings@assets.book_page": {
+													"$name": "copper_leggings",
+													"$p_page": 7, "$prev": "copper_chestplate",
+													"$n_page": 9, "$next": "copper_boots",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_leggings",
+															"$text": "Copper Leggings"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_boots@assets.book_page": {
+													"$name": "copper_boots",
+													"$p_page": 8, "$prev": "copper_leggings",
+													"$n_page": 0, "$next": "copper_sword",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_boots",
+															"$text": "Copper Boots"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											}
+										]
 									}
 								}
 							]

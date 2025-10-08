@@ -105,6 +105,18 @@ reward: give @s bed 1; Another Bed for your friend
 - craft a bed and dye it with any color
 (You could also obtain wool from killing sheep btw)
 
+copper_tools
+require: (mob_trap & water)
+title: Metallurgy
+icon: textures/items/copper_pickaxe
+reward: give @s copper_block 2; 2 Copper Blocks
+* Obtain Copper to craft better tools and armor
+- build a drowned farm, in the river, ocean, or dripstone caves biome
+- you can also use water to drown regular zombies into drowneds
+- obtain some copper ingots from killing drowneds
+- use copper ingots to craft 2 types of any copper tool or armor
+(You can also obtain a lot of copper by visiting the trial chambers)
+
 nether
 require: (cobblestone & sapling)
 title: Distant Realm
@@ -2122,6 +2134,7 @@ export const queries = {
     craft_bed: (player) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].some(color =>
         check_items(player, 'bed', null, color)
     ),
+	copper_tools: (player) => ['copper_sword', 'copper_pickaxe', 'copper_axe', 'copper_shovel', 'copper_hoe', 'copper_helmet', 'copper_chestplate', 'copper_leggings', 'copper_boots'].filter(item => check_items(player, item)).length >= 2,
     nether: (player) => check_location(player, 'minecraft:nether'),
     gold: (player) => check_items(player, 'gold_ingot', 8),
     barter: (player) => ['iron_nugget', 'ender_pearl', 'crying_obsidian', 'gravel', 'soul_sand', 'blackstone', 'quartz'].every(item => check_items(player, item)),

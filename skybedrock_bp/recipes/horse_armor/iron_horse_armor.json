@@ -2,7 +2,7 @@
 	"format_version": "1.20.10",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "minecraft:horsearmoriron"
+			"identifier": "minecraft:iron_horse_armor"
 		},
 		"tags": [ "crafting_table" ],
 		"pattern": [
@@ -16,6 +16,6 @@
 		"unlock": [
 			{ "item": "minecraft:iron_ingot" }
 		],
-		"result": { "item": "minecraft:horsearmoriron" }
+		"result": { "item": "minecraft:iron_horse_armor" }
 	}
 }

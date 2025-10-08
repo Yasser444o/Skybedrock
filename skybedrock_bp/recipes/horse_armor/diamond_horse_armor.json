@@ -2,7 +2,7 @@
 	"format_version": "1.20.10",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "minecraft:horsearmordiamond"
+			"identifier": "minecraft:diamond_horse_armor"
 		},
 		"tags": [ "crafting_table" ],
 		"pattern": [
@@ -16,6 +16,6 @@
 		"unlock": [
 			{ "item": "minecraft:diamond" }
 		],
-		"result": { "item": "minecraft:horsearmordiamond" }
+		"result": { "item": "minecraft:diamond_horse_armor" }
 	}
 }
