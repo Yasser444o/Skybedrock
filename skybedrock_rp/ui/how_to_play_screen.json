@@ -2290,13 +2290,8 @@
 									]
 								}},
 								{ "piglin_barter@how_to_play.bartering_table_item": {
-									"$size": ["100% - 2px", 72],
+									"$size": ["100% - 2px", 36],
 									"$items": [
-										{ "i1@assets.bartering_table_entry": {
-											"$item": "netherite_scrap",
-											"$quantity": "2-4",
-											"$chance": "2.08%%"
-										}},
 										{ "i2@assets.bartering_table_entry": {
 											"$item": "snout_pattern",
 											"$chance": "0.21%%"

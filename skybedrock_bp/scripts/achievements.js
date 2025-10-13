@@ -148,7 +148,7 @@ reward: give @s potion 1 13; A Potion of Fire Resistance
 * Use your gold to barter with piglins for the following items:
 - Iron Nuggets
 - Ender Pearls
-- Gravel
+- Nether Gravel
 - Soul Sand
 - Nether Quartz
 - Blackstone
@@ -161,7 +161,8 @@ title: Cherish Every Piece
 reward: give @s gravel 32; 32 Gravel
 icon: 196608
 * Convert a stack of gravel into a stack of dirt
-- collect gravel from bartering with piglins or from killing zombies
+- collect nether gravel from bartering with piglins or regular gravel from killing zombies
+- convert nether gravel into regular gravel using the crafting grid
 - craft coarse dirt by combining dirt and gravel
 - place it down and till it with a hoe or a shovel
 - break it down and use it to craft more coarse dirt
@@ -2137,7 +2138,7 @@ export const queries = {
 	copper_tools: (player) => ['copper_sword', 'copper_pickaxe', 'copper_axe', 'copper_shovel', 'copper_hoe', 'copper_helmet', 'copper_chestplate', 'copper_leggings', 'copper_boots'].filter(item => check_items(player, item)).length >= 2,
     nether: (player) => check_location(player, 'minecraft:nether'),
     gold: (player) => check_items(player, 'gold_ingot', 8),
-    barter: (player) => ['iron_nugget', 'ender_pearl', 'crying_obsidian', 'gravel', 'soul_sand', 'blackstone', 'quartz'].every(item => check_items(player, item)),
+    barter: (player) => ['iron_nugget', 'ender_pearl', 'crying_obsidian', 'skybedrock:nether_gravel', 'soul_sand', 'blackstone', 'quartz'].every(item => check_items(player, item)),
     dirt: (player) => (
         view_stats(player, 'blocks_placed', 'minecraft:coarse_dirt') >= 32 &&
         check_items(player, 'dirt', 64)

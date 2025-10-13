@@ -2,6 +2,7 @@ import { world, system, ItemStack } from "@minecraft/server" ;
 import biome_cleaner from "./world/biome_cleaner";
 import monster_spawners from "./blocks/monster_spawners";
 import redstone_ore from "./blocks/redstone_ore";
+import nether_gravel from "./blocks/nether_gravel";
 import trial_spawner from "./blocks/trial_spawners";
 import treasure_map from "./items/treasure_map";
 import debug_stick from "./items/debug_stick";
@@ -14,6 +15,7 @@ system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRe
 	blockComponentRegistry.registerCustomComponent('skybedrock:monster_spawner', monster_spawners ?? {})
 	blockComponentRegistry.registerCustomComponent('skybedrock:trial_spawner', trial_spawner ?? {})
 	blockComponentRegistry.registerCustomComponent('skybedrock:redstone_ore', redstone_ore ?? {})
+	blockComponentRegistry.registerCustomComponent('skybedrock:nether_gravel', nether_gravel ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:treasure_map', treasure_map ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:guidebook', guidebook ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:debug_stick', debug_stick ?? {})

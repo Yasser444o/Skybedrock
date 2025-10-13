@@ -6,6 +6,7 @@ item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
 ## Blocks
 tile.deprecated_purpur_block_2.name=Smooth Purpur
 tile.stone_slab.wood.name=Petrified Oak Slab
+tile.skybedrock:nether_gravel.name=Nether Gravel
 
 
 ## Entities
