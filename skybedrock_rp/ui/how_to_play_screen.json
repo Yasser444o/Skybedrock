@@ -710,31 +710,19 @@
 					{
 						"structure_spawning@assets.dropdown": {
 							"$title": "Structure Spawning",
-							"$icon": "textures/ui/structures/outpost",
+							"$icon": "textures/ui/structures/monument",
 							"$collapse": "collapse_structure_spawning",
 							"$content": [
 								{
 									"disclaimer@assets.text_box": {
-										"$text": "* It's not possible to bring vanilla Structure Spawning Areas to a Flat world type, so these custom rules have to do for now *",
+										"$text": "* After so long, Mojang have fixed the bug that prevented structure mobs from spawning in flat worlds, I have added the real pillager outpost and swamp hut, I will add the ocean monument in a later update *",
 										"$alignment": "center",
-										"$color": [ 1.0, 0.0, 0.0 ]
-									}
-								},
-								{ 
-									"swamp_hut@how_to_play.feature_element": {
-										"$text": "1) §u§lSwamp Hut:§r\n\n- One Spawning Spot inside the Swamp Hut.\n- One Witch tries to spawn every 0 to 2 seconds.\n- Can spawn on most solid blocks with solid surface, except upside down Slabs and Stairs.\n- Can Spawn inside most blocks with no collision, but not inside redstone components and light sources.\n- The block at the head level can also be Glass, Tinted Glass, Glass Panes, Water, or Flawing Water.\n- No mob is standing on the spawning spot.\n- There is less than 2 Witches within 5 blocks of the spawning spot.\n- Less than 16 hostile mobs loaded.\n- There is a Player within 24 to 44 blocks away from the spawning spot.\n- There is no Player less than 24 blocks away from the spawning spot.",
-										"$image": "hut_witch"
-									}
-								},
-								{ 
-									"outpost@how_to_play.feature_element": {
-										"$text": "2) §n§lPillager Outpost:§r\n\n- 4 Spawning Spots in and around the Pillager Outpost.\n- Every second, a spot is selected and a Pillager tries to spawn on it.\n- Can spawn on most solid blocks with solid surface, except upside down Slabs and Stairs.\n- Can Spawn inside most blocks with no collision, but not inside redstone components and light sources.\n- The block at the head level can also be Glass, Tinted Glass, Glass Panes, Water, or Flawing Water.\n- No Mob is standing on the spawning spot.\n- There is less than 2 Pillagers within 5 blocks of the spawning spot.\n- Less than 16 hostile mobs can be loaded.\n- There is a Player within 24 to 44 blocks away from the spawning spot.\n- There is no Player less than 24 blocks away from the spawning spot.",
-										"$image": "outpost_pillager"
+										"$color": [ 0.5, 1.0, 0.0 ]
 									}
 								},
 								{ 
 									"monument@how_to_play.feature_element": {
-										"$text": "3) §3§lOcean Monument:§r\n\n- 22 Spawning Spots in the Ocean Monument.\n- Every 4th of a second a random spot is selected and a Guardian tries to spawn on it.\n- Spawns on most solid blocks with solid surface as well as Sea Lanterns, but not on Soul Sand, upside down Slabs and Stairs.\n- Spawn inside Water or flowing water, but not inside Bubble Columns and Waterlogged blocks.\n- The block above can be Water, Flowing Water, Air, Glass, and most blocks with no collision.\n- No Mob is standing on the spawning spot.\n- There is less than 2 Guardians within 5 blocks of the spawning spot.\n- Less than 16 hostile mobs loaded.\n- There is a Player within 24 to 44 blocks away from the spawning spot.\n- There is no Player less than 24 blocks away from the spawning spot.",
+										"$text": "§3§lOcean Monument:§r\n\n* There are 22 Spawning Spots in the Ocean Monument.\n* Every 5 ticks a random spot is selected and a Guardian attempts to spawn on it.\n* The Spawn attempt fails if the block below isn't a solid block or a Sea Lantern.\n* The Spawn attempt fails if the block below is Soul Sand, upside down Slab or Stairs.\n* Guardians can spawn inside Water or Flowing Water, but not Bubble Columns or waterlogged blocks.\n* The block above can be Water, Flowing Water, Air, Glass, and most blocks with no collision.\n* There must be no mob standing on the spawning spot.\n* There must be no more than 2 Guardians within 5 blocks of the spawning spot.\n* There must be less than 16 hostile mobs in loaded chunks.\n* There must be a Player within 24 to 44 blocks away from the spawning spot.\n* There must be no Players within 24 blocks of the spawning spot.",
 										"$image": "monument_guardian"
 									}
 								}
@@ -3522,17 +3510,6 @@
 								"$input": [{"b@assets.purpur_block":{}}],
 								"$output": [{"b@assets.chiseled_purpur":{}}]
 							}}]
-						}
-					},
-					{ 
-						"zombie_horse@assets.text_box": {
-							"$text": "§c[]§r Zombie Horses"
-						}
-					},
-					{ 
-						"zombie_horse@how_to_play.feature_element": {
-							"$text": "Zombies can attack and kill untamed Horses, if a Horse got killed by a Zombie, it will convert into a Zombie Horse.",
-							"$image": "zombie_horses"
 						}
 					}
 				]

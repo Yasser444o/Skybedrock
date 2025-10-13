@@ -85,7 +85,7 @@
 					"condition": "match_tool",
 					"minecraft:match_tool_filter_all": [
                         "minecraft:is_shovel",
-                        "minecraft:minecraft:golden_tier"
+                        "minecraft:golden_tier"
                     ]
 				}
 			]

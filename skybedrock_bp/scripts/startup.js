@@ -6,6 +6,7 @@ import nether_gravel from "./blocks/nether_gravel";
 import trial_spawner from "./blocks/trial_spawners";
 import treasure_map from "./items/treasure_map";
 import debug_stick from "./items/debug_stick";
+import creative_tool from "./items/creative_tool";
 import guidebook from "./items/guidebook";
 import update_item from "./items/update_item.js";
 
@@ -19,6 +20,7 @@ system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRe
 	itemComponentRegistry.registerCustomComponent('skybedrock:treasure_map', treasure_map ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:guidebook', guidebook ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:debug_stick', debug_stick ?? {})
+	itemComponentRegistry.registerCustomComponent('skybedrock:creative_tool', creative_tool ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:update_me', update_item ?? {})
 })
 
