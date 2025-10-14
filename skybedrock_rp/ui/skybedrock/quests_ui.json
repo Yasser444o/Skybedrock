@@ -765,6 +765,7 @@
 			{ "note": {
 				"type": "label",
 				"text": "#text",
+				"text_alignment": "center",
 				"size": ["100% - 10px", "default"],
 				"$tag": "§note§",
 				"bindings": [

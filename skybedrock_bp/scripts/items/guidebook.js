@@ -1,6 +1,7 @@
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui" 
 import { world, ItemStack, system } from "@minecraft/server"
-import { quests_menu, quest_screen, achievements } from "../world/quests.js"
+import { quests_menu, quest_screen } from "../world/quests.js"
+import { quests } from "../achievements.js"
 import { change_logs, feature_history } from "../history.js"
 import { nether_structures } from "../data.js"
 import { overworld_structures } from "../data.js"
@@ -177,7 +178,7 @@ function open_bookmark(player, page) {
 	else if (page == 'Features History') features_history(player)
 	else if (page.endsWith(' History')) features_history(player, features.indexOf(page.replace(' History', '')))
 	else if (page.startsWith('Version ')) changelogs_page(player, versions.indexOf(page.replace('Version ', '')))
-	else if (page.startsWith('A: ')) quest_screen(player, Object.keys(achievements).find(id => achievements[id].title == page.replace('A: ', '')), true)
+	else if (page.startsWith('A: ')) quest_screen(player, Object.keys(quests).find(id => quests[id].title == page.replace('A: ', '')), true)
 	else open_book(player)
 }
 
