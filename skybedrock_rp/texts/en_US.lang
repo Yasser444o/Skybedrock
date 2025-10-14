@@ -70,7 +70,7 @@ achievements.announcement.message=%s has completed §a[%s]
 quests.category.skyblock=Skyblock Path
 quests.category.explorer=Explorer Path
 quests.category.farmer=Farmer Path
-quests.category.challanges=Challanges
+quests.category.challenges=Challenges
 
 quests.view.all=View All
 quests.view.locked=View Locked
@@ -79,6 +79,7 @@ quests.view.done=View Completed
 quests.action.detect=Detect
 quests.action.submit=Submit
 quests.action.start=Start
+quests.action.stop=Stop
 quests.action.complete=Complete
 quests.action.claim=Claim Reward
 

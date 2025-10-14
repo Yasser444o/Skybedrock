@@ -6,7 +6,7 @@ export const categories = new Map()
 
 import {world, system, EnchantmentType, ItemStack} from "@minecraft/server"
 import { pillar_locations } from "./world/the_end"
-import { complete } from "./world/quests"
+import { complete, stop_challenge } from "./world/quests"
 import { stored_items } from "./startup"
 import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
@@ -69,6 +69,7 @@ water
 require: (swamp | ocean | birch)
 title: §.Infinite Water!
 icon: textures/items/bucket_water
+[checkmark]
 reward: give @s torch 16; 16 Torches
 * Make an infinite water source
 - go to any island with water in it
@@ -1526,7 +1527,7 @@ icon: textures/items/elytra
 * Design and build an elytra farm
 `*/])
 
-categories.set("challanges", ['textures/items/iron_sword', `\
+categories.set("challenges", ['textures/items/iron_sword', `\
 sneak_a_warden
 require: ancient_city
 title: Sneaky Like a Ninja
@@ -1538,6 +1539,16 @@ reward: give @s silence_armor_trim_smithing_template; Silence Armor Trim
 - if the warden leaves you lose
 - if you die you lose
 - the challenge is completed once the 2 minutes are up
+
+desert_fishing
+require: (desert & mob_trap)
+title: Deserted Fish
+icon: textures/items/fish_clownfish_raw
+reward: give @s frame; Trophy Fish Mount
+* Catch a tropical fish in the desert biome
+- go to the desert island
+- click Start and start fishing
+- catch a tropical fish
 
 located_all_structures
 require: structure_locator
@@ -2071,6 +2082,14 @@ export function check_block(dimension, location, typeId, fallback) {
     return block_id ? block_id == typeId : fallback
 }
 
+function get_distance(a, b) {
+	const relative = {
+		x: b.x - a.x,
+		z: b.z - a.z,
+	}
+	return Math.sqrt(relative.x ** 2 + relative.z ** 2)
+}
+
 function check_item_enchants(player, item, enchant) {
     const inventory = player.getComponent("inventory").container
     for (let i = 0; i < inventory.size; i++) {
@@ -2333,19 +2352,35 @@ export const rewards = {
 }
 
 export const custom_challenges = {
-    sneak_a_warden: (player) => {
-        let remaining_time = 120
-        const challenge = system.runInterval(() => {
-            if (JSON.parse(player.getDynamicProperty('completed_achs') ?? '[]').includes('sneak_a_warden')) {
-                system.clearRun(challenge); return
+    sneak_a_warden: {
+		timer: {interval: 20, time: 120},
+		callback: (player, id, time) => () => { time--
+			const warden = player.runCommand('testfor @e[type=warden, r=16]').successCount
+            if (!warden) {
+                player.sendMessage("§mYou have failed!")
+				stop_challenge(player, id)
             }
-            if (!player.runCommand('testfor @e[type=warden, r=16]').successCount) {
-                player.sendMessage("§mYou have failed!"); system.clearRun(challenge)
+            if (time == 0) {
+                complete(player, id)
+				stop_challenge(player, id)
             }
-            remaining_time--
-            if (remaining_time == 0) {
-                complete(player, 'sneak_a_warden'); system.clearRun(challenge)
-            }
-        },20) 
-    }
+        }
+	},
+	desert_fishing: {
+		event: world.beforeEvents.entityRemove,
+		callback: (player, id) => ({removedEntity:entity}) => {
+			if (entity.typeId != 'minecraft:fishing_hook') return
+			const {location, dimension} = entity
+			if (player.id != dimension.getPlayers({location, closest: 1})[0]?.id) return
+			const nearest_item = dimension.getEntities({location, closest: 1, type: "item"})[0]
+			if (!nearest_item) return
+			if (get_distance(nearest_item.location, location)) return
+			if (nearest_item.getComponent('item').itemStack.typeId != 'minecraft:tropical_fish') return
+			system.run(async () => {
+				if (await dimension.getBiome(location) != "desert") return
+				complete(player, id)
+				stop_challenge(player, id)
+			})
+		}
+	}
 }

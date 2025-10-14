@@ -53,6 +53,7 @@
 	},
 
 	"player_inventory": {
+		"$debug_stick_aux": 259,   // this changes with every update
 		"modifications": [{
 			"array_name": "controls",
 			"operation": "insert_back",
@@ -77,7 +78,7 @@
 								},
 								{
 									"binding_type": "view",
-									"source_property_name": "(#item_id_aux / 65536 = 258)",
+									"source_property_name": "(#item_id_aux / 65536 = $debug_stick_aux)",
 									"target_property_name": "#visible"
 								}
 							],

@@ -14,6 +14,7 @@ function expand_ach(lines) {
 	consume: find('consume: '),
 	image: find('image: '),
     summary: find('* '),
+	checkmark: lines.includes('[checkmark]'),
     steps: lines.filter(line => line.startsWith('- ')).map(step => step.replace('- ', '')),
     note: lines.find(line => line.startsWith('(') && line.endsWith(')'))?.slice(1, -1),
   }
@@ -116,6 +117,23 @@ function submit(player, id) {
 		complete(player, id)
 	}
 }
+
+const active_challenges = {}
+
+function start_challenge(player, id) {
+	const {event, timer, callback} = custom_challenges[id]
+	if (event) active_challenges[`${player.id} ${id}`] = event.subscribe(callback(player, id))
+	if (timer) active_challenges[`${player.id} ${id}`] = system.runInterval(callback(player, id, timer.time), timer.interval)
+}
+
+export function stop_challenge(player, id) {
+	const {event, timer} = custom_challenges[id]
+	const run_id = active_challenges[`${player.id} ${id}`]
+	if (event) event.unsubscribe(run_id)
+	if (timer) system.clearRun(run_id)
+	delete active_challenges[`${player.id} ${id}`]
+}
+
 //auto detect
 system.runInterval(() => {
 	if (system.currentTick % [40, 1, 0][world.getDynamicProperty('auto_detection') ?? 0] != 0) return
@@ -204,7 +222,7 @@ export function quests_menu(player, book) {
 }
 
 export function quest_screen(player, id, book) {
-	const {title, icon, summary, reward, steps, note, consume, image} = achievements[id]
+	const {title, icon, summary, reward, steps, note, consume, image, checkmark} = achievements[id]
 	const dynamic_list = (name) => JSON.parse(player.getDynamicProperty(name) ?? '[]')
 	const is_done = dynamic_list("completed_achs").includes(id)
 	const is_claimed = dynamic_list("claimed_rewards").includes(id)
@@ -215,7 +233,8 @@ export function quest_screen(player, id, book) {
 	is_done ? reward && !is_claimed ? 'claim' : undefined :
 	id in queries ? 'detect' :
 	consume ? 'submit' :
-	id in custom_challenges ? 'start' : 'complete'
+	id in custom_challenges ? (active_challenges[`${player.id} ${id}`] ? 'stop' :'start') :
+	checkmark ? 'complete' : undefined
 	
 
 	const form = new ActionFormData()
@@ -254,7 +273,8 @@ export function quest_screen(player, id, book) {
 			case 10: switch(action) {
 				case 'detect': detect(player, id); break
 				case 'submit': submit(player, id); break
-				case 'start': custom_challenges[id](player); break
+				case 'start': start_challenge(player, id); break
+				case 'stop': stop_challenge(player, id); break
 				case "complete": complete(player, id); break
 				case 'claim': claim(player, id); break
 			}; quest_screen(player, id, book)
