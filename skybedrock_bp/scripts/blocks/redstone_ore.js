@@ -1,4 +1,4 @@
-import { system, world, BlockPermutation } from "@minecraft/server" ;
+import { system, world } from "@minecraft/server" ;
 
 function redstoneDustParticles(block) {
 	const blockCenter = {x:block.location.x + 0.49, y:block.location.y + 0.5, z:block.location.z + 0.49}

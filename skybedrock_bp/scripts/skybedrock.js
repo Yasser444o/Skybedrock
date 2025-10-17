@@ -31,3 +31,5 @@ import "./blocks/enderman_pickup.js"
 import "./blocks/dragon_eggs.js"
 import "./blocks/player_heads.js"
 import "./blocks/sculk_shrieker.js"
+
+import "./shutdown.js"

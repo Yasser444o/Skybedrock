@@ -97,5 +97,9 @@
 	},
 	"skybedrock:sand_support": {
 		"textures": "none"
+	},
+	"skybedrock:nether_gravel": {
+		"textures": "nether_gravel",
+		"sound": "gravel"
 	}
 }

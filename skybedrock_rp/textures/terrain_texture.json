@@ -27,6 +27,9 @@
 		"empty_spawner": {
 			"textures": "textures/blocks/empty_spawner"
 		},
+		"nether_gravel": {
+			"textures": "textures/blocks/nether_gravel"
+		},
 		"chiseled_purpur": {
 			"textures": "textures/blocks/chiseled_purpur"
 		},

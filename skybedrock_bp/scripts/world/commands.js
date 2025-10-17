@@ -1,6 +1,7 @@
 import { world, system, ItemStack } from "@minecraft/server"
 import { biome_names, destinations, restorable_structures } from "../data"
-import { achievements, complete, quests_menu as quests_menu, undo } from "./quests"
+import { complete, quest_tracker, quests_menu, undo } from "./quests"
+import { quests } from "../achievements"
 import { isSlimy } from "./slime_finder"
 
 let trader_request
@@ -33,7 +34,7 @@ const settings = {
 
 system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
 	customCommandRegistry.registerEnum("skybedrock:destination", Object.keys(destinations))
-    customCommandRegistry.registerEnum("skybedrock:quest_id", ['*', ...Object.keys(achievements)])
+    customCommandRegistry.registerEnum("skybedrock:quest_id", ['*', ...Object.keys(quests)])
     customCommandRegistry.registerEnum("skybedrock:action", ['grant', 'revoke'])
     customCommandRegistry.registerEnum("skybedrock:information", ['biome', 'slimechunk'])
     customCommandRegistry.registerEnum("skybedrock:settings", Object.keys(settings))
@@ -117,17 +118,23 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
         (_, action, players, id) => {
             players.forEach(player => {
                 if (action == "grant") {
-                    if (id == '*') Object.keys(achievements).forEach(id => complete(player, id))
+                    if (id == '*') Object.keys(quests).forEach(id => complete(player, id))
                     else complete(player, id)
                 }
                 if (action == "revoke") {
                     if (id == '*') {
                         player.setDynamicProperty("completed_achs")
                         player.setDynamicProperty("claimed_rewards")
+						Object.keys(quest_tracker).forEach(key => {
+							if (key.startsWith(`${player.id}`)) delete quest_tracker[key]
+						})
                         player.sendMessage(`Revoked all achievements for ${player.nameTag}`)
                     }
                     else {
                         undo(player, id)
+						Object.keys(quest_tracker).forEach(key => {
+							if (key.startsWith(`${player.id} ${id}`)) delete quest_tracker[key]
+						})
                         let claimed_rewards = JSON.parse(player.getDynamicProperty("claimed_rewards") ?? '[]')
                         claimed_rewards = claimed_rewards.filter(i => i != id)
                         player.setDynamicProperty("claimed_rewards", JSON.stringify(claimed_rewards))

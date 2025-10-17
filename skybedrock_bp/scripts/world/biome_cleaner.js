@@ -17,24 +17,5 @@ export default {
             })
             shulkers.forEach(shulker => shulker.remove())
         }
-        if (dimension.id == "minecraft:nether") {
-            dimension.fillBlocks(new BlockVolume(first_corner, other_corner), 'air', {
-                blockFilter: {
-                    includeTypes: [
-                        'glowstone',
-                        'lava',
-                        'red_mushroom',
-                        'brown_mushroom',
-                        'nether_wart_block',
-                        'warped_wart_block',
-                        'crimson_stem',
-                        'warped_stem',
-                        'shroomlight',
-                        'twisting_vines',
-                        'weeping_vines',
-                    ]
-                }
-            })
-        }
     }
 }

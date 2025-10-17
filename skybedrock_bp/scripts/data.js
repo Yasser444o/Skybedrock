@@ -1,4 +1,4 @@
-export const solidBlocks = [
+export const solid_blocks = [
 	"acacia_log",
 	"amethyst_block",
 	"ancient_debris",
@@ -307,7 +307,7 @@ export const solidBlocks = [
 	"yasser444:deepslate_redstone_ore",
 	"yasser444:nether_gold_ore"
 ]
-export const nonSolids = [
+export const non_solids = [
 	"air",
 	"standing_banner",
 	"wall_banner",
@@ -382,7 +382,7 @@ export const nonSolids = [
 	"vine",
 	"weeping_vines"
 ]
-export const instaPush = [
+export const insta_push = [
 	"tinted_glass",
 	"glass",
 	"glass_pane",
@@ -532,10 +532,10 @@ export const overworld_structures = [
 		biome: biome_names.lukewarm_ocean,
 	},
     {
-		id: 'swamp_hut', x: 819.5, y: 66, z: 356.5,
+		id: 'swamp_hut', x: -252.5, y: 67, z: 516.5,  
 		structure: 'Swamp Hut', require: 'swamp',
 		biome: biome_names.swamp_hills,
-		place: {x: 815, y: 60, z: 352},
+		place: {x: -257 , y: 64, z: 511},
 	},
     {
 		id: 'mineshaft', x: 696.5, y: 33, z: -232.5,
@@ -544,10 +544,10 @@ export const overworld_structures = [
 		place: {x: 684, y: 31, z: -248},
 	},
     {
-		id: 'pillager_outpost', x: -889.5, y: 78, z: 438.5,
+		id: 'pillager_outpost', x: -901.5, y: 94, z: 379.5,  
 		structure: 'Pillager Outpost', require: 'savanna',
 		biome: biome_names.savanna_plateau,
-		place: {x: -896, y: 64, z: 432},
+		place: {x: -910, y: 80, z: 370},
 	},
     {
 		id: 'woodland_mansion', x: 531.5, y: 64.06, z: -860.5,

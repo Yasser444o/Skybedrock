@@ -162,6 +162,114 @@
 						}
 					},
 					{
+						"nether_gravel@assets.dropdown": {
+							"$title": "Nether Gravel",
+							"$icon": "textures/blocks/nether_gravel",
+							"$collapse": "collapse_nether_gravel",
+							"$content": [
+								{ 
+									"text@assets.text_box": {
+										"$text": "Piglins sell Nether Gravel instead of regular gravel"
+									}
+								},
+								{ "bartering_table_header": { "size": ["100% - 2px", 28], "type": "stack_panel", "orientation": "horizontal",
+									"controls": [
+										{ "biome@assets.table_header": { "size": ["20%", "100%"], "$text": "" }},
+										{ "items": { "size": ["80%", "100%"],  "type": "stack_panel", "orientation": "horizontal",
+											"controls": [
+												{ "item@assets.table_header": { "size": ["25%", "100%"], "$text": "Items" } },
+												{ "quantity@assets.table_header": { "size": ["37.5%", "100%"], "$text": "Quantity" } },
+												{ "chance@assets.table_header": { "size": ["37.5%", "100%"], "$text": "Chance" } }		
+											]
+										}},
+										{ "border@assets.table_border": {}}
+									]
+								}},
+								{ "piglin_barter@how_to_play.bartering_table_item": {
+									"$size": ["100% - 2px", 36],
+									"$items": [
+										{ "i2@assets.bartering_table_entry": {
+											"$item": "nether_gravel",
+											"$quantity": "8-16",
+											"$chance": "8.53%%"
+										}}
+									]
+								}},
+								{ "bartering_footer@assets.table_footer": {}},
+								
+								{ 
+									"text2@assets.text_box": {
+										"$text": "Can be crafted into gravel"
+									}
+								},
+								{
+									"gravel_crafting@how_to_play.crafting2x2_feature": {
+										"$input1": [{"b@assets.nether_gravel":{}}],
+										"$output": [{"b@assets.gravel": {}}]
+									}
+								},
+								{ 
+									"text3@assets.text_box": {
+										"$text": "Breaking Nether gravel yields these items:"
+									}
+								},
+								{ "mining_table_header": { "size": ["100%", 28], "type": "stack_panel", "orientation": "horizontal",
+									"controls": [
+										{ "block@assets.table_header": { "size": [42, "100%"], "$text": "Block" } },
+										{ "tool@assets.table_header": { "size": [38, "100%"], "$text": "Tool" } },
+										{ "loot@assets.table_header": { "size": [38, "100%"], "$text": "Loot" } },
+										{ "chnace@assets.table_header": { "size": [38, "100%"], "$text": "Count" } },
+										{ "duration@assets.table_header": { "size": [100, "100%"], "$text": "Chnace" } },
+										{ "note@assets.table_header": { "size": ["100% - 258px", "100%"], "$text": "" } },
+										{ "border@assets.table_border": {}}
+									]
+								}},
+								{ "gravel@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$loot": [{"b@assets.gravel":{}}],
+									"$duration": "80%%"  
+								}},
+								{ "golden_shovel@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/items/gold_shovel",
+										"$text": "Golden Shovel"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "10%%"  
+								}},
+								{ "fortuneI@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanced_shovel",
+										"$text": "Fortune I"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "6%%"  
+								}},
+								{ "fortuneI@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanced_shovel",
+										"$text": "Fortune II"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "11%%"  
+								}},
+								{ "fortuneI@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanced_shovel",
+										"$text": "Fortune III"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "16%%"  
+								}},
+								{ "footer@assets.table_footer": {} }
+							]
+						}
+					},
+					{
 						"slime_finder@assets.dropdown": {
 							"$title": "Slime Finder",
 							"$icon": "textures/blocks/slime",
@@ -710,31 +818,19 @@
 					{
 						"structure_spawning@assets.dropdown": {
 							"$title": "Structure Spawning",
-							"$icon": "textures/ui/structures/outpost",
+							"$icon": "textures/ui/structures/monument",
 							"$collapse": "collapse_structure_spawning",
 							"$content": [
 								{
 									"disclaimer@assets.text_box": {
-										"$text": "* It's not possible to bring vanilla Structure Spawning Areas to a Flat world type, so these custom rules have to do for now *",
+										"$text": "* After so long, Mojang have fixed the bug that prevented structure mobs from spawning in flat worlds, I have added the real pillager outpost and swamp hut, I will add the ocean monument in a later update *",
 										"$alignment": "center",
-										"$color": [ 1.0, 0.0, 0.0 ]
-									}
-								},
-								{ 
-									"swamp_hut@how_to_play.feature_element": {
-										"$text": "1) §u§lSwamp Hut:§r\n\n- One Spawning Spot inside the Swamp Hut.\n- One Witch tries to spawn every 0 to 2 seconds.\n- Can spawn on most solid blocks with solid surface, except upside down Slabs and Stairs.\n- Can Spawn inside most blocks with no collision, but not inside redstone components and light sources.\n- The block at the head level can also be Glass, Tinted Glass, Glass Panes, Water, or Flawing Water.\n- No mob is standing on the spawning spot.\n- There is less than 2 Witches within 5 blocks of the spawning spot.\n- Less than 16 hostile mobs loaded.\n- There is a Player within 24 to 44 blocks away from the spawning spot.\n- There is no Player less than 24 blocks away from the spawning spot.",
-										"$image": "hut_witch"
-									}
-								},
-								{ 
-									"outpost@how_to_play.feature_element": {
-										"$text": "2) §n§lPillager Outpost:§r\n\n- 4 Spawning Spots in and around the Pillager Outpost.\n- Every second, a spot is selected and a Pillager tries to spawn on it.\n- Can spawn on most solid blocks with solid surface, except upside down Slabs and Stairs.\n- Can Spawn inside most blocks with no collision, but not inside redstone components and light sources.\n- The block at the head level can also be Glass, Tinted Glass, Glass Panes, Water, or Flawing Water.\n- No Mob is standing on the spawning spot.\n- There is less than 2 Pillagers within 5 blocks of the spawning spot.\n- Less than 16 hostile mobs can be loaded.\n- There is a Player within 24 to 44 blocks away from the spawning spot.\n- There is no Player less than 24 blocks away from the spawning spot.",
-										"$image": "outpost_pillager"
+										"$color": [ 0.5, 1.0, 0.0 ]
 									}
 								},
 								{ 
 									"monument@how_to_play.feature_element": {
-										"$text": "3) §3§lOcean Monument:§r\n\n- 22 Spawning Spots in the Ocean Monument.\n- Every 4th of a second a random spot is selected and a Guardian tries to spawn on it.\n- Spawns on most solid blocks with solid surface as well as Sea Lanterns, but not on Soul Sand, upside down Slabs and Stairs.\n- Spawn inside Water or flowing water, but not inside Bubble Columns and Waterlogged blocks.\n- The block above can be Water, Flowing Water, Air, Glass, and most blocks with no collision.\n- No Mob is standing on the spawning spot.\n- There is less than 2 Guardians within 5 blocks of the spawning spot.\n- Less than 16 hostile mobs loaded.\n- There is a Player within 24 to 44 blocks away from the spawning spot.\n- There is no Player less than 24 blocks away from the spawning spot.",
+										"$text": "§3§lOcean Monument:§r\n\n* There are 22 Spawning Spots in the Ocean Monument.\n* Every 5 ticks a random spot is selected and a Guardian attempts to spawn on it.\n* The Spawn attempt fails if the block below isn't a solid block or a Sea Lantern.\n* The Spawn attempt fails if the block below is Soul Sand, upside down Slab or Stairs.\n* Guardians can spawn inside Water or Flowing Water, but not Bubble Columns or waterlogged blocks.\n* The block above can be Water, Flowing Water, Air, Glass, and most blocks with no collision.\n* There must be no mob standing on the spawning spot.\n* There must be no more than 2 Guardians within 5 blocks of the spawning spot.\n* There must be less than 16 hostile mobs in loaded chunks.\n* There must be a Player within 24 to 44 blocks away from the spawning spot.\n* There must be no Players within 24 blocks of the spawning spot.",
 										"$image": "monument_guardian"
 									}
 								}
@@ -1640,6 +1736,18 @@
 							"$icon": "textures/blocks/crafting_table_top",
 							"$content": [
 								{
+									"copper_horse_armor@how_to_play.crafting3x3_feature": {
+										"$input1": [{"i@assets.copper_ingot":{}}],
+										"$input3": [{"i@assets.copper_ingot":{}}],
+										"$input4": [{"i@assets.copper_ingot":{}}],
+										"$input5": [{"i@assets.copper_ingot":{}}],
+										"$input6": [{"i@assets.copper_ingot":{}}],
+										"$input7": [{"i@assets.copper_ingot":{}}],
+										"$input9": [{"i@assets.copper_ingot":{}}],
+										"$output": [{"i@assets.copper_horse_armor":{}}]
+									}
+								},
+								{
 									"iron_horse_armor@how_to_play.crafting3x3_feature": {
 										"$input1": [{"i@assets.iron_ingot":{}}],
 										"$input3": [{"i@assets.iron_ingot":{}}],
@@ -1874,6 +1982,150 @@
 								{
 									"no fortune@assets.text_box": {
 										"$text": "These ores are not affected by the Fortune enchantment"
+									}
+								}
+							]
+						}
+					},
+					{
+						"smelting@assets.dropdown": {
+							"$title": "Smelting Recipes",
+							"$icon": "textures/blocks/furnace_front_on",
+							"$content": [
+								{
+									"copper_equipment@assets.white_box": { //index 1 should be skipped
+										"layer": -3,
+										"color": [0.3, 0.3, 0.3], 
+										"size": ["100%", 82],
+										"$book_name": "copper_equipment_smelting",
+										"controls": [
+											{
+												"copper_sword@assets.book_page": {
+													"$name": "copper_sword",
+													"$p_page": 9, "$prev": "copper_boots",
+													"$n_page": 2, "$next": "copper_pickaxe",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_sword",
+															"$text": "Copper Sword"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_pickaxe@assets.book_page": {
+													"$name": "copper_pickaxe",
+													"$p_page": 0, "$prev": "copper_sword",
+													"$n_page": 3, "$next": "copper_axe",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_pickaxe",
+															"$text": "Copper Pickaxe"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_axe@assets.book_page": {
+													"$name": "copper_axe",
+													"$p_page": 2, "$prev": "copper_pickaxe",
+													"$n_page": 4, "$next": "copper_shovel",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_axe",
+															"$text": "Copper Axe"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_shovel@assets.book_page": {
+													"$name": "copper_shovel",
+													"$p_page": 3, "$prev": "copper_axe",
+													"$n_page": 5, "$next": "copper_hoe",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_shovel",
+															"$text": "Copper Shovel"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_hoe@assets.book_page": {
+													"$name": "copper_hoe",
+													"$p_page": 4, "$prev": "copper_shovel",
+													"$n_page": 6, "$next": "copper_helmet",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_hoe",
+															"$text": "Copper Hoe"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_helmet@assets.book_page": {
+													"$name": "copper_helmet",
+													"$p_page": 5, "$prev": "copper_hoe",
+													"$n_page": 7, "$next": "copper_chestplate",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_helmet",
+															"$text": "Copper Helmet"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_chestplate@assets.book_page": {
+													"$name": "copper_chestplate",
+													"$p_page": 6, "$prev": "copper_helmet",
+													"$n_page": 8, "$next": "copper_leggings",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_chestplate",
+															"$text": "Copper Chestplate"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_leggings@assets.book_page": {
+													"$name": "copper_leggings",
+													"$p_page": 7, "$prev": "copper_chestplate",
+													"$n_page": 9, "$next": "copper_boots",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_leggings",
+															"$text": "Copper Leggings"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											},
+											{
+												"copper_boots@assets.book_page": {
+													"$name": "copper_boots",
+													"$p_page": 8, "$prev": "copper_leggings",
+													"$n_page": 0, "$next": "copper_sword",
+													"$page_content": [{"i@how_to_play.smelting_recipe": {
+														"$input": [{"i@assets.item_renderer":{
+															"$texture": "textures/items/copper_boots",
+															"$text": "Copper Boots"
+														}}],
+														"$output": [{"i@assets.copper_ingot":{}}]
+													}}]
+												}
+											}
+										]
 									}
 								}
 							]
@@ -2134,13 +2386,8 @@
 									]
 								}},
 								{ "piglin_barter@how_to_play.bartering_table_item": {
-									"$size": ["100% - 2px", 72],
+									"$size": ["100% - 2px", 36],
 									"$items": [
-										{ "i1@assets.bartering_table_entry": {
-											"$item": "netherite_scrap",
-											"$quantity": "2-4",
-											"$chance": "2.08%%"
-										}},
 										{ "i2@assets.bartering_table_entry": {
 											"$item": "snout_pattern",
 											"$chance": "0.21%%"
@@ -2829,12 +3076,12 @@
 						]
 					}},
 					{ 
-						"glass@assets.text_box": {
+						"glass1@assets.text_box": {
 							"$text": "§a[]§r More Glass"
 						}
 					},
 					{
-						"glass@how_to_play.trading_feature": {
+						"glass2@how_to_play.trading_feature": {
 						"$villager": "Librarian",
 							"$level": "§pJourneyman",
 							"$job": "librarian",
@@ -2844,7 +3091,7 @@
 						}
 					},
 					{ 
-						"terracotta@assets.text_box": {
+						"terracotta1@assets.text_box": {
 							"$text": "§a[]§r Generous Masons"
 						}
 					},
@@ -2869,7 +3116,7 @@
 						}
 					},
 					{
-						"terracotta@how_to_play.trading_feature": {
+						"terracotta2@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§qExpert",
 							"$job": "mason",
@@ -2879,7 +3126,7 @@
 						}
 					},
 					{
-						"quartz@how_to_play.trading_feature": {
+						"quartz1@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§sMaster",
 							"$job": "mason",
@@ -2889,12 +3136,12 @@
 							}
 					},
 					{ 
-						"redstone@assets.text_box": {
+						"redstone1@assets.text_box": {
 							"$text": "§a[]§r Generous Clerics"
 						}
 					},
 					{
-						"redstone@how_to_play.trading_feature": {
+						"redstone2@how_to_play.trading_feature": {
 						"$villager": "Cleric",
 							"$job": "cleric",
 							"$take1": [{"i@assets.emerald":{}}],
@@ -2924,12 +3171,12 @@
 						}
 					},
 					{ 
-						"granite@assets.text_box": {
+						"granite1@assets.text_box": {
 							"$text": "§a[]§r Granite & Diorite"
 						}
 					},
 					{
-						"granite@how_to_play.crafting2x2_feature": {
+						"granite2@how_to_play.crafting2x2_feature": {
 							"$input1": [{"b@assets.diorite":{}}],
 							"$input2": [{"b@assets.quartz":{}}],
 							"$output": [{"b@assets.granite": {
@@ -2949,7 +3196,7 @@
 						}
 					},
 					{ 
-						"calcite@assets.text_box": {
+						"calcite1@assets.text_box": {
 							"$text": "§c[]§r Tuff & Calcite"
 						}
 					},
@@ -3028,12 +3275,12 @@
 						}
 					},
 					{ 
-						"drowneds@assets.text_box": {
+						"drowneds1@assets.text_box": {
 							"$text": "§c[]§r More Drowneds"
 						}
 					},
 					{ 
-						"drowneds@how_to_play.feature_element": {
+						"drowneds2@how_to_play.feature_element": {
 							"$text": "Up to 8 drowneds can spawn in dripstone caves and 8 at surface instead of 5 in caves only.",
 							"$image": "dripstone_drowneds"
 						}
@@ -3372,17 +3619,6 @@
 								"$output": [{"b@assets.chiseled_purpur":{}}]
 							}}]
 						}
-					},
-					{ 
-						"zombie_horse@assets.text_box": {
-							"$text": "§c[]§r Zombie Horses"
-						}
-					},
-					{ 
-						"zombie_horse@how_to_play.feature_element": {
-							"$text": "Zombies can attack and kill untamed Horses, if a Horse got killed by a Zombie, it will convert into a Zombie Horse.",
-							"$image": "zombie_horses"
-						}
 					}
 				]
 			}},
@@ -3401,43 +3637,43 @@
 					{"s2@assets.text_box": {
 						"$text": "Jungle Temple: §qJungle Edge"
 					}},
-					{"s1@assets.text_box": {
+					{"s3@assets.text_box": {
 						"$text": "Desert Pyramid: §6Desert Hills"
 					}},
-					{"s1@assets.text_box": {
+					{"s4@assets.text_box": {
 						"$text": "Desert Well: §gDesert Lakes"
 					}},
-					{"s1@assets.text_box": {
+					{"s5@assets.text_box": {
 						"$text": "Ocean Monument: §sLukewarm Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s6@assets.text_box": {
 						"$text": "Swamp Hut: §qSwamp Hills"
 					}},
-					{"s1@assets.text_box": {
+					{"s7@assets.text_box": {
 						"$text": "Mineshaft: §cModified Badlands"
 					}},
-					{"s1@assets.text_box": {
+					{"s8@assets.text_box": {
 						"$text": "Pillager Outpost: §pSavanna Plateau"
 					}},
-					{"s1@assets.text_box": {
+					{"s9@assets.text_box": {
 						"$text": "Woodland Mansion: §qRoofed Forest"
 					}},
-					{"s1@assets.text_box": {
+					{"s10@assets.text_box": {
 						"$text": "Ancient City: §8Deep Dark"
 					}},
-					{"s1@assets.text_box": {
+					{"s11@assets.text_box": {
 						"$text": "Cold Ocean Ruins: §1Deep Cold Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s12@assets.text_box": {
 						"$text": "Warm Ocean Ruins: §sDeep Warm Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s13@assets.text_box": {
 						"$text": "Shipwreck: §tDeep Lukewarm Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s14@assets.text_box": {
 						"$text": "Trail Ruins: §2Old Growth Pine Taiga"
 					}},
-					{"s1@assets.text_box": {
+					{"s15@assets.text_box": {
 						"$text": "Trial Chambers: §2Old Growth Spruce Taiga"
 					}},
 		

@@ -1537,6 +1537,10 @@
 		"$texture": "textures/ui/blocks/ore_nether_gold",
 		"$text": "Nether Gold Ore"
 	},
+	"nether_gravel@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/nether_gravel",
+		"$text": "Nether Gravel"
+	},
 //**************************************************************	
 	"infested_cobblestone@assets.item_renderer": {
 		"$texture": "textures/ui/blocks/infested_cobblestone",
@@ -1600,13 +1604,17 @@
 		"$text": "Deepslate Redstone Ore"
 	},
 //**************************************************************
+	"copper_horse_armor@assets.item_renderer": {
+		"$texture": "textures/items/copper_horse_armor",
+		"$text": "Copper Horse Armor"
+	},
 	"iron_horse_armor@assets.item_renderer": {
 		"$texture": "textures/items/iron_horse_armor",
 		"$text": "Iron Horse Armor"
 	},
 	"gold_horse_armor@assets.item_renderer": {
 		"$texture": "textures/items/gold_horse_armor",
-		"$text": "Gold Horse Armor"
+		"$text": "Golden Horse Armor"
 	},
 	"diamond_horse_armor@assets.item_renderer": {
 		"$texture": "textures/items/diamond_horse_armor",

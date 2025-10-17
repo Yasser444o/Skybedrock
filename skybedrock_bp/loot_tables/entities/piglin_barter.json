@@ -81,17 +81,6 @@
 				},
 				{
 					"type": "item",
-					"name": "minecraft:netherite_scrap",
-					"weight": 10,
-					"functions": [
-						{
-							"function": "set_count",
-							"count": { "min": 2, "max": 4 }
-						}
-					]
-				},
-				{
-					"type": "item",
 					"name": "minecraft:iron_nugget",
 					"weight": 10,
 					"functions": [
@@ -201,7 +190,7 @@
 				},
 				{
 					"type": "item",
-					"name": "minecraft:gravel",
+					"name": "skybedrock:nether_gravel",
 					"weight": 40,
 					"functions": [
 						{

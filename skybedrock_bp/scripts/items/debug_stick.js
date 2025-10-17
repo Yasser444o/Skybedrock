@@ -12,6 +12,7 @@ export default {
 		if (mode == "copy block") 
 			try { inventory.addItem(block.getItemStack(1, true)) }
 			catch { player.sendMessage("§cNo Item for this Block") }
+		if (mode == "read tags") block.getTags().forEach(tag => player.sendMessage(tag))
 	},
 	onUse({ itemStack: stick, source: player }) {
 		if (player.getBlockFromViewDirection()) return
@@ -22,13 +23,19 @@ export default {
 		.button("Property Mode")
 		.button("Copy Permutation Mode")
 		.button("Copy Block Mode")
+		.button("Read Tags")
 		.show(player).then(({ canceled, selection }) => {
 			if (canceled) return
 			if (selection == 0) stick.setLore(["§r§nread id"])
 			if (selection == 1) stick.setLore(["§r§nsee components"])
 			if (selection == 2) stick.setLore(["§r§nread properties"])
 			if (selection == 3) stick.setLore(["§r§ncopy permutation"])
-			if (selection == 3) stick.setLore(["§r§ncopy block"])
+			if (selection == 4) stick.setLore(["§r§ncopy block"])
+			if (selection == 5) {
+				stick.setLore(["§r§nread tags"])
+				const item = player.getComponent('inventory').container.getItem(9)
+				if (item) item.getTags().forEach(tag => player.sendMessage(tag))
+			}
 			player.getComponent("equippable").setEquipment('Mainhand', stick)
 		})
 	}
