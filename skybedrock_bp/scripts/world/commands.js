@@ -1,6 +1,6 @@
 import { world, system, ItemStack } from "@minecraft/server"
 import { biome_names, destinations, restorable_structures } from "../data"
-import { complete, quests_menu as quests_menu, undo } from "./quests"
+import { complete, quest_tracker, quests_menu, undo } from "./quests"
 import { quests } from "../achievements"
 import { isSlimy } from "./slime_finder"
 
@@ -125,10 +125,16 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
                     if (id == '*') {
                         player.setDynamicProperty("completed_achs")
                         player.setDynamicProperty("claimed_rewards")
+						Object.keys(quest_tracker).forEach(key => {
+							if (key.startsWith(`${player.id}`)) delete quest_tracker[key]
+						})
                         player.sendMessage(`Revoked all achievements for ${player.nameTag}`)
                     }
                     else {
                         undo(player, id)
+						Object.keys(quest_tracker).forEach(key => {
+							if (key.startsWith(`${player.id} ${id}`)) delete quest_tracker[key]
+						})
                         let claimed_rewards = JSON.parse(player.getDynamicProperty("claimed_rewards") ?? '[]')
                         claimed_rewards = claimed_rewards.filter(i => i != id)
                         player.setDynamicProperty("claimed_rewards", JSON.stringify(claimed_rewards))

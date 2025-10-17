@@ -715,10 +715,10 @@
 					}
 				]
 			}},
-			{ "step": {
+			{ "bullet": {
 				"type": "panel",
 				"size": ["100% - 10px", "100%c"],
-				"$tag": "§step§",
+				"$tag": "§bullet§",
 				"bindings": [
 					{
 						"binding_name": "#form_button_text",
@@ -758,6 +758,147 @@
 								"source_property_name": "(#form_button_text - $tag)",
 								"target_property_name": "#text"
 							}
+						]
+					}}
+				]
+			}},
+			{ "fillbar": {
+				"type": "panel",
+				"size": ["100% - 10px", "100%c + 2px"],
+				"$tag": "§fillbar§",
+				"bindings": [
+					{
+						"binding_name": "#form_button_text",
+						"binding_type": "collection",
+						"binding_collection_name": "form_buttons"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "(not (#form_button_text = #form_button_text - $tag))",
+						"target_property_name": "#visible"
+					}
+				],
+				"controls": [
+					{ "text": {
+						"type": "label",
+						"text": "#text",
+						"anchor_from": "top_left",
+						"anchor_to": "top_left",
+						"offset": [6, 0],
+						"bindings": [
+							{
+								"binding_name": "#form_button_text",
+								"binding_type": "collection",
+								"binding_collection_name": "form_buttons"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#form_button_text - $tag)",
+								"target_property_name": "#data"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - 'n')",
+								"target_property_name": "#n"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - ('n' + #n + '/'))",
+								"target_property_name": "#m"
+							},
+							{
+								"binding_type": "view",
+								"source_property_name": "(#data - ('n' + #n + '/' + #m + ' '))",
+								"target_property_name": "#text"
+							}
+						],
+						"controls": [
+							{ "fillbar": {
+								"type": "image",
+								"texture": "textures/ui/buttons/fillbar_background",
+								"size": [102, 11],
+								"offset": [2, -1],
+								"anchor_from": "top_right",
+								"anchor_to": "top_left",
+								"controls": [
+									{ "fill": {
+										"type": "panel",
+										"anchor_from": "top_left",
+										"anchor_to": "top_left",
+										"size": [1, "100%"],
+										"controls": [
+											{ "fill": {
+												"type": "image",
+												"texture": "textures/ui/buttons/fillbar_fill",
+												"anchor_from": "top_left",
+												"anchor_to": "top_left",
+												"size": [1, "100%"],
+												"layer": 1,
+												"bindings": [
+													{
+														"binding_name": "#form_button_text",
+														"binding_type": "collection",
+														"binding_collection_name": "form_buttons"
+													},
+													{
+														"binding_type": "view",
+														"source_property_name": "(#form_button_text - $tag)",
+														"target_property_name": "#data"
+													},
+													{
+														"binding_type": "view",
+														"source_property_name": "(#data - 'n')",
+														"target_property_name": "#n"
+													},
+													{
+														"binding_type": "view",
+														"source_property_name": "(#data - ('n' + #n + '/'))",
+														"target_property_name": "#m"
+													},
+													{
+														"binding_type": "view",
+														"source_property_name": "((#n * 100) / #m + 2)",
+														"target_property_name": "#size_binding_x"
+													}
+												]
+											}}
+										]
+									}},
+									{ "label": {
+										"type": "label",
+										"text": "#text",
+										"offset": [0, 0.5],
+										"layer": 1,
+										"bindings": [
+											{
+												"binding_name": "#form_button_text",
+												"binding_type": "collection",
+												"binding_collection_name": "form_buttons"
+											},
+											{
+												"binding_type": "view",
+												"source_property_name": "(#form_button_text - $tag)",
+												"target_property_name": "#data"
+											},
+											{
+												"binding_type": "view",
+												"source_property_name": "(#data - 'n')",
+												"target_property_name": "#n"
+											},
+											{
+												"binding_type": "view",
+												"source_property_name": "(#data - ('n' + #n + '/'))",
+												"target_property_name": "#m"
+											},
+											{
+												"binding_type": "view",
+												"source_property_name": "('§.' + #n + '/' + #m)",
+												"target_property_name": "#text"
+											}
+										]
+									}}
+								]
+							}}
 						]
 					}}
 				]

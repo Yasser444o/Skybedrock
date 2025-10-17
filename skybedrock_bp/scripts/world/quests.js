@@ -91,6 +91,11 @@ export function stop_challenge(player, id) {
 	delete active_challenges[`${player.id} ${id}`]
 }
 
+export let quest_tracker
+world.afterEvents.worldLoad.subscribe(() => {
+	quest_tracker = JSON.parse(world.getDynamicProperty('quest_tracker') ?? '{}')
+})
+
 system.runInterval(() => {  // detect quests automatically
 	if (system.currentTick % [40, 1, 0][world.getDynamicProperty('auto_detection') ?? 0] != 0) return
 	world.getAllPlayers().forEach(player => {
@@ -180,7 +185,7 @@ export function quests_menu(player, book) {
 }
 
 export function quest_screen(player, id, book) {
-	const {title, icon, summary, reward, steps, note, consume, image, checkmark, query, challenge} = quests[id]
+	const {title, icon, summary, reward, lines, note, consume, image, checkmark, query, challenge, format} = quests[id]
 	const dynamic_list = (name) => JSON.parse(player.getDynamicProperty(name) ?? '[]')
 	const is_done = dynamic_list("completed_achs").includes(id)
 	const is_claimed = dynamic_list("claimed_rewards").includes(id)
@@ -200,7 +205,7 @@ export function quest_screen(player, id, book) {
 	.button('').button('').button('').button('').button('').button('').button('')
 
 	.header(icon).header(background)
-	.body(summary + (summary.endsWith(':') ? '' : '.'))
+	.body(summary ? summary + (summary.endsWith(':') ? '' : '.') : '')
 	
 	if (action) form.button({rawtext: [
 		{text: '§action§'},
@@ -208,9 +213,22 @@ export function quest_screen(player, id, book) {
 	]})
 
 	
-	if (steps.length) {
+	if (lines.length) {
 		form.divider()
-		steps.forEach(step => form.label('§step§' + step))
+		let formatted_lines = [...lines];
+		if (format) {
+			formatted_lines = lines.map(line => {
+				let formatted_line = line[1]
+				format(player, id).forEach(([key, value]) => {
+					formatted_line = formatted_line.replaceAll(key, value)
+				})
+				return [line[0], formatted_line]
+			})
+		}
+		formatted_lines.forEach(line => 
+			line[0] == '-' ? form.label('§bullet§' + line[1]) :
+			line[0] == '%' ? form.label('§fillbar§' + line[1]) : null
+		)
 	}
 	
 	if (note) form.label('§note§' + note)

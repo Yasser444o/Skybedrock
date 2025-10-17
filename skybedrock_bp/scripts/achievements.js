@@ -1,6 +1,6 @@
-import {world, system, EnchantmentType, ItemStack} from "@minecraft/server"
+import { world, system, EnchantmentType, ItemStack } from "@minecraft/server"
 import { pillar_locations } from "./world/the_end"
-import { complete, stop_challenge } from "./world/quests"
+import { complete, stop_challenge, quest_tracker } from "./world/quests"
 import { stored_items } from "./startup"
 import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
@@ -170,6 +170,7 @@ export const categories = {
 			desert_fishing
 			located_all_structures
 			direwolf
+			bug_fixes
 			pirate
 			crafted_trials
 		`
@@ -229,7 +230,7 @@ export const quests = {
 			- watch your grass spread
 			- walk away 25 blocks from your grass
 			- wait for cows, chickens, sheep, or pigs to spawn
-			(If you have broken all the grass, there is more at the other islands)
+			(If you have broken all the grass, there is more in the other islands)
 		`,
 		query: (player) => ['cow', 'chicken', 'pig', 'sheep'].some(animal =>
 			player.runCommand(`testfor @e[type= ${animal}, r=30]`).successCount
@@ -555,7 +556,7 @@ export const quests = {
 			- buy lapis from clerics
 			- gather enough xp
 			- enchant a pickaxe with silk touch
-			(You may also obtain buy a silk touch book from a villager and put it on your pickaxe)
+			(You may also buy a silk touch book from a villager and put it on your pickaxe)
 		`,
 		query: (player) => ['wooden', 'golden', 'stone', 'iron', 'diamond', 'netherite'].some(type =>
 			check_item_enchants(player, `minecraft:${type}_pickaxe`, 'silk_touch')
@@ -636,7 +637,7 @@ export const quests = {
 			- get a shulker to shoot itself or another shulker
 			- kill the duplicated shulkers to obtain shulker shells
 			- craft a shulker box
-			(§lDo Not§r kill the shulkers before duplicating them first, the outer end islands are removed and those are the only shulkers in the map. If you have killed them all already, there are 4 more end city islands unlocked by respawning and defeating the ender dragon again a certian number of times)
+			(DO NOT kill the shulkers before duplicating them first, the outer end islands are removed and those are the only shulkers in the map. If you have killed them all already, there are 4 more end city islands unlocked by respawning and defeating the ender dragon again a certian number of times)
 		`,
 		query: (player) => check_items(player, 'undyed_shulker_box') && player.runCommand('testfor @e[type=shulker]').successCount > 1,
 		reward: ["4 Shulker Shells", `give @s shulker_shell 4`]
@@ -1489,6 +1490,34 @@ export const quests = {
 		},
 		reward: ["Snowy Wolf Armor", (player) => player.dimension.spawnItem(stored_items.rewards[0], player.location)]
 	},
+	bug_fixes: {
+		data: `
+			require: trial_chambers
+			title: Bug Fixes
+			icon: textures/items/mace
+			* Kill 30 arthopods with a mace smash attack
+			% n$1/30 Arthopods smashed:
+			(Arthopods include Spiders, Cave Spider, Silverfish, Endermites, and Bees)
+		`,
+		format: (player, id) => [
+			['$1', quest_tracker[`${player.id} ${id} bugs_killed`] ?? 0]
+		],
+		challenge: {
+			event: world.afterEvents.entityDie,
+			callback: (player, id) => ({deadEntity, damageSource: {cause, damagingEntity}}) => {
+				if (damagingEntity?.id != player.id) return
+				if (cause != 'maceSmash') return
+				if (!deadEntity.getComponent('type_family').hasTypeFamily('arthropod')) return
+				const bugs_killed = `${player.id} ${id} bugs_killed`
+				quest_tracker[bugs_killed] = quest_tracker[bugs_killed] + 1 || 1
+				if (quest_tracker[bugs_killed] == 30) {
+					complete(player, id)
+					stop_challenge(player, id)
+					return
+				}
+			}
+		}
+	},
 	pirate: {
 		data: `
 			require: (jungle & geode)
@@ -1521,7 +1550,7 @@ export const quests = {
 		data: `
 			require: trial_chambers
 			title: Crafted Trials
-			icon: ${aux * -316}
+			icon: textures/items/spawner_core
 			* Construct a vault or an ominuos vault
 			- go to the trial chambers and drink an ominous bottle
 			- fight the mobs and obtain a spawner core from a trial spawner
@@ -1534,18 +1563,20 @@ export const quests = {
 	}
 }
 
-Object.entries(quests).forEach(([id, {data, query, consume, reward, challenge, checkmark}]) => {
-	const lines = data.split('\n').map(line => line.replaceAll('	', ''))
-	const find = (prefix) => lines.find(line => line.startsWith(prefix))?.replace(prefix, '')
+Object.entries(quests).forEach(([id, {data, query, consume, reward, challenge, checkmark, format}]) => {
+	data = data.split('\n').map(line => line.replaceAll('	', ''))  // remove the indentation
+	const icon = data.find(line => line.startsWith('icon: '))?.replace('icon: ', '')
+	const title = data.find(line => line.startsWith('title: '))?.replace('title: ', '')
+	const summary = data.find(line => line.startsWith('* '))?.replace('* ', '')
+	const note = data.find(line => line.startsWith('(') && line.endsWith(')'))?.slice(1, -1)
+	const image = data.find(line => line.startsWith('image: '))?.replace('image: ', '')
+	const parent = data.find(line => line.startsWith('require: '))?.replace('require: ', '')
+	const lines = data.filter(line => line.slice(0, 2) != '* ' && line[1] == ' ')
+	.map(line => [line[0], line.slice(2)])  // convert from "prefix string" to [prefix, string]
 	quests[id] = {
-		icon: find('icon: '),
-		title: find('title: '),
-		summary: find('* '),
-		steps: lines.filter(line => line.startsWith('- ')).map(step => step.replace('- ', '')),
-		note: lines.find(line => line.startsWith('(') && line.endsWith(')'))?.slice(1, -1),
-		image: find('image: '),
-		parent: find('require: '),
-		query, consume, reward, challenge, checkmark
+		icon, title, summary, note, image, parent,
+		lines: lines.filter(line => typeof line == 'object'),
+		query, consume, reward, challenge, checkmark, format
 	}
 })
 
