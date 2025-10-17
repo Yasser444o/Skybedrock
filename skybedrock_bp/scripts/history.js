@@ -1,12 +1,64 @@
 export const change_logs = {
-  "v1.21.13.1": /*{*/`\
+  "v1.21.14": `\
+General Changes:
+- Added a recipe for copper horse armor
+- All copper equipment can now be smelted into copper ingots instead of nuggets
+- Added a new debug item to help me test the map
+- Updated Crafted Trials to version 1.1.0
+- Removed "Zombie Horses" optional addon
+
+Nether Gravel:
+- Added a new type of gravel
+- Can be bought from piglins instead of regular gravel
+- Piglins can no longer sell netherite scraps
+- Nether gravel can be crafted back into regular gravel
+- It transforms into regular gravel when it falls
+- It has 80% chance to drop gravel
+- It has a small chance to drop netherite scraps when mined with a golden shovel or any tool with fortune
+
+Achievements:
+- Reworked the whole backend of the achievements system
+- Expanded the achievements system and added more capabilities
+- Added support for other addons
+- Added support for more complex challenges
+- Added the ability for quests to save their progress
+- Added support for progress bars
+- Added support for dynamic quest content (aka: quests can now have text that changes based on the player data)
+- Changed the format for writing quests
+- Added 3 new challenges and 1 new achievement: "Deserted Fish", "Crafted Trials", "Bug Fixes", "Metallurgy"
+
+World Generation:
+- Fixed a bug that broke the nether biomes and prevented mobs from spawning
+- Fixed a bug that prevented the biome detector from working in the nether
+- Optimized the loading time for the nether dimension
+- You can no longer see fake blocks in the nether at the edge of your simulation distance
+- Mojang has fixed the bug that prevented structures from working in flat worlds
+- Removed the temporary script that was added to address that bug
+- Replaced the pillager outpost and swamp hut with the actual structures
+- Changed the locations for those structures
+- Pillagers and Witches can now spawn naturally in their structures and they are no longer governed by a custom script
+- The ocean monument will be replaced in a later update
+(If you update your current world to this update, your pillager outpost and swamp hut will stop working and there is no easy way to fix that, Sorry)
+
+Open source:
+- Open sourced the project on GitHub
+- You can now view the new changed as I add them
+- You can assemble the map from the source code at any time to play the new versions before they release
+
+Bug fixes:
+- Fixed bugs introduced in 1.21.110 that broke the nether biomes
+- Fixed even more spelling mistakes
+- Optimized the end sickness script
+- Fixed a bug that prevented husks, zombies and piglins from interacting with copper equipment
+  `,
+  "v1.21.13.1": `\
 - Added a commands section to the how to play screen
 - Localized the command descriptions
 - Added a missing texture to the map screens
 - Fixed some spelling mistakes
 - Updated Crafted Trials to version 1.0.1
-  `/*}*/,
-  "v1.21.13": /*{*/`\
+  `,
+  "v1.21.13": `\
 General Changes:
 - Added Vibrant Visuals support for end phantoms and their spawning eggs
 - Updated the fake Redstone Ores to better match vanilla ores
@@ -115,8 +167,8 @@ Bug Fixes:
 - Fixed a bug where coal ore could be crafted using charcoal
 - Fixed a bug where the biome detector could hurt the player in extreme scenarios
 - Fixed a bug where the sky could stay blue for a few seconds when leaving the overworld
-  `/*}*/,
-  "v1.21.12": /*{*/`\
+  `,
+  "v1.21.12": `\
 General Changes:
 - Placed a Dried Ghast in the soul sand island
 - Sniffers can now extract nether wart from crimson nylium in the crimson forest
@@ -146,16 +198,16 @@ Skybedrock Guidebook:
 - Changed the item id of Skybedrock Guidebook (You will be handed the new copy if you update your world)
 - Localized some of the guidebook pages. If you want to volunteer and translate them to  your language please contact me
 - Skybedrock Guidebook in now handed to the 9th hotbar slot instead of the first
-  `/*}*/,
-  "v1.21.11": /*{*/`\
+  `,
+  "v1.21.11": `\
 - Fixed a bug that prevented ghasts from dropping Tears music disc when the Ghast Soul Soil addon is active
 - Added the dried ghast back to the pigins bartering table
 - Added 2 new Achievements: Backridden, and Waypoints.
 - Increased the chance of catching a junk item while fishing in swamp biomes from 10% to 30%
 - Increased the chance of catching a lily pad as a junk item when fishing in swamp biomes from 17% to 50%
 - Removed the More Lily Pads addon which increased the chances of catching lily pads regardless of the biome
-  `/*}*/,
-  "v1.21.10": /*{*/`\
+  `,
+  "v1.21.10": `\
 - Added a new section to the guidebook for viewing maps
 - Moved the biome maps from the How to Play screen to the maps section
 - You can hover over any biome to see its name, where does it start and where does it end
@@ -173,8 +225,8 @@ Skybedrock Guidebook:
 - The more sand addon can now be used in other worlds
 - Fixed a bug where some guidebook pages could pill out of the screen
 - Fixed a bug where dragon heads won't inject dragon breath if placed on the ground
-  `/*}*/,
-  "v1.21.9": /*{*/`\
+  `,
+  "v1.21.9": `\
 General Changes:
 - Added wildflowers to the birch forest island
 - Added dry grass to the desert island
@@ -208,8 +260,8 @@ Bug Fixes:
 - Optimized the biome detector
 - Fixed the display name of the deep lukewarm ocean
 - Updated the biomes map 
-  `/*}*/,
-  "v1.21.8": /*{*/`\
+  `,
+  "v1.21.8": `\
 - Replaced the fake Iron, Gold, Emerald, Diamond, and Quartz ores with the vanilla ores.
 - These ores are no longer affected by the fortune enchantment.
 - The other fake ores stayed the same.
@@ -224,8 +276,8 @@ Bug Fixes:
 - Updated the enderman entity file to version 1.21.60
 - Updated the horse files in Zombie Horses addon  to version 1.21.60
 - Fixed a bug that could cause the end dimension to skip an end gateway.
-  `/*}*/,
-  "v1.21.7": /*{*/`\
+  `,
+  "v1.21.7": `\
 Changes to the End dimension:
 - Removed the End Border.
 - Increased the size of the main end island.
@@ -253,8 +305,8 @@ Other Changes:
 - Fixed a bug that prevented creakings from spawning in the pale garden island.
 - Reduced the size of the structures map to fit in a mobile screen.
 - Fixed a missing texture error in the structures map.
-  `/*}*/,
-  "v1.21.6": /*{*/`\
+  `,
+  "v1.21.6": `\
 Pale Garden and Resin:
 - Added the pale garden biome.
 - Replaced the Windswept island with the pale garden island.
@@ -279,8 +331,8 @@ Other Changes:
 Bug Fixes:
 - Fixed a bug where the biome detector could damage the player upon using the reload command.
 - Fixed some missing textures that broke in the 1.21.50 Minecraft update.
-  `/*}*/,
-  "v1.21.5": /*{*/`\
+  `,
+  "v1.21.5": `\
 - Bone meal can be used to grow corals into coral reefs.
 - Crafting Coral addon has been removed.
 - Added some new biomes to the map and swapped the locations of some existing biomes:
@@ -308,13 +360,13 @@ Bug Fixes:
 - Fixed a bug where random phantom noises can be heard in the end dimension.
 - Fixed a bug where eyes of ender get consumed in creative mode.
 - Fixed an exploit where a player could keep their xp by disconnecting immediately after activating a spawner. 
-  `/*}*/,
-  "v1.21.4.1": /*{*/`\
+  `,
+  "v1.21.4.1": `\
 - Fixed the budding amethyst description in the how to play screen.
 - Fixed a bug where some item icons in the how to play screen and achievements screen didn't use the correct texture.
 - Fixed a bug on servers where players can activate spawners and keep their xp by disconnecting immediately after clicking the spawner.
-  `/*}*/,
-  "v1.21.4": /*{*/`\
+  `,
+  "v1.21.4": `\
 - Added the End Phantom, the living variant of the phantom that spawns in the end dimension.
 - End phantoms only spawn around players who haven't eaten anything but chorus fruit for the past 3 days.
 - End Phantoms are hostile flying creatures which rarely drop elytra when killed by a player.
@@ -334,8 +386,8 @@ Bug Fixes:
 - Fixed a bug that prevented cobblestone to end stone conversion in 1.21.40.
 - Updated the ender dragon and fishing hook entity files
 - Fixed a bug that prevented mobile players from making new guidebooks sometimes. 
-  `/*}*/,
-  "v1.21.3": /*{*/`\
+  `,
+  "v1.21.3": `\
 - Added 3 new Biomes to the overworld: Ice Spikes, Stony Shore, and Frozen Ocean
 - Added a second badlands biome to the map in preparation to replace the badlands island
 - Revamped and expanded the Mineshaft
@@ -349,8 +401,8 @@ Bug Fixes:
 - Fixed Enderman+ enderman eyes to glow in darkness
 - Updated the Trial Chambers layout
 - Organized the addon ui and structure files
-  `/*}*/,
-  "v1.21.2": /*{*/`\
+  `,
+  "v1.21.2": `\
 - Added a custom user interface for the structure locator
 - Added a custom user interface for Skybedrock Guidebook
 - Spawner Cores can be used to restore vaults 
@@ -368,8 +420,8 @@ Bug Fixes:
 - Totems in the inventory will no longer get consumed before the totems in your hands
 - Fixed a bug where the vaults in the trial chambers were unusable
 - Fixed the icon for "Electricuted" achievement
-  `/*}*/,
-  "v1.21.1": /*{*/`\
+  `,
+  "v1.21.1": `\
 General
 - Skybedrock no longer uses Holiday Creator Features
 - Replaced the icons in the Achievement view tabs with text to be less obscure
@@ -450,12 +502,12 @@ Bug Fixes
 - Fixed a bug where the structure locator confused the pillager outpost with the woodland mansion
 - Fixed a bug that prevented raids from starting
 - Fixed a number of spelling mistakes
-  `/*}*/,
-  "v1.21.0.1": /*{*/`\
+  `,
+  "v1.21.0.1": `\
 - Fixed a bug with the ominous vault.
 - Removed a warning on the resource pack.
-  `/*}*/,
-  "v1.21.0": /*{*/`\
+  `,
+  "v1.21.0": `\
 - Trial Chambers have been added.
 - Can be located through the structure locator.
 - Disabled Hostile mobs spawning inside the trial chambers.
@@ -488,8 +540,8 @@ Quality of Life addon changes:
 Extra Items addon changes:
 - Added crafting recipes for infested blocks.
 - Infested blocks can no longer be obtained by punching silverfish with a stone block.
-  `/*}*/,
-  "v1.20.13": /*{*/`\
+  `,
+  "v1.20.13": `\
 - Moved the biome detector display text from the action bar to the chat stack.
 - The structure locator has been reworked (again).
 - You can craft it from a compass and lapis lazuli.
@@ -499,8 +551,8 @@ Extra Items addon changes:
 - You can disable the structure locator by using it while sneaking.
 - Compacted similar notes together in the How to Play screen.
 - Corrected the name of Double Tall Grass in the how to play screen.
-  `/*}*/,
-  "v1.20.12": /*{*/`\
+  `,
+  "v1.20.12": `\
 - More achievements have been added
 - Rewards have been added to the achievements system
 - Each reward can only be redeemed once
@@ -515,8 +567,8 @@ Extra Items addon changes:
 - Improved performance and added warning messages when the addon is used incorrectly
 - Fixed a bug where cleansing sculk will yield no deepslate if the inventory is full
 - Fixed a bug where the structure locator didn't work
-  `/*}*/,
-  "v1.20.11": /*{*/`\
+  `,
+  "v1.20.11": `\
 - Players can bonemeal Rooted Dirt for a chance to grow Spore Blossoms
 - Sniffers can no longer extract Spore Blossoms in lush caves
 - Increased the chance for sniffers to find Small Dripleaves to 80%
@@ -534,8 +586,8 @@ Extra Items addon changes:
 - More achievements will be added later
 - Fixed a bug where Diamond Chicken could sometimes become normal chicken before they lay their diamond
 - Baby Chicken resulting from breeding Diamond Chicken will no longer have a false diamond feather
-  `/*}*/,
-  "v1.20.10": /*{*/`\
+  `,
+  "v1.20.10": `\
 - Added the secret Extra Items pack to Skybedrock, which is disabled by default.
 - This pack adds items which are normally unobtainable in survival but were obtainable in Skybedrock like Reinforced Deepslate, Player Heads, Farmlands, Frogspawns and more.
 - Separated Quality of Life pack from the main pack subpacks to be compatible with realms.
@@ -554,8 +606,8 @@ Extra Items addon changes:
 - Fixed some items in the how to play screen.
 - Help buttons will always open the How to Play screen on the recipes page.
 - Reduced the size and improved the loading time of the UI.
-  `/*}*/,
-  "v1.20.9": /*{*/`\
+  `,
+  "v1.20.9": `\
 - Changed the biome of pillager outpost to be Old Growth Spruce Taiga biome.
 - Added Wooded badlands Island which can be found by the structure locator.
 - The other wolf spawning biomes were already available.
@@ -579,8 +631,8 @@ Extra Items addon changes:
 - Skybedrock Items can be found in the correct category in the creative menu.
 - Fixed the description of the "Beat the Game" achievement.
 - Deleted unnecessary files to reduce the map size.
-  `/*}*/,
-  "v1.20.8": /*{*/`\
+  `,
+  "v1.20.8": `\
 - Sky Treasure Maps have been added. 
 - They are sold by cartographers instead of normal treasure maps.
 - When used, a map will show up with an X mark in a random location in the beach biome.
@@ -598,8 +650,8 @@ Extra Items addon changes:
 - Optimized the Biome Detector to be less laggy.
 - Changed the size of the biome and island maps to fit better in mobile screens.
 - Corrected the color of achievement buttons for mobile.
-  `/*}*/,
-  "v1.20.7": /*{*/`\
+  `,
+  "v1.20.7": `\
 - Achievements Have been added, they can be accessed through the Guidebook. 
 - When completed, the achievement is marked as done in the Guidebook. 
 - Completing Achievements doesn't affect other players achievements. 
@@ -615,8 +667,8 @@ Extra Items addon changes:
 - How to play screen has been optimized and updated.
 - Added lore to the guidebook and structure locator in the startet chest. 
 - Added a second chest to the jungle temple. 
-  `/*}*/,
-  "v1.20.6": /*{*/`\
+  `,
+  "v1.20.6": `\
 - Added Zombie Horses; zombies attack untamed horses and convert them into zombie horses. 
 - Added a Button to the custom items for mobile devices. 
 - Dragon Eggs can no longer be cheated as summoning them is now instant. 
@@ -630,8 +682,8 @@ Extra Items addon changes:
 ** aligned the appropriate texts to the center. 
 - Fixed a bug where structure mobs won't spawn on some types of planks, and stone variants. 
 - Fixed a bug where different colors of stained glass and glass panes other than white would prevent pillagers and guardians from spawning.
-  `/*}*/,
-  "v1.20.5": /*{*/`\
+  `,
+  "v1.20.5": `\
 - Charged Creepers killed by Skeletons or Strays will drop Otherside Music Disc. 
 Normal Creepers will no longer drop Otherside Music Disc. 
 The Map Information and Features have been integrated to the How to Play screen instead being pictures in your download folder. 
@@ -643,8 +695,8 @@ The Map Information and Features have been integrated to the How to Play screen 
 - Fixed a Bug where using the structure locator may delete blocks. 
 - Fixed an error where mobs try to spawn in peaceful difficulty inside the structures. 
 - Drowneds should be able to spawn underground in the Dripstone Caves biome when the Quality-of-Life addon is applied. 
-  `/*}*/,
-  "v1.20.4": /*{*/`\
+  `,
+  "v1.20.4": `\
 - Synchronized all Biome Detector items in the yer inventory. 
 - The Biome Detector item can indicate the temperature by changing its icon. 
 - Walking on, Placing a block on, or starting to mine Redstone Ores will make them light them up and emit particles.
@@ -654,8 +706,8 @@ The Map Information and Features have been integrated to the How to Play screen 
 - Pillagers cycle through all 4 spots of the Pillager Outpost every 4 second and try to spawn on the the selected spot. 
 - Guardians try to spawn every forth of a second in a random spot in the Ocean Monument. 
 Structure mobs despawn when they are far away from the player.
-  `/*}*/,
-  "v1.20.3": /*{*/`\
+  `,
+  "v1.20.3": `\
 - Sculk Blocks can be used in lava cauldrons to make deepslate
 - Sniffers will sniff spore blossoms and small dripleaves in the Lush Caves biome from Clay and the other blocks
 - Sniffers will sniff large fern and sweet berries along with the other seeds in the Taiga biomes
@@ -667,8 +719,8 @@ Structure mobs despawn when they are far away from the player.
 - Recipes have been updated to work with Recipes Unlock. 
 - Mob Spawner recipe is now listed in the recipe guide. 
 - Fixed the Nether Dimension so now more bedrock floor can generate.
-  `/*}*/,
-  "v1.20.2": /*{*/`\
+  `,
+  "v1.20.2": `\
 - Fixed the sign in the Igloo
 - Removed an additional Item Frame
 - Marked a missing spawning spot in the Fortress
@@ -677,8 +729,8 @@ Structure mobs despawn when they are far away from the player.
 - Fixed some errors in the information picures
 - Moved Silverfish spawning to the Quality of Life behavior pack
 - QoL: Dwoneds spawn in Dripstone caves up to 8 on the surface instead of 2 and up to 8 underground instead of 0 
-  `/*}*/,
-  "v1.20.1": /*{*/`\
+  `,
+  "v1.20.1": `\
 - Structure Locator have been added, it can be used in the correct biome to locate the corresponding structure
 - Removed Structure Compasses from the islands
 - Wardens rarely drop Silence Armor trim 
@@ -696,8 +748,8 @@ Structure mobs despawn when they are far away from the player.
 - Removed 5 bread from the starter chest
 - QoL: Desert Masons have a chance to sell Sandstone 
 - QoL: Savanna Masons have a chance to sell  Red Sandstone
-  `/*}*/,
-  "v1.20.0": /*{*/`\
+  `,
+  "v1.20.0": `\
 - Suspicious blocks of all structures have been fixed to include loot. 
 - Fixed a bug that prevented Suspicious blocks from regenerating 
 - Suspicious Blocks of the same structure will take the same amount of time to regenerate (15 minutes in the desert well, 30 minutes in the desert temple, 25 minutes in the cold ruins...etc)
@@ -712,8 +764,8 @@ Structure mobs despawn when they are far away from the player.
 - Redstone ore no longer glows and the lit version have been removed
 - Axolotl metal impurification mechanic have been reworked
 - The same mechanics apply but the visuals are more appealing
-  `/*}*/,
-  "v1.19.0": /*{*/`\
+  `,
+  "v1.19.0": `\
 - Updated to Minecraft 1.20
 - Added Trail Ruins
 - Added Ocean Ruins
@@ -735,8 +787,8 @@ Structure mobs despawn when they are far away from the player.
 - Replaced Weakness Potion With Weakness Arrows
 - Deleted Unnecessary Structures
 - Skulk Shriekers activate with block states
-  `/*}*/,
-  "v1.18.0": /*{*/`\
+  `,
+  "v1.18.0": `\
 - The map addon has been separated into 2 packs: the main pack, and the quality of life pack
 - The Quality of Life pack is active by default, you can deactivate it to make the map more challenging
 - The Quality of life pack includes features like better villager trades, extra mob drops, and better crafting recipes.
@@ -744,11 +796,11 @@ Structure mobs despawn when they are far away from the player.
 - Fixed the front left corner of the Ocean Monument
 - Adjusted the information pictures to be easier to print
 - Random tick speed is no longer set to 3 for the first 10 days
-  `/*}*/,
-  "v1.17.1": /*{*/`\
+  `,
+  "v1.17.1": `\
 - Fixed a bug that stopped structures from spawning mobs after 10 days of playing
-  `/*}*/,
-  "v1.17.0": /*{*/`\
+  `,
+  "v1.17.0": `\
 - Added mob spawner crafting recipe
 - Spawners can be activated with Souls
 - Added Souls, new items can be obtained by killing mobs
@@ -770,8 +822,8 @@ Structure mobs despawn when they are far away from the player.
 - Chicken can be breed and drop loot again
 - Ancient city is dark now
 - Player Head Can also be obtained if a lightning struck an Armor Stand wearing a Skeleton or Zombie head
-  `/*}*/,
-  "v1.16.0": /*{*/`\
+  `,
+  "v1.16.0": `\
 - Added textures to Smooth and Chiseled Purpur
 - Added New Items: Coal Rock, Copper Mineral, Iron Mineral, Gold Mineral, Emerald Gem, Diamond Gem, Quartz Gem
 - All Ores except Lapis and Redstone have been Added
@@ -783,8 +835,8 @@ Structure mobs despawn when they are far away from the player.
 - Spiders will no longer spawn in Badlands or Windswept Hills
 - Fixed a Bug with the Ender Dragon behavior
 - Chicken no longer Lay Diamonds
-  `/*}*/,
-  "v1.15.0": /*{*/`\
+  `,
+  "v1.15.0": `\
 - Smooth and Chiseled Purpur have been added
 - Player Head has been added
 - The Swamp Hut, The Igloo, and The Mineshaft have been tweaked
@@ -806,16 +858,16 @@ Structure mobs despawn when they are far away from the player.
 - It will no longer rain in the first day
 - Glow Lichen have been back added to the Dripstone Island
 - Swamp Hut Compass have been added back to the Swamp Island
-  `/*}*/,
-  "v1.14.0": /*{*/`\
+  `,
+  "v1.14.0": `\
 - Totems save players from falling in the void again
 - Players spawn in half their hunger again
 - Deleted a random nether portal in the nether
 - Deleted unnecessary chunks
 - Added a goat horn to the pillager outpost chest
 - Fixed some spelling issues in the information pictures
-  `/*}*/,
-  "v1.13.0": /*{*/`\
+  `,
+  "v1.13.0": `\
 - Updated to Minecraft 1.19
 - The Ancient City has been added
 - It has Natural Sculk Shriekers that summon Wardens
@@ -845,8 +897,8 @@ Structure mobs despawn when they are far away from the player.
 - Fixed Some Typos
 - The Biome Detector has been moved to the Behavior Pack of the map
 - Fixed all issues related to the Biome Detector
-  `/*}*/,
-  "v1.12.0": /*{*/`\
+  `,
+  "v1.12.0": `\
 - Replaced shulker cloning mechanics that existed in the map with the new vanilla mechanics
 - Shulkers are not guaranteed to drop 2 shells anymore
 - Added Buried treasure map to the cartographer trade table
@@ -854,17 +906,17 @@ Structure mobs despawn when they are far away from the player.
 - Added loot chests to some structures
 - Fixed fish can't spawn below y=50
 - Fixed a typo in the information files
-  `/*}*/,
-  "v1.11.1": /*{*/`\
+  `,
+  "v1.11.1": `\
 - Fixed an issue where Piglins don't barter
-  `/*}*/,
-  "v1.11.0": /*{*/`\
+  `,
+  "v1.11.0": `\
 - Fixed all bugs related to command blocks
-  `/*}*/,
-  "v1.10.1": /*{*/`\
+  `,
+  "v1.10.1": `\
 - Fixed a bug where you get teleported to 100 50 0 in the overworld if you passed 400 blocks away from spawn
-  `/*}*/,
-  "v1.10.0": /*{*/`\
+  `,
+  "v1.10.0": `\
 - Zombified Piglins Drop Netherrack in the Nether only
 - Wandering Traders and Librarians trades are fixed
 - Pufferfish and Tropical fish spawn in the correct height
@@ -873,39 +925,39 @@ Structure mobs despawn when they are far away from the player.
 - Ender Dragon will drop their head again
 - Shulker Duplication works again
 - Weak Pandas no longer drop Slime Balls (Slimes can spawn in slime chunks)
-  `/*}*/,
-  "v1.9.0": /*{*/`\
+  `,
+  "v1.9.0": `\
 - Updated to Minecraft 1.18
 - Changed the method for obtaining hearts of the sea
 - Moved the deep island to y -32
 - Added Otherside music disc
 - Improved the nether barrier
 - Improved shulker duplication
-  `/*}*/,
-  "v1.8.0": /*{*/`\
+  `,
+  "v1.8.0": `\
 - Changed the structure locators from paper to compasses
 - Changed tropical fish and pufferfish spawning to make them obtainable
 - Changed the recipes for large fern and tall grass into rare mob drops
 - Fixed a bug with gilded blackstone
 - Fixed a bug with raw ores
 - Fixed a bug with weak pandas
-  `/*}*/,
-  "v1.7.0": /*{*/`\
+  `,
+  "v1.7.0": `\
 - Updated piglin brute conversion
 - Added the biome detector to the nether
 - Added cave spiders to the badlands biome
 - Changed the map into a mcworld file
 - Fixed a bug with silverfish
 - Fixed some spelling mistakes
-  `/*}*/,
-  "v1.6.0": /*{*/`\
+  `,
+  "v1.6.0": `\
 - Added raw ores
 - Added glow berries to the mineshaft
 - Added glow lichen to foxes
 - Improved the Totem of Unfalling
 - Fixed a bug with weak pandas
-  `/*}*/,
-  "v1.5.0": /*{*/`\
+  `,
+  "v1.5.0": `\
 - Updated to Minecraft 1.17
 - Added the Lush Island, Dripstone Island, Geode Island, and Deep Island
 - Changed mob drop rates
@@ -915,13 +967,13 @@ Structure mobs despawn when they are far away from the player.
 - Added dripstone blocks to stone masons
 - Added infested deepslate
 - Improved the cut copper recipes
-  `/*}*/,
-  "v1.4.2": /*{*/`\
+  `,
+  "v1.4.2": `\
 - Librarians sell more glass
 - Random tick speed will change to normal after passing the 10th day
 - Updated the information pictures
-  `/*}*/,
-  "v1.4.1": /*{*/`\
+  `,
+  "v1.4.1": `\
 - Added the end city island
 - Updated shulker spawning
 - Made slime balls obtainable through pandas
@@ -929,8 +981,8 @@ Structure mobs despawn when they are far away from the player.
 - Added diamond chicken
 - Fixed the nether barrier
 - Removed the magma cream recipe
-  `/*}*/,
-  "v1.4.0": /*{*/`\
+  `,
+  "v1.4.0": `\
 - Dolphins can slowly generate hearts of the sea
 - Updated elder guardian conversion
 - Added Totem of Unfalling
@@ -940,49 +992,49 @@ Structure mobs despawn when they are far away from the player.
 - Added dragon Heads
 - Added gilded blackstone
 - Updated the information pictures
-  `/*}*/,
-  "v1.3.0": /*{*/`\
+  `,
+  "v1.3.0": `\
 - Updated to Minecraft 1.16.200
 - Added an achievements PDF
 - Changed the nether wart location
-  `/*}*/,
-  "v1.2.1": /*{*/`\
+  `,
+  "v1.2.1": `\
 - Added recipes for farmland, tall grass, large fern and chorus plants
 - Added Bamboo
 - Removed the obsidian pillars
 - Added Dragon Egg Regeneration
 - Updated the information pictures
-  `/*}*/,
-  "v1.2.0": /*{*/`\
+  `,
+  "v1.2.0": `\
 - Updated to Minecraft 1.16.100
 - Added the ability to toggle off the biome detector
 - Added the nether roof
 - Updated piglin bartering
-  `/*}*/,
-  "v1.1.2": /*{*/`\
+  `,
+  "v1.1.2": `\
 - Improved Stone Mason trades
 - Added more structure locators
 - Added sea pickles
 - Updated the information pictures
-  `/*}*/,
-  "v1.1.1": /*{*/`\
+  `,
+  "v1.1.1": `\
 - Added the behavior pack to the map
 - Added a recipe for decay potions
 - Fixed fire coral recipe
-  `/*}*/,
-  "v1.1.0": /*{*/`\
+  `,
+  "v1.1.0": `\
 - Updated to Minecraft 1.16.20
 - Added piglin brute conversion
 - Fixed clerics glowstone trade
 - Fixed the stronghold structure
-  `/*}*/,
-  "v1.0.3": /*{*/`\
+  `,
+  "v1.0.3": `\
 - The first version of Skybedrock
-  `/*}*/,
+  `,
 }
 
 export const feature_history = { 
-  "Achievements": /*{*/`\
+  "Achievements": `\
 1.3.0: Added an achievements PDF file to the map download
 
 (Removed that PDF file at some point)
@@ -1014,8 +1066,8 @@ export const feature_history = {
 1.21.2: 
 - Players in creative mode can interact with locked achievements
 - Added a return button to the achievements screen
-  `/*}*/,
-  "Archaeology": /*{*/`\
+  `,
+  "Archaeology": `\
 1.19.0:
 - Added suspicious blocks to some of the structures, which regenerate over time after being brushed
 - Added petrified oak slabs to the desert well loot
@@ -1031,8 +1083,8 @@ export const feature_history = {
 - Added dust particles to the locations where suspicious blocks are supposed to regenerate
 - regeneration time is now more randomized
 - Petrified Oak Slab have been given a unique name and a texture
-  `/*}*/,
-  "Biome Detector": /*{*/`\
+  `,
+  "Biome Detector": `\
 1.0.3: Added the biome to the action bar
 
 1.2.0: The biome detector can be activated by standing on a lily of the valley and disabled by standing on a dead bush
@@ -1076,15 +1128,15 @@ export const feature_history = {
 1.21.1:
 - The biome detector item has been removed
 - It can be activated by the guidebook settings
-`/*}*/,
-  "Budding Amethyst": /*{*/`\
+`,
+  "Budding Amethyst": `\
 1.5.0: Added a crafting recipe for budding amethyst
 
 1.20.10:
 - Removed the crafting recipe
 - Budding Amethyst can be created by hitting amethyst blocks with a nether star
-  `/*}*/,
-  "Cave Spiders": /*{*/`\
+  `,
+  "Cave Spiders": `\
 1.0.3:
 - Added a cave spider spawner to the mesa island
 - Cave spiders will drop cobwebs instead of string
@@ -1104,8 +1156,8 @@ export const feature_history = {
 (Use trial spawners or monster spawners to spawn them)
 - Cave spiders will no longer drop cobwebs
 (Use weaving potions to farm it)
-  `/*}*/,
-  "Copper Ingots": /*{*/`\
+  `,
+  "Copper Ingots": `\
 1.5.0
 - Increased drowneds chance to drop copper
 - Changed strays to drop copper when killed
@@ -1123,8 +1175,8 @@ export const feature_history = {
 - Strays will no longer drop copper ingots
 
 1.21.1: Moved the increased copper chance from drowneds into its own addon
-  `/*}*/,
-  "Coral & Tropical Fish": /*{*/`\
+  `,
+  "Coral & Tropical Fish": `\
 1.0.3: Added crafting recipes for coral blocks and coral fans
 
 1.1.1: Fixed the crafting recipe for fire coral
@@ -1145,15 +1197,15 @@ export const feature_history = {
 1.18.0: Moved the coral recipes to the QoL addon
 
 1.21.1: Moved the coral recipes to a their own addon
-  `/*}*/,
-  "Decay Potions": /*{*/`\
+  `,
+  "Decay Potions": `\
 1.1.1: Added a brewing recipe for decay potions
 
 1.20.10: Moved this feature to the Extra Items addon
 
 1.21.1: Separated this feature from the Extra Items addon
-  `/*}*/,
-  "Diamond Chicken": /*{*/`\
+  `,
+  "Diamond Chicken": `\
 1.0.3: Nether stars can be crafted into 4 diamonds
 
 1.4.1: Chickens can very slowly lay diamonds
@@ -1172,8 +1224,8 @@ export const feature_history = {
 1.20.11:
 - Fixed a bug where Diamond Chicken could sometimes become normal chicken without laying a diamond
 - Baby chicken resulting from breeding diamond chicken will no longer have a false diamond feather
-  `/*}*/,
-  "Documentation": /*{*/`\
+  `,
+  "Documentation": `\
 1.0.3: Added a folder to the map download containing information pictures
 
 1.1.2: Separated the biome maps from the rest of the information pictures and changed the format
@@ -1214,8 +1266,8 @@ export const feature_history = {
 1.20.13: Added mini books to the how to play screen
 
 1.21.1: Updated the look of the how to play screen and removed the QoL and Extra Items toggles
-`/*}*/,
-  "Dragon Eggs": /*{*/`\
+`,
+  "Dragon Eggs": `\
 1.2.1: Dragon eggs can be summoned on the end fountain using 4 blocks of netherite
 
 1.20.6: Optimized this feature
@@ -1223,8 +1275,8 @@ export const feature_history = {
 1.20.10: Moved this feature to the Extra Items addon
 
 1.21.1: Merged this feature with the main addon, can be activated with the guidebook
-  `/*}*/,  
-  "Dripstone Drowneds": /*{*/`\
+  `,  
+  "Dripstone Drowneds": `\
 1.20.2:
 - Increased Drowned spawn rates in dripstone caves, and made them spawn in caves
 - Added this feature to the QoL addon
@@ -1234,8 +1286,8 @@ export const feature_history = {
 1.21.0: This feature has been removed
 
 1.21.1: This feature has been added back as an optional addon
-  `/*}*/,
-  "End Stone": /*{*/`\
+  `,
+  "End Stone": `\
 1.0.3: Endermen can convert nearby stone into end stone in the end dimension
 
 1.15.0:
@@ -1249,8 +1301,8 @@ export const feature_history = {
 1.21.2:
 - Endermites will no longer convert stone into end stone
 - Dragon breath can be pumped through a dragon head by a piston onto cobblestone to convert it into end stone
-  `/*}*/,
-  "Enderman+": /*{*/`\
+  `,
+  "Enderman+": `\
 1.2.1: Added a crafting recipe for farmland
 
 1.20.10:
@@ -1261,8 +1313,8 @@ export const feature_history = {
 1.21.1:
 - Merged this feature with the main addon, can be activated with the guidebook
 - Endermen affected by this feature have a different appearance than normal endermen
-  `/*}*/,
-  "Exotic Herbs": /*{*/`\
+  `,
+  "Exotic Herbs": `\
 1.2.1: Added crafting recipes for tall grass, large fern, and chorus plants
 
 1.4.1: Wandering traders can sell sweet berries
@@ -1285,8 +1337,8 @@ export const feature_history = {
 1.20.11: Increased the chance for sniffers to find large fern and tall grass
 
 1.21.1: Separated chorus plants from the Extra Items addon
-  `/*}*/,
-  "Fake Ores": /*{*/`\
+  `,
+  "Fake Ores": `\
 1.0.3: Added crafting recipes for iron and gold ore, and ancient debris
 
 1.5.0: Removed those crafting recipes
@@ -1324,8 +1376,8 @@ export const feature_history = {
 - Custom ores will drop items when exploded
 - Custom redstone ore will randomly emit particles when lit
 - Custom ores will take longer to break if not mined with the right tool
-  `/*}*/,
-  "Glow Lichen": /*{*/`\
+  `,
+  "Glow Lichen": `\
 1.5.0: Glow lichen have been added to the deepslate island
 
 1.6.0: Foxes can spawn with glow lichen
@@ -1337,8 +1389,8 @@ export const feature_history = {
 1.16.0:
 - Foxes can no longer spawn with glow lichen
 - Added glow lichen to the dripstone caves fishing table
-  `/*}*/,
-  "Gold & Netherrack": /*{*/`\
+  `,
+  "Gold & Netherrack": `\
 1.0.3: Zombified piglins can drop netherrack and more gold nuggets
 
 1.10.0: Zombified piglins will drop netherrack in the nether only
@@ -1348,8 +1400,8 @@ export const feature_history = {
 1.18.0: Moved this feature to the QoL addon
 
 1.21.1: Separated this feature from the QoL addon
-  `/*}*/,
-  "Guidebook": /*{*/`\
+  `,
+  "Guidebook": `\
 1.20.6: Skybedrock Guidebook has been added
 
 1.20.7:
@@ -1365,8 +1417,8 @@ export const feature_history = {
 1.21.2:
 - Added a custom user interface
 - Added the map history to the guidebook
-  `/*}*/,
-  "Heart of the Sea": /*{*/`\
+  `,
+  "Heart of the Sea": `\
 1.0.3: Added the heart of the sea as a rare dolphin drop
 
 1.4.0: Dolphins will instead generate a heart of the sea every 30 minutes to one hour
@@ -1380,16 +1432,16 @@ export const feature_history = {
 - It can be purchaced by cartographers
 - It can be used to find treasure chests
 - Dolphins can no longer make hears of the sea
-`/*}*/,
-  "Hunger Penalty": /*{*/`\
+`,
+  "Hunger Penalty": `\
 1.5.0: The player will lose 5 hunger points upon respawning
 
 1.14.0: Fixed a bug that stopped this feature from working
 
 1.15.0: Hunger penalty has been removed
 (This feature was intended to stop 'hunger reset' but it wasn't fair for the players who died to natural causes so it was removed)
-  `/*}*/,
-  "§.Infested Blocks": /*{*/`\
+  `,
+  "§.Infested Blocks": `\
 1.0.3:
 - Silverfish can drop infested stone or cobblestone
 - Added stonecutter recipes for infested regular/mossy/cracked/chiseled stone bricks
@@ -1427,8 +1479,8 @@ export const feature_history = {
 - Silverfish can no longer spawn in windswept hills
 
 1.21.1: Separated this feature from the Extra Items addon
-`/*}*/,
-  "Music discs": /*{*/`\
+`,
+  "Music discs": `\
 1.0.3: Piglins shot by skeletons drop Pigstep
 
 1.9.0: Creepers shot by strays can drop Otherside
@@ -1442,8 +1494,8 @@ export const feature_history = {
 1.21.1: Adjusted the chance for obtaining Creator music box
 
 1.21.2: Charged creepers will also drop Otherside if killed by the bogged
-  `/*}*/,
-  "Natural Shriekers": /*{*/`\
+  `,
+  "Natural Shriekers": `\
 1.17.0: Sculk Shriekers can be turned natural by using warden souls on them
 
 1.19.0: Changed the structure command to a setblock command for this feature
@@ -1464,8 +1516,8 @@ export const feature_history = {
 1.21.2:
 - Echo shards and xp are no longer required to make natural sculk shriekers
 - Shriekers placed by the player in a deep dark biome are natural
-  `/*}*/,
-  "Panda Slime": /*{*/`\
+  `,
+  "Panda Slime": `\
 1.4.1:
 - Slime stopped spawning in flat worlds
 - Weak pandas will drop slime balls to make them obtainable again
@@ -1477,8 +1529,8 @@ export const feature_history = {
 1.10.0:
 - Slimes started spawning in slime chunks again
 - Weak pandas will no longer drop slime balls
-  `/*}*/,
-  "Piglin Brutes": /*{*/`\
+  `,
+  "Piglin Brutes": `\
 1.1.0: When piglins stand on gold blocks, the gold block disappears and the piglin becomes a piglin brute
 
 1.4.0: Piglin brutes are supposed to drop gilded blackstone
@@ -1492,8 +1544,8 @@ export const feature_history = {
 1.17.0: Added sound and particles to the conversion 
 
 1.20.1: Piglins converted into brutes will keep their names
-  `/*}*/,
-  "Player Head": /*{*/`\
+  `,
+  "Player Head": `\
 1.15.0: Player heads can be obtained if a lightning struck a player wearing a zombie or a skeleton head
 
 1.17.0: Lightning can hit armor stands as well to obtain them
@@ -1503,8 +1555,8 @@ export const feature_history = {
 1.20.10: Moved this feature to the Extra Items addon
 
 1.21.1: Merged this feature with the main addon, can be activated with the guidebook
-  `/*}*/,
-  "Purpur Blocks": /*{*/`\
+  `,
+  "Purpur Blocks": `\
 1.15.0:
 - Purpur can be smelted into smooth purpur
 - Purpur can be stonecut into chiseled purpur
@@ -1514,8 +1566,8 @@ export const feature_history = {
 1.20.10: Moved this feature to the Extra Items addon
 
 1.21.1: Separated this feature from the Extra Items addon
-  `/*}*/,
-  "Quick Start": /*{*/`\
+  `,
+  "Quick Start": `\
 1.0.3: Changed the Random Tick Speed to 3
 
 1.4.2: Random tick speed will reset to 1 after the 10th day
@@ -1525,15 +1577,15 @@ export const feature_history = {
 1.17.1: Fixed a bug that stopped all command blocks after the 10th day
 
 1.18.0: This feature has been removed
-  `/*}*/,
-  "Raw Ores": /*{*/`\
+  `,
+  "Raw Ores": `\
 1.6.0: Axolotls can convert ingots into raw ores and netherite scraps into ancient debris
 
 1.8.0: Fixed a bug that resulted in axolotls converting ingots into the wrong raw ore
 
 1.20.0: Improved the visuals of this mechanic
-  `/*}*/,
-  "Shulker Duplication": /*{*/`\
+  `,
+  "Shulker Duplication": `\
 1.0.3:
 - Shulkers can be spawned by putting poped purpur and dragon breath in a chest in the end dimension and standing on it.
 - Shulkers always drop two shulker shells
@@ -1549,8 +1601,8 @@ export const feature_history = {
 1.12.0:
 - Shulkers can duplicate in vanilla Minecraft now, thus this feature has been removed
 - Shulkers no longer always drop 2 shells
-  `/*}*/,
-  "Spawners and Vaults": /*{*/`\
+  `,
+  "Spawners and Vaults": `\
 1.17.0:
 - Added Monster Spawners
 - Can be crafted with chains and nether stars
@@ -1584,8 +1636,8 @@ export const feature_history = {
 1.21.2:
 - Spawner Cores can be used to restore vaults
 - Fixed a bug where the vaults in the trial chambers were unusable
-`/*}*/,
-  "Spore Blossoms": /*{*/`\
+`,
+  "Spore Blossoms": `\
 1.5.0: Added a crafting recipe for spore blossoms
 
 1.20.3:
@@ -1596,8 +1648,8 @@ export const feature_history = {
 - Players can bonemeal rooted dirt for a chance to grow spore blossoms
 - Sniffers can no longer extract spore blossoms in lush caves
 - Increased the chance for sniffers to find small dripleaves
-  `/*}*/,
-  "Strongholds": /*{*/`\
+  `,
+  "Strongholds": `\
 1.0.3: Added 3 strongholds to the overworld, the first one was at 1000, 32, 0
 
 1.1.0: Fixed a bug where one of the strongholds was made out of infested blocks
@@ -1612,8 +1664,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 - The structure locator can no longer be used to locate the strongholds
 - They will now generate in random locations
 - Eyes of ender can be used to locate the nearest stronghold
-  `/*}*/,
-  "Structure Locator": /*{*/`\
+  `,
+  "Structure Locator": `\
 1.0.3: The coordinates of each structure were written on paper placed in item frames in each island
 
 1.1.2: Added locators for the Nether Fortress and the Bastion remnants
@@ -1649,8 +1701,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 1.21.1: Fixed a bug where the structure locator confused the pillager outpost with the woodland mansion
 
 1.21.2: Added a custom user interface
-  `/*}*/,
-  "Structure Spawning": /*{*/`\
+  `,
+  "Structure Spawning": `\
 1.0.3: Added a working pillager outpost, swamp hut, ocean monument, and a nether fortress
 
 1.3.0: Nether wart has been moved to the nether fortress
@@ -1675,8 +1727,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 - Modified the spawning rules to better match vanilla
 - Fixed a bug where structure mobs won't spawn on some variants of planks and stone
 - Fixed a bug where  pillagers and guardians won't spawn inside stained glass and stained glass panes
-`/*}*/,
-  "The Elytra": /*{*/`\
+`,
+  "The Elytra": `\
 1.0.3: Master level leather workers can sell the elytra for 54 emeralds
 
 1.13.0:
@@ -1686,8 +1738,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 1.20.8: Frogs will only eat bees if they are in the end dimension
 
 1.20.12: Fixed a bug where this feature was exclusive to the Extra Items addon
-  `/*}*/,
-  "The End Dimension": /*{*/`\
+  `,
+  "The End Dimension": `\
 1.0.3: 
 - The end island is made of a circular layer of endstone with obsidian pillars and the end fountain
 - Added the chorus island to the left of the main island
@@ -1713,8 +1765,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 - The end border will no longer send a teleport message
 
 1.21.0: Blocks placed on the obsidian platform will break instead of disappear when a player crosses the end border
-`/*}*/,
-  "The Nether Barrier": /*{*/`\
+`,
+  "The Nether Barrier": `\
 1.0.3: Added a 320 by 320 barriar block border around the nether dimension
 
 1.2.1: Added a bedrock roof to the nether to allow for mob spawning
@@ -1738,8 +1790,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 (At some point a Minecraft update brought back patches of the bedrock floor to the nether)
 
 1.20.3: Fixed that bug and removed the bedrock floor entirely
-  `/*}*/,
-  "Totem of Unfalling": /*{*/`\
+  `,
+  "Totem of Unfalling": `\
 1.4.0: Totems will give you levitation and slow falling when the player goes below y 0
 
 1.6.0: This feature no longer uses command blocks
@@ -1759,8 +1811,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 - This feature has been optimized
 
 1.21.2: Totems in the inventory will no longer get consumed before the totems in your hands
-`/*}*/,
-  "Tuff & Calcite": /*{*/`\
+`,
+  "Tuff & Calcite": `\
 1.5.0: Added crafting recipes for tuff and calcite
 
 1.21.0
@@ -1769,8 +1821,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 - Added calcite to the bogged loot
 
 1.21.1: Tuff and calcite recipes have been split from to QoL addon
-  `/*}*/,
-  "Villager Trading": /*{*/`\
+  `,
+  "Villager Trading": `\
 1.0.3:
 - Clerics will sell 4 redstone dust instead of 2 and 5 lapis lazuli instead of 1
 - Leather workers sell elytra for 54 emeralds at Master level
@@ -1795,8 +1847,8 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 1.20.1: Desert and savanna masons can sell sandstone and red sandstone respectively
 
 1.21.1: Separated these features from the QoL addon into 3 addons: Generous Clerics, Generous Masons, and More Glass.
-  `/*}*/,
-  "Witches Loot": /*{*/`\
+  `,
+  "Witches Loot": `\
 1.4.0: Added more redstone and glowstone to the witch loot
 
 1.18.0: Moved this feature to the QoL addon
@@ -1804,12 +1856,12 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 1.21.0: Witches will drop the normal amount of redstone
 
 1.21.1: This feature has been separated from the QoL addon into the More Glowstone addon
-  `/*}*/,
-  "Zombie Horses": /*{*/`\
+  `,
+  "Zombie Horses": `\
 1.20.6: Zombies can convert wild horses into zombie horses
 
 1.20.10: Moved this feature to the Extra Items addon
 
 1.21.1: Separated this feature from the Extra Items addon
-  `/*}*/,
+  `,
 }

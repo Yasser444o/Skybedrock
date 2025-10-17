@@ -162,6 +162,114 @@
 						}
 					},
 					{
+						"nether_gravel@assets.dropdown": {
+							"$title": "Nether Gravel",
+							"$icon": "textures/blocks/nether_gravel",
+							"$collapse": "collapse_nether_gravel",
+							"$content": [
+								{ 
+									"text@assets.text_box": {
+										"$text": "Piglins sell Nether Gravel instead of regular gravel"
+									}
+								},
+								{ "bartering_table_header": { "size": ["100% - 2px", 28], "type": "stack_panel", "orientation": "horizontal",
+									"controls": [
+										{ "biome@assets.table_header": { "size": ["20%", "100%"], "$text": "" }},
+										{ "items": { "size": ["80%", "100%"],  "type": "stack_panel", "orientation": "horizontal",
+											"controls": [
+												{ "item@assets.table_header": { "size": ["25%", "100%"], "$text": "Items" } },
+												{ "quantity@assets.table_header": { "size": ["37.5%", "100%"], "$text": "Quantity" } },
+												{ "chance@assets.table_header": { "size": ["37.5%", "100%"], "$text": "Chance" } }		
+											]
+										}},
+										{ "border@assets.table_border": {}}
+									]
+								}},
+								{ "piglin_barter@how_to_play.bartering_table_item": {
+									"$size": ["100% - 2px", 36],
+									"$items": [
+										{ "i2@assets.bartering_table_entry": {
+											"$item": "nether_gravel",
+											"$quantity": "8-16",
+											"$chance": "8.53%%"
+										}}
+									]
+								}},
+								{ "bartering_footer@assets.table_footer": {}},
+								
+								{ 
+									"text2@assets.text_box": {
+										"$text": "Can be crafted into gravel"
+									}
+								},
+								{
+									"gravel_crafting@how_to_play.crafting2x2_feature": {
+										"$input1": [{"b@assets.nether_gravel":{}}],
+										"$output": [{"b@assets.gravel": {}}]
+									}
+								},
+								{ 
+									"text3@assets.text_box": {
+										"$text": "Breaking Nether gravel yields these items:"
+									}
+								},
+								{ "mining_table_header": { "size": ["100%", 28], "type": "stack_panel", "orientation": "horizontal",
+									"controls": [
+										{ "block@assets.table_header": { "size": [42, "100%"], "$text": "Block" } },
+										{ "tool@assets.table_header": { "size": [38, "100%"], "$text": "Tool" } },
+										{ "loot@assets.table_header": { "size": [38, "100%"], "$text": "Loot" } },
+										{ "chnace@assets.table_header": { "size": [38, "100%"], "$text": "Count" } },
+										{ "duration@assets.table_header": { "size": [100, "100%"], "$text": "Chnace" } },
+										{ "note@assets.table_header": { "size": ["100% - 258px", "100%"], "$text": "" } },
+										{ "border@assets.table_border": {}}
+									]
+								}},
+								{ "gravel@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$loot": [{"b@assets.gravel":{}}],
+									"$duration": "80%%"  
+								}},
+								{ "golden_shovel@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/items/gold_shovel",
+										"$text": "Golden Shovel"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "10%%"  
+								}},
+								{ "fortuneI@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanced_shovel",
+										"$text": "Fortune I"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "6%%"  
+								}},
+								{ "fortuneI@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanced_shovel",
+										"$text": "Fortune II"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "11%%"  
+								}},
+								{ "fortuneI@how_to_play.mining_table_item": {
+									"$block": [{"b@textures.nether_gravel":{}}],
+									"$tool": [{"b@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanced_shovel",
+										"$text": "Fortune III"
+									}}],
+									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$duration": "16%%"  
+								}},
+								{ "footer@assets.table_footer": {} }
+							]
+						}
+					},
+					{
 						"slime_finder@assets.dropdown": {
 							"$title": "Slime Finder",
 							"$icon": "textures/blocks/slime",
@@ -2968,12 +3076,12 @@
 						]
 					}},
 					{ 
-						"glass@assets.text_box": {
+						"glass1@assets.text_box": {
 							"$text": "§a[]§r More Glass"
 						}
 					},
 					{
-						"glass@how_to_play.trading_feature": {
+						"glass2@how_to_play.trading_feature": {
 						"$villager": "Librarian",
 							"$level": "§pJourneyman",
 							"$job": "librarian",
@@ -2983,7 +3091,7 @@
 						}
 					},
 					{ 
-						"terracotta@assets.text_box": {
+						"terracotta1@assets.text_box": {
 							"$text": "§a[]§r Generous Masons"
 						}
 					},
@@ -3008,7 +3116,7 @@
 						}
 					},
 					{
-						"terracotta@how_to_play.trading_feature": {
+						"terracotta2@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§qExpert",
 							"$job": "mason",
@@ -3018,7 +3126,7 @@
 						}
 					},
 					{
-						"quartz@how_to_play.trading_feature": {
+						"quartz1@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§sMaster",
 							"$job": "mason",
@@ -3028,12 +3136,12 @@
 							}
 					},
 					{ 
-						"redstone@assets.text_box": {
+						"redstone1@assets.text_box": {
 							"$text": "§a[]§r Generous Clerics"
 						}
 					},
 					{
-						"redstone@how_to_play.trading_feature": {
+						"redstone2@how_to_play.trading_feature": {
 						"$villager": "Cleric",
 							"$job": "cleric",
 							"$take1": [{"i@assets.emerald":{}}],
@@ -3063,12 +3171,12 @@
 						}
 					},
 					{ 
-						"granite@assets.text_box": {
+						"granite1@assets.text_box": {
 							"$text": "§a[]§r Granite & Diorite"
 						}
 					},
 					{
-						"granite@how_to_play.crafting2x2_feature": {
+						"granite2@how_to_play.crafting2x2_feature": {
 							"$input1": [{"b@assets.diorite":{}}],
 							"$input2": [{"b@assets.quartz":{}}],
 							"$output": [{"b@assets.granite": {
@@ -3088,7 +3196,7 @@
 						}
 					},
 					{ 
-						"calcite@assets.text_box": {
+						"calcite1@assets.text_box": {
 							"$text": "§c[]§r Tuff & Calcite"
 						}
 					},
@@ -3167,12 +3275,12 @@
 						}
 					},
 					{ 
-						"drowneds@assets.text_box": {
+						"drowneds1@assets.text_box": {
 							"$text": "§c[]§r More Drowneds"
 						}
 					},
 					{ 
-						"drowneds@how_to_play.feature_element": {
+						"drowneds2@how_to_play.feature_element": {
 							"$text": "Up to 8 drowneds can spawn in dripstone caves and 8 at surface instead of 5 in caves only.",
 							"$image": "dripstone_drowneds"
 						}
@@ -3529,43 +3637,43 @@
 					{"s2@assets.text_box": {
 						"$text": "Jungle Temple: §qJungle Edge"
 					}},
-					{"s1@assets.text_box": {
+					{"s3@assets.text_box": {
 						"$text": "Desert Pyramid: §6Desert Hills"
 					}},
-					{"s1@assets.text_box": {
+					{"s4@assets.text_box": {
 						"$text": "Desert Well: §gDesert Lakes"
 					}},
-					{"s1@assets.text_box": {
+					{"s5@assets.text_box": {
 						"$text": "Ocean Monument: §sLukewarm Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s6@assets.text_box": {
 						"$text": "Swamp Hut: §qSwamp Hills"
 					}},
-					{"s1@assets.text_box": {
+					{"s7@assets.text_box": {
 						"$text": "Mineshaft: §cModified Badlands"
 					}},
-					{"s1@assets.text_box": {
+					{"s8@assets.text_box": {
 						"$text": "Pillager Outpost: §pSavanna Plateau"
 					}},
-					{"s1@assets.text_box": {
+					{"s9@assets.text_box": {
 						"$text": "Woodland Mansion: §qRoofed Forest"
 					}},
-					{"s1@assets.text_box": {
+					{"s10@assets.text_box": {
 						"$text": "Ancient City: §8Deep Dark"
 					}},
-					{"s1@assets.text_box": {
+					{"s11@assets.text_box": {
 						"$text": "Cold Ocean Ruins: §1Deep Cold Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s12@assets.text_box": {
 						"$text": "Warm Ocean Ruins: §sDeep Warm Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s13@assets.text_box": {
 						"$text": "Shipwreck: §tDeep Lukewarm Ocean"
 					}},
-					{"s1@assets.text_box": {
+					{"s14@assets.text_box": {
 						"$text": "Trail Ruins: §2Old Growth Pine Taiga"
 					}},
-					{"s1@assets.text_box": {
+					{"s15@assets.text_box": {
 						"$text": "Trial Chambers: §2Old Growth Spruce Taiga"
 					}},
 		

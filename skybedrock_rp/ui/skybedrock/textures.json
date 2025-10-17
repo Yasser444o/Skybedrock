@@ -173,6 +173,10 @@
         "$texture": "textures/blocks/nether_gold_ore",
         "$text": "Nether Gold Ore"
     },
+    "nether_gravel@assets.item_renderer": {
+        "$texture": "textures/blocks/nether_gravel",
+        "$text": "Nether Gravel"
+    },
 //**************************************************************
 	"deepslate_coal_ore@assets.item_renderer": {
 		"$texture": "textures/blocks/deepslate/deepslate_coal_ore",

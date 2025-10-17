@@ -1537,6 +1537,10 @@
 		"$texture": "textures/ui/blocks/ore_nether_gold",
 		"$text": "Nether Gold Ore"
 	},
+	"nether_gravel@assets.item_renderer": {
+		"$texture": "textures/ui/blocks/nether_gravel",
+		"$text": "Nether Gravel"
+	},
 //**************************************************************	
 	"infested_cobblestone@assets.item_renderer": {
 		"$texture": "textures/ui/blocks/infested_cobblestone",
