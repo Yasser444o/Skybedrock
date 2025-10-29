@@ -175,8 +175,11 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
         ({sourceEntity}, information, players, location) => {
             const targets = players ?? (sourceEntity ? [sourceEntity] : [])
             targets.forEach(target => {
+				const y = location?.y ?? target.location.y
+				if (y < target.dimension.heightRange.min | y >= target.dimension.heightRange.max) {
+					sourceEntity.sendMessage("§cLocation is outside of the world bounderies"); return
+				}
                 if (location && !target.dimension.getBlock(location)) {
-                    // throw "Cannot access unloaded chunks"
                     sourceEntity.sendMessage("§cCannot access unloaded chunks"); return
                 }
                 if (!information) {
@@ -185,11 +188,9 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
                     target.sendMessage(`/inform slimechunk - §7Queries the slime chunk`)
                 }
                 if (information == "biome") {
-                    system.run(async () => {
-                        const biome = biome_names[await target.dimension.getBiome(location ?? target.location)]
-                        if (location) target.sendMessage(`The biome is ${biome}§r at that location`)
-                        else target.sendMessage(`You are in the ${biome}§r biome`)
-                    })
+					const biome = biome_names[target.dimension.getBiome(location ?? target.location)?.id?.replace('minecraft:', '')]
+					if (location) target.sendMessage(`The biome is ${biome}§r at that location`)
+					else target.sendMessage(`You are in the ${biome}§r biome`)
                 }
                 if (information == "slimechunk") {
                     if (target.dimension.id != "minecraft:overworld") {

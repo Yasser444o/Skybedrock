@@ -15,7 +15,6 @@ import "./items/raw_ores.js"
 import "./items/guidebook.js"
 import "./items/debug_stick.js"
 
-import "./world/biome_detector.js"
 import "./world/suspicious_blocks.js"
 import "./world/structure_spawns.js"
 import "./world/ore_mining.js"

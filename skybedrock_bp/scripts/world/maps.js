@@ -11,26 +11,26 @@ export const locating_players = new Map()
 const overworld_biomes = [
     { biome: biome_names.plains, offset: [6, 6], size: [4, 4] },
     { biome: biome_names.mangrove_swamp, offset: [10, 7], size: [2, 2] },
-    { biome: biome_names.snowy_taiga, offset: [7, 4], size: [2, 2] },
+    { biome: biome_names.cold_taiga, offset: [7, 4], size: [2, 2] },
     { biome: biome_names.desert, offset: [7, 10], size: [2, 2] },
     { biome: biome_names.jungle, offset: [4, 7], size: [2, 2] },
 
     { biome: biome_names.birch_forest, offset: [4, 4], size: [2, 2] },
-    { biome: biome_names.dark_forest, offset: [10, 4], size: [2, 2] },
+    { biome: biome_names.roofed_forest, offset: [10, 4], size: [2, 2] },
     { biome: biome_names.savanna, offset: [10, 10], size: [2, 2] },
-    { biome: biome_names.mushroom_fields, offset: [4, 10], size: [2, 2] },
+    { biome: biome_names.mushroom_island, offset: [4, 10], size: [2, 2] },
 
     { biome: biome_names.pale_garden, offset: [7, 1], size: [2, 2] },
     { biome: biome_names.warm_ocean, offset: [13, 7], size: [2, 2] },
-    { biome: biome_names.badlands, offset: [7, 13], size: [2, 2] },
+    { biome: biome_names.mesa, offset: [7, 13], size: [2, 2] },
     { biome: biome_names.cherry_grove, offset: [1, 7], size: [2, 2] },
 
     { biome: biome_names.snowy_slopes, offset: [5, 2], size: [2, 2] },
     { biome: biome_names.grove, offset: [12, 5], size: [2, 2] },
-    { biome: biome_names.wooded_badlands, offset: [9, 12], size: [2, 2] },
+    { biome: biome_names.mesa_plateau_stone, offset: [9, 12], size: [2, 2] },
     { biome: biome_names.meadow, offset: [2, 9], size: [2, 2] },
 
-    { biome: biome_names.snowy_plains, offset: [7, 3], size: [2, 1] },
+    { biome: biome_names.ice_plains, offset: [7, 3], size: [2, 1] },
     { biome: biome_names.ocean, offset: [12, 7], size: [1, 2] },
     { biome: biome_names.deep_ocean, offset: [7, 12], size: [2, 1] },
     { biome: biome_names.flower_forest, offset: [3, 7], size: [1, 2] },
@@ -38,14 +38,14 @@ const overworld_biomes = [
     { biome: biome_names.forest, offset: [6, 4], size: [1, 2] },
     { biome: biome_names.taiga, offset: [9, 4], size: [1, 2] },
     { biome: biome_names.river, offset: [10, 6], size: [2, 1] },
-    { biome: biome_names.swamp, offset: [10, 9], size: [2, 1] },
+    { biome: biome_names.swampland, offset: [10, 9], size: [2, 1] },
     { biome: biome_names.beach, offset: [9, 10], size: [1, 2] },
     { biome: biome_names.cold_ocean, offset: [6, 10], size: [1, 2] },
     { biome: biome_names.bamboo_jungle, offset: [4, 9], size: [2, 1] },
-    { biome: biome_names.sparse_jungle, offset: [4, 6], size: [2, 1] },
+    { biome: biome_names.jungle_edge, offset: [4, 6], size: [2, 1] },
 
     {
-        surface: biome_names.windswept_hills,
+        surface: biome_names.extreme_hills,
         cave: biome_names.dripstone_caves,
         offset: [9, 2], size: [2, 2]
     },
@@ -61,27 +61,27 @@ const overworld_biomes = [
         offset: [2, 5], size: [2, 2]
     },
 
-    { biome: biome_names.stony_shore, offset: [3, 2], size: [2, 2] },
-    { biome: biome_names.stony_shore, offset: [2, 3], size: [2, 2] },
-    { biome: biome_names.ice_spikes, offset: [11, 2], size: [2, 2] },
-    { biome: biome_names.ice_spikes, offset: [12, 3], size: [2, 2] },
-    { biome: biome_names.gravelly_mountains, offset: [12, 11], size: [2, 2] },
-    { biome: biome_names.gravelly_mountains, offset: [11, 12], size: [2, 2] },
+    { biome: biome_names.stone_beach, offset: [3, 2], size: [2, 2] },
+    { biome: biome_names.stone_beach, offset: [2, 3], size: [2, 2] },
+    { biome: biome_names.ice_plains_spikes, offset: [11, 2], size: [2, 2] },
+    { biome: biome_names.ice_plains_spikes, offset: [12, 3], size: [2, 2] },
+    { biome: biome_names.extreme_hills_mutated, offset: [12, 11], size: [2, 2] },
+    { biome: biome_names.extreme_hills_mutated, offset: [11, 12], size: [2, 2] },
     { biome: biome_names.frozen_ocean, offset: [2, 11], size: [2, 2] },
     { biome: biome_names.frozen_ocean, offset: [3, 12], size: [2, 2] },
 ]
 
 const nether_biomes = [
-    { biome: biome_names.nether_wastes, offset: [6, 6], size: [4, 4] },
+    { biome: biome_names.hell, offset: [6, 6], size: [4, 4] },
     { biome: biome_names.crimson_forest, offset: [10, 7], size: [2, 2] },
     { biome: biome_names.soulsand_valley, offset: [7, 4], size: [2, 2] },
     { biome: biome_names.basalt_deltas, offset: [7, 10], size: [2, 2] },
     { biome: biome_names.warped_forest, offset: [4, 7], size: [2, 2] },
 
-    { biome: biome_names.nether_wastes, offset: [3, 3], size: [4, 4] },
-    { biome: biome_names.nether_wastes, offset: [3, 9], size: [4, 4] },
-    { biome: biome_names.nether_wastes, offset: [9, 3], size: [4, 4] },
-    { biome: biome_names.nether_wastes, offset: [9, 9], size: [4, 4] },
+    { biome: biome_names.hell, offset: [3, 3], size: [4, 4] },
+    { biome: biome_names.hell, offset: [3, 9], size: [4, 4] },
+    { biome: biome_names.hell, offset: [9, 3], size: [4, 4] },
+    { biome: biome_names.hell, offset: [9, 9], size: [4, 4] },
 ]
 
 export function see_maps(player) {
