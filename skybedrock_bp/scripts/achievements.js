@@ -1424,7 +1424,7 @@ export const quests = {
 				if (!nearest_item) return
 				if (get_distance(nearest_item.location, location)) return
 				if (nearest_item.getComponent('item').itemStack.typeId != 'minecraft:tropical_fish') return
-				if ((() => { try { dimension.getBlock(location).permutation } catch { return true }})()) return
+				if ((() => { try { dimension.getBiome(location) } catch { return true }})()) return
 				if (dimension.getBiome(location).id != "minecraft:desert") return
 				complete(player, id)
 				stop_challenge(player, id)
@@ -1537,7 +1537,7 @@ export const quests = {
 			const boat = ride?.typeId?.includes('boat')
 			const water = ride?.isInWater
 			const spyglass = player.getComponent('equippable').getEquipment('Mainhand')?.typeId == 'minecraft:spyglass'
-			if ((() => { try { player.dimension.getBlock(player.location).permutation } catch { return true }})()) return
+			if ((() => { try { player.dimension.getBiome(player.location) } catch { return true }})()) return
 			const ocean = (player.dimension.getBiome(player.location).id).includes("ocean")
 			return parrot && boat && water && spyglass && ocean
 		},

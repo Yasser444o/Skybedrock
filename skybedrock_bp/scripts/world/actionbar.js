@@ -49,7 +49,7 @@ system.runInterval(() => { world.getAllPlayers().forEach(player => {
 		player.onScreenDisplay.setActionBar(`structure:d${direction}:s${structure_index}`)
 	}
     if (biome_on) {
-		if ((() => { try { player.dimension.getBlock(player.location).permutation } catch { return true }})()) return
+		if ((() => { try { player.dimension.getBiome(player.location) } catch { return true }})()) return
 		const biome_id = player.dimension.getBiome(player.location)?.id
 		const biome_name = biome_names[biome_id?.replace('minecraft:', '')]
 		if (structure != undefined) {
