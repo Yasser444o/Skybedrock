@@ -816,28 +816,6 @@
 						}
 					},
 					{
-						"structure_spawning@assets.dropdown": {
-							"$title": "Structure Spawning",
-							"$icon": "textures/ui/structures/monument",
-							"$collapse": "collapse_structure_spawning",
-							"$content": [
-								{
-									"disclaimer@assets.text_box": {
-										"$text": "* After so long, Mojang have fixed the bug that prevented structure mobs from spawning in flat worlds, I have added the real pillager outpost and swamp hut, I will add the ocean monument in a later update *",
-										"$alignment": "center",
-										"$color": [ 0.5, 1.0, 0.0 ]
-									}
-								},
-								{ 
-									"monument@how_to_play.feature_element": {
-										"$text": "§3§lOcean Monument:§r\n\n* There are 22 Spawning Spots in the Ocean Monument.\n* Every 5 ticks a random spot is selected and a Guardian attempts to spawn on it.\n* The Spawn attempt fails if the block below isn't a solid block or a Sea Lantern.\n* The Spawn attempt fails if the block below is Soul Sand, upside down Slab or Stairs.\n* Guardians can spawn inside Water or Flowing Water, but not Bubble Columns or waterlogged blocks.\n* The block above can be Water, Flowing Water, Air, Glass, and most blocks with no collision.\n* There must be no mob standing on the spawning spot.\n* There must be no more than 2 Guardians within 5 blocks of the spawning spot.\n* There must be less than 16 hostile mobs in loaded chunks.\n* There must be a Player within 24 to 44 blocks away from the spawning spot.\n* There must be no Players within 24 blocks of the spawning spot.",
-										"$image": "monument_guardian"
-									}
-								}
-							]
-						}
-					},
-					{
 						"piglin_brutes@assets.dropdown": {
 							"$title": "Piglin Brutes",
 							"$icon": "textures/items/gold_axe",

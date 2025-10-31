@@ -16,7 +16,6 @@ import "./items/guidebook.js"
 import "./items/debug_stick.js"
 
 import "./world/suspicious_blocks.js"
-import "./world/structure_spawns.js"
 import "./world/ore_mining.js"
 import "./world/actionbar.js"
 import "./world/stats.js"
