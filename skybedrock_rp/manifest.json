@@ -5,7 +5,7 @@
 		"name": "SkyBedrock RP",
 		"uuid": "3c547789-f28e-41e2-8a9e-0b0333ff0967",
 		"version": [ 1, 21, 14 ],
-		"min_engine_version": [ 1, 21, 110 ]
+		"min_engine_version": [ 1, 21, 90 ]
 	},
 	"modules": [
 		{

@@ -666,7 +666,7 @@ export const quests = {
 			- place one end crystal on each side of the end exit fountain
 			- respawn the ender dragon
 			- wait for the 10 pillars to regenerate
-			(If you don't want to fight the dragon, you could interrupt its summoning by exploding the end crystals right before it spawns)
+			(If you don't want to fight the ender dragon, you could interrupt its summoning by blowing up the end crystals right before it spawns)
 		`,
 		query: () => pillar_locations.every(loc => check_block(world.getDimension("minecraft:the_end"), {...loc, y: 0}, "minecraft:obsidian", false))
 	},
@@ -1393,7 +1393,7 @@ export const quests = {
 			callback: (player, id, time) => () => { time--
 				const warden = player.runCommand('testfor @e[type=warden, r=16]').successCount
 				if (!warden) {
-					player.sendMessage("§mYou have failed!")
+					player.sendMessage("§mChallenge failed!")
 					stop_challenge(player, id)
 				}
 				if (time == 0) {
