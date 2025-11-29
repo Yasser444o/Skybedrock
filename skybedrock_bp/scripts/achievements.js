@@ -666,7 +666,7 @@ export const quests = {
 			- place one end crystal on each side of the end exit fountain
 			- respawn the ender dragon
 			- wait for the 10 pillars to regenerate
-			(If you don't want to fight the dragon, you could interrupt its summoning by exploding the end crystals right before it spawns)
+			(If you don't want to fight the ender dragon, you could interrupt its summoning by blowing up the end crystals right before it spawns)
 		`,
 		query: () => pillar_locations.every(loc => check_block(world.getDimension("minecraft:the_end"), {...loc, y: 0}, "minecraft:obsidian", false))
 	},
@@ -1393,7 +1393,7 @@ export const quests = {
 			callback: (player, id, time) => () => { time--
 				const warden = player.runCommand('testfor @e[type=warden, r=16]').successCount
 				if (!warden) {
-					player.sendMessage("§mYou have failed!")
+					player.sendMessage("§mChallenge failed!")
 					stop_challenge(player, id)
 				}
 				if (time == 0) {
@@ -1424,11 +1424,10 @@ export const quests = {
 				if (!nearest_item) return
 				if (get_distance(nearest_item.location, location)) return
 				if (nearest_item.getComponent('item').itemStack.typeId != 'minecraft:tropical_fish') return
-				system.run(async () => {
-					if (await dimension.getBiome(location) != "desert") return
-					complete(player, id)
-					stop_challenge(player, id)
-				})
+				if ((() => { try { dimension.getBiome(location) } catch { return true }})()) return
+				if (dimension.getBiome(location).id != "minecraft:desert") return
+				complete(player, id)
+				stop_challenge(player, id)
 			}
 		},
 		reward: ["Trophy Fish Mount", `give @s frame`]
@@ -1532,13 +1531,14 @@ export const quests = {
 			- look through the spyglass
 			(Look at yourself XD)
 		`,
-		query: async (player) => {
+		query: (player) => {
 			const parrot = player.getComponent('rideable').getRiders().find(rider => rider.typeId == 'minecraft:parrot')
 			const ride = player.getComponent('riding')?.entityRidingOn
 			const boat = ride?.typeId?.includes('boat')
 			const water = ride?.isInWater
 			const spyglass = player.getComponent('equippable').getEquipment('Mainhand')?.typeId == 'minecraft:spyglass'
-			const ocean = (await player.dimension.getBiome(player.location)).includes("ocean")
+			if ((() => { try { player.dimension.getBiome(player.location) } catch { return true }})()) return
+			const ocean = (player.dimension.getBiome(player.location).id).includes("ocean")
 			return parrot && boat && water && spyglass && ocean
 		},
 		reward: ["A treasure map and a Banner", (player) => {

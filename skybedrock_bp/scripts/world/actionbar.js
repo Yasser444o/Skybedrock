@@ -39,7 +39,7 @@ function get_direction(id, player) {
 	} else return system.currentTick % 32
 }
 
-system.runInterval(() => { world.getAllPlayers().forEach(async player => {
+system.runInterval(() => { world.getAllPlayers().forEach(player => {
 	const biome_on = player.getDynamicProperty('biome_detector')
 	const structure = locating_players.get(player.id)
   
@@ -49,14 +49,16 @@ system.runInterval(() => { world.getAllPlayers().forEach(async player => {
 		player.onScreenDisplay.setActionBar(`structure:d${direction}:s${structure_index}`)
 	}
     if (biome_on) {
-		const biome = biome_names[await player.dimension.getBiome(player.location)]
+		if ((() => { try { player.dimension.getBiome(player.location) } catch { return true }})()) return
+		const biome_id = player.dimension.getBiome(player.location)?.id
+		const biome_name = biome_names[biome_id?.replace('minecraft:', '')]
 		if (structure != undefined) {
 			const direction = get_direction(structure, player)
 			const structure_index = all_structures.findIndex(poi => poi.id == structure)
-			player.onScreenDisplay.setActionBar(`structure:d${direction}:s${structure_index}biome:${biome ?? "§0The Void"}`)
+			player.onScreenDisplay.setActionBar(`structure:d${direction}:s${structure_index}biome:${biome_name ?? "§0The Void"}`)
 		}
 		else {
-			player.onScreenDisplay.setActionBar(`biome:${biome ?? "§0The Void"}`)
+			player.onScreenDisplay.setActionBar(`biome:${biome_name ?? "§0The Void"}`)
 			system.runTimeout(()=> { if (!player.getDynamicProperty('biome_detector')) {
 				player.onScreenDisplay.setActionBar('§.')
 			}}, 5)

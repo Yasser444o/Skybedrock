@@ -36,7 +36,7 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
 	customCommandRegistry.registerEnum("skybedrock:destination", Object.keys(destinations))
     customCommandRegistry.registerEnum("skybedrock:quest_id", ['*', ...Object.keys(quests)])
     customCommandRegistry.registerEnum("skybedrock:action", ['grant', 'revoke'])
-    customCommandRegistry.registerEnum("skybedrock:information", ['biome', 'slimechunk'])
+    customCommandRegistry.registerEnum("skybedrock:information", ['biome', 'light', 'slimechunk'])
     customCommandRegistry.registerEnum("skybedrock:settings", Object.keys(settings))
     customCommandRegistry.registerEnum("skybedrock:settings_action", ['enable', 'disable', 'query', 'help'])
     customCommandRegistry.registerEnum("skybedrock:to_recovere", ['bucket', 'lava', 'water', 'sapling', 'portal', 'grass', 'guidebook'])
@@ -168,38 +168,46 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
             permissionLevel: 0,
             optionalParameters: [
                 {name: "skybedrock:information", type: "Enum"},
-                {name: "player", type: "PlayerSelector"},
                 {name: "location", type: "Location"},
             ]
         },
-        ({sourceEntity}, information, players, location) => {
-            const targets = players ?? (sourceEntity ? [sourceEntity] : [])
-            targets.forEach(target => {
-                if (location && !target.dimension.getBlock(location)) {
-                    // throw "Cannot access unloaded chunks"
-                    sourceEntity.sendMessage("§cCannot access unloaded chunks"); return
-                }
-                if (!information) {
-                    target.sendMessage(`Usage:`)
-                    target.sendMessage(`/inform biome - §7Queries the biome`)
-                    target.sendMessage(`/inform slimechunk - §7Queries the slime chunk`)
-                }
-                if (information == "biome") {
-                    system.run(async () => {
-                        const biome = biome_names[await target.dimension.getBiome(location ?? target.location)]
-                        if (location) target.sendMessage(`The biome is ${biome}§r at that location`)
-                        else target.sendMessage(`You are in the ${biome}§r biome`)
-                    })
-                }
-                if (information == "slimechunk") {
-                    if (target.dimension.id != "minecraft:overworld") {
-                        sourceEntity.sendMessage("§cYou Can not use this command outside the overworld"); return
-                    }
-                    const slimy = isSlimy(location ?? target.location)
-                    if (location) target.sendMessage(slimy ? 'The selected location is within a §aslime chunk' : 'The selected location is §cnot§r within a slime chunk')
-                    else target.sendMessage(slimy ? 'You are inside a §aslime chunk' : 'You are §cnot§r inside a slime chunk')
-                }
-            })
+        ({sourceEntity:source}, information, location) => {
+			if (!source) return
+			const {dimension} = source
+			if (!location) location = source.location
+			if (location.y < dimension.heightRange.min | location.y >= dimension.heightRange.max) {
+				source.sendMessage("§cLocation is outside of the world bounderies"); return
+			}
+			if (!dimension.isChunkLoaded(location)) {
+				source.sendMessage("§cCannot access unloaded chunks"); return
+			}
+			if (!information) {
+				source.sendMessage(`Usage:`)
+				source.sendMessage(`/inform biome - §7Queries the biome`)
+				source.sendMessage(`/inform light - §7Queries the block and sky light`)
+				source.sendMessage(`/inform slimechunk - §7Queries the slime chunk`)
+			}
+			const [x, y, z] = [location.x, location.y, location.z].map(a => Math.floor(a))
+			if (information == "biome") {
+				const biome = biome_names[dimension.getBiome(location)?.id?.replace('minecraft:', '')]
+				source.sendMessage(`The biome at ${x}, ${y}, ${z} is: ${biome}`)
+			}
+			if (information == "light") {
+				system.run(() => {
+					const block_light = dimension.getLightLevel(location)
+					const sky_light = dimension.getSkyLightLevel(location)
+					source.sendMessage(`Light level at ${x}, ${y}, ${z}:`)
+					source.sendMessage(`Sky Light: §b${sky_light}§r | Block Light: §e${block_light}§r`)
+				})
+			}
+			if (information == "slimechunk") {
+				if (dimension.id != "minecraft:overworld") {
+					source.sendMessage("§cYou can not use this command outside the overworld"); return
+				}
+				const slimy = isSlimy(location)
+				if (slimy) source.sendMessage(`The location ${x}, ${y}, ${z} is inside a §aslime chunk`)
+				else source.sendMessage(`The location ${x}, ${y}, ${z} is §cnot§r inside a slime chunk`)
+			}
         }
     )
     customCommandRegistry.registerCommand(

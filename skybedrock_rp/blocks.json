@@ -96,7 +96,12 @@
 		"sound": "mob_spawner"
 	},
 	"skybedrock:sand_support": {
-		"textures": "none"
+		"textures": "none",
+		"sound": "sand"
+	},
+	"skybedrock:liquid_holder": {
+		"textures": "none",
+		"sound": "water"
 	},
 	"skybedrock:nether_gravel": {
 		"textures": "nether_gravel",

@@ -816,28 +816,6 @@
 						}
 					},
 					{
-						"structure_spawning@assets.dropdown": {
-							"$title": "Structure Spawning",
-							"$icon": "textures/ui/structures/monument",
-							"$collapse": "collapse_structure_spawning",
-							"$content": [
-								{
-									"disclaimer@assets.text_box": {
-										"$text": "* After so long, Mojang have fixed the bug that prevented structure mobs from spawning in flat worlds, I have added the real pillager outpost and swamp hut, I will add the ocean monument in a later update *",
-										"$alignment": "center",
-										"$color": [ 0.5, 1.0, 0.0 ]
-									}
-								},
-								{ 
-									"monument@how_to_play.feature_element": {
-										"$text": "§3§lOcean Monument:§r\n\n* There are 22 Spawning Spots in the Ocean Monument.\n* Every 5 ticks a random spot is selected and a Guardian attempts to spawn on it.\n* The Spawn attempt fails if the block below isn't a solid block or a Sea Lantern.\n* The Spawn attempt fails if the block below is Soul Sand, upside down Slab or Stairs.\n* Guardians can spawn inside Water or Flowing Water, but not Bubble Columns or waterlogged blocks.\n* The block above can be Water, Flowing Water, Air, Glass, and most blocks with no collision.\n* There must be no mob standing on the spawning spot.\n* There must be no more than 2 Guardians within 5 blocks of the spawning spot.\n* There must be less than 16 hostile mobs in loaded chunks.\n* There must be a Player within 24 to 44 blocks away from the spawning spot.\n* There must be no Players within 24 blocks of the spawning spot.",
-										"$image": "monument_guardian"
-									}
-								}
-							]
-						}
-					},
-					{
 						"piglin_brutes@assets.dropdown": {
 							"$title": "Piglin Brutes",
 							"$icon": "textures/items/gold_axe",
@@ -2367,6 +2345,175 @@
 						}
 					},
 					{
+						"mob_equipment@assets.dropdown": {
+							"$title": "Mob Equipment",
+							"$icon": "textures/items/copper_chestplate",
+							"$collapse": "collapse_mob_equipment",
+							"$group_size": ["15%", "100%"],
+							"$entry_size": ["30%", "100%"],
+							"$slot_size": ["50%", "100%"],
+							"$content": [
+								{ "mob_equipment_table@assets.table": {
+									"$header": [
+										{ "group@assets.table_header": { "size": "$group_size", "$text": "Groups" } },
+										{ "item@assets.table_header": { "size": ["15%", "100%"], "$text": "Items" } },
+										{ "chance@assets.table_header": { "size": ["15%", "100%"], "$text": "Chance" } },	
+										{ "gap@assets.table_header": { "size": ["fill", "100%"]} },
+										{ "border@assets.table_border": {}}
+									],
+									"$entries": [
+										{ "ominous_trial_melee": { "type": "stack_panel", "orientation": "horizontal",
+											"size": ["100% - 2px", 180], "controls": [
+												{ "group@assets.table_header": { "size": "$group_size", "$content": [
+													{"background@assets.item_renderer": {
+														"$texture": "textures/blocks/trial_spawner_side_active_ominous"
+													}},
+													{"icon@assets.item_renderer": {
+														"$texture": "textures/items/iron_sword",
+														"$text": "Melee Equipment for Ominous Trial Spawner Mobs"
+													}}
+												]}},
+												{ "items": { "type": "stack_panel", "size": "$entry_size", "controls": [
+													{ "armor": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [
+															{"background@assets.item_renderer": {
+																"$texture": "textures/blocks/trial_spawner_side_active_ominous"
+															}},
+															{"icon@assets.item_renderer": {
+																"$texture": "textures/items/iron_chestplate",
+																"$text": "Ominous Trial Spawner Mob Armor"
+															}}
+														]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "100%%"
+														}}
+													]}},
+													{ "copper_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/copper_sword",
+															"$text": "Copper Sword"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "43%%"
+														}}
+													]}},
+													{ "sharp_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/ui/items/enchanted_copper_sword",
+															"$text": "§bCopper Sword\n§7Sharpness II"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "29%%"
+														}}
+													]}},
+													{ "knockback_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/ui/items/enchanted_iron_sword",
+															"$text": "§bIron Sword\n§7Knockback I"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "14%%"
+														}}
+													]}},
+													{ "diamond_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/diamond_sword",
+															"$text": "Diamond Sword"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "14%%"
+														}}
+													]}}
+												]}},
+												{ "gap@assets.table_cell": { "size": ["fill", "100%"]} },
+												{ "border@assets.table_border": {}}
+											]
+										}},
+										{ "ominous_trial_armor": { "type": "stack_panel", "orientation": "horizontal",
+											"size": ["100% - 2px", 108], "controls": [
+												{ "group@assets.table_header": { "size": "$group_size", "$content": [
+													{"background@assets.item_renderer": {
+														"$texture": "textures/blocks/trial_spawner_side_active_ominous"
+													}},
+													{"icon@assets.item_renderer": {
+														"$texture": "textures/items/iron_chestplate",
+														"$text": "Ominous Trial Spawner Mob Armor"
+													}}
+												]}},
+												{ "items": { "type": "stack_panel", "size": "$entry_size", "controls": [
+													{ "copper": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/copper_chestplate",
+															"$text": "Copper Armor"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "57%%"
+														}}
+													]}},
+													{ "iron": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/iron_chestplate",
+															"$text": "Iron Armor"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "29%%"
+														}}
+													]}},
+													{ "diamond": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/diamond_chestplate",
+															"$text": "Diamond Armor"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "14%%"
+														}}
+													]}}
+												]}},
+												{ "gap@assets.table_cell": { "size": ["fill", "100%"]} },
+												{ "border@assets.table_border": {}}
+											]
+										}},
+										{ "copper_armor": { "type": "stack_panel", "orientation": "horizontal",
+											"size": ["100% - 2px", 72], "controls": [
+												{ "group@assets.table_header": { "size": "$group_size", "$content": [
+													{"background@assets.item_renderer": {
+														"$texture": "textures/blocks/trial_spawner_side_active_ominous"
+													}},
+													{"icon@assets.item_renderer": {
+														"$texture": "textures/items/copper_chestplate",
+														"$text": "Copper Armor for Ominous Trial Spawner Mobs"
+													}}
+												]}},
+												{ "items": { "type": "stack_panel", "size": "$entry_size", "controls": [
+													{ "helmet": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/copper_helmet",
+															"$text": "Copper Helmet"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "75%%"
+														}}
+													]}},
+													{ "chestplate": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
+														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
+															"$texture": "textures/items/copper_chestplate",
+															"$text": "Copper Chestplate"
+														}}]}},
+														{ "chance@assets.table_cell": { "size": "$slot_size",
+															"$text": "75%%"
+														}}
+													]}}
+												]}},
+												{ "gap@assets.table_cell": { "size": ["fill", "100%"]} },
+												{ "border@assets.table_border": {}}
+											]
+										}}
+									]
+								}}
+							]
+						}
+					},
+					{
 						"bartering@assets.dropdown": {
 							"$title": "Piglin Bartering",
 							"$icon": "textures/items/gold_ingot",
@@ -3788,7 +3935,7 @@
 						"$text": "/inform", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
 					}},
 					{ "inform@assets.text_box": {
-						"$text": "§o§7%command.inform.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /inform [information] [player] [location]\n\n§vParameters:§r\n- information: §g[biome | slimechunk]§r  §7(If omitted, it will show you the command usage§7)§r\n- player: A player target selector  §7(Defaults to §e@s§7)§r\n- location: A set of coordinates  §7(Defaults to §e~ ~ ~§7)§r"
+						"$text": "§o§7%command.inform.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /inform [information] [player] [location]\n\n§vParameters:§r\n- information: §g[biome | slimechunk | light]§r  §7(If omitted, it will show you the command usage§7)§r\n- player: A player target selector  §7(Defaults to §e@s§7)§r\n- location: A set of coordinates  §7(Defaults to §e~ ~ ~§7)§r"
 					}},
 
 					{ "quests_header@how_to_play_common.header": {
@@ -4688,6 +4835,37 @@
 					"type": "stack_panel",
 					"size": ["40%", "100%"],
 					"controls": "$notes"
+				}
+			},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"equpment_table_item": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"$color": [0.95, 0.95, 0.95],
+		"$size": ["100% - 2px", 36], // heights: 72 108 144 180 242 278 304
+		"size": "$size",
+		"$notes": [{ "notes@assets.table_cell": {"$content": []}}],
+		"controls": [
+			{
+				"mob@assets.table_header": {
+					"size": ["15%", "100%"],
+					"$content": "$mob",
+					"$color": "$color"
+				}
+			},
+			{
+				"items": {
+					"type": "stack_panel",
+					"size": ["30%", "100%"],
+					"controls": "$drops"
+				}
+			},
+			{
+				"gap": {
+					"type": "panel",
+					"size": ["55%", "100%"]
 				}
 			},
 			{ "border@assets.table_border": {}}
