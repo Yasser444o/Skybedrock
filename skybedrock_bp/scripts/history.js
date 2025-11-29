@@ -1,4 +1,15 @@
 export const change_logs = {
+  "v1.21.15": `\
+- Added the '/inform light' subcommand to show you the light level of a block
+- Given Copper equipment to trial spawner mobs
+- Water will no longer spill when placing a block next to the ocean island
+- Added the ocean island and ocean monument to the /restore command
+- Replaced the custom script that makes guardians spawn in the ocean monument with a real ocean monument structure
+- Changed the location and shape of the ocean monument
+- Expanded the water perimeter and added a gravel floor to include all the spawning spots for guardians around the structure
+- Replaced my getBiome() function with the vanilla getBiome() function
+- Fixed some errors with the bastion remnants and dripstone island
+  `,
   "v1.21.14": `\
 General Changes:
 - Added a recipe for copper horse armor

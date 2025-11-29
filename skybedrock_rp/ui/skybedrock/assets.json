@@ -128,6 +128,25 @@
 //}
 
 //tables {
+
+	"table": {
+		"type": "stack_panel",
+		"size": ["100%", "100%c"],
+		"controls": [
+			{ "header": {
+				"type": "stack_panel",
+				"orientation": "horizontal",
+				"size": ["100% - 2px", 24],
+				"controls": "$header"
+			}},
+			{ "entries": {
+				"type": "stack_panel",
+				"controls": "$entries"
+			}},
+			{ "footer@assets.table_footer": {}}
+		]
+	},
+
 	"black_text": {
 		"type": "label",
 		"layer": 10,
@@ -186,6 +205,7 @@
 	"table_cell@assets.white_box": {
 		"color": [0.8, 0.8, 0.8],
 		"$color": [0.95, 0.95, 0.95],
+		"$text": "",
 		"$content": [{ "text@assets.black_text": {
 			"text": "$text",
 			"text_alignment": "center",
@@ -205,6 +225,7 @@
 	"table_header@assets.white_box": {
 		"color": [0.8, 0.8, 0.8],
 		"$color": [1, 1, 1],
+		"$text": "",
 		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
 		"controls": [
 			{ "background@assets.gray_box": {
