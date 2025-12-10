@@ -861,7 +861,7 @@
 										"$job": "cartographer",
 										"$take1": [{"i@assets.emerald":{ "$count": "14" }}],
 										"$take2": [{"i@assets.compass":{}}],
-										"$give": [{"i@assets.treasure_map":{}}],
+										"$give": [{"i@assets.sky_treasure_map":{}}],
 										"$details": "* Probability: 100%%\n* Number of Trades: 12"
 									}
 								},

@@ -1159,7 +1159,7 @@ export const quests = {
 		`,
 		query: (player) => (
 			in_raduis(player, '-641 45 262', undefined, 30) &&
-			check_items(player, 'yasser444:treasure_map')
+			check_items(player, 'skybedrock:sky_treasure_map')
 		)
 	},
 	ancient_city: {
@@ -1543,7 +1543,7 @@ export const quests = {
 		},
 		reward: ["A treasure map and a Banner", (player) => {
 			player.dimension.spawnItem(stored_items.rewards[1], player.location)
-			player.dimension.spawnItem(new ItemStack('yasser444:treasure_map'), player.location)
+			player.dimension.spawnItem(new ItemStack('skybedrock:sky_treasure_map'), player.location)
 		}]
 	},
 	crafted_trials: {

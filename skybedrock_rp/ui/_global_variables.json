@@ -92,8 +92,20 @@
 			"target_property_name": "#visible"
 		}
 	],
+	"$get_form_button_texture": [{
+		"binding_type": "collection",
+		"binding_collection_name": "form_buttons",
+		"binding_name": "#form_button_text",
+		"binding_name_override": "#texture"
+	}],
+	"$get_form_button_details": [
+		{
+			"binding_name": "#form_button_length",
+			"binding_name_override": "#collection_length"
+		}
+	],
 	"$has_button_tag": [
-	  {
+		{
 			"binding_type": "collection_details",
 			"binding_collection_name": "form_buttons"
 		},
@@ -173,7 +185,7 @@
 
 
 	// specialized bindings
-	"$get_biome_box_data": [ // $source1 $source2 $target1 $target2
+	"$get_area_data": [ // $source1 $source2 $target1 $target2
 		{
 			"binding_type": "collection_details",
 			"binding_collection_name": "form_buttons"
@@ -185,12 +197,12 @@
 		},
 		{
 			"binding_type": "view",
-			"source_property_name": "(not (#form_button_text = #form_button_text - '§biome§ '))",
+			"source_property_name": "(not (#form_button_text = #form_button_text - 'area '))",
 			"target_property_name": "#visible"
 		},
 		{
 			"binding_type": "view",
-			"source_property_name": "(#form_button_text - '§biome§ ')",
+			"source_property_name": "(#form_button_text - 'area ')",
 			"target_property_name": "#data"
 		},
 		{

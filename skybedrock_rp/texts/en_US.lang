@@ -2,6 +2,17 @@
 item.skybedrock:guidebook=Skybedrock Guidebook
 item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
 
+item.skybedrock:world_map=World Map
+item.skybedrock:ancient_scroll=Ancient Scroll
+item.skybedrock:hydrographic_chart=Hydrographic Chart
+item.skybedrock:tropical_notes=Tropical Notes
+item.skybedrock:arctic_record=Arctic Record
+item.skybedrock:ruins_cartograph=Ruins Cartograph
+item.skybedrock:scraped_trial=Scraped Trial
+item.skybedrock:sky_treasure_map=Sky Treasure Map
+
+## Item Groups
+skybedrock:maps=Maps
 
 ## Blocks
 tile.deprecated_purpur_block_2.name=Smooth Purpur
@@ -13,6 +24,9 @@ tile.skybedrock:nether_gravel.name=Nether Gravel
 entity.skybedrock:end_phantom.name=End Phantom
 entity.skybedrock:end_sickness.name=End Phantom Spawn
 
+
+## HUD
+hudScreen.tooltip.seeMap=See Map
 
 ## How to Play
 howtoplay.category.features=Skybedrock Features
@@ -54,6 +68,8 @@ guidebook.help_message=If you find any inaccuracies or typos in this section ple
 guidebook.button.bookmark=Save Bookmark
 guidebook.button.remove_bookmarks=Remove Bookmarks
 guidebook.button.home=Home Page
+guidebook.button.zoom=Zoom
+guidebook.button.chunks=Toggle Chunk Borders
 guidebook.button.back=Return
 guidebook.button.switch_on=Click to Turn Off
 guidebook.button.switch_off=Click a Structure

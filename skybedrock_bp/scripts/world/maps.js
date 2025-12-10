@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server" 
-import { ActionFormData } from "@minecraft/server-ui"
+import { ActionFormData, ModalFormData } from "@minecraft/server-ui"
 import { bookmark, open_book } from "../items/guidebook"
 import { get_cardinal_direction } from "../items/treasure_map"
 import { chorus_islands, end_cities, pillar_locations } from "./the_end"
@@ -134,11 +134,12 @@ export function see_a_map(player, map) {
 
         .header(data.background)
         .header(data.foreground)
+		.header('') // Chunk Borders
 
         .label(data.in_dimension ? `X${x}Z${z}D${get_cardinal_direction(player)}` : '')
         
         data.biomes.forEach(({ biome, surface, cave, offset, size }) => {
-            form.button(`§biome§ x${
+            form.button(`§area§ x${
                 offset[0]}y${offset[1]}l${size[0]}w${size[1]}${
                 surface ? 'Surface Biome: ' + surface + '\n§rCave Biome: ' + cave : 'Biome: ' + biome}\n§rx: ${
                 (offset[0] - 8) * 32} §v->§r ${(offset[0] + size[0] - 8) * 32}\nz: ${
@@ -184,6 +185,7 @@ export function see_a_map(player, map) {
 
         .header('textures/map/map_background')
         .header('textures/none') //foreground
+		.header('') // Chunk Borders
 
         .label(data.in_dimension ?
             `X${ pin_to_map(player.location.x)
@@ -246,6 +248,7 @@ export function see_a_map(player, map) {
 
         .header('textures/ui/maps/end_map_background')
         .header('textures/ui/maps/main_end_island')
+		.header('') // Chunk Borders
         
         .label(player.dimension.id == "minecraft:the_end" ? `X${pin_to_map(player.location.x)}Z${pin_to_map(player.location.z)}D${get_cardinal_direction(player)}` : '')
         
@@ -274,3 +277,90 @@ export function see_a_map(player, map) {
     }
 }
 
+function open_map(player, data) {
+	const map_size = 128 // there are 256 valid locations to place a marker
+	const fit = (a) => Math.max(-map_size, Math.min(map_size, a))
+	const resize = (a) => Math.round(a * map_size / data.range)
+
+	const player_place = {
+		x: fit(resize(player.location.x - data.center.x)) + map_size,
+		z: fit(resize(player.location.z - data.center.z)) + map_size,
+	}
+
+	const chunks_element = `x${map_size - (resize(data.center.x) % map_size)}z${map_size - (resize(data.center.z) % 128)}s${16 * 256**2 / data.range}`
+
+	const markers = data.markers
+	.filter((marker) => data.dim == marker.dim)  // the correct dimension
+	.map(({x, z, text, texture, deco, tag}) => {
+		tag = deco ? '§deco§' : '§landmark§'  // add a tag
+		x = resize(x - data.center.x) + map_size // rezize the x
+		z = resize(z - data.center.z) + map_size  // resize the z
+		return { tag, x, z, text, texture }
+	})
+	.filter(({x, z}) => x >= 0 && x <= map_size * 2 && z >= 0 && z <= map_size * 2) // does it fit in the map
+	.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text}`, texture})) //configure for a button
+
+	const form = new ActionFormData()
+	form.title('§map_ui§' + data.title)  // Title
+	for (let i = 0; i < 10; i++) form.button((data.buttons ? data.buttons : [])[i] ?? '')
+	form.header(data.background ?? 'textures/map/map_background')  // Background
+	form.header(data.foreground ?? 'textures/none') // Forground
+	form.header(data.chunk_borders ? chunks_element : '') // Chunk Borders
+	form.label(player.dimension.id == data.dim ? `X${player_place.x}Z${player_place.z}D${get_cardinal_direction(player)}` : '') // Player
+	markers?.forEach(marker => form.button(marker.text, marker.texture))  // Markers
+	// data.areas?.forEach(area => form.button(`§area§ ${area.text}`, area.texture))
+
+	form.show(player).then(({ selection, canceled }) => {
+		if (!canceled) data.action(selection)
+	})
+}
+
+function zoom_map(player, item) {
+	const zoom_level = item.getDynamicProperty('zoom') ?? 128
+	new ModalFormData()
+	.title('World Map')
+	.slider('Zoom Level §7( In Blocks )', 0, 1024, {defaultValue: zoom_level, valueStep: 16, tooltip: 'Set to 0 to Reset'})
+	.show(player).then(({canceled, formValues}) => {
+		if (canceled) return
+		const zoom = formValues[0]
+		if (zoom == 0) item.setDynamicProperty('zoom')
+		else item.setDynamicProperty('zoom', zoom)
+		const equippable = player.getComponent('equippable')
+		if (equippable.getEquipment('Mainhand')?.typeId != 'skybedrock:world_map') return
+		equippable.setEquipment('Mainhand', item)
+		open_world_map(player, item)
+	})
+}
+
+function toggle_chunks(player, item, chunk_borders) {
+	const equippable = player.getComponent('equippable')
+	if (equippable.getEquipment('Mainhand')?.typeId != 'skybedrock:world_map') return
+	item.setDynamicProperty('chunk_borders', chunk_borders ? undefined : true)
+	equippable.setEquipment('Mainhand', item)
+	open_world_map(player, item)
+}
+function open_world_map(player, item) {
+	const zoom_level = item.getDynamicProperty('zoom') ?? 128
+	const chunk_borders = item.getDynamicProperty('chunk_borders')
+	open_map(player, {
+		title: 'World Map',
+		center: player.location,
+		dim: player.dimension.id,
+		range: zoom_level,
+		chunk_borders,
+		markers: [
+			{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'}
+		],
+		buttons: ['', '', 'zoom', 'chunks'],
+		action: (selection) => {
+			if (selection == 2) zoom_map(player, item)
+			if (selection == 3) toggle_chunks(player, item, chunk_borders)
+		}
+	})
+}
+
+export default {
+	onUse({source:player, itemStack:item}, {params}) {
+		if (params.type == 'world_map') open_world_map(player, item)
+	}
+}

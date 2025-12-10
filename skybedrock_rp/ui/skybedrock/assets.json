@@ -1794,7 +1794,7 @@
 		"$texture": "textures/items/compass_item",
 		"$text": "Compass"
 	},
-	"treasure_map@assets.item_renderer": {
+	"sky_treasure_map@assets.item_renderer": {
 		"$texture": "textures/items/map_nautilus",
 		"$text": "Sky Treasure Map"
 	},

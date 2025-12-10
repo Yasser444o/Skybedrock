@@ -45,7 +45,7 @@ function create_map(player) {
 
 function give_treasure(player) {
 	player.setDynamicProperty('treasure_location', undefined);
-	if (player.getGameMode() != "Creative") player.runCommand("clear @s yasser444:treasure_map 0 1");
+	if (player.getGameMode() != "Creative") player.runCommand("clear @s skybedrock:sky_treasure_map 0 1");
 	system.runTimeout(()=>{overworld.playSound("dig.sand", player.location)},10)
 	system.runTimeout(()=>{overworld.playSound("dig.sand", player.location)},20)
 	system.runTimeout(()=>{overworld.playSound("dig.sand", player.location)},30)

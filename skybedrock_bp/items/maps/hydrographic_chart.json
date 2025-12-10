@@ -1,0 +1,11 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "skybedrock:hydrographic_chart"
+		},
+		"components": {
+			"minecraft:icon": "skybedrock:hydrographic_chart"
+		}
+	}
+}
