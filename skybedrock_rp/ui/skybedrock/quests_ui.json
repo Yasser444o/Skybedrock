@@ -139,99 +139,6 @@
 		]
 	},
 
-	"quests_menu": {
-		"type": "image",
-		"texture": "textures/ui/buttons/quests_background",
-		"size": [327, 260],
-		"max_size": ["100% - 40px", "100% - 40px"],
-		"controls": [
-			{"title": {
-				"type": "label",
-				"anchor_from": "top_middle",
-				"anchor_to": "top_middle",
-				"offset": [0,7],
-				"text_alignment": "center",
-				"text": "#text",
-				"bindings": [
-					{
-						"binding_name": "#form_title"
-					},
-					{
-						"binding_type": "view",
-						"source_property_name": "(#title_text - '§quests_ui§')",
-						"target_property_name": "#text"
-					}
-				]
-			}},
-			{"side_buttons": {
-				"type": "stack_panel",
-				"collection_name": "form_buttons",
-				"anchor_from": "top_right",
-				"anchor_to": "top_right",
-				"offset": [-3, 2],
-				"size": [20, "100%c"],
-				"controls": [
-					{"close@common.close_button": {}},
-					{"home@quests.side_button": {
-						"collection_index": 0,
-						"$name": "home",
-						"$texture": "textures/ui/buttons/home_button"
-					}},
-					{"back@quests.side_button": {
-						"collection_index": 1,
-						"$name": "back",
-						"$texture": "textures/ui/buttons/back_button"
-					}},
-					{"bookmark@quests.side_button": {
-						"collection_index": 2,
-						"$name": "bookmark",
-						"$texture": "textures/ui/buttons/bookmark_button"
-					}},
-					{"view_all@quests.side_button": {
-						"collection_index": 3,
-						"$name": "all",
-						"$texture": "textures/ui/buttons/view_all_button",
-						"$hover_text": "quests.view.all"
-					}},
-					{"view_locked@quests.side_button": {
-						"collection_index": 4,
-						"$name": "locked",
-						"$texture": "textures/ui/buttons/view_locked_button",
-						"$hover_text": "quests.view.locked"
-					}},
-					{"view_completed@quests.side_button": {
-						"collection_index": 5,
-						"$name": "done",
-						"$texture": "textures/ui/buttons/view_completed_button",
-						"$hover_text": "quests.view.done"
-					}}
-				]
-			}},
-			{"categories": {
-				"type": "stack_panel",
-				"collection_name": "form_buttons",
-				"bindings": [ { "binding_name": "#form_button_length", "binding_name_override": "#collection_length" } ],
-				"factory": { "name": "categories", "control_name": "quests.select_category" },
-				
-				"size": [0, "100%c"],
-				"anchor_from": "top_left",
-				"anchor_to": "top_right",
-				"offset": [0, 21]
-			}},
-			{"quests@common.scrolling_panel": {
-				"$show_background": false,
-				"$scroll_size": [ 5, "100% - 4px" ],
-				"$scroll_bar_right_padding_size": [ 0, 0 ],
-				"$scrolling_content": "quests.quest_factory",
-
-				"size": ["100% - 31px", "100% - 31px"],
-				"offset": [8, -8],
-				"anchor_from": "bottom_left",
-				"anchor_to": "bottom_left"
-			}}
-		]
-	},
-
 	"select_category": {
 		"type": "panel",
 		"size": [0, "100%c"],
@@ -447,6 +354,99 @@
 					"bindings": "$has_button_tag"
 				}
 			}
+		]
+	},
+
+	"quests_menu": {
+		"type": "image",
+		"texture": "textures/ui/buttons/quests_background",
+		"size": [327, 260],
+		"max_size": ["100% - 40px", "100% - 40px"],
+		"controls": [
+			{"title": {
+				"type": "label",
+				"anchor_from": "top_middle",
+				"anchor_to": "top_middle",
+				"offset": [0,7],
+				"text_alignment": "center",
+				"text": "#text",
+				"bindings": [
+					{
+						"binding_name": "#form_title"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "(#title_text - '§quests_ui§')",
+						"target_property_name": "#text"
+					}
+				]
+			}},
+			{"side_buttons": {
+				"type": "stack_panel",
+				"collection_name": "form_buttons",
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"offset": [-3, 2],
+				"size": [20, "100%c"],
+				"controls": [
+					{"close@common.close_button": {}},
+					{"home@quests.side_button": {
+						"collection_index": 0,
+						"$name": "home",
+						"$texture": "textures/ui/buttons/home_button"
+					}},
+					{"back@quests.side_button": {
+						"collection_index": 1,
+						"$name": "back",
+						"$texture": "textures/ui/buttons/back_button"
+					}},
+					{"bookmark@quests.side_button": {
+						"collection_index": 2,
+						"$name": "bookmark",
+						"$texture": "textures/ui/buttons/bookmark_button"
+					}},
+					{"view_all@quests.side_button": {
+						"collection_index": 3,
+						"$name": "all",
+						"$texture": "textures/ui/buttons/view_all_button",
+						"$hover_text": "quests.view.all"
+					}},
+					{"view_locked@quests.side_button": {
+						"collection_index": 4,
+						"$name": "locked",
+						"$texture": "textures/ui/buttons/view_locked_button",
+						"$hover_text": "quests.view.locked"
+					}},
+					{"view_completed@quests.side_button": {
+						"collection_index": 5,
+						"$name": "done",
+						"$texture": "textures/ui/buttons/view_completed_button",
+						"$hover_text": "quests.view.done"
+					}}
+				]
+			}},
+			{"categories": {
+				"type": "stack_panel",
+				"collection_name": "form_buttons",
+				"bindings": [ { "binding_name": "#form_button_length", "binding_name_override": "#collection_length" } ],
+				"factory": { "name": "categories", "control_name": "quests.select_category" },
+				
+				"size": [0, "100%c"],
+				"anchor_from": "top_left",
+				"anchor_to": "top_right",
+				"offset": [0, 21]
+			}},
+			{"quests@common.scrolling_panel": {
+				"$show_background": false,
+				"$scroll_size": [ 5, "100% - 4px" ],
+				"$scroll_bar_right_padding_size": [ 0, 0 ],
+				"$scrolling_content": "quests.quest_factory",
+
+				"size": ["100% - 31px", "100% - 31px"],
+				"offset": [8, -8],
+				"anchor_from": "bottom_left",
+				"anchor_to": "bottom_left"
+			}}
 		]
 	},
 

@@ -58,7 +58,7 @@ world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 				const componenet = componenets[selection]
 				if ("value" in componenet) {
 					player.sendMessage(`§m-§r value: ${componenet.value}`)
-				}
+				} else player.sendMessage(`§m-§r component: ${JSON.stringify(componenet)}`)
 			})
 		})
 	}

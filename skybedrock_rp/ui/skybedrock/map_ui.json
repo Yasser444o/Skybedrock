@@ -744,5 +744,468 @@
 				]
 			}}
 		]
+	},
+
+	"manage_waypoint_screen": {
+		"type": "image",
+		"texture": "textures/ui/buttons/waypoint_background",
+		"size": [327, 260],
+		"max_size": ["100% - 40px", "100% - 40px"],
+		"controls": [
+			{"close@common.close_button": {
+				"offset": [2, -2]
+			}},
+			{"title": {
+				"type": "label",
+				"anchor_from": "top_middle",
+				"anchor_to": "top_middle",
+				"offset": [0,3],
+				"text_alignment": "center",
+				"text": "#text",
+				"color": [0.2, 0.2, 0.2],
+				"bindings": [
+					{
+						"binding_name": "#form_title"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "(#title_text - '§waypoint_ui§')",
+						"target_property_name": "#text"
+					}
+				]
+			}},
+			{ "content": {
+				"type": "stack_panel",
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"offset": [16, 16],
+				"size": ["100% - 32px", "100% - 26px"],
+				"controls": [
+					{ "icon_and_name": {
+						"type": "stack_panel",
+						"orientation": "horizontal",
+						"size": ["100%", 38],
+						"controls": [
+							{ "icon": {
+								"type": "image",
+								"texture": "textures/ui/buttons/map_slot_background",
+								"size": ["100%y", "100%"],
+								"controls": [
+									{ "markers@conditional_icon": {
+										"$condtion_index": 1,
+										"$condtion": "(#dropdown_option_text = 'marker')",
+										"$child_index": 2,
+										"$texture_path": "textures/ui/map/markers/marker_"
+									}},
+									{ "banners@conditional_icon": {
+										"$condtion_index": 1,
+										"$condtion": "(#dropdown_option_text = 'banner')",
+										"$child_index": 2,
+										"$texture_path": "textures/ui/map/markers/banner_"
+									}},
+									{ "circles@conditional_icon": {
+										"$condtion_index": 1,
+										"$condtion": "(#dropdown_option_text = 'circle')",
+										"$child_index": 2,
+										"$texture_path": "textures/ui/map/markers/circle_"
+									}},
+									{ "squares@conditional_icon": {
+										"$condtion_index": 1,
+										"$condtion": "(#dropdown_option_text = 'square')",
+										"$child_index": 2,
+										"$texture_path": "textures/ui/map/markers/square_"
+									}}
+								]
+							}},
+							{ "name": {
+								"type": "collection_panel",
+								"collection_name": "custom_form",
+								"size": ["fill", "100%"],
+								"controls": [
+									{ "text_field@server_form.custom_input": { // "color": [0.45, 0.34, 0.24],
+										"collection_index": 0 // "textures/ui/purpleBorder"
+									}}
+								]
+							}}
+						]
+					}},
+					{ "waypoint_settings": {
+						"type": "stack_panel",
+						"size": ["100%", "fill"],
+						"controls": [
+							{ "icon@maps.radio_grid": {
+								"$index": 1,
+								"$text_key": "maps.marker.",
+								"$texture_path": "textures/ui/map/"
+							}},
+							{ "colors@conditional_dropdown": {
+								"$condtion_index": 1,
+								"$condtion": "((#dropdown_option_text = 'marker') or (#dropdown_option_text = 'banner') or (#dropdown_option_text = 'circle'))",
+								"$child_index": 2,
+								"$text_key": "maps.color.",
+								"$texture_path": "textures/ui/map/markers/color_",
+								"$grid_size": [ 160, 40 ]
+							}},
+							{ "strucs@conditional_dropdown": {
+								"$condtion_index": 1,
+								"$condtion": "(#dropdown_option_text = 'structure')",
+								"$child_index": 3,
+								"$text_key": "maps.structure.",
+								"$texture_path": "textures/ui/map/"
+							}},
+							{ "mobs@conditional_dropdown": {
+								"$condtion_index": 1,
+								"$condtion": "(#dropdown_option_text = 'mob')",
+								"$child_index": 7,
+								"$text_key": "entity.",
+								"$post_key": ".name",
+								"$texture_path": "textures/ui/map/mobs/"
+							}}
+						]
+					}}
+				]
+			}},
+			
+			{ "confirm_button@common_buttons.light_text_button": {
+				"focus_identifier": "confirm_button",
+				"sound_name": "lodestone_compass.link_compass_to_lodestone",
+				"$pressed_button_name": "button.submit_custom_form",
+				"$default_texture": "textures/ui/buttons/page_save",
+				"$hover_texture": "textures/ui/buttons/page_save_hover",
+				"$pressed_texture": "textures/ui/buttons/page_save_hover",
+				"$button_text": "#submit_text",
+				"$button_text_binding_type": "global",
+				"$button_binding_condition": "once",
+				"anchor_from": "bottom_right",
+				"anchor_to": "bottom_right",
+				"size": [ 87, 24 ],
+				"offset": [-2, -2],
+				"bindings": [
+					{
+						"binding_name": "#submit_button_visible",
+						"binding_name_override": "#visible"
+					}
+				]
+			}}
+		]
+	},
+
+	"conditional_icon": {
+		"type": "collection_panel",
+		"collection_name": "custom_form",
+		"size": [32, 32],
+		"controls": [
+			{ "condition": {
+				"collection_index": "$condtion_index",
+				"type": "panel",
+				"bindings": [
+					{
+						"binding_name": "#dropdown_option_text",
+						"binding_type": "collection",
+						"binding_collection_name": "custom_form"
+					},
+					{
+						"binding_type": "view",
+						"source_property_name": "$condtion",
+						"target_property_name": "#visible"
+					}
+				],
+				"controls": [
+					{ "marker_colored": {
+						"type": "collection_panel",
+						"collection_name": "custom_form",
+						"controls": [
+							{ "image": {
+								"collection_index": "$child_index",
+								"type": "image",
+								"layer": 20,
+								"bindings": [
+									{
+										"binding_name": "#dropdown_option_text",
+										"binding_type": "collection",
+										"binding_collection_name": "custom_form"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "($texture_path + #dropdown_option_text)",
+										"target_property_name": "#texture"
+									}
+								]
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	},
+
+	"conditional_dropdown": {
+		"type": "collection_panel",
+		"collection_name": "custom_form",
+		"size": ["100%", "100%c"],
+		"controls": [
+			{ "dropdown_index_provider": {
+				"collection_index": "$child_index",
+				"type": "panel",
+				"size": ["100%", "100%c"],
+				"controls": [
+					{ "condition_collection": {
+						"type": "collection_panel",
+						"collection_name": "custom_form",
+						"size": ["100%", "100%c"],
+						"controls": [
+							{ "condition": {
+								"collection_index": "$condtion_index",
+								"type": "panel",
+								"size": ["100%", "100%c"],
+								"bindings": [
+									{
+										"binding_name": "#dropdown_option_text",
+										"binding_type": "collection",
+										"binding_collection_name": "custom_form"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "$condtion",
+										"target_property_name": "#visible"
+									}
+								],
+								"controls": [
+									{ "dropdown_collection@maps.radio_grid": {
+										"$index": "$child_index"
+									}}
+								]
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	},
+
+	"radio_grid": {
+		"type": "collection_panel",
+		"collection_name": "custom_form",
+		"size": ["100%", "100%c"],
+		"$grid_size|default": [ "100%", "100%c" ],
+		"$post_key|default": "",
+		"controls": [
+			{ "dropdown": {
+				"collection_index": "$index",
+				"type": "panel",
+				"size": ["100%", "100%c + 16px"],
+				"controls": [
+					{ "text": {
+						"type": "label",
+						"text": "#custom_text",
+						"color": [0.45, 0.34, 0.24],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left",
+						"offset": [0, 8],
+						"bindings": [
+							{
+								"binding_name": "#custom_text",
+								"binding_type": "collection",
+								"binding_collection_name": "custom_form"
+							}
+						],
+						"controls": [
+							{ "selected_option": {
+								"type": "label",
+								"text": "#text",
+								"color": [0, 0, 0],
+								"anchor_from": "top_right",
+								"anchor_to": "top_left",
+								"bindings": [
+									{
+										"binding_name": "#dropdown_option_text",
+										"binding_type": "collection",
+										"binding_collection_name": "custom_form"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "($text_key + #dropdown_option_text + $post_key)",
+										"target_property_name": "#text"
+									}
+								]
+							}}
+						]
+					}},
+					{ "grid": {
+						"type": "panel",
+						"size": "$grid_size",
+						"max_size": ["100%", "100%c"],
+						"anchor_from": "top_middle",
+						"anchor_to": "top_middle",
+						"offset": [0, 24],
+						"controls": [
+							{ "radio_control_group": {
+								"type": "grid",
+								"grid_dimensions": [1, 1],
+								"grid_item_template": "maps.grid_slot",
+								"grid_fill_direction": "horizontal",
+								"grid_rescaling_type": "horizontal",
+								"size": ["100%", "100%c"],
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"collection_name": "custom_dropdown",
+								"bindings": [{
+									"binding_type": "collection",
+									"binding_collection_name": "custom_form",
+									"binding_name": "#custom_dropdown_length",
+									"binding_name_override": "#maximum_grid_items"
+								}]
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	},
+	
+	"grid_slot": {
+		"type": "panel",
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"size": [ 20, 20 ],
+		"offset": [ 3, 0 ],
+		"controls": [
+			{ "toggle": {
+				"type": "toggle",
+				"focus_enabled": true,
+				"focus_magnet_enabled": true,
+				"sound_name": "block.cartography_table.use",
+
+				"radio_toggle_group": true,
+				"toggle_name": "custom_dropdown_radio_toggle",
+				"toggle_grid_collection_name": "custom_dropdown",
+				"toggle_on_button": "toggle.toggle_on",
+				"toggle_off_button": "toggle.toggle_off",	
+				"property_bag": { "#toggle_state": true },			
+
+				"checked_control": "checked",
+				"checked_hover_control": "checked_hover",
+				"unchecked_hover_control": "unchecked_hover",
+
+				"button_mappings": [
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.menu_select",
+						"mapping_type": "pressed"
+					},
+					{
+						"from_button_id": "button.menu_ok",
+						"to_button_id": "button.menu_ok",
+						"mapping_type": "focused"
+					}
+				],
+				"bindings": [
+					{
+						"binding_type": "collection",
+						"binding_condition": "visible",
+						"binding_collection_name": "custom_dropdown",
+						"binding_name": "#custom_radio_toggled",
+						"binding_name_override": "#toggle_state"
+					},
+					{
+						"binding_type": "none",
+						"binding_condition": "visible",
+						"binding_collection_name": "custom_dropdown",
+						"binding_name": "#toggle_enabled",
+						"binding_name_override": "#enabled"
+					},
+					{
+						"binding_type": "collection_details",
+						"binding_collection_name": ""
+					},
+					{
+						"binding_type": "collection",
+						"binding_condition": "visible",
+						"binding_collection_name": "custom_form",
+						"binding_name": "#custom_toggle_focus_id",
+						"binding_name_override": "#focus_identifier"
+					}
+				],
+				"controls": [
+					{ "unchecked": {
+						"type": "image",
+						"texture": "textures/ui/buttons/map_slot_background",
+						"controls": [
+							{ "item": {
+								"type": "image",
+								"size": [16, 16],
+								"bindings": [
+									{ "binding_type": "collection_details" },
+									{
+										"binding_name": "#custom_radio_text",
+										"binding_type": "collection",
+										"binding_collection_name": "custom_dropdown"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "($texture_path + #custom_radio_text)",
+										"target_property_name": "#texture"
+									}
+								]
+							}}
+						]
+					}},
+					{ "checked": {
+						"type": "image",
+						"texture": "textures/ui/pocket_ui_highlight_selected_slot",
+						"size": ["100% + 4px", "100% + 4px"]
+					}},
+					{ "unchecked_hover": {
+						"type": "image",
+						"texture": "textures/white",
+						"alpha": 0.2,
+						"controls": [
+							{ "hover@assets.hovering_text": {
+								"$text_bindings": [
+									{ "binding_type": "collection_details" },
+									{
+										"binding_name": "#custom_radio_text",
+										"binding_type": "collection",
+										"binding_collection_name": "custom_dropdown"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "($text_key + #custom_radio_text + $post_key)",
+										"target_property_name": "#text"
+									}
+								]
+							}}
+						]
+					}},
+					{ "checked_hover": {
+						"type": "image",
+						"texture": "textures/white",
+						"alpha": 0.2,
+						"controls": [
+							{ "selection": {
+								"type": "image",
+								"texture": "textures/ui/pocket_ui_highlight_selected_slot",
+								"size": ["100% + 4px", "100% + 4px"]
+							}},
+							{ "hover@assets.hovering_text": {
+								"$text_bindings": [
+									{ "binding_type": "collection_details" },
+									{
+										"binding_name": "#custom_radio_text",
+										"binding_type": "collection",
+										"binding_collection_name": "custom_dropdown"
+									},
+									{
+										"binding_type": "view",
+										"source_property_name": "($text_key + #custom_radio_text + $post_key)",
+										"target_property_name": "#text"
+									}
+								]
+							}}
+						]
+					}}
+				]
+			}}
+		]
 	}
 }

@@ -358,9 +358,54 @@ function open_world_map(player, item) {
 		}
 	})
 }
-
+function manage_waypoint(player, block, item, mode) {
+	new ModalFormData()
+	.title({rawtext: [{text: '§waypoint_ui§'}, {translate: `maps.waypoints.${mode}`}]})
+	.textField('Name:', '', {defaultValue: 'Waypoint'})
+	.dropdown('Icon: ', ['marker', 'banner', 'circle', 'square', 'structure', 'item', 'block', 'mob'])
+	.dropdown('Color: ', [
+		'white', 'light_gray', 'gray', 'black', 'brown', 'red', 'orange', 'yellow',
+		'lime', 'green', 'cyan', 'light_blue', 'blue', 'purple', 'magenta', 'pink',
+	])
+	.dropdown('Structure: ', [
+		'village_plains', 'village_savanna', 'village_snowy', 'village_taiga', 'village_desert', 'swamp_hut', 'jungle_temple', 'trial_chambers',
+		'ancient_city', 'bastion_remnants', 'desert_pyramid', 'end_gateway', 'igloo', 'mineshaft', 'nether_fortress', 'ocean_monument',
+		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark'
+	])
+	.textField('Item: ', 'e.g. iron_ingot | reeds')
+	.textField('Block: ', 'e.g. diamond_block | observer_front')
+	.dropdown('Style: ', ['full', 'center', 'corners'])
+	.dropdown('Mob: ', [
+		'chicken', 'cow', 'pig', 'sheep', 'camel', 'donkey', 'horse', 'mule', 
+		'cat', 'parrot', 'wolf', 'armadillo', 'bat', 'bee', 'fox', 'goat', 
+		'llama', 'ocelot', 'panda', 'polar_bear', 'rabbit', 'axolotl', 'cod', 'dolphin', 
+		'frog', 'glow_squid', 'nautilus', 'pufferfish', 'salmon', 'squid', 'tadpole', 'tropicalfish', 
+		'turtle', 'allay','mooshroom', 'sniffer', 'copper_golem', 'iron_golem', 'snow_golem', 'trader_llama', 
+		'villager', 'wandering_trader', 'bogged', 'camel_husk', 'drowned', 'husk', 'parched', 'skeleton', 
+		'skeleton_horse', 'stray', 'zombie', 'zombie_horse', 'zombie_nautilus', 'zombie_villager', 'cave_spider', 'spider', 
+		'breeze', 'creaking', 'creeper', 'elder_guardian', 'guardian', 'phantom', 'silverfish', 'slime', 
+		'warden', 'witch', 'evocation_illager', 'pillager', 'ravager', 'vex', 'vindicator', 'blaze', 
+		'ghast', 'happy_ghast', 'hoglin', 'magma_cube', 'piglin_brute', 'piglin', 'strider', 'wither_skeleton', 
+		'wither', 'zoglin', 'zombie_pigman', 'enderman', 'endermite', 'shulker', 'end_phantom', 'ender_dragon', 
+	])
+	.submitButton({translate: `maps.waypoints.${mode}`})
+	.show(player).then(({formValues, canceled}) => {
+		if (canceled) return
+		console.log(formValues[2])
+	})
+}
 export default {
 	onUse({source:player, itemStack:item}, {params}) {
-		if (params.type == 'world_map') open_world_map(player, item)
+		if (params.type == 'world_map') {
+			const block = player.getBlockFromViewDirection({maxDistance: 6})?.block
+			if (block?.typeId == 'minecraft:lodestone') return
+			open_world_map(player, item)
+		}
+	},
+	onUseOn({source:player, block, itemStack:item}, {params}) {
+		if (params.type == 'world_map') {
+			if (block.typeId != 'minecraft:lodestone') return
+			manage_waypoint(player, block, item, 'add')
+		}
 	}
 }

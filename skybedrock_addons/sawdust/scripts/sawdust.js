@@ -37,26 +37,39 @@ for (let y = 0; y <= 1; y++) {
 // 	return search_for_leaves(log, type)
 // }
 
-function search_for_log(block, type, visited) {
-	const hash = `${block.x} ${block.y} ${block.z}`
-	visited.add(hash)
-	for (const offset of offsets) {
-		const found_block = block.offset(offset)
-		if (found_block.typeId != type) continue
-        const found_hash = `${found_block.x} ${found_block.y} ${found_block.z}`
-		if (visited.has(found_hash)) continue
-		return search_for_log(found_block, type, visited)
-	} return block
+function search_for_log(block, type) {
+	const limit = 1024
+    const stack = [block]
+    const start_hash = `${block.x} ${block.y} ${block.z}`;
+    const visited = new Set([start_hash])
+
+    let current_block
+    while (stack.length > 0) {
+        current_block = stack.pop(); let new_branch
+		for (const offset of offsets) {
+			const found_block = current_block.offset(offset)
+			if (found_block.typeId != type) continue
+			const found_hash = `${found_block.x} ${found_block.y} ${found_block.z}`
+			if (visited.has(found_hash)) continue
+			visited.add(found_hash)
+			stack.push(current_block)
+			stack.push(found_block)
+			new_branch = true
+			break
+		}
+		if (stack.length >= limit) return current_block
+		if (!new_branch) return current_block
+	};
+	return current_block
 }
 
 world.afterEvents.playerBreakBlock.subscribe(({block, player, brokenBlockPermutation:permutation, itemStackBeforeBreak:item}) => {
-	if (!item) return
-	if (!item.getTags().includes('minecraft:is_axe')) return // using axe
+	if (!item?.getTags().includes('minecraft:is_axe')) return // using axe
 	const type = permutation.type.id
 	if (!Object.keys(logs).includes(type)) return // breaking logs
 	if (player.inputInfo.getButtonState("Sneak") == "Pressed") return // not sneaking
 	// if(!search_for_leaves(block, type)) return  // make sure it's a tree, not functional
-	const last_log = search_for_log(block, type, new Set()) // find the farthest log
+	const last_log = search_for_log(block, type) // find the farthest log
 	if (last_log.x == block.x && last_log.y == block.y && last_log.z == block.z) return  // not the same block
 	last_log.setPermutation(block.permutation)  // remove the last log
 	block.setPermutation(permutation)  // replace the broken log

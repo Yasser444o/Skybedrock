@@ -62,7 +62,7 @@
 		"controls": [
 			{
 				"default@server_form.custom_form": {
-				  "$condition": "(#title_text = (#title_text - '§6Settings'))",
+				  "$condition": "(#title_text = (#title_text - '§6Settings' - '§waypoint_ui§'))",
 				  "bindings": "$visible_by_title"
 				}
 			},
@@ -70,6 +70,12 @@
 				"guidebook@guidebook.main_panel": {
 				  "$condition": "(not (#title_text = (#title_text - '§6Settings')))",
 				  "bindings": "$visible_by_title"
+				}
+			},
+			{
+				"waypoints@maps.manage_waypoint_screen": {
+					"$tag": "§waypoint_ui§",
+					"bindings": "$has_title_tag"
 				}
 			}
 		]
