@@ -22,6 +22,8 @@ tile.skybedrock:nether_gravel.name=Nether Gravel
 
 ## Entities
 entity.skybedrock:end_phantom.name=End Phantom
+entity.end_phantom.name=End Phantom
+entity.illager.name=Illager
 entity.skybedrock:end_sickness.name=End Phantom Spawn
 
 
