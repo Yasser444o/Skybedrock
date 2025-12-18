@@ -12,11 +12,51 @@ function chunk_corner({x, z}) {
 }
 
 const food_items = [
+    "minecraft:apple",
+    "minecraft:baked_potato",
+    "minecraft:beetroot",
+    "minecraft:beetroot_soup",
+    "minecraft:bread",
+    "minecraft:carrot",
+    "minecraft:chorus_fruit",
+    "minecraft:cooked_chicken",
+    "minecraft:cooked_cod",
+    "minecraft:cooked_mutton",
+    "minecraft:cooked_porkchop",
+    "minecraft:cooked_beef",
+    "minecraft:steak",
+    "minecraft:cooked_rabbit",
+    "minecraft:cooked_salmon",
+    "minecraft:cookie",
+    "minecraft:dried_kelp",
+    "minecraft:golden_apple",
+    "minecraft:enchanted_golden_apple",
     "minecraft:glow_berries",
+    "minecraft:golden_carrot",
+    "minecraft:honey_bottle",
+    "minecraft:melon_slice",
+    "minecraft:mushroom_stew",
+    "minecraft:poisonous_potato",
+    "minecraft:potato",
+    "minecraft:pufferfish",
+    "minecraft:pumpkin_pie",
+    "minecraft:rabbit_stew",
+    "minecraft:beef",
+    "minecraft:chicken",
+    "minecraft:cod",
+    "minecraft:mutton",
+    "minecraft:porkchop",
+    "minecraft:rabbit",
+    "minecraft:salmon",
+    "minecraft:rotten_flesh",
+    "minecraft:spider_eye",
+    "minecraft:suspicious_stew",
+    "minecraft:sweet_berries",
+    "minecraft:tropical_fish",
 ]
 
 world.afterEvents.itemCompleteUse.subscribe(({source:player, itemStack:item}) => {
-    if (!item.hasComponent('minecraft:food') && !food_items.includes(item.typeId)) return
+	if (!food_items.includes(item.typeId) && !item.hasComponent('minecraft:food')) return
     if (item.typeId == 'minecraft:chorus_fruit') {
         player.setDynamicProperty("chorus_fruits", (player.getDynamicProperty("chorus_fruits") ?? 0) + 1)
         if (!player.getDynamicProperty("chorus_timeout")) player.setDynamicProperty("chorus_timeout", system.currentTick + 24000)
