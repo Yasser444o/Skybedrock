@@ -24,7 +24,7 @@
 		{
 			"type": "script",
 			"uuid": "7e9c425a-d47f-4e8e-b06c-1092a8315c8e",
-			"version": [ 2, 0, 0 ],
+			"version": [ 2, 3, 0 ],
 			"entry": "scripts/skybedrock.js"
 		}
 	],
