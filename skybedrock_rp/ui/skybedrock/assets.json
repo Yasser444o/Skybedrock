@@ -743,6 +743,11 @@
 		"$text": "Desert Well",
 		"offset": [0, -4]
 	},
+	"cold_ocean_ruins@assets.item_renderer": {
+		"$texture": "textures/ui/structures/ruins",
+		"$text": "Cold Ocean Ruins",
+		"offset": [0, -4]
+	},
 	"ruined_portal@assets.item_renderer": {
 		"$texture": "textures/ui/structures/ruined_portal",
 		"$text": "Ruined Portal"
@@ -1476,6 +1481,26 @@
 	"iron_ingot@assets.item_renderer": {
 		"$texture": "textures/items/iron_ingot",
 		"$text": "Iron Ingot"
+	},
+	"nautilus_shell@assets.item_renderer": {
+		"$texture": "textures/items/nautilus",
+		"$text": "Nautilus Shell"
+	},
+	"copper_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/copper_nautilus_armor",
+		"$text": "Copper Nautilus Armor"
+	},
+	"iron_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/iron_nautilus_armor",
+		"$text": "Iron Nautilus Armor"
+	},
+	"golden_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/gold_nautilus_armor",
+		"$text": "Golden Nautilus Armor"
+	},
+	"diamond_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/diamond_nautilus_armor",
+		"$text": "Diamond Nautilus Armor"
 	},
 	"gold_ingot@assets.item_renderer": {
 		"$texture": "textures/items/gold_ingot",

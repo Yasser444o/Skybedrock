@@ -2708,6 +2708,28 @@
 										}}
 									]
 								}},
+								{ "cold_ocean_ruins@how_to_play.brushing_table_item": {
+									"$structure": "cold_ocean_ruins",
+									"$size": ["100% - 2px", 144],
+									"$items": [
+										{ "i1@assets.brushing_table_entry": {
+											"$item": "copper_nautilus_armor",
+											"$chance": "12%%"
+										}},
+										{ "i2@assets.brushing_table_entry": {
+											"$item": "iron_nautilus_armor",
+											"$chance": "9%%"
+										}},
+										{ "i3@assets.brushing_table_entry": {
+											"$item": "golden_nautilus_armor",
+											"$chance": "6%%"
+										}},
+										{ "i4@assets.brushing_table_entry": {
+											"$item": "diamond_nautilus_armor",
+											"$chance": "3%%"
+										}}
+									]
+								}},
 								{ "brushing_footer@assets.table_footer": {}}
 							]
 						}
@@ -3397,6 +3419,63 @@
 							"$output": [{"b@assets.all_trims":{
 								"$count": "2"
 							}}]
+						}
+					},
+					{ 
+						"nautilus_armor@assets.text_box": {
+							"$text": "§c[]§r Craftable Nautilus Armor"
+						}
+					},
+					{
+						"copper_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input2": [{"b@assets.copper_ingot":{}}],
+							"$input3": [{"b@assets.copper_ingot":{}}],
+							"$input4": [{"b@assets.copper_ingot":{}}],
+							"$input6": [{"b@assets.copper_ingot":{}}],
+							"$input7": [{"b@assets.copper_ingot":{}}],
+							"$input8": [{"b@assets.copper_ingot":{}}],
+							"$input9": [{"b@assets.copper_ingot":{}}],
+							"$output": [{"b@assets.copper_nautilus_armor":{}}]
+						}
+					},
+					{
+						"iron_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input2": [{"b@assets.iron_ingot":{}}],
+							"$input3": [{"b@assets.iron_ingot":{}}],
+							"$input4": [{"b@assets.iron_ingot":{}}],
+							"$input6": [{"b@assets.iron_ingot":{}}],
+							"$input7": [{"b@assets.iron_ingot":{}}],
+							"$input8": [{"b@assets.iron_ingot":{}}],
+							"$input9": [{"b@assets.iron_ingot":{}}],
+							"$output": [{"b@assets.iron_nautilus_armor":{}}]
+						}
+					},
+					{
+						"golden_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input3": [{"b@assets.gold_ingot":{}}],
+							"$input2": [{"b@assets.gold_ingot":{}}],
+							"$input4": [{"b@assets.gold_ingot":{}}],
+							"$input6": [{"b@assets.gold_ingot":{}}],
+							"$input7": [{"b@assets.gold_ingot":{}}],
+							"$input8": [{"b@assets.gold_ingot":{}}],
+							"$input9": [{"b@assets.gold_ingot":{}}],
+							"$output": [{"b@assets.golden_nautilus_armor":{}}]
+						}
+					},
+					{
+						"diamond_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input2": [{"b@assets.diamond":{}}],
+							"$input3": [{"b@assets.diamond":{}}],
+							"$input4": [{"b@assets.diamond":{}}],
+							"$input6": [{"b@assets.diamond":{}}],
+							"$input7": [{"b@assets.diamond":{}}],
+							"$input8": [{"b@assets.diamond":{}}],
+							"$input9": [{"b@assets.diamond":{}}],
+							"$output": [{"b@assets.diamond_nautilus_armor":{}}]
 						}
 					},
 					{ 

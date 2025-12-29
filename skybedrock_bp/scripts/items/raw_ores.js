@@ -26,12 +26,12 @@ world.afterEvents.playerInteractWithEntity.subscribe(({ beforeItemStack, target:
     if (Math.random() < 0.8) {
         dimension.playSound('mob.frog.eat', location)
         axolotl.triggerEvent("start_processing")
-    } else { try {
+    } else try {
         dimension.spawnItem(new ItemStack(axolotls[variant].ingot), location)
         dimension.playSound('mob.axolotl.hurt', location)
         dimension.spawnParticle('minecraft:basic_smoke_particle', {...location, y: location.y + 0.5})
         axolotl.triggerEvent("start_recovering")
-    } catch {null} }
+    } catch {null}
 })
 
 system.afterEvents.scriptEventReceive.subscribe(({id, sourceEntity:axolotl}) => {

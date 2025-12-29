@@ -64,6 +64,21 @@
 					"name": "minecraft:record_otherside"
 				}
 			]
+		},
+		{
+			"conditions": [
+				{
+					"condition": "killed_by_entity",
+					"entity_type": "minecraft:parched"
+				}
+			],
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:record_otherside"
+				}
+			]
 		}
 	]
 }

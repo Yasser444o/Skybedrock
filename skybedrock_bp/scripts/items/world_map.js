@@ -4,12 +4,12 @@ import { open_world_map } from "../world/maps"
 export default function(player, item) {
 	const block = player.getBlockFromViewDirection({maxDistance: 6})?.block
 	if (block?.typeId == 'minecraft:lodestone') return
-	const strings = encode_chunks(player)
-	new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
+	// const strings = encode_chunks(player)
+	// new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
 	// item.setDynamicProperty('map', encoded_map_data)
 	// player.getComponent('equippable').setEquipment('Mainhand', item)
 	// console.log(item.getDynamicPropertyTotalByteCount())
-	open_world_map(player, item)
+	// open_world_map(player, item)
 }
 
 function encode_chunks({dimension, location}) {

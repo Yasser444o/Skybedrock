@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "skybedrock:copper_nautilus_armor"
+    },
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      " ##",
+      "#S#",
+      "###"
+    ],
+    "key": {
+      "#": {"item": "minecraft:copper_ingot"},
+      "S": {"item": "minecraft:nautilus_shell"}
+    },
+    "unlock": [
+      {
+        "item": "minecraft:nautilus_shell"
+      }
+    ],
+    "result": {
+      "item": "minecraft:copper_nautilus_armor"
+    }
+  }
+}

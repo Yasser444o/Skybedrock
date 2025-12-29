@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "addes crafting recipes for all nautilus armor",
+        "name": "Craftable Nautilus Armor",
+        "uuid": "aed32350-7466-4008-8c60-ebb1339d8e91",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "6b7da321-b6d6-474b-a6fd-0f01d0403b0f",
+            "version": [1, 0, 0]
+        }
+    ]
+}
