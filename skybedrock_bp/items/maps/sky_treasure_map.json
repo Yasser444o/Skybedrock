@@ -6,8 +6,9 @@
 		},
 		"components": {
 			"minecraft:icon": "skybedrock:sky_treasure_map",
-			"skybedrock:treasure_map": {},
-			"minecraft:interact_button": "hudScreen.tooltip.seeMap"
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "treasure_map" },
+			"minecraft:max_stack_size": 1
 		}
 	}
 }

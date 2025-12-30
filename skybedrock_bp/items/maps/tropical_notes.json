@@ -5,7 +5,10 @@
 			"identifier": "skybedrock:tropical_notes"
 		},
 		"components": {
-			"minecraft:icon": "skybedrock:tropical_notes"
+			"minecraft:icon": "skybedrock:tropical_notes",
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "tropical_notes" },
+			"minecraft:max_stack_size": 1
 		}
 	}
 }

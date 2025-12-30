@@ -9,7 +9,7 @@ export default function(player, item) {
 	// item.setDynamicProperty('map', encoded_map_data)
 	// player.getComponent('equippable').setEquipment('Mainhand', item)
 	// console.log(item.getDynamicPropertyTotalByteCount())
-	// open_world_map(player, item)
+	open_world_map(player, item)
 }
 
 function encode_chunks({dimension, location}) {
@@ -108,7 +108,7 @@ function bytes_to_base64(bytes) {
 export function manage_waypoint(player, block, item, mode) {
 	new ModalFormData()
 	.title({ rawtext: [{ text: '§waypoint_ui§' }, { translate: `maps.waypoints.${mode}` }] })
-	.textField('Name:', '', { defaultValue: 'Waypoint' })
+	.textField('Name:', 'Waypoint', { defaultValue: 'Waypoint'})
 	.dropdown('Icon: ', ['marker', 'banner', 'circle', 'structure', 'item', 'block', 'mob'])
 	.dropdown('Color: ', [
 		'white', 'light_gray', 'gray', 'black', 'brown', 'red', 'orange', 'yellow',

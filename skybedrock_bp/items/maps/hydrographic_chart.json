@@ -5,7 +5,10 @@
 			"identifier": "skybedrock:hydrographic_chart"
 		},
 		"components": {
-			"minecraft:icon": "skybedrock:hydrographic_chart"
+			"minecraft:icon": "skybedrock:hydrographic_chart",
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "hydrographic_chart" },
+			"minecraft:max_stack_size": 1
 		}
 	}
 }

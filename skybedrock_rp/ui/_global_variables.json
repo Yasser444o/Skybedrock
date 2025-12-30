@@ -197,12 +197,12 @@
 		},
 		{
 			"binding_type": "view",
-			"source_property_name": "(not (#form_button_text = #form_button_text - 'area '))",
+			"source_property_name": "(not (#form_button_text = #form_button_text - '§area§ '))",
 			"target_property_name": "#visible"
 		},
 		{
 			"binding_type": "view",
-			"source_property_name": "(#form_button_text - 'area ')",
+			"source_property_name": "(#form_button_text - '§area§ ')",
 			"target_property_name": "#data"
 		},
 		{

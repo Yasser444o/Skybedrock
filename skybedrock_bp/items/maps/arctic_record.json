@@ -5,7 +5,10 @@
 			"identifier": "skybedrock:arctic_record"
 		},
 		"components": {
-			"minecraft:icon": "skybedrock:arctic_record"
+			"minecraft:icon": "skybedrock:arctic_record",
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "arctic_record" },
+			"minecraft:max_stack_size": 1
 		}
 	}
 }

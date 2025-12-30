@@ -168,7 +168,7 @@
 				"focus_enabled": true,
 				"default_control": "default",
 				"hover_control": "hover",
-				"pressed_control": "hover",
+				"pressed_control": "pressed",
 				"sound_name": "random.click",
 				"anchor_from": "top_right",
 				"anchor_to": "top_right",
@@ -204,6 +204,27 @@
 						]
 					}},
 					{ "hover": {
+						"type": "image",
+						"size": ["120%c", 32],
+						"min_size": [38, 32],
+						"offset": [4, 0],
+						"anchor_from": "middle_right",
+						"anchor_to": "middle_right",
+						"texture": "textures/ui/TabLeftFront",
+						"color": "$button_color",
+						"layer": "$button_layer",
+						"controls": [
+							{ "text": {
+								"type": "label",
+								"text": "#text",
+								"color": [0.1, 0.1, 0.1],
+								"layer": 2,
+								"$change": "(#form_button_text - '§category§' - '§selected_category§')",
+								"bindings": "$change_button_text"
+							}}
+						]
+					}},
+					{ "pressed": {
 						"type": "image",
 						"size": ["120%c", 32],
 						"min_size": [38, 32],
@@ -288,7 +309,7 @@
 		"offset": [-1, 0],
 		"default_control": "default",
 		"hover_control": "hover",
-		"pressed_control": "hover",
+		"pressed_control": "pressed",
 		"sound_name": "random.click",
 		"focus_enabled": true,
 		"default_focus_precedence": 10,
@@ -316,6 +337,14 @@
 			},
 			{
 				"hover": {
+					"type": "image",
+					"texture": "textures/ui/buttons/quest_button_hover",
+					"color": "$color",
+					"size": [ "100%", "100% - 4px" ]
+				}
+			},
+			{
+				"pressed": {
 					"type": "image",
 					"texture": "textures/ui/buttons/quest_button_hover",
 					"color": "$color",

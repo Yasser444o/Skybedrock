@@ -5,7 +5,10 @@
 			"identifier": "skybedrock:scraped_trial"
 		},
 		"components": {
-			"minecraft:icon": "skybedrock:scraped_trial"
+			"minecraft:icon": "skybedrock:scraped_trial",
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "scraped_trial" },
+			"minecraft:max_stack_size": 1
 		}
 	}
 }

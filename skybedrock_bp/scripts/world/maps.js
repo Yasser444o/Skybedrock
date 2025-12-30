@@ -1,7 +1,7 @@
 import { world } from "@minecraft/server" 
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui"
 import { bookmark, open_book } from "../items/guidebook"
-import { get_cardinal_direction } from "../items/treasure_map"
+import treasure_map, { get_cardinal_direction } from "../items/treasure_map"
 import { chorus_islands, end_cities, pillar_locations } from "./the_end"
 import { check_block } from "../achievements"
 import { nether_structures, overworld_structures, biome_names} from "../data"
@@ -278,14 +278,14 @@ export function see_a_map(player, map) {
     }
 }
 
-function open_map(player, data) {
+export function open_map(player, data) {
 	const map_size = 128 // there are 256 valid locations to place a marker
 	const fit = (a) => Math.max(-map_size, Math.min(map_size, a))
 	const resize = (a) => Math.round(a * map_size / data.range)
-
+	const align = data.align_player ? Math.floor : Number
 	const player_place = {
-		x: fit(resize(player.location.x - data.center.x)) + map_size,
-		z: fit(resize(player.location.z - data.center.z)) + map_size,
+		x: fit(resize(align(player.location.x) - data.center.x)) + map_size,
+		z: fit(resize(align(player.location.z) - data.center.z)) + map_size,
 	}
 
 	const chunks_element = `x${map_size - (resize(data.center.x) % map_size)}z${map_size - (resize(data.center.z) % 128)}s${16 * 256**2 / data.range}`
@@ -299,10 +299,10 @@ function open_map(player, data) {
 		return { tag, x, z, text, texture }
 	})
 	.filter(({x, z}) => x >= 0 && x <= map_size * 2 && z >= 0 && z <= map_size * 2) // does it fit in the map
-	.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text}`, texture})) //configure for a button
+	.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text ?? ''}`, texture})) //configure for a button
 
 	const form = new ActionFormData()
-	form.title('§map_ui§' + data.title)  // Title
+	form.title('§map_ui§' + (data.title ?? ''))  // Title
 	for (let i = 0; i < 10; i++) form.button((data.buttons ? data.buttons : [])[i] ?? '')
 	form.header(data.background ?? 'textures/map/map_background')  // Background
 	form.header(data.foreground ?? 'textures/none') // Forground
@@ -312,7 +312,8 @@ function open_map(player, data) {
 	// data.areas?.forEach(area => form.button(`§area§ ${area.text}`, area.texture))
 
 	form.show(player).then(({ selection, canceled }) => {
-		if (!canceled) data.action(selection)
+		if (canceled || !data.action) return
+		data.action(selection)
 	})
 }
 
@@ -363,6 +364,7 @@ export function open_world_map(player, item) {
 export default {
 	onUse({source:player, itemStack:item}, {params}) {
 		if (params.type == 'world_map') world_map(player, item)
+		if (params.type == 'treasure_map') treasure_map(player, item)
 	},
 	onUseOn({source:player, block, itemStack:item}, {params}) {
 		if (params.type == 'world_map') {

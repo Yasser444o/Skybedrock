@@ -5,7 +5,10 @@
 			"identifier": "skybedrock:ancient_scroll"
 		},
 		"components": {
-			"minecraft:icon": "skybedrock:ancient_scroll"
+			"minecraft:icon": "skybedrock:ancient_scroll",
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "ancient_scroll" },
+			"minecraft:max_stack_size": 1
 		}
 	}
 }

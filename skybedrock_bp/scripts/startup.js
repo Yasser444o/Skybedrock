@@ -4,7 +4,6 @@ import monster_spawners from "./blocks/monster_spawners";
 import redstone_ore from "./blocks/redstone_ore";
 import nether_gravel from "./blocks/nether_gravel";
 import trial_spawner from "./blocks/trial_spawners";
-import treasure_map from "./items/treasure_map";
 import debug_stick from "./items/debug_stick";
 import creative_tool from "./items/creative_tool";
 import guidebook from "./items/guidebook";
@@ -18,7 +17,6 @@ system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRe
 	blockComponentRegistry.registerCustomComponent('skybedrock:trial_spawner', trial_spawner ?? {})
 	blockComponentRegistry.registerCustomComponent('skybedrock:redstone_ore', redstone_ore ?? {})
 	blockComponentRegistry.registerCustomComponent('skybedrock:nether_gravel', nether_gravel ?? {})
-	itemComponentRegistry.registerCustomComponent('skybedrock:treasure_map', treasure_map ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:guidebook', guidebook ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:maps', maps ?? {})
 	itemComponentRegistry.registerCustomComponent('skybedrock:debug_stick', debug_stick ?? {})

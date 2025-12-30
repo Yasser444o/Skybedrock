@@ -290,7 +290,6 @@
 				"offset": [2, 0],
 				"$pressed_button_name": "button.form_button_click",
 				"bindings": "$form_button",
-				"pressed_control": "hover",
 				"controls": [
 					{ "default": {
 						"type": "label",
@@ -301,6 +300,25 @@
 						"bindings": "$change_button_text"
 					}},
 					{ "hover": {
+						"type": "label",
+						"text": "#text",
+						"anchor_from": "left_middle",
+						"anchor_to": "left_middle",
+						"size": ["default", "default"],
+						"max_size": ["100%", "default"],
+						"color": [0, 0, 0],
+						"$change": "(#form_button_text - '§category ' - '§section ')",
+						"bindings": "$change_button_text",
+						"controls": [
+							{ "border": {
+								"type": "image",
+								"offset": [-0.5, 0],
+								"size": ["100% + 7px", "100% + 8px"],
+								"texture": "textures/ui/buttons/book_entry"
+							}}
+						]
+					}},
+					{ "pressed": {
 						"type": "label",
 						"text": "#text",
 						"anchor_from": "left_middle",

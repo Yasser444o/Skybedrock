@@ -21,7 +21,7 @@
 		"controls": [
 			{
 				"default@server_form.long_form": {
-				  	"$condition": "(#title_text = (#title_text - '§book_ui§' - '§quests_ui§' - '§quest_screen§' - '§map_ui§' - 'Treasure Map'))",
+				  	"$condition": "(#title_text = (#title_text - '§book_ui§' - '§quests_ui§' - '§quest_screen§' - '§map_ui§'))",
 				  	"bindings": "$visible_by_title"
 				}
 			},
@@ -41,12 +41,6 @@
 				"quest_screen@quests.quest_screen": {
 				  	"$tag": "§quest_screen§",
 				  	"bindings": "$has_title_tag"
-				}
-			},
-			{
-				"map_form@maps.map_paper": {
-					"$tag": "Treasure Map",
-					"bindings": "$has_title_tag"
 				}
 			},
 			{

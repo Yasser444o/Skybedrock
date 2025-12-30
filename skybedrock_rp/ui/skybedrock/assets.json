@@ -21,7 +21,7 @@
 		"type": "button",
 		"default_control": "default",
 		"hover_control": "hover",
-		"pressed_control": "hover",
+		"pressed_control": "pressed",
 		"sound_name": "random.click",
 		"focus_enabled": true,
 		"button_mappings": [
@@ -39,7 +39,8 @@
 		"bindings": "$form_button",
 		"controls": [
 			{"default@assets.empty": {}},
-			{"hover@assets.empty": {}}
+			{"hover@assets.empty": {}},
+			{"pressed@assets.empty": {}}
 		]
 	},
 
@@ -444,9 +445,17 @@
 		"anchor_from": "top_left",
 		"anchor_to": "top_left",
 		"hover_control": "hover",
-		"pressed_control": "hover",
+		"pressed_control": "pressed",
 		"controls": [
 			{ "hover": { // this element can not be localized
+				"type": "custom",
+				"renderer": "hover_text_renderer",
+				"layer": 40,
+				"property_bag": {
+					"#hover_text": "$text"
+				}
+			}},
+			{ "pressed": {
 				"type": "custom",
 				"renderer": "hover_text_renderer",
 				"layer": 40,
@@ -463,8 +472,8 @@
 		"type": "button",
 		"follows_cursor": true,
 		"consume_hover_events": false,
-		"$text_bindings": [],
-		"$label_text": "#text",
+		"$text_bindings": [],  // to obtain text from a binding
+		"$label_text": "#text",  // to obtain text from a variable
 		"controls": [
 			{ "hover_area": {
 				"type": "image",
