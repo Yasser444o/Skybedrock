@@ -1,15 +1,19 @@
+import { system } from "@minecraft/server"
 import { ModalFormData } from "@minecraft/server-ui"
 import { open_world_map } from "../world/maps"
 
+const busy = new Set()
 export default function(player, item) {
 	const block = player.getBlockFromViewDirection({maxDistance: 6})?.block
-	if (block?.typeId == 'minecraft:lodestone') return
-	// const strings = encode_chunks(player)
-	// new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
-	// item.setDynamicProperty('map', encoded_map_data)
-	// player.getComponent('equippable').setEquipment('Mainhand', item)
-	// console.log(item.getDynamicPropertyTotalByteCount())
-	open_world_map(player, item)
+	system.run(() => {
+		if (busy.has(player.id)) return
+		// const strings = encode_chunks(player)
+		// new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
+		// item.setDynamicProperty('map', encoded_map_data)
+		// player.getComponent('equippable').setEquipment('Mainhand', item)
+		// console.log(item.getDynamicPropertyTotalByteCount())
+		open_world_map(player, item)
+	})
 }
 
 function encode_chunks({dimension, location}) {
@@ -106,6 +110,7 @@ function bytes_to_base64(bytes) {
 }
 
 export function manage_waypoint(player, block, item, mode) {
+	busy.add(player.id); system.runTimeout(() => busy.delete(player.id), 2)
 	new ModalFormData()
 	.title({ rawtext: [{ text: '§waypoint_ui§' }, { translate: `maps.waypoints.${mode}` }] })
 	.textField('Name:', 'Waypoint', { defaultValue: 'Waypoint'})

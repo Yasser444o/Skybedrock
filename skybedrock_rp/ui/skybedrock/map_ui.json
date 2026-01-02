@@ -967,8 +967,7 @@
 								"$condtion": "((#dropdown_option_text = 'marker') or (#dropdown_option_text = 'banner') or (#dropdown_option_text = 'circle'))",
 								"$child_index": 2,
 								"$text_key": "maps.color.",
-								"$texture_path": "textures/ui/map/markers/color_",
-								"$grid_size": [ 160, 40 ]
+								"$texture_path": "textures/ui/map/markers/color_"
 							}},
 							{ "strucs@conditional_dropdown": {
 								"$condtion_index": 1,
@@ -1111,74 +1110,80 @@
 		"type": "collection_panel",
 		"collection_name": "custom_form",
 		"size": ["100%", "100%c"],
-		"$grid_size|default": [ "100%", "100%c" ],
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
 		"$post_key|default": "",
 		"controls": [
-			{ "dropdown": {
+			{ "options": {
 				"collection_index": "$index",
-				"type": "panel",
-				"size": ["100%", "100%c + 16px"],
+				"type": "stack_panel",
+				"size": ["100%", "100%c"],
 				"controls": [
-					{ "text": {
-						"type": "label",
-						"text": "#custom_text",
-						"color": [0.45, 0.34, 0.24],
-						"anchor_from": "top_left",
-						"anchor_to": "top_left",
-						"offset": [0, 8],
-						"bindings": [
-							{
-								"binding_name": "#custom_text",
-								"binding_type": "collection",
-								"binding_collection_name": "custom_form"
-							}
-						],
+					{ "option_text": {
+						"type": "panel",
+						"size": ["100%c + 2px", "100%c + 8px"],
 						"controls": [
-							{ "selected_option": {
+							{ "option_name": {
 								"type": "label",
-								"text": "#text",
-								"color": [0, 0, 0],
-								"anchor_from": "top_right",
-								"anchor_to": "top_left",
+								"text": "#custom_text",
+								"color": [0.45, 0.34, 0.24],
 								"bindings": [
 									{
-										"binding_name": "#dropdown_option_text",
+										"binding_name": "#custom_text",
 										"binding_type": "collection",
 										"binding_collection_name": "custom_form"
-									},
-									{
-										"binding_type": "view",
-										"source_property_name": "($text_key + #dropdown_option_text + $post_key)",
-										"target_property_name": "#text"
 									}
+								],
+								"controls": [
+									{ "selected_option": {
+										"type": "label",
+										"text": "#text",
+										"color": [0, 0, 0],
+										"anchor_from": "top_right",
+										"anchor_to": "top_left",
+										"bindings": [
+											{
+												"binding_name": "#dropdown_option_text",
+												"binding_type": "collection",
+												"binding_collection_name": "custom_form"
+											},
+											{
+												"binding_type": "view",
+												"source_property_name": "($text_key + #dropdown_option_text + $post_key)",
+												"target_property_name": "#text"
+											}
+										]
+									}}
 								]
 							}}
 						]
 					}},
-					{ "grid": {
-						"type": "panel",
-						"size": "$grid_size",
-						"max_size": ["100%", "100%c"],
-						"anchor_from": "top_middle",
-						"anchor_to": "top_middle",
-						"offset": [0, 24],
-						"controls": [
-							{ "radio_control_group": {
-								"type": "grid",
-								"grid_dimensions": [1, 1],
-								"grid_item_template": "maps.grid_slot",
-								"grid_fill_direction": "horizontal",
-								"grid_rescaling_type": "horizontal",
-								"size": ["100%", "100%c"],
+					{ "scroller@assets.scroller": {
+						"$max_size": [ "100%", 45 ],
+						"$scroller_content": [
+							{ "options_grid": {
+								"type": "panel",
+								"size": ["100%c + 4px", "100%c + 4px"],
 								"anchor_from": "top_left",
 								"anchor_to": "top_left",
-								"collection_name": "custom_dropdown",
-								"bindings": [{
-									"binding_type": "collection",
-									"binding_collection_name": "custom_form",
-									"binding_name": "#custom_dropdown_length",
-									"binding_name_override": "#maximum_grid_items"
-								}]
+								"controls": [
+									{ "grid": {
+										"type": "grid",
+										"grid_dimensions": [1, 1],
+										"grid_fill_direction": "horizontal",
+										"grid_rescaling_type": "horizontal",
+										"grid_item_template": "maps.grid_slot",
+										"collection_name": "custom_dropdown",
+										"size": [200, "100%c"],
+										"layer": 1,
+										"bindings": [{
+											"binding_type": "collection",
+											"binding_collection_name": "custom_form",
+											"binding_name": "#custom_dropdown_length",
+											"binding_name_override": "#maximum_grid_items"
+										}]
+									}}
+								]
 							}}
 						]
 					}}
@@ -1188,7 +1193,7 @@
 	},
 	
 	"grid_slot": {
-		"type": "panel",
+		"type": "input_panel",
 		"anchor_from": "top_left",
 		"anchor_to": "top_left",
 		"size": [ 20, 20 ],
@@ -1210,19 +1215,8 @@
 				"checked_control": "checked",
 				"checked_hover_control": "checked_hover",
 				"unchecked_hover_control": "unchecked_hover",
+				"button_mappings": "$simple_button",
 
-				"button_mappings": [
-					{
-						"from_button_id": "button.menu_select",
-						"to_button_id": "button.menu_select",
-						"mapping_type": "pressed"
-					},
-					{
-						"from_button_id": "button.menu_ok",
-						"to_button_id": "button.menu_ok",
-						"mapping_type": "focused"
-					}
-				],
 				"bindings": [
 					{
 						"binding_type": "collection",
