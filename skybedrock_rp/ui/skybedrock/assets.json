@@ -110,6 +110,159 @@
 		]
 	},
 
+	"text_field": {
+		"type": "panel",
+		"size": [ "100%", "100%cm" ],
+		"controls": [
+			{ "name_edit_box": {
+				"type": "edit_box",
+				"size": [ "100%", "100%cm" ],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"offset": [0, -2],
+				"layer": 1,
+
+				"default_focus_precedence": 10,
+				"text_box_name": "custom_input",
+				"text_type": "ExtendedASCII",
+				"text_edit_box_grid_collection_name": "custom_form",
+				"default_control": "default",
+				"hover_control": "hover",
+				"pressed_control": "pressed",
+				"text_control": "display_text",
+				"place_holder_control": "place_holder_control",
+				"place_holder_text_hover_color": [ 0.5, 0.5, 0.5 ],
+				"max_length": 100,
+				"focus_enabled": true,
+				"button_mappings": [
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": true,
+						"handle_deselect": false,
+						"mapping_type": "pressed"
+					},
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": false,
+						"handle_deselect": true,
+						"mapping_type": "global",
+						"consume_event": false
+					},
+					{
+						"from_button_id": "button.menu_ok",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": true,
+						"handle_deselect": true,
+						"mapping_type": "pressed"
+					},
+					{
+						"from_button_id": "button.menu_ok",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": false,
+						"handle_deselect": true,
+						"mapping_type": "global"
+					},
+					{
+						"from_button_id": "button.menu_cancel",
+						"to_button_id": "button.text_edit_box_deselected",
+						"handle_select": false,
+						"handle_deselect": true,
+						"mapping_type": "global"
+					},
+					{
+						"from_button_id": "button.menu_clear",
+						"to_button_id": "button.text_edit_box_clear",
+						"handle_select": false,
+						"handle_deselect": false,
+						"mapping_type": "focused"
+					},
+					{
+						"to_button_id": "button.text_edit_box_hovered",
+						"mapping_type": "pressed"
+					}
+				],
+				"controls": [
+					{ "clipper_panel": {
+						"type": "panel",
+						"clips_children": true,
+						"max_size": [ "100% - 6px", "100%cm + 4px" ],
+						"size": [ "100%c", "100%cm + 4px" ],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left",
+						"controls": [
+							{ "display_text": {
+								"type": "label",
+								"text": "#item_name",
+								"color": [ 0, 0, 0 ],
+								"localize": false,
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"layer": 1,
+								"property_bag": { "#property_field": "#item_name" },
+								"bindings": [
+									{ "binding_name": "#newline_refresh" },
+									{
+										"binding_type": "collection",
+										"binding_condition": "visible",
+										"binding_collection_name": "custom_form",
+										"binding_name": "#custom_input_text",
+										"binding_name_override": "#item_name"
+									}
+								]
+							}},
+							{ "placeholder_text": {
+								"type": "label",
+								"text": "#custom_placeholder_text",
+								"color": [ 0.3, 0.3, 0.3 ],
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"layer": 1,
+								"bindings": [
+									{
+										"binding_type": "view",
+										"resolve_sibling_scope": true,
+										"source_control_name": "display_text",
+										"source_property_name": "(#item_name = '')",
+										"target_property_name": "#visible"
+									},
+									{
+										"binding_type": "collection",
+										"binding_condition": "visible",
+										"binding_collection_name": "custom_form",
+										"binding_name": "#custom_placeholder_text"
+									}
+								]
+							}}
+						]
+					}},
+					{ "default": {
+						"type": "image",
+						"texture": "textures/white",
+						"size": ["100%sm", "100%sm"],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left"
+					}},
+					{ "hover": {
+						"type": "image",
+						"texture": "textures/white",
+						"size": ["100%sm", "100%sm"],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left"
+					}},
+					{ "pressed": {
+						"type": "image",
+						"texture": "textures/white",
+						"size": ["100%sm", "100%sm"],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left"
+					}}
+				]
+			}}
+		]
+	},
+
 	"scroller": {
 		"type": "input_panel",
 		"size": ["100%", "100%c"],

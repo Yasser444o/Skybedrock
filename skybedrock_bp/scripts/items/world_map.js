@@ -124,9 +124,10 @@ export function manage_waypoint(player, block, item, mode) {
 		'ancient_city', 'bastion_remnants', 'desert_pyramid', 'end_gateway', 'igloo', 'mineshaft', 'nether_fortress', 'ocean_monument',
 		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark'
 	])
-	.textField('Item: ', 'e.g. iron_ingot | reeds')
-	.textField('Block: ', 'e.g. diamond_block | observer_front')
-	.dropdown('Style: ', ['full', 'center', 'corners'])
+	.textField('Texture: ', 'e.g. iron_ingot | reeds', {tooltip: "Use the file name of the item texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world"})
+	.textField('Texture: ', 'e.g. clay | bee_nest_front', {tooltip: "Use the file name of the block texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world"})
+	.dropdown('Style: ', ['full', 'center', 'corners', '§.2.5D'])
+	.textField('Top Texture: ', 'e.g. bee_nest_top')
 	.dropdown('Mob: ', [
 		'chicken', 'cow', 'pig', 'sheep', 'camel', 'donkey', 'horse', 'mule',
 		'cat', 'parrot', 'wolf', 'armadillo', 'bat', 'bee', 'fox', 'goat',
