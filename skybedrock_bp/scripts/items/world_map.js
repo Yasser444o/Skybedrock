@@ -1,12 +1,49 @@
-import { system } from "@minecraft/server"
+import { system, world } from "@minecraft/server"
 import { ModalFormData } from "@minecraft/server-ui"
 import { open_world_map } from "../world/maps"
+import { load_dynamic_object, save_dynamic_object } from "../utilities"
 
-const busy = new Set()
+const default_name = 'Waypoint'
+const map_markers = {
+	colored: new Set(['marker', 'banner', 'circle']),
+	block_styles: ['full', 'center', 'corners'],
+	paths: {
+		marker: 'textures/ui/map/markers/marker_',
+		banner: 'textures/ui/map/markers/banner_',
+		circle: 'textures/ui/map/markers/circle_',
+		structure: 'textures/ui/map/structures/',
+		item: 'textures/items/',
+		block: 'textures/blocks/',
+		mob: 'textures/ui/map/mobs/',
+	},
+	colors: [
+		'white', 'light_gray', 'gray', 'black', 'brown', 'red', 'orange', 'yellow',
+		'lime', 'green', 'cyan', 'light_blue', 'blue', 'purple', 'magenta', 'pink',
+	],
+	mobs: [
+		'chicken', 'cow', 'pig', 'sheep', 'camel', 'donkey', 'horse', 'mule',
+		'cat', 'parrot', 'wolf', 'armadillo', 'bat', 'bee', 'fox', 'goat',
+		'llama', 'ocelot', 'panda', 'polar_bear', 'rabbit', 'axolotl', 'cod', 'dolphin',
+		'frog', 'glow_squid', 'nautilus', 'pufferfish', 'salmon', 'squid', 'tadpole', 'tropicalfish',
+		'turtle', 'allay', 'mooshroom', 'sniffer', 'copper_golem', 'iron_golem', 'snow_golem',
+		'villager', 'wandering_trader', 'bogged', 'camel_husk', 'drowned', 'husk', 'parched', 'skeleton',
+		'skeleton_horse', 'stray', 'zombie', 'zombie_horse', 'zombie_nautilus', 'zombie_villager', 'cave_spider', 'spider',
+		'breeze', 'creaking', 'creeper', 'elder_guardian', 'guardian', 'phantom', 'silverfish', 'slime',
+		'warden', 'witch', 'illager', 'ravager', 'vex', 'blaze',
+		'ghast', 'happy_ghast', 'hoglin', 'magma_cube', 'piglin_brute', 'piglin', 'strider', 'wither_skeleton',
+		'wither', 'zoglin', 'zombie_pigman', 'enderman', 'endermite', 'shulker', 'end_phantom', 'ender_dragon',
+	],
+	structures: [
+		'village_plains', 'village_savanna', 'village_snowy', 'village_taiga', 'village_desert', 'swamp_hut', 'jungle_temple', 'trial_chambers',
+		'ancient_city', 'bastion_remnants', 'desert_pyramid', 'end_gateway', 'igloo', 'mineshaft', 'nether_fortress', 'ocean_monument',
+		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark'
+	]
+}
+const marker_types = Object.keys(map_markers.paths)
+
 export default function(player, item) {
-	const block = player.getBlockFromViewDirection({maxDistance: 6})?.block
 	system.run(() => {
-		if (busy.has(player.id)) return
+		if (player.is_confuguring_map) return
 		// const strings = encode_chunks(player)
 		// new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
 		// item.setDynamicProperty('map', encoded_map_data)
@@ -14,6 +51,25 @@ export default function(player, item) {
 		// console.log(item.getDynamicPropertyTotalByteCount())
 		open_world_map(player, item)
 	})
+}
+
+const vanilla_dimensions = new Map()
+system.run(() => ['overworld', 'nether', 'the_end'].forEach(id => vanilla_dimensions.set('minecraft:' + id, world.getDimension(id))))
+export function update_waypoints(player, item, changed) {
+	const waypoints = Object.fromEntries(Object.entries(load_dynamic_object(item, 'waypoints')).filter(([hash]) => {
+		const [x, y, z, d] = hash.split(' ')
+		const dimension = vanilla_dimensions.get(d) ?? world.getDimension(d)
+		const location = {x: +x, y: +y, z: +z}
+		if (!dimension.isChunkLoaded(location)) return true
+		const block = dimension.getBlock(location)
+		if (block.typeId == 'minecraft:lodestone') return true
+		changed = true
+	}))
+	if (changed) {
+		save_dynamic_object(item, 'waypoints', waypoints)
+		player.getComponent('equippable').setEquipment('Mainhand', item)
+	}
+	return waypoints
 }
 
 function encode_chunks({dimension, location}) {
@@ -109,41 +165,47 @@ function bytes_to_base64(bytes) {
     }; return string.join('')
 }
 
-export function manage_waypoint(player, block, item, mode) {
-	busy.add(player.id); system.runTimeout(() => busy.delete(player.id), 2)
+export function manage_waypoint(player, block, item) {
+	player.is_confuguring_map = true; system.runTimeout(() => delete player.is_confuguring_map, 2)
+	const {x, y, z, dimension:{id:d}} = block
+	const hash = `${x} ${y} ${z} ${d}`
+	const waypoints = update_waypoints(player, item)
+	const exists = hash in waypoints
+	const deafults = exists ? waypoints[hash].deafults ?? [] : []
+	const mode = exists ? 'modify' : 'add'
+	
 	new ModalFormData()
 	.title({ rawtext: [{ text: '§waypoint_ui§' }, { translate: `maps.waypoints.${mode}` }] })
-	.textField('Name:', 'Waypoint', { defaultValue: 'Waypoint'})
-	.dropdown('Icon: ', ['marker', 'banner', 'circle', 'structure', 'item', 'block', 'mob'])
-	.dropdown('Color: ', [
-		'white', 'light_gray', 'gray', 'black', 'brown', 'red', 'orange', 'yellow',
-		'lime', 'green', 'cyan', 'light_blue', 'blue', 'purple', 'magenta', 'pink',
-	])
-	.dropdown('Structure: ', [
-		'village_plains', 'village_savanna', 'village_snowy', 'village_taiga', 'village_desert', 'swamp_hut', 'jungle_temple', 'trial_chambers',
-		'ancient_city', 'bastion_remnants', 'desert_pyramid', 'end_gateway', 'igloo', 'mineshaft', 'nether_fortress', 'ocean_monument',
-		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark'
-	])
-	.textField('Texture: ', 'e.g. iron_ingot | reeds', {tooltip: "Use the file name of the item texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world"})
-	.textField('Texture: ', 'e.g. clay | bee_nest_front', {tooltip: "Use the file name of the block texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world"})
-	.dropdown('Style: ', ['full', 'center', 'corners', '§.2.5D'])
-	.textField('Top Texture: ', 'e.g. bee_nest_top')
-	.dropdown('Mob: ', [
-		'chicken', 'cow', 'pig', 'sheep', 'camel', 'donkey', 'horse', 'mule',
-		'cat', 'parrot', 'wolf', 'armadillo', 'bat', 'bee', 'fox', 'goat',
-		'llama', 'ocelot', 'panda', 'polar_bear', 'rabbit', 'axolotl', 'cod', 'dolphin',
-		'frog', 'glow_squid', 'nautilus', 'pufferfish', 'salmon', 'squid', 'tadpole', 'tropicalfish',
-		'turtle', 'allay', 'mooshroom', 'sniffer', 'copper_golem', 'iron_golem', 'snow_golem',
-		'villager', 'wandering_trader', 'bogged', 'camel_husk', 'drowned', 'husk', 'parched', 'skeleton',
-		'skeleton_horse', 'stray', 'zombie', 'zombie_horse', 'zombie_nautilus', 'zombie_villager', 'cave_spider', 'spider',
-		'breeze', 'creaking', 'creeper', 'elder_guardian', 'guardian', 'phantom', 'silverfish', 'slime',
-		'warden', 'witch', 'illager', 'ravager', 'vex', 'blaze',
-		'ghast', 'happy_ghast', 'hoglin', 'magma_cube', 'piglin_brute', 'piglin', 'strider', 'wither_skeleton',
-		'wither', 'zoglin', 'zombie_pigman', 'enderman', 'endermite', 'shulker', 'end_phantom', 'ender_dragon',
-	])
+	/*0*/.textField('Name:', default_name, { defaultValue: deafults[0] ?? default_name})
+	/*1*/.dropdown('Icon: ', marker_types, { defaultValueIndex: deafults[1]})
+	/*2*/.dropdown('Color: ', map_markers.colors, { defaultValueIndex: deafults[2]})
+	/*3*/.dropdown('Structure: ', map_markers.structures, { defaultValueIndex: deafults[3]})
+	/*4*/.textField('Texture: ', { translate: 'maps.waypoints.item.placeholder'}, { defaultValue: deafults[4], tooltip: { translate: 'maps.waypoints.item.tooltip'}})
+	/*5*/.textField('Texture: ', { translate: 'maps.waypoints.block.placeholder'}, { defaultValue: deafults[5], tooltip: { translate: 'maps.waypoints.block.tooltip'}})
+	/*6*/.dropdown('Style: ', map_markers.block_styles, { defaultValueIndex: deafults[6]})
+	/*7*/.textField('Top Texture: ', { translate: 'maps.waypoints.top.placeholder'}, { defaultValue: deafults[7]})
+	/*8*/.dropdown('Mob: ', map_markers.mobs, { defaultValueIndex: deafults[8]})
 	.submitButton({ translate: `maps.waypoints.${mode}` })
 	.show(player).then(({ formValues, canceled }) => {
 		if (canceled) return
-		console.log(formValues[2])
+		if (block.typeId != 'minecraft:lodestone') return
+		
+		const [name, icon_type, color, stuc_index, item_texture, block_texture, style_index, top_texture, mob_index] = formValues
+		const type = marker_types[icon_type]
+		const texture = (() => {
+			if (map_markers.colored.has(type)) return map_markers.colors[color]
+			return {
+				structure: map_markers.structures[stuc_index],
+				mob: map_markers.mobs[mob_index],
+				item: item_texture,
+				block: block_texture,
+			}[type]
+		})()
+		const icon = `${map_markers.paths[type]}${texture}`
+		waypoints[hash] = {name:name ?? default_name, icon, deafults: formValues}
+		save_dynamic_object(item, 'waypoints', waypoints)
+		player.getComponent('equippable').setEquipment('Mainhand', item)
+		// system.run(() => console.log(formValues))
+		// system.run(() => console.log(player.getComponent('equippable').getEquipment('Mainhand').getDynamicProperty('waypoints')))
 	})
 }

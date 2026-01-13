@@ -5,7 +5,7 @@ import treasure_map, { get_cardinal_direction } from "../items/treasure_map"
 import { chorus_islands, end_cities, pillar_locations } from "./the_end"
 import { check_block } from "../achievements"
 import { nether_structures, overworld_structures, biome_names} from "../data"
-import world_map, { manage_waypoint } from "../items/world_map"
+import world_map, { manage_waypoint, update_waypoints } from "../items/world_map"
 
 export const locating_players = new Map()
 
@@ -300,7 +300,6 @@ export function open_map(player, data) {
 	})
 	.filter(({x, z}) => x >= 0 && x <= map_size * 2 && z >= 0 && z <= map_size * 2) // does it fit in the map
 	.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text ?? ''}`, texture})) //configure for a button
-
 	const form = new ActionFormData()
 	form.title('§map_ui§' + (data.title ?? ''))  // Title
 	for (let i = 0; i < 10; i++) form.button((data.buttons ? data.buttons : [])[i] ?? '')
@@ -345,6 +344,7 @@ function toggle_chunks(player, item, chunk_borders) {
 export function open_world_map(player, item) {
 	const zoom_level = item.getDynamicProperty('zoom') ?? 128
 	const chunk_borders = item.getDynamicProperty('chunk_borders')
+	const waypoints = update_waypoints(player, item)
 	open_map(player, {
 		title: 'World Map',
 		center: player.location,
@@ -352,7 +352,11 @@ export function open_world_map(player, item) {
 		range: zoom_level,
 		chunk_borders,
 		markers: [
-			{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'}
+			{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'},
+			...(Object.entries(waypoints).map(([hash, waypoint]) => {
+				const [x, _, z, d] = hash.split(' ')
+				return {text: waypoint.name, texture: waypoint.icon, x, z, dim: d, action: (player) => player.locatior_distination = {name: waypoint.name, x, z, dim: d}}
+			}))
 		],
 		buttons: ['', '', 'zoom', 'chunks'],
 		action: (selection) => {
@@ -369,7 +373,7 @@ export default {
 	onUseOn({source:player, block, itemStack:item}, {params}) {
 		if (params.type == 'world_map') {
 			if (block.typeId != 'minecraft:lodestone') return
-			manage_waypoint(player, block, item, 'add')
+			manage_waypoint(player, block, item)
 		}
 	}
 }

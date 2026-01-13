@@ -1,27 +1,9 @@
 import { system, world} from "@minecraft/server" ;
 import { locating_players } from "./maps";
 import { biome_names, nether_structures, overworld_structures } from "../data";
+import { cross, dot, normalize } from "../utilities";
 const all_structures = overworld_structures.concat(nether_structures)
 
-// thanks to @madlad0
-function dot(u, v) {
-	return u.x * v.x + u.y * v.y + u.z * v.z
-}
-function cross(u, v) {
-	return {
-		x: u.y * v.z - u.z * v.y,
-		y: u.z * v.x - u.x * v.z,
-		z: u.x * v.y - u.y * v.x
-	}
-}
-function normalize(vector) {
-	const length = Math.sqrt(vector.x ** 2 + vector.y ** 2 + vector.z ** 2)
-	return {
-		x: vector.x / length,
-		y: vector.y / length,
-		z: vector.z / length,
-	}
-}
 function get_direction(id, player) {
 	if (!id) return
 	const view = player.getViewDirection()

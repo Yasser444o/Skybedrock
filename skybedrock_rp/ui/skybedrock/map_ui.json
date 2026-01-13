@@ -105,24 +105,14 @@
 				"size": [20, 20],
 				"anchor_from": "bottom_right",
 				"controls": [
-					{ "default": {
+					{ "image": {
 						"type": "image",
 						"bindings": "$get_button_image"
 					}},
 					{ "hover": {
 						"type": "image",
-						"bindings": [
-							{
-								"binding_name": "#form_button_texture",
-								"binding_type": "collection",
-								"binding_collection_name": "form_buttons"
-							},
-							{
-								"binding_type": "view",
-								"source_property_name": "(#form_button_texture + '_hover')",
-								"target_property_name": "#texture"
-							}
-						],
+						"texture": "textures/white",
+						"alpha": 0.5,
 						"controls": [
 							{ "hovering_text@assets.hovering_text": {
 								"$text_bindings": [
@@ -1050,7 +1040,7 @@
 				"$button_binding_condition": "once",
 				"anchor_from": "bottom_right",
 				"anchor_to": "bottom_right",
-				"size": [ 80, 20 ],
+				"size": [ 100, 20 ],
 				"offset": [-14, -8],
 				"bindings": [
 					{

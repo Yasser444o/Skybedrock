@@ -85,6 +85,11 @@ guidebook.maps.no_structures=You haven't unlock any structures yet
 
 maps.waypoints.add=Add Waypoint
 maps.waypoints.modify=Modify Waypoint
+maps.waypoints.item.placeholder=e.g. iron_ingot | reeds
+maps.waypoints.block.placeholder=e.g. clay | bee_nest_front
+maps.waypoints.top.placeholder=e.g. bee_nest_top
+maps.waypoints.item.tooltip=Use the file name of the item texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world
+maps.waypoints.block.tooltip=Use the file name of the block texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world
 
 maps.color.white=White
 maps.color.light_gray=Light Gray
