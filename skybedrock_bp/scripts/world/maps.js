@@ -200,7 +200,7 @@ export function see_a_map(player, map) {
                 }${
                     biome ? `\nBiome: ${biome}` : biomes ? `\nBiomes:\n   ${biomes?.join(',\n   ') ?? ''}` : ''
                 }\n§pClick to Locate`
-                form.button(`§landmark§ ${place({x, z})}${hover_text}`, `textures/ui/map/${icon ?? id}`)
+                form.button(`§landmark§ ${place({x, z})}${hover_text}`, `textures/ui/map/structures/${icon ?? id}`)
             })
         } else form.body({translate: 'guidebook.maps.no_structures'})
         form.show(player).then(({ selection, canceled }) => {
@@ -209,12 +209,13 @@ export function see_a_map(player, map) {
                 case 0: open_book(player); break
                 case 1: see_maps(player); break
                 case 2: bookmark(player, data.title); break
-                case 3: if (active == 'on') {
-                    locating_players.delete(player.id)
-                    if (!player.getDynamicProperty('biome_detector')) player.onScreenDisplay.setActionBar('§.')
-                } see_a_map(player, map); break
+                case 3: if (active == 'on') delete player.waypoint
+				see_a_map(player, map); break
             }
-            if (selection > 9) locating_players.set(player.id, structures[selection - 10].id)
+            if (selection > 9) {
+				const structure = structures[selection - 10]
+				player.waypoint = {name: 'maps.structure.' + structure.id, x: structure.x, z: structure.z, dim: structure.dim}
+			}
         })
     }
     else if (map == 'the_end_map') {
@@ -290,14 +291,15 @@ export function open_map(player, data) {
 
 	const chunks_element = `x${map_size - (resize(data.center.x) % map_size)}z${map_size - (resize(data.center.z) % 128)}s${16 * 256**2 / data.range}`
 
-	const markers = data.markers
+	const options = data.markers
 	.filter((marker) => data.dim == marker.dim)  // the correct dimension
-	.map(({x, z, text, texture, deco, tag}) => {
+	.map(({x, z, text, texture, deco, tag, dim}) => {
 		tag = deco ? '§deco§' : '§landmark§'  // add a tag
 		x = resize(x - data.center.x) + map_size // rezize the x
 		z = resize(z - data.center.z) + map_size  // resize the z
-		return { tag, x, z, text, texture }
+		return { tag, x, z, text, texture, dim }
 	})
+	const markers = options
 	.filter(({x, z}) => x >= 0 && x <= map_size * 2 && z >= 0 && z <= map_size * 2) // does it fit in the map
 	.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text ?? ''}`, texture})) //configure for a button
 	const form = new ActionFormData()
@@ -312,15 +314,16 @@ export function open_map(player, data) {
 
 	form.show(player).then(({ selection, canceled }) => {
 		if (canceled || !data.action) return
-		data.action(selection)
+		data.action(options, selection)
 	})
 }
 
 function zoom_map(player, item) {
 	const zoom_level = item.getDynamicProperty('zoom') ?? 128
-	new ModalFormData()
-	.title('World Map')
-	.slider('Zoom Level §7( In Blocks )', 0, 1024, {defaultValue: zoom_level, valueStep: 16, tooltip: 'Set to 0 to Reset'})
+	new ModalFormData().title('Change Zoom Level')
+	.divider()
+	.slider('Zoom Level §7(in blocks)', 0, 1024, {defaultValue: zoom_level, valueStep: 16, tooltip: 'Set to 0 to Reset'})
+	.divider()
 	.show(player).then(({canceled, formValues}) => {
 		if (canceled) return
 		const zoom = formValues[0]
@@ -354,14 +357,17 @@ export function open_world_map(player, item) {
 		markers: [
 			{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'},
 			...(Object.entries(waypoints).map(([hash, waypoint]) => {
-				const [x, _, z, d] = hash.split(' ')
-				return {text: waypoint.name, texture: waypoint.icon, x, z, dim: d, action: (player) => player.locatior_distination = {name: waypoint.name, x, z, dim: d}}
-			}))
-		],
+				const [x, _, z, dim] = hash.split(' ')
+				return {text: waypoint.name, texture: waypoint.icon, x, z, dim}
+		}))],
 		buttons: ['', '', 'zoom', 'chunks'],
-		action: (selection) => {
+		action: (options, selection) => {
 			if (selection == 2) zoom_map(player, item)
 			if (selection == 3) toggle_chunks(player, item, chunk_borders)
+			if (selection >= 10) {
+				const {x, z, dim, text} = options[selection - 10]
+				player.waypoint = {name: text, x, z, dim}
+			}
 		}
 	})
 }
