@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server" 
+import { world, system } from "@minecraft/server" 
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui"
 import { bookmark, open_book } from "../items/guidebook"
 import treasure_map, { get_cardinal_direction } from "../items/treasure_map"
@@ -174,7 +174,7 @@ export function see_a_map(player, map) {
         }[map]
         const pin_to_map = (axis) => Math.min(Math.max(Math.round(axis * 128 / data.map_size * 0.75) + 128, 0), 256)
         const place = ({x, z}) => `x${pin_to_map(x)}y${pin_to_map(z)}`
-        const active = locating_players.has(player.id) ? 'on' : 'off'
+        const active = player.waypoint ? 'on' : 'off'
         const completed_achs = JSON.parse(player.getDynamicProperty("completed_achs") ?? '[]')
         const structures = data.structures.filter(({require}) => {
             return !require || completed_achs.includes(require) || player.getGameMode() == "Creative"
@@ -294,14 +294,15 @@ export function open_map(player, data) {
 	const options = data.markers
 	.filter((marker) => data.dim == marker.dim)  // the correct dimension
 	.map(({x, z, text, texture, deco, tag, dim}) => {
+		const original_x = x
+		const original_z = z
 		tag = deco ? '§deco§' : '§landmark§'  // add a tag
 		x = resize(x - data.center.x) + map_size // rezize the x
 		z = resize(z - data.center.z) + map_size  // resize the z
-		return { tag, x, z, text, texture, dim }
+		return { tag, x, z, text, texture, dim, original_x, original_z }
 	})
-	const markers = options
 	.filter(({x, z}) => x >= 0 && x <= map_size * 2 && z >= 0 && z <= map_size * 2) // does it fit in the map
-	.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text ?? ''}`, texture})) //configure for a button
+	const markers = options.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text ?? ''}`, texture})) //configure for a button
 	const form = new ActionFormData()
 	form.title('§map_ui§' + (data.title ?? ''))  // Title
 	for (let i = 0; i < 10; i++) form.button((data.buttons ? data.buttons : [])[i] ?? '')
@@ -347,29 +348,32 @@ function toggle_chunks(player, item, chunk_borders) {
 export function open_world_map(player, item) {
 	const zoom_level = item.getDynamicProperty('zoom') ?? 128
 	const chunk_borders = item.getDynamicProperty('chunk_borders')
-	const waypoints = update_waypoints(player, item)
-	open_map(player, {
-		title: 'World Map',
-		center: player.location,
-		dim: player.dimension.id,
-		range: zoom_level,
-		chunk_borders,
-		markers: [
-			{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'},
-			...(Object.entries(waypoints).map(([hash, waypoint]) => {
-				const [x, _, z, dim] = hash.split(' ')
-				return {text: waypoint.name, texture: waypoint.icon, x, z, dim}
-		}))],
-		buttons: ['', '', 'zoom', 'chunks'],
-		action: (options, selection) => {
-			if (selection == 2) zoom_map(player, item)
-			if (selection == 3) toggle_chunks(player, item, chunk_borders)
-			if (selection >= 10) {
-				const {x, z, dim, text} = options[selection - 10]
-				player.waypoint = {name: text, x, z, dim}
+	const [waypoints, changed] = update_waypoints(player, item)
+	
+	system.runTimeout(() => {
+		open_map(player, {
+			title: 'World Map',
+			center: player.location,
+			dim: player.dimension.id,
+			range: zoom_level,
+			chunk_borders,
+			markers: [
+				{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'},
+				...(Object.entries(waypoints).map(([hash, waypoint]) => {
+					const [x, _, z, dim] = hash.split(' ')
+					return {text: waypoint.name, texture: waypoint.icon, x, z, dim}
+			}))],
+			buttons: ['', '', 'zoom', 'chunks'],
+			action: (options, selection) => {
+				if (selection == 2) zoom_map(player, item)
+				if (selection == 3) toggle_chunks(player, item, chunk_borders)
+				if (selection >= 10) {
+					const {original_x, original_z, dim, text} = options[selection - 10]
+					player.waypoint = {name: text, x: original_x, z: original_z, dim}
+				}
 			}
-		}
-	})
+		})
+	}, changed ? 40 : 0)
 }
 export default {
 	onUse({source:player, itemStack:item}, {params}) {

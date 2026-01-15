@@ -56,20 +56,21 @@ export default function(player, item) {
 const vanilla_dimensions = new Map()
 system.run(() => ['overworld', 'nether', 'the_end'].forEach(id => vanilla_dimensions.set('minecraft:' + id, world.getDimension(id))))
 export function update_waypoints(player, item, changed) {
-	const waypoints = Object.fromEntries(Object.entries(load_dynamic_object(item, 'waypoints')).filter(([hash]) => {
+	const waypoints = Object.fromEntries(Object.entries(load_dynamic_object(item, 'waypoints')).filter(([hash, waypoint]) => {
 		const [x, y, z, d] = hash.split(' ')
 		const dimension = vanilla_dimensions.get(d) ?? world.getDimension(d)
 		const location = {x: +x, y: +y, z: +z}
 		if (!dimension.isChunkLoaded(location)) return true
 		const block = dimension.getBlock(location)
 		if (block.typeId == 'minecraft:lodestone') return true
+		player.sendMessage(`§pRemoved "${waypoint.name}" for not having a lodestone`)
 		changed = true
 	}))
 	if (changed) {
 		save_dynamic_object(item, 'waypoints', waypoints)
 		player.getComponent('equippable').setEquipment('Mainhand', item)
 	}
-	return waypoints
+	return [waypoints, changed]
 }
 
 function encode_chunks({dimension, location}) {
@@ -169,43 +170,45 @@ export function manage_waypoint(player, block, item) {
 	player.is_confuguring_map = true; system.runTimeout(() => delete player.is_confuguring_map, 2)
 	const {x, y, z, dimension:{id:d}} = block
 	const hash = `${x} ${y} ${z} ${d}`
-	const waypoints = update_waypoints(player, item)
+	const [waypoints, changed] = update_waypoints(player, item)
 	const exists = hash in waypoints
 	const deafults = exists ? waypoints[hash].deafults ?? [] : []
 	const mode = exists ? 'modify' : 'add'
 	
-	new ModalFormData()
-	.title({ rawtext: [{ text: '§waypoint_ui§' }, { translate: `maps.waypoints.${mode}` }] })
-	/*0*/.textField('Name:', default_name, { defaultValue: deafults[0] ?? default_name})
-	/*1*/.dropdown('Icon: ', marker_types, { defaultValueIndex: deafults[1]})
-	/*2*/.dropdown('Color: ', map_markers.colors, { defaultValueIndex: deafults[2]})
-	/*3*/.dropdown('Structure: ', map_markers.structures, { defaultValueIndex: deafults[3]})
-	/*4*/.textField('Texture: ', { translate: 'maps.waypoints.item.placeholder'}, { defaultValue: deafults[4], tooltip: { translate: 'maps.waypoints.item.tooltip'}})
-	/*5*/.textField('Texture: ', { translate: 'maps.waypoints.block.placeholder'}, { defaultValue: deafults[5], tooltip: { translate: 'maps.waypoints.block.tooltip'}})
-	/*6*/.dropdown('Style: ', map_markers.block_styles, { defaultValueIndex: deafults[6]})
-	/*7*/.textField('Top Texture: ', { translate: 'maps.waypoints.top.placeholder'}, { defaultValue: deafults[7]})
-	/*8*/.dropdown('Mob: ', map_markers.mobs, { defaultValueIndex: deafults[8]})
-	.submitButton({ translate: `maps.waypoints.${mode}` })
-	.show(player).then(({ formValues, canceled }) => {
-		if (canceled) return
-		if (block.typeId != 'minecraft:lodestone') return
-		
-		const [name, icon_type, color, stuc_index, item_texture, block_texture, style_index, top_texture, mob_index] = formValues
-		const type = marker_types[icon_type]
-		const texture = (() => {
-			if (map_markers.colored.has(type)) return map_markers.colors[color]
-			return {
-				structure: map_markers.structures[stuc_index],
-				mob: map_markers.mobs[mob_index],
-				item: item_texture,
-				block: block_texture,
-			}[type]
-		})()
-		const icon = `${map_markers.paths[type]}${texture}`
-		waypoints[hash] = {name:name ?? default_name, icon, deafults: formValues}
-		save_dynamic_object(item, 'waypoints', waypoints)
-		player.getComponent('equippable').setEquipment('Mainhand', item)
-		// system.run(() => console.log(formValues))
-		// system.run(() => console.log(player.getComponent('equippable').getEquipment('Mainhand').getDynamicProperty('waypoints')))
-	})
+	system.runTimeout(() => {
+		new ModalFormData()
+		.title({ rawtext: [{ text: '§waypoint_ui§' }, { translate: `maps.waypoints.${mode}` }] })
+		/*0*/.textField('Name:', default_name, { defaultValue: deafults[0] ?? default_name})
+		/*1*/.dropdown('Icon: ', marker_types, { defaultValueIndex: deafults[1]})
+		/*2*/.dropdown('Color: ', map_markers.colors, { defaultValueIndex: deafults[2]})
+		/*3*/.dropdown('Structure: ', map_markers.structures, { defaultValueIndex: deafults[3]})
+		/*4*/.textField('Texture: ', { translate: 'maps.waypoints.item.placeholder'}, { defaultValue: deafults[4], tooltip: { translate: 'maps.waypoints.item.tooltip'}})
+		/*5*/.textField('Texture: ', { translate: 'maps.waypoints.block.placeholder'}, { defaultValue: deafults[5], tooltip: { translate: 'maps.waypoints.block.tooltip'}})
+		/*6*/.dropdown('Style: ', map_markers.block_styles, { defaultValueIndex: deafults[6]})
+		/*7*/.textField('Top Texture: ', { translate: 'maps.waypoints.top.placeholder'}, { defaultValue: deafults[7]})
+		/*8*/.dropdown('Mob: ', map_markers.mobs, { defaultValueIndex: deafults[8]})
+		.submitButton({ translate: `maps.waypoints.${mode}` })
+		.show(player).then(({ formValues, canceled }) => {
+			if (canceled) return
+			if (block.typeId != 'minecraft:lodestone') return
+			
+			const [name, icon_type, color, stuc_index, item_texture, block_texture, style_index, top_texture, mob_index] = formValues
+			const type = marker_types[icon_type]
+			const texture = (() => {
+				if (map_markers.colored.has(type)) return map_markers.colors[color]
+				return {
+					structure: map_markers.structures[stuc_index],
+					mob: map_markers.mobs[mob_index],
+					item: item_texture,
+					block: block_texture,
+				}[type]
+			})()
+			const icon = `${map_markers.paths[type]}${texture}`
+			waypoints[hash] = {name:name ?? default_name, icon, deafults: formValues}
+			save_dynamic_object(item, 'waypoints', waypoints)
+			player.getComponent('equippable').setEquipment('Mainhand', item)
+			// system.run(() => console.log(formValues))
+			// system.run(() => console.log(player.getComponent('equippable').getEquipment('Mainhand').getDynamicProperty('waypoints')))
+		})
+	}, changed ? 40 : 0)
 }

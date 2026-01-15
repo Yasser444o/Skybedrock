@@ -784,7 +784,7 @@
 							},
 							{
 								"binding_type": "view",
-								"source_property_name": "(#form_button_text - $tag)",
+								"source_property_name": "('§.' + #form_button_text - $tag)",
 								"target_property_name": "#text"
 							}
 						]
