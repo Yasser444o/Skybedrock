@@ -927,6 +927,10 @@
 		"$texture": "textures/ui/villagers/mason",
 		"$text": "Job: Mason"
 	},
+	"plains_villager@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/plains",
+		"$text": "Biome: Plains"
+	},
 	"desert_villager@assets.item_renderer": {
 		"$texture": "textures/ui/villagers/desert",
 		"$text": "Biome: Desert"
@@ -2070,8 +2074,12 @@
 		"$texture": "textures/items/compass_item",
 		"$text": "Compass"
 	},
+	"world_map@assets.item_renderer": {
+		"$texture": "textures/items/world_map",
+		"$text": "World Map"
+	},
 	"sky_treasure_map@assets.item_renderer": {
-		"$texture": "textures/items/map_nautilus",
+		"$texture": "textures/items/sky_treasure_map",
 		"$text": "Sky Treasure Map"
 	},
 	"trial_inscription@assets.item_renderer": {
@@ -2245,6 +2253,10 @@
 	"arrow@assets.item_renderer": {
 		"$texture": "textures/items/arrow",
 		"$text": "Arrow"
+	},
+	"weakness_arrow@assets.item_renderer": {
+		"$texture": "textures/items/tipped_arrow_weakness",
+		"$text": "Arrow of Weakness"
 	},
 	"slowness_arrow@assets.item_renderer": {
 		"$texture": "textures/items/tipped_arrow_slow",
@@ -2669,6 +2681,20 @@
 			"uv_size": [8, 8]
 		}}],
 		"$name": "Husk"
+	},
+	"parched@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/parched/parched",
+			"uv": [8, 8],
+			"uv_size": [8, 8]
+		}},{"mask": {
+			"type": "image",
+			"texture": "textures/entity/parched/parched",
+			"uv": [8, 40],
+			"uv_size": [8, 8]
+		}}],
+		"$name": "Parched"
 	},
 	"axolotl@assets.entity_renderer": {
 		"size": [32, 20],

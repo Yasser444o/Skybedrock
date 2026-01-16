@@ -511,11 +511,13 @@ export const quests = {
 			require: iron
 			title: Waypoints
 			icon: -14548992
-			* Place lodestones in your other islands 
-			- craft a lodestone and place it in your other bases
-			- use a compass on it to create a lodestone compass
+			* Add a waypoint by using a World Map on a lodestone
+			- level up a plains cartographer
+			- buy a World Map from the villager
+			- use the map on a lodestone to create a new waipoint
+			- give it a name and select an icon for it
 		`,
-		query: (player) => check_items(player, 'lodestone_compass')
+		checkmark: false,
 	},
 	diamond_pickaxe: {
 		data: `

@@ -475,6 +475,29 @@
       {
         "total_exp_required": 150,
         "groups": [
+        	{
+				"num_to_select": 1,
+				"trades": [
+					{
+						"wants": [
+							{
+								"item": "minecraft:emerald",
+								"quantity": 14,
+								"price_multiplier": 0.2
+							},
+							{
+								"item": "minecraft:compass",
+								"quantity": 1,
+								"price_multiplier": 0.2
+							}
+						],
+						"gives": [ { "item": "skybedrock:sky_treasure_map" } ],
+						"trader_exp": 10,
+						"max_uses": 12,
+						"reward_exp": true
+					}
+				]
+			},
           {
             "num_to_select": 2,
             "trades": [

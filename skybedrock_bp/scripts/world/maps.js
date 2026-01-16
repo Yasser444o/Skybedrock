@@ -327,7 +327,7 @@ function zoom_map(player, item) {
 	.divider()
 	.show(player).then(({canceled, formValues}) => {
 		if (canceled) return
-		const zoom = formValues[0]
+		const zoom = formValues[1]
 		if (zoom == 0) item.setDynamicProperty('zoom')
 		else item.setDynamicProperty('zoom', zoom)
 		const equippable = player.getComponent('equippable')
