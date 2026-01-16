@@ -1,0 +1,29 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:copper_nautilus_armor",
+					"weight": 4
+				},
+				{
+					"type": "item",
+					"name": "minecraft:iron_nautilus_armor",
+					"weight": 3
+				},
+				{
+					"type": "item",
+					"name": "minecraft:golden_nautilus_armor",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:diamond_nautilus_armor",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

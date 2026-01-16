@@ -1,4 +1,64 @@
 export const change_logs = {
+  "v1.22.0": `\
+Mounts of Mayhem:
+- Added all nautilus armor to the cold ocean suspicious gravel loot
+- The Parched can now drop sand like husks
+- Added the Parched to the list of mobs that let charged creepers drop "Otherside" when they kill
+- Zombie Horses are now a vanilla Minecraft feature
+
+World Maps:
+- Cartographers can now sell 7 new map items depending on the biome
+- Currently only one map has been given a use: "World Map"
+- World maps are cantered around the player
+- They only show the world spawn, the player holding the map, and the waypoints you have added
+- You can click the Zoom button to change the zoom level
+- You can toggle chunk borders on or off
+- You can use a world map on a lodestone to add a custom waypoint
+
+Waypoints:
+- The waypoint adding screen features:
+- A custom Text Field for entering a name for your waypoint
+- A custom dynamic icon that changes based on the waypoint parameters in real time
+- A custom scrolling panel that changes its size based on the size of its content
+- A custom grid shaped dropdown selector with hovering texts
+- A secondary custom text field that you can use to specify a path for an item or a block as the icon for the waypoint
+- A custom save button and dynamic layout
+- Full support for touch screens, keyboard only, and controllers
+- You can select the type of icon to use (Marker, Banner, Circle, Structure, Item, Block, Mob)
+- If you have selected a Marker, Banner, ore a Circle, you can select which color to use
+- If you have selected a Mob or a Structure, you can select which one to use
+- If you have selected a Block or an Item, you can enter the texture name of the item or block you want
+- Once you click save, you can see your waypoint on the map
+- You can click the waypoint to start locating it
+- You can modify a waypoint by using the map on the same lodestone again
+- You can remove the waypoint by breaking the lodestone
+- The player is notified when a opening a map with a waypoint that was removed
+
+Sky Treasure Maps:
+- Treasure map locations are now saved per item, not per player
+- Treasure maps are no longer stackable items
+- Expanded the Treasure map UI screen to match other maps
+
+Quality of Life:
+- Added "Sawdust": an addon that helps you shop down trees faster
+- Added "Craftable Nautilus Armor": this adds crafting recipes for nautilus armor
+
+Other Features:
+- Renamed Trial Vault Inscriptions into "Scrapped Trials" they are still unusable
+- Deprecated the old treasure map and trial vault inscriptions items, (if you had some of them you can click them to update them into the newer versions of them)
+- Updated the waypoint achievement
+- Grouped all skybedrock maps into one creative category
+- Added more utilities to the creative tool and debug stick
+- Updated the look of the structure maps to match the new world map UI
+- Organized some scripts and deleted some unused assets
+- Localized the structure names and some of the waypoint manager texts
+
+Bug Fixes:
+- Fixed a bug where UI buttons would turn invisible when clicked in a touch screen
+- Fixed a bug where zombified piglins won't attack turtle eggs
+- Fixed a bug where the "Diamonds" achievement description was missing
+- Fixed a bug where cartographers were not selling sky treasure maps
+  `,
   "v1.21.15": `\
 - Added the '/inform light' subcommand to show you the light level of a block
 - Given Copper equipment to trial spawner mobs

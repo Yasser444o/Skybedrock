@@ -1,15 +1,8 @@
-import { world } from "@minecraft/server" ;
-
-function isLoaded(dimension) {
-	try {
-		dimension.getBlock({x:0, y:64, z:0}).permutation
-	} catch { return false }
-	return true 
-}
+import { world } from "@minecraft/server"
 
 world.afterEvents.playerPlaceBlock.subscribe(({block, dimension, player}) => {
 	if (!world.getDynamicProperty("dragon_eggs")) return
-	if (!isLoaded(dimension)) return
+	if (!dimension.isChunkLoaded({x:0, y:64, z:0})) return
 	if (block.typeId != "minecraft:netherite_block") return
 	if (dimension.id != "minecraft:the_end") return
 	if (block.below().typeId != "minecraft:bedrock") return

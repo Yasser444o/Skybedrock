@@ -842,9 +842,36 @@
 						}
 					},
 					{
+						"world_maps@assets.dropdown": {
+							"$title": "World Maps",
+							"$icon": "textures/items/world_map",
+							"$collapse": "collapse_world_maps",
+							"$content": [
+								{ 
+									"usage@how_to_play.feature_element": {
+										"$text": "- You can use a Wolrd Map to view your waypoints.\n- You can use them on lodestones to add new waypoints.\n- You can click a waypoint to start locating it.\n- You can zoom in and out and toggle chunk borders.\n- You can modify a waypoint by clicking the lodestone again.\n- You can remove a waypoint by breaking the lodestone.",
+										"$image": "world_maps"
+									}
+								},
+								{
+									"trade@how_to_play.trading_feature": {
+									"$villager": "Cartographer",
+										"$level": "§iApprentice",
+										"$number": "2",
+										"$job": "cartographer", "$biome": "plains_villager",
+										"$take1": [{"i@assets.emerald":{ "$count": "8" }}],
+										"$take2": [{"i@assets.compass":{}}],
+										"$give": [{"i@assets.sky_treasure_map":{}}],
+										"$details": "* Probability: 100%%\n* Number of Trades: 4"
+									}
+								}
+							]
+						}
+					},	
+					{
 						"sky_treasure@assets.dropdown": {
 							"$title": "Sky Treasure Maps",
-							"$icon": "textures/items/map_nautilus",
+							"$icon": "textures/items/sky_treasure_map",
 							"$collapse": "collapse_treasure_maps",
 							"$content": [
 								{ 
@@ -861,7 +888,7 @@
 										"$job": "cartographer",
 										"$take1": [{"i@assets.emerald":{ "$count": "14" }}],
 										"$take2": [{"i@assets.compass":{}}],
-										"$give": [{"i@assets.treasure_map":{}}],
+										"$give": [{"i@assets.sky_treasure_map":{}}],
 										"$details": "* Probability: 100%%\n* Number of Trades: 12"
 									}
 								},
@@ -2169,6 +2196,34 @@
 										]}}
 									]
 								}},
+								{ "parched@how_to_play.drops_table_item": {
+									"$size": ["100% - 2px", 144],
+									"$mob": [{ "e@assets.parched": {}}],
+									"$drops": [
+										{ "i1@assets.drops_table_entry": {
+											"$item": "bone",
+											"$quantity": "0-2"
+										}},
+										{ "i2@assets.drops_table_entry": {
+											"$item": "arrow",
+											"$quantity": "0-2"
+										}},
+										{ "i3@assets.drops_table_entry": {
+											"$item": "sand",
+											"$quantity": "0-2"
+										}},
+										{ "i4@assets.drops_table_entry": {
+											"$item": "weakness_arrow",
+											"$quantity": "0-2"
+										}}
+									],
+									"$notes": [
+										{ "n1@assets.table_cell": {"size": ["100%", 108], "$content": []}},
+										{ "n2@assets.table_cell": {"size": ["100%", 36], "$content": [
+											{"i@assets.player_kill": {}}
+										]}}
+									]
+								}},
 								{ "stray@how_to_play.drops_table_item": {
 									"$size": ["100% - 2px", 108],
 									"$mob": [{ "e@assets.stray": {}}],
@@ -2298,7 +2353,7 @@
 									"$notes": [
 										{ "n1@assets.table_cell": {"size": ["100%", 36], "$content": []}},
 										{ "n2@assets.table_cell": {"size": ["100%", 36], "$content": [
-											{"i@assets.skeleton_kill": {"$text": "If killed by a Skeleton or Stray."}}
+											{"i@assets.skeleton_kill": {"$text": "If killed by a Skeleton,\nStray, Parched, or Bogged."}}
 										]}}
 									]
 								}},
@@ -2705,6 +2760,28 @@
 										{ "i1@assets.brushing_table_entry": {
 											"$item": "petrified_slab",
 											"$chance": "11%%"
+										}}
+									]
+								}},
+								{ "cold_ocean_ruins@how_to_play.brushing_table_item": {
+									"$structure": "cold_ocean_ruins",
+									"$size": ["100% - 2px", 144],
+									"$items": [
+										{ "i1@assets.brushing_table_entry": {
+											"$item": "copper_nautilus_armor",
+											"$chance": "12%%"
+										}},
+										{ "i2@assets.brushing_table_entry": {
+											"$item": "iron_nautilus_armor",
+											"$chance": "9%%"
+										}},
+										{ "i3@assets.brushing_table_entry": {
+											"$item": "golden_nautilus_armor",
+											"$chance": "6%%"
+										}},
+										{ "i4@assets.brushing_table_entry": {
+											"$item": "diamond_nautilus_armor",
+											"$chance": "3%%"
 										}}
 									]
 								}},
@@ -3397,6 +3474,63 @@
 							"$output": [{"b@assets.all_trims":{
 								"$count": "2"
 							}}]
+						}
+					},
+					{ 
+						"nautilus_armor@assets.text_box": {
+							"$text": "§c[]§r Craftable Nautilus Armor"
+						}
+					},
+					{
+						"copper_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input2": [{"b@assets.copper_ingot":{}}],
+							"$input3": [{"b@assets.copper_ingot":{}}],
+							"$input4": [{"b@assets.copper_ingot":{}}],
+							"$input6": [{"b@assets.copper_ingot":{}}],
+							"$input7": [{"b@assets.copper_ingot":{}}],
+							"$input8": [{"b@assets.copper_ingot":{}}],
+							"$input9": [{"b@assets.copper_ingot":{}}],
+							"$output": [{"b@assets.copper_nautilus_armor":{}}]
+						}
+					},
+					{
+						"iron_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input2": [{"b@assets.iron_ingot":{}}],
+							"$input3": [{"b@assets.iron_ingot":{}}],
+							"$input4": [{"b@assets.iron_ingot":{}}],
+							"$input6": [{"b@assets.iron_ingot":{}}],
+							"$input7": [{"b@assets.iron_ingot":{}}],
+							"$input8": [{"b@assets.iron_ingot":{}}],
+							"$input9": [{"b@assets.iron_ingot":{}}],
+							"$output": [{"b@assets.iron_nautilus_armor":{}}]
+						}
+					},
+					{
+						"golden_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input3": [{"b@assets.gold_ingot":{}}],
+							"$input2": [{"b@assets.gold_ingot":{}}],
+							"$input4": [{"b@assets.gold_ingot":{}}],
+							"$input6": [{"b@assets.gold_ingot":{}}],
+							"$input7": [{"b@assets.gold_ingot":{}}],
+							"$input8": [{"b@assets.gold_ingot":{}}],
+							"$input9": [{"b@assets.gold_ingot":{}}],
+							"$output": [{"b@assets.golden_nautilus_armor":{}}]
+						}
+					},
+					{
+						"diamond_nautilus_armor@how_to_play.crafting3x3_feature": {
+							"$input5": [{"b@assets.nautilus_shell":{}}],
+							"$input2": [{"b@assets.diamond":{}}],
+							"$input3": [{"b@assets.diamond":{}}],
+							"$input4": [{"b@assets.diamond":{}}],
+							"$input6": [{"b@assets.diamond":{}}],
+							"$input7": [{"b@assets.diamond":{}}],
+							"$input8": [{"b@assets.diamond":{}}],
+							"$input9": [{"b@assets.diamond":{}}],
+							"$output": [{"b@assets.diamond_nautilus_armor":{}}]
 						}
 					},
 					{ 

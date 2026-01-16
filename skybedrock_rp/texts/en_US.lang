@@ -2,6 +2,17 @@
 item.skybedrock:guidebook=Skybedrock Guidebook
 item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
 
+item.skybedrock:world_map=World Map
+item.skybedrock:ancient_scroll=Ancient Scroll
+item.skybedrock:hydrographic_chart=Hydrographic Chart
+item.skybedrock:tropical_notes=Tropical Notes
+item.skybedrock:arctic_record=Arctic Record
+item.skybedrock:ruins_cartograph=Ruins Cartograph
+item.skybedrock:scraped_trial=Scraped Trial
+item.skybedrock:sky_treasure_map=Sky Treasure Map
+
+## Item Groups
+skybedrock:maps=Maps
 
 ## Blocks
 tile.deprecated_purpur_block_2.name=Smooth Purpur
@@ -11,8 +22,13 @@ tile.skybedrock:nether_gravel.name=Nether Gravel
 
 ## Entities
 entity.skybedrock:end_phantom.name=End Phantom
+entity.end_phantom.name=End Phantom
+entity.illager.name=Illager
 entity.skybedrock:end_sickness.name=End Phantom Spawn
 
+
+## HUD
+hudScreen.tooltip.seeMap=See Map
 
 ## How to Play
 howtoplay.category.features=Skybedrock Features
@@ -54,6 +70,8 @@ guidebook.help_message=If you find any inaccuracies or typos in this section ple
 guidebook.button.bookmark=Save Bookmark
 guidebook.button.remove_bookmarks=Remove Bookmarks
 guidebook.button.home=Home Page
+guidebook.button.zoom=Zoom
+guidebook.button.chunks=Toggle Chunk Borders
 guidebook.button.back=Return
 guidebook.button.switch_on=Click to Turn Off
 guidebook.button.switch_off=Click a Structure
@@ -64,6 +82,65 @@ guidebook.trader_request.failed=Looks like no body is around, imma head out.
 guidebook.trader_request.late=Somebody has beaten me to it, maybe next time.
 
 guidebook.maps.no_structures=You haven't unlock any structures yet
+
+maps.waypoints.add=Add Waypoint
+maps.waypoints.modify=Modify Waypoint
+maps.waypoints.item.placeholder=e.g. iron_ingot | reeds
+maps.waypoints.block.placeholder=e.g. clay | bee_nest_front
+maps.waypoints.top.placeholder=e.g. bee_nest_top
+maps.waypoints.item.tooltip=Use the file name of the item texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world
+maps.waypoints.block.tooltip=Use the file name of the block texture from the Vanilla Resource Pack samples or any of the resource packs applied to this world
+
+maps.color.white=White
+maps.color.light_gray=Light Gray
+maps.color.gray=Gray
+maps.color.black=Black
+maps.color.brown=Brown
+maps.color.red=Red
+maps.color.orange=Orange
+maps.color.yellow=Yellow
+maps.color.lime=Lime
+maps.color.green=Green
+maps.color.cyan=Cyan
+maps.color.light_blue=Light Blue
+maps.color.blue=Blue
+maps.color.purple=Purple
+maps.color.magenta=Magenta
+maps.color.pink=Pink
+
+maps.marker.marker=Marker
+maps.marker.banner=Banner
+maps.marker.circle=Circle
+maps.marker.square=Square
+maps.marker.structure=Structure
+maps.marker.item=Item
+maps.marker.block=Block
+maps.marker.mob=Mob
+
+maps.structure.village_plains=Plains Village
+maps.structure.village_savanna=Savanna Village
+maps.structure.village_snowy=Snowy Village
+maps.structure.village_taiga=Taiga Village
+maps.structure.village_desert=Desert Village
+maps.structure.desert_pyramid=Desert Pyramid
+maps.structure.swamp_hut=Swamp Hut
+maps.structure.jungle_temple=Jungle Temple
+maps.structure.trial_chambers=Trial Chambers
+maps.structure.ancient_city=Ancient City
+maps.structure.bastion_remnants=Bastion Remnants
+maps.structure.bastion_remnants=Desert Pyramid
+maps.structure.end_gateway=End Gateway
+maps.structure.igloo=Igloo
+maps.structure.mineshaft=Mineshaft
+maps.structure.nether_fortress=Nether Fortress
+maps.structure.ocean_monument=Ocean Monument
+maps.structure.pillager_outpost=Pillager Outpost
+maps.structure.ruined_portal=Ruined Portal
+maps.structure.shipwreck=Shipwreck
+maps.structure.ocean_ruins=Ocean Ruins
+maps.structure.trail_ruins=Trail Ruins
+maps.structure.woodland_mansion=Woodland Mansion
+maps.structure.x_mark=Buried Treasure
 
 achievements.announcement.message=%s has completed §a[%s]
 

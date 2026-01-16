@@ -1,0 +1,14 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "skybedrock:world_map"
+		},
+		"components": {
+			"minecraft:icon": "skybedrock:world_map",
+			"skybedrock:maps": { "type": "world_map" },
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"minecraft:max_stack_size": 1
+		}
+	}
+}

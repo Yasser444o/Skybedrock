@@ -21,7 +21,7 @@
 		"type": "button",
 		"default_control": "default",
 		"hover_control": "hover",
-		"pressed_control": "hover",
+		"pressed_control": "pressed",
 		"sound_name": "random.click",
 		"focus_enabled": true,
 		"button_mappings": [
@@ -39,7 +39,8 @@
 		"bindings": "$form_button",
 		"controls": [
 			{"default@assets.empty": {}},
-			{"hover@assets.empty": {}}
+			{"hover@assets.empty": {}},
+			{"pressed@assets.empty": {}}
 		]
 	},
 
@@ -105,6 +106,248 @@
 				"type": "image",
 				"size": [16, 16],
 				"texture": "textures/ui/buttons/checked_hover"
+			}}
+		]
+	},
+
+	"text_field": {
+		"type": "panel",
+		"size": [ "100%", "100%cm" ],
+		"controls": [
+			{ "name_edit_box": {
+				"type": "edit_box",
+				"size": [ "100%", "100%cm" ],
+				"anchor_from": "top_left",
+				"anchor_to": "top_left",
+				"offset": [0, -2],
+				"layer": 1,
+
+				"default_focus_precedence": 10,
+				"text_box_name": "custom_input",
+				"text_type": "ExtendedASCII",
+				"text_edit_box_grid_collection_name": "custom_form",
+				"default_control": "default",
+				"hover_control": "hover",
+				"pressed_control": "pressed",
+				"text_control": "display_text",
+				"place_holder_control": "place_holder_control",
+				"place_holder_text_hover_color": [ 0.5, 0.5, 0.5 ],
+				"max_length": 100,
+				"focus_enabled": true,
+				"button_mappings": [
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": true,
+						"handle_deselect": false,
+						"mapping_type": "pressed"
+					},
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": false,
+						"handle_deselect": true,
+						"mapping_type": "global",
+						"consume_event": false
+					},
+					{
+						"from_button_id": "button.menu_ok",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": true,
+						"handle_deselect": true,
+						"mapping_type": "pressed"
+					},
+					{
+						"from_button_id": "button.menu_ok",
+						"to_button_id": "button.text_edit_box_selected",
+						"handle_select": false,
+						"handle_deselect": true,
+						"mapping_type": "global"
+					},
+					{
+						"from_button_id": "button.menu_cancel",
+						"to_button_id": "button.text_edit_box_deselected",
+						"handle_select": false,
+						"handle_deselect": true,
+						"mapping_type": "global"
+					},
+					{
+						"from_button_id": "button.menu_clear",
+						"to_button_id": "button.text_edit_box_clear",
+						"handle_select": false,
+						"handle_deselect": false,
+						"mapping_type": "focused"
+					},
+					{
+						"to_button_id": "button.text_edit_box_hovered",
+						"mapping_type": "pressed"
+					}
+				],
+				"controls": [
+					{ "clipper_panel": {
+						"type": "panel",
+						"clips_children": true,
+						"max_size": [ "100% - 6px", "100%cm + 4px" ],
+						"size": [ "100%c", "100%cm + 4px" ],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left",
+						"controls": [
+							{ "display_text": {
+								"type": "label",
+								"text": "#item_name",
+								"color": [ 0, 0, 0 ],
+								"localize": false,
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"layer": 1,
+								"property_bag": { "#property_field": "#item_name" },
+								"bindings": [
+									{ "binding_name": "#newline_refresh" },
+									{
+										"binding_type": "collection",
+										"binding_condition": "visible",
+										"binding_collection_name": "custom_form",
+										"binding_name": "#custom_input_text",
+										"binding_name_override": "#item_name"
+									}
+								]
+							}},
+							{ "placeholder_text": {
+								"type": "label",
+								"text": "#custom_placeholder_text",
+								"color": [ 0.3, 0.3, 0.3 ],
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"layer": 1,
+								"bindings": [
+									{
+										"binding_type": "view",
+										"resolve_sibling_scope": true,
+										"source_control_name": "display_text",
+										"source_property_name": "(#item_name = '')",
+										"target_property_name": "#visible"
+									},
+									{
+										"binding_type": "collection",
+										"binding_condition": "visible",
+										"binding_collection_name": "custom_form",
+										"binding_name": "#custom_placeholder_text"
+									}
+								]
+							}}
+						]
+					}},
+					{ "default": {
+						"type": "image",
+						"texture": "textures/white",
+						"size": ["100%sm", "100%sm"],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left"
+					}},
+					{ "hover": {
+						"type": "image",
+						"texture": "textures/white",
+						"size": ["100%sm", "100%sm"],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left"
+					}},
+					{ "pressed": {
+						"type": "image",
+						"texture": "textures/white",
+						"size": ["100%sm", "100%sm"],
+						"anchor_from": "top_left",
+						"anchor_to": "top_left"
+					}}
+				]
+			}}
+		]
+	},
+
+	"scroller": {
+		"type": "input_panel",
+		"size": ["100%", "100%c"],
+		"anchor_to": "top_left",
+		"anchor_from": "top_left",
+		"tts_ignore_count": true,
+		"consume_hover_events": true,
+		"controls": [
+			{ "scroll_view": {
+				"type": "scroll_view",
+				"scrollbar_track_button": "button.scrollbar_skip_track",
+				"scrollbar_touch_button": "button.scrollbar_touch",
+				"touch_mode": "$touch",
+				"scrollbar_track": "track",
+				"scrollbar_box": "box",
+				"scroll_content": "scrolling_content",
+				"scroll_view_port": "scrolling_view_port",
+				"scroll_box_and_track_panel": "bar_and_track",
+				"scroll_speed": 16,
+				"always_listen_to_input": true,
+				"always_handle_pointer": true,
+				"always_handle_scrolling": false,
+				"scrollbar_always_visible": false,
+				"jump_to_bottom_on_update": false,
+				"allow_scroll_even_when_content_fits": true,
+				"size": ["100%", "100%c"],
+				"button_mappings": [
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.scrollbar_touch",
+						"mapping_type": "pressed",
+						"button_up_right_of_first_refusal": true
+					}
+				],
+				"bindings": [
+					{
+						"binding_name": "#gesture_control_enabled"
+					},
+					{
+						"binding_name": "(not #is_using_gamepad)",
+						"binding_name_override": "#focus_for_tts_enabled_binding"
+					}
+				],
+				"controls": [
+					{ "viewport_and_bar": {
+						"type": "stack_panel",
+						"orientation": "horizontal",
+						"size": ["100%", "100%c"],
+						"controls": [
+							{ "scrolling_view_port": {
+								"type": "panel",
+								"size": ["100%c", "100%c + 2px"],
+								"max_size": "$max_size",
+								"clips_children": true,
+								"layer": 1,
+								"controls": [
+									{ "scrolling_content": {
+										"type": "panel",
+										"anchor_from": "top_left",
+										"anchor_to": "top_left",
+										"size": ["100%c", "100%c"],
+										"controls": "$scroller_content",
+										"layer": 1
+									}}
+								]
+							}},
+							{ "bar_and_track@common.scroll_bar_and_track": {
+								"size": [ "100%c", "100%sm" ],
+								"$scroll_track_image_control": "common.scroll_indent_image",
+								"$scroll_box_visible": "(not $touch)",
+								"$scroll_size": [ 4, "100%" ],
+								"$scroll_box_size": [ "100%", "100%" ],
+								"$scroll_bar_left_padding_size": [ 2, 0 ],
+								"$scroll_bar_right_padding_size": [ 2, 0 ],
+								"$scroll_bar_contained": false,
+								"variables": [
+									{
+										"requires": "$touch",
+										"$scroll_track_image_control": "common.empty_panel"
+									}
+								]
+							}}
+						]
+					}}
+				]
 			}}
 		]
 	},
@@ -444,9 +687,17 @@
 		"anchor_from": "top_left",
 		"anchor_to": "top_left",
 		"hover_control": "hover",
-		"pressed_control": "hover",
+		"pressed_control": "pressed",
 		"controls": [
 			{ "hover": { // this element can not be localized
+				"type": "custom",
+				"renderer": "hover_text_renderer",
+				"layer": 40,
+				"property_bag": {
+					"#hover_text": "$text"
+				}
+			}},
+			{ "pressed": {
 				"type": "custom",
 				"renderer": "hover_text_renderer",
 				"layer": 40,
@@ -463,8 +714,9 @@
 		"type": "button",
 		"follows_cursor": true,
 		"consume_hover_events": false,
-		"$text_bindings": [],
-		"$label_text": "#text",
+		"allow_clipping": false,
+		"$text_bindings": [],  // to obtain text from a binding
+		"$label_text": "#text",  // to obtain text from a variable
 		"controls": [
 			{ "hover_area": {
 				"type": "image",
@@ -473,7 +725,6 @@
 				"anchor_to": "left_middle",
 				"offset": [5, 0],
 				"layer": 40,
-				"visible": "(not ($label_text = ''))",
 				"controls": [
 					{ "text": {
 						"type": "label",
@@ -676,6 +927,10 @@
 		"$texture": "textures/ui/villagers/mason",
 		"$text": "Job: Mason"
 	},
+	"plains_villager@assets.item_renderer": {
+		"$texture": "textures/ui/villagers/plains",
+		"$text": "Biome: Plains"
+	},
 	"desert_villager@assets.item_renderer": {
 		"$texture": "textures/ui/villagers/desert",
 		"$text": "Biome: Desert"
@@ -741,6 +996,11 @@
 	"desert_well@assets.item_renderer": {
 		"$texture": "textures/ui/structures/desert_well",
 		"$text": "Desert Well",
+		"offset": [0, -4]
+	},
+	"cold_ocean_ruins@assets.item_renderer": {
+		"$texture": "textures/ui/structures/ruins",
+		"$text": "Cold Ocean Ruins",
 		"offset": [0, -4]
 	},
 	"ruined_portal@assets.item_renderer": {
@@ -1477,6 +1737,26 @@
 		"$texture": "textures/items/iron_ingot",
 		"$text": "Iron Ingot"
 	},
+	"nautilus_shell@assets.item_renderer": {
+		"$texture": "textures/items/nautilus",
+		"$text": "Nautilus Shell"
+	},
+	"copper_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/copper_nautilus_armor",
+		"$text": "Copper Nautilus Armor"
+	},
+	"iron_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/iron_nautilus_armor",
+		"$text": "Iron Nautilus Armor"
+	},
+	"golden_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/gold_nautilus_armor",
+		"$text": "Golden Nautilus Armor"
+	},
+	"diamond_nautilus_armor@assets.item_renderer": {
+		"$texture": "textures/items/nautilus_armor/diamond_nautilus_armor",
+		"$text": "Diamond Nautilus Armor"
+	},
 	"gold_ingot@assets.item_renderer": {
 		"$texture": "textures/items/gold_ingot",
 		"$text": "Gold Ingot"
@@ -1794,8 +2074,12 @@
 		"$texture": "textures/items/compass_item",
 		"$text": "Compass"
 	},
-	"treasure_map@assets.item_renderer": {
-		"$texture": "textures/items/map_nautilus",
+	"world_map@assets.item_renderer": {
+		"$texture": "textures/items/world_map",
+		"$text": "World Map"
+	},
+	"sky_treasure_map@assets.item_renderer": {
+		"$texture": "textures/items/sky_treasure_map",
 		"$text": "Sky Treasure Map"
 	},
 	"trial_inscription@assets.item_renderer": {
@@ -1969,6 +2253,10 @@
 	"arrow@assets.item_renderer": {
 		"$texture": "textures/items/arrow",
 		"$text": "Arrow"
+	},
+	"weakness_arrow@assets.item_renderer": {
+		"$texture": "textures/items/tipped_arrow_weakness",
+		"$text": "Arrow of Weakness"
 	},
 	"slowness_arrow@assets.item_renderer": {
 		"$texture": "textures/items/tipped_arrow_slow",
@@ -2393,6 +2681,20 @@
 			"uv_size": [8, 8]
 		}}],
 		"$name": "Husk"
+	},
+	"parched@assets.entity_renderer": {
+		"$face": [{"face": {
+			"type": "image",
+			"texture": "textures/entity/parched/parched",
+			"uv": [8, 8],
+			"uv_size": [8, 8]
+		}},{"mask": {
+			"type": "image",
+			"texture": "textures/entity/parched/parched",
+			"uv": [8, 40],
+			"uv_size": [8, 8]
+		}}],
+		"$name": "Parched"
 	},
 	"axolotl@assets.entity_renderer": {
 		"size": [32, 20],

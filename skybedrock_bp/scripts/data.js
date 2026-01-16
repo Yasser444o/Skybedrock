@@ -93,70 +93,82 @@ export const overworld_structures = [
 		structure: 'Igloo', require: 'taiga',
 		biome: biome_names.frozen_river,
 		place: {x: -356, y: 69, z: -724},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'jungle_temple', x: -458.5, y: 70, z: 883.5,
 		structure: 'Jungle Temple', require: 'jungle',
 		biome: biome_names.jungle_edge,
 		place: {x: -464, y: 65, z: 880},
+		dim: "minecraft:overworld",
 	},
     {
         id: 'desert_pyramid', x: -761.5, y: 65, z: -270.5,
         structures: ['Desert Pyramid', 'Desert Well'], require: 'desert',
         biomes: [biome_names.desert_hills, biome_names.desert_lakes],
+		dim: "minecraft:overworld",
     },
     {
-		id: 'ocean_monument', x: 675, y: 40, z: 376,  ///tp 680 ~ 376  //seed: 3612322357111126416  //old seed: -1672001255
+		id: 'ocean_monument', x: 675, y: 40, z: 376,
 		structure: 'Ocean Monument', require: 'mushroom_island',
 		biome: biome_names.lukewarm_ocean,
 		place: {x: 650, y: 34, z: 346},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'swamp_hut', x: -252.5, y: 67, z: 516.5,  
 		structure: 'Swamp Hut', require: 'swamp',
 		biome: biome_names.swamp_hills,
 		place: {x: -257 , y: 64, z: 511},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'mineshaft', x: 696.5, y: 33, z: -232.5,
 		structure: 'Mineshaft', require: 'badlands',
 		biome: biome_names.modified_badlands,
 		place: {x: 684, y: 31, z: -248},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'pillager_outpost', x: -901.5, y: 94, z: 379.5,  
 		structure: 'Pillager Outpost', require: 'savanna',
 		biome: biome_names.savanna_plateau,
 		place: {x: -910, y: 80, z: 370},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'woodland_mansion', x: 531.5, y: 64.06, z: -860.5,
 		structure: 'Woodland Mansion', require: 'dark_forest',
 		biome: biome_names.roofed_forest,
 		place: {x: 521, y: 63, z: -871},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'ancient_city', x: 157.5, y: -37, z: 764.5,
 		structure: 'Ancient City', require: 'deep_dark',
 		biome: biome_names.deep_dark,
 		place: [{x: 134, y: -51, z: 749}, {x: 112, y: -51, z: 757}, {x: 153, y: -51, z: 720}, {x: 180, y: -51, z: 752}, {x: 151, y: -51, z: 775}],
+		dim: "minecraft:overworld",
 	},
     {
         id: 'ocean_ruins', x: -640.5, y: 46, z: 262.5, icon: 'shipwreck',
         structures: ['Warm Ocean Ruins', 'Cold Ocean Ruins', 'Shipwreck'], require: 'ocean',
-        biomes: [biome_names.deep_warm_ocean, biome_names.deep_cold_ocean, biome_names.deep_lukewarm_ocean]
+        biomes: [biome_names.deep_warm_ocean, biome_names.deep_cold_ocean, biome_names.deep_lukewarm_ocean],
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'trail_ruins', x: 130.5, y: 53, z: -830.5,
 		structure: 'Trail Ruins', require: 'birch',
 		biome: biome_names.old_growth_pine_taiga,
 		place: {x: 120, y: 39, z: -859},
+		dim: "minecraft:overworld",
 	},
     {
 		id: 'trial_chambers', x: 375.5, y: 9, z: -491.5,
 		structure: 'Trial Chambers', require: 'cherry',
 		biome: biome_names.old_growth_spruce_taiga,
 		place: {x: 361, y: 7, z: -519},
+		dim: "minecraft:overworld",
 	},
 ]
 export const nether_structures = [
@@ -164,16 +176,19 @@ export const nether_structures = [
 		id: 'nether_fortress', x: 75.5, y: 53, z: 142.5,
 		structure: 'Nether Fortress',
 		place: {x: 64, y: 52, z: 112},
+		dim: "minecraft:nether",
 	},
     { 
 		id: 'bastion_remnants', x: -97.5, y: 65, z: 92.5,
 		structure: 'Bastion Remnants',
 		place: {x: -109, y: 64, z: 79},
+		dim: "minecraft:nether",
 	},
     {
 		id: 'ruined_portal', x: -283.5, y: 18, z: 142.5,
 		structure: 'Ruined Portal',
 		place: {x: -291, y: 9, z: 133},
+		dim: "minecraft:nether",
 	},
 ]
 export const destinations = {

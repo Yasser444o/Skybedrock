@@ -1,0 +1,32 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Helps you chopping trees by making you break the highest log first. Hold sneak to disable.",
+        "name": "Sawdust",
+        "uuid": "969e5ba5-257d-492a-a5fd-ca7cea50140e",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "3d610a28-0381-428f-ba9e-4ba2bbca9840",
+            "version": [1, 0, 0]
+        },
+		{
+			"type": "script",
+			"uuid": "6f806db6-2df5-442a-9b33-f7a33339f630",
+			"version": [ 2, 0, 0 ],
+			"entry": "scripts/sawdust.js"
+		}
+    ],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/server",
+			"version": "2.3.0"
+		}
+	]
+}

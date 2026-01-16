@@ -4,7 +4,7 @@
 		"description": "§cThis should be below the other packs, Do Not Disable.\n§r§6This pack is the backbone of Skybedrock, it contains custom recipes, loot tables, items, blocks, spawn rules, mob behaviors, world generation, trade tables, and scripts.",
 		"name": "Skybedrock BP",
 		"uuid": "d04d20b5-3dc8-4560-8f81-cc51cd5c28e8",
-		"version": [ 1, 21, 15 ],
+		"version": [ 1, 22, 0 ],
 		"min_engine_version": [ 1, 21, 110 ]
 	},
 	"metadata": {
@@ -24,7 +24,7 @@
 		{
 			"type": "script",
 			"uuid": "7e9c425a-d47f-4e8e-b06c-1092a8315c8e",
-			"version": [ 2, 0, 0 ],
+			"version": [ 2, 3, 0 ],
 			"entry": "scripts/skybedrock.js"
 		}
 	],
@@ -39,7 +39,7 @@
 		},
 		{
 			"uuid": "3c547789-f28e-41e2-8a9e-0b0333ff0967",
-			"version": [ 1, 21, 15 ]
+			"version": [ 1, 22, 0 ]
 		}
 	]
 }

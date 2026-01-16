@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "yasser444:treasure_map",
+			"menu_category": {
+				"category": "none",
+				"is_hidden_in_commands": true
+			}
+		},
+		"components": {
+			"minecraft:icon": "update_item",
+			"skybedrock:update_me": { "new_id": "skybedrock:sky_treasure_map" },
+			"minecraft:display_name": {
+				"value": "Use to Update"
+			}
+		}
+	}
+}

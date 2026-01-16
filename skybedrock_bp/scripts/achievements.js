@@ -511,11 +511,13 @@ export const quests = {
 			require: iron
 			title: Waypoints
 			icon: -14548992
-			* Place lodestones in your other islands 
-			- craft a lodestone and place it in your other bases
-			- use a compass on it to create a lodestone compass
+			* Add a waypoint by using a World Map on a lodestone
+			- level up a plains cartographer
+			- buy a World Map from the villager
+			- use the map on a lodestone to create a new waipoint
+			- give it a name and select an icon for it
 		`,
-		query: (player) => check_items(player, 'lodestone_compass')
+		checkmark: false,
 	},
 	diamond_pickaxe: {
 		data: `
@@ -1159,7 +1161,7 @@ export const quests = {
 		`,
 		query: (player) => (
 			in_raduis(player, '-641 45 262', undefined, 30) &&
-			check_items(player, 'yasser444:treasure_map')
+			check_items(player, 'skybedrock:sky_treasure_map')
 		)
 	},
 	ancient_city: {
@@ -1424,7 +1426,7 @@ export const quests = {
 				if (!nearest_item) return
 				if (get_distance(nearest_item.location, location)) return
 				if (nearest_item.getComponent('item').itemStack.typeId != 'minecraft:tropical_fish') return
-				if ((() => { try { dimension.getBiome(location) } catch { return true }})()) return
+				if (!dimension.isChunkLoaded(location)) return
 				if (dimension.getBiome(location).id != "minecraft:desert") return
 				complete(player, id)
 				stop_challenge(player, id)
@@ -1537,13 +1539,13 @@ export const quests = {
 			const boat = ride?.typeId?.includes('boat')
 			const water = ride?.isInWater
 			const spyglass = player.getComponent('equippable').getEquipment('Mainhand')?.typeId == 'minecraft:spyglass'
-			if ((() => { try { player.dimension.getBiome(player.location) } catch { return true }})()) return
+			if (!player.dimension.isChunkLoaded(player.location)) return
 			const ocean = (player.dimension.getBiome(player.location).id).includes("ocean")
 			return parrot && boat && water && spyglass && ocean
 		},
 		reward: ["A treasure map and a Banner", (player) => {
 			player.dimension.spawnItem(stored_items.rewards[1], player.location)
-			player.dimension.spawnItem(new ItemStack('yasser444:treasure_map'), player.location)
+			player.dimension.spawnItem(new ItemStack('skybedrock:sky_treasure_map'), player.location)
 		}]
 	},
 	crafted_trials: {

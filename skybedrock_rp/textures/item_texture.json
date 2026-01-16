@@ -8,12 +8,43 @@
 		"skybedrock:guidebook": {
 			"textures": "textures/items/skybedrock_guidebook"
 		},
-		"yasser444:treasure_map": {
-			"textures": "textures/items/map_nautilus"
+		"skybedrock:world_map": {
+			"textures": "textures/items/world_map"
 		},
-		"yasser444:trial_inscription": {
-			"textures": "textures/items/map_trial_chambers"
+		"skybedrock:ancient_scroll": {
+			"textures": "textures/items/ancient_scroll"
 		},
+		"skybedrock:hydrographic_chart": {
+			"textures": "textures/items/hydrographic_chart"
+		},
+		"skybedrock:tropical_notes": {
+			"textures": "textures/items/tropical_notes"
+		},
+		"skybedrock:arctic_record": {
+			"textures": "textures/items/arctic_record"
+		},
+		"skybedrock:ruins_cartograph": {
+			"textures": "textures/items/ruins_cartograph"
+		},
+		"skybedrock:scraped_trial": {
+			"textures": "textures/items/scraped_trial"
+		},
+		"skybedrock:sky_treasure_map": {
+			"textures": "textures/items/sky_treasure_map"
+		},
+		"skybedrock:swamp_map": {
+			"textures": "textures/items/swamp_map"
+		},
+		"skybedrock:jungle_map": {
+			"textures": "textures/items/jungle_map"
+		},
+		"skybedrock:woodland_map": {
+			"textures": "textures/items/woodland_map"
+		},
+		"skybedrock:ocean_map": {
+			"textures": "textures/items/ocean_map"
+		},
+
 		"update_item": {
 			"textures": "textures/items/update_item"
 		}

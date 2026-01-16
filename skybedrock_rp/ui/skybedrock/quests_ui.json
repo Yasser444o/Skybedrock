@@ -139,6 +139,253 @@
 		]
 	},
 
+	"select_category": {
+		"type": "panel",
+		"size": [0, "100%c"],
+		"controls": [
+			{"default@quests.category": {
+				"$condition": "(not (#form_button_text = #form_button_text - '§category§'))",
+				"$button_color": [0.8, 0.8, 0.8],
+				"$button_layer": -1
+			}},
+			{"selected@quests.category": {
+				"$condition": "(not (#form_button_text = #form_button_text - '§selected_category§'))",
+				"$button_color": [1, 1, 1],
+				"$button_layer": 0
+			}}
+		]
+	},
+
+	"category": {
+		"type": "panel",
+		"size": [0, 34],
+		"anchor_from": "top_right",
+		"anchor_to": "top_right",
+		"bindings": "$visible_button",
+		"controls": [
+			{ "button": {
+				"type": "button",
+				"focus_enabled": true,
+				"default_control": "default",
+				"hover_control": "hover",
+				"pressed_control": "pressed",
+				"sound_name": "random.click",
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"size": ["100%c", "100%c"],
+				"bindings": "$form_button",
+				"button_mappings": [
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.form_button_click",
+						"mapping_type": "pressed"
+					},
+					{
+						"from_button_id": "button.menu_ok",
+						"to_button_id": "button.form_button_click",
+						"mapping_type": "pressed"
+					}
+				],
+				"controls": [
+					{ "default": {
+						"type": "image",
+						"size": [38, 32],
+						"offset": [4, 0],
+						"anchor_from": "middle_right",
+						"anchor_to": "middle_right",
+						"texture": "textures/ui/TabLeftFront",
+						"color": "$button_color",
+						"layer": "$button_layer",
+						"controls": [
+							{ "image@quests.icon": {
+								"$size": [24, 24],
+								"bindings": "$get_button_image"
+							}}
+						]
+					}},
+					{ "hover": {
+						"type": "image",
+						"size": ["120%c", 32],
+						"min_size": [38, 32],
+						"offset": [4, 0],
+						"anchor_from": "middle_right",
+						"anchor_to": "middle_right",
+						"texture": "textures/ui/TabLeftFront",
+						"color": "$button_color",
+						"layer": "$button_layer",
+						"controls": [
+							{ "text": {
+								"type": "label",
+								"text": "#text",
+								"color": [0.1, 0.1, 0.1],
+								"layer": 2,
+								"$change": "(#form_button_text - '§category§' - '§selected_category§')",
+								"bindings": "$change_button_text"
+							}}
+						]
+					}},
+					{ "pressed": {
+						"type": "image",
+						"size": ["120%c", 32],
+						"min_size": [38, 32],
+						"offset": [4, 0],
+						"anchor_from": "middle_right",
+						"anchor_to": "middle_right",
+						"texture": "textures/ui/TabLeftFront",
+						"color": "$button_color",
+						"layer": "$button_layer",
+						"controls": [
+							{ "text": {
+								"type": "label",
+								"text": "#text",
+								"color": [0.1, 0.1, 0.1],
+								"layer": 2,
+								"$change": "(#form_button_text - '§category§' - '§selected_category§')",
+								"bindings": "$change_button_text"
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	},
+
+	"quest_factory@server_form.long_form_dynamic_buttons_panel": {
+		"factory":{
+			"name": "buttons",
+			"control_ids": {
+				"button": "@quests.select_quest",
+				"label": "@server_form.dynamic_label",
+				"header": "@server_form.dynamic_header",
+				"divider": "@settings_common.option_group_section_divider"
+			}
+		}
+	},
+
+	"select_quest": {
+		"orientation": "horizontal",
+		"type": "stack_panel",
+		"size": ["100%", 32],
+		"$condition": "(not (#form_button_text = #form_button_text - '§quest§'))",
+		"bindings": "$visible_button",
+		"controls": [
+			{ "icon": {
+				"type": "panel",
+				"size": ["100%c", "100%c + 2px"],
+				"controls": [
+					{ "background": {
+						"type": "image",
+						"texture": "textures/ui/buttons/ach_icon",
+						"size": [30, 30],
+						"controls": [
+							{ "image@quests.icon": {
+								"size": [24, 24],
+								"bindings": "$get_button_image"
+							}}
+						]
+					}}
+				]
+			}},
+			{ "unlocked_button@quests.quest_button": {
+				"$color": [0.016, 0.537, 0.757],
+				"$tag": "§unlocked§",
+				"bindings": "$has_button_tag"
+			}},
+			{ "locked_button@quests.quest_button": {
+				"$color": [0.7, 0.7, 0.7],
+				"$tag": "§locked§",
+				"bindings": "$has_button_tag"
+			}},
+			{ "done_button@quests.quest_button": {
+				"$color": [1, 0.7, 0],
+				"$tag": "§done§",
+				"bindings": "$has_button_tag"
+			}}
+		]
+	},
+
+	"quest_button": {
+		"type": "button",
+		"offset": [-1, 0],
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"sound_name": "random.click",
+		"focus_enabled": true,
+		"default_focus_precedence": 10,
+		"size": [ "fill", 32 ],
+		"button_mappings": [
+			{
+				"from_button_id": "button.menu_select",
+				"to_button_id": "button.form_button_click",
+				"mapping_type": "pressed"
+			},
+			{
+				"from_button_id": "button.menu_ok",
+				"to_button_id": "button.form_button_click",
+				"mapping_type": "pressed"
+			}
+		],
+		"controls": [
+			{
+				"default": {
+					"type": "image",
+					"texture": "textures/ui/buttons/quest_button_default",
+					"color": "$color",
+					"size": [ "100%", "100% - 4px" ]
+				}
+			},
+			{
+				"hover": {
+					"type": "image",
+					"texture": "textures/ui/buttons/quest_button_hover",
+					"color": "$color",
+					"size": [ "100%", "100% - 4px" ]
+				}
+			},
+			{
+				"pressed": {
+					"type": "image",
+					"texture": "textures/ui/buttons/quest_button_hover",
+					"color": "$color",
+					"size": [ "100%", "100% - 4px" ]
+				}
+			},
+			{
+				"label_panel": {
+					"type": "panel",
+					"size": [ "100% - 8px", "100%" ],
+					"controls": [
+					  {
+							"label": {
+								"type": "label",
+								"text": "#text",
+								"anchor_from": "left_middle",
+								"anchor_to": "left_middle",
+								"layer": 10,
+								"$change": "(#form_button_text - '§quest§' - '§unlocked§' - '§done§' - '§locked§' - '§reward§'))",
+								"bindings": "$change_button_text"
+							}
+						}
+					]
+				}
+			},
+			{
+				"has_reward": {
+					"type": "image",
+					"anchor_from": "right_middle",
+					"anchor_to": "right_middle",
+					"offset": [-5, 0],
+					"size": [16, 16],
+					"layer": 1,
+					"texture": "textures/blocks/chest_front",
+					"$tag": "§reward§",
+					"bindings": "$has_button_tag"
+				}
+			}
+		]
+	},
+
 	"quests_menu": {
 		"type": "image",
 		"texture": "textures/ui/buttons/quests_background",
@@ -229,224 +476,6 @@
 				"anchor_from": "bottom_left",
 				"anchor_to": "bottom_left"
 			}}
-		]
-	},
-
-	"select_category": {
-		"type": "panel",
-		"size": [0, "100%c"],
-		"controls": [
-			{"default@quests.category": {
-				"$condition": "(not (#form_button_text = #form_button_text - '§category§'))",
-				"$button_color": [0.8, 0.8, 0.8],
-				"$button_layer": -1
-			}},
-			{"selected@quests.category": {
-				"$condition": "(not (#form_button_text = #form_button_text - '§selected_category§'))",
-				"$button_color": [1, 1, 1],
-				"$button_layer": 0
-			}}
-		]
-	},
-
-	"category": {
-		"type": "panel",
-		"size": [0, 34],
-		"anchor_from": "top_right",
-		"anchor_to": "top_right",
-		"bindings": "$visible_button",
-		"controls": [
-			{ "button": {
-				"type": "button",
-				"focus_enabled": true,
-				"default_control": "default",
-				"hover_control": "hover",
-				"pressed_control": "hover",
-				"sound_name": "random.click",
-				"anchor_from": "top_right",
-				"anchor_to": "top_right",
-				"size": ["100%c", "100%c"],
-				"bindings": "$form_button",
-				"button_mappings": [
-					{
-						"from_button_id": "button.menu_select",
-						"to_button_id": "button.form_button_click",
-						"mapping_type": "pressed"
-					},
-					{
-						"from_button_id": "button.menu_ok",
-						"to_button_id": "button.form_button_click",
-						"mapping_type": "pressed"
-					}
-				],
-				"controls": [
-					{ "default": {
-						"type": "image",
-						"size": [38, 32],
-						"offset": [4, 0],
-						"anchor_from": "middle_right",
-						"anchor_to": "middle_right",
-						"texture": "textures/ui/TabLeftFront",
-						"color": "$button_color",
-						"layer": "$button_layer",
-						"controls": [
-							{ "image@quests.icon": {
-								"$size": [24, 24],
-								"bindings": "$get_button_image"
-							}}
-						]
-					}},
-					{ "hover": {
-						"type": "image",
-						"size": ["120%c", 32],
-						"min_size": [38, 32],
-						"offset": [4, 0],
-						"anchor_from": "middle_right",
-						"anchor_to": "middle_right",
-						"texture": "textures/ui/TabLeftFront",
-						"color": "$button_color",
-						"layer": "$button_layer",
-						"controls": [
-							{ "text": {
-								"type": "label",
-								"text": "#text",
-								"color": [0.1, 0.1, 0.1],
-								"layer": 2,
-								"$change": "(#form_button_text - '§category§' - '§selected_category§')",
-								"bindings": "$change_button_text"
-							}}
-						]
-					}}
-				]
-			}}
-		]
-	},
-
-	"quest_factory@server_form.long_form_dynamic_buttons_panel": {
-		"factory":{
-			"name": "buttons",
-			"control_ids": {
-				"button": "@quests.select_quest",
-				"label": "@server_form.dynamic_label",
-				"header": "@server_form.dynamic_header",
-				"divider": "@settings_common.option_group_section_divider"
-			}
-		}
-	},
-
-	"select_quest": {
-		"orientation": "horizontal",
-		"type": "stack_panel",
-		"size": ["100%", 32],
-		"$condition": "(not (#form_button_text = #form_button_text - '§quest§'))",
-		"bindings": "$visible_button",
-		"controls": [
-			{ "icon": {
-				"type": "panel",
-				"size": ["100%c", "100%c + 2px"],
-				"controls": [
-					{ "background": {
-						"type": "image",
-						"texture": "textures/ui/buttons/ach_icon",
-						"size": [30, 30],
-						"controls": [
-							{ "image@quests.icon": {
-								"size": [24, 24],
-								"bindings": "$get_button_image"
-							}}
-						]
-					}}
-				]
-			}},
-			{ "unlocked_button@quests.quest_button": {
-				"$color": [0.016, 0.537, 0.757],
-				"$tag": "§unlocked§",
-				"bindings": "$has_button_tag"
-			}},
-			{ "locked_button@quests.quest_button": {
-				"$color": [0.7, 0.7, 0.7],
-				"$tag": "§locked§",
-				"bindings": "$has_button_tag"
-			}},
-			{ "done_button@quests.quest_button": {
-				"$color": [1, 0.7, 0],
-				"$tag": "§done§",
-				"bindings": "$has_button_tag"
-			}}
-		]
-	},
-
-	"quest_button": {
-		"type": "button",
-		"offset": [-1, 0],
-		"default_control": "default",
-		"hover_control": "hover",
-		"pressed_control": "hover",
-		"sound_name": "random.click",
-		"focus_enabled": true,
-		"default_focus_precedence": 10,
-		"size": [ "fill", 32 ],
-		"button_mappings": [
-			{
-				"from_button_id": "button.menu_select",
-				"to_button_id": "button.form_button_click",
-				"mapping_type": "pressed"
-			},
-			{
-				"from_button_id": "button.menu_ok",
-				"to_button_id": "button.form_button_click",
-				"mapping_type": "pressed"
-			}
-		],
-		"controls": [
-			{
-				"default": {
-					"type": "image",
-					"texture": "textures/ui/buttons/quest_button_default",
-					"color": "$color",
-					"size": [ "100%", "100% - 4px" ]
-				}
-			},
-			{
-				"hover": {
-					"type": "image",
-					"texture": "textures/ui/buttons/quest_button_hover",
-					"color": "$color",
-					"size": [ "100%", "100% - 4px" ]
-				}
-			},
-			{
-				"label_panel": {
-					"type": "panel",
-					"size": [ "100% - 8px", "100%" ],
-					"controls": [
-					  {
-							"label": {
-								"type": "label",
-								"text": "#text",
-								"anchor_from": "left_middle",
-								"anchor_to": "left_middle",
-								"layer": 10,
-								"$change": "(#form_button_text - '§quest§' - '§unlocked§' - '§done§' - '§locked§' - '§reward§'))",
-								"bindings": "$change_button_text"
-							}
-						}
-					]
-				}
-			},
-			{
-				"has_reward": {
-					"type": "image",
-					"anchor_from": "right_middle",
-					"anchor_to": "right_middle",
-					"offset": [-5, 0],
-					"size": [16, 16],
-					"layer": 1,
-					"texture": "textures/blocks/chest_front",
-					"$tag": "§reward§",
-					"bindings": "$has_button_tag"
-				}
-			}
 		]
 	},
 
@@ -755,7 +784,7 @@
 							},
 							{
 								"binding_type": "view",
-								"source_property_name": "(#form_button_text - $tag)",
+								"source_property_name": "('§.' + #form_button_text - $tag)",
 								"target_property_name": "#text"
 							}
 						]

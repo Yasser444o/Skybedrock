@@ -1,0 +1,28 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:crafting_items_catalog": {
+        "categories": [
+            {
+                "category_name": "equipment",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "skybedrock:world_map",
+                            "name": "skybedrock:maps"
+                        },
+                        "items": [
+							"skybedrock:world_map",
+							"skybedrock:ancient_scroll",
+							"skybedrock:hydrographic_chart",
+							"skybedrock:tropical_notes",
+							"skybedrock:arctic_record",
+							"skybedrock:ruins_cartograph",
+							"skybedrock:scraped_trial",
+							"skybedrock:sky_treasure_map"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

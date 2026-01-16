@@ -1,0 +1,14 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "skybedrock:ruins_cartograph"
+		},
+		"components": {
+			"minecraft:icon": "skybedrock:ruins_cartograph",
+			"minecraft:interact_button": "hudScreen.tooltip.seeMap",
+			"skybedrock:maps": { "type": "ruins_cartograph" },
+			"minecraft:max_stack_size": 1
+		}
+	}
+}
