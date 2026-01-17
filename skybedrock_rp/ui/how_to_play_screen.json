@@ -3567,6 +3567,17 @@
 						}
 					},
 					{ 
+						"sawdust@assets.text_box": {
+							"$text": "§c[]§r Sawdust"
+						}
+					},
+					{ 
+						"sawdust_image@how_to_play.feature_element": {
+							"$text": "Chopping down trees with an axe will place the farthest log in front of your axe.",
+							"$image": "sawdust"
+						}
+					},
+					{ 
 						"trader_llama@assets.text_box": {
 							"$text": "§c[]§r No Trader Llama"
 						}
@@ -3686,9 +3697,9 @@
 					},
 					{
 						"reinforced_deepslate@how_to_play.crafting3x3_feature": {
-							"$input2": [{"b@assets.deepslate":{}}],
-							"$input5": [{"b@assets.sculk_shrieker":{}}],
-							"$input8": [{"b@assets.deepslate":{}}],
+							"$input2": [{"b@assets.sculk_shrieker":{}}],
+							"$input5": [{"b@assets.deepslate":{}}],
+							"$input8": [{"b@assets.sculk_shrieker":{}}],
 							"$output": [{"b@assets.reinforced_deepslate":{}}]
 						}
 					},

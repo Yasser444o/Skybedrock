@@ -82,29 +82,34 @@ function used_new_gateway(player) {
     return true
 }
 
-function build_far_island(player) {
+async function build_far_island(player) {
     const arrival = chunk_corner(player.location)
+	const the_end = world.getDimension('the_end')
     //preserve the arrival area 
-    ;[-1, 0, 1].forEach(i => {
-        ;[-1, 0, 1].forEach(j => {
-            const location = {x: arrival.x + 16 * i, z: arrival.z + 16 * j, y: 10}
-            world.structureManager.place(`end_islands/void`, the_end, location)
-        })
-    })
+	const loaded_chunks = []
+    ;[-1, 0, 1].forEach(i => { [-1, 0, 1].forEach(j => {
+		const location = {x: arrival.x + 16 * i, z: arrival.z + 16 * j, y: 10}
+		loaded_chunks.push(new Promise((resolve) => {
+			const clear = system.runInterval(() => { try {
+				if (the_end.isChunkLoaded(location)) {
+					the_end.setBlockType({...arrival, y: 10}, 'air')
+					system.clearRun(clear)
+					resolve()
+				}} catch {}
+			})
+		}))
+	})})
+	await Promise.all(loaded_chunks)
     //load the end cities
-    system.runTimeout(()=> {
-        if (!end_cities.has(active_gateways.length)) return
-        const city = end_cities.get(active_gateways.length)
-        world.structureManager.place(`end_islands/void`, the_end, {x: arrival.x, z: arrival.z - 48, y: 10})
-        world.structureManager.place(`end_islands/${city}`, the_end, {x: arrival.x, z: arrival.z - 48, y: 66})
-    }, 20)
+	if (!end_cities.has(active_gateways.length)) return
+	const city = end_cities.get(active_gateways.length)
+	world.structureManager.place(`end_islands/void`, the_end, {x: arrival.x, z: arrival.z - 48, y: 10})
+	world.structureManager.place(`end_islands/${city}`, the_end, {x: arrival.x, z: arrival.z - 48, y: 66})
     //load the chorus islands
-    system.runTimeout(()=> {
-        if (!chorus_islands.has(active_gateways.length)) return
-        const island = chorus_islands.get(active_gateways.length)
-        world.structureManager.place(`end_islands/void`, the_end, {x: arrival.x - 32, z: arrival.z + 16, y: 10})
-        world.structureManager.place(`end_islands/${island}`, the_end, {x: arrival.x - 32, z: arrival.z + 16, y: 66})
-    }, 20)
+	if (!chorus_islands.has(active_gateways.length)) return
+	const island = chorus_islands.get(active_gateways.length)
+	world.structureManager.place(`end_islands/void`, the_end, {x: arrival.x - 32, z: arrival.z + 16, y: 10})
+	world.structureManager.place(`end_islands/${island}`, the_end, {x: arrival.x - 32, z: arrival.z + 16, y: 66})
     //mark as a phantom island
     if ([2, 12].includes(active_gateways.length)) {
         const phantom_islands = JSON.parse(world.getDynamicProperty('phantom_islands') ?? '[]')
@@ -113,7 +118,8 @@ function build_far_island(player) {
     }
 }
 
-let the_end, active_gateways
+let the_end
+export let active_gateways
 world.afterEvents.worldLoad.subscribe(()=> {
     the_end = world.getDimension('the_end')
     active_gateways = JSON.parse(world.getDynamicProperty('open_gateways') ?? '[]')
