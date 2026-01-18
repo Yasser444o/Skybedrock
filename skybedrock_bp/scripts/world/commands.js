@@ -333,11 +333,13 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
             name: "skybedrock:fix_your_broken_end_dimension",
             description: "Make sure to go through the end gateways in the same order you went through them originally",
             cheatsRequired: false,
-            permissionLevel: 2
+            permissionLevel: 0
         },
         () => {
-			active_gateways = undefined
 			world.setDynamicProperty("open_gateways")
+			Object.keys(active_gateways).forEach(key => {
+				delete active_gateways[key]
+			})
 		}
     )
 })
