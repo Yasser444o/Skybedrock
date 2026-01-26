@@ -1,0 +1,14 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "minecraft:furnace_creator_music_box"
+    },
+	"tags": [ "furnace", "blast_furnace" ],
+    "unlock": [
+      { "item": "minecraft:music_disc_creator_music_box" }
+    ],
+    "input": "minecraft:music_disc_creator_music_box",
+    "output": "minecraft:copper_ingot"
+  }
+}

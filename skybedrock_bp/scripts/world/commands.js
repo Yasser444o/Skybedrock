@@ -3,7 +3,6 @@ import { biome_names, destinations, restorable_structures } from "../data"
 import { complete, quest_tracker, quests_menu, undo } from "./quests"
 import { quests } from "../achievements"
 import { isSlimy } from "./slime_finder"
-import { active_gateways } from "./the_end"
 
 let trader_request
 const settings = {
@@ -57,6 +56,7 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
         },
         ({sourceEntity}, destination, players) => {
             const dest = destinations[destination]
+			if (!dest) {sourceEntity.sendMessage(`§cNo structure with the id '${destination}'`) ; return}
             const targets = players ?? [sourceEntity]
             system.run(() => targets.forEach(target =>
                 target.teleport( dest.coords, {
@@ -327,20 +327,6 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
         ({sourceEntity}) => {
             if (sourceEntity?.typeId == "minecraft:player") quests_menu(sourceEntity)
         }
-    )
-    customCommandRegistry.registerCommand(
-        {
-            name: "skybedrock:fix_your_broken_end_dimension",
-            description: "Make sure to go through the end gateways in the same order you went through them originally",
-            cheatsRequired: false,
-            permissionLevel: 0
-        },
-        () => {
-			world.setDynamicProperty("open_gateways")
-			Object.keys(active_gateways).forEach(key => {
-				delete active_gateways[key]
-			})
-		}
     )
 })
 

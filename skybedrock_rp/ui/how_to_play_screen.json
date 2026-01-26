@@ -1109,7 +1109,7 @@
 													"$input7": [{"i@assets.chain":{}}],
 													"$input8": [{"i@assets.chain":{}}],
 													"$input9": [{"i@assets.chain":{}}],
-													"$output": [{"b@assets.empty_spawner":{}}]
+													"$output": [{"i@assets.empty_spawner":{}}]
 												}
 											},
 											{ 
@@ -1313,329 +1313,6 @@
 												}
 											}
 										]}}]
-									}
-								}
-							]
-						}
-					},
-					{
-						"trial_spawners@assets.dropdown": {
-							"$title": "Trial Spawners",
-							"$icon": "textures/blocks/trial_spawner_side_inactive",
-							"$collapse": "collapse_trials",
-							"$content": [
-								{
-									"trial_spawners@how_to_play.build_element": {
-										"$text": "Build the matching layout for the mob you want to create a spawner for, make sure you are in the overworld.",
-										"$build": [ { "stack": { "type": "stack_panel", "size": ["100%", "100%c"], "controls": [
-											{
-												"trial_spawners": {
-													"type": "panel",
-													"size": ["100%", 130],
-													"$book_name": "trial_spawners",
-													"controls": [
-														{
-															"breeze@assets.book_page": {
-																"$name": "breeze_trial",
-																"$p_page": 11, "$prev": "bogged_trial",
-																"$n_page": 2, "$next": "zombie_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "breeze",
-																			"$corner1": "chiseled_tuff",
-																			"$corner2": "chiseled_tuff",
-																			"$corner3": "chiseled_tuff",
-																			"$corner4": "chiseled_tuff"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"zombie@assets.book_page": {
-																"$name": "zombie_trial",
-																"$p_page": 0, "$prev": "breeze_trial",
-																"$n_page": 3, "$next": "husk_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "zombie",
-																			"$corner1": "mossy_cobblestone",
-																			"$corner2": "mossy_cobblestone",
-																			"$corner3": "mossy_cobblestone",
-																			"$corner4": "mossy_cobblestone"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"husk@assets.book_page": {
-																"$name": "husk_trial",
-																"$p_page": 2, "$prev": "zombie_trial",
-																"$n_page": 4, "$next": "spider_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "husk",
-																			"$corner1": "chiseled_sandstone",
-																			"$corner2": "chiseled_sandstone",
-																			"$corner3": "chiseled_sandstone",
-																			"$corner4": "chiseled_sandstone"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"spider@assets.book_page": {
-																"$name": "spider_trial",
-																"$p_page": 3, "$prev": "husk_trial",
-																"$n_page": 5, "$next": "slime_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "spider",
-																			"$corner1": "stone", "$addon1": "cobweb_on_stone",
-																			"$corner2": "stone", "$addon2": "cobweb_on_stone",
-																			"$corner3": "stone", "$addon3": "cobweb_on_stone",
-																			"$corner4": "stone", "$addon4": "cobweb_on_stone"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"slime@assets.book_page": {
-																"$name": "slime_trial",
-																"$p_page": 4, "$prev": "spider_trial",
-																"$n_page": 6, "$next": "silverfish_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "slime",
-																			"$corner1": "moss",
-																			"$corner2": "moss",
-																			"$corner3": "moss",
-																			"$corner4": "moss"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"silverfish@assets.book_page": {
-																"$name": "silverfish_trial",
-																"$p_page": 5, "$prev": "slime_trial",
-																"$n_page": 7, "$next": "baby_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "silverfish",
-																			"$corner1": "stone_bricks",
-																			"$corner2": "stone_bricks",
-																			"$corner3": "stone_bricks",
-																			"$corner4": "stone_bricks"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"baby@assets.book_page": {
-																"$name": "baby_trial",
-																"$p_page": 6, "$prev": "silverfish_trial",
-																"$n_page": 8, "$next": "cave_spider_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "baby_zombie",
-																			"$corner1": "mossy_cobblestone",
-																			"$corner2": "cobblestone",
-																			"$corner3": "cobblestone",
-																			"$corner4": "mossy_cobblestone"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"cave_spider@assets.book_page": {
-																"$name": "cave_spider_trial",
-																"$p_page": 7, "$prev": "baby_trial",
-																"$n_page": 9, "$next": "stray_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "cave_spider",
-																			"$corner1": "stone", "$addon1": "cobweb_on_stone",
-																			"$corner2": "podzol", "$addon2": "red_mushroom_on_podzol",
-																			"$corner3": "podzol", "$addon3": "red_mushroom_on_podzol",
-																			"$corner4": "stone", "$addon4": "cobweb_on_stone"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"stray@assets.book_page": {
-																"$name": "stray_trial",
-																"$p_page": 8, "$prev": "cave_spider_trial",
-																"$n_page": 10, "$next": "skeleton_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "stray",
-																			"$corner1": "packed_ice",
-																			"$corner2": "packed_ice",
-																			"$corner3": "packed_ice",
-																			"$corner4": "packed_ice"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"skeleton@assets.book_page": {
-																"$name": "skeleton_trial",
-																"$p_page": 9, "$prev": "stray_trial",
-																"$n_page": 11, "$next": "bogged_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "skeleton",
-																			"$corner1": "bone_block",
-																			"$corner2": "bone_block",
-																			"$corner3": "bone_block",
-																			"$corner4": "bone_block"
-																		}
-																	}
-																]
-															}
-														},
-														{
-															"bogged@assets.book_page": {
-																"$name": "bogged_trial",
-																"$p_page": 10, "$prev": "skeleton_trial",
-																"$n_page": 0, "$next": "breeze_trial",
-																"$page_content": [
-																	{
-																		"recipe@how_to_play.trial_spawner_recipe": {
-																			"$mob": "bogged",
-																			"$corner1": "bone_block",
-																			"$corner2": "podzol", "$addon2": "red_mushroom_on_podzol",
-																			"$corner3": "podzol", "$addon3": "red_mushroom_on_podzol",
-																			"$corner4": "bone_block"
-																		}
-																	}
-																]
-															}
-														}
-													]
-												}
-											},
-											{ 
-												"t2@assets.text_box": {
-													"$text": "Place an empty spawner in the middle."
-												}
-											},
-											{ 
-												"t3@assets.text_box": {
-													"$text": "Use 20 XP levels and a Trial Key on the spawner to activate it."
-												}
-											},
-											{ 
-												"trial_spawners2": {
-													"type": "panel",
-													"size": ["100%", 100],
-													"controls": [
-														{ "spanwer@assets.empty": {
-															"size": [24, 24],
-															"offset": [-150, 0],
-															"controls": [
-																{ "spawner@textures.empty_spawner": {
-																	"size": [24, 24]
-																}},
-																{ "copper@textures.chiseled_copper": {
-																	"$text": "",
-																	"size": [24, 24],
-																	"anchor_from": "bottom_left",
-																	"anchor_to": "top_left"
-																}},
-																{ "corner1@textures.mossy_cobblestone": {
-																	"$text": "",
-																	"size": [24, 24],
-																	"anchor_from": "bottom_right",
-																	"anchor_to": "top_left"
-																}},
-																{ "corner2@textures.mossy_cobblestone": {
-																	"$text": "",
-																	"size": [24, 24],
-																	"anchor_from": "bottom_left",
-																	"anchor_to": "top_right"
-																}}
-															]
-														}},
-														{"and@assets.black_text": {
-															"text": "§7+",
-															"font_size": "large",
-															"offset": [-100, 0]
-														}},
-														{ "key@assets.trial_key": {
-															"offset": [-60, 0]
-														}},
-														{"plus@assets.black_text": {
-															"text": "§7+",
-															"font_size": "large",
-															"offset": [-20, 0]
-														}},
-														{ "xp@assets.xp_text": {
-															"$L": "20",
-															"offset": [30, 0]
-														}},
-														{"equals@assets.black_text": {
-															"text": "§7-->",
-															"font_size": "large",
-															"offset": [90, 0]
-														}},
-														{ "trial_spawner@assets.empty": {
-															"size": [24, 24],
-															"offset": [150, 0],
-															"controls": [
-																{ "spawner@textures.trial_spawner": {
-																	"size": [24, 24]
-																}},
-																{ "copper@textures.chiseled_copper": {
-																	"$text": "",
-																	"size": [24, 24],
-																	"anchor_from": "bottom_left",
-																	"anchor_to": "top_left"
-																}},
-																{ "corner1@textures.mossy_cobblestone": {
-																	"$text": "",
-																	"size": [24, 24],
-																	"anchor_from": "bottom_right",
-																	"anchor_to": "top_left"
-																}},
-																{ "corner2@textures.mossy_cobblestone": {
-																	"$text": "",
-																	"size": [24, 24],
-																	"anchor_from": "bottom_left",
-																	"anchor_to": "top_right"
-																}}
-															]
-														}}
-													]
-												}
-											}
-										]}}]
-									}
-								},
-								{
-									"breaking@how_to_play.feature_element": {
-										"$text": "The Mace can be used to turn Trial Spawners back into Emtpy Spawners",
-										"$image": "breaking_trial_spawners"
 									}
 								}
 							]
@@ -1997,142 +1674,131 @@
 							"$title": "Smelting Recipes",
 							"$icon": "textures/blocks/furnace_front_on",
 							"$content": [
-								{
-									"copper_equipment@assets.white_box": { //index 1 should be skipped
-										"layer": -3,
-										"color": [0.3, 0.3, 0.3], 
-										"size": ["100%", 82],
-										"$book_name": "copper_equipment_smelting",
-										"controls": [
-											{
-												"copper_sword@assets.book_page": {
-													"$name": "copper_sword",
-													"$p_page": 9, "$prev": "copper_boots",
-													"$n_page": 2, "$next": "copper_pickaxe",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_sword",
-															"$text": "Copper Sword"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_pickaxe@assets.book_page": {
-													"$name": "copper_pickaxe",
-													"$p_page": 0, "$prev": "copper_sword",
-													"$n_page": 3, "$next": "copper_axe",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_pickaxe",
-															"$text": "Copper Pickaxe"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_axe@assets.book_page": {
-													"$name": "copper_axe",
-													"$p_page": 2, "$prev": "copper_pickaxe",
-													"$n_page": 4, "$next": "copper_shovel",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_axe",
-															"$text": "Copper Axe"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_shovel@assets.book_page": {
-													"$name": "copper_shovel",
-													"$p_page": 3, "$prev": "copper_axe",
-													"$n_page": 5, "$next": "copper_hoe",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_shovel",
-															"$text": "Copper Shovel"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_hoe@assets.book_page": {
-													"$name": "copper_hoe",
-													"$p_page": 4, "$prev": "copper_shovel",
-													"$n_page": 6, "$next": "copper_helmet",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_hoe",
-															"$text": "Copper Hoe"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_helmet@assets.book_page": {
-													"$name": "copper_helmet",
-													"$p_page": 5, "$prev": "copper_hoe",
-													"$n_page": 7, "$next": "copper_chestplate",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_helmet",
-															"$text": "Copper Helmet"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_chestplate@assets.book_page": {
-													"$name": "copper_chestplate",
-													"$p_page": 6, "$prev": "copper_helmet",
-													"$n_page": 8, "$next": "copper_leggings",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_chestplate",
-															"$text": "Copper Chestplate"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_leggings@assets.book_page": {
-													"$name": "copper_leggings",
-													"$p_page": 7, "$prev": "copper_chestplate",
-													"$n_page": 9, "$next": "copper_boots",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_leggings",
-															"$text": "Copper Leggings"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											},
-											{
-												"copper_boots@assets.book_page": {
-													"$name": "copper_boots",
-													"$p_page": 8, "$prev": "copper_leggings",
-													"$n_page": 0, "$next": "copper_sword",
-													"$page_content": [{"i@how_to_play.smelting_recipe": {
-														"$input": [{"i@assets.item_renderer":{
-															"$texture": "textures/items/copper_boots",
-															"$text": "Copper Boots"
-														}}],
-														"$output": [{"i@assets.copper_ingot":{}}]
-													}}]
-												}
-											}
-										]
-									}
-								}
+								{ "creator_music_box@how_to_play.feature": {
+									"$content": [{"o@how_to_play.smelting_recipe": {
+										"$input": [{"i@assets.item_renderer":{
+											"$texture": "textures/items/music_disc_creator_music_box",
+											"$text": "Creator (Music Box) Music Disc"
+										}}],
+										"$output": [{"i@assets.copper_ingot":{}}]
+									}}]
+								}},
+								{ "copper_equipment@assets.white_box": { //index 1 should be skipped
+									"layer": -3,
+									"color": [0.3, 0.3, 0.3], 
+									"size": ["100%", 82],
+									"$book_name": "copper_equipment_smelting",
+									"controls": [
+										{ "copper_sword@assets.book_page": {
+											"$name": "copper_sword",
+											"$p_page": 9, "$prev": "copper_boots",
+											"$n_page": 2, "$next": "copper_pickaxe",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_sword",
+													"$text": "Copper Sword"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_pickaxe@assets.book_page": {
+											"$name": "copper_pickaxe",
+											"$p_page": 0, "$prev": "copper_sword",
+											"$n_page": 3, "$next": "copper_axe",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_pickaxe",
+													"$text": "Copper Pickaxe"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_axe@assets.book_page": {
+											"$name": "copper_axe",
+											"$p_page": 2, "$prev": "copper_pickaxe",
+											"$n_page": 4, "$next": "copper_shovel",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_axe",
+													"$text": "Copper Axe"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_shovel@assets.book_page": {
+											"$name": "copper_shovel",
+											"$p_page": 3, "$prev": "copper_axe",
+											"$n_page": 5, "$next": "copper_hoe",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_shovel",
+													"$text": "Copper Shovel"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_hoe@assets.book_page": {
+											"$name": "copper_hoe",
+											"$p_page": 4, "$prev": "copper_shovel",
+											"$n_page": 6, "$next": "copper_helmet",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_hoe",
+													"$text": "Copper Hoe"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_helmet@assets.book_page": {
+											"$name": "copper_helmet",
+											"$p_page": 5, "$prev": "copper_hoe",
+											"$n_page": 7, "$next": "copper_chestplate",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_helmet",
+													"$text": "Copper Helmet"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_chestplate@assets.book_page": {
+											"$name": "copper_chestplate",
+											"$p_page": 6, "$prev": "copper_helmet",
+											"$n_page": 8, "$next": "copper_leggings",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_chestplate",
+													"$text": "Copper Chestplate"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_leggings@assets.book_page": {
+											"$name": "copper_leggings",
+											"$p_page": 7, "$prev": "copper_chestplate",
+											"$n_page": 9, "$next": "copper_boots",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_leggings",
+													"$text": "Copper Leggings"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}},
+										{ "copper_boots@assets.book_page": {
+											"$name": "copper_boots",
+											"$p_page": 8, "$prev": "copper_leggings",
+											"$n_page": 0, "$next": "copper_sword",
+											"$page_content": [{"i@how_to_play.smelting_recipe": {
+												"$input": [{"i@assets.item_renderer":{
+													"$texture": "textures/items/copper_boots",
+													"$text": "Copper Boots"
+												}}],
+												"$output": [{"i@assets.copper_ingot":{}}]
+											}}]
+										}}
+									]
+								}}
 							]
 						}
 					}

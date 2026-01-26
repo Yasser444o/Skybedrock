@@ -17,7 +17,9 @@ export function check_items(player, item, count, data) {
 
 export function check_block(dimension, location, typeId, fallback) {
     const block_id = dimension.getBlock(location)?.typeId
-    return block_id ? block_id == typeId : fallback
+	if (!typeId.startsWith('!')) {
+		return block_id ? block_id == typeId : fallback
+	} else return block_id ? block_id != typeId.slice(1) : fallback
 }
 
 function check_item_enchants(player, item, enchant) {
@@ -59,7 +61,7 @@ function check_location(player, dimension, range, biome) {
     return true
 }
 
-function in_raduis(player, center, dimension= "minecraft:overworld", raduis) {
+function in_radius(player, center, dimension= "minecraft:overworld", raduis) {
     if (player.dimension.id != dimension) return
     const [x, y, z] = center.split(' ') 
     return player.runCommand(`testfor @s[x=${x}, y=${y}, z=${z}, r=${raduis ?? 5}]`).successCount
@@ -433,10 +435,10 @@ export const quests = {
 			require: (nether & bridge)
 			title: Diamonds!!!
 			icon: textures/items/diamond
-			* Obtain a Diamond; This acheivement serves as a guide on how to obtain diamonds:
+			* Obtain a Diamond; This achievement serves as a guide on how to obtain diamonds:
 			- There are multiple options, some are better then others:
 			- 1) Diamond Chickens: Head to the How to Play screen to learn more about them
-			- 2) Archeology: You could brush suspesious sand in the desert pyramid, it will regenerate after 30 minutes
+			- 2) Archeology: You could brush suspicious sand in the desert pyramid, it will regenerate after 30 minutes
 			- 3) Sky Treasure: Sky treasure chests have a small chance of containing diamond ore
 			- 4) Trial Vaults: You could obtain diamonds by opening vaults or ominous vaults
 			- 5) End city Loot: One of the 5 end cities has diamonds in its chest, this source isn't renewable though
@@ -514,7 +516,7 @@ export const quests = {
 			* Add a waypoint by using a World Map on a lodestone
 			- level up a plains cartographer
 			- buy a World Map from the villager
-			- use the map on a lodestone to create a new waipoint
+			- use the map on a lodestone to create a new waypoint
 			- give it a name and select an icon for it
 		`,
 		checkmark: false,
@@ -652,7 +654,7 @@ export const quests = {
 			* Do not eat anything but chorus fruits for 3 days
 			- eat 16 chorus fruits
 			- do not eat anything else for 3 days
-			- walk in the end dimesion
+			- walk in the end dimension
 			- find an end phantom and kill it
 			(End phantoms spawn naturally if you kill the ender dragon a second time and go through the second end gateway)
 		`,
@@ -700,11 +702,11 @@ export const quests = {
 			- Boggeds
 			- Slimes (If you are lucky)
 			- Frogs
-			- Firefiles
+			- Fireflies
 			- Tropical Fish
 			- Unlock the Swamp Hut
 		`,
-		query: (player) => in_raduis(player, '96 63 0'),
+		query: (player) => in_radius(player, '96 63 0'),
 		reward: ["A Frog", `summon frog`]
 	},
 	jungle: {
@@ -723,7 +725,7 @@ export const quests = {
 			- Pandas
 			- Unlock the Jungle Temple
 		`,
-		query: (player) => in_raduis(player, '-96 63 0'),
+		query: (player) => in_radius(player, '-96 63 0'),
 		reward: ["A Parrot", `summon parrot`]
 	},
 	taiga: {
@@ -741,7 +743,7 @@ export const quests = {
 			- Wolves
 			- Unlock the Igloo
 		`,
-		query: (player) => in_raduis(player, '0 63 -96')
+		query: (player) => in_radius(player, '0 63 -96')
 	},
 	desert: {
 		data: `
@@ -758,7 +760,7 @@ export const quests = {
 			- Camels
 			- Unlock the Desert Pyramid
 		`,
-		query: (player) => in_raduis(player, '0 63 96'),
+		query: (player) => in_radius(player, '0 63 96'),
 		reward: ["A Rabbit", `summon rabbit`]
 	},
 	savanna: {
@@ -774,7 +776,7 @@ export const quests = {
 			- Armadillos
 			- Unlock the Pillager Outpost
 		`,
-		query: (player) => in_raduis(player, '96 63 96')
+		query: (player) => in_radius(player, '96 63 96')
 	},
 	dark_forest: {
 		data: `
@@ -789,7 +791,7 @@ export const quests = {
 			- Unlock the Woodland Mansion
 			(You need 4 saplings to grow a dark oak tree, take the reward if you got less than 4 saplings)
 		`,
-		query: (player) => in_raduis(player, '96 63 -96'),
+		query: (player) => in_radius(player, '96 63 -96'),
 		reward: ["3 Dark Oak Saplings", `give @s dark_oak_sapling 3`]
 	},
 	birch: {
@@ -804,7 +806,7 @@ export const quests = {
 			- Wildflowers
 			- Unlock the Trail Ruins
 		`,
-		query: (player) => in_raduis(player, '-96 63 -96')
+		query: (player) => in_radius(player, '-96 63 -96')
 	},
 	mushroom_island: {
 		data: `
@@ -818,7 +820,7 @@ export const quests = {
 			- No Hostile mobs
 			- Unlock the Ocean Monument
 		`,
-		query: (player) => in_raduis(player, '-96 63 96'),
+		query: (player) => in_radius(player, '-96 63 96'),
 		reward: ["4 Mushroom Stew", `give @s mushroom_stew 4`]
 	},
 	ocean: {
@@ -838,7 +840,7 @@ export const quests = {
 			- Dolphins
 			- Unlock the Ocean Ruins
 		`,
-		query: (player) => in_raduis(player, '192 63 0')
+		query: (player) => in_radius(player, '192 63 0')
 	},
 	badlands: {
 		data: `
@@ -852,7 +854,7 @@ export const quests = {
 			- Armadillos
 			- Unlock the Mineshaft
 		`,
-		query: (player) => in_raduis(player, '0 63 192')
+		query: (player) => in_radius(player, '0 63 192')
 	},
 	resin_clump: {
 		data: `
@@ -867,7 +869,7 @@ export const quests = {
 			- Pale Oak Wood
 			- Creakings
 		`,
-		query: (player) => in_raduis(player, '0 63 -192')
+		query: (player) => in_radius(player, '0 63 -192')
 	},
 	cherry: {
 		data: `
@@ -880,7 +882,7 @@ export const quests = {
 			- Bees
 			- Unlock the Trial Chambers
 		`,
-		query: (player) => in_raduis(player, '-192 63 0')
+		query: (player) => in_radius(player, '-192 63 0')
 	},
 	dripstone: {
 		data: `
@@ -893,7 +895,7 @@ export const quests = {
 			- Glow Lichen
 			- Drowneds
 		`,
-		query: (player) => in_raduis(player, '45 31 -145')
+		query: (player) => in_radius(player, '45 31 -145')
 	},
 	geode: {
 		data: `
@@ -902,7 +904,7 @@ export const quests = {
 			icon: textures/blocks/amethyst_cluster
 			* Visit the amethyst island for... Amethyst
 		`,
-		query: (player) => in_raduis(player, '-45 32 145'),
+		query: (player) => in_radius(player, '-45 32 145'),
 	},
 	lush_cave: {
 		data: `
@@ -918,7 +920,7 @@ export const quests = {
 			- Axolotls
 			- Tropical Fish
 		`,
-		query: (player) => in_raduis(player, '-145 31 -49')
+		query: (player) => in_radius(player, '-145 31 -49')
 	},
 	deep_dark: {
 		data: `
@@ -931,7 +933,7 @@ export const quests = {
 			- A Sculk Catalyst
 			- Deepslate
 		`,
-		query: (player) => in_raduis(player, '145 -33 49')
+		query: (player) => in_radius(player, '145 -33 49')
 	},
 	crimson: {
 		data: `
@@ -940,11 +942,11 @@ export const quests = {
 			icon: -15204352
 			* Visit the crimson island for
 			- Crimson Wood
-			- Weeping Vives
+			- Weeping Vines
 			- Crimson Fungi
 			- Hoglins
 		`,
-		query: (player) => in_raduis(player, '96 63 0', 'minecraft:nether')
+		query: (player) => in_radius(player, '96 63 0', 'minecraft:nether')
 	},
 	warped: {
 		data: `
@@ -957,21 +959,21 @@ export const quests = {
 			- Warped Fungi
 			- Endermen
 		`,
-		query: (player) => in_raduis(player, '-96 63 0', 'minecraft:nether')
+		query: (player) => in_radius(player, '-96 63 0', 'minecraft:nether')
 	},
 	soulsand_valley: {
 		data: `
 			require: nether
 			title: Soul Flames
 			icon: -15466496
-			* Visit the soulsand island for:
+			* Visit the soul sand island for:
 			- Soul Sand
 			- Soul Soil
 			- Bone blocks
 			- Ghasts
 			- Nether Skeletons
 		`,
-		query: (player) => in_raduis(player, '0 63 -96', 'minecraft:nether')
+		query: (player) => in_radius(player, '0 63 -96', 'minecraft:nether')
 	},
 	basalt_deltas: {
 		data: `
@@ -982,9 +984,9 @@ export const quests = {
 			- Lava
 			- Basalt
 			- Blackstone
-			- Magama Cubes
+			- Magma Cubes
 		`,
-		query: (player) => in_raduis(player, '0 63 96', 'minecraft:nether')
+		query: (player) => in_radius(player, '0 63 96', 'minecraft:nether')
 	},
 	biome_detector: {
 		data: `
@@ -1019,7 +1021,7 @@ export const quests = {
 			* Reach the Swamp Hut and kill the witch inside
 		`,
 		query: (player) => (
-			in_raduis(player, '819 65 356', undefined, 10) && 
+			in_radius(player, `-252 67 516`, undefined, 10) && 
 			!player.runCommand('testfor @e[type=witch, r=32]').successCount
 		)
 	},
@@ -1029,9 +1031,12 @@ export const quests = {
 			title: Tomb Raider
 			icon: textures/items/wild_armor_trim_smithing_template
 			* Locate and loot the jungle temple
+			- reach the jungle temple
+			- find the hidden chest
+			- loot all the items inside it
 		`,
 		query: (player) => {
-			const place = in_raduis(player, '-459 69 886', undefined, 16)
+			const place = in_radius(player, '-459 69 886', undefined, 16)
 			const chest = player.dimension.getBlock({x:-456, y:66, z:883})?.getComponent("inventory")?.container
 			return place && (!chest || chest.emptySlotsCount > 26)
 		}
@@ -1045,7 +1050,7 @@ export const quests = {
 			(How is this furnace still burning?)
 		`,
 		query: (player) => (
-			in_raduis(player, '-348 71 -717', undefined, 16) && 
+			in_radius(player, '-348 71 -717', undefined, 16) && 
 			player.runCommand('testfor @e[type=villager, r=16]').successCount > 1
 		)
 	},
@@ -1060,7 +1065,7 @@ export const quests = {
 			- loot the chest
 		`,
 		query: (player) => (
-			in_raduis(player, '-762 65 -266', undefined, 32) && 
+			in_radius(player, '-762 65 -266', undefined, 32) && 
 			player.dimension.getBlock({x:-762, y: 63, z: -266})?.typeId == "minecraft:air"
 		),
 		reward: ["A redstone torch", `give @s redstone_torch`]
@@ -1073,7 +1078,7 @@ export const quests = {
 			* Find the pillager outpost and kill every pillager
 		`,
 		query: (player) => (
-			in_raduis(player, '-889 73 439', undefined, 32) && 
+			in_radius(player, '-901 94 379', undefined, 32) && 
 			!player.runCommand('testfor @e[type=pillager, r=40]').successCount
 		),
 		reward: ["Bad Omen for 10 minutes", `effect @s bad_omen 600`]
@@ -1092,7 +1097,7 @@ export const quests = {
 			(Remember their locations because they will regenerate after a while)
 		`,
 		query: (player) => (
-			in_raduis(player, '130 45 -840', undefined, 20) && [
+			in_radius(player, '130 45 -840', undefined, 20) && [
 				{x:131, y:45, z:-824}, {x:135, y:45, z:-829}, {x:128, y:40, z:-857}, {x:131, y:40, z:-855},
 				{x:134, y:41, z:-850}, {x:137, y:42, z:-853}, {x:126, y:43, z:-847}, {x:137, y:45, z:-842},
 				{x:136, y:43, z:-844}, {x:129, y:43, z:-843}, {x:127, y:44, z:-836}, {x:123, y:47, z:-832},
@@ -1116,7 +1121,7 @@ export const quests = {
 			(It's not a secret anymore now i told you)
 		`,
 		query: (player) => (
-			in_raduis(player, '531 64 -862', undefined, 20) &&
+			in_radius(player, '531 64 -862', undefined, 20) &&
 			check_items(player, 'vex_armor_trim_smithing_template')
 		)
 	},
@@ -1133,7 +1138,7 @@ export const quests = {
 			- use the trial key to open a vault
 		`,
 		query: (player) => (
-			in_raduis(player, '375 13 -505', undefined, 40) &&
+			in_radius(player, '375 13 -505', undefined, 40) &&
 			view_stats(player, 'items_used_on', 'minecraft:trial_key')
 		),
 		reward: ["10 Copper Blocks", `give @s waxed_copper 10`]
@@ -1146,7 +1151,7 @@ export const quests = {
 			* Find the mineshaft and mine a sample of each ore
 		`,
 		query: (player) => (
-			in_raduis(player, '696 32 -236', undefined, 20) &&
+			in_radius(player, '696 32 -236', undefined, 20) &&
 			['coal_ore', 'iron_ore', 'gold_ore'].every(ore => 
 				view_stats(player, 'blocks_broken', 'minecraft:' + ore)
 			)
@@ -1160,7 +1165,7 @@ export const quests = {
 			* Pay a visit to the ocean ruins and find the treasure map
 		`,
 		query: (player) => (
-			in_raduis(player, '-641 45 262', undefined, 30) &&
+			in_radius(player, '-641 45 262', undefined, 30) &&
 			check_items(player, 'skybedrock:sky_treasure_map')
 		)
 	},
@@ -1172,7 +1177,7 @@ export const quests = {
 			* Locate the ancient city and trigger a warden
 		`,
 		query: (player) => (
-			in_raduis(player, '157 -43 764', undefined, 40) &&
+			in_radius(player, '157 -43 764', undefined, 40) &&
 			player.runCommand('testfor @e[type=warden]').successCount
 		)
 	},
@@ -1184,8 +1189,8 @@ export const quests = {
 			* Raid the ocean monument and find the gold
 		`,
 		query: (player) => (
-			in_raduis(player, '632 39 760', undefined, 30) &&
-			check_items(player, 'raw_gold_block')
+			in_radius(player, '675 40 376', undefined, 30) &&
+			check_block(world.getDimension("minecraft:overworld"), {x: 691, y: 42, z: 373}, "!minecraft:raw_gold_block")
 		)
 	},
 	fortress_loot: {
@@ -1236,7 +1241,7 @@ export const quests = {
 			- get inside the end city
 			- do not kill the shulkers, Head to "Shell Lurkers" achievement in Skyblock Path
 		`,
-		query: (player) => in_raduis(player, '-298 71 -954', 'minecraft:the_end', 8)
+		query: (player) => in_radius(player, '-298 71 -954', 'minecraft:the_end', 8)
 	},
 	wheat_farm: {
 		data: `
@@ -1355,7 +1360,7 @@ export const quests = {
 			- use snow golems or iron golems to lure the slime into a death chamber
 			- use campfires, magma, or any other method to kill the slime
 			- craft and submit 16 slime blocks
-			(Slimes can spawn on jack o'lanterns, so use them to light the platforms insead of torches)
+			(Slimes can spawn on jack o'lanterns, so use them to light the platforms instead of torches)
 		`,
 		consume: ["16 Slime Blocks", `slime 16`],
 		reward: ["16 Jack o'Lanterns", `give @s lit_pumpkin 16`]
@@ -1368,7 +1373,7 @@ export const quests = {
 			* Build a mushroom farm for red and brown mushrooms
 			- the best way to farm mushrooms is to grow and harvest large mushrooms
 			- obtain a red and a brown mushroom from the mushroom island
-			- to grow a large mushroom, you need to place a mushroom on a dirt block in a dark area and grow it up with bonemeal
+			- to grow a large mushroom, you need to place a mushroom on a dirt block in a dark area and grow it up with bone meal
 			- the nether is always dark and suitable for growing mushrooms
 			- mushrooms planted on mycelium or podzol don't need a dark area
 			- farm both types of mushroom by growing and harvesting large mushrooms
@@ -1412,7 +1417,7 @@ export const quests = {
 			title: Deserted Fish
 			icon: textures/items/fish_clownfish_raw
 			* Catch a tropical fish in the desert biome
-			- go to the desert island
+			- take a fishing rod and go to a desert biome
 			- click Start and start fishing
 			- catch a tropical fish
 		`,
@@ -1427,7 +1432,7 @@ export const quests = {
 				if (get_distance(nearest_item.location, location)) return
 				if (nearest_item.getComponent('item').itemStack.typeId != 'minecraft:tropical_fish') return
 				if (!dimension.isChunkLoaded(location)) return
-				if (dimension.getBiome(location).id != "minecraft:desert") return
+				if (!["minecraft:desert", "minecraft:desert_hills", "minecraft:desert_mutated"].includes(dimension.getBiome(location).id)) return
 				complete(player, id)
 				stop_challenge(player, id)
 			}
@@ -1439,11 +1444,11 @@ export const quests = {
 			require: structure_locator
 			title: On the Radar
 			icon: textures/items/globe_banner_pattern
-			* Visit all 15 skybedrock structures and complete their dedicated acheievements
+			* Visit all 15 skybedrock structures and complete their dedicated achievements
 			- Source of Evil
 			- Tomb Raider
 			- Snow House
-			- Welcome to Gize
+			- Welcome to Giza
 			- Enemy's Camp
 			- Buried City
 			- Hidden in the Woodlands
@@ -1496,9 +1501,9 @@ export const quests = {
 			require: trial_chambers
 			title: Bug Fixes
 			icon: textures/items/mace
-			* Kill 30 arthopods with a mace smash attack
-			% n$1/30 Arthopods smashed:
-			(Arthopods include Spiders, Cave Spider, Silverfish, Endermites, and Bees)
+			* Kill 30 arthropods with a mace smash attack
+			% n$1/30 Arthropods smashed:
+			(Arthropods include Spiders, Cave Spider, Silverfish, Endermites, and Bees)
 		`,
 		format: (player, id) => [
 			['$1', quest_tracker[`${player.id} ${id} bugs_killed`] ?? 0]
@@ -1553,7 +1558,7 @@ export const quests = {
 			require: trial_chambers
 			title: Crafted Trials
 			icon: textures/items/spawner_core
-			* Construct a vault or an ominuos vault
+			* Construct a vault or an ominous vault
 			- go to the trial chambers and drink an ominous bottle
 			- fight the mobs and obtain a spawner core from a trial spawner
 			- craft a vault shell or an ominous vault shell
@@ -1584,7 +1589,7 @@ Object.entries(quests).forEach(([id, {data, query, consume, reward, challenge, c
 
 const for_rework = { /*
 
-	new_fromat: {
+	new_format: {
 		data: `
 			icon: path or aux
 			title: Text
@@ -1608,7 +1613,7 @@ const for_rework = { /*
 		require_all: [id, id, id],  }  only one of these and can be ignored
 		require_any: [id, id, id],  }
 		query: () => {},      }
-		challange: {},        }  only one 
+		challenge: {},        }  only one 
 		checkmark: bool,      }  of these
 		consume: ["", ``],    }
 		reward: ["", ``],           } can be ignored
@@ -2025,14 +2030,14 @@ const for_rework = { /*
 	require: other_soulsand_valley
 	title: Magic Bones
 	icon: textures/items/bone
-	* Build a skeleton farm in a soul sand valley biome for souland
+	* Build a skeleton farm in a soul sand valley biome for soulsand
 
 	basalt_farm
 	require: (ice_farm & basalt_deltas)
 	title: Supercooling
 	icon: -15335424
 	* Build a basalt generator
-	- get a block of soul soil either by visiting the souland island, crafing and breaking a soul campfire, or by killing a ghast
+	- get a block of soul soil either by visiting the soulsand island, crafting and breaking a soul campfire, or by killing a ghast
 	- craft a block of blue ice or buy it from a wandering trader
 	- build a basalt generator with lava, soul soil, and blue ice
 	(lava flows faster in the nether, so if you build it there, it will generate blocks faster)
@@ -2206,7 +2211,7 @@ const for_rework = { /*
 	title: Lore Farm
 	icon: textures/items/prize_pottery_sherd
 	* Build an afk suspicious sand or gravel brushing machine
-	- use a minecart track to cycle an akf player between all the suspicious blocks of a certian structure
+	- use a minecart track to cycle an akf player between all the suspicious blocks of a certain structure
 
 	enderman_farm
 	require: dragon

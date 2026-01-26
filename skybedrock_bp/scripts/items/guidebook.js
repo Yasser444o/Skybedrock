@@ -66,7 +66,7 @@ function view_commands(player, body="how did you get here?  :)") {
 		`Hide the Timer`,
 		`Limit the Render Distance`,
 		`Make the Book Original`,
-		`Reset the End\n§7do /reload`,
+		`Reset the End`,
 	]
 	const form = new ActionFormData()
 	.title('§book_ui§' + "Commands")

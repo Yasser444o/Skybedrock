@@ -3,23 +3,43 @@ import { world, system } from "@minecraft/server"
 
 export default {
 	onUse({ itemStack: stick, source: player }) {
-		if (player.getBlockFromViewDirection()) return
-		new ActionFormData()
-		.title("Creative Tool")
-		.button("Delete Mobs")
-		.button("Delete Blocks")
-		.show(player).then(({ canceled, selection }) => {
-			if (canceled) return
-			if (selection == 0) stick.setLore(["§r§ndelete mobs"])
-			if (selection == 1) stick.setLore(["§r§ndelete blocks"])
-			player.getComponent("equippable").setEquipment('Mainhand', stick)
-		})
+		system.run(() => { if (!player.is_using_creative_tool_on) {
+			if (player.inputInfo.getButtonState("Sneak") == "Pressed") {sneak_actions(player, stick); return}
+			new ActionFormData()
+			.title("Creative Tool")
+			.button("Delete Mobs")
+			.button("Delete Blocks")
+			.button("Teleport")
+			.show(player).then(({ canceled, selection }) => {
+				if (canceled) return
+				if (selection == 0) stick.setLore(["§r§ndelete mobs"])
+				if (selection == 1) stick.setLore(["§r§ndelete blocks"])
+				if (selection == 2) stick.setLore(["§r§nteleport"])
+				player.getComponent("equippable").setEquipment('Mainhand', stick)
+			})
+		}; delete player.is_using_creative_tool_on})
+	},
+	onUseOn({source: player}) {
+		player.is_using_creative_tool_on = true
+	}
+}
+
+function sneak_actions(player, stick) {
+	const lore = stick.getLore()
+	const mode = lore[0]?.replace('§r§n', '')
+	if (mode == "teleport") {
+		const {location: p} = player
+		const v = player.getViewDirection()
+		const location = {x: p.x + 16 * v.x, y: p.y + 16 * v.y, z: p.z + 16 * v.z}
+		player.tryTeleport(location)
+		system.run (() => player.playSound('mob.endermen.portal', {location}))
 	}
 }
 
 world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 	const {itemStack, player, target:entity} = event
 	if (itemStack?.typeId != "yasser444:creative_tool") return
+	player.is_using_creative_tool_on = true
 	event.cancel = true
 	
 	const lore = itemStack.getLore()
