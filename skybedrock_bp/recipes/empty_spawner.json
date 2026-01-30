@@ -7,15 +7,15 @@
 		"tags": [ "crafting_table" ],
 		"pattern": [
 			"###",
-			"#S#",
+			"#N#",
 			"###"
 		],
 		"key": {
 			"#": { "item": "minecraft:chain" },
-			"S": { "item": "trials:spawner_core" }
+			"N": { "item": "minecraft:netherite_block" }
 		},
 		"unlock": [
-			{ "item": "trials:spawner_core" }
+			{ "item": "minecraft:netherite_block" }
 		],
 		"result": { "item": "yasser444:empty_spawner" }
 	}

@@ -1122,6 +1122,10 @@
 		"$id": "((-466) * 65536)",
 		"$text": "Reinforced Deepslate"
 	},
+	"netherite_block@assets.block_renderer": {
+		"$id": "((-270) * 65536)",
+		"$text": "Block of Netherite"
+	},
 	"mob_spawner@assets.block_renderer": {
 		"$id": "((52) * 65536)",
 		"$text": "Monster Spawner"

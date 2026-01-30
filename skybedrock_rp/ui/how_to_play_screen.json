@@ -1104,7 +1104,7 @@
 													"$input2": [{"i@assets.chain":{}}],
 													"$input3": [{"i@assets.chain":{}}],
 													"$input4": [{"i@assets.chain":{}}],
-													"$input5": [{"i@assets.spawner_core":{}}],
+													"$input5": [{"i@assets.netherite_block":{}}],
 													"$input6": [{"i@assets.chain":{}}],
 													"$input7": [{"i@assets.chain":{}}],
 													"$input8": [{"i@assets.chain":{}}],
@@ -1112,38 +1112,6 @@
 													"$output": [{"i@assets.empty_spawner":{}}]
 												}
 											},
-											{ 
-												"spawner_core@assets.text_box": {
-													"$text": "Spawner Cores can be obtained from ominous trial spawners"
-												}
-											},
-											{
-												"chests_table_header": { "size": ["100% - 2px", 20], "type": "stack_panel", "orientation": "horizontal",
-													"controls": [
-														{ "mob@assets.table_header": { "size": ["15%", "100%"], "$text": "" } },
-														{ "drop": { "size": ["45%", "100%"],  "type": "stack_panel", "orientation": "horizontal",
-															"controls": [
-																{ "item@assets.table_header": { "size": ["34%", "100%"], "$text": "Items" } },
-																{ "quantity@assets.table_header": { "size": ["33%", "100%"], "$text": "Quantity" } },
-																{ "chance@assets.table_header": { "size": ["33%", "100%"], "$text": "Chance" } }		
-															]
-														}},
-														{ "notes@assets.table_header": { "size": ["40%", "100%"], "$text": "" } },
-														{ "border@assets.table_border": {}}
-													]
-												}
-											},
-											{ "ominous_spawner@how_to_play.drops_table_item": {
-												"$size": ["100% - 2px", 36],
-												"$mob": [{ "e@textures.ominous_trial_spawner": {}}],
-												"$drops": [
-													{ "i8@assets.drops_table_entry": {
-														"$item": "spawner_core",
-														"$chance": "12.5%%"
-													}}
-												]
-											}},
-											{ "chests_footer@assets.table_footer": {}},
 											{ 
 												"text1@assets.text_box": {
 													"$text": "Use 50 levels of XP and a common mob drop on an empty spawner in the right dimension.\n\nMake sure there isn't any other active spawners within the spawner range:\n- 8 blocks for Cave Spider Spawners.\n- 16 blocks for Zombie, Skeleton, Spider, and Blaze Spawners.\n- 32 blocks for Magma Cube Spawners."

@@ -6,8 +6,6 @@ import "./blocks/redstone_ore.js"
 import "./blocks/suspicious_blocks.js"
 import "./blocks/coral.js"
 import "./blocks/monster_spawners.js"
-import "./blocks/trial_spawners.js"
-import "./blocks/vaults.js"
 
 import "./items/eye_of_ender.js"
 import "./items/totem.js"
