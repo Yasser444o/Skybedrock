@@ -56,6 +56,7 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
         },
         ({sourceEntity}, destination, players) => {
             const dest = destinations[destination]
+			if (!dest) {sourceEntity.sendMessage(`§cNo structure with the id '${destination}'`) ; return}
             const targets = players ?? [sourceEntity]
             system.run(() => targets.forEach(target =>
                 target.teleport( dest.coords, {

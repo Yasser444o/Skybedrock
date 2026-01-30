@@ -7,6 +7,7 @@ import { nether_structures } from "../data.js"
 import { overworld_structures } from "../data.js"
 import { see_a_map, see_maps } from "../world/maps.js"
 import { update_vision } from "../world/limited_vision.js"
+import { active_gateways } from "../world/the_end.js"
 
 const main_page = [
   {color: "§4", key: "achievements", function: quests_menu},
@@ -65,7 +66,7 @@ function view_commands(player, body="how did you get here?  :)") {
 		`Hide the Timer`,
 		`Limit the Render Distance`,
 		`Make the Book Original`,
-		`Reset the End\n§7do /reload`,
+		`Reset the End`,
 	]
 	const form = new ActionFormData()
 	.title('§book_ui§' + "Commands")
@@ -148,7 +149,10 @@ function view_commands(player, body="how did you get here?  :)") {
 				guidebook.setLore(["§r§7By Yasser444", "§r§7Original"])
 				player.getComponent('equippable').setEquipment('Mainhand', guidebook)
 			}; break
-			case `Reset the End\n§7do /reload`: world.setDynamicProperty("open_gateways"); break
+			case `Reset the End`: {
+				world.setDynamicProperty("open_gateways")
+				active_gateways = undefined
+			}; break
 		}
 	})
 }

@@ -1,4 +1,4 @@
-import { BlockVolume } from "@minecraft/server"
+import { system, BlockVolume } from "@minecraft/server"
 
 export default {
     onTick({block: {location, dimension}}) {
@@ -6,7 +6,9 @@ export default {
         const first_corner = { x, y: 0, z }
         const other_corner = { x: x + 15, y: 126, z: z + 15 }
         dimension.setBlockType(location, "minecraft:air")
-        if (dimension.id == "minecraft:the_end") {
+        if (dimension.id != "minecraft:the_end") return
+		system.runTimeout(() => {
+			if (dimension.getBlock(location)?.typeId != 'skybedrock:end_eater') return
             dimension.fillBlocks(new BlockVolume(first_corner, other_corner), 'air', {
                 blockFilter: { includeTypes: ['end_stone', 'chorus_plant', 'chorus_flower'] }
             })
@@ -16,6 +18,6 @@ export default {
                 type: "minecraft:shulker",
             })
             shulkers.forEach(shulker => shulker.remove())
-        }
+		}, 2)
     }
 }

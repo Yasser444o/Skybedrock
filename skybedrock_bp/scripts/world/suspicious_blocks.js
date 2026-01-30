@@ -92,37 +92,45 @@ const structures = [
 	}
 ]
 
-function is_block(at, type) {
-	return overworld.getBlock(at)?.permutation?.matches(type)
-}
-
+// set random timeouts for each suspicious block location
 let overworld, timer
 world.afterEvents.worldLoad.subscribe(()=> {
 	overworld = world.getDimension('overworld')
 	timer = world.scoreboard.getObjective('Timer')
 	structures.forEach(structure => {
-		const partSize = Math.floor(structure.delay / structure.locations.length); let k = 0
+		const part_size = Math.floor(structure.delay / structure.locations.length); let k = 0
 		structure.locations.forEach(location => {
-			location.timeOut = k + Math.floor(Math.random() * partSize); k += partSize
+			location.timeout = k + Math.floor(Math.random() * part_size); k += part_size
 		})
 	})
 })
 
+let queue = new Set()
 system.runInterval(() => {
 	if (!timer?.isValid) return
+	// tick the timers up
 	structures.forEach(({type, locations, delay}) => {
-		if ((timer.hasParticipant(type) ? timer.getScore(type) : 0 )< delay) {
+		if ((timer.hasParticipant(type) ? timer.getScore(type) : 0 ) < delay) {
 			timer.addScore(type, 1)
 		} else timer.setScore(type, 0)
-
+		// check every suspisious block location
 		locations.forEach(location => {
-			const {x, y, z, timeOut} = location
+			const {x, y, z, timeout} = location
 			const block_type = type.startsWith('sand') ? 'sand' : type.startsWith('gravel') ? 'gravel' : undefined
-			if (timer.getScore(type) == timeOut && is_block(location, block_type)) {
-				world.structureManager.place(`sus_blocks:${type}`, overworld, location)
-			} else if (is_block(location, 'air')) {
-				overworld.spawnParticle(`minecraft:falling_dust_${block_type}_particle`, {x:x + 0.49, y:y + 0.8, z:z + 0.49})
+			if (timer.getScore(type) == timeout && overworld.getBlock(location)?.typeId == `minecraft:${block_type}`) {
+				queue.add(`${x} ${y} ${z} ${type}`)
+			} else if (overworld.getBlock(location)?.typeId == 'minecraft:air') {
+				const particle = `minecraft:falling_dust_${block_type}_particle`
+				const location = {x: x + 0.49, y: y + 0.8, z: z + 0.49}
+				overworld.spawnParticle(particle, location)
 			}
 		})
+	})
+	queue.forEach(hash => {
+		const [x, y, z, type] = hash.split(' ')
+		const location = {x: +x, y: +y, z: +z}
+		if (!overworld.isChunkLoaded(location)) return
+		queue.delete(hash)
+		world.structureManager.place(`sus_blocks:${type}`, overworld, location)
 	})
 }, 20)
