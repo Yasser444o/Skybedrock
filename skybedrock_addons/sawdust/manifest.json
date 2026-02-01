@@ -1,15 +1,13 @@
 {
     "format_version": 2,
     "header": {
-        "description": "Helps you chopping trees by making you break the highest log first. Hold sneak to disable.",
         "name": "Sawdust",
+        "description": "Helps you chopping trees by making you break the highest log first. Hold sneak to disable.",
         "uuid": "969e5ba5-257d-492a-a5fd-ca7cea50140e",
         "version": [ 1, 0, 0 ],
         "min_engine_version": [ 1, 21, 0]
     },
-    "metadata": {
-        "product_type": "addon"
-    },
+    "metadata": { "product_type": "addon" },
     "modules": [
         {
             "type": "data",

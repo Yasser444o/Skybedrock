@@ -1,15 +1,13 @@
 {
     "format_version": 2,
     "header": {
-        "description": "masons can sell more terracotta and quartz blocks, desert masons can sell sandstone, and savanna masons can sell red sandstone",
+        "description": "masons can sell more terracotta and quartz blocks and can process deepslate, desert masons can sell sandstone, and savanna masons can sell red sandstone",
         "name": "Generous Masons",
         "uuid": "90546a98-4f02-49e1-b220-4d1fc4d53aa0",
-        "version": [ 1, 0, 0 ],
+        "version": [ 1, 1, 0 ],
         "min_engine_version": [ 1, 21, 0]
     },
-    "metadata": {
-        "product_type": "addon"
-    },
+    "metadata": { "product_type": "addon" },
     "modules": [
         {
             "type": "data",
