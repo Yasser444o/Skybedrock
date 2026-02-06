@@ -41,6 +41,18 @@
 		},
 		"none": {
 			"textures": "textures/blocks/shade"
+		},
+		"lit_copper_bulb": {
+			"textures": "textures/blocks/copper_bulb_lit"
+		},
+		"lit_exposed_copper_bulb": {
+			"textures": "textures/blocks/exposed_copper_bulb_lit"
+		},
+		"lit_oxidized_copper_bulb": {
+			"textures": "textures/blocks/oxidized_copper_bulb_lit"
+		},
+		"lit_weathered_copper_bulb": {
+			"textures": "textures/blocks/weathered_copper_bulb_lit"
 		}
 	},
 	"texture_name": "atlas.terrain"

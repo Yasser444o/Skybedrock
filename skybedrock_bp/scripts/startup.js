@@ -1,4 +1,4 @@
-import { world, system, ItemStack } from "@minecraft/server" ;
+import { world, system, ItemStack } from "@minecraft/server";
 import biome_cleaner from "./world/biome_cleaner";
 import monster_spawners from "./blocks/monster_spawners";
 import redstone_ore from "./blocks/redstone_ore";
@@ -10,16 +10,16 @@ import update_item from "./items/update_item.js";
 import maps from "./world/maps.js";
 
 // Register all the custom componenets
-system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRegistry, customCommandRegistry }) => {
-    blockComponentRegistry.registerCustomComponent('skybedrock:biome_cleaner', biome_cleaner ?? {})
-	blockComponentRegistry.registerCustomComponent('skybedrock:monster_spawner', monster_spawners ?? {})
-	blockComponentRegistry.registerCustomComponent('skybedrock:redstone_ore', redstone_ore ?? {})
-	blockComponentRegistry.registerCustomComponent('skybedrock:nether_gravel', nether_gravel ?? {})
-	itemComponentRegistry.registerCustomComponent('skybedrock:guidebook', guidebook ?? {})
-	itemComponentRegistry.registerCustomComponent('skybedrock:maps', maps ?? {})
-	itemComponentRegistry.registerCustomComponent('skybedrock:debug_stick', debug_stick ?? {})
-	itemComponentRegistry.registerCustomComponent('skybedrock:creative_tool', creative_tool ?? {})
-	itemComponentRegistry.registerCustomComponent('skybedrock:update_me', update_item ?? {})
+system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRegistry }) => {
+    blockComponentRegistry.registerCustomComponent('skybedrock:biome_cleaner', biome_cleaner)
+	blockComponentRegistry.registerCustomComponent('skybedrock:monster_spawner', monster_spawners)
+	blockComponentRegistry.registerCustomComponent('skybedrock:redstone_ore', redstone_ore)
+	blockComponentRegistry.registerCustomComponent('skybedrock:nether_gravel', nether_gravel)
+	itemComponentRegistry.registerCustomComponent('skybedrock:guidebook', guidebook)
+	itemComponentRegistry.registerCustomComponent('skybedrock:maps', maps)
+	itemComponentRegistry.registerCustomComponent('skybedrock:debug_stick', debug_stick)
+	itemComponentRegistry.registerCustomComponent('skybedrock:creative_tool', creative_tool)
+	itemComponentRegistry.registerCustomComponent('skybedrock:update_me', update_item)
 })
 
 import "./world/commands.js"

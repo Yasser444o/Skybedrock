@@ -11,6 +11,7 @@ import "./items/eye_of_ender.js"
 import "./items/totem.js"
 import "./items/raw_ores.js"
 import "./items/guidebook.js"
+import "./items/scraped_trial.js"
 import "./items/debug_stick.js"
 
 import "./world/suspicious_blocks.js"

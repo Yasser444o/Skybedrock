@@ -1,0 +1,55 @@
+{
+	"format_version": "1.21.110",
+	"minecraft:block": {
+		"description": {
+			"identifier": "skybedrock:unsafe_tuff",
+			"states": {
+				"skybedrock:texture": [ "polished", "bricks", "chiseled", "chiseled_bricks" ]
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_explosion": { "explosion_resistance": 12 },
+			"minecraft:destructible_by_mining": { "seconds_to_destroy": 6 },
+			"minecraft:loot": "loot_tables/empty.json",
+			"minecraft:map_color": "#392923",
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:material_instances": { "*": { "texture": "polished_tuff", "render_method": "opaque" } },
+			"tag:skybedrock:unsafe": {},
+			"tag:minecraft:is_pickaxe_item_destructible": {}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_state('skybedrock:texture') == 'polished'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "polished_tuff", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "query.block_state('skybedrock:texture') == 'bricks'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "tuff_bricks", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "query.block_state('skybedrock:texture') == 'chiseled'",
+				"components": {
+					"minecraft:material_instances": {
+						"*": { "texture": "chiseled_tuff", "render_method": "opaque" },
+						"up": { "texture": "chiseled_tuff_top", "render_method": "opaque" },
+						"down": { "texture": "chiseled_tuff_top", "render_method": "opaque" }
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('skybedrock:texture') == 'chiseled_bricks'",
+				"components": {
+					"minecraft:material_instances": {
+						"*": { "texture": "chiseled_tuff_bricks", "render_method": "opaque" },
+						"up": { "texture": "chiseled_tuff_bricks_top", "render_method": "opaque" },
+						"down": { "texture": "chiseled_tuff_bricks_top", "render_method": "opaque" }
+					}
+				}
+			}
+		]
+	}
+}

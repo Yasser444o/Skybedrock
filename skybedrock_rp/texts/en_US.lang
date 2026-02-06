@@ -18,6 +18,8 @@ skybedrock:maps=Maps
 tile.deprecated_purpur_block_2.name=Smooth Purpur
 tile.stone_slab.wood.name=Petrified Oak Slab
 tile.skybedrock:nether_gravel.name=Nether Gravel
+tile.skybedrock:unsafe_copper.name=Unsafe Copper
+tile.skybedrock:unsafe_tuff.name=Unsafe Tuff
 
 
 ## Entities
