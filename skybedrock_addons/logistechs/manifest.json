@@ -1,8 +1,8 @@
 {
 	"format_version": 2,
 	"header": {
-        "name": "_Unnamed_",
-        "description": "Adds vanilla-like automation features.",
+        "name": "Logistechs",
+        "description": "Adds vanilla-like features for automation.",
         "uuid": "601e1b3f-888a-421e-a84e-6e81f73b9c53",
         "version": [ 1, 0, 0 ],
         "min_engine_version": [ 1, 21, 0]
@@ -18,13 +18,13 @@
 			"type": "script",
 			"uuid": "4015cce1-87fa-4f36-a0ec-f7d5b786440c",
 			"version": [ 2, 0, 0 ],
-			"entry": "scripts/_Unnamed_.js"
+			"entry": "scripts/logistechs.js"
 		}
 	],
 	"dependencies": [
 		{
 			"module_name": "@minecraft/server",
-			"version": "2.4.0"
+			"version": "2.5.0"
 		}
 	]
 }

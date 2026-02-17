@@ -33,3 +33,11 @@ export function hash_to_location(hash) {
 export function location_to_hash({x, y, z}) {
 	return `${x} ${y} ${z}`
 }
+
+export function offset_location(location, direction, distance) {
+	return {
+		x: location.x + direction.x * distance,
+		y: location.y + direction.y * distance,
+		z: location.z + direction.z * distance,
+	}
+}

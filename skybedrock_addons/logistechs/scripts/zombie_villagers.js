@@ -55,10 +55,10 @@ function till_dirt(zombie) {
 	// block.dimension.playSound('use.gravel', block.location)
 }
 
-system.runInterval(() => {
-	dimensions.forEach(dimension => 
-		dimension.getEntities({type: "minecraft:zombie_villager_v2"}).forEach( zombie => {
-			if (zombie.getComponent("variant")?.value == 1) till_dirt(zombie) // farmer zombie villager
-		})
-	)
-}, 16)
+// system.runInterval(() => {
+// 	dimensions.forEach(dimension => 
+// 		dimension.getEntities({type: "minecraft:zombie_villager_v2"}).forEach( zombie => {
+// 			if (zombie.getComponent("variant")?.value == 1) till_dirt(zombie) // farmer zombie villager
+// 		})
+// 	)
+// }, 16)

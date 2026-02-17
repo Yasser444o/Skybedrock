@@ -1,6 +1,6 @@
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui"
 import { world, system, BlockVolume } from "@minecraft/server"
-import { hash_to_location, location_to_hash } from "../utilities"
+import { hash_to_location, location_to_hash, offset_location } from "../utilities"
 
 // assets
 const modes = [
@@ -77,9 +77,9 @@ function fill(dimension, start, end, type) {
 	const max = {x: Math.max(start.x, end.x) + 1, y: Math.max(start.y, end.y) + 1, z: Math.max(start.z, end.z) + 1}
 	for (let x = min.x; x <= max.x; x += 32) for (let y = min.y; y <= max.y; y += 32) for (let z = min.z; z <= max.z; z += 32) {
 		const volume = new BlockVolume({x, y, z}, {
-			x: Math.min(x + 31, max.x),
-			y: Math.min(y + 31, max.y),
-			z: Math.min(z + 31, max.z),
+			x: Math.min(x + 31, max.x - 1),
+			y: Math.min(y + 31, max.y - 1),
+			z: Math.min(z + 31, max.z - 1),
 		})
 		dimension.fillBlocks(volume, type, {ignoreChunkBoundErrors: true})
 	}
@@ -122,9 +122,7 @@ const selector = {
 
 const teleport = {
 	sneak_use(player) {
-		const p = player.location
-		const v = player.getViewDirection()
-		const location = {x: p.x + 16 * v.x, y: p.y + 16 * v.y, z: p.z + 16 * v.z}
+		const location = offset_location(player.location, player.getViewDirection(), 16)
 		player.tryTeleport(location)
 		system.run (() => player.playSound('mob.endermen.portal', {location}))
 	}
@@ -132,11 +130,30 @@ const teleport = {
 
 const ice_rod = {
 	use(player) { // place
-		player.runCommand('execute anchored eyes run fill ^^^5 ^^^5 blue_ice replace air')
+		const location = offset_location(player.getHeadLocation(), player.getViewDirection(), 5)
+		const block = player.dimension.getBlock(location)
+		if (!block || !block.isValid) return
+		if (!block.isAir && !block.isLiquid) return
+		block.setType('blue_ice')
+		system.runTimeout(() => {
+			if (block.typeId != "minecraft:blue_ice") return
+			block.setType('air')
+		}, 100)
 	},
 	sneak_use(player, item) { // cancel
 		item.setLore([])
 		player.getComponent("equippable").setEquipment('Mainhand', item)
+	},
+	use_block(against, blockFace) {
+		const block_faces = {Up: 'above', Down: 'below', North: 'north', East: 'east', South: 'south', West: 'west'}
+		const block = against[block_faces[blockFace]]()
+		if (!block || !block.isValid) return
+		if (!block.isAir && !block.isLiquid) return
+		block.setType('blue_ice')
+		system.runTimeout(() => {
+			if (block.typeId != "minecraft:blue_ice") return
+			block.setType('air')
+		}, 100)
 	}
 }
 
@@ -163,9 +180,10 @@ function on_sneak_use(player, item) {
 	if (mode == 'ice_rod') ice_rod.sneak_use(player, item)
 }
 
-function on_use_block(player, block, item) {
+function on_use_block(player, block, item, blockFace) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector") selector.use_block(player, block, item, lore)
+	if (mode == "ice_rod") ice_rod.use_block(block, blockFace)
 }
 
 function before_hit_block(event, player, block, item) {
@@ -202,9 +220,9 @@ export default {
 			else on_use(player, item)
 		}; delete player.is_using_creative_tool_on})
 	},
-	onUseOn({source: player, itemStack:item, block}) {
+	onUseOn({source: player, itemStack:item, block, blockFace}) {
 		player.is_using_creative_tool_on = true
-		on_use_block(player, block, item)
+		on_use_block(player, block, item, blockFace)
 	}
 }
 

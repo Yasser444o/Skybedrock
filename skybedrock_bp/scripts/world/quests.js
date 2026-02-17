@@ -194,10 +194,10 @@ export function quest_screen(player, id, book) {
 	
 	const action =
 	is_done ? reward && !is_claimed ? 'claim' : undefined :
-	query ? 'detect' :
 	consume ? 'submit' :
-	challenge ? active_challenges[`${player.id} ${id}`] ? 'stop' : 'start' :
-	checkmark ? 'complete' : undefined
+	checkmark ? 'complete' :
+	query ? 'detect' :
+	challenge ? active_challenges[`${player.id} ${id}`] ? 'stop' : 'start' : undefined
 
 	const form = new ActionFormData()
 	.title("§quest_screen§" + title)

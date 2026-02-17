@@ -1,8 +1,9 @@
 {
-  "format_version": "1.21.130",
+  	"format_version": "1.26.0",
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:zombie_pigman",
+      		"spawn_category": "monster",
             "is_spawnable": true,
             "is_summonable": true
         },
@@ -20,14 +21,24 @@
                 "minecraft:is_baby": {},
                 "minecraft:scale": {
                     "value": 0.5
+				},
+				"minecraft:type_family": {
+					"family": [ "baby_undead", "baby_zombie_pigman", "undead", "monster", "mob" ]
+				}
+			},
+			"minecraft:pig_zombie_jockey": {
+				"minecraft:behavior.find_mount": {
+					"priority": 1,
+					"within_radius": 16,
+					"start_delay": 15,
+					"max_failed_attempts": 20
                 }
             },
             "minecraft:pig_zombie_adult": {
                 "minecraft:rideable": {
                     "seat_count": 1,
 					"family_types": [
-						"baby_zombie",
-						"baby_husk"
+            			"baby_undead"
 					],
                     "seats": {
                         "position": [ 0.0, 1.175, -0.35 ],
@@ -36,6 +47,9 @@
                 },
                 "minecraft:experience_reward": {
                     "on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+				},
+				"minecraft:type_family": {
+					"family": [ "zombie_pigman", "undead", "monster", "mob" ]
                 }
             },
             "minecraft:pig_zombie_angry": {
@@ -76,6 +90,12 @@
                 "height": 1.9
             },
             "minecraft:nameable": {},
+			"minecraft:offspring": {
+				"offspring_pairs": {
+					"minecraft:zombie_pigman": "minecraft:zombie_pigman"
+				}
+			},
+			"minecraft:spawn_egg_interaction": {},
             "minecraft:navigation.walk": {
                 "is_amphibious": true,
                 "can_pass_doors": true,
@@ -88,9 +108,6 @@
             "minecraft:jump.static": {},
             "minecraft:can_climb": {},
             "minecraft:fire_immune": {},
-            "minecraft:type_family": {
-                "family": [ "zombie_pigman", "undead", "monster", "mob" ]
-            },
             "minecraft:loot": {
                 "table": "loot_tables/entities/pigman_gold.json"
             },
@@ -499,12 +516,16 @@
                 {
 					"randomize": [
 						{
-							"weight": 95,
+							"weight": 9500,
 							"trigger": "spawn_adult"
 						},
 						{
-							"weight": 5,
+							"weight": 425,
 							"trigger": "spawn_baby"
+						},
+						{
+							"weight": 75,
+							"trigger": "spawn_baby_jockey"
 						}
 					]
 				}
@@ -519,6 +540,17 @@
 				}
 			},
 			"spawn_baby": {
+				"add": {
+					"component_groups": [
+						"minecraft:pig_zombie_baby",
+						"minecraft:pig_zombie_calm"
+					]
+				}
+			},
+			"minecraft:entity_born": {
+				"trigger": "minecraft:as_baby"
+			},
+			"minecraft:as_baby": {
 				"add": {
 					"component_groups": [
 						"minecraft:pig_zombie_baby",
