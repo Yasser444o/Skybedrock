@@ -6,7 +6,7 @@ import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
 
 
-export const version = "v5.0.0"
+export const version = "v5.1.0"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
@@ -263,11 +263,11 @@ export const quests = {
 			title: §.Infinite Water!
 			icon: textures/items/bucket_water
 			* Make an infinite water source
-			- go to any island with water in it
+			- visit any island which has water
 			- collect a second water bucket
 			- make an infinite water source
-			- separate your wheat farm and cobblestone generator
-			- click the complete button below
+			- look at a water source with a water bucket in your iventory to complete the quest
+			- alternatively you can click the complete button
 			(Water can be found in the swamp, birch, and ocean island)
 		`,
 		checkmark: true,

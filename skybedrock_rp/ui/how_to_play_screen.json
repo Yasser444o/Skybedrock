@@ -3097,6 +3097,26 @@
 							"$details": "* Probability: 100%%\n* Number of Trades: 12"
 							}
 					},
+					{
+						"deepslate@how_to_play.trading_feature": {
+							"$villager": "Mason",
+							"$level": "§sMaster",
+							"$job": "mason",
+							"$number": "2",
+							"$take1": [{"i@assets.block_renderer": {
+								"$aux": "((-378) * 65536)",
+								"$id": "deepslate",
+								"$count": "10"
+							}}],
+							"$take2": [{"i@assets.emerald":{}}],
+							"$give": [{"i@assets.block_renderer":{
+								"$aux": "((-379) * 65536)",
+								"$id": "cobbled_deepslate",
+								"$count": "10"
+							}}],
+							"$details": "* Probability: 50%%\n* Number of Trades: 12"
+						}
+					},
 					{ 
 						"redstone1@assets.text_box": {
 							"$text": "§a[]§r Generous Clerics"
@@ -3180,6 +3200,17 @@
 							"$output": [{"b@assets.calcite":{
 								"$count": "4"
 							}}]
+						}
+					},
+					{ 
+						"logistichs@assets.text_box": {
+							"$text": "§c[]§r Logistechs"
+						}
+					},
+					{ 
+						"logistichs_pistons_image@how_to_play.feature_element": {
+							"$text": "Pisons can be used to place blocks:\n- Place a hopper pointing to a pison.\n- Put the blocks you want placed inside the hopper.\n- Power and unpower the piston to place it.\n- This won't work if the hopper was locked.\n- The blocks that can be placed are:\n§b * Deepslate\n * Dirt\n * Coarse Dirt\n * Nether Gravel\n * Concrete Powder",
+							"$image": "logistechs_pistons"
 						}
 					},
 					{ 
@@ -3867,7 +3898,7 @@
 						"$text": "/visit", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
 					}},
 					{ "visit@assets.text_box": {
-						"$text": "§o§7%command.assets.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /visit [destination] [player]\n\n§vParameters:§r\n- destination: The identifier of the island or the structure\n- player: A player target selector  §7(Defaults to §e@s§7)"
+						"$text": "§o§7%command.visit.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /visit [destination] [player]\n\n§vParameters:§r\n- destination: The identifier of the island or the structure\n- player: A player target selector  §7(Defaults to §e@s§7)"
 					}},
 
 					{ "restore_header@how_to_play_common.header": {
