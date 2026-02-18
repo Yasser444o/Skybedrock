@@ -2,12 +2,14 @@ import { system, world } from "@minecraft/server" ;
 
 function redstoneDustParticles(block) {
 	const blockCenter = {x:block.location.x + 0.49, y:block.location.y + 0.5, z:block.location.z + 0.49}
-	const blockFaces = [{x:blockCenter.x + 0.5, y:blockCenter.y, z:blockCenter.z},
-	                    {x:blockCenter.x - 0.5, y:blockCenter.y, z:blockCenter.z},
-	                    {x:blockCenter.x, y:blockCenter.y + 0.5, z:blockCenter.z},
-	                    {x:blockCenter.x, y:blockCenter.y - 0.5, z:blockCenter.z},
-	                    {x:blockCenter.x, y:blockCenter.y, z:blockCenter.z + 0.5},
-	                    {x:blockCenter.x, y:blockCenter.y, z:blockCenter.z - 0.5}]
+	const blockFaces = [
+		{x:blockCenter.x + 0.5, y:blockCenter.y, z:blockCenter.z},
+		{x:blockCenter.x - 0.5, y:blockCenter.y, z:blockCenter.z},
+		{x:blockCenter.x, y:blockCenter.y + 0.5, z:blockCenter.z},
+		{x:blockCenter.x, y:blockCenter.y - 0.5, z:blockCenter.z},
+		{x:blockCenter.x, y:blockCenter.y, z:blockCenter.z + 0.5},
+		{x:blockCenter.x, y:blockCenter.y, z:blockCenter.z - 0.5}
+	]
 	for (let f = 0; f < 3; f++) {
 		for (let i in blockFaces) {
 			let face = blockFaces[i];

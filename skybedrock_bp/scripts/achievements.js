@@ -6,7 +6,7 @@ import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
 
 
-export const version = "v5.0.0"
+export const version = "v5.1.0"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
@@ -259,18 +259,25 @@ export const quests = {
 	},
 	water: {
 		data: `
-			require: (swamp | ocean | birch)
+			require: bridge
 			title: §.Infinite Water!
 			icon: textures/items/bucket_water
 			* Make an infinite water source
-			- go to any island with water in it
+			- visit any island which has water
 			- collect a second water bucket
 			- make an infinite water source
-			- separate your wheat farm and cobblestone generator
-			- click the complete button below
+			- look at a water source with a water bucket in your iventory to complete the quest
+			- alternatively you can click the complete button
 			(Water can be found in the swamp, birch, and ocean island)
 		`,
 		checkmark: true,
+		query: (player) => {
+			if (!check_items(player, 'water_bucket')) return // has a water bucket
+			const block = player.getBlockFromViewDirection({includeLiquidBlocks: true, maxDistance: 6})?.block
+			if (!block) return // looking at a block
+			if (block.typeId != "minecraft:water") return // the block is water
+			return block.permutation.getState('liquid_depth') == 0 // it's a water source
+		},
 		reward: ["16 Torches", `give @s torch 16`]
 	},
 	mob_trap: {
@@ -294,7 +301,7 @@ export const quests = {
 	},
 	craft_bed: {
 		data: `
-			require: mob_trap
+			require: (mob_trap | animals)
 			title: Good Night
 			icon: textures/items/bed_yellow
 			* Craft a bed to skip the night
@@ -1248,7 +1255,7 @@ export const quests = {
 			require: farm
 			title: Bread Fields
 			icon: textures/items/wheat
-			* Build a large wheat farm and collect 1 stack of wheat
+			* Build a large wheat farm and collect 2 stack of wheat
 			- there are multiple good options for farming wheat
 			- you could farm it manually by building a large farmland and planting wheat on it
 			- you could make a semi automatic farm where you place seeds and it gets automatically bonemealed and harvested
@@ -1318,7 +1325,7 @@ export const quests = {
 			- pick up the pumpkin from the taiga island and craft it into seeds
 			- build a simple pumpkin farm to get more pumpkin seeds
 			- expand your farm until you have over 30 pumpkin plants
-			- harvest a stack of pumpkin
+			- harvest a stack of pumpkins
 			(Selling Pumpkins to villagers is a great source of emeralds; The image below shows the best layout for farming melons and pumpkins; You may automate the farm later with pistons and observers)
 			image: textures/ui/guidebook/pum_and_mel_farm
 		`,

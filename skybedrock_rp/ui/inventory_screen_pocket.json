@@ -1,23 +1,33 @@
 {
-  "namespace": "crafting_pocket",
+	"namespace": "crafting_pocket",
 
-  "right_tab_navigation_panel_pocket/content/close/close_button": {
-    "anchor_to": "bottom_middle",
-    "offset": [ 0, -1 ]
-  },
-  "right_tab_navigation_panel_pocket/content/close": {
-    "size": [ "100%", 50 ],
-    "modifications": [{
-      "array_name": "controls",
-      "operation": "insert_back",
-      "value": {
-        "help_button@crafting.help_button": {
-          "anchor_from": "center",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 1 ],
-          "layer": 2
-        }
-      }
-    }]
-  }
+	"right_panel/help_button": {
+		"visible": false
+	},
+
+	"right_tab_navigation_panel_pocket/content": {
+		"modifications": [{
+			"array_name": "controls",
+			"operation": "insert_before",
+			"where": { "fill": {
+				"type": "panel",
+				"size": [ "100%", "fill" ]
+			}},
+			"value": { "toggle": {
+				"type": "image",
+				"texture": "textures/ui/TabRightBackTopMost",
+				"size": [ "100%", 29 ],
+				"controls": [
+					{ "help_button@common.help_button": {
+						"layer": 5,
+						"$focus_id": "help_button",
+						"$focus_override_up": "FOCUS_OVERRIDE_STOP",
+						"$default_texture": "textures/ui/buttons/skypedia_default",
+						"$hover_texture": "textures/ui/buttons/skypedia_hover",
+						"$pressed_texture": "textures/ui/buttons/skypedia_pressed"
+					}}
+				]
+			}}
+		}]
+	}
 }

@@ -1,0 +1,154 @@
+{
+	"format_version": "1.26.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "skybedrock:unsafe_copper",
+			"states": {
+				"skybedrock:oxidization": [  "default", "exposed", "weathered", "oxidized"],
+				"skybedrock:texture": [ "block", "cut", "chiseled", "grate", "bulb" ]
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_explosion": { "explosion_resistance": 12 },
+			"minecraft:destructible_by_mining": { "seconds_to_destroy": 6 },
+			"minecraft:loot": "loot_tables/empty.json",
+			"minecraft:map_color": "#d87f33",
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:material_instances": { "*": { "texture": "copper_block", "render_method": "opaque" } },
+			"tag:skybedrock:unsafe": {},
+			"tag:minecraft:is_pickaxe_item_destructible": {},
+			"tag:stone_pick_diggable": {},
+			"tag:minecraft:stone_tier_destructible": {}
+		},
+		"permutations": [
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'default' && q.block_state('skybedrock:texture') == 'block'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "copper_block", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'exposed' && q.block_state('skybedrock:texture') == 'block'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "exposed_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'weathered' && q.block_state('skybedrock:texture') == 'block'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "weathered_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'oxidized' && q.block_state('skybedrock:texture') == 'block'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "oxidized_copper", "render_method": "opaque" } }
+				}
+			},
+
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'default' && q.block_state('skybedrock:texture') == 'cut'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "cut_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'exposed' && q.block_state('skybedrock:texture') == 'cut'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "exposed_cut_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'weathered' && q.block_state('skybedrock:texture') == 'cut'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "weathered_cut_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'oxidized' && q.block_state('skybedrock:texture') == 'cut'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "oxidized_cut_copper", "render_method": "opaque" } }
+				}
+			},
+
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'default' && q.block_state('skybedrock:texture') == 'chiseled'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "chiseled_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'exposed' && q.block_state('skybedrock:texture') == 'chiseled'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "exposed_chiseled_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'weathered' && q.block_state('skybedrock:texture') == 'chiseled'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "weathered_chiseled_copper", "render_method": "opaque" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'oxidized' && q.block_state('skybedrock:texture') == 'chiseled'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "oxidized_chiseled_copper", "render_method": "opaque" } }
+				}
+			},
+
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'default' && q.block_state('skybedrock:texture') == 'grate'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "copper_grate", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'exposed' && q.block_state('skybedrock:texture') == 'grate'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "exposed_copper_grate", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'weathered' && q.block_state('skybedrock:texture') == 'grate'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "weathered_copper_grate", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'oxidized' && q.block_state('skybedrock:texture') == 'grate'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "oxidized_copper_grate", "render_method": "alpha_test" } }
+				}
+			},
+
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'default' && q.block_state('skybedrock:texture') == 'bulb'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "lit_copper_bulb", "render_method": "opaque" }},
+					"minecraft:light_emission": 15
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'exposed' && q.block_state('skybedrock:texture') == 'bulb'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "lit_exposed_copper_bulb", "render_method": "opaque" }},
+					"minecraft:light_emission": 12
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'weathered' && q.block_state('skybedrock:texture') == 'bulb'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "lit_weathered_copper_bulb", "render_method": "opaque" }},
+					"minecraft:light_emission": 8
+				}
+			},
+			{
+				"condition": "q.block_state('skybedrock:oxidization') == 'oxidized' && q.block_state('skybedrock:texture') == 'bulb'",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "lit_oxidized_copper_bulb", "render_method": "opaque" }},
+					"minecraft:light_emission": 4
+				}
+			}
+		]
+	}
+}

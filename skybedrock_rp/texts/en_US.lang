@@ -3,6 +3,7 @@ item.skybedrock:guidebook=Skybedrock Guidebook
 item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
 
 item.skybedrock:world_map=World Map
+item.skybedrock_world_map=World Map
 item.skybedrock:ancient_scroll=Ancient Scroll
 item.skybedrock:hydrographic_chart=Hydrographic Chart
 item.skybedrock:tropical_notes=Tropical Notes
@@ -18,6 +19,11 @@ skybedrock:maps=Maps
 tile.deprecated_purpur_block_2.name=Smooth Purpur
 tile.stone_slab.wood.name=Petrified Oak Slab
 tile.skybedrock:nether_gravel.name=Nether Gravel
+tile.yasser444:empty_spawner.name=§bEmpty Spawner
+tile.skybedrock_nether_gravel.name=Nether Gravel
+tile.yasser444_empty_spawner.name=§bEmpty Spawner
+tile.skybedrock:unsafe_copper.name=Unsafe Copper
+tile.skybedrock:unsafe_tuff.name=Unsafe Tuff
 
 
 ## Entities
@@ -26,6 +32,10 @@ entity.end_phantom.name=End Phantom
 entity.illager.name=Illager
 entity.skybedrock:end_sickness.name=End Phantom Spawn
 
+## Biomes
+biome.plains.name=Plains
+biome.desert.name=Desert
+biome.savanna.name=Savanna
 
 ## HUD
 hudScreen.tooltip.seeMap=See Map
@@ -42,18 +52,27 @@ howtoplay.lootTables.title=Skybedrock Loot Tables
 howtoplay.otherFeatures=Game Features
 howtoplay.otherFeatures.title=Skybedrock Features
 
-howtoplay.addons=Optional Addons
-howtoplay.addons.title=Skybedrock Optional Addons
+howtoplay.optional_addons=Optional Addons
+howtoplay.optional_addons.title=Skybedrock Optional Addons
 
 howtoplay.category.general_information=General Information
 
 howtoplay.biomes=Skybedrock Biomes
 howtoplay.biomes.title=Skybedrock Biomes
-howtoplay.commands.title=Skybedrock Commands
+
+howtoplay.custom_commands=Skybedrock Commands
+howtoplay.custom_commands.title=Skybedrock Commands
 
 howtoplay.islands=Islands & Structures
 howtoplay.islands.title= Islands and Structures
 
+howtoplay.loot.trial_spawner.melee=Melee Equipment for Ominous Trial Spawner Mobs
+howtoplay.loot.trial_spawner.armor=Ominous Trial Spawner Mob Armor
+howtoplay.loot.trial_spawner.copper_armor=Copper Armor for Ominous Trial Spawner Mobs
+
+howtoplay.loot.copper_armor=Copper Armor
+howtoplay.loot.iron_armor=Iron Armor
+howtoplay.loot.diamond_armor=Diamond Armor
 
 ## Guidebook
 guidebook.achievements.button=Achievements

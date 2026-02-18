@@ -1,4 +1,70 @@
 export const change_logs = {
+  "v1.23.0": `\
+General:
+- Creator (Music Box) Music Discs can now be smelted into copper ingots
+- Suspicious sand and gravel will now regenerate even if they aren't loaded
+- Updated all entities to the latest format version (this should fix any bugs with entities that started in 26.0)
+- Fixed a bug where the bottom textures of the custom blocks were rotation by 180°
+- Removed the temporary /fix_your_broken_end_dimension command
+
+Achievements:
+- Added a description for "Tomb Raider"
+- Updated "Deserted Fish" to accept any desert biome
+- Updated "Submerged!" to be compatible with multiplayer
+- The quest "Good Night" is now unlocked by completing either "Spawn, Drop, Drops" or "Livestock"
+- Updated "Infinite Water" to be automatically completable
+- The quest "Infinite Water" in now unlocked by completing "Bridge Explorer" instead of a quest from the Explorer Path
+- Quests from the Skyblock Path will no longer require completing quests from other chapters
+- Fixed the description of "Harvest Season" and "Bread Fields"
+- Fixed multiple spelling errors and discrepancies
+- Fixed a bug where some quests were detecting the wrong coordinates
+
+Optional Addons
+- Added "Logistechs" which adds features that allow you to automate certain player interactions
+- Currently, it only has one feature:
+- Pistons can place certain blocks that are fed to them by a hopper on retraction
+- Those blocks are: Deepslate, Dirt and Coarse Dirt, Nether Gravel, and all colors of Concrete Powder
+- If you want more blocks to be added, please suggest them in the comments
+- More features will be added later, leave your suggestions
+- Added a new trade to "Generous Masons":
+- Master level Masons can now trade 10 deepslate and 1 emerald for 10 cobbled deepslate
+- Fixed a bug that broke the "Frogspawn" addon
+- While making this update Mojang has announced that they will be adding a stonecutter recipe for cobbled deepslate in 26.10, which makes the Mason trade and the ability for pistons to place deepslate obsolete; Regardless, enjoy them while they last
+
+Creative Utilities:
+- Moved the creative tool and the debug stick into the equipment category of the creative inventory
+- Added a teleport utility to the creative tool
+- It makes you teleport 16 blocks in the direction you are looking
+- Added an ice rod utility to the creative tool
+- It can be used to place ice blocks mid air that disappear in 5 seconds
+- Added a selector utility to the creative tool
+- You can use it to create a selection of blocks by left clicking and right clicking
+- You can delete the blocks inside the selection or fill them with blocks
+- Unlike the fill command, it does not have a max size and won't fully fail when hitting unloaded chunks
+- Added an error message for the /visit command
+
+Crafted Trials:
+- Separated Empty spawners into two blocks:
+- Empty Spawners: they kept the old texture and name, and they are part of Skybedrock
+- They can be used to make Monster Spawners
+- They are crafted with a block of netherite instead of a spawner core
+- Trial Spawner Shells: They kept the old recipe and have a new texture and name
+- They can be used to make Trial Spawners and they are part of Crafted Trials
+- Moved the Trial Spawner creation logic from Skybedrock to Crafted Trials
+- Moved Trial Spawner creation guide from the How to Play screen to Crafted Trials guide page
+- Added Unsafe Copper and Unsafe Tuff, which drop nothing when broken
+- These changes were made in preparation of a new Trials Chambers system that will replace the Crafted Trials addon
+
+How to Play Screen:
+- Localized most of the item and block names in the How to Play screen
+- Added more translation keys for translating some texts to your language
+- The rest will be added later
+- Updated the looks of the baby axolotl and the baby chicken in "Axolotl Feed" and "Diamond Chicken" guides respectively
+- Changed the cat texture in the "More Cat Gifts" guide to be more visible
+- Fixed the Icon of the How to Play button
+- Fixed a bug that removed the How to Play Button from the pocket UI
+- Fixed some errors and discrepancies
+  `,
   "v1.22.0": `\
 Mounts of Mayhem:
 - Added all nautilus armor to the cold ocean suspicious gravel loot

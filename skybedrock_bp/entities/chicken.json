@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.90",
+  "format_version": "1.26.0",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:chicken",
@@ -62,12 +62,7 @@
         "minecraft:breedable": {
           "require_tame": false,
           "breeds_with": {
-            "mate_type": "minecraft:chicken",
-            "baby_type": "minecraft:chicken",
-            "breed_event": {
-              "event": "minecraft:entity_born",
-              "target": "baby"
-            }
+            "minecraft:chicken": {}
           },
           "breed_items": [
             "wheat_seeds",
@@ -76,10 +71,7 @@
             "pumpkin_seeds",
             "pitcher_pod",
             "torchflower_seeds"
-          ],
-          "property_inheritance": {
-            "minecraft:climate_variant": {}
-          }
+          ]
         },
         "minecraft:behavior.breed": {
           "priority": 3,
@@ -88,7 +80,7 @@
         "minecraft:rideable": {
           "seat_count": 1,
           "family_types": [
-            "zombie"
+            "baby_undead"
           ],
           "seats": {
             "position": [ 0.0, 0.48, 0.0 ]
@@ -102,6 +94,7 @@
               "spawn_sound": "plop",
               "spawn_item": "egg",
               "filters": [
+                { "test": "bool_property", "domain": "skybedrock:diamond_chicken", "value": false },
                 {
                   "test": "rider_count",
                   "subject": "self",
@@ -113,8 +106,7 @@
                   "subject": "self",
                   "domain": "minecraft:climate_variant",
                   "value": "temperate"
-                },
-                { "test": "bool_property", "domain": "skybedrock:diamond_chicken", "value": false }
+                }
               ]
             },
             {
@@ -123,6 +115,7 @@
               "spawn_sound": "plop",
               "spawn_item": "brown_egg",
               "filters": [
+                { "test": "bool_property", "domain": "skybedrock:diamond_chicken", "value": false },
                 {
                   "test": "rider_count",
                   "subject": "self",
@@ -134,8 +127,7 @@
                   "subject": "self",
                   "domain": "minecraft:climate_variant",
                   "value": "warm"
-                },
-                { "test": "bool_property", "domain": "skybedrock:diamond_chicken", "value": false }
+                }
               ]
             },
             {
@@ -144,6 +136,7 @@
               "spawn_sound": "plop",
               "spawn_item": "blue_egg",
               "filters": [
+                { "test": "bool_property", "domain": "skybedrock:diamond_chicken", "value": false },
                 {
                   "test": "rider_count",
                   "subject": "self",
@@ -155,8 +148,7 @@
                   "subject": "self",
                   "domain": "minecraft:climate_variant",
                   "value": "cold"
-                },
-                { "test": "bool_property", "domain": "skybedrock:diamond_chicken", "value": false }
+                }
               ]
             },
             {
@@ -165,13 +157,13 @@
               "spawn_sound": "plop",
               "spawn_item": "diamond",
               "filters": [
+                { "test": "bool_property", "domain": "skybedrock:diamond_chicken" },
                 {
                   "test": "rider_count",
                   "subject": "self",
                   "operator": "==",
                   "value": 0
-                },
-                { "test": "bool_property", "domain": "skybedrock:diamond_chicken" }
+                }
               ],
               "spawn_item_event": {
                   "event": "layed_diamond",
@@ -184,6 +176,15 @@
     },
 
     "components": {
+      "minecraft:offspring": {
+        "offspring_pairs": {
+          "minecraft:chicken": "minecraft:chicken"
+        },
+        "property_inheritance": {
+          "minecraft:climate_variant": {}
+        }
+      },
+      "minecraft:spawn_egg_interaction": {},
       "minecraft:is_hidden_when_invisible": {
       },
       "minecraft:type_family": {
@@ -290,11 +291,11 @@
     },
 
     "events": {
-			"layed_diamond":{
-        "set_property": {
-          "skybedrock:diamond_chicken": false
-        }
-      },
+		"layed_diamond": {
+			"set_property": {
+				"skybedrock:diamond_chicken": false
+			}
+		},
       
       "minecraft:entity_spawned": {
         "sequence": [

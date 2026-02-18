@@ -3,7 +3,6 @@
 export const load_dynamic_object = (holder, id, fallback = '{}') => JSON.parse(holder.getDynamicProperty(id) ?? fallback)
 export const save_dynamic_object = (holder, id, value) => holder.setDynamicProperty(id, value ? JSON.stringify(value) : undefined)
 
-
 // math
 export function dot(u, v) {
 	return u.x * v.x + u.y * v.y + u.z * v.z
@@ -26,3 +25,19 @@ export function normalize(vector) {
 	}
 }
 
+// vectors
+export function hash_to_location(hash) {
+	return ((([x, y, z]) => ({x: +x, y: +y, z: +z})))(hash.split(' '))
+}
+
+export function location_to_hash({x, y, z}) {
+	return `${x} ${y} ${z}`
+}
+
+export function offset_location(location, direction, distance) {
+	return {
+		x: location.x + direction.x * distance,
+		y: location.y + direction.y * distance,
+		z: location.z + direction.z * distance,
+	}
+}

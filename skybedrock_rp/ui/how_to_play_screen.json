@@ -37,7 +37,7 @@
 					"$toggle_group_forced_index": 102
 				}},
 				{ "addons_button@how_to_play_common.section_toggle_button": {
-					"$section_topic": "addons",
+					"$section_topic": "optional_addons",
 					"$toggle_group_forced_index": 103
 				}},
 				
@@ -54,7 +54,7 @@
 					"$toggle_group_forced_index": 105
 				}},
 				{ "commands_button@how_to_play_common.section_toggle_button": {
-					"$section_topic": "commands",
+					"$section_topic": "custom_commands",
 					"$toggle_group_forced_index": 106
 				}}
 			  ]
@@ -103,40 +103,47 @@
 												"texture": "textures/ui/features/cobblestone_to_end_stone",
 												"size": [300, 130],
 												"controls": [
-													{"piston@assets.hover_renderer": {
-													"$text": "Piston",
-													"offset": [6, 18],
-													"size": [32, 32]
+													{"piston@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "tile.piston.name",
+														"offset": [6, 18],
+														"size": [32, 32]
 													}},
-													{"bottle@assets.hover_renderer": {
-													"$text": "Dragon's Breath",
-													"offset": [38, 18],
-													"size": [32, 32]
+													{"bottle@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "item.dragon_breath.name",
+														"offset": [38, 18],
+														"size": [32, 32]
 													}},
-													{"head1@assets.hover_renderer": {
-													"$text": "Dragon Head",
-													"offset": [70, 18],
-													"size": [32, 32]
+													{"head1@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "item.skull.dragon.name",
+														"offset": [70, 18],
+														"size": [32, 32]
 													}},
-													{"head2@assets.hover_renderer": {
-													"$text": "Dragon Head",
-													"offset": [70, 78],
-													"size": [32, 32]
+													{"head2@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "item.skull.dragon.name",
+														"offset": [70, 78],
+														"size": [32, 32]
 													}},
-													{"extendedpiston@assets.hover_renderer": {
-													"$text": "Extended Piston",
-													"offset": [6, 78],
-													"size": [64, 32]
+													{"extendedpiston@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "tile.piston.name",
+														"offset": [6, 78],
+														"size": [64, 32]
 													}},
-													{"cobblestone@assets.hover_renderer": {
-													"$text": "Cobblestone",
-													"offset": [144, 18],
-													"size": [140, 32]
+													{"cobblestone@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "tile.cobblestone.name",
+														"offset": [144, 18],
+														"size": [140, 32]
 													}},
-													{"end_stone@assets.hover_renderer": {
-													"$text": "End Stone",
-													"offset": [144, 78],
-													"size": [140, 32]
+													{"end_stone@assets.item_renderer": {
+														"anchor_from": "top_left", "anchor_to": "top_left",
+														"$name": "tile.end_stone.name",
+														"offset": [144, 78],
+														"size": [140, 32]
 													}}
 												]
 											}}
@@ -166,6 +173,9 @@
 							"$title": "Nether Gravel",
 							"$icon": "textures/blocks/nether_gravel",
 							"$collapse": "collapse_nether_gravel",
+							"$netherite_scrap": [{"i@assets.item_renderer":{
+								"$id": "netherite_scrap"
+							}}],
 							"$content": [
 								{ 
 									"text@assets.text_box": {
@@ -232,37 +242,37 @@
 								{ "golden_shovel@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.nether_gravel":{}}],
 									"$tool": [{"b@assets.item_renderer":{
-										"$texture": "textures/items/gold_shovel",
-										"$text": "Golden Shovel"
+										"$id": "golden_shovel",
+										"$texture": "textures/items/gold_shovel"
 									}}],
-									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$loot": "$netherite_scrap",
 									"$duration": "10%%"  
 								}},
 								{ "fortuneI@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.nether_gravel":{}}],
 									"$tool": [{"b@assets.item_renderer":{
 										"$texture": "textures/ui/items/enchanced_shovel",
-										"$text": "Fortune I"
+										"$name": "enchantment.lootBonusDigger %enchantment.level.1"
 									}}],
-									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$loot": "$netherite_scrap",
 									"$duration": "6%%"  
 								}},
 								{ "fortuneI@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.nether_gravel":{}}],
 									"$tool": [{"b@assets.item_renderer":{
 										"$texture": "textures/ui/items/enchanced_shovel",
-										"$text": "Fortune II"
+										"$name": "enchantment.lootBonusDigger %enchantment.level.2"
 									}}],
-									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$loot": "$netherite_scrap",
 									"$duration": "11%%"  
 								}},
 								{ "fortuneI@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.nether_gravel":{}}],
 									"$tool": [{"b@assets.item_renderer":{
 										"$texture": "textures/ui/items/enchanced_shovel",
-										"$text": "Fortune III"
+										"$name": "enchantment.lootBonusDigger %enchantment.level.3"
 									}}],
-									"$loot": [{"b@assets.netherite_scrap":{}}],
+									"$loot": "$netherite_scrap",
 									"$duration": "16%%"  
 								}},
 								{ "footer@assets.table_footer": {} }
@@ -861,7 +871,10 @@
 										"$job": "cartographer", "$biome": "plains_villager",
 										"$take1": [{"i@assets.emerald":{ "$count": "8" }}],
 										"$take2": [{"i@assets.compass":{}}],
-										"$give": [{"i@assets.sky_treasure_map":{}}],
+										"$give": [{"i@assets.item_renderer":{
+											"$id": "world_map",
+											"$name": "item.skybedrock_world_map"
+										}}],
 										"$details": "* Probability: 100%%\n* Number of Trades: 4"
 									}
 								}
@@ -913,7 +926,10 @@
 									"$mob": [{ "e@assets.treasure_chest": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "heart_of_the_sea"
+											"$content": [{"@assets.item_renderer": {
+												"$id": "heart_of_the_sea",
+												"$texture": "textures/items/heartofthesea_closed"
+											}}]
 										}},
 										{ "i2@assets.drops_table_entry": {
 											"$item": "cooked_cod",
@@ -921,38 +937,41 @@
 											"$chance": "22.18%%"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "prismarine_crystals",
+											"$content": [{"@assets.item_renderer": { "$id": "prismarine_crystals" }}],
 											"$quantity": "1-5",
 											"$chance": "11.1%%"
 										}},
 										{ "i4@assets.drops_table_entry": {
-											"$item": "iron_nugget",
+											"$content": [{"@assets.item_renderer": { "$id": "iron_nugget" }}],
 											"$quantity": "1-5",
 											"$chance": "44.6%%"
 										}},
 										{ "i5@assets.drops_table_entry": {
-											"$item": "gold_nugget",
+											"$content": [{"@assets.item_renderer": { "$id": "gold_nugget" }}],
 											"$quantity": "1-5",
 											"$chance": "22.17%%"
 										}},
 										{ "i6@assets.drops_table_entry": {
-											"$item": "real_diamond_ore",
+											"$content": [{"@assets.block_renderer": {
+												"$id": "diamond_ore",
+												"$aux": "((56) * 65536)"
+											}}],
 											"$chance": "0.2%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "chain_helmet",
+											"$content": [{"@assets.item_renderer": { "$id": "chainmail_helmet" }}],
 											"$chance": "25%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "chain_chestplate",
+											"$content": [{"@assets.item_renderer": { "$id": "chainmail_chestplate" }}],
 											"$chance": "25%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "chain_leggings",
+											"$content": [{"@assets.item_renderer": { "$id": "chainmail_leggings" }}],
 											"$chance": "25%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "chain_boots",
+											"$content": [{"@assets.item_renderer": { "$id": "chainmail_boots" }}],
 											"$chance": "25%%"
 										}}
 									],
@@ -1053,7 +1072,7 @@
 														"$quantity":"0-2"
 													}},
 													{ "i1@assets.drops_table_entry": {
-														"$item": "elytra",
+														"$content": [{"@assets.item_renderer": { "$id": "elytra" }}],
 														"$quantity":"0%% - 2%%\nDurability",
 														"$chance": "10%%"
 													}}
@@ -1100,50 +1119,18 @@
 											{
 												"spawner@how_to_play.crafting3x3_feature": {
 													"layer": 10,
-													"$input1": [{"i@assets.chain":{}}],
-													"$input2": [{"i@assets.chain":{}}],
-													"$input3": [{"i@assets.chain":{}}],
-													"$input4": [{"i@assets.chain":{}}],
-													"$input5": [{"i@assets.spawner_core":{}}],
-													"$input6": [{"i@assets.chain":{}}],
-													"$input7": [{"i@assets.chain":{}}],
-													"$input8": [{"i@assets.chain":{}}],
-													"$input9": [{"i@assets.chain":{}}],
+													"$input1": [{"i@assets.iron_chain":{}}],
+													"$input2": [{"i@assets.iron_chain":{}}],
+													"$input3": [{"i@assets.iron_chain":{}}],
+													"$input4": [{"i@assets.iron_chain":{}}],
+													"$input5": [{"i@assets.netherite_block":{}}],
+													"$input6": [{"i@assets.iron_chain":{}}],
+													"$input7": [{"i@assets.iron_chain":{}}],
+													"$input8": [{"i@assets.iron_chain":{}}],
+													"$input9": [{"i@assets.iron_chain":{}}],
 													"$output": [{"i@assets.empty_spawner":{}}]
 												}
 											},
-											{ 
-												"spawner_core@assets.text_box": {
-													"$text": "Spawner Cores can be obtained from ominous trial spawners"
-												}
-											},
-											{
-												"chests_table_header": { "size": ["100% - 2px", 20], "type": "stack_panel", "orientation": "horizontal",
-													"controls": [
-														{ "mob@assets.table_header": { "size": ["15%", "100%"], "$text": "" } },
-														{ "drop": { "size": ["45%", "100%"],  "type": "stack_panel", "orientation": "horizontal",
-															"controls": [
-																{ "item@assets.table_header": { "size": ["34%", "100%"], "$text": "Items" } },
-																{ "quantity@assets.table_header": { "size": ["33%", "100%"], "$text": "Quantity" } },
-																{ "chance@assets.table_header": { "size": ["33%", "100%"], "$text": "Chance" } }		
-															]
-														}},
-														{ "notes@assets.table_header": { "size": ["40%", "100%"], "$text": "" } },
-														{ "border@assets.table_border": {}}
-													]
-												}
-											},
-											{ "ominous_spawner@how_to_play.drops_table_item": {
-												"$size": ["100% - 2px", 36],
-												"$mob": [{ "e@textures.ominous_trial_spawner": {}}],
-												"$drops": [
-													{ "i8@assets.drops_table_entry": {
-														"$item": "spawner_core",
-														"$chance": "12.5%%"
-													}}
-												]
-											}},
-											{ "chests_footer@assets.table_footer": {}},
 											{ 
 												"text1@assets.text_box": {
 													"$text": "Use 50 levels of XP and a common mob drop on an empty spawner in the right dimension.\n\nMake sure there isn't any other active spawners within the spawner range:\n- 8 blocks for Cave Spider Spawners.\n- 16 blocks for Zombie, Skeleton, Spider, and Blaze Spawners.\n- 32 blocks for Magma Cube Spawners."
@@ -1419,59 +1406,71 @@
 							"$content": [
 								{
 									"copper_horse_armor@how_to_play.crafting3x3_feature": {
-										"$input1": [{"i@assets.copper_ingot":{}}],
-										"$input3": [{"i@assets.copper_ingot":{}}],
-										"$input4": [{"i@assets.copper_ingot":{}}],
-										"$input5": [{"i@assets.copper_ingot":{}}],
-										"$input6": [{"i@assets.copper_ingot":{}}],
-										"$input7": [{"i@assets.copper_ingot":{}}],
-										"$input9": [{"i@assets.copper_ingot":{}}],
-										"$output": [{"i@assets.copper_horse_armor":{}}]
+										"$C": [{"i@assets.copper_ingot":{}}],
+
+										"$input1": "$C",                  "$input3": "$C",
+										"$input4": "$C", "$input5": "$C", "$input6": "$C",
+										"$input7": "$C",                  "$input9": "$C",
+
+										"$output": [{"i@assets.item_renderer":{
+											"$id": "copper_horse_armor"
+										}}]
 									}
 								},
 								{
 									"iron_horse_armor@how_to_play.crafting3x3_feature": {
-										"$input1": [{"i@assets.iron_ingot":{}}],
-										"$input3": [{"i@assets.iron_ingot":{}}],
-										"$input4": [{"i@assets.iron_ingot":{}}],
-										"$input5": [{"i@assets.iron_ingot":{}}],
-										"$input6": [{"i@assets.iron_ingot":{}}],
-										"$input7": [{"i@assets.iron_ingot":{}}],
-										"$input9": [{"i@assets.iron_ingot":{}}],
-										"$output": [{"i@assets.iron_horse_armor":{}}]
+										"$I": [{"i@assets.iron_ingot":{}}],
+
+										"$input1": "$I",                  "$input3": "$I",
+										"$input4": "$I", "$input5": "$I", "$input6": "$I",
+										"$input7": "$I",                  "$input9": "$I",
+
+										"$output": [{"i@assets.item_renderer":{
+											"$id": "iron_horse_armor",
+											"$name": "item.horsearmoriron.name"
+										}}]
 									}
 								},
 								{
 									"gold_horse_armor@how_to_play.crafting3x3_feature": {
-										"$input1": [{"i@assets.gold_ingot":{}}],
-										"$input3": [{"i@assets.gold_ingot":{}}],
-										"$input4": [{"i@assets.gold_ingot":{}}],
-										"$input5": [{"i@assets.gold_ingot":{}}],
-										"$input6": [{"i@assets.gold_ingot":{}}],
-										"$input7": [{"i@assets.gold_ingot":{}}],
-										"$input9": [{"i@assets.gold_ingot":{}}],
-										"$output": [{"i@assets.gold_horse_armor":{}}]
+										"$G": [{"i@assets.gold_ingot":{}}],
+
+										"$input1": "$G",                  "$input3": "$G",
+										"$input4": "$G", "$input5": "$G", "$input6": "$G",
+										"$input7": "$G",                  "$input9": "$G",
+
+										"$output": [{"i@assets.item_renderer":{
+											"$texture": "textures/items/gold_horse_armor",
+											"$name": "item.horsearmorgold.name"
+										}}]
 									}
 								},
 								{
 									"diamond_horse_armor@how_to_play.crafting3x3_feature": {
-										"$input1": [{"i@assets.diamond":{}}],
-										"$input3": [{"i@assets.diamond":{}}],
-										"$input4": [{"i@assets.diamond":{}}],
-										"$input5": [{"i@assets.diamond":{}}],
-										"$input6": [{"i@assets.diamond":{}}],
-										"$input7": [{"i@assets.diamond":{}}],
-										"$input9": [{"i@assets.diamond":{}}],
-										"$output": [{"i@assets.diamond_horse_armor":{}}]
+										"$D": [{"i@assets.diamond":{}}],
+
+										"$input1": "$D",                  "$input3": "$D",
+										"$input4": "$D", "$input5": "$D", "$input6": "$D",
+										"$input7": "$D",                  "$input9": "$D",
+
+										"$output": [{"i@assets.item_renderer":{
+											"$id": "diamond_horse_armor",
+											"$name": "item.horsearmordiamond.name"
+										}}]
 									}
 								},
 								{
 									"red_sand@how_to_play.crafting3x3_feature": {
-										"$input2": [{"b@assets.resin_clump":{}}],
-										"$input4": [{"b@assets.resin_clump":{}}],
-										"$input5": [{"b@assets.sand":{}}],
-										"$input6": [{"b@assets.resin_clump":{}}],
-										"$input8": [{"b@assets.resin_clump":{}}],
+										"$R": [{"@assets.item_renderer": {
+											"$id": "resin_clump",
+											"$name":"('tile.'+ $id + '.name')"
+										}}],
+										"$S": [{"b@assets.sand":{}}],
+
+										                 "$input2": "$R",
+										"$input4": "$R", "$input5": "$S", "$input6": "$R",
+										                 "$input8": "$R",
+
 										"$output": [{"b@assets.red_sand": {}}]
 									}
 								},
@@ -1674,15 +1673,6 @@
 							"$title": "Smelting Recipes",
 							"$icon": "textures/blocks/furnace_front_on",
 							"$content": [
-								{ "creator_music_box@how_to_play.feature": {
-									"$content": [{"o@how_to_play.smelting_recipe": {
-										"$input": [{"i@assets.item_renderer":{
-											"$texture": "textures/items/music_disc_creator_music_box",
-											"$text": "Creator (Music Box) Music Disc"
-										}}],
-										"$output": [{"i@assets.copper_ingot":{}}]
-									}}]
-								}},
 								{ "copper_equipment@assets.white_box": { //index 1 should be skipped
 									"layer": -3,
 									"color": [0.3, 0.3, 0.3], 
@@ -1695,8 +1685,7 @@
 											"$n_page": 2, "$next": "copper_pickaxe",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_sword",
-													"$text": "Copper Sword"
+													"$id": "copper_sword"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1707,8 +1696,7 @@
 											"$n_page": 3, "$next": "copper_axe",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_pickaxe",
-													"$text": "Copper Pickaxe"
+													"$id": "copper_pickaxe"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1719,8 +1707,7 @@
 											"$n_page": 4, "$next": "copper_shovel",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_axe",
-													"$text": "Copper Axe"
+													"$id": "copper_axe"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1731,8 +1718,7 @@
 											"$n_page": 5, "$next": "copper_hoe",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_shovel",
-													"$text": "Copper Shovel"
+													"$id": "copper_shovel"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1743,8 +1729,7 @@
 											"$n_page": 6, "$next": "copper_helmet",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_hoe",
-													"$text": "Copper Hoe"
+													"$id": "copper_hoe"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1755,8 +1740,7 @@
 											"$n_page": 7, "$next": "copper_chestplate",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_helmet",
-													"$text": "Copper Helmet"
+													"$id": "copper_helmet"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1767,8 +1751,7 @@
 											"$n_page": 8, "$next": "copper_leggings",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_chestplate",
-													"$text": "Copper Chestplate"
+													"$id": "copper_chestplate"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1779,8 +1762,7 @@
 											"$n_page": 9, "$next": "copper_boots",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_leggings",
-													"$text": "Copper Leggings"
+													"$id": "copper_leggings"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
@@ -1791,13 +1773,21 @@
 											"$n_page": 0, "$next": "copper_sword",
 											"$page_content": [{"i@how_to_play.smelting_recipe": {
 												"$input": [{"i@assets.item_renderer":{
-													"$texture": "textures/items/copper_boots",
-													"$text": "Copper Boots"
+													"$id": "copper_boots"
 												}}],
 												"$output": [{"i@assets.copper_ingot":{}}]
 											}}]
 										}}
 									]
+								}},
+								{ "creator_music_box@how_to_play.feature": {
+									"$content": [{"o@how_to_play.smelting_recipe": {
+										"$input": [{"i@assets.item_renderer": {
+											"$texture": "textures/items/music_disc_creator_music_box",
+											"$name": "('§e%item.record.name\n§7%item.record_creator_music_box.desc')"
+										}}],
+										"$output": [{"i@assets.copper_ingot":{}}]
+									}}]
 								}}
 							]
 						}
@@ -1871,7 +1861,7 @@
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "arrow",
+											"$content": [{"i@assets.item_renderer": { "$id": "arrow" }}],
 											"$quantity": "0-2"
 										}},
 										{ "i3@assets.drops_table_entry": {
@@ -1879,7 +1869,10 @@
 											"$quantity": "0-2"
 										}},
 										{ "i4@assets.drops_table_entry": {
-											"$item": "weakness_arrow",
+											"$content": [{"i@assets.item_renderer": { 
+												"$texture": "textures/items/tipped_arrow_weakness",
+												"$name": "tipped_arrow.effect.weakness"
+											}}],
 											"$quantity": "0-2"
 										}}
 									],
@@ -1899,7 +1892,10 @@
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "slowness_arrow",
+											"$content": [{"i@assets.item_renderer": { 
+												"$texture": "textures/items/tipped_arrow_slow",
+												"$name": "tipped_arrow.effect.moveSlowdown"
+											}}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
@@ -1920,7 +1916,10 @@
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "poison_arrow",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/tipped_arrow_poison",
+												"$name": "tipped_arrow.effect.poison"
+											}}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
@@ -2052,7 +2051,12 @@
 									"$mob": [{ "e@assets.ender_dragon": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "dragon_head"
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "head_dragon",
+												"$location": "textures/ui/items/",
+												"$name": "item.skull.dragon.name",
+												"$prefix": "§d"
+											}}]
 										}}
 									],
 									"$notes": [
@@ -2091,7 +2095,7 @@
 													}},
 													{"icon@assets.item_renderer": {
 														"$texture": "textures/items/iron_sword",
-														"$text": "Melee Equipment for Ominous Trial Spawner Mobs"
+														"$name": "howtoplay.loot.trial_spawner.melee"
 													}}
 												]}},
 												{ "items": { "type": "stack_panel", "size": "$entry_size", "controls": [
@@ -2102,7 +2106,7 @@
 															}},
 															{"icon@assets.item_renderer": {
 																"$texture": "textures/items/iron_chestplate",
-																"$text": "Ominous Trial Spawner Mob Armor"
+																"$name": "howtoplay.loot.trial_spawner.armor"
 															}}
 														]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
@@ -2111,8 +2115,7 @@
 													]}},
 													{ "copper_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/copper_sword",
-															"$text": "Copper Sword"
+															"$id": "copper_sword"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "43%%"
@@ -2121,7 +2124,7 @@
 													{ "sharp_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
 															"$texture": "textures/ui/items/enchanted_copper_sword",
-															"$text": "§bCopper Sword\n§7Sharpness II"
+															"$name": "§b%item.copper_sword.name\n§7%enchantment.damage.all %enchantment.level.2"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "29%%"
@@ -2130,7 +2133,7 @@
 													{ "knockback_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
 															"$texture": "textures/ui/items/enchanted_iron_sword",
-															"$text": "§bIron Sword\n§7Knockback I"
+															"$name": "§b%item.iron_sword.name\n§7%enchantment.knockback %enchantment.level.1"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "14%%"
@@ -2138,8 +2141,7 @@
 													]}},
 													{ "diamond_sword": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/diamond_sword",
-															"$text": "Diamond Sword"
+															"$id": "diamond_sword"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "14%%"
@@ -2158,14 +2160,14 @@
 													}},
 													{"icon@assets.item_renderer": {
 														"$texture": "textures/items/iron_chestplate",
-														"$text": "Ominous Trial Spawner Mob Armor"
+														"$name": "howtoplay.loot.trial_spawner.armor"
 													}}
 												]}},
 												{ "items": { "type": "stack_panel", "size": "$entry_size", "controls": [
 													{ "copper": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/copper_chestplate",
-															"$text": "Copper Armor"
+															"$id": "copper_chestplate",
+															"$name": "howtoplay.loot.copper_armor"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "57%%"
@@ -2173,8 +2175,8 @@
 													]}},
 													{ "iron": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/iron_chestplate",
-															"$text": "Iron Armor"
+															"$id": "iron_chestplate",
+															"$name": "howtoplay.loot.iron_armor"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "29%%"
@@ -2182,8 +2184,8 @@
 													]}},
 													{ "diamond": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
 														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/diamond_chestplate",
-															"$text": "Diamond Armor"
+															"$id": "diamond_chestplate",
+															"$name": "howtoplay.loot.diamond_armor"
 														}}]}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "14%%"
@@ -2202,24 +2204,22 @@
 													}},
 													{"icon@assets.item_renderer": {
 														"$texture": "textures/items/copper_chestplate",
-														"$text": "Copper Armor for Ominous Trial Spawner Mobs"
+														"$name": "howtoplay.loot.trial_spawner.copper_armor"
 													}}
 												]}},
 												{ "items": { "type": "stack_panel", "size": "$entry_size", "controls": [
 													{ "helmet": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
-														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/copper_helmet",
-															"$text": "Copper Helmet"
-														}}]}},
+														{ "item@assets.table_cell": { "size": "$slot_size",
+															"$content": [{"icon@assets.item_renderer": { "$id": "copper_helmet" }}]
+														}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "75%%"
 														}}
 													]}},
 													{ "chestplate": { "type": "stack_panel", "orientation": "horizontal", "size": ["100%", 36], "controls": [
-														{ "item@assets.table_cell": { "size": "$slot_size", "$content": [ {"icon@assets.item_renderer": {
-															"$texture": "textures/items/copper_chestplate",
-															"$text": "Copper Chestplate"
-														}}]}},
+														{ "item@assets.table_cell": { "size": "$slot_size",
+															"$content": [{"icon@assets.item_renderer": { "$id": "copper_chestplate" }}]
+														}},
 														{ "chance@assets.table_cell": { "size": "$slot_size",
 															"$text": "75%%"
 														}}
@@ -2292,7 +2292,10 @@
 									"$mob": [{ "e@assets.ruined_portal": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "netherite_upgrade"
+											"$content": [{ "i@assets.item_renderer": {
+												"$id": "netherite_upgrade_smithing_template",
+												"$prefix": "§e"
+											}}]
 										}}
 									]
 								}},
@@ -2332,7 +2335,10 @@
 											"$chance": "16.67%%"
 										}},
 										{ "i1@assets.drops_table_entry": {
-											"$item": "cooked_chicken",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "cooked_chicken",
+												"$texture": "textures/items/chicken_cooked"
+											}}],
 											"$chance": "11.11%%"
 										}},
 										{ "i3@assets.drops_table_entry": {
@@ -2344,19 +2350,28 @@
 											"$chance": "5.55%%"
 										}},
 										{ "i5@assets.drops_table_entry": {
-											"$item": "guster_sherd",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "guster_pottery_sherd",
+												"$prefix": "§e"
+											}}],
 											"$chance": "5.55%%"
 										}},
 										{ "i6@assets.drops_table_entry": {
-											"$item": "scrape_sherd",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "scrape_pottery_sherd",
+												"$prefix": "§e"
+											}}],
 											"$chance": "5.55%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "trial_key",
+											"$content": [{"i@assets.item_renderer": { "$id": "trial_key" }}],
 											"$chance": "45%%"
 										}},
 										{ "i9@assets.drops_table_entry": {
-											"$item": "creator_music_box",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/music_disc_creator_music_box",
+												"$name": "('§e%item.record.name\n§7%item.record_creator_music_box.desc')"
+											}}],
 											"$chance": "5%%"
 										}}
 									]
@@ -2371,12 +2386,18 @@
 											"$chance": "15%%"
 										}},
 										{ "i1@assets.drops_table_entry": {
-											"$item": "cooked_beef",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "steak",
+												"$texture": "textures/items/beef_cooked"
+											}}],
 											"$quantity": "1-4",
 											"$chance": "10%%"
 										}},
 										{ "i10@assets.drops_table_entry": {
-											"$item": "golden_carrot",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "golden_carrot",
+												"$texture": "textures/items/carrot_golden"
+											}}],
 											"$quantity": "1-5",
 											"$chance": "10%%"
 										}},
@@ -2434,19 +2455,31 @@
 									"$size": ["100% - 2px", 144],
 									"$items": [
 										{ "i1@assets.brushing_table_entry": {
-											"$item": "copper_nautilus_armor",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "copper_nautilus_armor",
+												"$location": "textures/items/nautilus_armor/"
+											}}],
 											"$chance": "12%%"
 										}},
 										{ "i2@assets.brushing_table_entry": {
-											"$item": "iron_nautilus_armor",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "iron_nautilus_armor",
+												"$location": "textures/items/nautilus_armor/"
+											}}],
 											"$chance": "9%%"
 										}},
 										{ "i3@assets.brushing_table_entry": {
-											"$item": "golden_nautilus_armor",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "golden_nautilus_armor",
+												"$texture": "textures/items/nautilus_armor/gold_nautilus_armor"
+											}}],
 											"$chance": "6%%"
 										}},
 										{ "i4@assets.brushing_table_entry": {
-											"$item": "diamond_nautilus_armor",
+											"$content": [{"i@assets.item_renderer": {
+												"$id": "diamond_nautilus_armor",
+												"$location": "textures/items/nautilus_armor/"
+											}}],
 											"$chance": "3%%"
 										}}
 									]
@@ -2460,6 +2493,10 @@
 							"$title": "Sniffer Sniffing",
 							"$icon": "textures/items/torchflower_seeds",
 							"$collapse": "collapse_sniffing",
+
+							"$torchflower_seeds": [{"i@assets.item_renderer": { "$id": "torchflower_seeds" }}],
+							"$pitcher_pod": [{"i@assets.item_renderer": { "$id": "pitcher_pod" }}],
+
 							"$content": [
 								{ "sniffer_table_header": { "size": ["100% - 2px", 28], "type": "stack_panel", "orientation": "horizontal",
 									"controls": [
@@ -2475,19 +2512,22 @@
 									"$biome": "taiga",
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "torchflower_seeds",
+											"$content": "$torchflower_seeds",
 											"$chance": "30%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "pitcher_pod",
+											"$content": "$pitcher_pod",
 											"$chance": "30%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "sweet_berries",
+											"$content": [{"i@assets.item_renderer": { "$id": "sweet_berries" }}],
 											"$chance": "10%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "large_fern",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/blocks/double_plant_fern_carried",
+												"$name": "tile.double_plant.fern.name"
+											}}],
 											"$chance": "30%%"
 										}}
 									]
@@ -2497,15 +2537,18 @@
 									"$biome": "savanna",
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "torchflower_seeds",
+											"$content": "$torchflower_seeds",
 											"$chance": "35%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "pitcher_pod",
+											"$content": "$pitcher_pod",
 											"$chance": "35%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "tall_grass",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/blocks/double_plant_grass_carried",
+												"$name": "tile.double_plant.grass.name"
+											}}],
 											"$chance": "30%%"
 										}}
 									]
@@ -2515,15 +2558,18 @@
 									"$biome": "cherry_grove",
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "torchflower_seeds",
+											"$content": "$torchflower_seeds",
 											"$chance": "35%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "pitcher_pod",
+											"$content": "$pitcher_pod",
 											"$chance": "35%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "pink_petals",
+											"$content": [{"@assets.item_renderer": {
+												"$id": "pink_petals",
+												"$name": "('tile.'+ $id + '.name')"
+											}}],
 											"$chance": "30%%"
 										}}
 									]
@@ -2533,11 +2579,11 @@
 									"$biome": "lush_caves",
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "torchflower_seeds",
+											"$content": "$torchflower_seeds",
 											"$chance": "10%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "pitcher_pod",
+											"$content": "$pitcher_pod",
 											"$chance": "10%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
@@ -2552,7 +2598,7 @@
 									"$biome": "crimson_forest",
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "nether_wart"
+											"$content": [{"i@assets.item_renderer": { "$id": "nether_wart" }}]
 										}}
 									],
 									"$note": "From Crimson Nylium"
@@ -2589,16 +2635,28 @@
 												{ "sea_luck": { "size": ["100%", 36], "type": "stack_panel", "orientation": "horizontal",
 													"controls": [
 														{"fishing_rod@assets.table_header": { "size": ["25%", "100%"],
-															"$content": [{"i@assets.fishing_rod": {}}]
+															"$content": [{"i@assets.item_renderer": {
+																"$texture": "textures/items/fishing_rod_uncast",
+																"$id": "fishing_rod"
+															}}]
 														}},
 														{"luck_1@assets.table_header": { "size": ["25%", "100%"],
-															"$content": [{"i@assets.luck_of_the_sea": {}}]
+															"$content": [{"i@assets.item_renderer": {
+																"$texture": "textures/ui/items/enchanted_fishing_rod",
+																"$name": "§b%item.fishing_rod.name\n§7%enchantment.lootBonusFishing %enchantment.level.1"
+															}}]
 														}},
 														{"luck_2@assets.table_header": { "size": ["25%", "100%"],
-															"$content": [{"i@assets.luck_of_the_sea": {"$text": "Luck of the Sea II"}}]
+															"$content": [{"i@assets.item_renderer": {
+																"$texture": "textures/ui/items/enchanted_fishing_rod",
+																"$name": "§b%item.fishing_rod.name\n§7%enchantment.lootBonusFishing %enchantment.level.2"
+															}}]
 														}},
 														{"luck_3@assets.table_header": { "size": ["25%", "100%"],
-															"$content": [{"i@assets.luck_of_the_sea": {"$text": "Luck of the Sea III"}}]
+															"$content": [{"i@assets.item_renderer": {
+																"$texture": "textures/ui/items/enchanted_fishing_rod",
+																"$name": "§b%item.fishing_rod.name\n§7%enchantment.lootBonusFishing %enchantment.level.3"
+															}}]
 														}}
 													]
 												}}
@@ -2609,7 +2667,11 @@
 									]
 								}},
 								{ "glow_lichen@how_to_play.fishing_table_item": {
-									"$item": [{"i@assets.glow_lichen":{}}],
+									"$item": [{"i@assets.item_renderer": {
+										"$id": "glow_lichen",
+										"$texture": "('textures/blocks/' + $id)",
+										"$name": "('tile.' + $id + '.name')"
+									}}],
 									"$chance": "§21.21%%",
 									"$one": "0.98%%",
 									"$two": "0.74%%",
@@ -2617,7 +2679,10 @@
 									"$note": "In Dripstone Caves"
 								}},
 								{ "swift_sneak@how_to_play.fishing_table_item": {
-									"$item": [{"i@assets.enchanted_book":{}}],
+									"$item": [{"i@assets.item_renderer":{
+										"$texture": "textures/ui/items/enchanted_book",
+										"$name": "§e%item.enchanted_book.name\n§7%enchantment.swift_sneak %enchantment.level.1 - %enchantment.level.3"
+									}}],
 									"$chance": "0.83%%",
 									"$one": "1.18%%",
 									"$two": "1.53%%",
@@ -2625,7 +2690,10 @@
 									"$note": "In Deep Dark"
 								}},
 								{ "lily_pad@how_to_play.fishing_table_item": {
-									"$item": [{"i@assets.lily_pad":{}}],
+									"$item": [{"i@assets.item_renderer": {
+										"$texture": "textures/blocks/carried_waterlily",
+										"$name": "tile.waterlily.name"
+									}}],
 									"$chance": "§215%%",
 									"$one": "14.03%%",
 									"$two": "13.05%%",
@@ -2640,7 +2708,7 @@
 			}},
 			{ "addons_section@how_to_play_common.main_sections": {
 				"bindings": "$is_toggled",
-				"$toggle": "addons_button_toggle",
+				"$toggle": "optional_addons_button_toggle",
 				"controls": [
 					{ "qol@how_to_play_common.header": {
 						"$text": "Quality of Life Addons",
@@ -2795,7 +2863,7 @@
 								"$quantity": "0-2"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "arrow",
+								"$content": [{"i@assets.item_renderer": { "$id": "arrow" }}],
 								"$quantity": "0-2"
 							}},
 							{ "i3@assets.drops_table_entry": {
@@ -2820,7 +2888,7 @@
 						"$mob": [{ "e@assets.ghast": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "ghast_tear",
+								"$content": [{"@assets.item_renderer": { "$id": "ghast_tear" }}],
 								"$quantity": "0-1"
 							}},
 							{ "i2@assets.drops_table_entry": {
@@ -2876,7 +2944,11 @@
 								"$quantity": "0-3"
 							}},
 							{ "i4@assets.drops_table_entry": {
-								"$item": "wither_skull",
+								"$content": [{"i@assets.item_renderer": {
+									"$texture": "textures/ui/items/head_wither_skeleton",
+									"$name": "item.skull.wither.name",
+									"$prefix": "§e"
+								}}],
 								"$chance": "2.5%%"
 							}}
 						],
@@ -3025,6 +3097,26 @@
 							"$details": "* Probability: 100%%\n* Number of Trades: 12"
 							}
 					},
+					{
+						"deepslate@how_to_play.trading_feature": {
+							"$villager": "Mason",
+							"$level": "§sMaster",
+							"$job": "mason",
+							"$number": "2",
+							"$take1": [{"i@assets.block_renderer": {
+								"$aux": "((-378) * 65536)",
+								"$id": "deepslate",
+								"$count": "10"
+							}}],
+							"$take2": [{"i@assets.emerald":{}}],
+							"$give": [{"i@assets.block_renderer":{
+								"$aux": "((-379) * 65536)",
+								"$id": "cobbled_deepslate",
+								"$count": "10"
+							}}],
+							"$details": "* Probability: 50%%\n* Number of Trades: 12"
+						}
+					},
 					{ 
 						"redstone1@assets.text_box": {
 							"$text": "§a[]§r Generous Clerics"
@@ -3111,6 +3203,17 @@
 						}
 					},
 					{ 
+						"logistichs@assets.text_box": {
+							"$text": "§c[]§r Logistechs"
+						}
+					},
+					{ 
+						"logistichs_pistons_image@how_to_play.feature_element": {
+							"$text": "Pisons can be used to place blocks:\n- Place a hopper pointing to a pison.\n- Put the blocks you want placed inside the hopper.\n- Power and unpower the piston to place it.\n- This won't work if the hopper was locked.\n- The blocks that can be placed are:\n§b * Deepslate\n * Dirt\n * Coarse Dirt\n * Nether Gravel\n * Concrete Powder",
+							"$image": "logistechs_pistons"
+						}
+					},
+					{ 
 						"axolotl@assets.text_box": {
 							"$text": "§c[]§r Axolotl Feed"
 						}
@@ -3149,54 +3252,62 @@
 					},
 					{
 						"copper_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$input5": [{"b@assets.nautilus_shell":{}}],
-							"$input2": [{"b@assets.copper_ingot":{}}],
-							"$input3": [{"b@assets.copper_ingot":{}}],
-							"$input4": [{"b@assets.copper_ingot":{}}],
-							"$input6": [{"b@assets.copper_ingot":{}}],
-							"$input7": [{"b@assets.copper_ingot":{}}],
-							"$input8": [{"b@assets.copper_ingot":{}}],
-							"$input9": [{"b@assets.copper_ingot":{}}],
-							"$output": [{"b@assets.copper_nautilus_armor":{}}]
+							"$C": [{"b@assets.copper_ingot":{}}],
+							"$S": [{"b@assets.nautilus_shell":{}}],
+
+							                 "$input2": "$C", "$input3": "$C",
+							"$input4": "$C", "$input5": "$S", "$input6": "$C",
+							"$input7": "$C", "$input8": "$C", "$input9": "$C",
+							
+							"$output": [{"b@assets.item_renderer": {
+								"$id": "copper_nautilus_armor",
+								"$location": "textures/items/nautilus_armor/"
+							}}]
 						}
 					},
 					{
 						"iron_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$input5": [{"b@assets.nautilus_shell":{}}],
-							"$input2": [{"b@assets.iron_ingot":{}}],
-							"$input3": [{"b@assets.iron_ingot":{}}],
-							"$input4": [{"b@assets.iron_ingot":{}}],
-							"$input6": [{"b@assets.iron_ingot":{}}],
-							"$input7": [{"b@assets.iron_ingot":{}}],
-							"$input8": [{"b@assets.iron_ingot":{}}],
-							"$input9": [{"b@assets.iron_ingot":{}}],
-							"$output": [{"b@assets.iron_nautilus_armor":{}}]
+							"$I": [{"b@assets.iron_ingot":{}}],
+							"$S": [{"b@assets.nautilus_shell":{}}],
+
+							                 "$input2": "$I", "$input3": "$I",
+							"$input4": "$I", "$input5": "$S", "$input6": "$I",
+							"$input7": "$I", "$input8": "$I", "$input9": "$I",
+							
+							"$output": [{"b@assets.item_renderer": {
+								"$id": "iron_nautilus_armor",
+								"$location": "textures/items/nautilus_armor/"
+							}}]
 						}
 					},
 					{
 						"golden_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$input5": [{"b@assets.nautilus_shell":{}}],
-							"$input3": [{"b@assets.gold_ingot":{}}],
-							"$input2": [{"b@assets.gold_ingot":{}}],
-							"$input4": [{"b@assets.gold_ingot":{}}],
-							"$input6": [{"b@assets.gold_ingot":{}}],
-							"$input7": [{"b@assets.gold_ingot":{}}],
-							"$input8": [{"b@assets.gold_ingot":{}}],
-							"$input9": [{"b@assets.gold_ingot":{}}],
-							"$output": [{"b@assets.golden_nautilus_armor":{}}]
+							"$G": [{"b@assets.gold_ingot":{}}],
+							"$S": [{"b@assets.nautilus_shell":{}}],
+
+							                 "$input2": "$G", "$input3": "$G",
+							"$input4": "$G", "$input5": "$S", "$input6": "$G",
+							"$input7": "$G", "$input8": "$G", "$input9": "$G",
+
+							"$output": [{"b@assets.item_renderer": {
+								"$id": "golden_nautilus_armor",
+								"$texture": "textures/items/nautilus_armor/gold_nautilus_armor"
+							}}]
 						}
 					},
 					{
 						"diamond_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$input5": [{"b@assets.nautilus_shell":{}}],
-							"$input2": [{"b@assets.diamond":{}}],
-							"$input3": [{"b@assets.diamond":{}}],
-							"$input4": [{"b@assets.diamond":{}}],
-							"$input6": [{"b@assets.diamond":{}}],
-							"$input7": [{"b@assets.diamond":{}}],
-							"$input8": [{"b@assets.diamond":{}}],
-							"$input9": [{"b@assets.diamond":{}}],
-							"$output": [{"b@assets.diamond_nautilus_armor":{}}]
+							"$D": [{"b@assets.diamond":{}}],
+							"$S": [{"b@assets.nautilus_shell":{}}],
+
+							                 "$input2": "$D", "$input3": "$D",
+							"$input4": "$D", "$input5": "$S", "$input6": "$D",
+							"$input7": "$D", "$input8": "$D", "$input9": "$D",
+							
+							"$output": [{"b@assets.item_renderer": {
+								"$id": "diamond_nautilus_armor",
+								"$location": "textures/items/nautilus_armor/"
+							}}]
 						}
 					},
 					{ 
@@ -3206,19 +3317,18 @@
 					},
 					{
 						"bamboo_to_planks@how_to_play.crafting2x2_feature": {
-							"$input1": [{"b@assets.bamboo":{}}],
-							"$input2": [{"i@assets.bamboo":{}}],
-							"$input3": [{"i@assets.bamboo":{}}],
-							"$input4": [{"b@assets.bamboo":{}}],
+							"$B": [{"b@assets.bamboo":{}}],
+
+							"$input1": "$B", "$input2": "$B",
+							"$input3": "$B", "$input4": "$B",
+
 							"$output": [{"b@assets.bamboo_planks":{}}]
 						}
 					},
 					{
 						"block_to_bamboo@how_to_play.crafting2x2_feature": {
 							"$input1": [{"b@assets.bamboo_block":{}}],
-							"$output": [{"b@assets.bamboo":{
-								"$count": "9"
-							}}]
+							"$output": [{"b@assets.bamboo":{ "$count": "9" }}]
 						}
 					},
 					{ 
@@ -3703,10 +3813,10 @@
 					
 					{ "structure_locator@how_to_play_common.header": {
 						"$text": "Structure Locator",
-						"$icon": [{"i@assets.structure_locator":{
-							"size": [16, 16],
-							"$text": ""}}
-						]
+						"$icon": [{"i@assets.item_renderer": {
+							"$texture": "textures/items/structure_locator",
+							"size": [16, 16]
+						}}]
 					}},
 					{ 
 						"locator@assets.text_box": {
@@ -3740,7 +3850,7 @@
 			}},
 			{ "commands_section@how_to_play_common.main_sections": {
 				"bindings": "$is_toggled",
-				"$toggle": "commands_button_toggle",
+				"$toggle": "custom_commands_button_toggle",
 				"controls": [
 					{ "inform_header@how_to_play_common.header": {
 						"$text": "/inform", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
@@ -3788,7 +3898,7 @@
 						"$text": "/visit", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
 					}},
 					{ "visit@assets.text_box": {
-						"$text": "§o§7%command.assets.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /visit [destination] [player]\n\n§vParameters:§r\n- destination: The identifier of the island or the structure\n- player: A player target selector  §7(Defaults to §e@s§7)"
+						"$text": "§o§7%command.visit.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /visit [destination] [player]\n\n§vParameters:§r\n- destination: The identifier of the island or the structure\n- player: A player target selector  §7(Defaults to §e@s§7)"
 					}},
 
 					{ "restore_header@how_to_play_common.header": {
@@ -4576,7 +4686,7 @@
 		"$note": "",
 		"controls": [
 			{
-				"biome@assets.table_header": {
+				"item@assets.table_header": {
 					"size": [38, "100%"],
 					"$content": "$item"
 				}

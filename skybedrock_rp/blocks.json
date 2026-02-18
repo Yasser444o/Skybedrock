@@ -106,5 +106,11 @@
 	"skybedrock:nether_gravel": {
 		"textures": "nether_gravel",
 		"sound": "gravel"
+	},
+	"skybedrock:unsafe_copper": {
+		"sound": "copper"
+	},
+	"skybedrock:unsafe_tuff": {
+		"sound": "tuff"
 	}
 }

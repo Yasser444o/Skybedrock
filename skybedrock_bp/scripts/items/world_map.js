@@ -208,8 +208,6 @@ export function manage_waypoint(player, block, item) {
 			save_dynamic_object(item, 'waypoints', waypoints)
 			player.getComponent('equippable').setEquipment('Mainhand', item)
 			player.runCommand("scriptevent skybedrock:quests lodestone")
-			// system.run(() => console.log(formValues))
-			// system.run(() => console.log(player.getComponent('equippable').getEquipment('Mainhand').getDynamicProperty('waypoints')))
 		})
 	}, changed ? 40 : 0)
 }
