@@ -4,7 +4,7 @@
         "name": "Logistechs",
         "description": "Adds vanilla-like features for automation.",
         "uuid": "601e1b3f-888a-421e-a84e-6e81f73b9c53",
-        "version": [ 1, 0, 0 ],
+        "version": [ 1, 1, 0 ],
         "min_engine_version": [ 1, 21, 0]
 	},
     "metadata": { "product_type": "addon" },

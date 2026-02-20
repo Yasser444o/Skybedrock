@@ -41,3 +41,19 @@ export function offset_location(location, direction, distance) {
 		z: location.z + direction.z * distance,
 	}
 }
+
+export function add_vectors(a, b) {
+	return {
+		x: a.x + b.x,
+		y: a.y + b.y,
+		z: a.z + b.z,
+	}
+}
+
+export function subtract_vectors(a, b) {
+	return {
+		x: a.x - b.x,
+		y: a.y - b.y,
+		z: a.z - b.z,
+	}
+}
