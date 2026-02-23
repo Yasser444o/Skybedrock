@@ -160,9 +160,12 @@ export const categories = {
 			cactus_farm
 			sand_farm
 			pumpkin_farm
+			sweet_berry
 			snow_farm
 			slime_farm
+			flower_farm
 			mushroom_farm
+			blaze_farm
 		`
 	},
 	challenges: {
@@ -1332,6 +1335,20 @@ export const quests = {
 		consume: ["64 Pumpkins", `pumpkin 64`],
 		reward: ["Shears", `give @s shears`]
 	},
+	sweet_berry: {
+		data: `
+			require: taiga
+			title: It Might Be Poisonous
+			icon: textures/items/sweet_berries
+			* Collect 64 sweet berries
+			- pick up some sweet berries from the taiga island
+			- plant a few sweet berry bushes on grass or dirt
+			- harvest the berries when they are ready
+			- collect a stack of sweet berries
+		`,
+		consume: ["64 Sweet Berries", `sweet_berries 64`],
+		reward: ["A Bundle", `give @s magenta_bundle`],
+	},
 	snow_farm: {
 		data: `
 			require: taiga
@@ -1372,6 +1389,38 @@ export const quests = {
 		consume: ["16 Slime Blocks", `slime 16`],
 		reward: ["16 Jack o'Lanterns", `give @s lit_pumpkin 16`]
 	},
+	flower_farm: {
+		data: `
+			require: (dark_forest & birch)
+			title: The Smell of Spring
+			icon: textures/blocks/flower_tulip_pink
+			* Build a flower farm for the all small flowers
+			- there are 14 types of flowers you need to complete this quest:
+			- Poppy, Dandelion, Cornflower, Azure Bluet, Oxeye Daisy, Blue Orchid, Lilly of the Valley, Allium, All 4 Tulips, Open and Closed Eyeblossom
+			- collect a poppy, dandelion, and a cornflower from the starter island
+			- if you haven't you can get them by applying bone meal on the grass
+			- collect an oxeye daisy and an azure bluet by bone mealing grass in a plains biome
+			- collect a blue orchid from the mangrove swamp island
+			- collect a lily of the valley from the roofed island or by bone mealing grass in any forest biome
+			- collect an allium from the woodland mansion or buy it from a wandering trader
+			- find a tulip patch location in a plains biome and apply bone meal on the grass to get all 4 colors of tulips, or buy them from a wandering trader
+			- harvest eyeblossoms from the pale oak island
+			- eyeblossoms only open during the night and close in the morning
+			- small flowers can be bonemealed in bedrock edition
+			- build a farm that can automatically bonemeal and harvest flowers
+			- farm 16 flowers of all 14 types
+			(There is a bug that makes applying bone meal on grass in the flower forest or meadow biome only produce poppies)
+			(You may also buy any type of flowers from the wandering trader)
+			(A tulip patch can be found at 440 64 -160)
+		`,
+		consume: ["16 of every type of flowers",
+			`[poppy 16, dandelion 16, blue_orchid 16, allium 16, azure_bluet 16, red_tulip 16, orange_tulip 16, white_tulip 16, pink_tulip 16, oxeye_daisy 16, cornflower 16, lily_of_the_valley 16, closed_eyeblossom 16, open_eyeblossom 16]`
+		],
+		reward: ["32 of Every Dye", (player) => {
+			const dyes = ['white', 'light_gray', 'gray', 'black', 'brown', 'red', 'orange', 'yellow', 'lime', 'green', 'cyan', 'light_blue', 'blue', 'purple', 'magenta', 'pink']
+			dyes.forEach(dye => player.runCommand(`give @s ${dye}_dye 32`))
+		}]
+	},
 	mushroom_farm: {
 		data: `
 			require: mushroom_island
@@ -1388,6 +1437,25 @@ export const quests = {
 		`,
 		consume: ["32 Brown and 32 Red Mushrooms", `[red_mushroom 32, brown_mushroom 32]`],
 		reward: ["3 Iron Axes", `give @s iron_axe 3`]
+	},
+	blaze_farm: {
+		data: `
+			require: fortress_loot
+			title: Blazing Hot
+			icon: textures/items/blaze_rod
+			* build a blaze only farm and collect a 32 blaze rods
+			- you can build it in the fortress, or with a blaze spawner
+			- if you decide to build it in a fortress, here are a few things you need to know:
+			- blazes spawn in light level 11 or less, unlike other mobs which require even less light
+			- soul Campfires provide a light level of 10
+			- blazes are 1.8 blocks tall
+			- fortress mobs only spawn in specific locations in the fortress
+			- those locations are marked with cracked nether bricks
+			- blazes drop nether quartz if you have "Blaze Quartz" addon enabled
+			- blazes only drop items when killed by a player or a tamed wolf
+		`,
+		consume: ["32 Blaze Rods", `blaze_rod 32`],
+		reward: ["2 Stacks of Nether Quartz", `give @s quartz 128`]
 	},
 
 	sneak_a_warden: {
@@ -1577,22 +1645,29 @@ export const quests = {
 	}
 }
 
-Object.entries(quests).forEach(([id, {data, query, consume, reward, challenge, checkmark, format}]) => {
-	data = data.split('\n').map(line => line.replaceAll('	', ''))  // remove the indentation
-	const icon = data.find(line => line.startsWith('icon: '))?.replace('icon: ', '')
-	const title = data.find(line => line.startsWith('title: '))?.replace('title: ', '')
-	const summary = data.find(line => line.startsWith('* '))?.replace('* ', '')
-	const note = data.find(line => line.startsWith('(') && line.endsWith(')'))?.slice(1, -1)
-	const image = data.find(line => line.startsWith('image: '))?.replace('image: ', '')
-	const parent = data.find(line => line.startsWith('require: '))?.replace('require: ', '')
-	const lines = data.filter(line => line.slice(0, 2) != '* ' && line[1] == ' ')
-	.map(line => [line[0], line.slice(2)])  // convert from "prefix string" to [prefix, string]
-	quests[id] = {
-		icon, title, summary, note, image, parent,
-		lines: lines.filter(line => typeof line == 'object'),
-		query, consume, reward, challenge, checkmark, format
+const prefixes = { icon: 'icon: ', title: 'title: ', image: 'image: ', summary: '* ', }
+for (const id in quests) { // for each quest
+	const {data, query, consume, reward, challenge, checkmark, format} = quests[id] // get data
+	const quest = {lines: [], notes: [], query, consume, reward, challenge, checkmark, format}; quests[id] = quest // create quest
+	const lines = data.split('\n') // separate to lines
+	process: for (let i = 0; i < lines.length; i++) { // for each line
+		const line = lines[i].replaceAll('	', ''); // remove indentation
+		for (const key in prefixes) { // for each prefix
+			const prefix = prefixes[key] // get the prefix
+			if (!line.startsWith(prefix)) continue // is it prefixed
+			quest[key] = line.slice(prefix.length) // remove the prefix
+			continue process // skip the remaining checks
+		}
+		if (line.startsWith('require: ')) {
+			const parent = line.slice('require: '.length)
+			if (parent.includes('&')) quest.require_all = parent.slice(1, -1).split(' & ')
+			else if (parent.includes('|')) quest.require_any = parent.slice(1, -1).split(' | ')
+			else quest.require = parent
+		}
+		else if (line.startsWith('(') && line.endsWith(')')) quest.notes.push(line.slice(1, -1)) // is it a note
+		else if (line.slice(0, 2) != '* ' && line[1] == ' ') quest.lines.push([line[0], line.slice(2)]) // is it a line
 	}
-})
+}
 
 const for_rework = { /*
 
@@ -1712,16 +1787,6 @@ const for_rework = { /*
 	- keep fishing until you catch a treasure item
 	(You might need an auto clicker to run the machine)
 
-	sweet_berry
-	require: taiga
-	title: It Might Be Poisonous
-	icon: textures/items/sweet_berries
-	* Collect 64 sweet berries
-	- pick up a berry from the taiga island
-	- plant a sweet berry bush on grass or dirt and harvest the berries when they are ready
-	- plant 15 more berry bushes
-	- collect a stack of sweet berries
-	- now you must eat a sweet berry
 
 	stray_farm
 	require: taiga
@@ -1938,23 +2003,6 @@ const for_rework = { /*
 	icon: 2293760
 	* Build an automatic wool farm for 5 colors of wool
 
-	flower_farm
-	require: (dark_forest & birch & evoker)
-	title: The Smell of Spring
-	icon: textures/blocks/flower_cornflower
-	* Build a flower farm for every small flower
-	- collect a poppy, dandelion, and a cornflower from the starter island
-	- collect an oxeye daisy and an azure bluet by bone mealing grass in the plains biome
-	- collect a blue orchid from the swamp island
-	- collect a lily of the valley from the roofed island or by bone mealing grass in any forest biome
-	- collect an allium from the woodland mansion
-	- find a tulip patch and collect all 4 colors of tulips
-	- build a small flower farm
-	- farm 64 of every type of flower
-	(Bone mealing the grass in the flower forest or meadow biome does only grow poppies due to a bug)
-	(You may also buy any type of flowers from the wandering trader)
-	(A tulip patch can be found at 440 64 -160)
-
 	vine_farm
 	require: (swamp & iron)
 	title: Viner
@@ -2003,11 +2051,6 @@ const for_rework = { /*
 	icon: textures/items/coal
 	* Find every spawning spot in the fortress and turn it into a fortress farm
 
-	blaze_farm
-	require: fortress_loot
-	title: That's Fire
-	icon: textures/items/blaze_rod
-	* Build a blaze only farm
 
 	coal_farm
 	require: (fortress_loot & other_soulsand_valley)
