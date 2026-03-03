@@ -1,0 +1,19 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+			"identifier": "skybedrock:paeonia",
+            "menu_category": {
+                "category": "nature",
+                "group": "minecraft:itemGroup.name.flower"
+            }
+        },
+        "components": {
+            "minecraft:icon": "skybedrock:paeonia",
+            "minecraft:block_placer": {
+                "block": "skybedrock:paeonia",
+                "replace_block_item": true
+            }
+        }
+    }
+}

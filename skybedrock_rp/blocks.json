@@ -112,5 +112,11 @@
 	},
 	"skybedrock:unsafe_tuff": {
 		"sound": "tuff"
+	},
+	"skybedrock:blue_rose": {
+		"sound": "grass"
+	},
+	"skybedrock:paeonia": {
+		"sound": "grass"
 	}
 }
