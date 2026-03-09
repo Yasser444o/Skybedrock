@@ -10,6 +10,12 @@
 				"fog_start": 240,
 				"fog_end": 256,
 				"render_distance_type": "fixed"
+			},
+			"weather": {
+				"fog_color": "#757575",
+				"fog_start": 240,
+				"fog_end": 256,
+				"render_distance_type": "fixed"
 			}
 		}
 	}

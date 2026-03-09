@@ -2574,6 +2574,48 @@
 										}}
 									]
 								}},
+								{ "cherry_grove_sniffer@how_to_play.sniffer_table_item": {
+									"$size": ["100% - 2px", 108],
+									"$biome": "ice_spikes",
+									"$items": [
+										{ "i1@assets.sniffing_table_entry": {
+											"$content": "$torchflower_seeds",
+											"$chance": "15%%"
+										}},
+										{ "i1@assets.sniffing_table_entry": {
+											"$content": "$pitcher_pod",
+											"$chance": "15%%"
+										}},
+										{ "i1@assets.sniffing_table_entry": {
+											"$content": [{"@assets.item_renderer": {
+												"$texture": "textures/blocks/flower_rose_blue",
+												"$name": "item.skybedrock_blue_rose"
+											}}],
+											"$chance": "70%%"
+										}}
+									]
+								}},
+								{ "cherry_grove_sniffer@how_to_play.sniffer_table_item": {
+									"$size": ["100% - 2px", 108],
+									"$biome": "flower_forest",
+									"$items": [
+										{ "i1@assets.sniffing_table_entry": {
+											"$content": "$torchflower_seeds",
+											"$chance": "15%%"
+										}},
+										{ "i1@assets.sniffing_table_entry": {
+											"$content": "$pitcher_pod",
+											"$chance": "15%%"
+										}},
+										{ "i1@assets.sniffing_table_entry": {
+											"$content": [{"@assets.item_renderer": {
+												"$texture": "textures/blocks/flower_paeonia",
+												"$name": "item.skybedrock_paeonia"
+											}}],
+											"$chance": "70%%"
+										}}
+									]
+								}},
 								{ "lush_caves_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 108],
 									"$biome": "lush_caves",
@@ -3209,8 +3251,26 @@
 					},
 					{ 
 						"logistichs_pistons_image@how_to_play.feature_element": {
-							"$text": "Pisons can be used to place blocks:\n- Place a hopper pointing to a pison.\n- Put the blocks you want placed inside the hopper.\n- Power and unpower the piston to place it.\n- This won't work if the hopper was locked.\n- The blocks that can be placed are:\n§b * Deepslate\n * Dirt\n * Coarse Dirt\n * Nether Gravel\n * Concrete Powder",
+							"$text": "Pistons can be used to place blocks:\n- Place a hopper pointing to a piston.\n- Put the blocks you want placed inside the hopper.\n- Power and unpower the piston to place it.\n- This won't work if the hopper was locked.\n- The blocks that can be placed are:\n§b * Deepslate\n * Dirt\n * Coarse Dirt\n * Nether Gravel\n * Concrete Powder",
 							"$image": "logistechs_pistons"
+						}
+					},
+					{ 
+						"logistichs_farmers_image@how_to_play.feature_element": {
+							"$text": "Farmer Zombie Villagers can use the hoe on certain blocks:\n- They need to be able to pickup items.\n- They can use any hoe material.\n- They can only interact with blocks that are directly next to their feet.\n- There must be an air block above the block they are interacting with.\n- Each interaction consumes one hoe durability.\n- The blocks they can interact with are:\n§b - Coarse Dirt -> Dirt\n - Dirt -> Farmland\n - Grass Block -> Farmland\n - Dirt Path -> Farmland\n - Rooted Dirt -> Dirt + Hanging Roots",
+							"$image": "logistechs_farmer"
+						}
+					},
+					{ 
+						"logistichs_leatherworkers_image@how_to_play.feature_element": {
+							"$text": "Leatherworker Zombie Villagers can fill an empty cauldrons using buckets:\n- They need to be able to pickup items.\n- You can take items from their hands.\n- They can only interact with cauldrons that are directly next to their feet.\n- The new bucket will spawn on the other side of the cauldron.\n- The buckets they can use are:\n§b - Empty Bucket -> Empties the Cauldron and Fills the bucket\n - Water Bucket -> Fills the Cauldron with water\n - Lava Bucket -> Fills the Cauldron with lava\n - Powder Snow Bucket -> Fills the Cauldron with powder snow",
+							"$image": "logistechs_cauldrons"
+						}
+					},
+					{ 
+						"logistechs_deepslate_image@how_to_play.feature_element": {
+							"$text": "Leatherworker Zombie Villagers can convert sculk to deepslate in lava cauldrons:\n- They need to be able to pickup items.\n- You can take items from their hands.\n- They can only interact with cauldrons that are directly next to their feet.\n- The new item will spawn on the other side of the cauldron.",
+							"$image": "logistechs_deepslate"
 						}
 					},
 					{ 

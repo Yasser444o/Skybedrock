@@ -27,9 +27,11 @@ system.runInterval(() => { world.getAllPlayers().forEach(player => {
 		const biome_id = player.dimension.getBiome(player.location)?.id
 		const biome_name = biome_names[biome_id?.replace('minecraft:', '')] ?? "§0The Void"
 		hud_biome = `biome:l${biome_name.replace('§', '..').length}:b${biome_name}`
-	} if (waypoint) {
+	}
+	if (waypoint) {
 		const {name} = waypoint
 		const direction = get_direction(waypoint, player)
 		hud_waypoint = `waypoint:d${direction}:w${name}`
-	} if (biome_on || waypoint) player.onScreenDisplay.setActionBar(`${hud_biome}${hud_waypoint}`)
+	}
+	if (biome_on || waypoint) player.onScreenDisplay.setActionBar(`${hud_biome}${hud_waypoint}`)
 })}, 2)

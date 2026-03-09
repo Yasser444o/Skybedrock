@@ -6,17 +6,17 @@
 				{
 					"type": "item",
 					"name": "minecraft:torchflower_seeds",
-					"weight": 35
+					"weight": 15
 				},
 				{
 					"type": "item",
 					"name": "minecraft:pitcher_pod",
-					"weight": 35
+					"weight": 15
 				},
 				{
 					"type": "item",
 					"name": "skybedrock:paeonia",
-					"weight": 30
+					"weight": 70
 				}
 			]
 		}
