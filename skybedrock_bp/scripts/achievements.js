@@ -6,7 +6,7 @@ import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
 
 
-export const version = "v5.1.0"
+export const version = "v5.1.1"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
