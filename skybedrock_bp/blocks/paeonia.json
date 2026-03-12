@@ -1,0 +1,54 @@
+{
+	"format_version":  "1.26.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "skybedrock:paeonia",
+			"menu_category": { "category": "nature", "group": "minecraft:itemGroup.name.flower"}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.flower",
+			"minecraft:material_instances": { "*": {
+				"texture": "skybedrock:paeonia",
+				"render_method": "alpha_test_single_sided",
+				"ambient_occlusion": 0,
+				"face_dimming": false
+			}},
+			"minecraft:collision_box": false,
+			"minecraft:light_dampening": 0,
+			"minecraft:movable": { "movement_type": "popped" },
+			"minecraft:flower_pottable": {},
+			"minecraft:embedded_visual": {
+				"geometry": "geometry.potted_flower",
+				"material_instances": { "*": {
+					"texture": "skybedrock:paeonia",
+					"render_method": "alpha_test_single_sided",
+					"ambient_occlusion": 0,
+					"face_dimming": false
+				}}
+			},
+			"minecraft:flammable": true,
+			"minecraft:map_color": "#d593f1",
+			"minecraft:placement_filter": {
+				"conditions": [{
+					"block_filter": [{ "tags": "q.any_tag('dirt')" }],
+					"allowed_faces": ["up"]
+				}]
+			},
+			"minecraft:precipitation_interactions": { "precipitation_behavior": "none" },
+			"minecraft:random_offset": {
+				"x": { "steps": 0, "range": { "min": -4, "max": 4 } },
+				"y": { "steps": 0, "range": { "min": 0, "max": 0 } },
+				"z": { "steps": 0, "range": { "min": -4, "max": 4 } }
+			},
+			"minecraft:selection_box": {
+				"origin": [-3.875, 0, -3.875],
+				"size": [8.75, 9.75, 8.75]
+			},
+			"minecraft:liquid_detection": {
+				"detection_rules": [
+					{ "liquid_type": "water", "on_liquid_touches": "popped" }
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+			"identifier": "skybedrock:blue_rose",
+            "menu_category": {
+                "category": "nature",
+                "group": "minecraft:itemGroup.name.flower"
+            }
+        },
+        "components": {
+            "minecraft:icon": "skybedrock:blue_rose",
+            "minecraft:block_placer": {
+                "block": "skybedrock:blue_rose",
+                "replace_block_item": true
+            }
+        }
+    }
+}

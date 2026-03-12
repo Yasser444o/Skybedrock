@@ -53,6 +53,12 @@
 		},
 		"lit_weathered_copper_bulb": {
 			"textures": "textures/blocks/weathered_copper_bulb_lit"
+		},
+		"skybedrock:blue_rose": {
+			"textures": "textures/blocks/flower_rose_blue"
+		},
+		"skybedrock:paeonia": {
+			"textures": "textures/blocks/flower_paeonia"
 		}
 	},
 	"texture_name": "atlas.terrain"

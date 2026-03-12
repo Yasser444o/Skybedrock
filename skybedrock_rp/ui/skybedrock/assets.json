@@ -1109,6 +1109,14 @@
 		"$texture": "textures/biomes/cherry_grove",
 		"$text": "Cherry Grove"
 	},
+	"ice_spikes@assets.old_item_renderer": {
+		"$texture": "textures/biomes/ice_spikes",
+		"$text": "Ice Spikes"
+	},
+	"flower_forest@assets.old_item_renderer": {
+		"$texture": "textures/biomes/flower_forest",
+		"$text": "Flower Forest"
+	},
 	"lush_caves@assets.old_item_renderer": {
 		"$texture": "textures/biomes/lush_caves",
 		"$text": "Lush Caves"

@@ -37,12 +37,25 @@
 					"orientation": "horizontal",
 					"$biome_removed": "($action_text - ('biome:l' + $length + ':b') - ('%.' + $length + 's') * ($action_text - ('biome:l' + $length + ':b')))",
 					"$direction": "($biome_removed - 'waypoint:d')",
+					"$direction_no_biome": "($action_text - 'waypoint:d')",
 					"$name": "($biome_removed - ('waypoint:d' + $direction) - ':w')",
+					"$name_no_biome": "($action_text - ('waypoint:d' + $direction_no_biome) - ':w')",
 					"controls": [
-						{ "direction": {
+						{ "direction_with_biome": {
 							"type": "image",
 							"size": [16, 16],
 							"texture": "('textures/ui/directions/compass' + $direction)",
+							"visible": "(not ($action_text - 'biome:' = $action_text))",
+							"layer": 31,
+							"alpha": "@hud.anim_actionbar_text_alpha_out"
+						}},
+						{ "direction_no_biome": {
+							"type": "image",
+							"size": [16, 16],
+							"texture": "('textures/ui/directions/compass' + $direction_no_biome)",
+							"visible": "($action_text - 'biome:' = $action_text)",
+							// "type": "label",
+							// "text": "('textures/ui/directions/compass' + $direction_no_biome)",
 							"layer": 31,
 							"alpha": "@hud.anim_actionbar_text_alpha_out"
 						}},
@@ -56,6 +69,19 @@
 							"controls": [{ "text": {
 								"type": "label",
 								"text": "$name",
+								"visible": "(not( $action_text - 'biome:' = $action_text))",
+								"localize": true,
+								"alpha": "@hud.anim_actionbar_text_alpha_out",
+								"layer": 31
+							}}]
+						}},
+						{ "text_no_biome": {
+							"type": "panel",
+							"size": ["100%c", 16],
+							"controls": [{ "text": {
+								"type": "label",
+								"text": "$name_no_biome",
+								"visible": "($action_text - 'biome:' = $action_text)",
 								"localize": true,
 								"alpha": "@hud.anim_actionbar_text_alpha_out",
 								"layer": 31

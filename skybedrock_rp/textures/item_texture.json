@@ -44,6 +44,12 @@
 		"skybedrock:ocean_map": {
 			"textures": "textures/items/ocean_map"
 		},
+		"skybedrock:blue_rose": {
+			"textures": "textures/blocks/flower_rose_blue"
+		},
+		"skybedrock:paeonia": {
+			"textures": "textures/blocks/flower_paeonia"
+		},
 
 		"update_item": {
 			"textures": "textures/items/update_item"

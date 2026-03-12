@@ -185,7 +185,7 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
 			if (!information) {
 				source.sendMessage(`Usage:`)
 				source.sendMessage(`/inform biome - §7Queries the biome`)
-				source.sendMessage(`/inform light - §7Queries the block and sky light`)
+				source.sendMessage(`/inform light - §7Queries the light level and sky light`)
 				source.sendMessage(`/inform slimechunk - §7Queries the slime chunk`)
 			}
 			const [x, y, z] = [location.x, location.y, location.z].map(a => Math.floor(a))
@@ -195,10 +195,10 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
 			}
 			if (information == "light") {
 				system.run(() => {
-					const block_light = dimension.getLightLevel(location)
+					const light_level = dimension.getLightLevel(location)
 					const sky_light = dimension.getSkyLightLevel(location)
 					source.sendMessage(`Light level at ${x}, ${y}, ${z}:`)
-					source.sendMessage(`Sky Light: §b${sky_light}§r | Block Light: §e${block_light}§r`)
+					source.sendMessage(`Light Level: §e${light_level}§r | Sky Light: §b${sky_light}§r`)
 				})
 			}
 			if (information == "slimechunk") {

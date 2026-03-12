@@ -332,6 +332,56 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
+      "ice_spikes_search_and_dig": {
+        "minecraft:behavior.random_search_and_dig": {
+          "priority": 5,
+          "speed_multiplier": 1.25,
+          "find_valid_position_retries": 5,
+          "target_blocks": [ "minecraft:dirt", "minecraft:grass", "minecraft:podzol", "minecraft:dirt_with_roots", "minecraft:moss_block", "minecraft:mud", "minecraft:muddy_mangrove_roots" ],
+          "goal_radius": 2.0,
+          "search_range_xz": 20.0,
+          "search_range_y": 3,
+          "cooldown_range": 0.0,
+          "digging_duration_range": [ 8.0, 10.0 ],
+          "item_table": "loot_tables/gameplay/entities/sniffer_seeds_ice_spikes.json",
+          "spawn_item_after_seconds": 6.0,
+          "spawn_item_pos_offset": 2.25,
+          "on_searching_start": {
+            "event": "on_searching_start",
+            "target": "self"
+          },
+          "on_fail_during_searching": { "event": "on_fail_during_searching", "target": "self" },
+          "on_digging_start": { "event": "on_digging_start", "target": "self"},
+          "on_item_found": {"event": "on_item_found", "target": "self" },
+          "on_fail_during_digging": { "event": "on_fail_during_digging", "target": "self" },
+          "on_success": { "event": "on_search_and_digging_success", "target": "self"}
+        }
+      },
+      "flower_forest_search_and_dig": {
+        "minecraft:behavior.random_search_and_dig": {
+          "priority": 5,
+          "speed_multiplier": 1.25,
+          "find_valid_position_retries": 5,
+          "target_blocks": [ "minecraft:dirt", "minecraft:grass", "minecraft:podzol", "minecraft:dirt_with_roots", "minecraft:moss_block", "minecraft:mud", "minecraft:muddy_mangrove_roots" ],
+          "goal_radius": 2.0,
+          "search_range_xz": 20.0,
+          "search_range_y": 3,
+          "cooldown_range": 0.0,
+          "digging_duration_range": [ 8.0, 10.0 ],
+          "item_table": "loot_tables/gameplay/entities/sniffer_seeds_flower_forest.json",
+          "spawn_item_after_seconds": 6.0,
+          "spawn_item_pos_offset": 2.25,
+          "on_searching_start": {
+            "event": "on_searching_start",
+            "target": "self"
+          },
+          "on_fail_during_searching": { "event": "on_fail_during_searching", "target": "self" },
+          "on_digging_start": { "event": "on_digging_start", "target": "self"},
+          "on_item_found": {"event": "on_item_found", "target": "self" },
+          "on_fail_during_digging": { "event": "on_fail_during_digging", "target": "self" },
+          "on_success": { "event": "on_search_and_digging_success", "target": "self"}
+        }
+      },
       "savanna_search_and_dig": {
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
@@ -492,14 +542,19 @@
         "sequence": [
             {
                 "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "operator": "!=", "value": "lush_caves" },
-                        { "test": "is_biome", "operator": "!=", "value": "savanna" },
-                        { "test": "is_biome", "operator": "!=", "value": "taiga" },
-                        { "test": "has_biome_tag", "operator": "!=", "value": "cherry_grove" },
-                        { "test": "has_biome_tag", "operator": "!=", "value": "crimson_forest" },
-                        { "test": "has_biome_tag", "operator": "!=", "value": "the_end" }
+                    "none_of": [
+                        { "test": "has_component", "value": "minecraft:is_baby" },
+                        { "test": "has_biome_tag", "value": "lush_caves" },
+                        { "test": "is_biome", "value": "savanna" },
+                        { "test": "is_biome", "value": "taiga" },
+                        { "all_of": [
+							{ "test": "has_biome_tag", "value": "ice_plains" },
+							{ "test": "has_biome_tag", "value": "mutated" }
+						]},
+						{ "test": "has_biome_tag", "value": "flower_forest" },
+                        { "test": "has_biome_tag", "value": "cherry_grove" },
+                        { "test": "has_biome_tag", "value": "crimson_forest" },
+                        { "test": "has_biome_tag", "value": "the_end" }
                     ]
                 },
                 "add": { "component_groups": ["sniffer_search_and_dig"] }
@@ -512,6 +567,34 @@
                     ]
                 },
                 "add": { "component_groups": ["lushcaves_search_and_dig"] }
+            },
+            {
+                "filters": {
+                    "all_of": [
+                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                        { "test": "is_biome", "value": "taiga" }
+                    ]
+                },
+                "add": { "component_groups": ["taiga_search_and_dig"] }
+            },
+            {
+                "filters": {
+                    "all_of": [
+                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                        { "test": "has_biome_tag", "value": "ice_plains" },
+                        { "test": "has_biome_tag", "value": "mutated" }
+                    ]
+                },
+                "add": { "component_groups": ["ice_spikes_search_and_dig"] }
+            },
+            {
+                "filters": {
+                    "all_of": [
+                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                        { "test": "has_biome_tag", "value": "flower_forest" }
+                    ]
+                },
+                "add": { "component_groups": ["flower_forest_search_and_dig"] }
             },
             {
                 "filters": {

@@ -1,4 +1,28 @@
 export const change_logs = {
+  "v1.24.0": `\
+General:
+- Added 2 new ancient flowers: Blue Rose and Paeonia
+- Sniffers have a 70% chance to dig them up in the ice spikes biome and the flower forest biome respectively
+- Updated "More Glass" QoL addon so Librarians sell red and yellow candles instead of name tags
+
+Logistechs:
+- Leatherworker zombie villagers can now interact with cauldrons
+- They can fill them up or empty them using buckets
+- They can process sculk to deepslate in lava cauldrons
+- Farmer zombie villagers can use hoes on different dirt blocks
+- You can now take the item a zombie villager is holding
+
+Achievements:
+- Added 3 quests to the Farmer Path: "It Might Be Poisonous" - "The Smell of Spring" - "Blazing Hot"
+- Quests can now have more than one note
+- Optimized the achievements system
+
+Bug Fixes:
+- Fixed a bug that allowed you to see farther in the rain
+- Fixed a bug where /inform light command was showing the wrong data
+- Fixed a bug that prevented the structure locator from working while the biome detector is turned off
+- Replaced the deprecated treasure map in the ocean ruins loot with the new map
+  `,
   "v1.23.0": `\
 General:
 - Creator (Music Box) Music Discs can now be smelted into copper ingots
