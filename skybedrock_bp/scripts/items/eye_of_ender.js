@@ -1,16 +1,5 @@
-import { world, system } from "@minecraft/server" ;
-
-let overworld
-world.afterEvents.worldLoad.subscribe(() => {
-	overworld = world.getDimension('overworld')
-	//reset
-	// world.setDynamicProperty("stronghold1");
-	// world.setDynamicProperty("stronghold2");
-	// world.setDynamicProperty("stronghold3");
-	// world.setDynamicProperty("generatedStronghold1");
-	// world.setDynamicProperty("generatedStronghold2");
-	// world.setDynamicProperty("generatedStronghold3");
-})
+import { world, system } from "@minecraft/server"
+import { overworld } from "../startup"
 
 
 function initialize() {

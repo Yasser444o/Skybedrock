@@ -459,35 +459,66 @@
 			"size": ["100%", "default"],
 			"max_size": ["100%", "100%"]
 		}}],
-		"controls": [
-			{ "background@assets.white_box": {
-				"color": "$color",
-				"anchor_from": "bottom_right",
-				"anchor_to": "bottom_right",
-				"size": ["100% - 2px", "100% - 2px"],
-				"controls": "$content"
-			}}
-		]
+		"controls": [{ "background@assets.white_box": {
+			"color": "$color",
+			"anchor_from": "bottom_right",
+			"anchor_to": "bottom_right",
+			"size": ["100% - 2px", "100% - 2px"],
+			"controls": "$content"
+		}}]
 	},
 	"table_header@assets.white_box": {
 		"color": [0.8, 0.8, 0.8],
 		"$color": [1, 1, 1],
 		"$text": "",
 		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
-		"controls": [
-			{ "background@assets.gray_box": {
-				"color": "$color",
-				"anchor_from": "bottom_right",
-				"anchor_to": "bottom_right",
-				"size": ["100% - 2px", "100% - 2px"],
-				"controls": "$content"
-			}}
-		]
+		"controls": [{ "background@assets.gray_box": {
+			"color": "$color",
+			"anchor_from": "bottom_right",
+			"anchor_to": "bottom_right",
+			"size": ["100% - 2px", "100% - 2px"],
+			"controls": "$content"
+		}}]
 	},
 	"table_border@assets.white_box": {
 		"color": [0.8, 0.8, 0.8],
 		"size": [2, "100%"]
 	},
+	"table_border_h": { "type": "panel", "size": [0, 2] },
+	"table_border_v": { "type": "panel", "size": [2, 0] },
+	"table_row": { 
+		"type": "panel",
+		"controls": [{ "table_row": { 
+			"size": ["100% - 4px", "100% - 2px"],
+			"anchor_from": "top_middle",
+			"anchor_to": "top_middle",
+			"type": "stack_panel",
+			"orientation": "horizontal",
+			"controls": "$content"
+		}}]
+	},
+	"table_filler@assets.white_box": {
+		"color": [0.95, 0.95, 0.95],
+		"size": ["fill", "100%"]
+	},
+	"table_box@assets.white_box": {
+		"color": [0.95, 0.95, 0.95],
+		"$text": "",
+		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
+		"controls": "$content"
+	},
+	"table_instruction@assets.table_box": {
+		"size": ["100%c + 8px", "100%"],
+		"$text": "",
+		"controls": [{ "text@assets.black_text": {
+			"text": "$text",
+			"color": [0, 0.7, 0.7],
+			"font_size": "large",
+			"text_alignment": "center",
+			"size": ["default", "default"]
+		}}]
+	},
+
 	"table_footer": {
 		"type": "panel",
 		"size": ["100%", 30],
@@ -1055,9 +1086,14 @@
 		"size": [ 16, 16 ],
 		"$texture": "textures/items/brewing_stand"
 	},
-	"outpost@assets.old_item_renderer": {
+	"treasure_chest@assets.old_item_renderer": {
+		"$texture": "textures/blocks/chest_front",
+		"$text": "Sky Treasure Chest",
+		"size": [24, 24]
+	},
+	"trident@assets.old_item_renderer": {
 		"size": [ 16, 16 ],
-		"$texture": "textures/ui/structures/outpost"
+		"$texture": "textures/items/trident"
 	},
 	"desert_well@assets.old_item_renderer": {
 		"$texture": "textures/ui/structures/desert_well",
@@ -1073,18 +1109,9 @@
 		"$texture": "textures/ui/structures/ruined_portal",
 		"$text": "Ruined Portal"
 	},
-	"treasure_chest@assets.old_item_renderer": {
-		"$texture": "textures/blocks/chest_front",
-		"$text": "Sky Treasure Chest",
-		"size": [24, 24]
-	},
 	"fortress@assets.old_item_renderer": {
 		"size": [ 16, 16 ],
 		"$texture": "textures/ui/structures/fortress"
-	},
-	"trident@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/items/trident"
 	},
 	//}
 	

@@ -3,26 +3,36 @@ import biome_cleaner from "./world/biome_cleaner";
 import monster_spawners from "./blocks/monster_spawners";
 import redstone_ore from "./blocks/redstone_ore";
 import nether_gravel from "./blocks/nether_gravel";
+import { amethyst_formation, chunks as geode_chunks } from "./world/amethyst_geodes.js"
 import debug_stick from "./items/debug_stick";
 import creative_tool from "./items/creative_tool";
 import guidebook from "./items/guidebook";
 import update_item from "./items/update_item.js";
 import maps from "./world/maps.js";
+import { commands, enums as command_enums } from "./world/commands.js";
 
 // Register all the custom componenets
-system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRegistry }) => {
+system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRegistry, customCommandRegistry }) => {
     blockComponentRegistry.registerCustomComponent('skybedrock:biome_cleaner', biome_cleaner)
 	blockComponentRegistry.registerCustomComponent('skybedrock:monster_spawner', monster_spawners)
 	blockComponentRegistry.registerCustomComponent('skybedrock:redstone_ore', redstone_ore)
 	blockComponentRegistry.registerCustomComponent('skybedrock:nether_gravel', nether_gravel)
+	blockComponentRegistry.registerCustomComponent('skybedrock:amethyst_formation', amethyst_formation)
 	itemComponentRegistry.registerCustomComponent('skybedrock:guidebook', guidebook)
 	itemComponentRegistry.registerCustomComponent('skybedrock:maps', maps)
 	itemComponentRegistry.registerCustomComponent('skybedrock:debug_stick', debug_stick)
 	itemComponentRegistry.registerCustomComponent('skybedrock:creative_tool', creative_tool)
 	itemComponentRegistry.registerCustomComponent('skybedrock:update_me', update_item)
+
+	command_enums.forEach(([name, value]) => customCommandRegistry.registerEnum(name, value))
+	commands.forEach(metadata => {
+		const command = metadata.command
+		delete metadata.command
+		customCommandRegistry.registerCommand(metadata, command)
+	})
 })
 
-import "./world/commands.js"
+export let overworld
 
 // This method extracts item stacks from structures containing a custom entity and stores them in memory
 export const stored_items = {}
@@ -54,6 +64,11 @@ export const stored_items = {}
 		system.clearRun(wait_for_player) // stop this run once a player is found
 	})
 })()
+
+world.afterEvents.worldLoad.subscribe(() => {
+	overworld = world.getDimension('overworld')
+	JSON.parse(world.getDynamicProperty('geode_chunks') ?? '[]').forEach(hash => geode_chunks.add(hash))
+})
 
 world.afterEvents.playerSpawn.subscribe(({player, initialSpawn}) => {
 	if (!initialSpawn) return // when a player logs in

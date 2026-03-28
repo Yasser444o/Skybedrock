@@ -8,7 +8,8 @@ const modes = [
 	["Delete Mobs", 'delete mobs'],
 	["Delete Blocks", 'delete blocks'],
 	["Teleport", 'teleport'],
-	["Ice Rod", 'ice_rod'],
+	["Ice Rod", 'ice rod'],
+	["Count Items", 'count items'],
 ]
 
 const offsets = [], BOA = [-1, 0, 1]
@@ -125,6 +126,11 @@ const teleport = {
 		const location = offset_location(player.location, player.getViewDirection(), 16)
 		player.tryTeleport(location)
 		system.run (() => player.playSound('mob.endermen.portal', {location}))
+	},
+	sneak_use_block(player) {
+		const location = offset_location(player.location, player.getViewDirection(), 16)
+		player.tryTeleport(location)
+		system.runTimeout(() => player.playSound('mob.endermen.portal', {location}), 2)
 	}
 }
 
@@ -157,11 +163,25 @@ const ice_rod = {
 	}
 }
 
+const count_items = {
+	before_use_block(player, block, item) {
+		if (!block.getComponent('inventory')) return
+		const container = block.getComponent('inventory').container
+		let total = 0
+		for (let i = 0; i < container.size; i++) {
+			const item = container.getItem(i)
+			if (!item) continue
+			total += item.amount
+		}
+		player.sendMessage(`Contains ${total} item${total > 1 ? 's' : ''}`)
+	}
+}
+
 // event directors
 function on_use(player, item) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector" && lore[1] && lore[2]) selector.use(player, lore)
-	else if (mode == 'ice_rod') ice_rod.use(player)
+	else if (mode == 'ice rod') ice_rod.use(player)
 	else {
 		const form = new ActionFormData() .title("Creative Tool")
 		for (const mode of modes) form.button(mode[0])
@@ -177,13 +197,17 @@ function on_sneak_use(player, item) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "teleport") teleport.sneak_use(player)
 	if (mode == "selector") selector.sneak_use(player, item, lore)
-	if (mode == 'ice_rod') ice_rod.sneak_use(player, item)
+	if (mode == 'ice rod') ice_rod.sneak_use(player, item)
+}
+function on_sneak_use_block(player, block, item, blockFace) {
+	const {mode} = lore_and_mode(item)
+	if (mode == "teleport") teleport.sneak_use_block(player)
 }
 
 function on_use_block(player, block, item, blockFace) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector") selector.use_block(player, block, item, lore)
-	if (mode == "ice_rod") ice_rod.use_block(block, blockFace)
+	if (mode == "ice rod") ice_rod.use_block(block, blockFace)
 }
 
 function before_hit_block(event, player, block, item) {
@@ -207,6 +231,11 @@ function before_click_entity(player, entity, item) {
 	if (mode == "delete mobs") entity.remove()
 }
 
+function before_click_block(player, block, item) {
+	const {mode} = lore_and_mode(item)
+	if (mode == "count items") count_items.before_use_block(player, block, item)
+}
+
 function on_tick(player, item) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector") selector.tick(player, lore)
@@ -222,7 +251,8 @@ export default {
 	},
 	onUseOn({source: player, itemStack:item, block, blockFace}) {
 		player.is_using_creative_tool_on = true
-		on_use_block(player, block, item, blockFace)
+		if (player.inputInfo.getButtonState("Sneak") == "Pressed") on_sneak_use_block(player, block, item, blockFace)
+		else on_use_block(player, block, item, blockFace)
 	}
 }
 
@@ -243,6 +273,13 @@ world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 	player.is_using_creative_tool_on = true
 	event.cancel = true
 	system.run(() => before_click_entity(player, entity, item))
+})
+world.beforeEvents.playerInteractWithBlock.subscribe(event => {
+	const {itemStack: item, player, block} = event
+	if (item?.typeId != "yasser444:creative_tool") return
+	player.is_using_creative_tool_on = true
+	event.cancel = true
+	system.run(() => before_click_block(player, block, item))
 })
 
 system.runInterval(() => {

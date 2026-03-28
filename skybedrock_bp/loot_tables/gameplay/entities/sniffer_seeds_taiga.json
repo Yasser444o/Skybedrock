@@ -6,17 +6,12 @@
 				{
 					"type": "item",
 					"name": "minecraft:torchflower_seeds",
-					"weight": 30
+					"weight": 35
 				},
 				{
 					"type": "item",
 					"name": "minecraft:pitcher_pod",
-					"weight": 30
-				},
-				{
-					"type": "item",
-					"name": "minecraft:sweet_berries",
-					"weight": 10
+					"weight": 35
 				},
 				{
 					"type": "item",

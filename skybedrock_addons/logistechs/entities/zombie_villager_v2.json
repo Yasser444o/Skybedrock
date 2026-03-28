@@ -650,7 +650,7 @@
 				"on_interact": {
 					"filters": {
 						"all_of": [
-							{ "test": "all_slots_empty", "subject": "other", "value": "hand" },
+							{ "test": "all_slots_empty", "subject": "other", "value": "main_hand" },
                   			{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "not", "value": "iron_sword" },
                   			{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "not", "value": "iron_shovel" },
 							{ "test": "all_slots_empty", "subject": "self", "operator": "not", "value": "hand" },

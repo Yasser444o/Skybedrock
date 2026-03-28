@@ -53,7 +53,7 @@
 	},
 
 	"player_inventory": {
-		"$debug_stick_aux": 259,   // this changes with every update
+		"$debug_stick_aux": 260,   // this changes with every update
 		"modifications": [{
 			"array_name": "controls",
 			"operation": "insert_back",

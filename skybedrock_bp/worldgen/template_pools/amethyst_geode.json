@@ -1,0 +1,19 @@
+{
+	"format_version": "1.26.0",
+	"minecraft:template_pool": {
+		"description": {
+			"identifier": "skybedrock:amethyst_geode"
+		},
+		"elements": [
+			{
+				"element": {
+					"element_type": "minecraft:single_pool_element",
+					"location": "amethyst_geode",
+					"processors": "skybedrock:amethyst_geode",
+					"projection": "rigid"
+				},
+				"weight": 1
+			}
+		]
+	}
+}

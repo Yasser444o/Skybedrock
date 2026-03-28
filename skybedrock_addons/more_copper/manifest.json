@@ -1,7 +1,7 @@
 {
     "format_version": 2,
     "header": {
-        "description": "drowneds have a higher chance of dropping copper",
+        "description": "Copper equipment can be smelted into copper ingots, and Drowneds have a higher chance of dropping copper",
         "name": "More Copper",
         "uuid": "3a1ae77e-2dcc-446c-829f-e34fbca0a329",
         "version": [ 1, 0, 0 ],

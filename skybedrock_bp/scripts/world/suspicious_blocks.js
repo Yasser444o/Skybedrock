@@ -1,4 +1,5 @@
 import { world, system } from "@minecraft/server" ;
+import { overworld } from "../startup";
 
 const structures = [
 	{
@@ -91,11 +92,9 @@ const structures = [
 		]
 	}
 ]
-
 // set random timeouts for each suspicious block location
-let overworld, timer
+let timer
 world.afterEvents.worldLoad.subscribe(()=> {
-	overworld = world.getDimension('overworld')
 	timer = world.scoreboard.getObjective('Timer')
 	structures.forEach(structure => {
 		const part_size = Math.floor(structure.delay / structure.locations.length); let k = 0

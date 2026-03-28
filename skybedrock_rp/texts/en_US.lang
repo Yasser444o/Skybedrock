@@ -41,6 +41,8 @@ entity.skybedrock:end_sickness.name=End Phantom Spawn
 biome.plains.name=Plains
 biome.desert.name=Desert
 biome.savanna.name=Savanna
+biome.taiga.name=Taiga
+biome.cherry_grove.name=Cherry Grove
 
 ## HUD
 hudScreen.tooltip.seeMap=See Map
@@ -165,6 +167,7 @@ maps.structure.ocean_ruins=Ocean Ruins
 maps.structure.trail_ruins=Trail Ruins
 maps.structure.woodland_mansion=Woodland Mansion
 maps.structure.x_mark=Buried Treasure
+maps.structure.amethyst_geode=Amethyst Geode
 
 achievements.announcement.message=%s has completed §a[%s]
 
