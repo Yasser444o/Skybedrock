@@ -199,7 +199,11 @@
 									"$size": ["100% - 2px", 36],
 									"$items": [
 										{ "i2@assets.bartering_table_entry": {
-											"$item": "nether_gravel",
+											"$item": [{"i@assets.item_renderer": {
+												"$id": "nether_gravel",
+												"$texture": "('textures/ui/blocks/' + $id)",
+												"$name": "tile.skybedrock_nether_gravel.name"
+											}}],
 											"$quantity": "8-16",
 											"$chance": "8.53%%"
 										}}
@@ -214,7 +218,11 @@
 								},
 								{
 									"gravel_crafting@how_to_play.crafting2x2_feature": {
-										"$input1": [{"b@assets.nether_gravel":{}}],
+										"$input1": [{"b@assets.item_renderer": {
+											"$id": "nether_gravel",
+											"$texture": "('textures/ui/blocks/' + $id)",
+											"$name": "tile.skybedrock_nether_gravel.name"
+										}}],
 										"$output": [{"b@assets.gravel": {}}]
 									}
 								},
@@ -370,89 +378,123 @@
 							"$icon": "textures/items/raw_copper",
 							"$collapse": "collapse_axolotls",
 							"$content": [
-								{
-									"axolotls@how_to_play.feature": {
-										"$book_name": "axolotls",
-										"$content": [
-											{
-												"lucy_axolotl@assets.book_page": {
-													"size": ["100%", 107],
-													"$button_size": [40, 80],
-													"$name": "lucy_axolotl",
-													"$p_page": 4, "$prev": "wild_axolotl",
-													"$n_page": 2, "$next": "cyan_axolotl",
-													"$page_content": [
-														{
-															"recipe@how_to_play.axolotl_recipe": {
-																"$text": "Feeding Lucy Axolotls Copper Ingots --> 80%% chance to spit Raw Copper and 20%% chance to reject it.",
-																"$ingot": "copper_ingot",
-																"$axolotl": "lucy_axolotl",
-																"$raw_ore": "raw_copper"
-															}
-														}
+								{ "content@how_to_play.build_element": {
+									"$text": "Feeding an ingot to an axolotl has a 80%% chnace to make the axolotl spit a raw ore",
+									"$build": [
+										{ "table@assets.custom_table": {
+											"$rows": [
+												{ "upper_border@assets.table_border_h": {}},
+												{ "header@assets.table_row": {
+													"size": ["100%", 24],
+													"$content": [
+														{ "title@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": ["fill", "100%"], "$text": "Axolotl Interactions" }}
 													]
-												}
-											},
-											{
-												"cyan_axolotl@assets.book_page": {
-													"size": ["100%", 107],
-													"$button_size": [40, 80],
-													"$name": "cyan_axolotl",
-													"$p_page": 0, "$prev": "lucy_axolotl",
-													"$n_page": 3, "$next": "gold_axolotl",
-													"$page_content": [
-														{
-															"recipe@how_to_play.axolotl_recipe": {
-																"$text": "Feeding Cyan Axolotls Iron Ingots --> 80%% chance to spit Raw Iron and 20%% chance to reject it.",
-																"$ingot": "iron_ingot",
-																"$axolotl": "cyan_axolotl",
-																"$raw_ore": "raw_iron"
-															}
-														}
+												}},
+												{ "copper@assets.table_row": {
+													"size": ["100%", 36],
+													"$content": [
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
+														// copper ingot
+														{ "ingot@assets.table_box": { "controls": [
+															{ "i@assets.item_renderer": { "$id": "copper_ingot" }}
+														]}},
+														{ "on@assets.table_instruction": { "$text": "on" }},
+														// lucy
+														{ "axolotl@assets.table_box": {
+															"controls": [{"i@assets.axolotl": {
+																"$type": "lucy",
+																"$name": "%item.axolotlColorLucy.name %entity.axolotl.name"
+															}}]
+														}},
+														{ "for@assets.table_instruction": { "$text": "-->" }},
+														// raw copper
+														{ "raw_ore@assets.table_box": { "controls": [
+															{"i@assets.item_renderer": { "$id": "raw_copper" }}
+														]}},
+														{ "end_filler@assets.table_filler": {}}
 													]
-												}
-											},
-											{
-												"gold_axolotl@assets.book_page": {
-													"size": ["100%", 107],
-													"$button_size": [40, 80],
-													"$name": "gold_axolotl",
-													"$p_page": 2, "$prev": "cyan_axolotl",
-													"$n_page": 4, "$next": "wild_axolotl",
-													"$page_content": [
-														{
-															"recipe@how_to_play.axolotl_recipe": {
-																"$text": "Feeding Gold Axolotls Gold Ingots --> 80%% chance to spit Raw Gold and 20%% chance to reject it.",
-																"$ingot": "gold_ingot",
-																"$axolotl": "gold_axolotl",
-																"$raw_ore": "raw_gold"
-															}
-														}
+												}},
+												{ "iron@assets.table_row": {
+													"size": ["100%", 36],
+													"$content": [
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
+														{ "ingot@assets.table_box": { "controls": [
+															{ "i@assets.item_renderer": { "$id": "iron_ingot" }}
+														]}},
+														{ "on@assets.table_instruction": { "$text": "on" }},
+														{ "axolotl@assets.table_box": {
+															"controls": [{"i@assets.axolotl": {
+																"$type": "cyan",
+																"$name": "%item.axolotlColorCyan.name %entity.axolotl.name"
+															}}]
+														}},
+														{ "for@assets.table_instruction": { "$text": "-->" }},
+
+														{ "raw_ore@assets.table_box": { "controls": [
+															{"i@assets.item_renderer": { "$id": "raw_iron" }}
+														]}},
+														{ "end_filler@assets.table_filler": {}}
 													]
-												}
-											},
-											{
-												"wild_axolotl@assets.book_page": {
-													"size": ["100%", 107],
-													"$button_size": [40, 80],
-													"$name": "wild_axolotl",
-													"$p_page": 3, "$prev": "gold_axolotl",
-													"$n_page": 0, "$next": "lucy_axolotl",
-													"$page_content": [
-														{
-															"recipe@how_to_play.axolotl_recipe": {
-																"$text": "Feeding Wild Axolotls Netherite Scrap --> 80%% chance to spit Ancient Debris and 20%% chance to reject it.",
-																"$ingot": "netherite_scrap",
-																"$axolotl": "wild_axolotl",
-																"$raw_ore": "ancient_debris"
-															}
-														}
+												}},
+												{ "gold@assets.table_row": {
+													"size": ["100%", 36],
+													"$content": [
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
+														// gold ingot
+														{ "ingot@assets.table_box": { "controls": [
+															{ "i@assets.item_renderer": { "$id": "gold_ingot" }}
+														]}},
+														{ "on@assets.table_instruction": { "$text": "on" }},
+														// gold
+														{ "axolotl@assets.table_box": {
+															"controls": [{"i@assets.axolotl": {
+																"$type": "gold",
+																"$name": "%item.axolotlColorGold.name %entity.axolotl.name"
+															}}]
+														}},
+														{ "for@assets.table_instruction": { "$text": "-->" }},
+														// raw gold
+														{ "raw_ore@assets.table_box": { "controls": [
+															{"i@assets.item_renderer": { "$id": "raw_gold" }}
+														]}},
+														{ "end_filler@assets.table_filler": {}}
 													]
-												}
-											}
-										]
-									}
-								}
+												}},
+												{ "netherite@assets.table_row": {
+													"size": ["100%", 36],
+													"$content": [
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
+														// netherite scrap
+														{ "ingot@assets.table_box": { "controls": [
+															{ "i@assets.item_renderer": { "$id": "netherite_scrap" }}
+														]}},
+														{ "on@assets.table_instruction": { "$text": "on" }},
+														// wild
+														{ "axolotl@assets.table_box": {
+															"controls": [{"i@assets.axolotl": {
+																"$type": "wild",
+																"$name": "%item.axolotlColorWild.name %entity.axolotl.name"
+															}}]
+														}},
+														{ "for@assets.table_instruction": { "$text": "-->" }},
+														// ancient debris
+														{ "raw_ore@assets.table_box": { "controls": [
+															{"i@assets.block_renderer": {
+																"$aux": "((-271) * 65536)",
+																"$id": "ancient_debris"
+															}}
+														]}},
+														{ "end_filler@assets.table_filler": {}}
+													]
+												}}
+											]
+										}}
+									]
+								}}
 							]
 						}
 					},
@@ -484,8 +526,12 @@
 														{
 															"copper_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.raw_copper":{}}],
-																"$output": [{"b@assets.copper_ore": {}}]
+																"$input2": [{"i@assets.item_renderer": { "$id": "raw_copper" }}],
+																"$output": [{"b@assets.item_renderer": {
+																	"$id": "copper_ore",
+																	"$texture": "('textures/ui/blocks/' + $id)",
+																	"$name": "('tile.' + $id + '.name')"
+																}}]
 															}
 														}
 													]
@@ -500,8 +546,15 @@
 														{
 															"lapis_lazuli_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.lapis_lazuli":{}}],
-																"$output": [{"b@assets.lapis_lazuli_ore": {}}]
+																"$input2": [{"i@assets.item_renderer": {
+																	"$texture": "textures/items/dye_powder_blue",
+																	"$name": "item.dye.blue.name"
+																}}],
+																"$output": [{"b@assets.item_renderer": {
+																	"$id": "lapis_ore",
+																	"$texture": "('textures/ui/blocks/' + $id)",
+																	"$name": "('tile.' + $id + '.name')"
+																}}]
 															}
 														}
 													]
@@ -516,8 +569,15 @@
 														{
 															"redstone_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.redstone_dust":{}}],
-																"$output": [{"b@assets.redstone_ore": {}}]
+																"$input2": [{"i@assets.item_renderer": {
+																	"$id": "redstone_dust",
+																	"$name": "item.redstone.name"
+																}}],
+																"$output": [{"b@assets.item_renderer": {
+																	"$id": "redstone_ore",
+																	"$texture": "('textures/ui/blocks/' + $id)",
+																	"$name": "('tile.' + $id + '.name')"
+																}}]
 															}
 														}
 													]
@@ -532,7 +592,7 @@
 														{
 															"deepslate_copper_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.raw_copper":{}}],
+																"$input2": [{"i@assets.item_renderer": { "$id": "raw_copper" }}],
 																"$output": [{"b@assets.deepslate_copper_ore": {}}]
 															}
 														}
@@ -548,7 +608,10 @@
 														{
 															"deepslate_lapis_lazuli_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.lapis_lazuli":{}}],
+																"$input2": [{"i@assets.item_renderer": {
+																	"$texture": "textures/items/dye_powder_blue",
+																	"$name": "item.dye.blue.name"
+																}}],
 																"$output": [{"b@assets.deepslate_lapis_lazuli_ore": {}}]
 															}
 														}
@@ -564,7 +627,10 @@
 														{
 															"deepslate_redstone_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.redstone_dust":{}}],
+																"$input2": [{"i@assets.item_renderer": {
+																	"$id": "redstone_dust",
+																	"$name": "item.redstone.name"
+																}}],
 																"$output": [{"b@assets.deepslate_redstone_ore": {}}]
 															}
 														}
@@ -580,8 +646,12 @@
 														{
 															"nether_gold_ore@how_to_play.crafting2x2_recipe": {
 																"$input1": [{"b@assets.netherrack":{}}],
-																"$input2": [{"i@assets.raw_gold":{}}],
-																"$output": [{"b@assets.nether_gold_ore": {}}]
+																"$input2": [{"i@assets.item_renderer": { "$id": "raw_gold" }}],
+																"$output": [{"b@assets.item_renderer": {
+																	"$id": "nether_gold_ore",
+																	"$texture": "('textures/ui/blocks/' + $id)",
+																	"$name": "('tile.' + $id + '.name')"
+																}}]
 															}
 														}
 													]
@@ -610,8 +680,12 @@
 													"$n_page": 2, "$next": "smelt_lapis_lazuli",
 													"$page_content": [
 														{ "smelt_copper@how_to_play.smelting_recipe": {
-															"$input": [{"b@assets.copper_ore":{}}],
-															"$output": [{"i@assets.copper_ingot":{}}]
+															"$input": [{"b@assets.item_renderer": {
+																"$id": "copper_ore",
+																"$texture": "('textures/ui/blocks/' + $id)",
+																"$name": "('tile.' + $id + '.name')"
+															}}],
+															"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
 														}}
 													]
 												}
@@ -623,8 +697,15 @@
 													"$n_page": 3, "$next": "smelt_redstone",
 													"$page_content": [
 														{ "smelt_lapis_lazuli@how_to_play.smelting_recipe": {
-															"$input": [{"b@assets.lapis_lazuli_ore":{}}],
-															"$output": [{"i@assets.lapis_lazuli":{}}]
+															"$input": [{"b@assets.item_renderer": {
+																"$id": "lapis_ore",
+																"$texture": "('textures/ui/blocks/' + $id)",
+																"$name": "('tile.' + $id + '.name')"
+															}}],
+															"$output": [{"i@assets.item_renderer": {
+																"$texture": "textures/items/dye_powder_blue",
+																"$name": "item.dye.blue.name"
+															}}]
 														}}
 													]
 												}
@@ -636,8 +717,15 @@
 													"$n_page": 4, "$next": "smelt_deepslate_copper",
 													"$page_content": [
 														{ "smelt_redstone@how_to_play.smelting_recipe": {
-															"$input": [{"b@assets.redstone_ore":{}}],
-															"$output": [{"i@assets.redstone_dust":{}}]
+															"$input": [{"b@assets.item_renderer": {
+																"$id": "redstone_ore",
+																"$texture": "('textures/ui/blocks/' + $id)",
+																"$name": "('tile.' + $id + '.name')"
+															}}],
+															"$output": [{"i@assets.item_renderer": {
+																"$id": "redstone_dust",
+																"$name": "item.redstone.name"
+															}}]
 														}}
 													]
 												}
@@ -650,7 +738,7 @@
 													"$page_content": [
 														{ "smelt_deepslate_copper@how_to_play.smelting_recipe": {
 															"$input": [{"b@assets.deepslate_copper_ore":{}}],
-															"$output": [{"i@assets.copper_ingot":{}}]
+															"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
 														}}
 													]
 												}
@@ -663,7 +751,10 @@
 													"$page_content": [
 														{ "smelt_deepslate_lapis_lazuli@how_to_play.smelting_recipe": {
 															"$input": [{"b@assets.deepslate_lapis_lazuli_ore":{}}],
-															"$output": [{"i@assets.lapis_lazuli":{}}]
+															"$output": [{"i@assets.item_renderer": {
+																"$texture": "textures/items/dye_powder_blue",
+																"$name": "item.dye.blue.name"
+															}}]
 														}}
 													]
 												}
@@ -676,7 +767,10 @@
 													"$page_content": [
 														{ "smelt_deepslate_redstone@how_to_play.smelting_recipe": {
 															"$input": [{"b@assets.deepslate_redstone_ore":{}}],
-															"$output": [{"i@assets.redstone_dust":{}}]
+															"$output": [{"i@assets.item_renderer": {
+																"$id": "redstone_dust",
+																"$name": "item.redstone.name"
+															}}]
 														}}
 													]
 												}
@@ -688,8 +782,12 @@
 													"$n_page": 0, "$next": "smelt_copper",
 													"$page_content": [
 														{ "smelt_nether_gold@how_to_play.smelting_recipe": {
-															"$input": [{"b@assets.nether_gold_ore":{}}],
-															"$output": [{"i@assets.gold_ingot":{}}]
+															"$input": [{"b@assets.item_renderer": {
+																"$id": "nether_gold_ore",
+																"$texture": "('textures/ui/blocks/' + $id)",
+																"$name": "('tile.' + $id + '.name')"
+															}}],
+															"$output": [{"i@assets.item_renderer": { "$id": "gold_ingot" }}]
 														}}
 													]
 												}
@@ -717,40 +815,52 @@
 								{ "break_copper@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.copper_ore":{}}],
 									"$tool": [{"b@assets.stone_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.raw_copper":{}}]
+									"$loot": [{"b@assets.item_renderer": { "$id": "raw_copper" }}]
 								}},
 								{ "break_lapis_lazuli@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.lapis_lazuli_ore":{}}],
 									"$tool": [{"b@assets.stone_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.lapis_lazuli":{}}]
+									"$loot": [{"b@assets.item_renderer": {
+										"$texture": "textures/items/dye_powder_blue",
+										"$name": "item.dye.blue.name"
+									}}]
 								}},
 								{ "break_redstone@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.redstone_ore":{}}],
 									"$tool": [{"b@assets.iron_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.redstone_dust":{}}]
+									"$loot": [{"b@assets.item_renderer": {
+										"$id": "redstone_dust",
+										"$name": "item.redstone.name"
+									}}]
 								}},
 								{ "break_deepslate_copper@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.deepslate_copper_ore":{}}],
 									"$tool": [{"b@assets.stone_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.raw_copper":{}}],
+									"$loot": [{"b@assets.item_renderer": { "$id": "raw_copper" }}],
 									"$duration": "1.5\nseconds"
 								}},
 								{ "break_deepslate_lapis_lazuli@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.deepslate_lapis_lazuli_ore":{}}],
 									"$tool": [{"b@assets.stone_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.lapis_lazuli":{}}],
+									"$loot": [{"b@assets.item_renderer": {
+										"$texture": "textures/items/dye_powder_blue",
+										"$name": "item.dye.blue.name"
+									}}],
 									"$duration": "1.5\nseconds"
 								}},
 								{ "break_deepslate_redstone@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.deepslate_redstone_ore":{}}],
 									"$tool": [{"b@assets.iron_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.redstone_dust":{}}],
+									"$loot": [{"b@assets.item_renderer": {
+										"$id": "redstone_dust",
+										"$name": "item.redstone.name"
+									}}],
 									"$duration": "1.5\nseconds"
 								}},
 								{ "break_nether_gold@how_to_play.mining_table_item": {
 									"$block": [{"b@textures.nether_gold_ore":{}}],
 									"$tool": [{"b@assets.wood_tier_pickaxe":{}}],
-									"$loot": [{"b@assets.gold_nugget":{}}],
+									"$loot": [{"b@assets.item_renderer": { "$id": "gold_nugget" }}],
 									"$count": "9"
 								}},
 								{ "footer@assets.table_footer": {} }
@@ -859,11 +969,18 @@
 								},
 								{
 									"trade@how_to_play.trading_feature": {
-									"$villager": "Cartographer",
+										"$villager": "Cartographer",
 										"$level": "§iApprentice",
 										"$number": "2",
-										"$job": "cartographer", "$biome": "plains_villager",
-										"$take1": [{"i@assets.emerald":{ "$count": "8" }}],
+										"$job": [{"i@assets.item_renderer": {
+											"$texture": "textures/ui/villagers/cartographer",
+											"$name": "entity.villager.cartographer"
+										}}],
+										"$biome": [{"i@assets.item_renderer": {
+											"$texture": "textures/ui/villagers/plains",
+											"$name": "Biome: %biome.plains.name"
+										}}],
+										"$take1": [{"i@assets.item_renderer": { "$id": "emerald",  "$count": "8" }}],
 										"$take2": [{"i@assets.compass":{}}],
 										"$give": [{"i@assets.item_renderer":{
 											"$id": "world_map",
@@ -892,8 +1009,11 @@
 									"$villager": "Cartographer",
 										"$level": "§qExpert",
 										"$number": "2",
-										"$job": "cartographer",
-										"$take1": [{"i@assets.emerald":{ "$count": "14" }}],
+										"$job": [{"i@assets.item_renderer": {
+											"$texture": "textures/ui/villagers/cartographer",
+											"$name": "entity.villager.cartographer"
+										}}],
+										"$take1": [{"i@assets.item_renderer": { "$id": "emerald",  "$count": "14" }}],
 										"$take2": [{"i@assets.compass":{}}],
 										"$give": [{"i@assets.sky_treasure_map":{}}],
 										"$details": "* Probability: 100%%\n* Number of Trades: 12"
@@ -921,12 +1041,18 @@
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
 											"$content": [{"@assets.item_renderer": {
-												"$id": "heart_of_the_sea",
+												"$content": [{"i@assets.item_renderer": {
+													"$id": "heart_of_the_sea",
+													"$texture": "textures/items/heartofthesea_closed"
+												}}],
 												"$texture": "textures/items/heartofthesea_closed"
 											}}]
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "cooked_cod",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/fish_cooked",
+												"$name": "item.cooked_fish.name"
+											}}],
 											"$quantity": "2-4",
 											"$chance": "22.18%%"
 										}},
@@ -1062,7 +1188,7 @@
 												"$mob": [{ "e@assets.end_phantom": {}}],
 												"$drops": [
 													{ "i1@assets.drops_table_entry": {
-														"$item": "phantom_membrane",
+														"$content": [{"i@assets.item_renderer": { "$id": "phantom_membrane" }}],
 														"$quantity":"0-2"
 													}},
 													{ "i1@assets.drops_table_entry": {
@@ -1108,13 +1234,9 @@
 							"$content": [{ 
 								"build@how_to_play.build_element": {
 									"$text": "This feature serves as a fix for being soft locked out of certian items if you lose them.\n\nYou can use Bone Meal for a 6.25%% chance to grow lost plants.",
-									"$build": [{ "stack": { "type": "stack_panel", "controls": [{ "table@assets.white_box": {
-										"size": ["100%", "100%c"],
-										"color": [0.7, 0.7, 0.7],
-										"controls": [{ "rows": {
-											"type": "stack_panel",
-											"size": ["100%", "100%c"],
-											"controls": [
+									"$build": [
+										{ "table@assets.custom_table": {
+											"$rows": [
 												{ "upper_border@assets.table_border_h": {}},
 												{ "header@assets.table_row": {
 													"size": ["100%", 24],
@@ -1125,9 +1247,9 @@
 												{ "sweet_berry_bush@assets.table_row": {
 													"size": ["100%", 36],
 													"$content": [
-														{ "use@assets.table_instruction": { "$text": "Use" }},
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
 														{ "item@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/items/dye_powder_white",
 																"$name": "item.dye.white.name"
@@ -1135,7 +1257,6 @@
 														}},
 														{ "on@assets.table_instruction": { "$text": "on" }},
 														{ "block@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.block_renderer": {
 																"$aux": 131072,
 																"$name": "tile.grass.name"
@@ -1143,7 +1264,6 @@
 														}},
 														{ "in@assets.table_instruction": { "$text": "in" }},
 														{ "biome@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/biomes/taiga",
 																"$name": "biome.taiga.name"
@@ -1151,7 +1271,6 @@
 														}},
 														{ "for@assets.table_instruction": { "$text": "-->" }},
 														{ "plant@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/blocks/sweet_berry_bush_stage0",
 																"$name": "tile.sweet_berry_bush.name",
@@ -1164,9 +1283,9 @@
 												{ "pink_petals@assets.table_row": {
 													"size": ["100%", 36],
 													"$content": [
-														{ "use@assets.table_instruction": { "$text": "Use" }},
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
 														{ "item@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/items/dye_powder_white",
 																"$name": "item.dye.white.name"
@@ -1174,7 +1293,6 @@
 														}},
 														{ "on@assets.table_instruction": { "$text": "on" }},
 														{ "block@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.block_renderer": {
 																"$aux": 131072,
 																"$name": "tile.grass.name"
@@ -1182,7 +1300,6 @@
 														}},
 														{ "in@assets.table_instruction": { "$text": "in" }},
 														{ "biome@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/biomes/cherry_grove",
 																"$name": "biome.cherry_grove.name"
@@ -1190,7 +1307,6 @@
 														}},
 														{ "for@assets.table_instruction": { "$text": "-->" }},
 														{ "plant@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$id": "pink_petals",
 																"$name": "('tile.' + $id + '.name')"
@@ -1202,9 +1318,9 @@
 												{ "twisting_vines@assets.table_row": {
 													"size": ["100%", 36],
 													"$content": [
-														{ "use@assets.table_instruction": { "$text": "Use" }},
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
 														{ "item@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/items/dye_powder_white",
 																"$name": "item.dye.white.name"
@@ -1212,7 +1328,6 @@
 														}},
 														{ "on@assets.table_instruction": { "$text": "on" }},
 														{ "block@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.block_renderer": {
 																"$aux": -15269888,
 																"$name": "tile.warped_nylium.name"
@@ -1220,7 +1335,6 @@
 														}},
 														{ "for@assets.table_instruction": { "$text": "-->" }},
 														{ "plant@assets.table_box": {
-															"size": ["100%c + 4px", "100%"],
 															"controls": [{"i@assets.item_renderer": {
 																"$texture": "textures/blocks/twisting_vines_base",
 																"$name": "tile.twisting_vines.name"
@@ -1230,8 +1344,8 @@
 													]
 												}}
 											]
-										}}]
-									}}, {"footer": {"type": "panel", "size": [0, 24]}}]}}]
+										}}
+									]
 								}
 							}]
 						}
@@ -1249,16 +1363,20 @@
 											{
 												"spawner@how_to_play.crafting3x3_feature": {
 													"layer": 10,
-													"$input1": [{"i@assets.iron_chain":{}}],
-													"$input2": [{"i@assets.iron_chain":{}}],
-													"$input3": [{"i@assets.iron_chain":{}}],
-													"$input4": [{"i@assets.iron_chain":{}}],
-													"$input5": [{"i@assets.netherite_block":{}}],
-													"$input6": [{"i@assets.iron_chain":{}}],
-													"$input7": [{"i@assets.iron_chain":{}}],
-													"$input8": [{"i@assets.iron_chain":{}}],
-													"$input9": [{"i@assets.iron_chain":{}}],
-													"$output": [{"i@assets.empty_spawner":{}}]
+													"$I": [{"i@assets.item_renderer": {
+														"$texture": "textures/items/chain",
+														"$name": "tile.iron_chain.name"
+													}}],
+													"$N": [{"i@assets.netherite_block":{}}],
+													
+													"$input1": "$I", "$input2": "$I", "$input3": "$I",
+													"$input4": "$I", "$input5": "$N", "$input6": "$I",
+													"$input7": "$I", "$input8": "$I", "$input9": "$I",
+
+													"$output": [{"i@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/empty_spawner",
+														"$name": "tile.yasser444_empty_spawner.name"
+													}}]
 												}
 											},
 											{ 
@@ -1279,7 +1397,8 @@
 															"font_size": "large",
 															"offset": [-100, 0]
 														}},
-														{ "key@assets.rotten_flesh": {
+														{ "key@assets.item_renderer": {
+															"$id": "rotten_flesh" ,
 															"offset": [-60, 0],
 															"$text": "Common Mob Drop"
 														}},
@@ -1317,8 +1436,8 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "zombie",
-																			"$drop": "rotten_flesh",
+																			"$mob": [{"i@assets.zombie": {}}],
+																			"$drop": [{"i@assets.item_renderer": { "$id": "rotten_flesh" }}],
 																			"$dimension": "§3Overworld"
 																		}
 																	}
@@ -1333,8 +1452,8 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "skeleton",
-																			"$drop": "bone",
+																			"$mob": [{"i@assets.skeleton": {}}],
+																			"$drop": [{"i@assets.bone": {}}],
 																			"$dimension": "§3Overworld"
 																		}
 																	}
@@ -1349,8 +1468,8 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "spider",
-																			"$drop": "string",
+																			"$mob": [{"i@assets.spider": {}}],
+																			"$drop": [{"i@assets.string": {}}],
 																			"$dimension": "§3Overworld"
 																		}
 																	}
@@ -1365,8 +1484,8 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "cave_spider",
-																			"$drop": "spider_eye",
+																			"$mob": [{"i@assets.cave_spider": {}}],
+																			"$drop": [{"i@assets.spider_eye": {}}],
 																			"$dimension": "§3Overworld"
 																		}
 																	}
@@ -1381,8 +1500,11 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "silverfish",
-																			"$drop": "infestation_potion",
+																			"$mob": [{"i@assets.silverfish": {}}],
+																			"$drop": [{"i@assets.item_renderer": {
+																				"$texture": "textures/items/potion_bottle_infested",
+																				"$name": "potion.infested.name"
+																			}}],
 																			"$dimension": "§3Overworld"
 																		}
 																	}
@@ -1397,8 +1519,8 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "blaze",
-																			"$drop": "blaze_rod",
+																			"$mob": [{"i@assets.blaze": {}}],
+																			"$drop": [{"i@assets.blaze_rod": {}}],
 																			"$dimension": "§cThe Nether"
 																		}
 																	}
@@ -1413,8 +1535,8 @@
 																"$page_content": [
 																	{
 																		"recipe@how_to_play.mob_spawner_recipe": {
-																			"$mob": "magma_cube",
-																			"$drop": "magma_cream",
+																			"$mob": [{"i@assets.magma_cube": {}}],
+																			"$drop": [{"i@assets.magma_cream": {}}],
 																			"$dimension": "§cThe Nether"
 																		}
 																	}
@@ -1529,275 +1651,281 @@
 				"bindings": "$is_toggled",
 				"$toggle": "recipes_button_toggle",
 				"controls": [	
-					{
-						"crafting@assets.dropdown": {
-							"$title": "Crafting Recipes",
-							"$icon": "textures/blocks/crafting_table_top",
-							"$content": [
-								{
-									"copper_horse_armor@how_to_play.crafting3x3_feature": {
-										"$C": [{"i@assets.copper_ingot":{}}],
+					{ "crafting@assets.header": {
+						"$title": "Crafting Recipes",
+						"$icon": "textures/blocks/crafting_table_top"
+					}},
+					{ "copper_horse_armor@how_to_play.crafting3x3_feature": {
+						"$C": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}],
 
-										"$input1": "$C",                  "$input3": "$C",
-										"$input4": "$C", "$input5": "$C", "$input6": "$C",
-										"$input7": "$C",                  "$input9": "$C",
+						"$input1": "$C",                  "$input3": "$C",
+						"$input4": "$C", "$input5": "$C", "$input6": "$C",
+						"$input7": "$C",                  "$input9": "$C",
 
-										"$output": [{"i@assets.item_renderer":{
-											"$id": "copper_horse_armor"
-										}}]
-									}
-								},
-								{
-									"iron_horse_armor@how_to_play.crafting3x3_feature": {
-										"$I": [{"i@assets.iron_ingot":{}}],
+						"$output": [{"i@assets.item_renderer":{
+							"$id": "copper_horse_armor"
+						}}]
+					}},
+					{ "iron_horse_armor@how_to_play.crafting3x3_feature": {
+						"$I": [{"i@assets.item_renderer": { "$id": "iron_ingot" }}],
 
-										"$input1": "$I",                  "$input3": "$I",
-										"$input4": "$I", "$input5": "$I", "$input6": "$I",
-										"$input7": "$I",                  "$input9": "$I",
+						"$input1": "$I",                  "$input3": "$I",
+						"$input4": "$I", "$input5": "$I", "$input6": "$I",
+						"$input7": "$I",                  "$input9": "$I",
 
-										"$output": [{"i@assets.item_renderer":{
-											"$id": "iron_horse_armor",
-											"$name": "item.horsearmoriron.name"
-										}}]
-									}
-								},
-								{
-									"gold_horse_armor@how_to_play.crafting3x3_feature": {
-										"$G": [{"i@assets.gold_ingot":{}}],
+						"$output": [{"i@assets.item_renderer":{
+							"$id": "iron_horse_armor",
+							"$name": "item.horsearmoriron.name"
+						}}]
+					}},
+					{ "gold_horse_armor@how_to_play.crafting3x3_feature": {
+						"$G": [{"i@assets.item_renderer": { "$id": "gold_ingot" }}],
 
-										"$input1": "$G",                  "$input3": "$G",
-										"$input4": "$G", "$input5": "$G", "$input6": "$G",
-										"$input7": "$G",                  "$input9": "$G",
+						"$input1": "$G",                  "$input3": "$G",
+						"$input4": "$G", "$input5": "$G", "$input6": "$G",
+						"$input7": "$G",                  "$input9": "$G",
 
-										"$output": [{"i@assets.item_renderer":{
-											"$texture": "textures/items/gold_horse_armor",
-											"$name": "item.horsearmorgold.name"
-										}}]
-									}
-								},
-								{
-									"diamond_horse_armor@how_to_play.crafting3x3_feature": {
-										"$D": [{"i@assets.diamond":{}}],
+						"$output": [{"i@assets.item_renderer":{
+							"$texture": "textures/items/gold_horse_armor",
+							"$name": "item.horsearmorgold.name"
+						}}]
+					}},
+					{ "diamond_horse_armor@how_to_play.crafting3x3_feature": {
+						"$D": [{"i@assets.item_renderer": { "$id": "diamond" }}],
 
-										"$input1": "$D",                  "$input3": "$D",
-										"$input4": "$D", "$input5": "$D", "$input6": "$D",
-										"$input7": "$D",                  "$input9": "$D",
+						"$input1": "$D",                  "$input3": "$D",
+						"$input4": "$D", "$input5": "$D", "$input6": "$D",
+						"$input7": "$D",                  "$input9": "$D",
 
-										"$output": [{"i@assets.item_renderer":{
-											"$id": "diamond_horse_armor",
-											"$name": "item.horsearmordiamond.name"
-										}}]
-									}
-								},
-								{
-									"red_sand@how_to_play.crafting3x3_feature": {
-										"$R": [{"@assets.item_renderer": {
-											"$id": "resin_clump",
-											"$name":"('tile.'+ $id + '.name')"
-										}}],
-										"$S": [{"b@assets.sand":{}}],
+						"$output": [{"i@assets.item_renderer":{
+							"$id": "diamond_horse_armor",
+							"$name": "item.horsearmordiamond.name"
+						}}]
+					}},
+					{ "red_sand@how_to_play.crafting3x3_feature": {
+						"$R": [{"@assets.item_renderer": {
+							"$id": "resin_clump",
+							"$name":"('tile.'+ $id + '.name')"
+						}}],
+						"$S": [{"b@assets.sand":{}}],
 
-										                 "$input2": "$R",
-										"$input4": "$R", "$input5": "$S", "$input6": "$R",
-										                 "$input8": "$R",
+											"$input2": "$R",
+						"$input4": "$R", "$input5": "$S", "$input6": "$R",
+											"$input8": "$R",
 
-										"$output": [{"b@assets.red_sand": {}}]
-									}
-								},
-								{
-									"ore_recipes@assets.white_box": { //index 1 should be skipped
-										"layer": -3,
-										"color": [0.3, 0.3, 0.3], 
-										"size": ["100%", 82],
-										"$book_name": "vanilla_ore_recipes",
-										"controls": [
-											{
-												"coal_ore@assets.book_page": {
-													"$name": "coal_ore",
-													"$p_page": 11, "$prev": "nether_quartz_ore",
-													"$n_page": 2, "$next": "iron_ore",
-													"$page_content": [
-														{
-															"coal_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.coal":{}}],
-																"$output": [{"b@assets.coal_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"iron_ore@assets.book_page": {
-													"$name": "iron_ore",
-													"$p_page": 0, "$prev": "coal_ore",
-													"$n_page": 3, "$next": "gold_ore",
-													"$page_content": [
-														{
-															"iron_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.raw_iron":{}}],
-																"$output": [{"b@assets.iron_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"gold_ore@assets.book_page": {
-													"$name": "gold_ore",
-													"$p_page": 2, "$prev": "iron_ore",
-													"$n_page": 4, "$next": "emerald_ore",
-													"$page_content": [
-														{
-															"gold_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.raw_gold":{}}],
-																"$output": [{"b@assets.gold_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"emerald_ore@assets.book_page": {
-													"$name": "emerald_ore",
-													"$p_page": 3, "$prev": "gold_ore",
-													"$n_page": 5, "$next": "diamond_ore",
-													"$page_content": [
-														{
-															"emerald_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.emerald":{}}],
-																"$output": [{"b@assets.emerald_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"diamond_ore@assets.book_page": {
-													"$name": "diamond_ore",
-													"$p_page": 4, "$prev": "emerald_ore",
-													"$n_page": 6, "$next": "deepslate_coal_ore",
-													"$page_content": [
-														{
-															"diamond_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.stone":{}}],
-																"$input2": [{"i@assets.diamond":{}}],
-																"$output": [{"b@assets.diamond_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"deepslate_coal_ore@assets.book_page": {
-													"$name": "deepslate_coal_ore",
-													"$p_page": 5, "$prev": "diamond_ore",
-													"$n_page": 7, "$next": "deepslate_iron_ore",
-													"$page_content": [
-														{
-															"deepslate_coal_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.coal":{}}],
-																"$output": [{"b@assets.deepslate_coal_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"deepslate_iron_ore@assets.book_page": {
-													"$name": "deepslate_iron_ore",
-													"$p_page": 6, "$prev": "deepslate_coal_ore",
-													"$n_page": 8, "$next": "deepslate_gold_ore",
-													"$page_content": [
-														{
-															"deepslate_iron_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.raw_iron":{}}],
-																"$output": [{"b@assets.deepslate_iron_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"deepslate_gold_ore@assets.book_page": {
-													"$name": "deepslate_gold_ore",
-													"$p_page": 7, "$prev": "deepslate_iron_ore",
-													"$n_page": 9, "$next": "deepslate_emerald_ore",
-													"$page_content": [
-														{
-															"deepslate_gold_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.raw_gold":{}}],
-																"$output": [{"b@assets.deepslate_gold_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"deepslate_emerald_ore@assets.book_page": {
-													"$name": "deepslate_emerald_ore",
-													"$p_page": 8, "$prev": "deepslate_gold_ore",
-													"$n_page": 10, "$next": "deepslate_diamond_ore",
-													"$page_content": [
-														{
-															"deepslate_emerald_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.emerald":{}}],
-																"$output": [{"b@assets.deepslate_emerald_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"deepslate_diamond_ore@assets.book_page": {
-													"$name": "deepslate_diamond_ore",
-													"$p_page": 9, "$prev": "deepslate_emerald_ore",
-													"$n_page": 11, "$next": "nether_quartz_ore",
-													"$page_content": [
-														{
-															"deepslate_diamond_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.deepslate":{}}],
-																"$input2": [{"i@assets.diamond":{}}],
-																"$output": [{"b@assets.deepslate_diamond_ore": {}}]
-															}
-														}
-													]
-												}
-											},
-											{
-												"nether_quartz_ore@assets.book_page": {
-													"$name": "nether_quartz_ore",
-													"$p_page": 10, "$prev": "deepslate_diamond_ore",
-													"$n_page": 0, "$next": "coal_ore",
-													"$page_content": [
-														{
-															"nether_quartz_ore@how_to_play.crafting2x2_recipe": {
-																"$input1": [{"b@assets.netherrack":{}}],
-																"$input2": [{"i@assets.quartz":{}}],
-																"$output": [{"b@assets.nether_quartz_ore": {}}]
-															}
-														}
-													]
-												}
+						"$output": [{"b@assets.red_sand": {}}]
+					}},
+					{ "ore_recipes@assets.white_box": { //index 1 should be skipped
+						"layer": -3,
+						"color": [0.3, 0.3, 0.3], 
+						"size": ["100%", 82],
+						"$book_name": "vanilla_ore_recipes",
+						"controls": [
+							{
+								"coal_ore@assets.book_page": {
+									"$name": "coal_ore",
+									"$p_page": 11, "$prev": "nether_quartz_ore",
+									"$n_page": 2, "$next": "iron_ore",
+									"$page_content": [
+										{
+											"coal_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.stone":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "coal" }}],
+												"$output": [{"b@assets.item_renderer": {
+													"$id": "coal_ore",
+													"$texture": "('textures/ui/blocks/' + $id)",
+													"$name": "('tile.' + $id + '.name')"
+												}}]
 											}
-										]
-									}
-								},
-								{
-									"no fortune@assets.text_box": {
-										"$text": "These ores are not affected by the Fortune enchantment"
-									}
+										}
+									]
 								}
-							]
-						}
-					}
+							},
+							{
+								"iron_ore@assets.book_page": {
+									"$name": "iron_ore",
+									"$p_page": 0, "$prev": "coal_ore",
+									"$n_page": 3, "$next": "gold_ore",
+									"$page_content": [
+										{
+											"iron_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.stone":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "raw_iron" }}],
+												"$output": [{"b@assets.item_renderer": {
+													"$id": "iron_ore",
+													"$texture": "('textures/ui/blocks/' + $id)",
+													"$name": "('tile.' + $id + '.name')"
+												}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"gold_ore@assets.book_page": {
+									"$name": "gold_ore",
+									"$p_page": 2, "$prev": "iron_ore",
+									"$n_page": 4, "$next": "emerald_ore",
+									"$page_content": [
+										{
+											"gold_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.stone":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "raw_gold" }}],
+												"$output": [{"b@assets.item_renderer": {
+													"$id": "gold_ore",
+													"$texture": "('textures/ui/blocks/' + $id)",
+													"$name": "('tile.' + $id + '.name')"
+												}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"emerald_ore@assets.book_page": {
+									"$name": "emerald_ore",
+									"$p_page": 3, "$prev": "gold_ore",
+									"$n_page": 5, "$next": "diamond_ore",
+									"$page_content": [
+										{
+											"emerald_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.stone":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "emerald" }}],
+												"$output": [{"b@assets.item_renderer": {
+													"$id": "emerald_ore",
+													"$texture": "('textures/ui/blocks/' + $id)",
+													"$name": "('tile.' + $id + '.name')"
+												}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"diamond_ore@assets.book_page": {
+									"$name": "diamond_ore",
+									"$p_page": 4, "$prev": "emerald_ore",
+									"$n_page": 6, "$next": "deepslate_coal_ore",
+									"$page_content": [
+										{
+											"diamond_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.stone":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "diamond" }}],
+												"$output": [{"b@assets.item_renderer": {
+													"$id": "diamond_ore",
+													"$texture": "('textures/ui/blocks/' + $id)",
+													"$name": "('tile.' + $id + '.name')"
+												}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"deepslate_coal_ore@assets.book_page": {
+									"$name": "deepslate_coal_ore",
+									"$p_page": 5, "$prev": "diamond_ore",
+									"$n_page": 7, "$next": "deepslate_iron_ore",
+									"$page_content": [
+										{
+											"deepslate_coal_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.deepslate":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "coal" }}],
+												"$output": [{"b@assets.deepslate_coal_ore": {}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"deepslate_iron_ore@assets.book_page": {
+									"$name": "deepslate_iron_ore",
+									"$p_page": 6, "$prev": "deepslate_coal_ore",
+									"$n_page": 8, "$next": "deepslate_gold_ore",
+									"$page_content": [
+										{
+											"deepslate_iron_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.deepslate":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "raw_iron" }}],
+												"$output": [{"b@assets.deepslate_iron_ore": {}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"deepslate_gold_ore@assets.book_page": {
+									"$name": "deepslate_gold_ore",
+									"$p_page": 7, "$prev": "deepslate_iron_ore",
+									"$n_page": 9, "$next": "deepslate_emerald_ore",
+									"$page_content": [
+										{
+											"deepslate_gold_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.deepslate":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "raw_gold" }}],
+												"$output": [{"b@assets.deepslate_gold_ore": {}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"deepslate_emerald_ore@assets.book_page": {
+									"$name": "deepslate_emerald_ore",
+									"$p_page": 8, "$prev": "deepslate_gold_ore",
+									"$n_page": 10, "$next": "deepslate_diamond_ore",
+									"$page_content": [
+										{
+											"deepslate_emerald_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.deepslate":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "emerald" }}],
+												"$output": [{"b@assets.deepslate_emerald_ore": {}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"deepslate_diamond_ore@assets.book_page": {
+									"$name": "deepslate_diamond_ore",
+									"$p_page": 9, "$prev": "deepslate_emerald_ore",
+									"$n_page": 11, "$next": "nether_quartz_ore",
+									"$page_content": [
+										{
+											"deepslate_diamond_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.deepslate":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "diamond" }}],
+												"$output": [{"b@assets.deepslate_diamond_ore": {}}]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nether_quartz_ore@assets.book_page": {
+									"$name": "nether_quartz_ore",
+									"$p_page": 10, "$prev": "deepslate_diamond_ore",
+									"$n_page": 0, "$next": "coal_ore",
+									"$page_content": [
+										{
+											"nether_quartz_ore@how_to_play.crafting2x2_recipe": {
+												"$input1": [{"b@assets.netherrack":{}}],
+												"$input2": [{"i@assets.item_renderer": { "$id": "quartz" }}],
+												"$output": [{"b@assets.item_renderer": {
+													"$id": "quartz_ore",
+													"$texture": "('textures/ui/blocks/' + $id)",
+													"$name": "('tile.' + $id + '.name')"
+												}}]
+											}
+										}
+									]
+								}
+							}
+						]
+					}},
+					{ "no fortune@assets.text_box": {
+						"$text": "These ores are not affected by the Fortune enchantment"
+					}}
 				]
 			}},
 			{ "loot_tables_section@how_to_play_common.main_sections": {
@@ -1831,23 +1959,23 @@
 									"$mob": [{ "e@assets.husk": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "rotten_flesh",
+											"$content": [{"i@assets.item_renderer": { "$id": "rotten_flesh" }}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "sand",
+											"$content": [{"i@assets.sand": {}}],
 											"$quantity": "0-2"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "carrot",
+											"$content": [{"i@assets.item_renderer": { "$id": "carrot" }}],
 											"$chance": "0.83%%"
 										}},
 										{ "i4@assets.drops_table_entry": {
-											"$item": "potato",
+											"$content": [{"i@assets.item_renderer": { "$id": "potato" }}],
 											"$chance": "0.83%%"
 										}},
 										{ "i5@assets.drops_table_entry": {
-											"$item": "iron_ingot",
+											"$content": [{"i@assets.item_renderer": { "$id": "iron_ingot" }}],
 											"$chance": "0.83%%"
 										}}
 									],
@@ -1863,7 +1991,7 @@
 									"$mob": [{ "e@assets.parched": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "bone",
+											"$content": [{"i@assets.bone": {}}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
@@ -1871,7 +1999,7 @@
 											"$quantity": "0-2"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "sand",
+											"$content": [{"i@assets.sand": {}}],
 											"$quantity": "0-2"
 										}},
 										{ "i4@assets.drops_table_entry": {
@@ -1894,7 +2022,7 @@
 									"$mob": [{ "e@assets.stray": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "bone",
+											"$content": [{"i@assets.bone": {}}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
@@ -1905,7 +2033,7 @@
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "tuff",
+											"$content": [{"i@assets.tuff": {}}],
 											"$quantity": "0-2"
 										}}
 									],
@@ -1918,7 +2046,7 @@
 									"$mob": [{ "e@assets.bogged": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "bone",
+											"$content": [{"i@assets.bone": {}}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
@@ -1929,7 +2057,7 @@
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "calcite",
+											"$content": [{"i@assets.calcite": {}}],
 											"$quantity": "0-2"
 										}}
 									],
@@ -1942,35 +2070,50 @@
 									"$mob": [{ "e@assets.guardian": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "prismarine_shard",
+											"$content": [{"i@assets.item_renderer": { "$id": "prismarine_shard" }}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "prismarine_crystals",
+											"$content": [{"i@@assets.item_renderer": { "$id": "prismarine_crystals" }}],
 											"$chance": "40%%"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "cod",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/fish_raw",
+												"$name": "item.fish.name"
+											}}],
 											"$chance": "40%%"
 										}},
 										{ "i4@assets.drops_table_entry": {
-											"$item": "wet_sponge",
+											"$content": [{"i@assets.wet_sponge": {}}],
 											"$chance": "2.5%%"
 										}},
 										{ "i5@assets.drops_table_entry": {
-											"$item": "cod",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/fish_raw",
+												"$name": "item.fish.name"
+											}}],
 											"$chance": "2.5%%"
 										}},
 										{ "i6@assets.drops_table_entry": {
-											"$item": "salmon",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/fish_salmon_raw",
+												"$id": "salmon"
+											}}],
 											"$chance": "2.5%%"
 										}},
 										{ "i7@assets.drops_table_entry": {
-											"$item": "pufferfish",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/fish_pufferfish_raw",
+												"$id": "pufferfish"
+											}}],
 											"$chance": "2.5%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "tropical_fish",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/fish_clownfish_raw",
+												"$name": "item.clownfish.name"
+											}}],
 											"$chance": "2.5%%"
 										}}
 									],
@@ -1991,7 +2134,7 @@
 									"$mob": [{ "e@assets.piglin": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "pigstep"
+											"$content": [{"i@assets.pigstep": {}}]
 										}}
 									],
 									"$notes": [
@@ -2004,7 +2147,7 @@
 									"$mob": [{ "e@assets.piglin_brute": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "gilded_blackstone",
+											"$content": [{"i@assets.gilded_blackstone": {}}],
 											"$quantity":"2-9"
 										}}
 									]
@@ -2014,11 +2157,11 @@
 									"$mob": [{ "e@assets.charged_creeper": {}}],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "gunpowder",
+											"$content": [{"i@assets.gunpowder": {}}],
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "otherside"
+											"$content": [{"i@assets.otherside": {}}]
 										}}
 									],
 									"$notes": [
@@ -2033,15 +2176,16 @@
 									"$size": ["100% - 2px", 108],
 									"$drops": [
 										{ "i1@assets.drops_table_entry": {
-											"$item": "sculk_catalyst"
+											"$content": [{"i@assets.sculk_catalyst": {}}],
+											"$item": ""
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$item": "echo_shard",
+											"$content": [{"i@assets.item_renderer": { "$id": "echo_shard" }}],
 											"$quantity": "0-2",
 											"$chance": "50%%"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "disc5_fragment",
+											"$content": [{"i@assets.disc5_fragment": {}}],
 											"$quantity": "0-2",
 											"$chance": "50%%"
 										}}
@@ -2263,7 +2407,7 @@
 									"$size": ["100% - 2px", 36],
 									"$items": [
 										{ "i2@assets.bartering_table_entry": {
-											"$item": "snout_pattern",
+											"$item": [{"i@assets.snout_pattern": {}}],
 											"$chance": "0.21%%"
 										}}
 									]
@@ -2336,7 +2480,7 @@
 									"$mob": [{ "e@textures.active_trial_spawner": {}}],
 									"$drops": [
 										{ "i2@assets.drops_table_entry": {
-											"$item": "copper_ingot",
+											"$content": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}],
 											"$quantity": "24-32",
 											"$chance": "16.67%%"
 										}},
@@ -2348,11 +2492,17 @@
 											"$chance": "11.11%%"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "speed_potion",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/potion_bottle_moveSpeed",
+												"$name": "potion.moveSpeed.name"
+											}}],
 											"$chance": "5.55%%"
 										}},
 										{ "i4@assets.drops_table_entry": {
-											"$item": "strength_potion",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/potion_bottle_damageBoost",
+												"$name": "potion.damageBoost.name"
+											}}],
 											"$chance": "5.55%%"
 										}},
 										{ "i5@assets.drops_table_entry": {
@@ -2387,7 +2537,7 @@
 									"$mob": [{ "e@textures.ominous_trial_spawner": {}}],
 									"$drops": [
 										{ "i2@assets.drops_table_entry": {
-											"$item": "oxidized_copper",
+											"$content": [{"i@assets.oxidized_copper": {}}],
 											"$quantity": "3-4",
 											"$chance": "15%%"
 										}},
@@ -2408,19 +2558,25 @@
 											"$chance": "10%%"
 										}},
 										{ "i3@assets.drops_table_entry": {
-											"$item": "regeneration_potion",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/potion_bottle_regeneration",
+												"$name": "potion.regeneration.name"
+											}}],
 											"$chance": "5%%"
 										}},
 										{ "i4@assets.drops_table_entry": {
-											"$item": "strength_potion",
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/potion_bottle_damageBoost",
+												"$name": "potion.damageBoost.name"
+											}}],
 											"$chance": "5%%"
 										}},
 										{ "i5@assets.drops_table_entry": {
-											"$item": "flow_sherd",
+											"$content": [{"i@assets.flow_sherd": {}}],
 											"$chance": "5%%"
 										}},
 										{ "i8@assets.drops_table_entry": {
-											"$item": "ominous_trial_key",
+											"$content": [{"i@assets.ominous_trial_key": {}}],
 											"$chance": "50%%"
 										}}
 									]
@@ -2448,16 +2604,16 @@
 									]
 								}},
 								{ "desert_well@how_to_play.brushing_table_item": {
-									"$structure": "desert_well",
+									"$structure": [{"i@assets.desert_well":{}}],
 									"$items": [
 										{ "i1@assets.brushing_table_entry": {
-											"$item": "petrified_slab",
+											"$content": [{"i@assets.petrified_slab": {}}],
 											"$chance": "11%%"
 										}}
 									]
 								}},
 								{ "cold_ocean_ruins@how_to_play.brushing_table_item": {
-									"$structure": "cold_ocean_ruins",
+									"$structure": [{"i@assets.cold_ocean_ruins":{}}],
 									"$size": ["100% - 2px", 144],
 									"$items": [
 										{ "i1@assets.brushing_table_entry": {
@@ -2515,7 +2671,7 @@
 								}},
 								{ "taiga_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 108],
-									"$biome": "taiga",
+									"$biome": [{"i@assets.taiga":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
 											"$content": "$torchflower_seeds",
@@ -2536,7 +2692,7 @@
 								}},
 								{ "savanna_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 108],
-									"$biome": "savanna",
+									"$biome": [{"i@assets.savanna":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
 											"$content": "$torchflower_seeds",
@@ -2557,7 +2713,7 @@
 								}},
 								{ "ice_spikes_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 108],
-									"$biome": "ice_spikes",
+									"$biome": [{"i@assets.ice_spikes":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
 											"$content": "$torchflower_seeds",
@@ -2578,7 +2734,7 @@
 								}},
 								{ "flower_forest_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 108],
-									"$biome": "flower_forest",
+									"$biome": [{"i@assets.flower_forest":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
 											"$content": "$torchflower_seeds",
@@ -2599,7 +2755,7 @@
 								}},
 								{ "lush_caves_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 108],
-									"$biome": "lush_caves",
+									"$biome": [{"i@assets.lush_caves":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
 											"$content": "$torchflower_seeds",
@@ -2610,7 +2766,7 @@
 											"$chance": "10%%"
 										}},
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "small_dripleaf",
+											"$content": [{"i@assets.small_dripleaf": {}}],
 											"$chance": "80%%"
 										}}
 									],
@@ -2618,7 +2774,7 @@
 								}},
 								{ "crimson_forest_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 36],
-									"$biome": "crimson_forest",
+									"$biome": [{"i@assets.crimson_forest":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
 											"$content": [{"i@assets.item_renderer": { "$id": "nether_wart" }}]
@@ -2628,10 +2784,10 @@
 								}},
 								{ "the_end_sniffer@how_to_play.sniffer_table_item": {
 									"$size": ["100% - 2px", 36],
-									"$biome": "the_end",
+									"$biome": [{"i@assets.the_end":{}}],
 									"$items": [
 										{ "i1@assets.sniffing_table_entry": {
-											"$item": "chorus_flower"
+											"$content": [{"i@assets.chorus_flower": {}}]
 										}}
 									],
 									"$note": "From End Stone"
@@ -2733,11 +2889,9 @@
 				"bindings": "$is_toggled",
 				"$toggle": "optional_addons_button_toggle",
 				"controls": [
-					{ "qol@how_to_play_common.header": {
-						"$text": "Quality of Life Addons",
-						"$icon": [{"i@assets.qol_addon":{
-							"size": [16, 16]
-						}}]
+					{ "qol@assets.header": {
+						"$title": "Quality of Life Addons",
+						"$icon": "textures/ui/elements/qol_addon"
 					}},
 					{ 
 						"gravel@assets.text_box": {
@@ -2750,23 +2904,23 @@
 							"$mob": [{ "e@assets.zombie": {}}],
 							"$drops": [
 								{ "i1@assets.drops_table_entry": {
-									"$item": "rotten_flesh",
+									"$content": [{"i@assets.item_renderer": { "$id": "rotten_flesh" }}],
 									"$quantity": "0-2"
 								}},
 								{ "i2@assets.drops_table_entry": {
-									"$item": "gravel",
+									"$content": [{"i@assets.gravel": {}}],
 									"$quantity": "0-2"
 								}},
 								{ "i3@assets.drops_table_entry": {
-									"$item": "carrot",
+									"$content": [{"i@assets.item_renderer": { "$id": "carrot" }}],
 									"$chance": "0.83%%"
 								}},
 								{ "i4@assets.drops_table_entry": {
-									"$item": "potato",
+									"$content": [{"i@assets.item_renderer": { "$id": "potato" }}],
 									"$chance": "0.83%%"
 								}},
 								{ "i5@assets.drops_table_entry": {
-									"$item": "iron_ingot",
+									"$content": [{"i@assets.item_renderer": { "$id": "iron_ingot" }}],
 									"$chance": "0.83%%"
 								}}
 							],
@@ -2788,19 +2942,19 @@
 						"$mob": [{ "e@assets.husk": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "rotten_flesh",
+								"$content": [{"i@assets.item_renderer": { "$id": "rotten_flesh" }}],
 								"$quantity": "0-2"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "sand",
+								"$content": [{"i@assets.sand": {}}],
 								"$quantity": "2-4"
 							}},
 							{ "i4@assets.drops_table_entry": {
-								"$item": "potato",
+								"$content": [{"i@assets.item_renderer": { "$id": "potato" }}],
 								"$chance": "1.25%%"
 							}},
 							{ "i5@assets.drops_table_entry": {
-								"$item": "iron_ingot",
+								"$content": [{"i@assets.item_renderer": { "$id": "iron_ingot" }}],
 								"$chance": "1.25%%"
 							}}
 						],
@@ -2821,11 +2975,11 @@
 						"$mob": [{ "e@assets.drowned": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "rotten_flesh",
+								"$content": [{"i@assets.item_renderer": { "$id": "rotten_flesh" }}],
 								"$quantity": "0-2"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "copper_ingot",
+								"$content": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}],
 								"$chance": "22%%"
 							}}
 						],
@@ -2836,151 +2990,159 @@
 							]}}
 						]
 					}},
-					{ "smelting@assets.dropdown": {
+					{ "smelting_copper_equipment@assets.header": {
 						"$title": "Smelting Recipes",
-						"$icon": "textures/blocks/furnace_front_on",
-						"$content": [
-							{ "copper_equipment@assets.white_box": { //index 1 should be skipped
-								"layer": -3,
-								"color": [0.3, 0.3, 0.3], 
-								"size": ["100%", 82],
-								"$book_name": "copper_equipment_smelting",
-								"controls": [
-									{ "copper_sword@assets.book_page": {
-										"$name": "copper_sword",
-										"$p_page": 9, "$prev": "copper_boots",
-										"$n_page": 2, "$next": "copper_pickaxe",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_sword"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_pickaxe@assets.book_page": {
-										"$name": "copper_pickaxe",
-										"$p_page": 0, "$prev": "copper_sword",
-										"$n_page": 3, "$next": "copper_axe",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_pickaxe"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_axe@assets.book_page": {
-										"$name": "copper_axe",
-										"$p_page": 2, "$prev": "copper_pickaxe",
-										"$n_page": 4, "$next": "copper_shovel",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_axe"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_shovel@assets.book_page": {
-										"$name": "copper_shovel",
-										"$p_page": 3, "$prev": "copper_axe",
-										"$n_page": 5, "$next": "copper_hoe",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_shovel"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_hoe@assets.book_page": {
-										"$name": "copper_hoe",
-										"$p_page": 4, "$prev": "copper_shovel",
-										"$n_page": 6, "$next": "copper_helmet",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_hoe"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_helmet@assets.book_page": {
-										"$name": "copper_helmet",
-										"$p_page": 5, "$prev": "copper_hoe",
-										"$n_page": 7, "$next": "copper_chestplate",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_helmet"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_chestplate@assets.book_page": {
-										"$name": "copper_chestplate",
-										"$p_page": 6, "$prev": "copper_helmet",
-										"$n_page": 8, "$next": "copper_leggings",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_chestplate"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_leggings@assets.book_page": {
-										"$name": "copper_leggings",
-										"$p_page": 7, "$prev": "copper_chestplate",
-										"$n_page": 9, "$next": "copper_boots",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_leggings"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}},
-									{ "copper_boots@assets.book_page": {
-										"$name": "copper_boots",
-										"$p_page": 8, "$prev": "copper_leggings",
-										"$n_page": 0, "$next": "copper_sword",
-										"$page_content": [{"i@how_to_play.smelting_recipe": {
-											"$input": [{"i@assets.item_renderer":{
-												"$id": "copper_boots"
-											}}],
-											"$output": [{"i@assets.copper_ingot":{}}]
-										}}]
-									}}
-								]
-							}},
-							{ "creator_music_box@how_to_play.feature": {
-								"$content": [{"o@how_to_play.smelting_recipe": {
-									"$input": [{"i@assets.item_renderer": {
-										"$texture": "textures/items/music_disc_creator_music_box",
-										"$name": "('§e%item.record.name\n§7%item.record_creator_music_box.desc')"
+						"$icon": "textures/blocks/furnace_front_on"
+					}},
+					{ "copper_equipment@assets.white_box": { //index 1 should be skipped
+						"layer": -3,
+						"color": [0.3, 0.3, 0.3], 
+						"size": ["100%", 82],
+						"$book_name": "copper_equipment_smelting",
+						"controls": [
+							{ "copper_sword@assets.book_page": {
+								"$name": "copper_sword",
+								"$p_page": 10, "$prev": "copper_boots",
+								"$n_page": 2, "$next": "copper_pickaxe",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_sword"
 									}}],
-									"$output": [{"i@assets.copper_ingot":{}}]
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_pickaxe@assets.book_page": {
+								"$name": "copper_pickaxe",
+								"$p_page": 0, "$prev": "copper_sword",
+								"$n_page": 3, "$next": "copper_axe",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_pickaxe"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_axe@assets.book_page": {
+								"$name": "copper_axe",
+								"$p_page": 2, "$prev": "copper_pickaxe",
+								"$n_page": 4, "$next": "copper_shovel",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_axe"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_shovel@assets.book_page": {
+								"$name": "copper_shovel",
+								"$p_page": 3, "$prev": "copper_axe",
+								"$n_page": 5, "$next": "copper_hoe",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_shovel"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_hoe@assets.book_page": {
+								"$name": "copper_hoe",
+								"$p_page": 4, "$prev": "copper_shovel",
+								"$n_page": 6, "$next": "copper_spear",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_hoe"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_spear@assets.book_page": {
+								"$name": "copper_spear",
+								"$p_page": 5, "$prev": "copper_hoe",
+								"$n_page": 7, "$next": "copper_helmet",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$texture":"('textures/items/spear/' + $id)",
+										"$id": "copper_spear"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_helmet@assets.book_page": {
+								"$name": "copper_helmet",
+								"$p_page": 6, "$prev": "copper_spear",
+								"$n_page": 8, "$next": "copper_chestplate",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_helmet"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_chestplate@assets.book_page": {
+								"$name": "copper_chestplate",
+								"$p_page": 7, "$prev": "copper_helmet",
+								"$n_page": 9, "$next": "copper_leggings",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_chestplate"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_leggings@assets.book_page": {
+								"$name": "copper_leggings",
+								"$p_page": 8, "$prev": "copper_chestplate",
+								"$n_page": 10, "$next": "copper_boots",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_leggings"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+								}}]
+							}},
+							{ "copper_boots@assets.book_page": {
+								"$name": "copper_boots",
+								"$p_page": 9, "$prev": "copper_leggings",
+								"$n_page": 0, "$next": "copper_sword",
+								"$page_content": [{"i@how_to_play.smelting_recipe": {
+									"$input": [{"i@assets.item_renderer":{
+										"$id": "copper_boots"
+									}}],
+									"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
 								}}]
 							}}
 						]
 					}},
-					{ 
-						"gold@assets.text_box": {
-							"$text": "§a[]§r Netherrack & Gold"
-						}
-					},
+					{ "creator_music_box@how_to_play.feature": {
+						"$content": [{"o@how_to_play.smelting_recipe": {
+							"$input": [{"i@assets.item_renderer": {
+								"$texture": "textures/items/music_disc_creator_music_box",
+								"$name": "('§e%item.record.name\n§7%item.record_creator_music_box.desc')"
+							}}],
+							"$output": [{"i@assets.item_renderer": { "$id": "copper_ingot" }}]
+						}}]
+					}},
+					{ "gold@assets.text_box": {
+						"$text": "§a[]§r Netherrack & Gold"
+					}},
 					{ "zombie_piglin@how_to_play.small_drops_table": {
 						"$size": ["100% - 2px", 144],
 						"$mob": [{ "e@assets.zombie_piglin": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "rotten_flesh",
+								"$content": [{"i@assets.item_renderer": { "$id": "rotten_flesh" }}],
 								"$quantity": "0-2"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "gold_nugget",
+								"$content": [{"i@assets.item_renderer": { "$id": "gold_nugget" }}],
 								"$quantity": "0-3"
 							}},
 							{ "i3@assets.drops_table_entry": {
-								"$item": "netherrack",
+								"$content": [{"i@assets.netherrack": {}}],
 								"$quantity": "0-2"
 							}},
 							{ "i4@assets.drops_table_entry": {
-								"$item": "gold_ingot",
+								"$content": [{"i@item_renderer": { "$id": "gold_ingot" }}],
 								"$chance": "2.5%%"
 							}}
 						],
@@ -3004,7 +3166,7 @@
 						"$mob": [{ "e@assets.skeleton": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "bone",
+								"$content": [{"i@assets.bone": {}}],
 								"$quantity": "0-2"
 							}},
 							{ "i2@assets.drops_table_entry": {
@@ -3012,7 +3174,7 @@
 								"$quantity": "0-2"
 							}},
 							{ "i3@assets.drops_table_entry": {
-								"$item": "soul_sand",
+								"$content": [{"i@assets.soul_sand": {}}],
 								"$quantity": "0-2"
 							}}
 						],
@@ -3037,11 +3199,11 @@
 								"$quantity": "0-1"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "gunpowder",
+								"$content": [{"i@assets.gunpowder": {}}],
 								"$quantity": "0-2"
 							}},
 							{ "i3@assets.drops_table_entry": {
-								"$item": "soul_soil",
+								"$content": [{"i@assets.soul_soil": {}}],
 								"$quantity": "0-2"
 							}}
 						],
@@ -3059,11 +3221,11 @@
 						"$mob": [{ "e@assets.magma_cube": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "magma_cream",
+								"$content": [{"i@assets.magma_cream": {}}],
 								"$quantity":"0-1"
 							}},
 							{ "i1@assets.drops_table_entry": {
-								"$item": "blackstone",
+								"$content": [{"i@assets.blackstone": {}}],
 								"$quantity":"0-2"
 							}}
 						],
@@ -3081,11 +3243,11 @@
 						"$mob": [{ "e@assets.wither_skeleton": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "bone",
+								"$content": [{"i@assets.bone": {}}],
 								"$quantity": "0-2"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "coal",
+								"$content": [{"i@assets.item_renderer": { "$id": "coal" }}],
 								"$quantity": "0-3"
 							}},
 							{ "i4@assets.drops_table_entry": {
@@ -3114,11 +3276,11 @@
 						"$mob": [{ "e@assets.blaze": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "blaze_rod",
+								"$content": [{"i@assets.blaze_rod": {}}],
 								"$quantity":"0-1"
 							}},
 							{ "i1@assets.drops_table_entry": {
-								"$item": "quartz",
+								"$content": [{"i@assets.item_renderer": { "$id": "quartz" }}],
 								"$quantity":"0-1"
 							}}
 						],
@@ -3141,36 +3303,39 @@
 						"$mob": [{ "e@assets.witch": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "redstone_dust",
+								"$content": [{"i@assets.item_renderer": {
+									"$id": "redstone_dust",
+									"$name": "item.redstone.name"
+								}}],
 								"$quantity": "4-8"
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "glowstone_dust",
+								"$content": [{"i@assets.glowstone_dust": {}}],
 								"$quantity": "0-6",
 								"$chance": "14.3%%"
 							}},
 							{ "i3@assets.drops_table_entry": {
-								"$item": "gunpowder",
+								"$content": [{"i@assets.gunpowder": {}}],
 								"$quantity": "0-2",
 								"$chance": "14.3%%"
 							}},
 							{ "i4@assets.drops_table_entry": {
-								"$item": "sugar",
+								"$content": [{"i@assets.sugar": {}}],
 								"$quantity": "0-2",
 								"$chance": "14.3%%"
 							}},
 							{ "i5@assets.drops_table_entry": {
-								"$item": "spider_eye",
+								"$content": [{"i@assets.spider_eye": {}}],
 								"$quantity": "0-2",
 								"$chance": "14.3%%"
 							}},
 							{ "i6@assets.drops_table_entry": {
-								"$item": "glass_bottle",
+								"$content": [{"i@assets.glass_bottle": {}}],
 								"$quantity": "0-2",
 								"$chance": "14.3%%"
 							}},
 							{ "i7@assets.drops_table_entry": {
-								"$item": "stick",
+								"$content": [{"i@assets.stick": {}}],
 								"$quantity": "0-2",
 								"$chance": "28.5%%"
 							}}
@@ -3191,10 +3356,13 @@
 						"glass2@how_to_play.trading_feature": {
 						"$villager": "Librarian",
 							"$level": "§pJourneyman",
-							"$job": "librarian",
-							"$take1": [{"i@assets.emerald":{}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald" }}],
 							"$give": [{"i@assets.glass":{"$count": "6"}}],
-							"$details": "* Probability: 50%%\n* Number of Trades: 16"
+							"$details": "* Probability: 50%%\n* Number of Trades: 16",
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/librarian",
+								"$name": "entity.villager.librarian"
+							}}]
 						}
 					},
 					{ 
@@ -3206,28 +3374,45 @@
 						"sandstone@how_to_play.trading_feature": {
 							"$villager": "Desert Mason",
 							"$level": "§pJourneyman",
-							"$job": "mason", "$biome": "desert_villager",
-							"$take1": [{"i@assets.emerald":{}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald" }}],
 							"$give": [{"i@assets.sandstone":{"$count": "4"}}],
-							"$details": "* Probability: 20%%\n* Number of Trades: 16"
+							"$details": "* Probability: 20%%\n* Number of Trades: 16",
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/mason",
+								"$name": "entity.villager.mason"
+							}}],
+							"$biome": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/desert",
+								"$name": "Biome: %biome.desert.name"
+							}}]
 						}
 					},
 					{
 						"red_sandstone@how_to_play.trading_feature": {
 							"$villager": "Savanna Mason",
 							"$level": "§pJourneyman",
-							"$job": "mason", "$biome": "savanna_villager",
-							"$take1": [{"i@assets.emerald":{}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald" }}],
 							"$give": [{"i@assets.red_sandstone":{"$count": "4"}}],
-							"$details": "* Probability: 20%%\n* Number of Trades: 16"
+							"$details": "* Probability: 20%%\n* Number of Trades: 16",
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/mason",
+								"$name": "entity.villager.mason"
+							}}],
+							"$biome": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/savanna",
+								"$name": "Biome: %biome.savanna.name"
+							}}]
 						}
 					},
 					{
 						"terracotta2@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§qExpert",
-							"$job": "mason",
-							"$take1": [{"i@assets.emerald":{}}],
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/mason",
+								"$name": "entity.villager.mason"
+							}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald" }}],
 							"$give": [{"i@assets.any_terracotta":{"$count": "4"}}],
 							"$details": "* Probability: 400%% (this trade occurs 4 times)\n* Number of Trades: 16"
 						}
@@ -3236,9 +3421,12 @@
 						"quartz1@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§sMaster",
-							"$job": "mason",
-							"$take1": [{"i@assets.emerald":{"$count": "4"}}],
-							"$give": [{"i@assets.quartz_block":{"$count": "4"}}],
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/mason",
+								"$name": "entity.villager.mason"
+							}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald", "$count": "4"}}],
+							"$give": [{"i@assets.item_renderer": { "$id": "quartz" , "$count": "4"}}],
 							"$details": "* Probability: 100%%\n* Number of Trades: 12"
 							}
 					},
@@ -3246,14 +3434,17 @@
 						"deepslate@how_to_play.trading_feature": {
 							"$villager": "Mason",
 							"$level": "§sMaster",
-							"$job": "mason",
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/mason",
+								"$name": "entity.villager.mason"
+							}}],
 							"$number": "2",
 							"$take1": [{"i@assets.block_renderer": {
 								"$aux": "((-378) * 65536)",
 								"$id": "deepslate",
 								"$count": "10"
 							}}],
-							"$take2": [{"i@assets.emerald":{}}],
+							"$take2": [{"i@assets.item_renderer": { "$id": "emerald" }}],
 							"$give": [{"i@assets.block_renderer":{
 								"$aux": "((-379) * 65536)",
 								"$id": "cobbled_deepslate",
@@ -3270,9 +3461,16 @@
 					{
 						"redstone2@how_to_play.trading_feature": {
 						"$villager": "Cleric",
-							"$job": "cleric",
-							"$take1": [{"i@assets.emerald":{}}],
-							"$give": [{"i@assets.redstone_dust":{"$count": "4"}}],
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/cleric",
+								"$name": "entity.villager.cleric"
+							}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald" }}],
+							"$give": [{"i@assets.item_renderer": {
+								"$id": "redstone_dust",
+								"$name": "item.redstone.name",
+								"$count": "4"
+							}}],
 							"$details": "* Probability: 100%%\n* Number of Trades: 12"
 						}
 					},
@@ -3280,9 +3478,16 @@
 						"lapis@how_to_play.trading_feature": {
 						"$villager": "Cleric",
 							"$level": "§hApprentice",
-							"$job": "cleric",
-							"$take1": [{"i@assets.emerald":{}}],
-							"$give": [{"i@assets.lapis_lazuli":{"$count": "5"}}],
+							"$job": [{"i@assets.item_renderer": {
+								"$texture": "textures/ui/villagers/cleric",
+								"$name": "entity.villager.cleric"
+							}}],
+							"$take1": [{"i@assets.item_renderer": { "$id": "emerald" }}],
+							"$give": [{"i@assets.item_renderer": {
+								"$texture": "textures/items/dye_powder_blue",
+								"$name": "item.dye.blue.name",
+								"$count": "5"
+							}}],
 							"$details": "* Probability: 100%%\n* Number of Trades: 12"
 						}
 					},
@@ -3305,7 +3510,7 @@
 					{
 						"granite2@how_to_play.crafting2x2_feature": {
 							"$input1": [{"b@assets.diorite":{}}],
-							"$input2": [{"b@assets.quartz":{}}],
+							"$input2": [{"b@assets.item_renderer": { "$id": "quartz" }}],
 							"$output": [{"b@assets.granite": {
 								"$count": "2"
 							}}]
@@ -3314,8 +3519,8 @@
 					{
 						"diorite@how_to_play.crafting2x2_feature": {
 							"$input1": [{"b@assets.cobblestone":{}}],
-							"$input2": [{"b@assets.quartz":{}}],
-							"$input3": [{"b@assets.quartz":{}}],
+							"$input2": [{"b@assets.item_renderer": { "$id": "quartz" }}],
+							"$input3": [{"b@assets.item_renderer": { "$id": "quartz" }}],
 							"$input4": [{"b@assets.cobblestone":{}}],
 							"$output": [{"b@assets.diorite": {
 								"$count": "4"
@@ -3339,8 +3544,8 @@
 					{
 						"calcite@how_to_play.crafting2x2_feature": {
 							"$input1": [{"b@assets.diorite":{}}],
-							"$input2": [{"i@assets.amethyst_shard":{}}],
-							"$input3": [{"i@assets.amethyst_shard":{}}],
+							"$input2": [{"i@assets.item_renderer": { "$id": "amethyst_shard" }}],
+							"$input3": [{"i@assets.item_renderer": { "$id": "amethyst_shard" }}],
 							"$input4": [{"b@assets.diorite":{}}],
 							"$output": [{"b@assets.calcite":{
 								"$count": "4"
@@ -3398,7 +3603,7 @@
 							"$input2": [{"b@assets.all_trims":{}}],
 							"$input3": [{"b@assets.trim_material":{}}],
 							"$input4": [{"b@assets.trim_material":{}}],
-							"$input5": [{"b@assets.diamond":{}}],
+							"$input5": [{"b@assets.item_renderer": { "$id": "diamond" }}],
 							"$input6": [{"b@assets.trim_material":{}}],
 							"$input7": [{"b@assets.trim_material":{}}],
 							"$input8": [{"b@assets.trim_material":{}}],
@@ -3415,8 +3620,11 @@
 					},
 					{
 						"copper_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$C": [{"b@assets.copper_ingot":{}}],
-							"$S": [{"b@assets.nautilus_shell":{}}],
+							"$C": [{"b@assets.item_renderer": { "$id": "copper_ingot" }}],
+							"$S": [{"b@assets.item_renderer": {
+								"$id": "nautilus_shell",
+								"$texture": "textures/items/nautilus"
+							}}],
 
 							                 "$input2": "$C", "$input3": "$C",
 							"$input4": "$C", "$input5": "$S", "$input6": "$C",
@@ -3430,8 +3638,11 @@
 					},
 					{
 						"iron_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$I": [{"b@assets.iron_ingot":{}}],
-							"$S": [{"b@assets.nautilus_shell":{}}],
+							"$I": [{"b@assets.item_renderer": { "$id": "iron_ingot" }}],
+							"$S": [{"b@assets.item_renderer": {
+								"$id": "nautilus_shell",
+								"$texture": "textures/items/nautilus"
+							}}],
 
 							                 "$input2": "$I", "$input3": "$I",
 							"$input4": "$I", "$input5": "$S", "$input6": "$I",
@@ -3445,8 +3656,11 @@
 					},
 					{
 						"golden_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$G": [{"b@assets.gold_ingot":{}}],
-							"$S": [{"b@assets.nautilus_shell":{}}],
+							"$G": [{"b@assets.item_renderer": { "$id": "gold_ingot" }}],
+							"$S": [{"b@assets.item_renderer": {
+								"$id": "nautilus_shell",
+								"$texture": "textures/items/nautilus"
+							}}],
 
 							                 "$input2": "$G", "$input3": "$G",
 							"$input4": "$G", "$input5": "$S", "$input6": "$G",
@@ -3460,8 +3674,11 @@
 					},
 					{
 						"diamond_nautilus_armor@how_to_play.crafting3x3_feature": {
-							"$D": [{"b@assets.diamond":{}}],
-							"$S": [{"b@assets.nautilus_shell":{}}],
+							"$D": [{"b@assets.item_renderer": { "$id": "diamond" }}],
+							"$S": [{"b@assets.item_renderer": {
+								"$id": "nautilus_shell",
+								"$texture": "textures/items/nautilus"
+							}}],
 
 							                 "$input2": "$D", "$input3": "$D",
 							"$input4": "$D", "$input5": "$S", "$input6": "$D",
@@ -3537,10 +3754,10 @@
 						"$mob": [{ "e@assets.pillager_captian": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "ominous_banner"
+								"$content": [{"i@assets.ominous_banner": {}}]
 							}},
 							{ "i2@assets.drops_table_entry": {
-								"$item": "ominous_bottle"
+								"$content": [{"i@assets.ominous_bottle": {}}]
 							}}
 						],
 						"$notes": [
@@ -3550,24 +3767,18 @@
 							]}}
 						]
 					}},
-					{ "extra@how_to_play_common.header": {
-						"$text": "Extra Items Addons",
-						"$icon": [{"i@assets.extra_addon":{
-							"size": [16, 16],
-							"$text": ""}}
-						]
+					{ "extra@assets.header": {
+						"$title": "Extra Items Addons",
+						"$icon": "textures/ui/elements/extra_addon"
 					}},
 					{ 
 						"chorus@assets.text_box": {
 							"$text": "§c[]§r Chorus Plants"
 						}
 					},
-					{ "sniffer@how_to_play_common.header": {
-						"$text": "Sniffers can find",
-						"$icon": [{"i@assets.sniffer":{
-							"size": [16, 16],
-							"$name": ""
-						}}]
+					{ "sniffer@assets.header": {
+						"$title": "Sniffers can find",
+						"$icon": "textures/ui/map/mobs/sniffer"
 					}},
 					{ "sniffer_table_header": { "size": ["100% - 2px", 28], "type": "stack_panel", "orientation": "horizontal",
 						"controls": [
@@ -3580,14 +3791,14 @@
 					}},
 					{ "the_end_sniffer@how_to_play.sniffer_table_item": {
 						"$size": ["100% - 2px", 72],
-						"$biome": "the_end",
+						"$biome": [{"i@assets.the_end":{}}],
 						"$items": [
 							{ "i1@assets.sniffing_table_entry": {
-								"$item": "chorus_plant",
+								"$content": [{"i@assets.chorus_plant": {}}],
 								"$chance": "90%%"
 							}},
 							{ "i2@assets.sniffing_table_entry": {
-								"$item": "chorus_flower",
+								"$content": [{"i@assets.chorus_flower": {}}],
 								"$chance": "10%%"
 							}}
 						],
@@ -3602,10 +3813,19 @@
 					{
 						"decay_potion@how_to_play.feature": {
 							"$content": [{"o@how_to_play.brewing_recipe": {
-								"$input": [{"b@assets.awkward_poion":{}}],
-								"$addon": [{"b@assets.wither_rose":{}}],
-								"$output": [{"b@assets.decay_potion":{}}]
+								"$input": [{"b@assets.item_renderer": {
+									"$texture": "textures/items/potion_bottle_drinkable",
+									"$name": "potion.awkward.name"
+								}}],
+								"$addon": [{"b@assets.item_renderer": {
+									"$texture": "textures/blocks/flower_wither_rose",
+									"$name": "tile.wither_rose.name"
+								}}],
+								"$output": [{"b@assets.item_renderer": {
+									"$texture": "textures/items/potion_bottle_wither",
+									"$name": "potion.wither.name"
 								}}]
+							}}]
 						}
 					},
 					{ 
@@ -3618,7 +3838,7 @@
 						"$mob": [{ "e@assets.frog": {}}],
 						"$drops": [
 							{ "i1@assets.drops_table_entry": {
-								"$item": "frog_spawn",
+								"$content": [{"i@assets.frog_spawn": {}}],
 								"$chance": "50%%"
 							}}
 						],
@@ -3650,6 +3870,10 @@
 					{
 						"infested_blocks@how_to_play.feature": {
 							"$book_name": "infested_blocks",
+							"$P": [{"b@assets.item_renderer": {
+								"$texture": "textures/items/potion_bottle_infested",
+								"$name": "potion.infested.name"
+							}}],
 							"$content": [
 								{
 									"infested_cobblestone@assets.book_page": {
@@ -3660,16 +3884,16 @@
 										"$page_content": [
 											{
 												"infested_cobblestone@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.cobblestone":{}}],
-													"$input2": [{"b@assets.cobblestone":{}}],
-													"$input3": [{"b@assets.cobblestone":{}}],
-													"$input4": [{"b@assets.cobblestone":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.cobblestone":{}}],
-													"$input7": [{"b@assets.cobblestone":{}}],
-													"$input8": [{"b@assets.cobblestone":{}}],
-													"$input9": [{"b@assets.cobblestone":{}}],
-													"$output": [{"b@assets.infested_cobblestone":{}}]
+													"$B": [{"b@assets.cobblestone":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+													
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_cobblestone",
+														"$name": "tile.monster_egg.cobble.name"
+													}}]
 												}
 											}
 										]
@@ -3684,16 +3908,16 @@
 										"$page_content": [
 											{
 												"infested_stone@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.stone":{}}],
-													"$input2": [{"b@assets.stone":{}}],
-													"$input3": [{"b@assets.stone":{}}],
-													"$input4": [{"b@assets.stone":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.stone":{}}],
-													"$input7": [{"b@assets.stone":{}}],
-													"$input8": [{"b@assets.stone":{}}],
-													"$input9": [{"b@assets.stone":{}}],
-													"$output": [{"b@assets.infested_stone":{}}]
+													"$B": [{"b@assets.stone":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+													
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_stone",
+														"$name": "tile.monster_egg.stone.name"
+													}}]
 												}
 											}
 										]
@@ -3708,16 +3932,16 @@
 										"$page_content": [
 											{
 												"infested_deepslate@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.deepslate":{}}],
-													"$input2": [{"b@assets.deepslate":{}}],
-													"$input3": [{"b@assets.deepslate":{}}],
-													"$input4": [{"b@assets.deepslate":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.deepslate":{}}],
-													"$input7": [{"b@assets.deepslate":{}}],
-													"$input8": [{"b@assets.deepslate":{}}],
-													"$input9": [{"b@assets.deepslate":{}}],
-													"$output": [{"b@assets.infested_deepslate":{}}]
+													"$B": [{"b@assets.deepslate":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_deepslate",
+														"$name": "tile.infested_deepslate.name"
+													}}]
 												}
 											}
 										]
@@ -3732,16 +3956,16 @@
 										"$page_content": [
 											{
 												"infested_stone_bricks@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.stone_bricks":{}}],
-													"$input2": [{"b@assets.stone_bricks":{}}],
-													"$input3": [{"b@assets.stone_bricks":{}}],
-													"$input4": [{"b@assets.stone_bricks":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.stone_bricks":{}}],
-													"$input7": [{"b@assets.stone_bricks":{}}],
-													"$input8": [{"b@assets.stone_bricks":{}}],
-													"$input9": [{"b@assets.stone_bricks":{}}],
-													"$output": [{"b@assets.infested_stone_bricks":{}}]
+													"$B": [{"b@assets.stone_bricks":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+													
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_stone_bricks",
+														"$name": "tile.monster_egg.brick.name"
+													}}]
 												}
 											}
 										]
@@ -3756,16 +3980,16 @@
 										"$page_content": [
 											{
 												"infested_mossy_stone_bricks@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input2": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input3": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input4": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input7": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input8": [{"b@assets.mossy_stone_bricks":{}}],
-													"$input9": [{"b@assets.mossy_stone_bricks":{}}],
-													"$output": [{"b@assets.infested_mossy_stone_bricks":{}}]
+													"$B": [{"b@assets.mossy_stone_bricks":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+													
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_mossy_stone_bricks",
+														"$name": "tile.monster_egg.mossybrick.name"
+													}}]
 												}
 											}
 										]
@@ -3780,16 +4004,16 @@
 										"$page_content": [
 											{
 												"infested_cracked_stone_bricks@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input2": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input3": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input4": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input7": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input8": [{"b@assets.cracked_stone_bricks":{}}],
-													"$input9": [{"b@assets.cracked_stone_bricks":{}}],
-													"$output": [{"b@assets.infested_cracked_stone_bricks":{}}]
+													"$B": [{"b@assets.cracked_stone_bricks":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+													
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_cracked_stone_bricks",
+														"$name": "tile.monster_egg.crackedbrick.name"
+													}}]
 												}
 											}
 										]
@@ -3804,16 +4028,16 @@
 										"$page_content": [
 											{
 												"infested_chiseled_stone_bricks@how_to_play.crafting3x3_recipe": {
-													"$input1": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input2": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input3": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input4": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input5": [{"b@assets.infestation_potion":{}}],
-													"$input6": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input7": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input8": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$input9": [{"b@assets.chiseled_stone_bricks":{}}],
-													"$output": [{"b@assets.infested_chiseled_stone_bricks":{}}]
+													"$B": [{"b@assets.chiseled_stone_bricks":{}}],
+
+													"$input1": "$B", "$input2": "$B", "$input3": "$B",
+													"$input4": "$B", "$input5": "$P", "$input6": "$B",
+													"$input7": "$B", "$input8": "$B", "$input9": "$B",
+													
+													"$output": [{"b@assets.item_renderer": {
+														"$texture": "textures/ui/blocks/infested_chiseled_stone_bricks",
+														"$name": "tile.monster_egg.chiseledbrick.name"
+													}}]
 												}
 											}
 										]
@@ -3827,10 +4051,10 @@
 							"$text": "§c[]§r Purpur Blocks"
 						}
 					},
-					{ "smelting@how_to_play_common.header": {
-						"$text": "Smelting Recipes",
-						"$icon": [{"i@assets.smelting":{}}]
-					} },
+					{ "smelting@assets.header": {
+						"$title": "Smelting Recipes",
+						"$icon": "textures/blocks/furnace_front_on"
+					}},
 					{
 						"smooth_purpur@how_to_play.feature": {
 							"$content": [{"o@how_to_play.smelting_recipe": {
@@ -3839,9 +4063,9 @@
 							}}]
 						}
 					},
-					{ "stonecutting@how_to_play_common.header": {
-						"$text": "Stonecutter Recipes",
-						"$icon": [{"i@assets.stonecutting":{}}]
+					{ "stonecutting@assets.header": {
+						"$title": "Stonecutter Recipes",
+						"$icon": "textures/ui/items/stonecutter"
 					} },
 					{
 						"chiseled_purpur@how_to_play.feature": {
@@ -3857,10 +4081,20 @@
 				"bindings": "$is_toggled",
 				"$toggle": "biomes_button_toggle",
 				"controls": [
-					{ "structure_biomes@how_to_play_common.header": {
-						"$text": "The Biome in Each Structure",
-						"$icon": [{"i@assets.plains":{}}
-						]
+					{ "biome_detector@assets.header": {
+						"$title": "Biome Detector",
+						"$icon": "textures/items/biome_detector"
+					}},
+					{ 
+						"detector@assets.text_box": {
+							"$text": "* You can activate the biome detector in the player settings.\n \n* You can find the player settings in the settings section of Skybedrock Guidebook.\n \n* When active, it will display the biome in the chat stack."
+						}
+					},
+					{ "detector_pad@how_to_play_common.padding":{} },
+					
+					{ "structure_biomes@assets.header": {
+						"$title": "The Biome in Each Structure",
+						"$icon": "textures/biomes/plains"
 					}},
 					{"s1@assets.text_box": {
 						"$text": "Igloo: §bFrozen River"
@@ -3907,29 +4141,25 @@
 					{"s15@assets.text_box": {
 						"$text": "Trial Chambers: §2Old Growth Spruce Taiga"
 					}},
-		
-					{ "biome_detector@how_to_play_common.header": {
-						"$text": "Biome Detector",
-						"$icon": [{"i@assets.biome_detector":{}}
-						]
-					}},
-					{ 
-						"detector@assets.text_box": {
-							"$text": "* You can activate the biome detector in the player settings.\n \n* You can find the player settings in the settings section of Skybedrock Guidebook.\n \n* When active, it will display the biome in the chat stack."
-						}
-					},
-					{ "detector_pad@how_to_play_common.padding":{} },
 					
-					{ "nether_gen@how_to_play_common.header": {
-						"$text": "Infinite Nether Generation",
-						"$icon": [{"i@assets.nether_wastes":{
-							"size": [16, 16],
-							"$text": ""}}
-						]
+					{ "nether_gen@assets.header": {
+						"$title": "Infinite Nether Generation",
+						"$icon": "textures/biomes/nether_wastes"
 					}},
 					{ 
 						"paragraph7@assets.text_box": {
 							"$text": "* The Nether has normal biome generation with all blocks removed beyond 160 blocks away from 0,0 in any direction."
+						}
+					},
+					{ "nether_pad2@how_to_play_common.padding":{} },
+					
+					{ "end_gen@assets.header": {
+						"$title": "Infinite End Generation",
+						"$icon": "textures/biomes/the_end"
+					}},
+					{ 
+						"end_gentext@assets.text_box": {
+							"$text": "* The End dimension is completely voided of all blocks except for a few structures:\n\n- §bThe Obsidian Platform§r: Where you spawn when you enter the end dimension.\n\n- §bThe Ender Dragon Arena§r: Made of a large circle of 3 layers of end stone, the end fountain in the middle, and 10 end crytals around it.\n\n- §b20 Small End Islands§r: One for each end gateway.\n\n- §b5 End City Islands§r: Near the 1st, 5th, 10th, 15th, and 20th end gateways.\n\n- §b3 Chorus Plant Islands§r: Near the 1st, 9th, and 18th end gateways.\n\n- §b2 End Phantom Spawning Areas§r: Around the 2nd and 12th end gateways.\n\n- §bReturn End Gateways§r: Generate randomly in the far end."
 						}
 					}
 				]
@@ -3938,12 +4168,9 @@
 				"bindings": "$is_toggled",
 				"$toggle": "islands_button_toggle",
 				"controls": [
-					{ "maps@how_to_play_common.header": {
-						"$text": "Island Maps",
-						"$icon": [{"i@assets.map":{
-							"size": [16, 16],
-							"$text": ""}}
-						]
+					{ "maps@assets.header": {
+						"$title": "Island Maps",
+						"$icon": "textures/items/map_empty"
 					}},
 					{ "biome_maps": {
 						"type": "stack_panel",
@@ -3974,12 +4201,9 @@
 					}},
 					{ "maps_pad@how_to_play_common.padding":{} },
 					
-					{ "structure_locator@how_to_play_common.header": {
-						"$text": "Structure Locator",
-						"$icon": [{"i@assets.item_renderer": {
-							"$texture": "textures/items/structure_locator",
-							"size": [16, 16]
-						}}]
+					{ "structure_locator@assets.header": {
+						"$title": "Structure Locator",
+						"$icon": "textures/items/structure_locator"
 					}},
 					{ 
 						"locator@assets.text_box": {
@@ -3987,26 +4211,13 @@
 						}
 					},
 					
-					{ "nether_gen@how_to_play_common.header": {
-						"$text": "Nether Structures",
-						"$icon": [{"i@assets.fortress":{}}]
+					{ "nether_gen@assets.header": {
+						"$title": "Nether Structures",
+						"$icon": "textures/ui/structures/fortress"
 					}},
 					{ 
 						"portals@assets.text_box": {
 							"$text": "* Ruined Portals can be found randomly in the Nether.\n \n* Nether Fortress Bounding Boxes can also be found randomly in the Nether."
-						}
-					},
-					{ "nether_pad2@how_to_play_common.padding":{} },
-					
-					{ "end_gen@how_to_play_common.header": {"$text": "Infinite End Generation",
-						"$icon": [{"i@assets.the_end":{
-							"size": [16, 16],
-							"$text": ""}}
-						]
-					}},
-					{ 
-						"border@assets.text_box": {
-							"$text": "* The End dimension is completely voided of all blocks except for a few structures:\n\n- §bThe Obsidian Platform§r: Where you spawn when you enter the end dimension.\n\n- §bThe Ender Dragon Arena§r: Made of a large circle of 3 layers of end stone, the end fountain in the middle, and 10 end crytals around it.\n\n- §b20 Small End Islands§r: One for each end gateway.\n\n- §b5 End City Islands§r: Near the 1st, 5th, 10th, 15th, and 20th end gateways.\n\n- §b3 Chorus Plant Islands§r: Near the 1st, 9th, and 18th end gateways.\n\n- §b2 End Phantom Spawning Areas§r: Around the 2nd and 12th end gateways.\n\n- §bReturn End Gateways§r: Generate randomly in the far end."
 						}
 					}
 				]
@@ -4015,57 +4226,65 @@
 				"bindings": "$is_toggled",
 				"$toggle": "custom_commands_button_toggle",
 				"controls": [
-					{ "inform_header@how_to_play_common.header": {
-						"$text": "/inform", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "inform_header@assets.header": {
+						"$title": "/inform",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "inform@assets.text_box": {
 						"$text": "§o§7%command.inform.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /inform [information] [player] [location]\n\n§vParameters:§r\n- information: §g[biome | slimechunk | light]§r  §7(If omitted, it will show you the command usage§7)§r\n- player: A player target selector  §7(Defaults to §e@s§7)§r\n- location: A set of coordinates  §7(Defaults to §e~ ~ ~§7)§r"
 					}},
 
-					{ "quests_header@how_to_play_common.header": {
-						"$text": "/quests", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "quests_header@assets.header": {
+						"$title": "/quests",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "quests@assets.text_box": {
 						"$text": "§o§7%command.quests.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /quests"
 					}},
 
-					{ "recover_header@how_to_play_common.header": {
-						"$text": "/recover", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "recover_header@assets.header": {
+						"$title": "/recover",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "recover@assets.text_box": {
 						"$text": "§o§7%command.recover.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /recover [item]\n\n§vParameters:§r\n- item: §g[bucket | lava | water | sapling | portal | grass | guidebook]"
 					}},
 
-					{ "request_trader_header@how_to_play_common.header": {
-						"$text": "/request_trader", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "request_trader_header@assets.header": {
+						"$title": "/request_trader",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "request_trader@assets.text_box": {
 						"$text": "§o§7%command.request_trader.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /request_trader"
 					}},
 
-					{ "settings_header@how_to_play_common.header": {
-						"$text": "/settings", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "settings_header@assets.header": {
+						"$title": "/settings",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "settings@assets.text_box": {
 						"$text": "§o§7%command.settings.description§r\n\nCheats: §aNot required§r\nOperator: §cRequired§r\n\n§pSyntax:§r /settings [setting] [action]\n\n§vParameters:§r\n- setting: The feature Id §7(Leave empty to see a list of the available feature Ids§r\n- action:\n  §genable:§r Enables the feature\n  §gdisable:§r Disables the feature\n  §gquery:§r Tells you if the feature is on or off\n  §ghelp:§r Explains the feature"
 					}},
 
-					{ "ach_header@how_to_play_common.header": {
-						"$text": "/ach", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "ach_header@assets.header": {
+						"$title": "/ach",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "ach@assets.text_box": {
 						"$text": "§o§7%command.ach.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /ach [action] [player] [quest_id]\n\n§vParameters:§r\n- action: §g[grant | revoke]§r\n- player: A player target selector\n- quest_id: The identifier of the quest"
 					}},
 
-					{ "visit_header@how_to_play_common.header": {
-						"$text": "/visit", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "visit_header@assets.header": {
+						"$title": "/visit",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "visit@assets.text_box": {
 						"$text": "§o§7%command.visit.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /visit [destination] [player]\n\n§vParameters:§r\n- destination: The identifier of the island or the structure\n- player: A player target selector  §7(Defaults to §e@s§7)"
 					}},
 
-					{ "restore_header@how_to_play_common.header": {
-						"$text": "/restore", "$icon": [{"i": {"type": "image", "texture": "textures/blocks/command_block_back_mipmap"}}]
+					{ "restore_header@assets.header": {
+						"$title": "/restore",
+						"$icon": "textures/blocks/command_block_back_mipmap"
 					}},
 					{ "restore@assets.text_box": {
 						"$text": "§o§7%command.restore.description§r\n\nCheats: §cRequired§r\nOperator: §cRequired§r\n\n§pSyntax:§r /restore [structure]\n\n§vParameters:§r\n- structure: The identifier of the island or the structure"
@@ -4145,7 +4364,8 @@
 	},
   "trading_feature@how_to_play.feature": {
     "$number": "1", "$take1": [], "$take2": [], "$give": [],
-    "$details": "", "$villager": "Farmer", "$level": "§0Novice", "$job": "empty", "$biome": "empty",
+    "$job": [{"i@assets.empty": {}}], "$biome": [{"i@assets.empty": {}}],
+    "$details": "", "$villager": "Farmer", "$level": "§0Novice",
     "$content": [{"trade": { "type": "stack_panel", "size": ["100%", "100%c"], "controls": [
       {"trade@how_to_play.trade_recipe": {
         "$take": "$take1", "$take1": "$take1",
@@ -4351,70 +4571,74 @@
 		"$villager": "Farmer", "$job": "empty", "$biome": "empty",
 		"$level": "§0Novice",
 		"controls": [
-		  {
-		    "recipe": {
-		      "type": "panel",
-		      "size": [ 212, 90 ],
-		      "anchor_from": "bottom_middle",
-					"anchor_to": "bottom_middle",
-					"controls": [
-            {"one_item": {
-              "type": "image",
-              "texture": "textures/ui/elements/trading_1",
-              "visible": "($number = '1')"
-            }},
-            {"two_items": {
-              "type": "image",
-              "texture": "textures/ui/elements/trading_2",
-              "visible": "($number = '2')"
-            }},
-            { "job@assets.$job": {
-							"anchor_from": "bottom_left",
-							"anchor_to": "bottom_right",
-							"offset": [-10, -10]
-						}},
-            { "biome@assets.$biome": {
-							"anchor_from": "bottom_left",
-							"anchor_to": "bottom_right",
-							"offset": [-10, -46]
-						}},
-            			{"info": {
-							"type": "label",
-							"text_alignment": "center",
-							"anchor_from": "top_middle",
-							"anchor_to": "bottom_middle",
-							"layer": 2,
-							"text": "($villager + ' - ' + $level)"
-							}
-						},
-						{ "take@assets.empty": {
-							"offset": [-62, 17],
-							"controls": "$take1",
-							"visible": "($number = '1')"
-						}},
-						{ "give1@assets.empty": {
-							"offset": [55, 19],
-							"controls": "$give",
-							"visible": "($number = '1')"
-						}},
-						{ "take1@assets.empty": {
-							"offset": [-88, 17],
-							"controls": "$take1",
-							"visible": "($number = '2')"
-						}},
-						{ "take2@assets.empty": {
-							"offset": [-36, 17],
-							"controls": "$take2",
-							"visible": "($number = '2')"
-						}},
-						{ "give2@assets.empty": {
-							"offset": [80, 19],
-							"controls": "$give",
-							"visible": "($number = '2')"
-						}}
-					]
-		    }
-		  }
+		  	{ "recipe": {
+				"type": "panel",
+				"size": [ 212, 90 ],
+				"anchor_from": "bottom_middle",
+				"anchor_to": "bottom_middle",
+				"controls": [
+					{"one_item": {
+						"type": "image",
+						"texture": "textures/ui/elements/trading_1",
+						"visible": "($number = '1')"
+					}},
+					{"two_items": {
+						"type": "image",
+						"texture": "textures/ui/elements/trading_2",
+						"visible": "($number = '2')"
+					}},
+					{ "job": {
+						"type": "panel",
+						"size": ["100%c", "100%c"],
+						"anchor_from": "bottom_left",
+						"anchor_to": "bottom_right",
+						"offset": [-10, -10],
+						"controls": "$job"
+					}},
+					{ "biome": {
+						"type": "panel",
+						"size": ["100%c", "100%c"],
+						"anchor_from": "bottom_left",
+						"anchor_to": "bottom_right",
+						"offset": [-10, -46],
+						"controls": "$biome"
+					}},
+					{"info": {
+						"type": "label",
+						"text_alignment": "center",
+						"anchor_from": "top_middle",
+						"anchor_to": "bottom_middle",
+						"layer": 2,
+						"text": "($villager + ' - ' + $level)"
+						}
+					},
+					{ "take@assets.empty": {
+						"offset": [-62, 17],
+						"controls": "$take1",
+						"visible": "($number = '1')"
+					}},
+					{ "give1@assets.empty": {
+						"offset": [55, 19],
+						"controls": "$give",
+						"visible": "($number = '1')"
+					}},
+					{ "take1@assets.empty": {
+						"offset": [-88, 17],
+						"controls": "$take1",
+						"visible": "($number = '2')"
+					}},
+					{ "take2@assets.empty": {
+						"offset": [-36, 17],
+						"controls": "$take2",
+						"visible": "($number = '2')"
+					}},
+					{ "give2@assets.empty": {
+						"offset": [80, 19],
+						"controls": "$give",
+						"visible": "($number = '2')"
+					}}
+				]
+			}}
 		]
 	},
 	"locator_recipe": {
@@ -4444,48 +4668,6 @@
 			}
 		]
 	},
-	"axolotl_recipe": {
-		"type": "panel",
-		"controls": [
-		  {
-				"description@assets.text_box": {
-				  "anchor_from": "top_left",
-				  "anchor_to": "top_left"
-				}
-			},
-			{ 
-				"image@assets.empty": {
-					"size": ["100%", 80],
-					"controls": [
-						{"ingot@assets.$ingot":{
-							"offset": [-110, 20]
-						}},
-						{"feed@assets.black_text": {
-							"text": "§bFeed",
-							"font_size": "large",
-							"offset": [-60, 20]
-						}},
-						{"axolotl@assets.$axolotl":{
-						  "offset": [0, 20]
-						}},
-						{"spit@assets.black_text": {
-							"text": "§bSpit",
-							"font_size": "large",
-							"offset": [60, 20]
-						}},
-						{"chance@assets.black_text": {
-							"text": "§580%%",
-							"font_size": "large",
-							"offset": [110, -5]
-						}},
-						{"raw_ore@assets.$raw_ore":{
-							"offset": [110, 20]
-						}}
-					]
-				}
-			}
-		]
-	},
 	"mob_spawner_recipe": {
 		"type": "stack_panel",
 		"controls": [
@@ -4500,16 +4682,22 @@
 							"offset": [-100, -20]
 							
 						}},
-						{"mob@assets.$mob":{
-							"offset": [-100, 20]
+						{"mob":{
+							"type": "panel",
+							"size": ["100%c", "100%c"],
+							"offset": [-100, 20],
+							"controls": "$mob"
 						}},
 						{"use@assets.black_text": {
 							"text": "§bUse",
 							"font_size": "large",
 							"offset": [-20, -20]
 						}},
-						{"drop@assets.$drop":{
-							"offset": [-20, 20]
+						{"drop":{
+							"type": "panel",
+							"size": ["100%c", "100%c"],
+							"offset": [-20, 20],
+							"controls": "$drop"
 						}},
 						{"in@assets.black_text": {
 							"text": "§bIn",
@@ -4520,156 +4708,6 @@
 							"text": "$dimension",
 							"font_size": "large",
 							"offset": [80, 20]
-						}}
-					]
-				}
-			}
-		]
-	},
-	"trial_spawner_recipe": {
-		"type": "stack_panel",
-		"$addon1": "empty",
-		"$addon2": "empty",
-		"$addon3": "empty",
-		"$addon4": "empty",
-		"controls": [
-			{ 
-				"image": {
-					"type": "panel",
-					"size": ["100%", 130],
-					"controls": [
-						{"for@assets.black_text": {
-							"text": "§bFor",
-							"font_size": "large",
-							"offset": [-120, 0]
-							
-						}},
-						{"mob@assets.$mob":{
-							"offset": [-70, 0]
-						}},
-						{"build@assets.black_text": {
-							"text": "§bBuild:",
-							"font_size": "large",
-							"offset": [0, 0]
-						}},
-						{"layout":{
-							"type": "panel",
-							"offset": [90, 0],
-							"size": [24, 24],
-							"controls": [
-								{ "corner1@textures.$corner1": {
-									"size": [24, 24],
-									"anchor_from": "top_left",
-									"anchor_to": "bottom_right"
-								}},
-								{ "corner2@textures.$corner2": {
-									"size": [24, 24],
-									"anchor_from": "top_right",
-									"anchor_to": "bottom_left"
-								}},
-								{ "corner3@textures.$corner3": {
-									"size": [24, 24],
-									"anchor_from": "bottom_left",
-									"anchor_to": "top_right"
-								}},
-								{ "corner4@textures.$corner4": {
-									"size": [24, 24],
-									"anchor_from": "bottom_right",
-									"anchor_to": "top_left"
-								}},
-								{ "addon1@assets.$addon1": {
-									"size": [24, 24],
-									"anchor_from": "top_left",
-									"anchor_to": "bottom_right"
-								}},
-								{ "addon2@assets.$addon2": {
-									"size": [24, 24],
-									"anchor_from": "top_right",
-									"anchor_to": "bottom_left"
-								}},
-								{ "addon3@assets.$addon3": {
-									"size": [24, 24],
-									"anchor_from": "bottom_left",
-									"anchor_to": "top_right"
-								}},
-								{ "addon4@assets.$addon4": {
-									"size": [24, 24],
-									"anchor_from": "bottom_right",
-									"anchor_to": "top_left"
-								}},
-								{ "middle@textures.copper_block": {
-									"size": [24, 24],
-									"anchor_from": "top_left",
-									"anchor_to": "top_left"
-								}},
-								{ "front@textures.chiseled_copper": {
-									"size": [24, 24],
-									"anchor_from": "bottom_left",
-									"anchor_to": "top_left"
-								}},
-								{ "back@textures.chiseled_copper": {
-									"size": [24, 24],
-									"anchor_from": "top_left",
-									"anchor_to": "bottom_left"
-								}},
-								{ "left@textures.chiseled_copper": {
-									"size": [24, 24],
-									"anchor_from": "top_left",
-									"anchor_to": "top_right"
-								}},
-								{ "right@textures.chiseled_copper": {
-									"size": [24, 24],
-									"anchor_from": "top_right",
-									"anchor_to": "top_left"
-								}}
-							]
-						}}
-					]
-				}
-			}
-		]
-	},
-	"infestation_recipe": {
-		"type": "stack_panel",
-		"controls": [
-			{
-				"description@assets.text_box": {
-					"size": ["100% -80px", "default"]
-				}
-			},
-			{ 
-				"image@how_to_play.feature_element": {
-					"type": "panel",
-					"size": ["100%", 80],
-					
-					"controls": [
-						{"block@assets.$block":{
-							"offset": [-110, 0]
-						}},
-						{"hit@assets.black_text": {
-							"text": "§bHit",
-							"font_size": "large",
-							"offset": [-60, 0]
-							
-						}},
-						{"silverfish@assets.silverfish":{}},
-						{"gives@assets.black_text": {
-							"text": "§bGives",
-							"font_size": "large",
-							"offset": [60, 0]
-							
-						}},
-						{"infested@assets.$infested":{
-							"offset": [110, 0]
-						}},
-						{"extra_label": {
-							"type": "image",
-							"texture": "textures/ui/elements/extra",
-							"size": [20, 20],
-							"offset": [-5, -90],
-							"anchor_from": "bottom_right",
-							"anchor_to": "bottom_right"
-							
 						}}
 					]
 				}
@@ -4765,7 +4803,7 @@
 			{
 				"biome@assets.table_header": {
 					"size": ["25%", "100%"],
-					"$content": [{"i@assets.$biome":{}}],
+					"$content": "$biome",
 					"$color": "$color"
 				}
 			},
@@ -4796,7 +4834,7 @@
 			{
 				"structure@assets.table_header": {
 					"size": ["25%", "100%"],
-					"$content": [{"i@assets.$structure":{}}],
+					"$content": "$structure",
 					"$color": "$color"
 				}
 			},
