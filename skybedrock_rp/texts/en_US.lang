@@ -29,11 +29,16 @@ tile.skybedrock_nether_gravel.name=Nether Gravel
 tile.yasser444_empty_spawner.name=§bEmpty Spawner
 tile.skybedrock:unsafe_copper.name=Unsafe Copper
 tile.skybedrock:unsafe_tuff.name=Unsafe Tuff
+tile.skybedrock:amethyst_formation.name=Amethyst Formation
+tile.skybedrock:blue_rose.name=Blue Rose
+tile.skybedrock:paeonia.name=Paeonia
 
 
 ## Entities
 entity.skybedrock:end_phantom.name=End Phantom
+skybedrock:end_phantom=End Phantom
 entity.end_phantom.name=End Phantom
+
 entity.illager.name=Illager
 entity.skybedrock:end_sickness.name=End Phantom Spawn
 

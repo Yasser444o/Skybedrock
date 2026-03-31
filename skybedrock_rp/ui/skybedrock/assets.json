@@ -1907,7 +1907,7 @@
 		"$texture": "textures/items/ender_eye",
 		"$text": "Eye of Ender"
 	},
-
+	
 	"disc5_fragment@assets.item_renderer": {
 		"$texture": "textures/items/disc_fragment_5",
 		"$name": "§e%item.disc_fragment.name\n§7%item.disc_fragment_5.desc"

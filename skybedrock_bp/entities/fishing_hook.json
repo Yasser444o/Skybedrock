@@ -1,98 +1,100 @@
 {
-    "format_version": "1.21.40",
-    "minecraft:entity": {
-      "description": {
-        "identifier": "minecraft:fishing_hook",
-        "is_spawnable": false,
-        "is_summonable": false
+  "format_version": "1.26.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:fishing_hook",
+      "is_summonable": false,
+      "is_spawnable": false
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "height": 0.15,
+        "width": 0.15
       },
-  
-      "component_groups": {
-        "loot_jungle": {
-          "minecraft:loot": {
-            "table": "loot_tables/gameplay/jungle_fishing.json"
-          }
-        },
-        "loot_deep_dark": {
-            "minecraft:loot": {
-                "table": "loot_tables/gameplay/deep_dark_fishing.json"
-            }
-        },
-        "loot_swamp": {
-            "minecraft:loot": {
-                "table": "loot_tables/gameplay/swamp_fishing.json"
-            }
-        },
-        "loot_dripstone_caves": {
-            "minecraft:loot": {
-                "table": "loot_tables/gameplay/dripstone_caves_fishing.json"
-            }
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_dropped_ticks": 7,
+          "max_optimized_distance": 80.0,
+          "use_motion_prediction_hints": true
         }
       },
-  
-      "components": {
-        "minecraft:collision_box": {
-          "width": 0.15,
-          "height": 0.15
-        },
-        "minecraft:projectile": {
-          "on_hit": { "stick_in_ground": {} }
-        },
+      "minecraft:dimension_bound": {},
+      "minecraft:loot": {
+        "table": "loot_tables/gameplay/fishing.json"
+      },
+      "minecraft:physics": {},
+      "minecraft:projectile": {
+        "on_hit": {
+          "impact_damage": null,
+          "stick_in_ground": {}
+        }
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:transient": {}
+    },
+    "component_groups": {
+      "loot_jungle": {
         "minecraft:loot": {
-          "table": "loot_tables/gameplay/fishing.json"
-        },
-        "minecraft:physics": {
-        },
-        "minecraft:dimension_bound": {
-        },
-        "minecraft:transient": {
-        },
-        "minecraft:pushable": {
-          "is_pushable": false,
-          "is_pushable_by_piston": true
-        },
-        "minecraft:conditional_bandwidth_optimization": {
-          "default_values": {
-            "max_optimized_distance": 80.0,
-            "max_dropped_ticks": 7,
-            "use_motion_prediction_hints": true
-          }
+          "table": "loot_tables/gameplay/jungle_fishing.json"
         }
       },
-  
-      "events": {
-        "minecraft:entity_spawned": {
-          "sequence": [
-            {
-              "filters": {
-                "test": "is_biome", "value": "jungle"
-              },
-              "add": { "component_groups": [ "loot_jungle" ] }
+      "loot_deep_dark": {
+          "minecraft:loot": {
+              "table": "loot_tables/gameplay/deep_dark_fishing.json"
+          }
+      },
+      "loot_swamp": {
+          "minecraft:loot": {
+              "table": "loot_tables/gameplay/swamp_fishing.json"
+          }
+      },
+      "loot_dripstone_caves": {
+          "minecraft:loot": {
+              "table": "loot_tables/gameplay/dripstone_caves_fishing.json"
+          }
+      }
+    },
+
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "is_biome",
+              "value": "jungle"
             },
-            {
-              "filters": {
-                "test": "has_biome_tag", "value": "deep_dark"
-              },
-              "add": { "component_groups": [ "loot_deep_dark" ] }
-            },
-            {
-              "filters": {
-                  "any_of": [
-                      { "test": "has_biome_tag", "value": "swamp" },
-                      { "test": "has_biome_tag", "value": "mangrove_swamp" }
-                  ]
-              },
-              "add": { "component_groups": [ "loot_swamp" ] }
-            },
-            {
-              "filters": {
-                "test": "has_biome_tag", "value": "dripstone_caves"
-              },
-              "add": { "component_groups": [ "loot_dripstone_caves" ] }
+            "add": {
+              "component_groups": [
+                "loot_jungle"
+              ]
             }
-          ]
-        }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag", "value": "deep_dark"
+            },
+            "add": { "component_groups": [ "loot_deep_dark" ] }
+          },
+          {
+            "filters": {
+                "any_of": [
+                    { "test": "has_biome_tag", "value": "swamp" },
+                    { "test": "has_biome_tag", "value": "mangrove_swamp" }
+                ]
+            },
+            "add": { "component_groups": [ "loot_swamp" ] }
+          },
+          {
+            "filters": {
+              "test": "has_biome_tag", "value": "dripstone_caves"
+            },
+            "add": { "component_groups": [ "loot_dripstone_caves" ] }
+          }
+        ]
       }
     }
   }
-  
+}

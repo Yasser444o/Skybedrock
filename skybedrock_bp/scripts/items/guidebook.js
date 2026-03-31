@@ -199,8 +199,8 @@ const settings = [
 		toggle: "Totem of Unfalling",
 		section: 'player',
 		note: "totems will prevent you from dying to the void.",
-		value: (player) => player.getProperty("yasser444:totem_of_unfalling"),
-		action: (player, option) => player.setProperty('yasser444:totem_of_unfalling', option),
+		value: (player) => player.getDynamicProperty("totem_of_unfalling"),
+		action: (player, option) => player.setDynamicProperty('totem_of_unfalling', option),
 	},
 	{
 		toggle: "See Locked Achievements",

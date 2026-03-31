@@ -1,22 +1,40 @@
-import { system } from "@minecraft/server";
+import { system, world } from "@minecraft/server"
 
-let last_call = 0
-system.afterEvents.scriptEventReceive.subscribe(({ id, message, sourceEntity: player }) => {
-	if (id != "yasser444:unfall") return
-	system.clearRun(last_call)
-	if (message != 'yes') return
-	last_call = system.runTimeout(() => {
-		player.setProperty('yasser444:falling', false)
-		player.runCommand("particle minecraft:totem_particle ~ ~2 ~")
-		player.runCommand("playsound random.totem @a ~ ~2 ~ 10")
-		const hands = player.getComponent('minecraft:equippable')
-		const mainhand = hands.getEquipment('Mainhand')?.typeId
-		const offhand = hands.getEquipment('Offhand')?.typeId
-		system.runTimeout(() => {
-			if (mainhand == "minecraft:totem_of_undying") hands.setEquipment('Mainhand')
-			else if (offhand == "minecraft:totem_of_undying") hands.setEquipment('Offhand')
-			else player.runCommand("clear @s totem 0 1")
-		}, 5)
-		system.runTimeout(() => { player.addEffect("slow_falling", 400) }, 180)
+world.beforeEvents.entityHurt.subscribe(event => {
+	// check for a player taking void damage with totem_of_unfalling enabled
+	if (event.hurtEntity.typeId != "minecraft:player") return
+	if (event.damageSource.cause != "void") return
+	const player = event.hurtEntity
+	if (!player.getDynamicProperty('totem_of_unfalling')) return
+	// check the player hands for a totem
+	const equipment = player.getComponent('equippable')
+	const totem = ['Offhand', 'Mainhand'].find(hand => 
+		equipment.getEquipment(hand)?.typeId == 'minecraft:totem_of_undying'
+	)
+	if (!totem && !player.void_immunity) return
+	// cancel the damage
+	event.cancel = true
+	if (!player.void_immunity) {
+		// make the player immune to void damage
+		player.void_immunity = true
+		system.run(() => {
+			// give the player levitation immediately
+			player.addEffect('levitation', 200, {amplifier: 18})
+			// using commands because api calls do not work outside world boundaries
+			player.runCommand("particle minecraft:totem_particle ~ ~ ~") // player.dimension.spawnParticle('minecraft:totem_particle', {x, y: y + 2, z})
+			player.runCommand("playsound random.totem @a ~ ~ ~ 10") // player.dimension.playSound('playsound random.totem', {x, y: y + 2, z}, { volume: 10 })
+			// remove the totem 
+			if (equipment.getEquipment(totem)?.typeId == 'minecraft:totem_of_undying') equipment.setEquipment(totem)
+			else player.runCommand('clear @s totem_of_undying 0 1')
+			// give the player slow falling once the levitation runs out 
+			system.runTimeout(() => player.addEffect("slow_falling", 400), 200)
+		})
+	}
+	// if the player takes void damage reset the timer
+	if (player.immunity_timer) system.clearRun(player.immunity_timer)
+	// clear the player's void immunity once safe from the void
+	player.immunity_timer = system.runTimeout(() => {
+		delete player.void_immunity
+		delete player.immunity_timer
 	}, 20)
 })
