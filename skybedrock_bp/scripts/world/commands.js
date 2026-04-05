@@ -193,22 +193,6 @@ export const commands = [
 		}
 	},
 	{
-		name: "skybedrock:request_trader",
-		description: "§.%command.request_trader.description§..",
-		cheatsRequired: false,
-		permissionLevel: 0,
-		
-		command: ({sourceEntity, sourceBlock, initiator}) => {
-			const target = sourceBlock ? world : sourceEntity ?? initiator
-			if (!trader_request) {
-				target.sendMessage(["§e", {translate: "guidebook.trader_request.message"}])
-				trader_request = true
-			} else {
-				target.sendMessage(["§c", {translate: "guidebook.trader_request.already"}])
-			}
-		}
-	},
-	{
 		name: "skybedrock:inform",
 		description: "§.%command.inform.description§..",
 		cheatsRequired: false,
@@ -373,16 +357,3 @@ export const commands = [
 		}
 	},
 ]
-
-system.runInterval(() => {
-	if (!trader_request) return
-	if (world.getTimeOfDay() != 0) return
-	trader_request = undefined
-	try {
-        const overworld = world.getDimension("minecraft:overworld")
-        if (overworld.getEntities({type: "wandering_trader"}).length == 0) overworld.spawnEntity("wandering_trader", {x:0, y:65, z:0})
-        else world.sendMessage(["<§t", {translate: "entity.wandering_trader.name"}, "§r> ", {translate: "guidebook.trader_request.late"}])
-	} catch {
-		world.sendMessage(["<§t", {translate: "entity.wandering_trader.name"}, "§r> ", {translate: "guidebook.trader_request.failed"}])
-	}
-})

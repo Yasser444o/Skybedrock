@@ -10,6 +10,7 @@ import guidebook from "./items/guidebook";
 import update_item from "./items/update_item.js";
 import maps from "./world/maps.js";
 import { commands, enums as command_enums } from "./world/commands.js";
+import daily_trader from "./world/daily_trader.js";
 
 // Register all the custom componenets
 system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRegistry, customCommandRegistry }) => {
@@ -32,7 +33,7 @@ system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRe
 	})
 })
 
-export let overworld
+export let overworld, nether, the_end
 
 // This method extracts item stacks from structures containing a custom entity and stores them in memory
 export const stored_items = {}
@@ -67,7 +68,10 @@ export const stored_items = {}
 
 world.afterEvents.worldLoad.subscribe(() => {
 	overworld = world.getDimension('overworld')
+	nether = world.getDimension('nether')
+	the_end = world.getDimension('the_end')
 	JSON.parse(world.getDynamicProperty('geode_chunks') ?? '[]').forEach(hash => geode_chunks.add(hash))
+	daily_trader(world.getDynamicProperty('daily_trader'))
 })
 
 world.afterEvents.playerSpawn.subscribe(({player, initialSpawn}) => {

@@ -7,7 +7,7 @@ import { nether_structures } from "../data.js"
 import { overworld_structures } from "../data.js"
 import { see_a_map, see_maps } from "../world/maps.js"
 import { update_vision } from "../world/limited_vision.js"
-import { active_gateways } from "../world/the_end.js"
+import daily_trader from "../world/daily_trader.js"
 
 const main_page = [
   {color: "§4", key: "achievements", function: quests_menu},
@@ -58,6 +58,7 @@ function view_commands(player, body="how did you get here?  :)") {
 	const timer = world.scoreboard.getObjective('Timer') 
 	const commands = [
 		`Command Terminal`,
+		`Remove Trader Penalty`,
 		`View Your Stats`,
 		`Reset Your Stats`,
 		// `Teleport to a structure`,
@@ -90,6 +91,7 @@ function view_commands(player, body="how did you get here?  :)") {
 					const args = formValues[0].split(' ')
 				})
 			}; break
+			case `Remove Trader Penalty`: world.setDynamicProperty("trader_penalty"); break
 			case `View Your Stats`: {
 				const list_stats = (title, stat) => {
 					player.sendMessage(title)
@@ -151,7 +153,6 @@ function view_commands(player, body="how did you get here?  :)") {
 			}; break
 			case `Reset the End`: {
 				world.setDynamicProperty("open_gateways")
-				active_gateways = undefined
 			}; break
 		}
 	})
@@ -214,22 +215,29 @@ const settings = [
 		section: 'world',
 		note: "players will keep thier items when they die",
 		value: () => world.gameRules["keepInventory"],
-		action: (_, option) => world.gameRules["keepInventory"] = option,
+		action: (option) => world.gameRules["keepInventory"] = option,
 	},
 	{
 		toggle: "More Cat Gifts",
 		section: 'world',
 		note: "if you feed your cats right before you sleep, they all will give you gifts in the morning",
 		value: () => !world.getDynamicProperty('disable_cat_gifts'),
-		action: (_, option) => world.setDynamicProperty('disable_cat_gifts', !option)
+		action: (option) => world.setDynamicProperty('disable_cat_gifts', !option)
 	},
 	{
 		dropdown: "Achievement Auto Detection",
 		section: 'world',
 		options: ["Every 2 seconds", "Every Tick", "Off"],
 		value: () => world.getDynamicProperty('auto_detection'),
-		action: (_, option) => world.setDynamicProperty('auto_detection', option)
-	}
+		action: (option) => world.setDynamicProperty('auto_detection', option)
+	},
+	{
+		toggle: "Daily Wandering Trader",
+		section: 'world',
+		note: "a new wandering trader will spawn every morning and leave when night comes",
+		value: () => world.getDynamicProperty('daily_trader'),
+		action: (option) => daily_trader(option)
+	},
 ]
 
 function settings_page(player) {
@@ -261,7 +269,8 @@ function settings_page(player) {
 		for (let i = 0; i < settings.length; i++) {
 			const option = options[i]
 			const setting = settings[i]
-			setting.action(player, option)
+			if (setting.section == 'world') setting.action(option)
+			else setting.action(player, option)
 		}
 	})
 }

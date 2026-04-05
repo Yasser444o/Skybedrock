@@ -4250,14 +4250,6 @@
 						"$text": "§o§7%command.recover.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /recover [item]\n\n§vParameters:§r\n- item: §g[bucket | lava | water | sapling | portal | grass | guidebook]"
 					}},
 
-					{ "request_trader_header@assets.header": {
-						"$title": "/request_trader",
-						"$icon": "textures/blocks/command_block_back_mipmap"
-					}},
-					{ "request_trader@assets.text_box": {
-						"$text": "§o§7%command.request_trader.description§r\n\nCheats: §aNot required§r\nOperator: §aNot required§r\n\n§pSyntax:§r /request_trader"
-					}},
-
 					{ "settings_header@assets.header": {
 						"$title": "/settings",
 						"$icon": "textures/blocks/command_block_back_mipmap"

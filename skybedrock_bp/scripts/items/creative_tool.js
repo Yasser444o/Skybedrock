@@ -47,7 +47,7 @@ function find_connected_blocks(block, type) {
 		const current_hash = location_to_hash(current_block)
 		if (current_hash != block_hash) connected_blocks.add(current_hash)
 		if (connected_blocks.size >= limit - 1) break
-		for (const offset of offsets) {
+		for (const offset of offsets) { try {
 			const found_block = current_block.offset(offset) 
 			if (!found_block) continue
 			const found_hash = location_to_hash(found_block)
@@ -55,7 +55,7 @@ function find_connected_blocks(block, type) {
 			searched.add(found_hash)
 			if (found_block.typeId != type) continue
 			check_list.push(found_block)
-		}
+		} catch {}}
 	}
 	return Array.from(connected_blocks).map(hash => block.dimension.getBlock(hash_to_location(hash)))
 }
@@ -226,6 +226,14 @@ function after_hit_block(player, block, permutation, item) {
 	}
 }
 
+function after_hit_air(player, block, item) {
+	const {mode} = lore_and_mode(item)
+	if (mode == "delete blocks") {
+		const blocks = find_connected_blocks(block, block.typeId)
+		for (let i = 0; i < blocks.length; i++) blocks[i].setType('air')
+	}
+}
+
 function before_click_entity(player, entity, item) {
 	const {mode} = lore_and_mode(item)
 	if (mode == "delete mobs") entity.remove()
@@ -281,6 +289,14 @@ world.beforeEvents.playerInteractWithBlock.subscribe(event => {
 	event.cancel = true
 	system.run(() => before_click_block(player, block, item))
 })
+
+world.afterEvents.playerSwingStart.subscribe(event => {
+	const {heldItemStack: item, player} = event
+	if (item?.typeId != "yasser444:creative_tool") return
+	const block = player.getBlockFromViewDirection({maxDistance: 6, includeLiquidBlocks: true})?.block
+	if (!block) return
+	after_hit_air(player, block, item)
+}, {swingSource: 'Attack'})
 
 system.runInterval(() => {
 	world.getPlayers({gameMode: "Creative"}).forEach(player => {
