@@ -415,6 +415,32 @@
 		"layer": 10,
 		"color": [0, 0, 0]
 	},
+
+	"instruction_text": {
+		"type": "panel",
+		"size": ["100%c + 16px", "100%"],
+		"controls": [{ "text": {
+			"type": "label",
+			"text_alignment": "center",
+			"text": "$text",
+			"font_size": "large",
+			"color": [0, 1, 1],
+			"layer": 10
+		}}]
+	},
+
+	"input_key": {
+		"type": "panel",
+		"size": ["100%c + 16px", "100%"],
+		"controls": [{ "text": {
+			"type": "label",
+			"text_alignment": "center",
+			"text": "('#pre_process_' + $key)",
+			"bindings": [{"binding_name": "('#pre_process_' + $key)"}],
+			"layer": 10
+		}}]
+	},
+
 	"text_box": { 
 		"type": "panel",
 		"size": ["100%", "100%c + 10px"],

@@ -9,7 +9,6 @@ const modes = [
 	["Delete Blocks", 'delete blocks'],
 	["Teleport", 'teleport'],
 	["Ice Rod", 'ice rod'],
-	["Count Items", 'count items'],
 ]
 
 const offsets = [], BOA = [-1, 0, 1]
@@ -163,19 +162,6 @@ const ice_rod = {
 	}
 }
 
-const count_items = {
-	before_use_block(player, block, item) {
-		if (!block.getComponent('inventory')) return
-		const container = block.getComponent('inventory').container
-		let total = 0
-		for (let i = 0; i < container.size; i++) {
-			const item = container.getItem(i)
-			if (!item) continue
-			total += item.amount
-		}
-		player.sendMessage(`Contains ${total} item${total > 1 ? 's' : ''}`)
-	}
-}
 
 // event directors
 function on_use(player, item) {
@@ -239,11 +225,6 @@ function before_click_entity(player, entity, item) {
 	if (mode == "delete mobs") entity.remove()
 }
 
-function before_click_block(player, block, item) {
-	const {mode} = lore_and_mode(item)
-	if (mode == "count items") count_items.before_use_block(player, block, item)
-}
-
 function on_tick(player, item) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector") selector.tick(player, lore)
@@ -266,33 +247,26 @@ export default {
 
 world.afterEvents.playerBreakBlock.subscribe((event) => {
 	const {player, block, brokenBlockPermutation:permutation, itemStackBeforeBreak:item} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	after_hit_block(player, block, permutation, item)
 }) 
 
 world.beforeEvents.playerBreakBlock.subscribe((event) => {
 	const {player, block, itemStack:item} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	before_hit_block(event, player, block, item)
 })
 world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 	const {itemStack: item, player, target:entity} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	player.is_using_creative_tool_on = true
 	event.cancel = true
 	system.run(() => before_click_entity(player, entity, item))
 })
-world.beforeEvents.playerInteractWithBlock.subscribe(event => {
-	const {itemStack: item, player, block} = event
-	if (item?.typeId != "yasser444:creative_tool") return
-	player.is_using_creative_tool_on = true
-	event.cancel = true
-	system.run(() => before_click_block(player, block, item))
-})
 
 world.afterEvents.playerSwingStart.subscribe(event => {
 	const {heldItemStack: item, player} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	const block = player.getBlockFromViewDirection({maxDistance: 6, includeLiquidBlocks: true})?.block
 	if (!block) return
 	after_hit_air(player, block, item)
@@ -302,7 +276,7 @@ system.runInterval(() => {
 	world.getPlayers({gameMode: "Creative"}).forEach(player => {
 		const equipment = player.getComponent("equippable")
 		const item = equipment.getEquipment("Mainhand")
-		if (!item || item.typeId != "yasser444:creative_tool") return
+		if (!item || item.typeId != "skybedrock:creative_tool") return
 		on_tick(player, item)
 	})
 }, 20)

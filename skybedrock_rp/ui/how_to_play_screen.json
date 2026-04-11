@@ -308,6 +308,71 @@
 							"$icon": "textures/blocks/budding_amethyst",
 							"$collapse": "collapse_amethyst_geodes",
 							"$content": [
+								{ "feature": {
+									"type": "panel",
+									"size": ["100%", "100%c + 15px"],
+									"$text1": "§lGeneration:§r\n- There is a 1 in 24 chance for a chunk to contain an amethyst geode.\n- They do not generate in already generated chunks (inside the biome map or near existing structures)\n- They are located between Y levels -55 and 30.\n- They are invisible by default; blow a goat horn to reveal the ones in the 3 by 3 chunks around you.\n\n§lStructure:\n§r - They are spherical in shape with a radius of 8 blocks.\n - They are composed entirely of air, with 8.3%% of the outer 3 layers replaced with Amethyst Formations.",
+									"$text2": "§lAmethyst Formations:§r\n- They are invisible blocks that emit particles.\n- They can be instantly broken by hand.\n- You can use a block of amethyst on them to convert them into budding amethyst.",
+									"controls": [
+										{ "background@assets.white_box": {
+											"layer": -3,
+											"color": [0.3, 0.3, 0.3], 
+											"anchor_from": "top_left",
+											"anchor_to": "top_left",
+											"size": ["100%", "100%c"],
+											"controls": [
+												{ "stack": {
+													"type": "stack_panel",
+													"size": ["100%", "100%c"],
+													"controls": [
+														{ "text1@assets.text_box": { "$text": "$text1" } },
+														{ "image1": {
+															"type": "image",
+															"texture": "textures/ui/features/amethyst_geodes",
+															"size": [ "100%", 130 ]
+														}},
+														{ "text2@assets.text_box": { "$text": "$text2" } },
+														{ "guide": {
+															"type": "panel",
+															"size": ["100%", 40],
+															"controls": [{ "table_row": { 
+																"size": ["100% - 4px", "100% - 2px"],
+																"anchor_from": "top_middle",
+																"anchor_to": "top_middle",
+																"type": "stack_panel",
+																"orientation": "horizontal",
+																"controls": [
+																	{ "start_filler": { "type": "panel", "size": ["fill", "100%"] }},
+																	
+																	{ "use@assets.input_key": { "$key": ":_input_key.use:" }},
+																	// amethyst block
+																	{ "item@assets.block_renderer": { "$aux": "((-327) * 65536)", "$id": "amethyst_block" }},
+																	
+																	{ "on@assets.instruction_text": { "$text": "on" }},
+																	// amethyst formation
+																	{ "block@assets.item_renderer": {
+																		"$texture": "particles/amethyst_shine",
+																		"$name": "tile.skybedrock_amethyst_formation.name"
+																	}},
+
+																	{ "for@assets.instruction_text": { "$text": "-->" }},
+																	// budding amethyst
+																	{ "result@assets.item_renderer": {
+																		"$id": "budding_amethyst",
+																		"$location": "textures/blocks/",
+																		"$name": "('tile.' + $id + '.name')"
+																	}},
+
+																	{ "end_filler": { "type": "panel", "size": ["fill", "100%"] }}
+																]
+															}}]
+														}}
+													]
+												}}
+											]
+										}}
+									]
+								}}
 							]
 						}
 					},
@@ -2074,7 +2139,7 @@
 											"$quantity": "0-2"
 										}},
 										{ "i2@assets.drops_table_entry": {
-											"$content": [{"i@@assets.item_renderer": { "$id": "prismarine_crystals" }}],
+											"$content": [{"@assets.item_renderer": { "$id": "prismarine_crystals" }}],
 											"$chance": "40%%"
 										}},
 										{ "i3@assets.drops_table_entry": {

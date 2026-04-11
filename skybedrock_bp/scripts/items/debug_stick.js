@@ -24,6 +24,7 @@ export default {
 		.button("Copy Permutation Mode")
 		.button("Copy Block Mode")
 		.button("Read Tags")
+		.button("Count Items")
 		.show(player).then(({ canceled, selection }) => {
 			if (canceled) return
 			if (selection == 0) stick.setLore(["§r§nread id"])
@@ -36,6 +37,7 @@ export default {
 				const item = player.getComponent('inventory').container.getItem(9)
 				if (item) item.getTags().forEach(tag => player.sendMessage(tag))
 			}
+			if (selection == 6) stick.setLore(["§r§ncount items"])
 			player.getComponent("equippable").setEquipment('Mainhand', stick)
 		})
 	}
@@ -43,7 +45,7 @@ export default {
 
 world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 	const {itemStack, player, target} = event
-	if (itemStack?.typeId != "yasser444:debug_stick") return
+	if (itemStack?.typeId != "skybedrock:debug_stick") return
 	event.cancel = true
 	
 	const lore = itemStack.getLore()
@@ -76,6 +78,26 @@ world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 				const value = target.getProperty(id)
 				player.sendMessage(`- ${id}: ${value}`)
 			})
+		})
+	}
+})
+
+world.beforeEvents.playerInteractWithBlock.subscribe(event => {
+	const {itemStack: item, player, block} = event
+	if (item?.typeId != "skybedrock:debug_stick") return
+	const mode = item.getLore()[0]?.replace('§r§n', '')
+	if (mode == "count items") {			
+		event.cancel = true
+		system.run(() => {
+			if (!block.getComponent('inventory')) return
+			const container = block.getComponent('inventory').container
+			let total = 0
+			for (let i = 0; i < container.size; i++) {
+				const item = container.getItem(i)
+				if (!item) continue
+				total += item.amount
+			}
+			player.sendMessage(`Contains ${total} item${total > 1 ? 's' : ''}`)
 		})
 	}
 })
