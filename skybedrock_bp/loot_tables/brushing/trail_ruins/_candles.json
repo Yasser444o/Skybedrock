@@ -1,0 +1,29 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:red_candle",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:green_candle",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:purple_candle",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:brown_candle",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

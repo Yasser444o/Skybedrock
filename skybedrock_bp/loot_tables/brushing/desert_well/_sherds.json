@@ -1,0 +1,19 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:arms_up_pottery_sherd",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:brewer_pottery_sherd",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,39 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "loot_table",
+					"name": "loot_tables/brushing/cold_ocean_ruins/_sherds.json",
+					"weight": 12
+				},
+				{
+					"type": "item",
+					"name": "minecraft:iron_axe",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:emerald",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:gold_nugget",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:wheat",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:coal",
+					"weight": 1
+				}
+			]
+		}
+	]
+}
