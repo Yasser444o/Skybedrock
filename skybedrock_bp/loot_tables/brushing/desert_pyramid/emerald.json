@@ -15,6 +15,11 @@
 					]
 				},
 				{
+					"type": "item",
+					"name": "minecraft:diamond",
+					"weight": 2
+				},
+				{
 					"type": "loot_table",
 					"name": "loot_tables/brushing/desert_pyramid/_sherds.json",
 					"weight": 1
@@ -27,11 +32,6 @@
 				{
 					"type": "item",
 					"name": "minecraft:tnt",
-					"weight": 1
-				},
-				{
-					"type": "item",
-					"name": "minecraft:diamond",
 					"weight": 1
 				}
 			]

@@ -1,11 +1,14 @@
-## Items
+## UI Items
 item.skybedrock:guidebook=Skybedrock Guidebook
 item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
 item.skybedrock_blue_rose=Blue Rose
 item.skybedrock_paeonia=Paeonia
 tile.skybedrock_amethyst_formation.name=Amethyst Formation
+tile.petrified_oak_slab=Petrified Oak Slab
+tile.double_petrified_oak_slab.name=Double Petrified Oak Slab
 
 
+## Items
 item.skybedrock:world_map=World Map
 item.skybedrock_world_map=World Map
 item.skybedrock:ancient_scroll=Ancient Scroll
@@ -18,12 +21,14 @@ item.skybedrock:sky_treasure_map=Sky Treasure Map
 item.skybedrock:blue_rose=Blue Rose
 item.skybedrock:paeonia=Paeonia
 
+
 ## Item Groups
 skybedrock:maps=Maps
 
 ## Blocks
 tile.deprecated_purpur_block_2.name=Smooth Purpur
 tile.stone_slab.wood.name=Petrified Oak Slab
+tile.double_stone_slab.wood.name=Petrified Double Slab
 tile.skybedrock:nether_gravel.name=Nether Gravel
 tile.yasser444:empty_spawner.name=§bEmpty Spawner
 tile.skybedrock_nether_gravel.name=Nether Gravel
@@ -150,12 +155,12 @@ maps.structure.village_snowy=Snowy Village
 maps.structure.village_taiga=Taiga Village
 maps.structure.village_desert=Desert Village
 maps.structure.desert_pyramid=Desert Pyramid
+maps.structure.desert_well=Desert Well
 maps.structure.swamp_hut=Swamp Hut
 maps.structure.jungle_temple=Jungle Temple
 maps.structure.trial_chambers=Trial Chambers
 maps.structure.ancient_city=Ancient City
 maps.structure.bastion_remnants=Bastion Remnants
-maps.structure.bastion_remnants=Desert Pyramid
 maps.structure.end_gateway=End Gateway
 maps.structure.igloo=Igloo
 maps.structure.mineshaft=Mineshaft
@@ -165,6 +170,8 @@ maps.structure.pillager_outpost=Pillager Outpost
 maps.structure.ruined_portal=Ruined Portal
 maps.structure.shipwreck=Shipwreck
 maps.structure.ocean_ruins=Ocean Ruins
+maps.structure.ocean_ruins=Cold Ocean Ruins
+maps.structure.ocean_ruins=Warm Ocean Ruins
 maps.structure.trail_ruins=Trail Ruins
 maps.structure.woodland_mansion=Woodland Mansion
 maps.structure.x_mark=Buried Treasure

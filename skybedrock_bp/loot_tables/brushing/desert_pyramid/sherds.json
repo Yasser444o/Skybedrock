@@ -6,7 +6,7 @@
 				{
 					"type": "loot_table",
 					"name": "loot_tables/brushing/desert_pyramid/_sherds.json",
-					"weight": 6
+					"weight": 16
 				},
 				{
 					"type": "item",

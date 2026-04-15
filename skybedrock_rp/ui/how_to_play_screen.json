@@ -938,19 +938,545 @@
 							"$icon": "textures/items/brush",
 							"$collapse": "collapse_archeology",
 							"$content": [
-								{ 
-									"suspicious_blocks@how_to_play.build_element": {
-										"$text": "- Suspicious Sand blocks in the Desert Temple regenerate every 30 minutes.\n- Suspicious Sand blocks in the Desert Well regenerate every 15 minutes.\n- Suspicious Sand blocks in the Warm Ocean Ruins regenerate every 35 minutes.\n- Suspicious Gravel blocks in the Cold Ocean Ruins regenerate every 25 minutes.\n- Suspicious Gravel blocks in the Trail Ruins regenerate between 60 to 80 minutes.",
-										"$build": [
-											{
-												"suspicious_blocks@how_to_play.animation": {
-													"$image": "sus_blocks",
-													"$frames": 5
-												}
-											}
-										]
-									}
-								}
+								
+								{ "feature": {
+									"type": "panel",
+									"size": ["100%", "100%c + 15px"],
+									"controls": [
+										{ "background@assets.white_box": {
+											"layer": -3,
+											"color": [0.3, 0.3, 0.3], 
+											"anchor_from": "top_left",
+											"anchor_to": "top_left",
+											"size": ["100%", "100%c"],
+											"controls": [
+												{ "stack": {
+													"type": "stack_panel",
+													"size": ["100%", "100%c"],
+
+													"$emerald": [{"i@assets.item_renderer": {
+														"$id": "emerald"
+													}}],
+													"$brick": [{"i@assets.item_renderer": {
+														"$id": "brick"
+													}}],
+													"$any": [{"i@assets.item_renderer": {
+														"$texture": "textures/ui/offline",
+														"$name": "Any"
+													}}],
+													"$terracotta": [{"i@assets.item_renderer": {
+														"$texture": "textures/blocks/hardened_clay",
+														"$name": "tile.hardened_clay.name"
+													}}],
+													"$emerald_block": [{"i@assets.item_renderer": {
+														"$texture": "textures/blocks/emerald_block",
+														"$name": "tile.emerald_block.name"
+													}}],
+
+													"controls": [
+														{ "text1@assets.text_box": { 
+															"$text": "- Suspicious Sand blocks in the Desert Temple regenerate every 30 minutes.\n- Suspicious Sand blocks in the Desert Well regenerate every 15 minutes.\n- Suspicious Sand blocks in the Warm Ocean Ruins regenerate every 35 minutes.\n- Suspicious Gravel blocks in the Cold Ocean Ruins regenerate every 25 minutes.\n- Suspicious Gravel blocks in the Trail Ruins regenerate every 65 minutes."
+														}},
+														{ "suspicious_blocks@how_to_play.animation": {
+															"$image": "sus_blocks",
+															"$frames": 5
+														}},
+														{ "desert_pyramid@assets.custom_table": {
+															"$rows": [
+																{ "upper_border@assets.table_border_h": {}},
+																{ "header@assets.table_row": {
+																	"size": ["100%", 24],
+																	"$content": [
+																		{ "items@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": [60, "100%"], "$text": "Items" }},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "blocks@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": ["fill", "100%"], "$text": "Chance Based on the block below" }}
+																	]
+																}},
+																{ "blocks@assets.table_row": {
+																	"size": ["100%", 36],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/structures/desert_pyramid",
+																				"$name": "maps.structure.desert_pyramid"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$any"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$terracotta"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald_block"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "diamond@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/blocks/diamond_block",
+																				"$name": "tile.diamond_block.name"
+																			}}]
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "tnt@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/blocks/wool_colored_red",
+																				"$name": "tile.wool.red.name"
+																			}}]
+																		}}
+																	]
+																}},
+																{ "sherds@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/items/pottery_sherd",
+																				"$name": "itemGroup.name.potterySherds §e\n  Archer\n  Miner\n  Prize\n  Skull"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "50%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q80%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "diamond@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "tnt@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}}
+																	]
+																}},
+																{ "emerald@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "diamond@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "tnt@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}}
+																	]
+																}},
+																{ "diamond@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$id": "diamond"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "20%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "diamond@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "tnt@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}}
+																	]
+																}},
+																{ "gunpowder@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$id": "gunpowder"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "diamond@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "tnt@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q20%%"
+																		}}
+																	]
+																}},
+																{ "tnt@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.block_renderer": {
+																				"$aux":"((46) * 65536)",
+																				"$id": "tnt"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "diamond@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "tnt@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q65%%"
+																		}}
+																	]
+																}}
+															]
+														}},
+														{ "desert_well@assets.custom_table": {
+															"$rows": [
+																{ "upper_border@assets.table_border_h": {}},
+																{ "header@assets.table_row": {
+																	"size": ["100%", 24],
+																	"$content": [
+																		{ "items@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": [60, "100%"], "$text": "Items" }},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "blocks@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": ["fill", "100%"], "$text": "Chance Based on the block below" }}
+																	]
+																}},
+																{ "blocks@assets.table_row": {
+																	"size": ["100%", 36],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/structures/desert_well",
+																				"$name": "maps.structure.desert_well"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$any"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$terracotta"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald_block"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/blocks/planks_old",
+																				"$name": "tile.double_petrified_oak_slab.name"
+																			}}]
+																		}}
+																	]
+																}},
+																{ "sherds@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/items/pottery_sherd",
+																				"$name": "itemGroup.name.potterySherds §e\n  Arms Up\n  Brewer"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "44.44%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q60%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}}
+																	]
+																}},
+																{ "emerald@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.11%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}}
+																	]
+																}},
+																{ "brick@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$brick"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.11%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q20%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}}
+																	]
+																}},
+																{ "stick@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$id": "stick"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.11%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}}
+																	]
+																}},
+																{ "stew@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$id": "suspicious_stew"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.11%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q13.33%%"
+																		}}
+																	]
+																}},
+																{ "petrified@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "item@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.block_renderer": {
+																				"$aux": "((-902) * 65536)",
+																				"$name": "tile.petrified_oak_slab"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.11%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "petrified@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q60%%"
+																		}}
+																	]
+																}}
+															]
+														}}
+													]
+												}}
+											]
+										}}
+									]
+								}}
 							]
 						}
 					},
@@ -2672,7 +3198,10 @@
 									"$structure": [{"i@assets.desert_well":{}}],
 									"$items": [
 										{ "i1@assets.brushing_table_entry": {
-											"$content": [{"i@assets.petrified_slab": {}}],
+											"$content": [{"i@assets.block_renderer": {
+												"$aux": "((-902) * 65536)",
+												"$name": "tile.stone_slab.wood.name"
+											}}],
 											"$chance": "11%%"
 										}}
 									]

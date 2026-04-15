@@ -540,13 +540,11 @@
 		}}]
 	},
 	"table_filler@assets.white_box": {
-		"$background_color|default": [0.95, 0.95, 0.95],
-		"color": "$background_color",
+		"color": [0.95, 0.95, 0.95],
 		"size": ["fill", "100%"]
 	},
 	"table_box@assets.white_box": {
-		"$background_color|default": [0.95, 0.95, 0.95],
-		"color": "$background_color",
+		"color": [0.95, 0.95, 0.95],
 		"size": ["100%c + 4px", "100%"],
 		"$text": "",
 		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
@@ -1188,7 +1186,7 @@
 		"offset": [0, -4]
 	},
 	"cold_ocean_ruins@assets.old_item_renderer": {
-		"$texture": "textures/ui/structures/ruins",
+		"$texture": "textures/ui/structures/cold_ruins",
 		"$text": "Cold Ocean Ruins",
 		"offset": [0, -4]
 	},
