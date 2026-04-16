@@ -5300,74 +5300,6 @@
 						}
 					},
 					{
-						"brushing@assets.dropdown": {
-							"$title": "Brushing Loot",
-							"$icon": "textures/items/brush",
-							"$collapse": "collapse_brushing",
-							"$content": [
-								{ "brushing_table_header": { "size": ["100% - 2px", 28], "type": "stack_panel", "orientation": "horizontal",
-									"controls": [
-										{ "structure@assets.table_header": { "size": ["25%", "100%"], "$text": "Structure" }},
-										{ "items": { "size": ["75%", "100%"],  "type": "stack_panel", "orientation": "horizontal",
-											"controls": [
-												{ "item@assets.table_header": { "size": ["40%", "100%"], "$text": "Items" } },
-												{ "chance@assets.table_header": { "size": ["60%", "100%"], "$text": "Chance" } }		
-											]
-										}},
-										{ "border@assets.table_border": {}}
-									]
-								}},
-								{ "desert_well@how_to_play.brushing_table_item": {
-									"$structure": [{"i@assets.desert_well":{}}],
-									"$items": [
-										{ "i1@assets.brushing_table_entry": {
-											"$content": [{"i@assets.block_renderer": {
-												"$aux": "((-902) * 65536)",
-												"$name": "tile.stone_slab.wood.name"
-											}}],
-											"$chance": "11%%"
-										}}
-									]
-								}},
-								{ "cold_ocean_ruins@how_to_play.brushing_table_item": {
-									"$structure": [{"i@assets.cold_ocean_ruins":{}}],
-									"$size": ["100% - 2px", 144],
-									"$items": [
-										{ "i1@assets.brushing_table_entry": {
-											"$content": [{"i@assets.item_renderer": {
-												"$id": "copper_nautilus_armor",
-												"$location": "textures/items/nautilus_armor/"
-											}}],
-											"$chance": "12%%"
-										}},
-										{ "i2@assets.brushing_table_entry": {
-											"$content": [{"i@assets.item_renderer": {
-												"$id": "iron_nautilus_armor",
-												"$location": "textures/items/nautilus_armor/"
-											}}],
-											"$chance": "9%%"
-										}},
-										{ "i3@assets.brushing_table_entry": {
-											"$content": [{"i@assets.item_renderer": {
-												"$id": "golden_nautilus_armor",
-												"$texture": "textures/items/nautilus_armor/gold_nautilus_armor"
-											}}],
-											"$chance": "6%%"
-										}},
-										{ "i4@assets.brushing_table_entry": {
-											"$content": [{"i@assets.item_renderer": {
-												"$id": "diamond_nautilus_armor",
-												"$location": "textures/items/nautilus_armor/"
-											}}],
-											"$chance": "3%%"
-										}}
-									]
-								}},
-								{ "brushing_footer@assets.table_footer": {}}
-							]
-						}
-					},
-					{
 						"sniffing@assets.dropdown": {
 							"$title": "Sniffer Sniffing",
 							"$icon": "textures/items/torchflower_seeds",
@@ -7528,30 +7460,6 @@
 					"size": ["25%", "100%"],
 					"$text": "$note",
 					"$color": "$color"
-				}
-			},
-			{ "border@assets.table_border": {}}
-		]
-	},
-	"brushing_table_item": {
-		"type": "stack_panel",
-		"orientation": "horizontal",
-		"$color": [0.95, 0.95, 0.95],
-		"$size": ["100% - 2px", 36],
-		"size": "$size",
-		"controls": [
-			{
-				"structure@assets.table_header": {
-					"size": ["25%", "100%"],
-					"$content": "$structure",
-					"$color": "$color"
-				}
-			},
-			{
-				"items": {
-					"type": "stack_panel",
-					"size": ["75%", "100%"],
-					"controls": "$items"
 				}
 			},
 			{ "border@assets.table_border": {}}

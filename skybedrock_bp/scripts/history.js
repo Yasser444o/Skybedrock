@@ -1,4 +1,75 @@
 export const change_logs = {
+  "v1.25.0": `\
+General:
+- Moved copper smelting recipes to "More Copper" optional addon.
+- Added a World Map waypoint icon for amethyst geodes.
+- Dropdowns in the How to play screen can now be clicked anywhere to expand and collapse them.
+- Added a custom icon to the How to Play button in the pause menu to make it more noticeable.
+- Refined the Totem of Unfalling feature.
+- Made the texts in the how to play screen more visible.
+
+Amethyst Geodes:
+- You now blow a goat horn to reveal the amethyst geodes hidden around you.
+- There is a 1 in 24 chance for a chunk to have an amethyst geode.
+- You can now find amethyst geodes in already generated chunks.
+- Amethyst geodes are spheres of air with 8.3% of the outer 3 layers replaced with amethyst formations.
+- Amethyst formations are invisible blocks that emit particles
+- If you click an amethyst formation with an amethyst block, it will transform into budding amethyst
+- The old way for creating new budding amethyst has been removed
+
+Daily Wandering trader:
+- Deleted the /request_trader command
+- Added a new toggle to the world settings section of the guidebook: Daily Wandering Trader
+- When enabled, a new wandering trader will spawn in the morning of everyday
+- They spawn near a random player intsead of at 0 64 0
+- They spawn without trader llamas
+- They despawn at sunset or when loaded after passing their despawn time
+- They only spawn around players in the overworld
+- They don't spawn if there is an already existing wandering trader
+- If one dies for whatever reason new ones won't spawn for 3 days
+
+Plant Restoration:
+- This feature is added to prevent you from soft locking certain plants
+- Using bone meal on grass in a taiga biome has a 16% chance to grow a sweet berry bush
+- Using bone meal on grass in a cherry grove biome has a 16% chance to grow pink petals
+- Using bone meal on warped nylium has a 16% chance to grow twisting vines
+- Sniffers can no longer sniff out pink petals or sweet berries
+
+Archaeology
+- You can now place certain blocks beneath the spots where suspicious sand and gravel regenerate to increase the chances for obtaining certain items: 
+= Unstained Terracotta for Pottery Sherds: works in all structures
+= Blocks of Emerald for Emerald: works in all structures
+= Blocks of Gold for Gold Nuggets: in ocean and trail ruins
+= Blocks of Coal for Coal: in ocean and trail ruins
+= Moss Blocks for Sniffer eggs: in warm ocean ruins
+= Waxed Blocks of Copper for Nautilus Armor: in Cold Ocean Ruins
+= Red Wool for TNT: in the desert pyramid
+= Blocks of Diamond for Diamond: in the desert pyramid
+= Double Petrified Slabs for Petrified Oak Slabs: in the desert well
+- Check the How to Play screen for all the details
+- All suspicious gravel in the trail chambers will now have a 80% chance to regenerate a common item and 20% chance to regenerate a rare item and they now take an average of 65 minutes to regenerate
+
+Technical:
+- Added /circle command to help you build circles in creative
+- Added an item counting utility to the debug stick
+- Enabled the Delete Blocks utility of the creative tool to delete liquid
+- Improved the teleport utility
+- Added names for the technical blocks like sand support under the desert island to let the new Identify key bind identify them
+- Updated all entity files again and organized block files
+- Optimized and organized most of the scripts
+- Heavily optimized some parts of the how to play screen 
+- Deleted a large number of unused UI assets
+- Deleted all the unused chunks and generated a list of the generated chunks
+- Added new types UI elements to the how to play screen
+- Removed dependency on the player.json file which makes this map compatible with even more addons
+- Changed the item IDs for the debug stick and creative tool
+
+Bug Fixes:
+- Fixed a bug that prevented you from taking items from zombie villagers when you have an item in your off-hand
+- Copper Spears can now be smelted into copper ingots when "More Copper" is enabled
+- Fixed a mismatch between the addon versions in behaviour_packs.json file and the addons themselves
+- Fixed a bug which broke the model and sounds for baby chickens 
+  `,
   "v1.24.0": `\
 General:
 - Added 2 new ancient flowers: Blue Rose and Paeonia

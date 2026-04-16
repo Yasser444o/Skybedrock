@@ -24,17 +24,17 @@
 				},
 				{
 					"type": "item",
+					"name": "minecraft:flower_pot",
+					"weight": 2
+				},
+				{
+					"type": "item",
 					"name": "minecraft:spruce_hanging_sign",
 					"weight": 1
 				},
 				{
 					"type": "item",
 					"name": "minecraft:oak_hanging_sign",
-					"weight": 1
-				},
-				{
-					"type": "item",
-					"name": "minecraft:flower_pot",
 					"weight": 1
 				},
 				{
