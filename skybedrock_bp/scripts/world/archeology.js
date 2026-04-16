@@ -118,8 +118,8 @@ const structures = {
 			{x:130, y:45, z:-830},
 		],
 		pools: [
-			{ loot: "common", weight: 4 },
-			{ loot: "rare", weight: 1 },
+			{ loot: "common", weight: 80 },
+			{ loot: "rare", weight: 20 },
 		],
 		bonus_blocks: {
 			hardened_clay: 'sherds',

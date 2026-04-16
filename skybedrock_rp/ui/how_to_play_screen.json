@@ -954,11 +954,20 @@
 													"type": "stack_panel",
 													"size": ["100%", "100%c"],
 
-													"$emerald": [{"i@assets.item_renderer": {
-														"$id": "emerald"
+													"$emerald": [{"i@assets.item_renderer": { "$id": "emerald" }}],
+													"$coal": [{"i@assets.item_renderer": { "$id": "coal" }}],
+													"$gold_nugget": [{"i@assets.item_renderer": {
+														"$id": "gold_nugget"
 													}}],
-													"$brick": [{"i@assets.item_renderer": {
-														"$id": "brick"
+													"$wheat": [{"i@assets.item_renderer": {
+														"$id": "wheat"
+													}}],
+													"$wooden_hoe": [{"i@assets.item_renderer": {
+														"$id": "wooden_hoe",
+														"$texture": "textures/items/wood_hoe"
+													}}],
+													"$iron_axe": [{"i@assets.item_renderer": {
+														"$id": "iron_axe"
 													}}],
 													"$any": [{"i@assets.item_renderer": {
 														"$texture": "textures/ui/offline",
@@ -972,14 +981,28 @@
 														"$texture": "textures/blocks/emerald_block",
 														"$name": "tile.emerald_block.name"
 													}}],
+													"$gold_block": [{"i@assets.item_renderer": {
+														"$texture": "textures/blocks/gold_block",
+														"$name": "tile.gold_block.name"
+													}}],
+													"$coal_block": [{"i@assets.item_renderer": {
+														"$texture": "textures/blocks/coal_block",
+														"$name": "tile.coal_block.name"
+													}}],
 
 													"controls": [
 														{ "text1@assets.text_box": { 
-															"$text": "- Suspicious Sand blocks in the Desert Temple regenerate every 30 minutes.\n- Suspicious Sand blocks in the Desert Well regenerate every 15 minutes.\n- Suspicious Sand blocks in the Warm Ocean Ruins regenerate every 35 minutes.\n- Suspicious Gravel blocks in the Cold Ocean Ruins regenerate every 25 minutes.\n- Suspicious Gravel blocks in the Trail Ruins regenerate every 65 minutes."
+															"$text": "Suspicious Sand and Gravel will regenerate on their own after a period of time, as long as you leave sand/gravel in the spots where you brushed them at."
+														}},
+														{ "text2@assets.text_box": { 
+															"$text": "§lThe time it takes in each structure:§r\n- Desert Pyramid: 30 minutes\n- Desert Well: 15 minutes.\n- Warm Ocean Ruins: 35 minutes.\n- Cold Ocean Ruins: 25 minutes.\n- Trail Ruins: 65 minutes."
 														}},
 														{ "suspicious_blocks@how_to_play.animation": {
 															"$image": "sus_blocks",
 															"$frames": 5
+														}},
+														{ "text3@assets.text_box": { 
+															"$text": "The time offset between the individual blocks is random every session.\n\nChunks don't need to be loaded for this feature to work.\n\nThe chances for regenerating certain items can be influenced by the block beneath the suspicious sand or gravel.\n\nHere are the loot tables for each structure:"
 														}},
 														{ "desert_pyramid@assets.custom_table": {
 															"$rows": [
@@ -1348,7 +1371,9 @@
 																		{ "item@assets.table_box": {
 																			"size": [60, "100%"],
 																			"color": [0.8, 0.8, 0.8],
-																			"controls": "$brick"
+																			"controls": [{ "i@assets.item_renderer": {
+																				"$id": "brick"
+																			}}]
 																		}},
 																		{ "line0@assets.table_border_v": {}},
 																		{ "default@assets.table_box": {
@@ -1466,6 +1491,2104 @@
 																		{ "petrified@assets.table_box": {
 																			"size": ["fill", "100%"],
 																			"$text": "§q60%%"
+																		}}
+																	]
+																}}
+															]
+														}},
+														{ "warm_ocean_ruins@assets.custom_table": {
+															"$rows": [
+																{ "upper_border@assets.table_border_h": {}},
+																{ "header@assets.table_row": {
+																	"size": ["100%", 24],
+																	"$content": [
+																		{ "items@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": [60, "100%"], "$text": "Items" }},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "blocks@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": ["fill", "100%"], "$text": "Chance Based on the block below" }}
+																	]
+																}},
+																{ "blocks@assets.table_row": {
+																	"size": ["100%", 36],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/structures/warm_ocean_ruins",
+																				"$name": "maps.structure.warm_ocean_ruins"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$any"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$terracotta"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald_block"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$gold_block"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$coal_block"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/blocks/moss_block",
+																				"$name": "tile.moss_block.name"
+																			}}]
+																		}}
+																	]
+																}},
+																{ "sherds@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/items/pottery_sherd",
+																				"$name": "itemGroup.name.potterySherds §e\n  Angler\n  Shelter\n  Snort"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "20%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q60%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "9.09%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}}
+																	]
+																}},
+																{ "emerald@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "13.33%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q36.36%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}}
+																	]
+																}},
+																{ "gold@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$gold_nugget"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "13.33%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "18.18%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}}
+																	]
+																}},
+																{ "coal@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$coal"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "13.33%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "9.09%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q53.85%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "wheat@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$wheat"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "13.33%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "9.09%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q16.67%%"
+																		}}
+																	]
+																}},
+																{ "wooden_hoe@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$wooden_hoe"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "13.33%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q16.67%%"
+																		}}
+																	]
+																}},
+																{ "iron_axe@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$iron_axe"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "9.09%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "sniffer_egg@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$id": "sniffer_egg",
+																				"$name": "('tile.' + $id + '.name')"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "9.09%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "moss@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q41.67%%"
+																		}}
+																	]
+																}}
+															]
+														}},
+														{ "cold_ocean_ruins@assets.custom_table": {
+															"$rows": [
+																{ "upper_border@assets.table_border_h": {}},
+																{ "header@assets.table_row": {
+																	"size": ["100%", 24],
+																	"$content": [
+																		{ "items@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": [60, "100%"], "$text": "Items" }},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "blocks@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": ["fill", "100%"], "$text": "Chance Based on the block below" }}
+																	]
+																}},
+																{ "blocks@assets.table_row": {
+																	"size": ["100%", 36],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/structures/cold_ocean_ruins",
+																				"$name": "maps.structure.cold_ocean_ruins"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$any"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$terracotta"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald_block"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$gold_block"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$coal_block"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/blocks/copper_block",
+																				"$name": "tile.waxed_copper.name"
+																			}}]
+																		}}
+																	]
+																}},
+																{ "sherds@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$texture": "textures/ui/items/pottery_sherd",
+																				"$name": "itemGroup.name.potterySherds §e\n  Blade\n  Explorer\n  Mourner\n  Plenty"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "23.52%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q60%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}}
+																	]
+																}},
+																{ "emerald@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$emerald"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.76%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q40%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "16.67%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}}
+																	]
+																}},
+																{ "gold@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$gold_nugget"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.76%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "15.38%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}}
+																	]
+																}},
+																{ "coal@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$coal"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.76%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "20%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q53.85%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "wheat@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$wheat"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.76%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "wooden_hoe@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$wooden_hoe"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.67%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "7.69%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "iron_axe@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": "$iron_axe"
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.76%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q10%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "8.33%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}}
+																	]
+																}},
+																{ "nautilus_armor@assets.table_row": {
+																	"size": ["100%", 34],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"$id": "copper_nautilus_armor",
+																				"$name": "itemGroup.name.nautilus_armor \n§6  Copper: 40%%\n §7 Iron: 30%%\n§e  Gold: 20%%\n§b  Diamond: 10%%",
+																				"$location": "textures/items/nautilus_armor/"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.76%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "armor@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q60%%"
+																		}}
+																	]
+																}}
+															]
+														}},
+														{ "trail_ruins@assets.custom_table": {
+															"$rows": [
+																{ "upper_border@assets.table_border_h": {}},
+																{ "header@assets.table_row": {
+																	"size": ["100%", 24],
+																	"$content": [
+																		{ "items@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": [60, "100%"], "$text": "Items" }},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "blocks@assets.table_box": { "color": [0.8, 0.8, 0.8], "size": ["fill", "100%"], "$text": "Chance Based on the block below" }}
+																	]
+																}},
+																{ "blocks@assets.table_row": {
+																	"size": ["100%", 28],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/ui/structures/trail_ruins",
+																				"$name": "maps.structure.trail_ruins"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.85, 0.85, 0.85],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/ui/offline",
+																				"$name": "Any"
+																			}}]
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/hardened_clay",
+																				"$name": "tile.hardened_clay.name"
+																			}}]
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.85, 0.85, 0.85],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/emerald_block",
+																				"$name": "tile.emerald_block.name"
+																			}}]
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/gold_block",
+																				"$name": "tile.gold_block.name"
+																			}}]
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.85, 0.85, 0.85],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/coal_block",
+																				"$name": "tile.coal_block.name"
+																			}}]
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$name": "tile.honeycomb_block.name",
+																				"$texture": "textures/blocks/honeycomb"
+																			}}]
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.85, 0.85, 0.85],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/log_oak",
+																				"$name": "tile.wood.oak.name"
+																			}}]
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/clay",
+																				"$name": "tile.clay.name"
+																			}}]
+																		}}
+																	]
+																}},
+																{ "sherds@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/ui/items/pottery_sherd",
+																				"$name": "itemGroup.name.potterySherds §e\n  Burn\n  Danger\n  Friend\n  Heart\n  Heartbreak\n  Howl\n  Sheaf"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "11.67%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "emerald@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "emerald"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "3.56%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "gold@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "gold_nugget"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "coal@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "coal"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "10%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "deadbushes@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/blocks/deadbush",
+																				"$name": "tile.deadbush.name"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "clay@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.block_renderer": {
+																				"size": [24, 24],
+																				"$aux":"((82) * 65536)",
+																				"$id": "clay"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.56%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}}
+																	]
+																}},
+																{ "candles@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/items/candles/candle",
+																				"$name": "itemGroup.name.candles \n§n  Brown\n§c  Red\n§2  Green\n§u  Purple"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "14.22%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q50%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "dyes@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/items/dye_powder_white_new",
+																				"$name": "itemGroup.name.dye \n§f  White\n§6  Orange\n§e  Yellow\n§b  Light Blue\n§9  Blue"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "17.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "10.87%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "panes@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.block_renderer": {
+																				"size": [24, 24],
+																				"$aux": "((160) * 65536)",
+																				"$name": "itemGroup.name.glassPane \n§c  Red\n§e  Yellow\n§b  Light Blue\n§9  Blue\n§u  Purple\n§5  Magenta\n§d  Pink"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "12.44%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "6.52%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "brick@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "brick"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "5.56%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q7.5%%"
+																		}}
+																	]
+																}},
+																{ "wheat@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "wheat"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "3.56%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q10.42%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "beets@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "beetroot_seeds",
+																				"$texture": "textures/items/seeds_beetroot"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q6.25%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "seeds@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "wheat_seeds",
+																				"$texture": "textures/items/seeds_wheat"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q4.17%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "pot@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "flower_pot"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "4%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q5%%"
+																		}}
+																	]
+																}},
+																{ "lead@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "lead"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "string@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "string"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§q7.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "sign@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "oak_hanging_sign"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q7.5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "spruce_sign@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "spruce_hanging_sign"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.78%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§q5%%"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.17%%"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "2.08%%"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "2.5%%"
+																		}}
+																	]
+																}},
+																{ "relic@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/items/music_disc_relic",
+																				"$name": "('§e%item.record.name\n§7%item.record_relic.desc')"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "1.67%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "8%%"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "trims@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$texture": "textures/items/shaper_armor_trim_smithing_template",
+																				"$name": "§e%itemGroup.name.smithing_templates §7\n  Host\n  Raiser\n  Shaper\n  Wayfinder"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "6.67%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}}
+																	]
+																}},
+																{ "hoe@assets.table_row": {
+																	"size": ["100%", 26],
+																	"$content": [
+																		{ "structure@assets.table_box": {
+																			"size": [60, "100%"],
+																			"color": [0.8, 0.8, 0.8],
+																			"controls": [{"i@assets.item_renderer": {
+																				"size": [24, 24],
+																				"$id": "wooden_hoe",
+																				"$texture": "textures/items/wood_hoe"
+																			}}]
+																		}},
+																		{ "line0@assets.table_border_v": {}},
+																		{ "default@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "3.56%%"
+																		}},
+																		{ "line1@assets.table_border_v": {}},
+																		{ "sherds@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line2@assets.table_border_v": {}},
+																		{ "emerald@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line3@assets.table_border_v": {}},
+																		{ "gold@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line4@assets.table_border_v": {}},
+																		{ "coal@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line5@assets.table_border_v": {}},
+																		{ "candles@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line6@assets.table_border_v": {}},
+																		{ "deadbushes@assets.table_box": {
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
+																		}},
+																		{ "line7@assets.table_border_v": {}},
+																		{ "clay@assets.table_box": {
+																			"color": [0.9, 0.9, 0.9],
+																			"size": ["fill", "100%"],
+																			"$text": "§c(/)"
 																		}}
 																	]
 																}}
@@ -2296,7 +4419,7 @@
 					{ "red_sand@how_to_play.crafting3x3_feature": {
 						"$R": [{"@assets.item_renderer": {
 							"$id": "resin_clump",
-							"$name":"('tile.'+ $id + '.name')"
+							"$name":"('tile.' + $id + '.name')"
 						}}],
 						"$S": [{"b@assets.sand":{}}],
 

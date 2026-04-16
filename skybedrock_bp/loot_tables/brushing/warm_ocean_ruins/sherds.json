@@ -10,6 +10,11 @@
 				},
 				{
 					"type": "item",
+					"name": "minecraft:emerald",
+					"weight": 2
+				},
+				{
+					"type": "item",
 					"name": "minecraft:iron_axe",
 					"weight": 2
 				},
@@ -17,11 +22,6 @@
 					"type": "item",
 					"name": "minecraft:sniffer_egg",
 					"weight": 1
-				},
-				{
-					"type": "item",
-					"name": "minecraft:emerald",
-					"weight": 2
 				},
 				{
 					"type": "item",

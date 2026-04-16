@@ -19,12 +19,12 @@
 				},
 				{
 					"type": "item",
-					"name": "minecraft:spruce_hanging_sign",
-					"weight": 2
+					"name": "minecraft:oak_hanging_sign",
+					"weight": 3
 				},
 				{
 					"type": "item",
-					"name": "minecraft:oak_hanging_sign",
+					"name": "minecraft:spruce_hanging_sign",
 					"weight": 2
 				},
 				{
