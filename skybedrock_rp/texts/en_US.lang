@@ -1,10 +1,14 @@
-## Items
+## UI Items
 item.skybedrock:guidebook=Skybedrock Guidebook
 item.spawn_egg.entity.skybedrock:end_phantom.name=End Phantom Spawn Egg
 item.skybedrock_blue_rose=Blue Rose
 item.skybedrock_paeonia=Paeonia
+tile.skybedrock_amethyst_formation.name=Amethyst Formation
+tile.petrified_oak_slab=Petrified Oak Slab
+tile.double_petrified_oak_slab.name=Double Petrified Oak Slab
 
 
+## Items
 item.skybedrock:world_map=World Map
 item.skybedrock_world_map=World Map
 item.skybedrock:ancient_scroll=Ancient Scroll
@@ -17,23 +21,30 @@ item.skybedrock:sky_treasure_map=Sky Treasure Map
 item.skybedrock:blue_rose=Blue Rose
 item.skybedrock:paeonia=Paeonia
 
+
 ## Item Groups
 skybedrock:maps=Maps
 
 ## Blocks
 tile.deprecated_purpur_block_2.name=Smooth Purpur
 tile.stone_slab.wood.name=Petrified Oak Slab
+tile.double_stone_slab.wood.name=Petrified Double Slab
 tile.skybedrock:nether_gravel.name=Nether Gravel
 tile.yasser444:empty_spawner.name=§bEmpty Spawner
 tile.skybedrock_nether_gravel.name=Nether Gravel
 tile.yasser444_empty_spawner.name=§bEmpty Spawner
 tile.skybedrock:unsafe_copper.name=Unsafe Copper
 tile.skybedrock:unsafe_tuff.name=Unsafe Tuff
+tile.skybedrock:amethyst_formation.name=Amethyst Formation
+tile.skybedrock:blue_rose.name=Blue Rose
+tile.skybedrock:paeonia.name=Paeonia
 
 
 ## Entities
 entity.skybedrock:end_phantom.name=End Phantom
+skybedrock:end_phantom=End Phantom
 entity.end_phantom.name=End Phantom
+
 entity.illager.name=Illager
 entity.skybedrock:end_sickness.name=End Phantom Spawn
 
@@ -41,6 +52,8 @@ entity.skybedrock:end_sickness.name=End Phantom Spawn
 biome.plains.name=Plains
 biome.desert.name=Desert
 biome.savanna.name=Savanna
+biome.taiga.name=Taiga
+biome.cherry_grove.name=Cherry Grove
 
 ## HUD
 hudScreen.tooltip.seeMap=See Map
@@ -100,11 +113,6 @@ guidebook.button.back=Return
 guidebook.button.switch_on=Click to Turn Off
 guidebook.button.switch_off=Click a Structure
 
-guidebook.trader_request.message=A Wandering Trader will arrive at spawn at the morning of the next day.
-guidebook.trader_request.already=A Wandering Trader has already been requested.
-guidebook.trader_request.failed=Looks like no body is around, imma head out.
-guidebook.trader_request.late=Somebody has beaten me to it, maybe next time.
-
 guidebook.maps.no_structures=You haven't unlock any structures yet
 
 maps.waypoints.add=Add Waypoint
@@ -147,12 +155,12 @@ maps.structure.village_snowy=Snowy Village
 maps.structure.village_taiga=Taiga Village
 maps.structure.village_desert=Desert Village
 maps.structure.desert_pyramid=Desert Pyramid
+maps.structure.desert_well=Desert Well
 maps.structure.swamp_hut=Swamp Hut
 maps.structure.jungle_temple=Jungle Temple
 maps.structure.trial_chambers=Trial Chambers
 maps.structure.ancient_city=Ancient City
 maps.structure.bastion_remnants=Bastion Remnants
-maps.structure.bastion_remnants=Desert Pyramid
 maps.structure.end_gateway=End Gateway
 maps.structure.igloo=Igloo
 maps.structure.mineshaft=Mineshaft
@@ -162,9 +170,12 @@ maps.structure.pillager_outpost=Pillager Outpost
 maps.structure.ruined_portal=Ruined Portal
 maps.structure.shipwreck=Shipwreck
 maps.structure.ocean_ruins=Ocean Ruins
+maps.structure.cold_ocean_ruins=Cold Ocean Ruins
+maps.structure.warm_ocean_ruins=Warm Ocean Ruins
 maps.structure.trail_ruins=Trail Ruins
 maps.structure.woodland_mansion=Woodland Mansion
 maps.structure.x_mark=Buried Treasure
+maps.structure.amethyst_geode=Amethyst Geode
 
 achievements.announcement.message=%s has completed §a[%s]
 
@@ -191,4 +202,5 @@ command.ach.description=Grants or revokes an achievement or all of them for a pl
 command.recover.description=Gives you back the items or blocks you have lost
 command.settings.description=Enables or disables extra skybedrock features
 command.inform.description=Gives you basic information about your player and location
-command.request_trader.description=Requests a Wandering Trader to visit spawn in the next day.
+
+chat.daily_trader.you_murderer=No wandering traders will spawn for 3 days because the current one died.

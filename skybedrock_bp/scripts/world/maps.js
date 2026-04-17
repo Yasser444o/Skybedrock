@@ -6,6 +6,7 @@ import { chorus_islands, end_cities, pillar_locations } from "./the_end"
 import { check_block } from "../achievements"
 import { nether_structures, overworld_structures, biome_names} from "../data"
 import world_map, { manage_waypoint, update_waypoints } from "../items/world_map"
+import { the_end } from "../startup"
 
 export const locating_players = new Map()
 
@@ -222,7 +223,7 @@ export function see_a_map(player, map) {
         const pin_to_map = (axis) => Math.min(Math.max(Math.round(axis * 128 / 120) + 128, 0), 256)
         const place = ({ x, z }) => `x${pin_to_map(x)}y${pin_to_map(z)}`
         const check_crystal = (location, fallback) => {
-            const hits = world.getDimension("minecraft:the_end").getEntitiesFromRay(
+            const hits = the_end.getEntitiesFromRay(
                 { ...location, y: 0 },
                 { x: 0, y: 1, z: 0 },
                 { type: "minecraft:ender_crystal", ignoreBlockCollision: true }
@@ -230,12 +231,12 @@ export function see_a_map(player, map) {
             return hits ? hits.length > 0 : fallback
         }
 
-        const exit = check_block(world.getDimension("minecraft:the_end"), { x: 0, y: 63, z: 1 }, "minecraft:end_portal", world.getDynamicProperty('exit_portal'))
+        const exit = check_block(the_end, { x: 0, y: 63, z: 1 }, "minecraft:end_portal", world.getDynamicProperty('exit_portal'))
         world.setDynamicProperty('exit_portal', exit)
 
         const end_pillars = JSON.parse(world.getDynamicProperty('end_pillars') ?? '[]')
         for (let i = 0; i < 10; i++) {
-            end_pillars[i] = check_block(world.getDimension("minecraft:the_end"), { ...pillar_locations[i], y: 0 }, "minecraft:obsidian", end_pillars[i])
+            end_pillars[i] = check_block(the_end, { ...pillar_locations[i], y: 0 }, "minecraft:obsidian", end_pillars[i])
         }
 
         const end_crystals = JSON.parse(world.getDynamicProperty('end_crystals') ?? '[]')

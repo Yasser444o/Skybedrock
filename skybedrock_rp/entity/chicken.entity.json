@@ -11,7 +11,7 @@
 				"diamond_feather": "geometry.chicken.feather"
 			},
 			"render_controllers": [
-				"controller.render.chicken.v2",
+				"controller.render.chicken.v3",
 				"controller.render.diamond_feather"
 			]
 		}

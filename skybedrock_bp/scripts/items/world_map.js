@@ -2,6 +2,7 @@ import { system, world } from "@minecraft/server"
 import { ModalFormData } from "@minecraft/server-ui"
 import { open_world_map } from "../world/maps"
 import { load_dynamic_object, save_dynamic_object } from "../utilities"
+import { overworld, nether, the_end } from "../startup"
 
 const default_name = 'Waypoint'
 const map_markers = {
@@ -36,7 +37,7 @@ const map_markers = {
 	structures: [
 		'village_plains', 'village_savanna', 'village_snowy', 'village_taiga', 'village_desert', 'swamp_hut', 'jungle_temple', 'trial_chambers',
 		'ancient_city', 'bastion_remnants', 'desert_pyramid', 'end_gateway', 'igloo', 'mineshaft', 'nether_fortress', 'ocean_monument',
-		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark'
+		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark', 'amethyst_geode'
 	]
 }
 const marker_types = Object.keys(map_markers.paths)
@@ -53,8 +54,9 @@ export default function(player, item) {
 	})
 }
 
-const vanilla_dimensions = new Map()
-system.run(() => ['overworld', 'nether', 'the_end'].forEach(id => vanilla_dimensions.set('minecraft:' + id, world.getDimension(id))))
+let vanilla_dimensions; system.runTimeout(() => 
+	vanilla_dimensions = new Map([overworld, nether, the_end].map(dimension => [dimension.id, dimension])),
+2)
 export function update_waypoints(player, item, changed) {
 	const waypoints = Object.fromEntries(Object.entries(load_dynamic_object(item, 'waypoints')).filter(([hash, waypoint]) => {
 		const [x, y, z, d] = hash.split(' ')

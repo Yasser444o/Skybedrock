@@ -1,11 +1,6 @@
-import { world, system } from "@minecraft/server" ;
-import { stored_items } from "../startup";
+import { system } from "@minecraft/server" ;
+import { overworld, stored_items } from "../startup";
 import { open_map } from "../world/maps";
-
-let overworld
-world.afterEvents.worldLoad.subscribe(() => {
-	overworld = world.getDimension('overworld')
-})
 
 const beach = {min_x: 32, max_x: 64, min_z: 64, max_z: 128}
 

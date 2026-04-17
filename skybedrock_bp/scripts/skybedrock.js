@@ -14,7 +14,7 @@ import "./items/guidebook.js"
 import "./items/scraped_trial.js"
 import "./items/debug_stick.js"
 
-import "./world/suspicious_blocks.js"
+import "./world/archeology.js"
 import "./world/ore_mining.js"
 import "./world/actionbar.js"
 import "./world/stats.js"

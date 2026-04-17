@@ -118,5 +118,8 @@
 	},
 	"skybedrock:paeonia": {
 		"sound": "grass"
+	},
+	"skybedrock:amethyst_formation": {
+		"sound": "amethyst_block"
 	}
 }

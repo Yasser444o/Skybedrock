@@ -1,0 +1,27 @@
+{
+	"format_version": "1.26.0",
+	"minecraft:processor_list": {
+		"description": {
+			"identifier": "skybedrock:amethyst_geode"
+		},
+		"processors": [
+			{
+				"processor_type": "minecraft:rule",
+				"rules": [
+					{
+						"input_predicate": {
+							"predicate_type": "minecraft:random_block_match",
+							"block": "minecraft:air",
+							"probability": 0.083
+						},
+						"output_state": "skybedrock:amethyst_formation"
+					}
+				]
+			},
+			{
+				"processor_type": "minecraft:block_ignore",
+				"blocks": ["minecraft:air"]
+			}
+		]
+	}
+}

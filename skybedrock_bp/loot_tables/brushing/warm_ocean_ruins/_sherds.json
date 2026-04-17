@@ -1,0 +1,24 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:snort_pottery_sherd",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:angler_pottery_sherd",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:shelter_pottery_sherd",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

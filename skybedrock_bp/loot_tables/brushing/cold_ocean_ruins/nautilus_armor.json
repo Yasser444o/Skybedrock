@@ -1,0 +1,34 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "loot_table",
+					"name": "loot_tables/gameplay/nautilus_armor.json",
+					"weight": 6
+				},
+				{
+					"type": "loot_table",
+					"name": "loot_tables/brushing/cold_ocean_ruins/_sherds.json",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:iron_axe",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:emerald",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:gold_nugget",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

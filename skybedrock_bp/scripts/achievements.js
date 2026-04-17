@@ -1,10 +1,9 @@
 import { world, system, EnchantmentType, ItemStack } from "@minecraft/server"
 import { pillar_locations } from "./world/the_end"
 import { complete, stop_challenge, quest_tracker } from "./world/quests"
-import { stored_items } from "./startup"
+import { overworld, stored_items, the_end } from "./startup"
 import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
-
 
 export const version = "v5.1.1"
 const aux = 65536
@@ -682,7 +681,7 @@ export const quests = {
 			- wait for the 10 pillars to regenerate
 			(If you don't want to fight the ender dragon, you could interrupt its summoning by blowing up the end crystals right before it spawns)
 		`,
-		query: () => pillar_locations.every(loc => check_block(world.getDimension("minecraft:the_end"), {...loc, y: 0}, "minecraft:obsidian", false))
+		query: () => pillar_locations.every(loc => check_block(the_end, {...loc, y: 0}, "minecraft:obsidian", false))
 	},
 	elytra: {
 		data: `
@@ -1200,7 +1199,7 @@ export const quests = {
 		`,
 		query: (player) => (
 			in_radius(player, '675 40 376', undefined, 30) &&
-			check_block(world.getDimension("minecraft:overworld"), {x: 691, y: 42, z: 373}, "!minecraft:raw_gold_block")
+			check_block(overworld, {x: 691, y: 42, z: 373}, "!minecraft:raw_gold_block")
 		)
 	},
 	fortress_loot: {

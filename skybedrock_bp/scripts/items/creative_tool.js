@@ -8,7 +8,7 @@ const modes = [
 	["Delete Mobs", 'delete mobs'],
 	["Delete Blocks", 'delete blocks'],
 	["Teleport", 'teleport'],
-	["Ice Rod", 'ice_rod'],
+	["Ice Rod", 'ice rod'],
 ]
 
 const offsets = [], BOA = [-1, 0, 1]
@@ -46,7 +46,7 @@ function find_connected_blocks(block, type) {
 		const current_hash = location_to_hash(current_block)
 		if (current_hash != block_hash) connected_blocks.add(current_hash)
 		if (connected_blocks.size >= limit - 1) break
-		for (const offset of offsets) {
+		for (const offset of offsets) { try {
 			const found_block = current_block.offset(offset) 
 			if (!found_block) continue
 			const found_hash = location_to_hash(found_block)
@@ -54,7 +54,7 @@ function find_connected_blocks(block, type) {
 			searched.add(found_hash)
 			if (found_block.typeId != type) continue
 			check_list.push(found_block)
-		}
+		} catch {}}
 	}
 	return Array.from(connected_blocks).map(hash => block.dimension.getBlock(hash_to_location(hash)))
 }
@@ -125,6 +125,11 @@ const teleport = {
 		const location = offset_location(player.location, player.getViewDirection(), 16)
 		player.tryTeleport(location)
 		system.run (() => player.playSound('mob.endermen.portal', {location}))
+	},
+	sneak_use_block(player) {
+		const location = offset_location(player.location, player.getViewDirection(), 16)
+		player.tryTeleport(location)
+		system.runTimeout(() => player.playSound('mob.endermen.portal', {location}), 2)
 	}
 }
 
@@ -157,11 +162,12 @@ const ice_rod = {
 	}
 }
 
+
 // event directors
 function on_use(player, item) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector" && lore[1] && lore[2]) selector.use(player, lore)
-	else if (mode == 'ice_rod') ice_rod.use(player)
+	else if (mode == 'ice rod') ice_rod.use(player)
 	else {
 		const form = new ActionFormData() .title("Creative Tool")
 		for (const mode of modes) form.button(mode[0])
@@ -177,13 +183,17 @@ function on_sneak_use(player, item) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "teleport") teleport.sneak_use(player)
 	if (mode == "selector") selector.sneak_use(player, item, lore)
-	if (mode == 'ice_rod') ice_rod.sneak_use(player, item)
+	if (mode == 'ice rod') ice_rod.sneak_use(player, item)
+}
+function on_sneak_use_block(player, block, item, blockFace) {
+	const {mode} = lore_and_mode(item)
+	if (mode == "teleport") teleport.sneak_use_block(player)
 }
 
 function on_use_block(player, block, item, blockFace) {
 	const {lore, mode} = lore_and_mode(item)
 	if (mode == "selector") selector.use_block(player, block, item, lore)
-	if (mode == "ice_rod") ice_rod.use_block(block, blockFace)
+	if (mode == "ice rod") ice_rod.use_block(block, blockFace)
 }
 
 function before_hit_block(event, player, block, item) {
@@ -198,6 +208,14 @@ function after_hit_block(player, block, permutation, item) {
 	const {mode} = lore_and_mode(item)
 	if (mode == "delete blocks") {
 		const blocks = find_connected_blocks(block, permutation.type.id)
+		for (let i = 0; i < blocks.length; i++) blocks[i].setType('air')
+	}
+}
+
+function after_hit_air(player, block, item) {
+	const {mode} = lore_and_mode(item)
+	if (mode == "delete blocks") {
+		const blocks = find_connected_blocks(block, block.typeId)
 		for (let i = 0; i < blocks.length; i++) blocks[i].setType('air')
 	}
 }
@@ -222,34 +240,43 @@ export default {
 	},
 	onUseOn({source: player, itemStack:item, block, blockFace}) {
 		player.is_using_creative_tool_on = true
-		on_use_block(player, block, item, blockFace)
+		if (player.inputInfo.getButtonState("Sneak") == "Pressed") on_sneak_use_block(player, block, item, blockFace)
+		else on_use_block(player, block, item, blockFace)
 	}
 }
 
 world.afterEvents.playerBreakBlock.subscribe((event) => {
 	const {player, block, brokenBlockPermutation:permutation, itemStackBeforeBreak:item} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	after_hit_block(player, block, permutation, item)
 }) 
 
 world.beforeEvents.playerBreakBlock.subscribe((event) => {
 	const {player, block, itemStack:item} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	before_hit_block(event, player, block, item)
 })
 world.beforeEvents.playerInteractWithEntity.subscribe(event => {
 	const {itemStack: item, player, target:entity} = event
-	if (item?.typeId != "yasser444:creative_tool") return
+	if (item?.typeId != "skybedrock:creative_tool") return
 	player.is_using_creative_tool_on = true
 	event.cancel = true
 	system.run(() => before_click_entity(player, entity, item))
 })
 
+world.afterEvents.playerSwingStart.subscribe(event => {
+	const {heldItemStack: item, player} = event
+	if (item?.typeId != "skybedrock:creative_tool") return
+	const block = player.getBlockFromViewDirection({maxDistance: 6, includeLiquidBlocks: true})?.block
+	if (!block) return
+	after_hit_air(player, block, item)
+}, {swingSource: 'Attack'})
+
 system.runInterval(() => {
 	world.getPlayers({gameMode: "Creative"}).forEach(player => {
 		const equipment = player.getComponent("equippable")
 		const item = equipment.getEquipment("Mainhand")
-		if (!item || item.typeId != "yasser444:creative_tool") return
+		if (!item || item.typeId != "skybedrock:creative_tool") return
 		on_tick(player, item)
 	})
 }, 20)

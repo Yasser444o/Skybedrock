@@ -1,0 +1,29 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "loot_table",
+					"name": "loot_tables/brushing/desert_well/_sherds.json",
+					"weight": 6
+				},
+				{
+					"type": "item",
+					"name": "minecraft:brick",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:emerald",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:stick",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+  "namespace": "pause",
+  
+  "how_to_play_icon": {
+    "texture": "textures/ui/buttons/skypedia_default",
+    "size": [ 16, 16 ]
+  }
+}

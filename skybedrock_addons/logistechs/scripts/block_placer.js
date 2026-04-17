@@ -41,7 +41,7 @@ world.afterEvents.pistonActivate.subscribe(({piston, dimension, isExpanding}) =>
 		const piston_hash = get_hash(piston.block)
 		const hoppers = piston_directions.map(direction => piston.block[direction]())
 		.filter(hopper => {
-			if (hopper.typeId != "minecraft:hopper") return // is a hopper
+			if (hopper?.typeId != "minecraft:hopper") return // is a hopper
 			if (hopper.permutation.getState("toggle_bit")) return // isn't powered
 			const point = hopper_directions[hopper.permutation.getState("facing_direction")]
 			const point_block = hopper[point]() // get the block infront

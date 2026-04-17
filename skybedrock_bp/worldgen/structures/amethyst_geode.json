@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:jigsaw": {
+		"description": {
+			"identifier": "skybedrock:amethyst_geode"
+		},
+		"step": "underground_structures",
+		"heightmap_projection": "world_surface",
+		"start_height": {
+			"type": "uniform",
+			"max": { "absolute": 94 },
+			"min": { "absolute": 6 }
+		},
+		"max_depth": 1,
+		"terrain_adaptation": "none",
+		"start_pool": "skybedrock:amethyst_geode",
+		"max_distance_from_center": 32
+	}
+}

@@ -1,4 +1,5 @@
 import { world, system } from "@minecraft/server"
+import { the_end } from "../startup"
 
 const last_position = new Map()
 
@@ -81,10 +82,8 @@ function used_new_gateway(player) {
     world.setDynamicProperty('open_gateways', JSON.stringify(active_gateways)) // mark the gateway as active
     return true
 }
-
 async function build_far_island(player) {
     const arrival = chunk_corner(player.location)
-	const the_end = world.getDimension('the_end')
     //preserve the arrival area 
 	const loaded_chunks = []
     ;[-1, 0, 1].forEach(i => { [-1, 0, 1].forEach(j => {
@@ -118,10 +117,8 @@ async function build_far_island(player) {
     }
 }
 
-let the_end
 export let active_gateways
 world.afterEvents.worldLoad.subscribe(()=> {
-    the_end = world.getDimension('the_end')
     active_gateways = JSON.parse(world.getDynamicProperty('open_gateways') ?? '[]')
     system.runInterval(() => {
         const players = the_end.getPlayers()
