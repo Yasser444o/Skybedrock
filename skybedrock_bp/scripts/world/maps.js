@@ -56,7 +56,11 @@ const overworld_biomes = [
         cave: biome_names.deep_dark,
         offset: [12, 9], size: [2, 2]
     },
-    { biome: biome_names.jagged_peaks, offset: [5, 12], size: [2, 2] },
+    {
+        surface: biome_names.jagged_peaks,
+        cave: biome_names.sulfur_caves,
+        offset: [5, 12], size: [2, 2]
+    },
     {
         surface: biome_names.sunflower_plains,
         cave: biome_names.lush_caves,
