@@ -11,8 +11,8 @@ General:
 Amethyst Geodes:
 - You now blow a goat horn to reveal the amethyst geodes hidden around you.
 - There is a 1 in 24 chance for a chunk to have an amethyst geode.
-- You can now find amethyst geodes in already generated chunks.
-- Amethyst geodes are spheres of air with 8.3% of the outer 3 layers replaced with amethyst formations.
+- You can not find amethyst geodes in already generated chunks.
+- Amethyst geodes are spheres of air with 8.3%% of the outer 3 layers replaced with amethyst formations.
 - Amethyst formations are invisible blocks that emit particles
 - If you click an amethyst formation with an amethyst block, it will transform into budding amethyst
 - The old way for creating new budding amethyst has been removed
@@ -30,9 +30,9 @@ Daily Wandering trader:
 
 Plant Restoration:
 - This feature is added to prevent you from soft locking certain plants
-- Using bone meal on grass in a taiga biome has a 16% chance to grow a sweet berry bush
-- Using bone meal on grass in a cherry grove biome has a 16% chance to grow pink petals
-- Using bone meal on warped nylium has a 16% chance to grow twisting vines
+- Using bone meal on grass in a taiga biome has a 16%% chance to grow a sweet berry bush
+- Using bone meal on grass in a cherry grove biome has a 16%% chance to grow pink petals
+- Using bone meal on warped nylium has a 16%% chance to grow twisting vines
 - Sniffers can no longer sniff out pink petals or sweet berries
 
 Archaeology
