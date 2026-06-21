@@ -4429,6 +4429,24 @@
 
 						"$output": [{"b@assets.red_sand": {}}]
 					}},
+					{ "cinnabar@how_to_play.crafting3x3_feature": {
+						"$R": [{"@assets.item_renderer": { 
+							"$id": "redstone_dust",
+							"$name": "item.redstone.name"
+						}}],
+						"$S": [{"b@assets.block_renderer":{
+							"$aux": "((-1092) * 65536)",
+							"$id": "sulfur"
+						}}],
+
+						"$input1": "$S", "$input2": "$R",
+						"$input4": "$R", "$input5": "$S",
+
+						"$output": [{"b@assets.block_renderer":{
+							"$aux": "((-1109) * 65536)",
+							"$id": "cinnabar"
+						}}]
+					}},
 					{ "ore_recipes@assets.white_box": { //index 1 should be skipped
 						"layer": -3,
 						"color": [0.3, 0.3, 0.3], 
@@ -4866,6 +4884,38 @@
 										}}
 									]
 								}},
+								{ "creeper@how_to_play.drops_table_item": {
+									"$size": ["100% - 2px", 72],
+									"$mob": [{ "e@assets.creeper": {}}],
+									"$drops": [
+										{ "i1@assets.drops_table_entry": {
+											"$content": [{"i@assets.item_renderer": { "$id": "gunpowder" }}],
+											"$quantity": "0-2"
+										}},
+										{ "i2@assets.drops_table_entry": {
+											"$content": [{"i@assets.item_renderer": {
+												"$texture": "textures/items/music_disc_bounce",
+												"$name": "('§e%item.record.name\n§7%item.record_bounce.desc')"
+											}}],
+											"$chance": "7.7%%"
+										}}
+									],
+									"$notes": [
+										{ "n1@assets.table_cell": {"size": ["100%", 36], "$content": []}},
+										{ "n2@assets.table_cell": {"size": ["100%", 36], "$content": [
+											{"i@assets.skeleton_kill": {
+												"$text": "If killed by a Skeleton,\nStray, Parched, or Bogged.",
+												"anchor_to": "right_middle"
+											}},
+											{"i@assets.old_item_renderer": {
+												"$texture": "textures/biomes/sulfur_caves",
+												"size": [24, 24],
+												"$text": "In the Sulfur Caves biome",
+												"anchor_to": "left_middle"
+											}}
+										]}}
+									]
+								}},
 								{ "charged_creeper@how_to_play.drops_table_item": {
 									"$size": ["100% - 2px", 72],
 									"$mob": [{ "e@assets.charged_creeper": {}}],
@@ -4881,7 +4931,9 @@
 									"$notes": [
 										{ "n1@assets.table_cell": {"size": ["100%", 36], "$content": []}},
 										{ "n2@assets.table_cell": {"size": ["100%", 36], "$content": [
-											{"i@assets.skeleton_kill": {"$text": "If killed by a Skeleton,\nStray, Parched, or Bogged."}}
+											{"i@assets.skeleton_kill": {
+												"$text": "If killed by a Skeleton,\nStray, Parched, or Bogged."
+											}}
 										]}}
 									]
 								}},
@@ -5916,6 +5968,38 @@
 						]
 					}},
 					{ 
+						"cinnabar@assets.text_box": {
+							"$text": "§a[]§r Cave Spider Cinnabar"
+						}
+					},
+					{ "cave_spider@how_to_play.small_drops_table": {
+						"$size": ["100% - 2px", 108],
+						"$mob": [{ "e@assets.cave_spider": {}}],
+						"$drops": [
+							{ "i1@assets.drops_table_entry": {
+								"$content": [{"i@assets.item_renderer": { "$id": "string" }}],
+								"$quantity": "0-2"
+							}},
+							{ "i2@assets.drops_table_entry": {
+								"$content": [{"b@assets.block_renderer":{
+									"$aux": "((-1109) * 65536)",
+									"$id": "cinnabar"
+								}}],
+								"$quantity": "0-2"
+							}},
+							{ "i4@assets.drops_table_entry": {
+								"$content": [{"i@assets.item_renderer": { "$id": "spider_eye" }}],
+								"$quantity": "0-1"
+							}}
+						],
+						"$notes": [
+							{ "n1@assets.table_cell": {"size": ["100%", 72], "$content": []}},
+							{ "n3@assets.table_cell": {"size": ["100%", 36], "$content": [
+								{"i@assets.player_kill": {}}
+							]}}
+						]
+					}},
+					{ 
 						"quartz@assets.text_box": {
 							"$text": "§a[]§r Blaze Quartz"
 						}
@@ -6075,7 +6159,11 @@
 								"$name": "entity.villager.mason"
 							}}],
 							"$take1": [{"i@assets.item_renderer": { "$id": "emerald", "$count": "4"}}],
-							"$give": [{"i@assets.item_renderer": { "$id": "quartz" , "$count": "4"}}],
+							"$give": [{"i@assets.block_renderer": {
+								"$aux": "((155) * 65536)",
+								"$id": "quartz_block",
+								"$count": "4"
+							}}],
 							"$details": "* Probability: 100%%\n* Number of Trades: 12"
 							}
 					},

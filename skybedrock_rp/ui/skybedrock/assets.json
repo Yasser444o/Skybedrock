@@ -2275,18 +2275,6 @@
 		}}],
 		"$name": "Magma Cube"
 	},
-	"creeper@assets.entity_renderer": {
-		"$face": [
-			{ "face": {
-				"type": "image",
-				"texture": "textures/entity/creeper/creeper",
-				"uv": [8, 8],
-				"uv_size": [8, 8],
-				"size": [16, 16]
-			}}
-		],
-		"$name": "Creeper"
-	},
 	"sniffer@assets.entity_renderer": {
 		"$face": [
 			{ "face": {
@@ -2330,6 +2318,19 @@
 			}}
 		],
 		"$name": "Sniffer"
+	},
+	
+	"creeper@assets.entity_renderer": {
+		"$face": [
+			{ "face": {
+				"type": "image",
+				"texture": "textures/entity/creeper/creeper",
+				"uv": [8, 8],
+				"uv_size": [8, 8],
+				"size": [28, 28]
+			}}
+		],
+		"$name": "Creeper"
 	},
 	"charged_creeper@assets.entity_renderer": {
 		"$face": [
