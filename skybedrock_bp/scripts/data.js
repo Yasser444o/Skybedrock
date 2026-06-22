@@ -106,7 +106,7 @@ export const overworld_structures = [
     {
         id: 'desert_pyramid', x: -761.5, y: 65, z: -270.5,
         structures: ['Desert Pyramid', 'Desert Well'], require: 'desert',
-        biomes: [biome_names.desert_hills, biome_names.desert_lakes],
+        biomes: [biome_names.desert_hills, biome_names.desert_mutated],
 		dim: "minecraft:overworld",
     },
     {

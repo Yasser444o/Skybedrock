@@ -1,4 +1,19 @@
 export const change_logs = {
+  "v1.26.0": `\
+Additions:
+- Added the Sulfur Island, which replaces the Amethyst Island.
+- Added the Amethyst Geode, unlocked by visiting the lush caves island, dripstone island, or the sulfur caves island.
+- Added the Sulfur Caves biome beneath the Jagged Peaks biome, It can be detected using the biome detector.
+- Added a new recipe for Cinnabar: Sulfur + Mercury (redstone)
+- Added a new optional addon for making cave spiders drop cinnabar.
+- Creepers have a chance to drop Bounce music disc if killed by a skeleton in the Sulfur Caves biome.
+Changes:
+- Updated the Biomes Map, Structures Map, and Islands Map
+- Updated the Achievements to cover the new features
+- Updated the How to Play screen to cover the new features
+Bug Fixes:
+- Fixed a bug in the How to Play screen where it showed that Masons can sell Nether Quartz items instead of Blocks of Quartz.
+  `,
   "v1.25.0": `\
 General:
 - Moved copper smelting recipes to "More Copper" optional addon.

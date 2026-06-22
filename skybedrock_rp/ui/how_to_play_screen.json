@@ -311,7 +311,7 @@
 								{ "feature": {
 									"type": "panel",
 									"size": ["100%", "100%c + 15px"],
-									"$text1": "§lGeneration:§r\n- There is a 1 in 24 chance for a chunk to contain an amethyst geode.\n- They do not generate in already generated chunks (inside the biome map or near existing structures)\n- They are located between Y levels -55 and 30.\n- They are invisible by default; blow a goat horn to reveal the ones in the 3 by 3 chunks around you.\n\n§lStructure:\n§r - They are spherical in shape with a radius of 8 blocks.\n - They are composed entirely of air, with 8.3%% of the outer 3 layers replaced with Amethyst Formations.",
+									"$text1": "§lGeneration:§r\n- There is a 1 in 24 chance for a chunk to contain an amethyst geode.\n- They do not generate in already generated chunks (inside the biome map or near existing structures)\n- They are located between Y levels -55 and 30.\n- They are invisible by default; blow a goat horn to reveal the ones in the 3 by 3 chunks around you.\n\n§lStructure:\n§r - They are spherical in shape with a radius of 8 blocks.\n - They are composed entirely of air, with 4.1%% of the outer 3 layers replaced with Amethyst Formations.",
 									"$text2": "§lAmethyst Formations:§r\n- They are invisible blocks that emit particles.\n- They can be instantly broken by hand.\n- You can use a block of amethyst on them to convert them into budding amethyst.",
 									"controls": [
 										{ "background@assets.white_box": {
@@ -4444,7 +4444,8 @@
 
 						"$output": [{"b@assets.block_renderer":{
 							"$aux": "((-1109) * 65536)",
-							"$id": "cinnabar"
+							"$id": "cinnabar",
+							"$count": "2"
 						}}]
 					}},
 					{ "ore_recipes@assets.white_box": { //index 1 should be skipped

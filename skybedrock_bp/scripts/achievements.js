@@ -5,7 +5,7 @@ import { overworld, stored_items, the_end } from "./startup"
 import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
 
-export const version = "v5.1.1"
+export const version = "v5.1.2"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
@@ -949,6 +949,7 @@ export const quests = {
 			- Sculk Sensors
 			- A Sculk Catalyst
 			- Deepslate
+			- Unlock the Ancient City
 		`,
 		query: (player) => in_radius(player, '145 -33 49')
 	},

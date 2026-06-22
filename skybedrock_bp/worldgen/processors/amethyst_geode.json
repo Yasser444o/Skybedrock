@@ -12,7 +12,7 @@
 						"input_predicate": {
 							"predicate_type": "minecraft:random_block_match",
 							"block": "minecraft:air",
-							"probability": 0.083
+							"probability": 0.041
 						},
 						"output_state": "skybedrock:amethyst_formation"
 					}
