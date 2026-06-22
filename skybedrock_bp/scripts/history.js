@@ -1,4 +1,19 @@
 export const change_logs = {
+  "v1.26.0": `\
+Additions:
+- Added the Sulfur Island, which replaces the Amethyst Island.
+- Added the Amethyst Geode, unlocked by visiting the lush caves island, dripstone island, or the sulfur caves island.
+- Added the Sulfur Caves biome beneath the Jagged Peaks biome, It can be detected using the biome detector.
+- Added a new recipe for Cinnabar: Sulfur + Mercury (redstone)
+- Added a new optional addon for making cave spiders drop cinnabar.
+- Creepers have a chance to drop Bounce music disc if killed by a skeleton in the Sulfur Caves biome.
+Changes:
+- Updated the Biomes Map, Structures Map, and Islands Map
+- Updated the Achievements to cover the new features
+- Updated the How to Play screen to cover the new features
+Bug Fixes:
+- Fixed a bug in the How to Play screen where it showed that Masons can sell Nether Quartz items instead of Blocks of Quartz.
+  `,
   "v1.25.0": `\
 General:
 - Moved copper smelting recipes to "More Copper" optional addon.
@@ -11,8 +26,8 @@ General:
 Amethyst Geodes:
 - You now blow a goat horn to reveal the amethyst geodes hidden around you.
 - There is a 1 in 24 chance for a chunk to have an amethyst geode.
-- You can now find amethyst geodes in already generated chunks.
-- Amethyst geodes are spheres of air with 8.3% of the outer 3 layers replaced with amethyst formations.
+- You can not find amethyst geodes in already generated chunks.
+- Amethyst geodes are spheres of air with 8.3%% of the outer 3 layers replaced with amethyst formations.
 - Amethyst formations are invisible blocks that emit particles
 - If you click an amethyst formation with an amethyst block, it will transform into budding amethyst
 - The old way for creating new budding amethyst has been removed
@@ -30,9 +45,9 @@ Daily Wandering trader:
 
 Plant Restoration:
 - This feature is added to prevent you from soft locking certain plants
-- Using bone meal on grass in a taiga biome has a 16% chance to grow a sweet berry bush
-- Using bone meal on grass in a cherry grove biome has a 16% chance to grow pink petals
-- Using bone meal on warped nylium has a 16% chance to grow twisting vines
+- Using bone meal on grass in a taiga biome has a 16%% chance to grow a sweet berry bush
+- Using bone meal on grass in a cherry grove biome has a 16%% chance to grow pink petals
+- Using bone meal on warped nylium has a 16%% chance to grow twisting vines
 - Sniffers can no longer sniff out pink petals or sweet berries
 
 Archaeology

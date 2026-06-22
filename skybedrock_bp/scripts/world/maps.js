@@ -56,7 +56,11 @@ const overworld_biomes = [
         cave: biome_names.deep_dark,
         offset: [12, 9], size: [2, 2]
     },
-    { biome: biome_names.jagged_peaks, offset: [5, 12], size: [2, 2] },
+    {
+        surface: biome_names.jagged_peaks,
+        cave: biome_names.sulfur_caves,
+        offset: [5, 12], size: [2, 2]
+    },
     {
         surface: biome_names.sunflower_plains,
         cave: biome_names.lush_caves,
@@ -177,8 +181,10 @@ export function see_a_map(player, map) {
         const place = ({x, z}) => `x${pin_to_map(x)}y${pin_to_map(z)}`
         const active = player.waypoint ? 'on' : 'off'
         const completed_achs = JSON.parse(player.getDynamicProperty("completed_achs") ?? '[]')
-        const structures = data.structures.filter(({require}) => {
-            return !require || completed_achs.includes(require) || player.getGameMode() == "Creative"
+        const structures = data.structures.filter(({require, require_any}) => {
+            if (player.getGameMode() == "Creative") return true
+            if (require && completed_achs.includes(require)) return true 
+            if (require_any && require_any.some(ach => completed_achs.includes(ach))) return true
         })
 
         const form = new ActionFormData().title('§map_ui§' + data.title)

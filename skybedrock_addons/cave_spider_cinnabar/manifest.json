@@ -1,0 +1,20 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "cave spiders drop cinnabar",
+        "name": "Cave Spider Cinnabar",
+        "uuid": "78678c96-4cda-498c-8673-0772c1c13962",
+        "version": [ 1, 0, 0 ],
+        "min_engine_version": [ 1, 21, 0]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "db1a1b47-e293-471c-81ed-2517f6eb36a0",
+            "version": [1, 0, 0]
+        }
+    ]
+}

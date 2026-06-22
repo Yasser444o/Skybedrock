@@ -77,6 +77,7 @@ export const biome_names = {
 	frozen_peaks: "§tFrozen Peaks",
 	ice_mountains: "§fSnowy Mountains",
 	lush_caves: "§dLush Caves",
+	sulfur_caves: "§gSulfur Caves",
 	dripstone_caves: "§nDripstone Caves",
 	deep_dark: "§sDeep Dark",
 	pale_garden: "§vPale Garden",
@@ -105,7 +106,7 @@ export const overworld_structures = [
     {
         id: 'desert_pyramid', x: -761.5, y: 65, z: -270.5,
         structures: ['Desert Pyramid', 'Desert Well'], require: 'desert',
-        biomes: [biome_names.desert_hills, biome_names.desert_lakes],
+        biomes: [biome_names.desert_hills, biome_names.desert_mutated],
 		dim: "minecraft:overworld",
     },
     {
@@ -127,6 +128,13 @@ export const overworld_structures = [
 		structure: 'Mineshaft', require: 'badlands',
 		biome: biome_names.modified_badlands,
 		place: {x: 684, y: 31, z: -248},
+		dim: "minecraft:overworld",
+	},
+    {
+		id: 'amethyst_geode', x: -527.5, y: 27, z: -77.5,
+		structure: 'Amethyst Geode', require_any: ['lush_cave', 'dripstone', 'sulfur_cave'],
+		biome: biome_names.plains,
+		place: {x: -535, y: 23, z: -82},
 		dim: "minecraft:overworld",
 	},
     {
@@ -205,7 +213,7 @@ export const destinations = {
 	cherry_island: { coords: {x: -190.5, y: 64, z: 0.5}, place: {x: -199, y: 60, z: -7}},
 	pale_island: { coords: {x: -0.5, y: 64, z: -190.5}, place: {x: -7, y: 60, z: -199}},
 	ocean_island: { coords: {x: 192.5, y: 64, z: 0.5}, place: {x:188, y: 58, z: -4}},
-	amethyst_island: { coords: {x: -43.5, y: 32, z: 144.5}, place: {x: -53, y: 26, z: 139}},
+	sulfur_island: { coords: {x: -43.5, y: 32, z: 144.5}, place: {x: -53, y: 26, z: 139}},
 	lush_island: { coords: {x: -143.5, y: 32, z: -47.5}, place: {x: -153, y: 26, z: -57}},
 	dripstone_island: { coords: {x: 44.5, y: 32, z: -143.5}, place: {x: 38, y: 26, z: -152}},
 	deep_dark_island: { coords: {x: 144.5, y: -32, z: 48.5}, place: {x: 138 , y:-36, z: 42}},

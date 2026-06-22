@@ -5,7 +5,7 @@ import { overworld, stored_items, the_end } from "./startup"
 import { locating_players } from "./world/maps"
 import { update_vision } from "./world/limited_vision"
 
-export const version = "v5.1.1"
+export const version = "v5.1.2"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
@@ -124,8 +124,8 @@ export const categories = {
 			resin_clump
 			cherry
 			dripstone
-			geode
 			lush_cave
+			sulfur_cave
 			deep_dark
 			crimson
 			warped
@@ -143,6 +143,7 @@ export const categories = {
 			trial_chambers
 			mineshaft
 			shipwreck
+			geode
 			ancient_city
 			monument
 			fortress_loot
@@ -903,15 +904,21 @@ export const quests = {
 			- Lava
 			- Glow Lichen
 			- Drowneds
+			- Unlock the Amethyst Geode
 		`,
 		query: (player) => in_radius(player, '45 31 -145')
 	},
-	geode: {
+	sulfur_cave: {
 		data: `
 			require: mushroom_island
-			title: Cracked Gemstone
-			icon: textures/blocks/amethyst_cluster
-			* Visit the amethyst island for... Amethyst
+			title: Noxious Geyser
+			icon: textures/blocks/sulfur_spike_up_tip
+			* Pay a visit to the sulfur island for:
+			- Sulfur
+			- Cinnabar
+			- Sulfur Cubes
+			- Cave Spiders
+			- Unlock the Amethyst Geode
 		`,
 		query: (player) => in_radius(player, '-45 32 145'),
 	},
@@ -928,6 +935,7 @@ export const quests = {
 			- Clay
 			- Axolotls
 			- Tropical Fish
+			- Unlock the Amethyst Geode
 		`,
 		query: (player) => in_radius(player, '-145 31 -49')
 	},
@@ -941,6 +949,7 @@ export const quests = {
 			- Sculk Sensors
 			- A Sculk Catalyst
 			- Deepslate
+			- Unlock the Ancient City
 		`,
 		query: (player) => in_radius(player, '145 -33 49')
 	},
@@ -1177,6 +1186,15 @@ export const quests = {
 			in_radius(player, '-641 45 262', undefined, 30) &&
 			check_items(player, 'skybedrock:sky_treasure_map')
 		)
+	},
+	geode: {
+		data: `
+			require: (structure_locator & lush_cave)
+			title: Cracked Gemstone
+			icon: textures/blocks/amethyst_cluster
+			* Visit the Amethyst Geode
+		`,
+		query: (player) => in_radius(player, '-528 26 -78'),
 	},
 	ancient_city: {
 		data: `

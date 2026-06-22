@@ -1,0 +1,21 @@
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "skybedrock:cinnabar"
+		},
+		"tags": [ "crafting_table" ],
+		"pattern": [
+			"SR",
+			"RS"
+		],
+		"key": {
+			"S": { "item": "minecraft:sulfur" },
+			"R": { "item": "minecraft:redstone" }
+		},
+		"unlock": [
+			{ "item": "minecraft:sulfur" }
+		],
+		"result": { "item": "minecraft:cinnabar", "count": 2 }
+	}
+}
