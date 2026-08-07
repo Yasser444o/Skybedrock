@@ -1,8 +1,6 @@
 import { system, world} from "@minecraft/server" ;
-import { locating_players } from "./maps";
-import { biome_names, nether_structures, overworld_structures } from "../data";
+import { biome_names } from "../data";
 import { cross, dot, normalize } from "../utilities";
-const all_structures = overworld_structures.concat(nether_structures)
 
 function get_direction(target, player) {
 	if (target && target.dim == player.dimension.id) {

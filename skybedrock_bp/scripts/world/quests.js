@@ -44,8 +44,8 @@ function detect(player, id) {
 	if (!('query' in quests[id])) return  // skip if it doesn't have a query
 	const {query} = quests[id]
 	if (query.constructor.name == 'AsyncFunction') {  // execute async queries
-		system.run(async () => { if (await query(player)) complete(player, id)})
-	} else if (query(player)) complete(player, id)  // execute the query function
+		system.run(async () => { if (await query(player, id)) complete(player, id)})
+	} else if (query(player, id)) complete(player, id)  // execute the query function
 }
 
 function submit(player, id) {
@@ -204,18 +204,19 @@ export function quest_screen(player, id, book) {
 		form.divider()
 		let formatted_lines = [...lines];
 		if (format) {
-			formatted_lines = lines.map(line => {
-				let formatted_line = line[1]
-				format(player, id).forEach(([key, value]) => {
+			const formats = format(player, id)
+			formatted_lines = lines.map(([prefix, line]) => {
+				let formatted_line = line
+				formats.forEach(([key, value]) => {
 					formatted_line = formatted_line.replaceAll(key, value)
 				})
-				return [line[0], formatted_line]
+				return [prefix, formatted_line]
 			})
 		}
-		formatted_lines.forEach(line => 
-			line[0] == '-' ? form.label('§bullet§' + line[1]) :
-			line[0] == '%' ? form.label('§fillbar§' + line[1]) : null
-		)
+		formatted_lines.forEach(([prefix, line]) => { switch (prefix) {
+			case '-': {form.label('§bullet§' + line)} break
+			case '%': {form.label('§fillbar§' + line)} break
+		}})
 	}
 	
 	if (notes.length != 0) notes.forEach(note => form.label('§note§' + note))

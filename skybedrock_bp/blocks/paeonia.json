@@ -1,5 +1,5 @@
 {
-	"format_version":  "1.26.0",
+	"format_version":  "1.26.40",
 	"minecraft:block": {
 		"description": {
 			"identifier": "skybedrock:paeonia",
@@ -14,6 +14,7 @@
 				"face_dimming": false
 			}},
 			"minecraft:collision_box": false,
+			"minecraft:connection_rule": { "accepts_connections_from": "none" },
 			"minecraft:light_dampening": 0,
 			"minecraft:movable": { "movement_type": "popped" },
 			"minecraft:flower_pottable": {},
@@ -48,7 +49,9 @@
 				"detection_rules": [
 					{ "liquid_type": "water", "on_liquid_touches": "popped" }
 				]
-			}
+			},
+			// This is to prevent blocks that need support from being placed on it
+			"minecraft:support": { "shape": "stair" }
 		}
 	}
 }

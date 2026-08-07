@@ -8,8 +8,6 @@ import { nether_structures, overworld_structures, biome_names} from "../data"
 import world_map, { manage_waypoint, update_waypoints } from "../items/world_map"
 import { the_end } from "../startup"
 
-export const locating_players = new Map()
-
 const overworld_biomes = [
     { biome: biome_names.plains, offset: [6, 6], size: [4, 4] },
     { biome: biome_names.mangrove_swamp, offset: [10, 7], size: [2, 2] },
