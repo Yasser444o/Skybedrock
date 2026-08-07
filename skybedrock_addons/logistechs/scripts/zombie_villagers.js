@@ -176,8 +176,10 @@ function use_cauldron(zombie) {
 system.runInterval(() => {
 	dimensions.forEach(dimension => 
 		dimension.getEntities({type: "minecraft:zombie_villager_v2"}).forEach( zombie => {
-			if (zombie.getComponent("variant")?.value == 1) use_hoe(zombie) // farmer zombie villager
-			if (zombie.getComponent("variant")?.value == 12) use_cauldron(zombie) // leather worker zombie villager
+			switch (zombie.getComponent("variant")?.value) {
+				case 1: use_hoe(zombie); break // farmer zombie villager
+				case 12: use_cauldron(zombie); break // leather worker zombie villager
+			}
 		})
 	)
 }, 16)

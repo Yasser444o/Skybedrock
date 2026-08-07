@@ -223,6 +223,8 @@ export const destinations = {
 	basalt_island: { coords: {x: 0.5, y: 64, z: 94.5}, dimension: "nether", place: {x: -7, y: 60, z: 89}},
 	soulsand_island: { coords: {x: 0.5, y: 64, z: -95.5}, dimension: "nether", place: {x: -7, y: 60, z: -103}},
 	the_end: { coords: {x: 100.5, y: 50, z: 0.5}, dimension: "the_end"},
+	// all overworld_structures
+	// all nether_structures
 }
 ;[...overworld_structures, ...nether_structures].forEach(({id, x, y, z, place}) => destinations[id] = {coords: {x, y, z}, place})
 nether_structures.forEach(({id}) => destinations[id].dimension = 'nether')
