@@ -1,0 +1,38 @@
+## Changes
+- For viewing the waypoint location and dimension:
+  - Use a tooltip button for touch, and a hover otherwise
+- Add a side button for listing the waypoints
+  - Add an option for sorting by distance, alphabetical, or addition date
+  - Add an option for displaying the waypoints of other dimensions or all dimensions
+- Add a show background button which shows the dimension sky
+- Add a button for disabling the waypoint 
+- Add a button for hiding players
+- Show the players with different color markers
+- The player holding the map has a white marker
+- Pumpkins hide you from other player maps
+
+## Cartography Table 
+- Detect if the player clicked a cartography table with a world map
+- Show a custom modal form
+- Mimic the cartography table ui for both classic ui and pocket ui
+- Add a ui button for editing the waypoints
+- Add a green outline in the hotbar around the map the player clicked the cartography table with
+- Place that map in the first cartography table input slot    
+- Display the content of the map in the map view
+- Display the map size and add a slider for adjusting the zoom level
+- Display a lock icon when the map is locked and the locked coordinates in blue
+- The lock icon is a toggle that will unlock the map on save and will play glass breaking sound
+- The map can be renamed just like a cartography table
+- The output slot is the submit button
+- The player inventory is actually a drop-down
+- All irrelevant inventory slots are darkened
+- Selecting an item will change the editing behavior
+  - Empty World Map: Copy the map data
+  - Glass Pane: Locking the map to the cartography table location
+  - Empty Slot or the same slot again: Default Edit mode
+  - Map Upgrades: Add an upgrade to the map
+  - Recovery Compass: Adds a gravestone waypoint to the map
+  - Undecided yet: Change the map background
+  - Undecided yet: Draw the terrain on the map
+- Add a tooltip ui expansion button for describing the behavior of each item
+- Copying a map will replace the empty world map item in the inventory

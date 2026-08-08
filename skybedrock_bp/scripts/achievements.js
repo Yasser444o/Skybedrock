@@ -1544,9 +1544,7 @@ export const quests = {
 			* Visit every minecraft structure in the map
 			- ${all_structures.map(it => `${it.name ?? it.structure} [$${it.id}]`).join('\n- ')}
 		`,
-		
 		format: (player, id) => all_structures.map(it => [`$${it.id}`, quest_tracker[`${player.id} ${id} ${it.id}`] ? '§a/§r' : '§cX§r']),
-
 		query: (player, id) => {
 			let completed = true
 			all_structures.forEach(it => {
@@ -1557,7 +1555,6 @@ export const quests = {
 			})
 			return completed
 		},
-
 		reward: ["Unlock over 16 chunks render distance", (player) => {
 			player.setDynamicProperty("free_vision", true)
 			update_vision(player, player.dimension)
