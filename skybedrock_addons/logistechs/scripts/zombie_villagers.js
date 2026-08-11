@@ -18,8 +18,8 @@ const passable = [
 ]
 
 
-const subtract_vectors = (a, b) => { return {x: a.x - b.x, y: a.y - b.y, z: a.z - b.z} }
-const reflect_location = (from, to) => subtract_vectors({x: 2 * to.x, y: 2 * to.y, z: 2 * to.z}, from)
+const sub_vectors = (a, b) => ({x: a.x - b.x, y: a.y - b.y, z: a.z - b.z})
+const reflect_location = (from, to) => sub_vectors({x: 2 * to.x, y: 2 * to.y, z: 2 * to.z}, from)
 const check_hand = (entity, item) => entity.runCommand(`testfor @s[hasitem ={location=slot.weapon.mainhand, item=${item}}]`).successCount != 0
 const find_item = (entity, map) => { for (const item of map.keys()) if (check_hand(entity, item)) return item }
 

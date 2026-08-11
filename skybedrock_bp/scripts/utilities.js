@@ -6,8 +6,7 @@ export const save_dynamic_object = (holder, id, value) => holder.setDynamicPrope
 // math
 export class MersenneTwister {
 	constructor(seed) {
-		this.N = 624;
-		this.M = 397;
+		this.N = 624; this.M = 397;
 		this.MATRIX_A = 0x9908b0df;
 		this.UPPER_MASK = 0x80000000;
 		this.LOWER_MASK = 0x7fffffff;
@@ -55,7 +54,7 @@ export class MersenneTwister {
 }
 
 //by @depressed-pho
-export function umul32_lo(a, b) {
+export function multiply_lower_u32(a, b) {
 	let a00 = a & 0xFFFF;
 	let a16 = a >>> 16;
 	let b00 = b & 0xFFFF;
@@ -75,56 +74,33 @@ export function umul32_lo(a, b) {
 }
 
 
-export function dot(u, v) {
-	return u.x * v.x + u.y * v.y + u.z * v.z
-}
-
-export function cross(u, v) {
-	return {
+// Vectors
+export const Vector = {
+	add: (u, v) => ({
+		x: u.x + v.x,
+		y: u.y + v.y,
+		z: u.z + v.z,
+	}),
+	sub: (u, v) => ({
+		x: u.x - v.x,
+		y: u.y - v.y,
+		z: u.z - v.z,
+	}),
+	cross: (u, v) => ({
 		x: u.y * v.z - u.z * v.y,
 		y: u.z * v.x - u.x * v.z,
 		z: u.x * v.y - u.y * v.x,
-	};
-}
-
-export function normalize(vector) {
-	const length = Math.sqrt(vector.x ** 2 + vector.y ** 2 + vector.z ** 2)
-	return {
-		x: vector.x / length,
-		y: vector.y / length,
-		z: vector.z / length,
-	}
-}
-
-// vectors
-export function hash_to_location(hash) {
-	return ((([x, y, z]) => ({x: +x, y: +y, z: +z})))(hash.split(' '))
-}
-
-export function location_to_hash({x, y, z}) {
-	return `${x} ${y} ${z}`
-}
-
-export function offset_location(location, direction, distance) {
-	return {
+	}),
+	normalize({x, y, z}) {
+		const l = Math.sqrt(x ** 2 + y ** 2 + z ** 2)
+		return { x: x / l, y: y / l, z: z / l }
+	},
+	offset: (location, direction, distance) => ({
 		x: location.x + direction.x * distance,
 		y: location.y + direction.y * distance,
 		z: location.z + direction.z * distance,
-	}
-}
-
-export function add_vectors(a, b) {
-	return {
-		x: a.x + b.x,
-		y: a.y + b.y,
-		z: a.z + b.z,
-	}
-}
-
-export function subtract_vectors(a, b) {
-	return {
-		x: a.x - b.x,
-		y: a.y - b.y,
-		z: a.z - b.z,
-	}
+	}),
+	dot: (u, v) => u.x * v.x + u.y * v.y + u.z * v.z,
+	hash: ({x, y, z}) => `${x} ${y} ${z}`,
+	parse: (hash) => ((([x, y, z]) => ({x, y, z})))(hash.split(' ').map(Number)),
 }

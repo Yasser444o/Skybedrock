@@ -6855,6 +6855,9 @@
 					{"s7@assets.text_box": {
 						"$text": "Mineshaft: §cModified Badlands"
 					}},
+					{"s7@assets.text_box": {
+						"$text": "Amethyst Geode: §qMeadow"
+					}},
 					{"s8@assets.text_box": {
 						"$text": "Pillager Outpost: §pSavanna Plateau"
 					}},
@@ -6945,7 +6948,7 @@
 					}},
 					{ 
 						"locator@assets.text_box": {
-							"$text": "* Your render distance has been limited to 16 chunks.\n \n* Complete the \"On the Radar\" achievement to unlock your render distance.\n \n* Use the World Maps section of the guidebook access the structure maps.\n \n* Complete Explorer Path achievements to unlock more structures.\n \n* Complete \"Distant Realm\" to unlock  the nether structures map.\n \n* Click any structure to activate the structure locator.\n \n* The structure locator is a ui compass that points towards the selected structure.\n \n* Click the toggle on the top right corner of the structures map to turn it off."
+							"$text": "* Your render distance has been limited to 16 chunks.\n \n* Complete the \"On the Radar\" achievement to unlock your render distance.\n \n* Use the World Maps section of the guidebook to find the structures.\n \n* Complete Explorer Path achievements to unlock overworld structures.\n \n* Complete \"Distant Realm\" to unlock the nether structures.\n \n* Click any structure to activate the structure locator.\n \n* The structure locator is a compass above your hotbar that points towards the selected structure.\n \n* Click the toggle on the top right corner of the structures map to turn it off."
 						}
 					},
 					

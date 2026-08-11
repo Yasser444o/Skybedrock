@@ -133,7 +133,7 @@ export const overworld_structures = [
     {
 		id: 'amethyst_geode', x: -527.5, y: 27, z: -77.5,
 		structure: 'Amethyst Geode', require_any: ['lush_cave', 'dripstone', 'sulfur_cave'],
-		biome: biome_names.plains,
+		biome: biome_names.meadow,
 		place: {x: -535, y: 23, z: -82},
 		dim: "minecraft:overworld",
 	},

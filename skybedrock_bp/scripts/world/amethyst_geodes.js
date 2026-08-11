@@ -1,5 +1,5 @@
-import { system, world } from "@minecraft/server"
-import { MersenneTwister, umul32_lo } from "../utilities"
+import { world } from "@minecraft/server"
+import { MersenneTwister, multiply_lower_u32 } from "../utilities"
 import { overworld } from "../startup"
 import { generated_chunks } from "../generated"
 
@@ -11,7 +11,7 @@ export const chunks = new Set(generated_chunks)
 function has_geode(x, z) {
 	let x_uint = x >>> 0;
 	let z_uint = z >>> 0;
-	let seed = umul32_lo(x_uint, 0x1f1f1f1f) ^ z_uint;
+	let seed = multiply_lower_u32(x_uint, 0x1f1f1f1f) ^ z_uint;
 	let mt = new MersenneTwister(seed ^ salt);
 	let n = mt.random_int();
 	return (n % chance == 0);

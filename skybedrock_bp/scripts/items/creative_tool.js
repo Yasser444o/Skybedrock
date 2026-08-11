@@ -1,6 +1,6 @@
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui"
 import { world, system, BlockVolume } from "@minecraft/server"
-import { hash_to_location, location_to_hash, offset_location } from "../utilities"
+import { Vector } from "../utilities"
 
 // assets
 const modes = [
@@ -37,26 +37,26 @@ function highlight_selection(dimension, start, end) {
 
 function find_connected_blocks(block, type) {
 	const limit = 512
-	const block_hash = location_to_hash(block)
+	const block_hash = Vector.hash(block)
 	const connected_blocks = new Set()
 	const check_list = [block]
 	const searched = new Set([block_hash])
 	while (check_list.length != 0) {
 		const current_block = check_list.shift()
-		const current_hash = location_to_hash(current_block)
+		const current_hash = Vector.hash(current_block)
 		if (current_hash != block_hash) connected_blocks.add(current_hash)
 		if (connected_blocks.size >= limit - 1) break
 		for (const offset of offsets) { try {
 			const found_block = current_block.offset(offset) 
 			if (!found_block) continue
-			const found_hash = location_to_hash(found_block)
+			const found_hash = Vector.hash(found_block)
 			if (searched.has(found_hash)) continue
 			searched.add(found_hash)
 			if (found_block.typeId != type) continue
 			check_list.push(found_block)
 		} catch {}}
 	}
-	return Array.from(connected_blocks).map(hash => block.dimension.getBlock(hash_to_location(hash)))
+	return Array.from(connected_blocks).map(hash => block.dimension.getBlock(Vector.parse(hash)))
 }
 
 function fill_blocks(player, start, end) {
@@ -89,12 +89,12 @@ function fill(dimension, start, end, type) {
 // tool utilities
 const selector = {
 	hit_block(player, block, item, lore) { // select first block
-		lore[1] = location_to_hash(block)
+		lore[1] = Vector.hash(block)
 		item.setLore(lore)
 		player.getComponent("equippable").setEquipment('Mainhand', item)
 	},
 	use_block(player, block, item, lore) { // select second block
-		lore[2] = location_to_hash(block)
+		lore[2] = Vector.hash(block)
 		item.setLore(lore)
 		player.getComponent("equippable").setEquipment('Mainhand', item)
 	},
@@ -108,26 +108,26 @@ const selector = {
 		.button("Delete Blocks")
 		.button("Fill Blocks")
 		.show(player).then(({ canceled, selection }) => { if (canceled) return
-			if (selection == 0) fill(player.dimension, hash_to_location(lore[1]), hash_to_location(lore[2]), 'air')
-			if (selection == 1) fill_blocks(player, hash_to_location(lore[1]), hash_to_location(lore[2]))
+			if (selection == 0) fill(player.dimension, Vector.parse(lore[1]), Vector.parse(lore[2]), 'air')
+			if (selection == 1) fill_blocks(player, Vector.parse(lore[1]), Vector.parse(lore[2]))
 		})
 	},
 	tick(player, lore) {
 		if (!lore[1] || !lore[2]) return
-		const from = hash_to_location(lore[1])
-		const to = hash_to_location(lore[2])
+		const from = Vector.parse(lore[1])
+		const to = Vector.parse(lore[2])
 		highlight_selection(player.dimension, from, to)
 	}
 }
 
 const teleport = {
 	sneak_use(player) {
-		const location = offset_location(player.location, player.getViewDirection(), 16)
+		const location = Vector.offset(player.location, player.getViewDirection(), 16)
 		player.tryTeleport(location)
 		system.run (() => player.playSound('mob.endermen.portal', {location}))
 	},
 	sneak_use_block(player) {
-		const location = offset_location(player.location, player.getViewDirection(), 16)
+		const location = Vector.offset(player.location, player.getViewDirection(), 16)
 		player.tryTeleport(location)
 		system.runTimeout(() => player.playSound('mob.endermen.portal', {location}), 2)
 	}
@@ -135,7 +135,7 @@ const teleport = {
 
 const ice_rod = {
 	use(player) { // place
-		const location = offset_location(player.getHeadLocation(), player.getViewDirection(), 5)
+		const location = Vector.offset(player.getHeadLocation(), player.getViewDirection(), 5)
 		const block = player.dimension.getBlock(location)
 		if (!block || !block.isValid) return
 		if (!block.isAir && !block.isLiquid) return

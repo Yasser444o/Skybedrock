@@ -1,7 +1,8 @@
 import { world, system } from "@minecraft/server"
-import { location_to_hash as hash } from "../utilities"
+import { Vector } from "../utilities"
 
-world.beforeEvents.playerBreakBlock.subscribe((event) => {
+// This prevents unsafe blocks from dropping items when broken with silk touch
+world.beforeEvents.playerBreakBlock.subscribe(event => {
 	const {block, dimension, player, itemStack: item} = event
 	if (player.getGameMode() == "Creative") return
 	if (!block.hasTag('skybedrock:unsafe')) return
@@ -10,7 +11,7 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
 	if (!silk_touch) return
 
 	event.cancel = true
-	system.run(()=> dimension.runCommand(`/setblock ${hash(block)} air destroy`))
+	system.run(()=> dimension.runCommand(`/setblock ${Vector.hash(block)} air destroy`))
 	
 	// update stats
 	const broken_blocks = JSON.parse(player.getDynamicProperty('blocks_broken') || '{}')
@@ -29,3 +30,43 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
 		player.getComponent('equippable').setEquipment('Mainhand', item)
 	})
 })
+
+// import { BlockPermutation, BlockTypes } from "@minecraft/server"
+
+// This prevents Entities from picking up unsafe block (Disabled because they shouldn't exist in item form)
+// world.beforeEvents.entityItemPickup.subscribe(event => {
+// 	const entity = event.item
+// 	if (entity?.typeId != "minecraft:item" || !entity.isValid) return
+// 	const item = entity.getComponent("minecraft:item")?.itemStack
+// 	if (!item) return
+// 	const block_type = BlockTypes.get(item.typeId)
+// 	if (!block_type) return
+// 	const permutation = BlockPermutation.resolve(block_type.id)
+// 	if (!permutation?.hasTag('skybedrock:unsafe')) return
+// 	event.cancel = true
+// 	system.run(() => entity.remove())
+// })
+
+// This deletes unsafe block item entities if they managed to spawn (Disabled because that shouldn't happen)
+// world.afterEvents.entitySpawn.subscribe(({entity}) => {
+// 	if (entity?.typeId != "minecraft:item" || !entity.isValid) return
+// 	const item = entity.getComponent("minecraft:item")?.itemStack
+// 	if (!item) return
+// 	const block_type = BlockTypes.get(item.typeId)
+// 	if (!block_type) return
+// 	const permutation = BlockPermutation.resolve(block_type.id)
+// 	if (!permutation?.hasTag('skybedrock:unsafe')) return
+// 	entity.remove()
+// })
+
+// This prevents unsafe blocks from getting to the player inventory (Disabled because that shouldn't happen)
+// world.afterEvents.playerInventoryItemChange.subscribe(({player, slot}) => {
+// 	const inventory = player.getComponent('inventory').container
+// 	const item = inventory.getItem(slot)
+// 	if (!item) return
+// 	const block_type = BlockTypes.get(item.typeId)
+// 	if (!block_type) return
+// 	const permutation = BlockPermutation.resolve(block_type.id)
+// 	if (!permutation?.hasTag('skybedrock:unsafe')) return
+// 	inventory.setItem(slot)
+// })

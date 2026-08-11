@@ -34,10 +34,6 @@ function view_stats(player, category, block_type) {
     return JSON.parse(player.getDynamicProperty(category) || '{}')[block_type] ?? 0
 }
 
-function check_ach(player, id) {
-    return JSON.parse(player.getDynamicProperty('completed_achs') || '[]').find(ach => ach == id)
-}
-
 function check_location(player, dimension, range, biome) {
     const {x, y, z} = player.location
     if (range) {

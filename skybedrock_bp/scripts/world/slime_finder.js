@@ -1,12 +1,12 @@
 import { world, system } from "@minecraft/server";
-import { MersenneTwister, umul32_lo } from "../utilities";
+import { MersenneTwister, multiply_lower_u32 } from "../utilities";
 
 
 //by @protolambda and @jocopa3
 export function isSlimy({x, z}) {
 	let x_uint = Math.floor(x / 16) >>> 0;
 	let z_uint = Math.floor(z / 16) >>> 0;
-	let seed = umul32_lo(x_uint, 0x1f1f1f1f) ^ z_uint;
+	let seed = multiply_lower_u32(x_uint, 0x1f1f1f1f) ^ z_uint;
 	let mt = new MersenneTwister(seed);
 	let n = mt.random_int();
 	return (n % 10 == 0);
