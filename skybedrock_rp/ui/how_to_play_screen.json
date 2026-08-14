@@ -5426,7 +5426,7 @@
 										{ "i2@assets.drops_table_entry": {
 											"$content": [{"i@assets.block_renderer": {
 												"$aux": "((-343) * 65536)",
-												"$name": "tile.waxed_oxidized_copper.name"
+												"$id": "oxidized_coppers"
 											}}],
 											"$quantity": "3-4",
 											"$chance": "15%%"
