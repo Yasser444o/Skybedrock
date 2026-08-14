@@ -18,8 +18,8 @@ const passable = [
 ]
 
 
-const subtract_vectors = (a, b) => { return {x: a.x - b.x, y: a.y - b.y, z: a.z - b.z} }
-const reflect_location = (from, to) => subtract_vectors({x: 2 * to.x, y: 2 * to.y, z: 2 * to.z}, from)
+const sub_vectors = (a, b) => ({x: a.x - b.x, y: a.y - b.y, z: a.z - b.z})
+const reflect_location = (from, to) => sub_vectors({x: 2 * to.x, y: 2 * to.y, z: 2 * to.z}, from)
 const check_hand = (entity, item) => entity.runCommand(`testfor @s[hasitem ={location=slot.weapon.mainhand, item=${item}}]`).successCount != 0
 const find_item = (entity, map) => { for (const item of map.keys()) if (check_hand(entity, item)) return item }
 
@@ -176,8 +176,10 @@ function use_cauldron(zombie) {
 system.runInterval(() => {
 	dimensions.forEach(dimension => 
 		dimension.getEntities({type: "minecraft:zombie_villager_v2"}).forEach( zombie => {
-			if (zombie.getComponent("variant")?.value == 1) use_hoe(zombie) // farmer zombie villager
-			if (zombie.getComponent("variant")?.value == 12) use_cauldron(zombie) // leather worker zombie villager
+			switch (zombie.getComponent("variant")?.value) {
+				case 1: use_hoe(zombie); break // farmer zombie villager
+				case 12: use_cauldron(zombie); break // leather worker zombie villager
+			}
 		})
 	)
 }, 16)

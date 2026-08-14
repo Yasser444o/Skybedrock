@@ -1,25 +1,255 @@
 {
 	"namespace": "assets",
-	
-//general {
-	"aseprite_flipbook": {
-		"anim_type": "aseprite_flip_book",
-		"initial_uv": [0, 0]
+
+	// Remaining Items to remove
+	"quartz_block@assets.block_renderer": {
+		"$aux": "((155) * 65536)",
+		"$id": "quartz_block"
 	},
+	"sandstone@assets.block_renderer": {
+		"$aux": "((24) * 65536)",
+		"$id": "sandstone"
+	},
+	"red_sandstone@assets.block_renderer": {
+		"$aux": "((179) * 65536)",
+		"$id": "red_sandstone"
+	},
+	"wet_sponge@assets.block_renderer": {
+		"$aux": "((19) * 65536 + 1)",
+		"$name": "tile.sponge.wet.name"
+	},
+	"spore_blossom@assets.block_renderer": {
+		"$aux": "((-321) * 65536)",
+		"$id": "spore_blossom"
+	},
+	"sculk_catalyst@assets.block_renderer": {
+		"$aux": "((-460) * 65536)",
+		"$id": "sculk_catalyst"
+	},
+	"gilded_blackstone@assets.block_renderer": {
+		"$aux": "((-281) * 65536)",
+		"$id": "gilded_blackstone"
+	},
+	"gravel@assets.block_renderer": {
+		"$aux": "((13) * 65536)",
+		"$id": "gravel"
+	},
+	"ancient_debris@assets.block_renderer": {
+		"$aux": "((-271) * 65536)",
+		"$id": "ancient_debris"
+	},
+	"blackstone@assets.block_renderer": {
+		"$aux": "((-273) * 65536)",
+		"$id": "blackstone"
+	},
+	"soul_sand@assets.block_renderer": {
+		"$aux": "((88) * 65536)",
+		"$id": "soul_sand"
+	},
+	"soul_soil@assets.block_renderer": {
+		"$aux": "((-236) * 65536)",
+		"$id": "soul_soil"
+	},
+	"deepslate_coal_ore@assets.item_renderer": {
+		"$id": "deepslate_coal_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_copper_ore@assets.item_renderer": {
+		"$id": "deepslate_copper_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_iron_ore@assets.item_renderer": {
+		"$id": "deepslate_iron_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_gold_ore@assets.item_renderer": {
+		"$id": "deepslate_gold_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_emerald_ore@assets.item_renderer": {
+		"$id": "deepslate_emerald_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_diamond_ore@assets.item_renderer": {
+		"$id": "deepslate_diamond_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_lapis_lazuli_ore@item_renderer": {
+		"$id": "deepslate_lapis_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"deepslate_redstone_ore@assets.item_renderer": {
+		"$id": "deepslate_redstone_ore",
+		"$texture": "('textures/ui/blocks/' + $id)",
+		"$name": "('tile.' + $id + '.name')"
+	},
+	"disc5_fragment@assets.item_renderer": {
+		"$texture": "textures/items/disc_fragment_5",
+		"$name": "§e%item.disc_fragment.name\n§7%item.disc_fragment_5.desc"
+	},
+	"silence@assets.item_renderer": {
+		"$id": "silence_armor_trim_smithing_template",
+		"$prefix": "§d"
+	},
+	"scrape_sherd@assets.item_renderer": {
+		"$id": "scrape_pottery_sherd",
+		"$prefix": "§e"
+	},
+	"flow_sherd@assets.item_renderer": {
+		"$id": "flow_pottery_sherd",
+		"$prefix": "§e"
+	},
+	"cobweb@assets.item_renderer": {
+		"$texture": "textures/blocks/web",
+		"$name": "tile.web.name"
+	},
+	"frog_spawn@assets.item_renderer": {
+		"$texture": "textures/blocks/frogspawn",
+		"$name": "tile.frog_spawn.name"
+	},
+	"pigstep@assets.item_renderer": {
+		"$texture": "textures/items/record_pigstep",
+		"$name": "('§b%item.record.name\n§7%item.record_pigstep.desc')"
+	},
+	"snout_pattern@assets.item_renderer": {
+		"$id": "piglin_banner_pattern",
+		"$prefix": "§e"
+	},
+	"otherside@assets.item_renderer": {
+		"$texture": "textures/items/record_otherside",
+		"$name": "('§b%item.record.name\n§7%item.record_otherside.desc')"
+	},
+	"bamboo@assets.item_renderer": {
+		"$id": "bamboo",
+		"$name": "('tile.' + $id + '.name')"
+	},
+
+	"ominous_banner@assets.item_renderer": {
+		"$id": "ominous_banner",
+		"$location": "textures/ui/blocks/",
+		"$name": "§e%item.banner.illager_captain.name"
+	},
+	"ominous_bottle@assets.item_renderer": {
+		"$id": "ominous_bottle",
+		"$name": "('§e%item.' + $id + '.name\n§7' + '%effect.badOmen %enchantment.level.1')"
+	},
+	"bone_meal@assets.item_renderer": {
+		"$texture": "textures/items/dye_powder_white",
+		"$name": "item.dye.white.name"
+	},
+	"glass_bottle@assets.item_renderer": {
+		"$id": "glass_bottle",
+		"$texture": "textures/items/potion_bottle_empty"
+	},
+	 
+
+	// General Assets
+	"white_box": { "type": "image", "texture": "textures/white", "fill": true },
+
+	"black_text": { "type": "label", "color": [0, 0, 0], "layer": 10 },
+
+	"aux_renderer_image": {
+		"type": "custom",
+		"renderer": "inventory_item_renderer",
+		"property_bag": { "#item_id_aux": "$id" }
+	},
+	"stack_count_label": {
+		"type": "label",
+		"font_size": "large",
+		"offset": [ 3, 5 ],
+		"anchor_to": "bottom_right",
+		"anchor_from": "bottom_right",
+		"layer": 7,
+		"shadow": true,
+		"$count": "",
+		"text": "$count"
+	},
+	"hovering_text": {
+		"type": "button",
+		"follows_cursor": true,
+		"consume_hover_events": false,
+		"allow_clipping": false,
+		"$text_bindings": [],  // to obtain text from a binding
+		"$label_text": "#text",  // to obtain text from a variable
+		"$anchor": "left_middle",
+		"$offset": [5, 0],
+		"controls": [
+			{ "hover_area": {
+				"type": "image",
+				"texture": "textures/ui/purpleBorder",
+    			"size": [ "100%c + 10px", "100%c + 8px" ],
+				"anchor_to": "$anchor",
+				"offset": "$offset",
+				"layer": 40,
+				"controls": [
+					{ "text": {
+						"type": "label",
+						"text": "$label_text",
+						"bindings": "$text_bindings"
+					}}
+				]
+			}}
+		]
+	},
+
+	"seasons_cycle": { "anim_type": "wait", "duration": "$time", "next": "@assets.winter_season" },
+	"winter_season": { "anim_type": "size", "duration": 0, "from": [0, 0], "to": [32, 32], "next": "@assets.spring_season" },
+	"spring_season": { "anim_type": "wait", "duration": 1, "next": "@assets.summer_season" },
+	"summer_season": { "anim_type": "size", "duration": 0, "from": [32, 32], "to": [0, 0], "next": "@assets.autumn_season" },
+	"autumn_season": { "anim_type": "wait", "duration": "$last_frame", "next": "@assets.winter_season" },
+//	"hover_renderer": { // Deprecated
+//		"type": "button",
+//		"layer": 6,
+//		"$text": "",
+//		"focus_enabled": true,
+//		"anchor_from": "top_left",
+//		"anchor_to": "top_left",
+//		"hover_control": "hover",
+//		"pressed_control": "pressed",
+//		"controls": [
+//			{ "hover": { // this element can not be localized
+//				"type": "custom",
+//				"renderer": "hover_text_renderer",
+//				"layer": 40,
+//				"property_bag": {
+//					"#hover_text": "$text"
+//				}
+//			}},
+//			{ "pressed": {
+//				"type": "custom",
+//				"renderer": "hover_text_renderer",
+//				"layer": 40,
+//				"property_bag": {
+//					"#hover_text": "$text"
+//				}
+//			// this element can spillover
+//			// }},
+//			// { "hover@assets.hovering_text": {
+//			// 	"$label_text": "$text"
+//			}}
+//		]
+//	},
+	
+	// Custom UI Elements
   	"factory": {
 		"type": "stack_panel",
 		"size": ["100%c", "100%c"],
 		"collection_name": "form_buttons",
-		"bindings": [
-			{
-				"binding_name": "#form_button_length",
-				"binding_name_override": "#collection_length"
-			}
-		],
 		"factory": {
 			"name": "$name",
 			"control_name": "$child"
-		}
+		},
+		"bindings": [{
+			"binding_name": "#form_button_length",
+			"binding_name_override": "#collection_length"
+		}]
   	},
   	"button": {
 		"type": "button",
@@ -28,6 +258,7 @@
 		"pressed_control": "pressed",
 		"sound_name": "random.click",
 		"focus_enabled": true,
+		"bindings": "$form_button",
 		"button_mappings": [
 			{
 			  "from_button_id": "button.menu_select",
@@ -40,14 +271,12 @@
 			  "mapping_type": "pressed"
 			}
 		],
-		"bindings": "$form_button",
 		"controls": [
 			{"default@assets.empty": {}},
 			{"hover@assets.empty": {}},
 			{"pressed@assets.empty": {}}
 		]
 	},
-
 	"toggle": {
 		"type": "toggle",
 		"focus_identifier": "",
@@ -113,7 +342,6 @@
 			}}
 		]
 	},
-
 	"text_field": {
 		"type": "panel",
 		"size": [ "100%", "100%cm" ],
@@ -266,407 +494,6 @@
 			}}
 		]
 	},
-
-	"scroller": {
-		"type": "input_panel",
-		"size": ["100%", "100%c"],
-		"anchor_to": "top_left",
-		"anchor_from": "top_left",
-		"tts_ignore_count": true,
-		"consume_hover_events": true,
-		"controls": [
-			{ "scroll_view": {
-				"type": "scroll_view",
-				"scrollbar_track_button": "button.scrollbar_skip_track",
-				"scrollbar_touch_button": "button.scrollbar_touch",
-				"touch_mode": "$touch",
-				"scrollbar_track": "track",
-				"scrollbar_box": "box",
-				"scroll_content": "scrolling_content",
-				"scroll_view_port": "scrolling_view_port",
-				"scroll_box_and_track_panel": "bar_and_track",
-				"scroll_speed": 16,
-				"always_listen_to_input": true,
-				"always_handle_pointer": true,
-				"always_handle_scrolling": false,
-				"scrollbar_always_visible": false,
-				"jump_to_bottom_on_update": false,
-				"allow_scroll_even_when_content_fits": true,
-				"size": ["100%", "100%c"],
-				"button_mappings": [
-					{
-						"from_button_id": "button.menu_select",
-						"to_button_id": "button.scrollbar_touch",
-						"mapping_type": "pressed",
-						"button_up_right_of_first_refusal": true
-					}
-				],
-				"bindings": [
-					{
-						"binding_name": "#gesture_control_enabled"
-					},
-					{
-						"binding_name": "(not #is_using_gamepad)",
-						"binding_name_override": "#focus_for_tts_enabled_binding"
-					}
-				],
-				"controls": [
-					{ "viewport_and_bar": {
-						"type": "stack_panel",
-						"orientation": "horizontal",
-						"size": ["100%", "100%c"],
-						"controls": [
-							{ "scrolling_view_port": {
-								"type": "panel",
-								"size": ["100%c", "100%c + 2px"],
-								"max_size": "$max_size",
-								"clips_children": true,
-								"layer": 1,
-								"controls": [
-									{ "scrolling_content": {
-										"type": "panel",
-										"anchor_from": "top_left",
-										"anchor_to": "top_left",
-										"size": ["100%c", "100%c"],
-										"controls": "$scroller_content",
-										"layer": 1
-									}}
-								]
-							}},
-							{ "bar_and_track@common.scroll_bar_and_track": {
-								"size": [ "100%c", "100%sm" ],
-								"$scroll_track_image_control": "common.scroll_indent_image",
-								"$scroll_box_visible": "(not $touch)",
-								"$scroll_size": [ 4, "100%" ],
-								"$scroll_box_size": [ "100%", "100%" ],
-								"$scroll_bar_left_padding_size": [ 2, 0 ],
-								"$scroll_bar_right_padding_size": [ 2, 0 ],
-								"$scroll_bar_contained": false,
-								"variables": [
-									{
-										"requires": "$touch",
-										"$scroll_track_image_control": "common.empty_panel"
-									}
-								]
-							}}
-						]
-					}}
-				]
-			}}
-		]
-	},
-
-//toggles {
-	"overlay_toggle@common_toggles.light_template_toggle": {
-		"$unchecked_control": "assets.screen_overlay_image",
-		"$unchecked_hover_control": "assets.screen_overlay_image",
-		"$checked_control": "assets.screen_overlay_image",
-		"$checked_hover_control": "assets.screen_overlay_image",
-		"$button_type_panel": "assets.empty",
-		"$toggle_name": "overlay",
-    	"$radio_toggle_group": true,
-		"$toggle_group_forced_index": 0,
-		"layer": 100
-	},
-	"screen_overlay_image@assets.white_box": {
-		"alpha": 0.7,
-		"color": [0, 0, 0]
-	},
-//}
-
-//tables {
-	"custom_table": {
-		"type": "stack_panel",
-		"controls": [
-			{ "custom_table@assets.white_box": {
-				"size": ["100%", "100%c"],
-				"color": [0.7, 0.7, 0.7],
-				"controls": [
-					{ "rows": {
-						"type": "stack_panel",
-						"size": ["100%", "100%c"],
-						"controls": "$rows"
-					}}
-				]
-			}},
-			{"footer": {"type": "panel", "size": [0, 10]}}
-		]
-	},
-	"table": {
-		"type": "stack_panel",
-		"size": ["100%", "100%c"],
-		"controls": [
-			{ "header": {
-				"type": "stack_panel",
-				"orientation": "horizontal",
-				"size": ["100% - 2px", 24],
-				"controls": "$header"
-			}},
-			{ "entries": {
-				"type": "stack_panel",
-				"controls": "$entries"
-			}},
-			{ "footer@assets.table_footer": {}}
-		]
-	},
-
-	"black_text": {
-		"type": "label",
-		"layer": 10,
-		"color": [0, 0, 0]
-	},
-
-	"instruction_text": {
-		"type": "panel",
-		"size": ["100%c + 16px", "100%"],
-		"controls": [{ "text": {
-			"type": "label",
-			"text_alignment": "center",
-			"text": "$text",
-			"font_size": "large",
-			"color": [0, 1, 1],
-			"layer": 10
-		}}]
-	},
-
-	"input_key": {
-		"type": "panel",
-		"size": ["100%c + 16px", "100%"],
-		"controls": [{ "text": {
-			"type": "label",
-			"text_alignment": "center",
-			"text": "('#pre_process_' + $key)",
-			"bindings": [{"binding_name": "('#pre_process_' + $key)"}],
-			"layer": 10
-		}}]
-	},
-
-	"text_box": { 
-		"type": "panel",
-		"size": ["100%", "100%c + 10px"],
-		"$alignment": "left",
-		"$color": [1, 1, 1],
-		"controls": [ {"text": {
-			"type": "label",
-			"localize": true,
-			"text_alignment": "$alignment",
-			"color": "$color",
-			"size": ["100% -10px", "default"],
-			"text": "$text"
-		}}]
-	},
-	"xp_text@black_text": {
-		"font_size": "large",
-		"text": "$L",
-		"color": [0.125, 0.251, 0],
-		"controls": [
-			{ "text@black_text": {
-				"font_size": "large",
-				"offset": [-2, -2],
-				"text": "$L",
-				"color": [0.498, 1, 0]
-			}},
-			{ "levels_text@black_text": {
-				"font_size": "large",
-				"text": "Levels",
-				"offset": [0, 15],
-				"color": [0.125, 0.251, 0],
-				"controls": [
-					{ "text@black_text": {
-						"font_size": "large",
-						"offset": [-2, -2],
-						"text": "Levels",
-						"color": [0.498, 1, 0]
-					}}
-				]
-			}}
-		]
-	},
-	"white_box": {
-		"type": "image",
-		"texture": "textures/white",
-		"fill": true
-	},
-	"gray_box@assets.white_box": {
-		"texture": "textures/gray"
-	},
-	
-	"table_cell@assets.white_box": {
-		"color": [0.8, 0.8, 0.8],
-		"$color": [0.95, 0.95, 0.95],
-		"$text": "",
-		"$content": [{ "text@assets.black_text": {
-			"text": "$text",
-			"text_alignment": "center",
-			"size": ["100%", "default"],
-			"max_size": ["100%", "100%"]
-		}}],
-		"controls": [{ "background@assets.white_box": {
-			"color": "$color",
-			"anchor_from": "bottom_right",
-			"anchor_to": "bottom_right",
-			"size": ["100% - 2px", "100% - 2px"],
-			"controls": "$content"
-		}}]
-	},
-	"table_header@assets.white_box": {
-		"color": [0.8, 0.8, 0.8],
-		"$color": [1, 1, 1],
-		"$text": "",
-		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
-		"controls": [{ "background@assets.gray_box": {
-			"color": "$color",
-			"anchor_from": "bottom_right",
-			"anchor_to": "bottom_right",
-			"size": ["100% - 2px", "100% - 2px"],
-			"controls": "$content"
-		}}]
-	},
-	"table_border@assets.white_box": {
-		"color": [0.8, 0.8, 0.8],
-		"size": [2, "100%"]
-	},
-	"table_border_h": { "type": "panel", "size": [0, 2] },
-	"table_border_v": { "type": "panel", "size": [2, 0] },
-	"table_row": { 
-		"type": "panel",
-		"controls": [{ "table_row": { 
-			"size": ["100% - 4px", "100% - 2px"],
-			"anchor_from": "top_middle",
-			"anchor_to": "top_middle",
-			"type": "stack_panel",
-			"orientation": "horizontal",
-			"controls": "$content"
-		}}]
-	},
-	"table_filler@assets.white_box": {
-		"color": [0.95, 0.95, 0.95],
-		"size": ["fill", "100%"]
-	},
-	"table_box@assets.white_box": {
-		"color": [0.95, 0.95, 0.95],
-		"size": ["100%c + 4px", "100%"],
-		"$text": "",
-		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
-		"controls": "$content"
-	},
-	"table_instruction@assets.table_box": {
-		"size": ["100%c + 8px", "100%"],
-		"$text": "",
-		"controls": [{ "text@assets.black_text": {
-			"text": "$text",
-			"color": [0, 0.7, 0.7],
-			"font_size": "large",
-			"text_alignment": "center",
-			"size": ["default", "default"]
-		}}]
-	},
-	"table_input_key@assets.table_box": {
-		"size": ["100%c + 8px", "100%"],
-		"$key": "",
-		"controls": [{ "text": {
-			"type": "label",
-			"text": "('#pre_process_' + $key)",
-			"text_alignment": "center",
-			"bindings": [{"binding_name": "('#pre_process_' + $key)"}],
-			"layer": 10
-		}}]
-	},
-
-	"table_footer": {
-		"type": "panel",
-		"size": ["100%", 30],
-		"controls": [
-			{
-				"fotter_bar@assets.white_box": {
-					"color": [0.8, 0.8, 0.8],
-					"anchor_from": "top_left",
-					"anchor_to": "top_left",
-					"size": ["100%", 2]
-				}
-			}
-		]
-	},
-	"drops_table_entry": {
-		"type": "stack_panel",
-		"orientation": "horizontal",
-		"size": ["100%", 36],
-		"$quantity": "1",
-		"$chance": "100%%",
-		"controls": [
-			{"item@assets.table_cell": {"size": ["34%", "100%"],
-				"$color": "$color",
-				"$content": "$content"
-			}},
-			{"quantity@assets.table_cell": {"size": ["33%", "100%"],
-				"$color": "$color",
-				"$text": "$quantity"
-			}},
-			{"chance@assets.table_cell": {"size": ["33%", "100%"],
-				"$color": "$color",
-				"$text": "$chance"
-			}},
-			{ "border@assets.table_border": {}}
-		]
-	},
-	"brushing_table_entry": {
-		"type": "stack_panel",
-		"orientation": "horizontal",
-		"size": ["100%", 36],
-		"$chance": "100%%",
-		"controls": [
-			{"item@assets.table_cell": {"size": ["40%", "100%"],
-				"$color": "$color",
-				"$content": "$content"
-			}},
-			{"chance@assets.table_cell": {"size": ["60%", "100%"],
-				"$color": "$color",
-				"$text": "$chance"
-			}},
-			{ "border@assets.table_border": {}}
-		]
-	},
-	"sniffing_table_entry": {
-		"type": "stack_panel",
-		"orientation": "horizontal",
-		"size": ["100%", 36],
-		"$chance": "100%%",
-		"controls": [
-			{"item@assets.table_cell": {"size": ["50%", "100%"],
-				"$color": "$color",
-				"$content": "$content"
-			}},
-			{"chance@assets.table_cell": {"size": ["50%", "100%"],
-				"$color": "$color",
-				"$text": "$chance"
-			}},
-			{ "border@assets.table_border": {}}
-		]
-	},
-	"bartering_table_entry": {
-		"type": "stack_panel",
-		"orientation": "horizontal",
-		"size": ["100%", 36],
-		"$quantity": "1",
-		"$chance": "100%%",
-		"controls": [
-			{"item@assets.table_cell": {"size": ["25%", "100%"],
-				"$color": "$color",
-				"$content": "$item"
-			}},
-			{"quantity@assets.table_cell": {"size": ["37.5%", "100%"],
-				"$color": "$color",
-				"$text": "$quantity"
-			}},
-			{"chance@assets.table_cell": {"size": ["37.5%", "100%"],
-				"$color": "$color",
-				"$text": "$chance"
-			}},
-			{ "border@assets.table_border": {}}
-		]
-	},
-  //}	
-//dropdowns
 	"dropdown": {
 		"type": "stack_panel",
 		"size": ["100%", "100%c"],
@@ -775,6 +602,94 @@
 			}}
 		]
 	},
+	"scroller": {
+		"type": "input_panel",
+		"size": ["100%", "100%c"],
+		"anchor_to": "top_left",
+		"anchor_from": "top_left",
+		"tts_ignore_count": true,
+		"consume_hover_events": true,
+		"controls": [
+			{ "scroll_view": {
+				"type": "scroll_view",
+				"scrollbar_track_button": "button.scrollbar_skip_track",
+				"scrollbar_touch_button": "button.scrollbar_touch",
+				"touch_mode": "$touch",
+				"scrollbar_track": "track",
+				"scrollbar_box": "box",
+				"scroll_content": "scrolling_content",
+				"scroll_view_port": "scrolling_view_port",
+				"scroll_box_and_track_panel": "bar_and_track",
+				"scroll_speed": 16,
+				"always_listen_to_input": true,
+				"always_handle_pointer": true,
+				"always_handle_scrolling": false,
+				"scrollbar_always_visible": false,
+				"jump_to_bottom_on_update": false,
+				"allow_scroll_even_when_content_fits": true,
+				"size": ["100%", "100%c"],
+				"button_mappings": [
+					{
+						"from_button_id": "button.menu_select",
+						"to_button_id": "button.scrollbar_touch",
+						"mapping_type": "pressed",
+						"button_up_right_of_first_refusal": true
+					}
+				],
+				"bindings": [
+					{
+						"binding_name": "#gesture_control_enabled"
+					},
+					{
+						"binding_name": "(not #is_using_gamepad)",
+						"binding_name_override": "#focus_for_tts_enabled_binding"
+					}
+				],
+				"controls": [
+					{ "viewport_and_bar": {
+						"type": "stack_panel",
+						"orientation": "horizontal",
+						"size": ["100%", "100%c"],
+						"controls": [
+							{ "scrolling_view_port": {
+								"type": "panel",
+								"size": ["100%c", "100%c + 2px"],
+								"max_size": "$max_size",
+								"clips_children": true,
+								"layer": 1,
+								"controls": [
+									{ "scrolling_content": {
+										"type": "panel",
+										"anchor_from": "top_left",
+										"anchor_to": "top_left",
+										"size": ["100%c", "100%c"],
+										"controls": "$scroller_content",
+										"layer": 1
+									}}
+								]
+							}},
+							{ "bar_and_track@common.scroll_bar_and_track": {
+								"size": [ "100%c", "100%sm" ],
+								"$scroll_track_image_control": "common.scroll_indent_image",
+								"$scroll_box_visible": "(not $touch)",
+								"$scroll_size": [ 4, "100%" ],
+								"$scroll_box_size": [ "100%", "100%" ],
+								"$scroll_bar_left_padding_size": [ 2, 0 ],
+								"$scroll_bar_right_padding_size": [ 2, 0 ],
+								"$scroll_bar_contained": false,
+								"variables": [
+									{
+										"requires": "$touch",
+										"$scroll_track_image_control": "common.empty_panel"
+									}
+								]
+							}}
+						]
+					}}
+				]
+			}}
+		]
+	},
 	"header": {
 		"type": "stack_panel",
 		"size": ["100%", "100%c"],
@@ -813,114 +728,285 @@
 			{ "lower_pad": { "type": "panel", "size": [0, 6]}}
 		]
 	},
-//renderers {
-	"aux_renderer": {
-		"type": "custom",
-		"renderer": "inventory_item_renderer",
-		"property_bag": {
-			"#item_id_aux": "$id"
-		}
-	},
-	"texture_renderer": {
-		"type": "image",
-		"allow_debug_missing_texture": false,
-		"texture": "$texture",
-		"uv": "$uv",
-		"uv_size": "$uv_size",
-		"color": "$color"
-	},
-	"hover_renderer": {
-		"type": "button",
-		"layer": 6,
-		"$text": "",
-		"focus_enabled": true,
-		"anchor_from": "top_left",
-		"anchor_to": "top_left",
-		"hover_control": "hover",
-		"pressed_control": "pressed",
+
+
+	// Custom Tables
+	"custom_table": {
+		"type": "stack_panel",
 		"controls": [
-			{ "hover": { // this element can not be localized
-				"type": "custom",
-				"renderer": "hover_text_renderer",
-				"layer": 40,
-				"property_bag": {
-					"#hover_text": "$text"
-				}
+			{ "custom_table@assets.white_box": {
+				"size": ["100%", "100%c"],
+				"color": [0.7, 0.7, 0.7],
+				"controls": [
+					{ "rows": {
+						"type": "stack_panel",
+						"size": ["100%", "100%c"],
+						"controls": "$rows"
+					}}
+				]
 			}},
-			{ "pressed": {
-				"type": "custom",
-				"renderer": "hover_text_renderer",
-				"layer": 40,
-				"property_bag": {
-					"#hover_text": "$text"
-				}
-			}}//,
-			// { "hover@assets.hovering_text": { // this element can spillover
-			// 	"$label_text": "$text"
-			// }}
+			{"footer": {"type": "panel", "size": [0, 10]}}
 		]
 	},
-	"hovering_text": {
-		"type": "button",
-		"follows_cursor": true,
-		"consume_hover_events": false,
-		"allow_clipping": false,
-		"$text_bindings": [],  // to obtain text from a binding
-		"$label_text": "#text",  // to obtain text from a variable
-		"$anchor": "left_middle",
-		"$offset": [5, 0],
+	"table": {
+		"type": "stack_panel",
+		"size": ["100%", "100%c"],
 		"controls": [
-			{ "hover_area": {
-				"type": "image",
-				"texture": "textures/ui/purpleBorder",
-    			"size": [ "100%c + 10px", "100%c + 8px" ],
-				"anchor_to": "$anchor",
-				"offset": "$offset",
-				"layer": 40,
+			{ "header": {
+				"type": "stack_panel",
+				"orientation": "horizontal",
+				"size": ["100% - 2px", 24],
+				"controls": "$header"
+			}},
+			{ "entries": {
+				"type": "stack_panel",
+				"controls": "$entries"
+			}},
+			{ "footer@assets.table_footer": {}}
+		]
+	},
+	"instruction_text": {
+		"type": "panel",
+		"size": ["100%c + 16px", "100%"],
+		"controls": [{ "text": {
+			"type": "label",
+			"text_alignment": "center",
+			"text": "$text",
+			"font_size": "large",
+			"color": [0, 1, 1],
+			"layer": 10
+		}}]
+	},
+	"input_key": {
+		"type": "panel",
+		"size": ["100%c + 16px", "100%"],
+		"controls": [{ "text": {
+			"type": "label",
+			"text_alignment": "center",
+			"text": "('#pre_process_' + $key)",
+			"bindings": [{"binding_name": "('#pre_process_' + $key)"}],
+			"layer": 10
+		}}]
+	},
+	"text_box": { 
+		"type": "panel",
+		"size": ["100%", "100%c + 10px"],
+		"$alignment": "left",
+		"$color": [1, 1, 1],
+		"controls": [ {"text": {
+			"type": "label",
+			"localize": true,
+			"text_alignment": "$alignment",
+			"color": "$color",
+			"size": ["100% -10px", "default"],
+			"text": "$text"
+		}}]
+	},
+	"xp_text@black_text": {
+		"font_size": "large",
+		"text": "$L",
+		"color": [0.125, 0.251, 0],
+		"controls": [
+			{ "text@black_text": {
+				"font_size": "large",
+				"offset": [-2, -2],
+				"text": "$L",
+				"color": [0.498, 1, 0]
+			}},
+			{ "levels_text@black_text": {
+				"font_size": "large",
+				"text": "Levels",
+				"offset": [0, 15],
+				"color": [0.125, 0.251, 0],
 				"controls": [
-					{ "text": {
-						"type": "label",
-						"text": "$label_text",
-						"bindings": "$text_bindings"
+					{ "text@black_text": {
+						"font_size": "large",
+						"offset": [-2, -2],
+						"text": "Levels",
+						"color": [0.498, 1, 0]
 					}}
 				]
 			}}
 		]
 	},
-	"stack_count_renderer": {
-		"type": "label",
-		"font_size": "large",
-		"offset": [ 3, 5 ],
-		"anchor_to": "bottom_right",
-		"anchor_from": "bottom_right",
-		"layer": 7,
-		"shadow": true,
-		"$count": "",
-		"text": "$count"
+	"table_cell@assets.white_box": {
+		"color": [0.8, 0.8, 0.8],
+		"$color": [0.95, 0.95, 0.95],
+		"$text": "",
+		"$content": [{ "text@assets.black_text": {
+			"text": "$text",
+			"text_alignment": "center",
+			"size": ["100%", "default"],
+			"max_size": ["100%", "100%"]
+		}}],
+		"controls": [{ "background@assets.white_box": {
+			"color": "$color",
+			"anchor_from": "bottom_right",
+			"anchor_to": "bottom_right",
+			"size": ["100% - 2px", "100% - 2px"],
+			"controls": "$content"
+		}}]
 	},
-  
-	"old_item_renderer": {
-		"type": "panel",
-		"size": [ 32, 32 ],
-		"layer": 6,
-		"$texture": "textures/none",
-		"$uv_size": [ "default", "default" ],
-		"$uv": [0, 0],
+	"table_header@assets.white_box": {
+		"color": [0.8, 0.8, 0.8],
 		"$color": [1, 1, 1],
 		"$text": "",
-		"$count": "",
+		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
+		"controls": [{ "background@assets.white_box": {
+			"texture": "textures/gray",
+			"color": "$color",
+			"anchor_from": "bottom_right",
+			"anchor_to": "bottom_right",
+			"size": ["100% - 2px", "100% - 2px"],
+			"controls": "$content"
+		}}]
+	},
+	"table_border@assets.white_box": {
+		"color": [0.8, 0.8, 0.8],
+		"size": [2, "100%"]
+	},
+	"table_border_h": { "type": "panel", "size": [0, 2] },
+	"table_border_v": { "type": "panel", "size": [2, 0] },
+	"table_row": { 
+		"type": "panel",
+		"controls": [{ "table_row": { 
+			"size": ["100% - 4px", "100% - 2px"],
+			"anchor_from": "top_middle",
+			"anchor_to": "top_middle",
+			"type": "stack_panel",
+			"orientation": "horizontal",
+			"controls": "$content"
+		}}]
+	},
+	"table_filler@assets.white_box": {
+		"color": [0.95, 0.95, 0.95],
+		"size": ["fill", "100%"]
+	},
+	"table_box@assets.white_box": {
+		"color": [0.95, 0.95, 0.95],
+		"size": ["100%c + 4px", "100%"],
+		"$text": "",
+		"$content": [{ "text@assets.black_text": {"text": "$text"}}],
+		"controls": "$content"
+	},
+	"table_instruction@assets.table_box": {
+		"size": ["100%c + 8px", "100%"],
+		"$text": "",
+		"controls": [{ "text@assets.black_text": {
+			"text": "$text",
+			"color": [0, 0.7, 0.7],
+			"font_size": "large",
+			"text_alignment": "center",
+			"size": ["default", "default"]
+		}}]
+	},
+	"table_input_key@assets.table_box": {
+		"size": ["100%c + 8px", "100%"],
+		"$key": "",
+		"controls": [{ "text": {
+			"type": "label",
+			"text": "('#pre_process_' + $key)",
+			"text_alignment": "center",
+			"bindings": [{"binding_name": "('#pre_process_' + $key)"}],
+			"layer": 10
+		}}]
+	},
+	"table_footer": {
+		"type": "panel",
+		"size": ["100%", 30],
 		"controls": [
-			{ "texture_renderer@assets.texture_renderer": {} },
-			{ "stack_count@assets.stack_count_renderer": {
-				"$count": "$count"
+			{
+				"fotter_bar@assets.white_box": {
+					"color": [0.8, 0.8, 0.8],
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"size": ["100%", 2]
 				}
-			},
-			{ "hover_renderer@assets.hover_renderer": {
-				"$text": "$text"
-			} }
+			}
 		]
 	},
-  
+
+	// Custom Table Entries (to be removed)
+	"drops_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$quantity": "1",
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["34%", "100%"],
+				"$color": "$color",
+				"$content": "$content"
+			}},
+			{"quantity@assets.table_cell": {"size": ["33%", "100%"],
+				"$color": "$color",
+				"$text": "$quantity"
+			}},
+			{"chance@assets.table_cell": {"size": ["33%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"brushing_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["40%", "100%"],
+				"$color": "$color",
+				"$content": "$content"
+			}},
+			{"chance@assets.table_cell": {"size": ["60%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"sniffing_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["50%", "100%"],
+				"$color": "$color",
+				"$content": "$content"
+			}},
+			{"chance@assets.table_cell": {"size": ["50%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	"bartering_table_entry": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": ["100%", 36],
+		"$quantity": "1",
+		"$chance": "100%%",
+		"controls": [
+			{"item@assets.table_cell": {"size": ["25%", "100%"],
+				"$color": "$color",
+				"$content": "$item"
+			}},
+			{"quantity@assets.table_cell": {"size": ["37.5%", "100%"],
+				"$color": "$color",
+				"$text": "$quantity"
+			}},
+			{"chance@assets.table_cell": {"size": ["37.5%", "100%"],
+				"$color": "$color",
+				"$text": "$chance"
+			}},
+			{ "border@assets.table_border": {}}
+		]
+	},
+	
+	// Renderers
 	"item_renderer": {
 		"type": "button",
 		"hover_control": "hover",
@@ -953,75 +1039,51 @@
 				"$label_text": "($prefix + '%' + $name)",
 				"ignored": "($name = 'item.none.name')"
 			}},
-			{ "stack_count@assets.stack_count_renderer": {
+			{ "stack_count@assets.stack_count_label": {
 				"$count": "$count",
 				"ignored": "($count = '1')"
 			}}
 		]
 	},
-	"map_renderer": {
-		"type": "image",
-		"texture": "$texture",
-		"size": [ "100%y", "100%" ],
-		"layer": 101,
+	"block_renderer": {
+		"type": "button",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"focus_enabled": true,
+		"size": [ 32, 32 ],
+		"layer": 6,		
+		"$aux": "",
+		"$id": "none",
+		"$prefix": "",
+		"$name": "('tile.' + $id + '.name')",
+		"$count": "1",
 		"controls": [
-			{ "safe_area": {"type": "button"} }
+			{ "item_renderer@assets.aux_renderer_image": {
+				"$id": "$aux",
+				"ignored": "($aux = '')"
+			}},
+			{ "stack_count@assets.stack_count_label": {
+				"$count": "$count",
+				"ignored": "($count = '1')"
+			}},
+			{ "hover@assets.hovering_text": {
+				"$anchor": "right_middle",
+				"$offset": [-5, 0],
+				"$label_text": "($prefix + '%' + $name)",
+				"ignored": "($name = 'tile.none.name')"
+			}},
+			{ "pressed@assets.hovering_text": {
+				"$anchor": "right_middle",
+				"$offset": [-5, 0],
+				"$label_text": "($prefix + '%' + $name)",
+				"ignored": "($name = 'tile.none.name')"
+			}}
 		]
 	},
-	"book_page": {
-		"type": "panel",
-		"$button_size": [40, "100%"],
-		"controls": [
-			{
-				"previous@common_toggles.light_ui_toggle": {
-					"$toggle_group_forced_index": "$p_page",
-					"$toggle_view_binding_name": "('back_to_' + $prev)",
-					"size": "$button_size",
-					"anchor_from": "bottom_left",
-					"anchor_to": "bottom_left",
-					"$radio_toggle_group": true,
-					"$toggle_name": "$book_name",
-					"$button_type_panel": "how_to_play.previous_label"
-				}
-			},
-			{
-				"element": {
-					"type": "panel",
-					"controls": "$page_content"
-				}
-			},
-			{
-				"next@common_toggles.light_ui_toggle": {
-					"$toggle_group_forced_index": "$n_page",
-					"$toggle_view_binding_name": "('go_to_' + $next)",
-					"size": "$button_size",
-					"$radio_toggle_group": true,
-					"anchor_from": "bottom_right",
-					"anchor_to": "bottom_right",
-					"$toggle_name": "$book_name",
-					"$button_type_panel": "how_to_play.next_label"
-				}
-			}
-		],
-		"bindings": [
-			{
-				"binding_type": "view",
-				"source_control_name": "('back_to_' + $name)",
-				"source_property_name": "#toggle_state",
-				"target_property_name": "#prev"
-			},
-			{
-				"binding_type": "view",
-				"source_control_name": "('go_to_' + $name)",
-				"source_property_name": "#toggle_state",
-				"target_property_name": "#next"
-			},
-			{
-				"binding_type": "view",
-				"source_property_name": "(#prev or #next)",
-				"target_property_name": "#visible"
-			}
-		]
+	"block_face_renderer@assets.item_renderer": {
+		"$id": "none",
+		"$location": "textures/blocks/",
+		"$name": "('tile.' + $id + '.name')"
 	},
 	"entity_renderer": {
 		"type": "button",
@@ -1050,301 +1112,59 @@
 			}}
 		]
 	},
-	"block_renderer": {
-		"type": "button",
-		"hover_control": "hover",
-		"pressed_control": "pressed",
-		"focus_enabled": true,
-		"size": [ 32, 32 ],
-		"layer": 6,		
-		"$aux": "",
-		"$id": "none",
-		"$prefix": "",
-		"$name": "('tile.' + $id + '.name')",
-		"$count": "1",
-		"controls": [
-			{ "item_renderer@assets.aux_renderer": {
-				"$id": "$aux",
-				"ignored": "($aux = '')"
-			}},
-			{ "stack_count@assets.stack_count_renderer": {
-				"$count": "$count",
-				"ignored": "($count = '1')"
-			}},
-			{ "hover@assets.hovering_text": {
-				"$anchor": "right_middle",
-				"$offset": [-5, 0],
-				"$label_text": "($prefix + '%' + $name)",
-				"ignored": "($name = 'tile.none.name')"
-			}},
-			{ "pressed@assets.hovering_text": {
-				"$anchor": "right_middle",
-				"$offset": [-5, 0],
-				"$label_text": "($prefix + '%' + $name)",
-				"ignored": "($name = 'tile.none.name')"
-			}}
-		]
-	},
-	//}
-	
-//sticky notes {
-	"nothing@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/nothing",
-		"$text": "20% Chance to drop neither."
-	},
-	"pregnant@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/pregnant",
-		"$text": "If the frog was pregnant."
-	},
-	"in_nether@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/in_nether",
-		"$text": "If Spawned in the Nether."
-	},
-	"player_kill@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/player_kill",
-		"$text": "If killed by a Player or a tamed Wolf."
-	},
-	"skeleton_kill@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/skeleton_kill",
-		"$text": "If killed by a Skeleton."
-	},
-	"hoglin_kill@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/hoglin_kill",
-		"$text": "If killed by a Hoglin."
-	},
-	"selected_number@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/selected_number",
-		"$text": "Only 1 item of this group is selected."
-	},
-	"valley@assets.old_item_renderer": {
-		"$texture": "textures/ui/elements/soulsand_valley",
-		"$text": "If Spawned in the Soul Sand Valley"
-	},
-	//}
-	
 
-//header icons {
-	"crafting": {
-		"type": "image",
-		"texture": "textures/ui/craft_toggle_off",
-		"uv": [2, 2],
-		"uv_size": [11, 11]
-	},
-	"biome_detector@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/items/biome_detector"
-	},
-	"crafting_table_top@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/blocks/crafting_table_top"
-	},
-	"smelting@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/blocks/furnace_front_on"
-	},
-	"blast_smelting": {
-		"type": "image",
-		"texture": "textures/blocks/blast_furnace_front_on",
-		"uv_size": [16, 16]
-	},
-	"stonecutting": {
+	"book_page": {
 		"type": "panel",
-		"size": [ 16, 16 ],
+		"$button_size": [40, "100%"],
 		"controls": [
+			{ "previous@common_toggles.light_ui_toggle": {
+				"$toggle_group_forced_index": "$p_page",
+				"$toggle_view_binding_name": "('back_to_' + $prev)",
+				"size": "$button_size",
+				"anchor_from": "bottom_left",
+				"anchor_to": "bottom_left",
+				"$radio_toggle_group": true,
+				"$toggle_name": "$book_name",
+				"$button_type_panel": "how_to_play.previous_label"
+			}},
+			{ "element": {
+				"type": "panel",
+				"controls": "$page_content"
+			}},
+			{ "next@common_toggles.light_ui_toggle": {
+				"$toggle_group_forced_index": "$n_page",
+				"$toggle_view_binding_name": "('go_to_' + $next)",
+				"size": "$button_size",
+				"$radio_toggle_group": true,
+				"anchor_from": "bottom_right",
+				"anchor_to": "bottom_right",
+				"$toggle_name": "$book_name",
+				"$button_type_panel": "how_to_play.next_label"
+			}}
+		],
+		"bindings": [
 			{
-				"saw": {
-					"type": "image",
-					"uv": [0, 8],
-					"uv_size": [16, 16],
-					"texture": "textures/ui/items/stonecutter"
-				}
+				"binding_type": "view",
+				"source_control_name": "('back_to_' + $name)",
+				"source_property_name": "#toggle_state",
+				"target_property_name": "#prev"
 			},
 			{
-				"base": {
-					"type": "image",
-					"texture": "textures/blocks/stonecutter2_side"
-				}
+				"binding_type": "view",
+				"source_control_name": "('go_to_' + $name)",
+				"source_property_name": "#toggle_state",
+				"target_property_name": "#next"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#prev or #next)",
+				"target_property_name": "#visible"
 			}
 		]
 	},
-	"brewing@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/items/brewing_stand"
-	},
-	"treasure_chest@assets.old_item_renderer": {
-		"$texture": "textures/blocks/chest_front",
-		"$text": "Sky Treasure Chest",
-		"size": [24, 24]
-	},
-	"trident@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/items/trident"
-	},
-	"desert_well@assets.old_item_renderer": {
-		"$texture": "textures/ui/structures/desert_well",
-		"$text": "Desert Well",
-		"offset": [0, -4]
-	},
-	"cold_ocean_ruins@assets.old_item_renderer": {
-		"$texture": "textures/ui/structures/cold_ruins",
-		"$text": "Cold Ocean Ruins",
-		"offset": [0, -4]
-	},
-	"ruined_portal@assets.old_item_renderer": {
-		"$texture": "textures/ui/structures/ruined_portal",
-		"$text": "Ruined Portal"
-	},
-	"fortress@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/ui/structures/fortress"
-	},
-	//}
 	
-//biomes {
-	"taiga@assets.old_item_renderer": {
-		"$texture": "textures/biomes/taiga",
-		"$text": "Taiga"
-	},
-	"plains@assets.old_item_renderer": {
-		"size": [ 16, 16 ],
-		"$texture": "textures/biomes/plains"
-	},
-	"savanna@assets.old_item_renderer": {
-		"$texture": "textures/biomes/savanna",
-		"$text": "Savanna"
-	},
-	"crimson_forest@assets.old_item_renderer": {
-		"$texture": "textures/biomes/crimson_forest",
-		"$text": "Crimson Forest"
-	},
-	"cherry_grove@assets.old_item_renderer": {
-		"$texture": "textures/biomes/cherry_grove",
-		"$text": "Cherry Grove"
-	},
-	"ice_spikes@assets.old_item_renderer": {
-		"$texture": "textures/biomes/ice_spikes",
-		"$text": "Ice Spikes"
-	},
-	"flower_forest@assets.old_item_renderer": {
-		"$texture": "textures/biomes/flower_forest",
-		"$text": "Flower Forest"
-	},
-	"lush_caves@assets.old_item_renderer": {
-		"$texture": "textures/biomes/lush_caves",
-		"$text": "Lush Caves"
-	},
-	"nether_wastes@assets.old_item_renderer": {
-		"$texture": "textures/biomes/nether_wastes",
-		"$text": "Nether Wastes"
-	},
-	"the_end@assets.old_item_renderer": {
-		"$texture": "textures/biomes/the_end",
-		"$text": "The End"
-	},
-	//}
-
-//blocks {
-	"cobbeled_deepslate@assets.block_renderer": {
-		"$aux": "((-379) * 65536)",
-		"$id": "cobbled_deepslate"
-	},
-	"cobblestone@assets.block_renderer": {
-		"$aux": "((4) * 65536)",
-		"$id": "cobblestone"
-	},
-	"stone@assets.block_renderer": {
-		"$aux": "((1) * 65536)",
-		"$name": "tile.stone.stone.name"
-	},
-	"deepslate@assets.block_renderer": {
-		"$aux": "((-378) * 65536)",
-		"$id": "deepslate"
-	},
-	"stone_bricks@assets.block_renderer": {
-		"$aux": "((98) * 65536)",
-		"$name": "tile.stonebrick.default.name"
-	},
-	"mossy_stone_bricks@assets.block_renderer": {
-		"$aux": "((-868) * 65536)",
-		"$name": "tile.stonebrick.mossy.name"
-	},
-	"cracked_stone_bricks@assets.block_renderer": {
-		"$aux": "((-869) * 65536)",
-		"$name": "tile.stonebrick.cracked.name"
-	},
-	"chiseled_stone_bricks@assets.block_renderer": {
-		"$aux": "((-870) * 65536)",
-		"$name": "tile.stonebrick.chiseled.name"
-	},
-	"granite@assets.block_renderer": {
-		"$aux": "((-923) * 65536)",
-		"$name": "tile.stone.granite.name"
-	},
-	"andesite@assets.block_renderer": {
-		"$aux": "((-920) * 65536)",
-		"$name": "tile.stone.andesite.name"
-	},
-	"diorite@assets.block_renderer": {
-		"$aux": "((-921) * 65536)",
-		"$name": "tile.stone.diorite.name"
-	},
-	"tuff@assets.block_renderer": {
-		"$aux": "((-333) * 65536)",
-		"$id": "tuff"
-	},
-	"calcite@assets.block_renderer": {
-		"$aux": "((-326) * 65536)",
-		"$id": "calcite"
-	},
-	"gold_block@assets.block_renderer": {
-		"$aux": "((41) * 65536)",
-		"$id": "gold_block"
-	},
-	"sculk_shrieker@assets.block_renderer": {
-		"$aux": "((-461) * 65536)",
-		"$id": "sculk_shrieker"
-	},
-	"reinforced_deepslate@assets.block_renderer": {
-		"$aux": "((-466) * 65536)",
-		"$id": "reinforced_deepslate"
-	},
-	"netherite_block@assets.block_renderer": {
-		"$aux": "((-270) * 65536)",
-		"$id": "netherite_block"
-	},
-	"mob_spawner@assets.block_renderer": {
-		"$aux": "((52) * 65536)",
-		"$id": "mob_spawner"
-	},
-	"sand@assets.block_renderer": {
-		"$aux": "((12) * 65536)",
-		"$id": "sand"
-	},
-	"red_sand@assets.block_renderer": {
-		"$aux": "((12) * 65536 + 1)",
-		"$name": "tile.sand.red.name"
-	},
-	"netherrack@assets.block_renderer": {
-		"$aux": "((87) * 65536)",
-		"$id": "netherrack"
-	},
-	"purpur_block@assets.block_renderer": {
-		"$aux": "((201) * 65536)",
-		"$name": "tile.purpur_block.default.name"
-	},
-	"smooth_purpur@assets.block_renderer": {
-		"$aux": "((201) * 65536 + 3)",
-		"$name": "tile.deprecated_purpur_block_2.name"
-	},
-	"chiseled_purpur@assets.block_renderer": {
-		"$aux": "((201) * 65536 + 1)",
-		"$name": "tile.purpur_block.chiseled.name"
-	},
-	"glass@assets.block_renderer": {
-		"$aux": "((20) * 65536)",
-		"$id": "glass"
-	},
-	//Terracotta {
+	// Animations
+	"trims_seasons@assets.seasons_cycle" : { "$last_frame": 17 },
 	"all_trims": {
 	  "type": "panel",
 	  "size": [32, 32],
@@ -1353,109 +1173,109 @@
 			"$id": "sentry_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 0, "anims": [ "@assets.cycle_trims" ]
+			"$time": 0, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"vex@assets.item_renderer": {
 			"$id": "vex_armor_trim_smithing_template",
 			"$prefix": "§b",
 			"size": [0, 0],
-			"$time": 1, "anims": [ "@assets.cycle_trims" ]
+			"$time": 1, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"wild@assets.item_renderer": {
 			"$id": "wild_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 2, "anims": [ "@assets.cycle_trims" ]
+			"$time": 2, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"coast@assets.item_renderer": {
 			"$id": "coast_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 3, "anims": [ "@assets.cycle_trims" ]
+			"$time": 3, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"dune@assets.item_renderer": {
 			"$id": "dune_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 4, "anims": [ "@assets.cycle_trims" ]
+			"$time": 4, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"wayfinder@assets.item_renderer": {
 			"$id": "wayfinder_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 5, "anims": [ "@assets.cycle_trims" ]
+			"$time": 5, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"shaper@assets.item_renderer": {
 			"$id": "shaper_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 6, "anims": [ "@assets.cycle_trims" ]
+			"$time": 6, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"raiser@assets.item_renderer": {
 			"$id": "raiser_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 7, "anims": [ "@assets.cycle_trims" ]
+			"$time": 7, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"host@assets.item_renderer": {
 			"$id": "host_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 8, "anims": [ "@assets.cycle_trims" ]
+			"$time": 8, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"ward@assets.item_renderer": {
 			"$id": "ward_armor_trim_smithing_template",
 			"$prefix": "§b",
 			"size": [0, 0],
-			"$time": 9, "anims": [ "@assets.cycle_trims" ]
+			"$time": 9, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"silence@assets.item_renderer": {
 			"$id": "silence_armor_trim_smithing_template",
 			"$prefix": "§d",
 			"size": [0, 0],
-			"$time": 10, "anims": [ "@assets.cycle_trims" ]
+			"$time": 10, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"tide@assets.item_renderer": {
 			"$id": "tide_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 11, "anims": [ "@assets.cycle_trims" ]
+			"$time": 11, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"snout@assets.item_renderer": {
 			"$id": "snout_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 12, "anims": [ "@assets.cycle_trims" ]
+			"$time": 12, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"rib@assets.item_renderer": {
 			"$id": "rib_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 13, "anims": [ "@assets.cycle_trims" ]
+			"$time": 13, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"eye@assets.item_renderer": {
 			"$id": "eye_armor_trim_smithing_template",
 			"$prefix": "§b",
 			"size": [0, 0],
-			"$time": 14, "anims": [ "@assets.cycle_trims" ]
+			"$time": 14, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"spire@assets.item_renderer": {
 			"$id": "spire_armor_trim_smithing_template",
 			"$prefix": "§b",
 			"size": [0, 0],
-			"$time": 15, "anims": [ "@assets.cycle_trims" ]
+			"$time": 15, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"flow@assets.item_renderer": {
 			"$id": "flow_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 16, "anims": [ "@assets.cycle_trims" ]
+			"$time": 16, "anims": [ "@assets.trims_seasons" ]
 		}},
 		{"bolt@assets.item_renderer": {
 			"$id": "bolt_armor_trim_smithing_template",
 			"$prefix": "§e",
 			"size": [0, 0],
-			"$time": 17, "anims": [ "@assets.cycle_trims" ]
+			"$time": 17, "anims": [ "@assets.trims_seasons" ]
 		}}
 	  ]
 	},
@@ -1463,97 +1283,113 @@
 		"type": "panel",
 		"size": [32, 32],
 		"controls": [
-		  {"sentry@assets.cobblestone": {
-			  "size": [0, 0],
-			  "$time": 0, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"vex@assets.cobblestone": {
-			  "size": [0, 0],
-			  "$time": 1, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"wild@assets.block_renderer": {
-			"$aux": "((48) * 65536)",
-			"$id": "mossy_cobblestone",
-			"size": [0, 0],
-			"$time": 2, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"coast@assets.cobblestone": {
-			  "size": [0, 0],
-			  "$time": 3, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"dune@assets.sandstone": {
-			  "size": [0, 0],
-			  "$time": 4, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"wayfinder@assets.block_renderer": {
-			"$aux": "((172) * 65536)",
-			"$name": "tile.hardened_clay.name",
-			"size": [0, 0],
-			"$time": 5, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"shaper@assets.block_renderer": {
-			"$aux": "((172) * 65536)",
-			"$name": "tile.hardened_clay.name",
-			  "size": [0, 0],
-			  "$time": 6, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"raiser@assets.block_renderer": {
-			"$aux": "((172) * 65536)",
-			"$name": "tile.hardened_clay.name",
-			  "size": [0, 0],
-			  "$time": 7, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"host@assets.block_renderer": {
-			"$aux": "((172) * 65536)",
-			"$name": "tile.hardened_clay.name",
-			  "size": [0, 0],
-			  "$time": 8, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"ward@assets.cobbeled_deepslate": {
-			  "size": [0, 0],
-			  "$time": 9, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"silence@assets.cobbeled_deepslate": {
-			  "size": [0, 0],
-			  "$time": 10, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"tide@assets.block_renderer": {
-			"$aux": "((168) * 65536)",
-			"$name": "tile.prismarine.rough.name",
-			  "size": [0, 0],
-			  "$time": 11, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"snout@assets.blackstone": {
-			  "size": [0, 0],
-			  "$time": 12, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"rib@assets.netherrack": {
-			  "size": [0, 0],
-			  "$time": 13, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"eye@assets.block_renderer": {
-			"$aux": "((121) * 65536)",
-			"$id": "end_stone",
-			  "size": [0, 0],
-			  "$time": 14, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"spire@assets.purpur_block": {
-			  "size": [0, 0],
-			  "$time": 15, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"flow@assets.item_renderer": {
-			  "$id": "breeze_rod",
-			  "size": [0, 0],
-			  "$time": 16, "anims": [ "@assets.cycle_trims" ]
-		  }},
-		  {"bolt@assets.block_renderer": {
-			  "$aux": "((-344) * 65536)",
-			  "$id": "copper_block",
-			  "size": [0, 0],
-			  "$time": 17, "anims": [ "@assets.cycle_trims" ]
-		  }}
+			{"sentry@assets.block_renderer": {
+				"$aux": "((4) * 65536)",
+				"$id": "cobblestone",
+				"size": [0, 0],
+				"$time": 0, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"vex@assets.block_renderer": {
+				"$aux": "((4) * 65536)",
+				"$id": "cobblestone",
+				"size": [0, 0],
+				"$time": 1, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"wild@assets.block_renderer": {
+				"$aux": "((48) * 65536)",
+				"$id": "mossy_cobblestone",
+				"size": [0, 0],
+				"$time": 2, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"coast@assets.block_renderer": {
+				"$aux": "((4) * 65536)",
+				"$id": "cobblestone",
+				"size": [0, 0],
+				"$time": 3, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"dune@assets.sandstone": {
+				"size": [0, 0],
+				"$time": 4, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"wayfinder@assets.block_renderer": {
+				"$aux": "((172) * 65536)",
+				"$name": "tile.hardened_clay.name",
+				"size": [0, 0],
+				"$time": 5, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"shaper@assets.block_renderer": {
+				"$aux": "((172) * 65536)",
+				"$name": "tile.hardened_clay.name",
+				"size": [0, 0],
+				"$time": 6, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"raiser@assets.block_renderer": {
+				"$aux": "((172) * 65536)",
+				"$name": "tile.hardened_clay.name",
+				"size": [0, 0],
+				"$time": 7, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"host@assets.block_renderer": {
+				"$aux": "((172) * 65536)",
+				"$name": "tile.hardened_clay.name",
+				"size": [0, 0],
+				"$time": 8, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"ward@assets.block_renderer": {
+				"$aux": "((-379) * 65536)",
+				"$id": "cobbled_deepslate",
+				"size": [0, 0],
+				"$time": 9, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"silence@block_renderer": {
+				"$aux": "((-379) * 65536)",
+				"$id": "cobbled_deepslate",
+				"size": [0, 0],
+				"$time": 10, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"tide@assets.block_renderer": {
+				"$aux": "((168) * 65536)",
+				"$name": "tile.prismarine.rough.name",
+				"size": [0, 0],
+				"$time": 11, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"snout@assets.blackstone": {
+				"size": [0, 0],
+				"$time": 12, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"rib@assets.block_renderer": {
+				"$aux": "((87) * 65536)",
+				"$id": "netherrack",
+				"size": [0, 0],
+				"$time": 13, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"eye@assets.block_renderer": {
+				"$aux": "((121) * 65536)",
+				"$id": "end_stone",
+				"size": [0, 0],
+				"$time": 14, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"spire@assets.block_renderer": {
+				"$aux": "((201) * 65536)",
+				"$name": "tile.purpur_block.default.name",
+				"size": [0, 0],
+				"$time": 15, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"flow@assets.item_renderer": {
+				"$id": "breeze_rod",
+				"size": [0, 0],
+				"$time": 16, "anims": [ "@assets.trims_seasons" ]
+			}},
+			{"bolt@assets.block_renderer": {
+				"$aux": "((-344) * 65536)",
+				"$id": "copper_block",
+				"size": [0, 0],
+				"$time": 17, "anims": [ "@assets.trims_seasons" ]
+			}}
 		]
 	},
+
+	"terracotta_seasons@assets.seasons_cycle" : { "$last_frame": 31 },
 	"any_terracotta": {
 	  "type": "panel",
 	  "size": [32, 32],
@@ -1565,447 +1401,138 @@
           "$name": "itemGroup.name.stainedClay / %itemGroup.name.glazedTerracotta"
         }
       },
-      {"white@assets.aux_renderer": {
+      {"white@assets.aux_renderer_image": {
         "$id": "(159 * 65536)", "size": [0, 0],
-        "$time": 0, "anims": [ "@assets.init" ]
+        "$time": 0, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"whiteG@assets.aux_renderer": {
+      {"whiteG@assets.aux_renderer_image": {
         "$id": "(220 * 65536)", "size": [0, 0],
-        "$time": 1, "anims": [ "@assets.init" ]
+        "$time": 1, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"silver@assets.aux_renderer": {
+      {"silver@assets.aux_renderer_image": {
         "$id": "(-731 * 65536)", "size": [0, 0],
-        "$time": 2, "anims": [ "@assets.init" ]
+        "$time": 2, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"silverG@assets.aux_renderer": {
+      {"silverG@assets.aux_renderer_image": {
         "$id": "(228 * 65536)", "size": [0, 0],
-        "$time": 3, "anims": [ "@assets.init" ]
+        "$time": 3, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"gray@assets.aux_renderer": {
+      {"gray@assets.aux_renderer_image": {
         "$id": "(-730 * 65536)", "size": [0, 0],
-        "$time": 4, "anims": [ "@assets.init" ]
+        "$time": 4, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"grayG@assets.aux_renderer": {
+      {"grayG@assets.aux_renderer_image": {
         "$id": "(227 * 65536)", "size": [0, 0],
-        "$time": 5, "anims": [ "@assets.init" ]
+        "$time": 5, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"black@assets.aux_renderer": {
+      {"black@assets.aux_renderer_image": {
         "$id": "(-738 * 65536)", "size": [0, 0],
-        "$time": 6, "anims": [ "@assets.init" ]
+        "$time": 6, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"blackG@assets.aux_renderer": {
+      {"blackG@assets.aux_renderer_image": {
         "$id": "(235 * 65536)", "size": [0, 0],
-        "$time": 7, "anims": [ "@assets.init" ]
+        "$time": 7, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"brown@assets.aux_renderer": {
+      {"brown@assets.aux_renderer_image": {
         "$id": "(-735 * 65536)", "size": [0, 0],
-        "$time": 8, "anims": [ "@assets.init" ]
+        "$time": 8, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"brownG@assets.aux_renderer": {
+      {"brownG@assets.aux_renderer_image": {
         "$id": "(232 * 65536)", "size": [0, 0],
-        "$time": 9, "anims": [ "@assets.init" ]
+        "$time": 9, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"red@assets.aux_renderer": {
+      {"red@assets.aux_renderer_image": {
         "$id": "(-737 * 65536)", "size": [0, 0],
-        "$time": 10, "anims": [ "@assets.init" ]
+        "$time": 10, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"redG@assets.aux_renderer": {
+      {"redG@assets.aux_renderer_image": {
         "$id": "(234 * 65536)", "size": [0, 0],
-        "$time": 11, "anims": [ "@assets.init" ]
+        "$time": 11, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"orange@assets.aux_renderer": {
+      {"orange@assets.aux_renderer_image": {
         "$id": "(-724 * 65536)", "size": [0, 0],
-        "$time": 12, "anims": [ "@assets.init" ]
+        "$time": 12, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"orangeG@assets.aux_renderer": {
+      {"orangeG@assets.aux_renderer_image": {
         "$id": "(221 * 65536)", "size": [0, 0],
-        "$time": 13, "anims": [ "@assets.init" ]
+        "$time": 13, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"yellow@assets.aux_renderer": {
+      {"yellow@assets.aux_renderer_image": {
         "$id": "(-727 * 65536)", "size": [0, 0],
-        "$time": 14, "anims": [ "@assets.init" ]
+        "$time": 14, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"yellowG@assets.aux_renderer": {
+      {"yellowG@assets.aux_renderer_image": {
         "$id": "(224 * 65536)", "size": [0, 0],
-        "$time": 15, "anims": [ "@assets.init" ]
+        "$time": 15, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"lime@assets.aux_renderer": {
+      {"lime@assets.aux_renderer_image": {
         "$id": "(-728 * 65536)", "size": [0, 0],
-        "$time": 16, "anims": [ "@assets.init" ]
+        "$time": 16, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"limeG@assets.aux_renderer": {
+      {"limeG@assets.aux_renderer_image": {
         "$id": "(225 * 65536)", "size": [0, 0],
-        "$time": 17, "anims": [ "@assets.init" ]
+        "$time": 17, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"green@assets.aux_renderer": {
+      {"green@assets.aux_renderer_image": {
         "$id": "(-736 * 65536)", "size": [0, 0],
-        "$time": 18, "anims": [ "@assets.init" ]
+        "$time": 18, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"greenG@assets.aux_renderer": {
+      {"greenG@assets.aux_renderer_image": {
         "$id": "(233 * 65536)", "size": [0, 0],
-        "$time": 19, "anims": [ "@assets.init" ]
+        "$time": 19, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"cyan@assets.aux_renderer": {
+      {"cyan@assets.aux_renderer_image": {
         "$id": "(-732 * 65536)", "size": [0, 0],
-        "$time": 20, "anims": [ "@assets.init" ]
+        "$time": 20, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"cyanG@assets.aux_renderer": {
+      {"cyanG@assets.aux_renderer_image": {
         "$id": "(229 * 65536)", "size": [0, 0],
-        "$time": 21, "anims": [ "@assets.init" ]
+        "$time": 21, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"sky@assets.aux_renderer": {
+      {"sky@assets.aux_renderer_image": {
         "$id": "(-726 * 65536)", "size": [0, 0],
-        "$time": 22, "anims": [ "@assets.init" ]
+        "$time": 22, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"skyG@assets.aux_renderer": {
+      {"skyG@assets.aux_renderer_image": {
         "$id": "(223 * 65536)", "size": [0, 0],
-        "$time": 23, "anims": [ "@assets.init" ]
+        "$time": 23, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"blue@assets.aux_renderer": {
+      {"blue@assets.aux_renderer_image": {
         "$id": "(-734 * 65536)", "size": [0, 0],
-        "$time": 24, "anims": [ "@assets.init" ]
+        "$time": 24, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"blueG@assets.aux_renderer": {
+      {"blueG@assets.aux_renderer_image": {
         "$id": "(231 * 65536)", "size": [0, 0],
-        "$time": 25, "anims": [ "@assets.init" ]
+        "$time": 25, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"purple@assets.aux_renderer": {
+      {"purple@assets.aux_renderer_image": {
         "$id": "(-733 * 65536)", "size": [0, 0],
-        "$time": 26, "anims": [ "@assets.init" ]
+        "$time": 26, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"purpleG@assets.aux_renderer": {
+      {"purpleG@assets.aux_renderer_image": {
         "$id": "(219 * 65536)", "size": [0, 0],
-        "$time": 27, "anims": [ "@assets.init" ]
+        "$time": 27, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"magenta@assets.aux_renderer": {
+      {"magenta@assets.aux_renderer_image": {
         "$id": "(-725 * 65536)", "size": [0, 0],
-        "$time": 28, "anims": [ "@assets.init" ]
+        "$time": 28, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"magentaG@assets.aux_renderer": {
+      {"magentaG@assets.aux_renderer_image": {
         "$id": "(222 * 65536)", "size": [0, 0],
-        "$time": 29, "anims": [ "@assets.init" ]
+        "$time": 29, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"pink@assets.aux_renderer": {
+      {"pink@assets.aux_renderer_image": {
         "$id": "(-729 * 65536)", "size": [0, 0],
-        "$time": 30, "anims": [ "@assets.init" ]
+        "$time": 30, "anims": [ "@assets.terracotta_seasons" ]
       }},
-      {"pinkG@assets.aux_renderer": {
+      {"pinkG@assets.aux_renderer_image": {
         "$id": "(226 * 65536)", "size": [0, 0],
-        "$time": 31, "anims": [ "@assets.init" ]
+        "$time": 31, "anims": [ "@assets.terracotta_seasons" ]
       }}
 	  ]
 	},
 
-	"init": {
-		"anim_type": "wait",
-		"duration": "$time",
-		"next": "@assets.winter"
-	},
-	"winter": {
-		"anim_type": "size",
-		"duration": 0,
-		"from": [0, 0],
-		"to": [32, 32],
-		"next": "@assets.spring"
-	},
-	"spring": {
-		"anim_type": "wait",
-		"duration": 1,
-		"next": "@assets.summer"
-	},
-	"summer": {
-		"anim_type": "size",
-		"duration": 0,
-		"from": [32, 32],
-		"to": [0, 0],
-		"next": "@assets.fall"
-	},
-	"fall": {
-		"anim_type": "wait",
-		"duration": 31,
-		"next": "@assets.winter"
-	},
-
-	"cycle_trims": {
-		"anim_type": "wait",
-		"duration": "$time",
-		"next": "@assets.cycle_trims_winter"
-	},
-	"cycle_trims_winter": {
-		"anim_type": "size",
-		"duration": 0,
-		"from": [0, 0],
-		"to": [32, 32],
-		"next": "@assets.cycle_trims_spring"
-	},
-	"cycle_trims_spring": {
-		"anim_type": "wait",
-		"duration": 1,
-		"next": "@assets.cycle_trims_summer"
-	},
-	"cycle_trims_summer": {
-		"anim_type": "size",
-		"duration": 0,
-		"from": [32, 32],
-		"to": [0, 0],
-		"next": "@assets.cycle_trims_fall"
-	},
-	"cycle_trims_fall": {
-		"anim_type": "wait",
-		"duration": 17,
-		"next": "@assets.cycle_trims_winter"
-	},
-	//}
-	"quartz_block@assets.block_renderer": {
-		"$aux": "((155) * 65536)",
-		"$id": "quartz_block"
-	},
-	"sandstone@assets.block_renderer": {
-		"$aux": "((24) * 65536)",
-		"$id": "sandstone"
-	},
-	"red_sandstone@assets.block_renderer": {
-		"$aux": "((179) * 65536)",
-		"$id": "red_sandstone"
-	},
-	"wet_sponge@assets.block_renderer": {
-		"$aux": "((19) * 65536 + 1)",
-		"$name": "tile.sponge.wet.name"
-	},
-	"spore_blossom@assets.block_renderer": {
-		"$aux": "((-321) * 65536)",
-		"$id": "spore_blossom"
-	},
-	"sculk_catalyst@assets.block_renderer": {
-		"$aux": "((-460) * 65536)",
-		"$id": "sculk_catalyst"
-	},
-	"gilded_blackstone@assets.block_renderer": {
-		"$aux": "((-281) * 65536)",
-		"$id": "gilded_blackstone"
-	},
-	"gravel@assets.block_renderer": {
-		"$aux": "((13) * 65536)",
-		"$id": "gravel"
-	},
-	"ancient_debris@assets.block_renderer": {
-		"$aux": "((-271) * 65536)",
-		"$id": "ancient_debris"
-	},
-	"blackstone@assets.block_renderer": {
-		"$aux": "((-273) * 65536)",
-		"$id": "blackstone"
-	},
-	"soul_sand@assets.block_renderer": {
-		"$aux": "((88) * 65536)",
-		"$id": "soul_sand"
-	},
-	"soul_soil@assets.block_renderer": {
-		"$aux": "((-236) * 65536)",
-		"$id": "soul_soil"
-	},
-	"farmland@assets.block_renderer": {
-		"$aux": "((60) * 65536)",
-		"$id": "farmland"
-	},
-	"amethyst_block@assets.block_renderer": {
-		"$aux": "((-327) * 65536)",
-		"$id": "amethyst_block"
-	},
-	"oxidized_copper@assets.block_renderer": {
-		"$aux": "((-343) * 65536)",
-		"$name": "tile.waxed_oxidized_copper.name"
-	},
-	"budding_amethyst@assets.block_renderer": {
-		"$aux": "((-328) * 65536)",
-		"$id": "budding_amethyst"
-	},
-	"bamboo_block@assets.block_renderer": {
-		"$aux": "((-527) * 65536)",
-		"$id": "bamboo_block"
-	},
-	"bamboo_planks@assets.block_renderer": {
-		"$aux": "((-510) * 65536)",
-		"$id": "bamboo_planks"
-	},
-	"dirt@assets.block_renderer": {
-		"$aux": "((3) * 65536)",
-		"$id": "dirt"
-	},
-	"petrified_slab@assets.block_renderer": {
-		"$aux": "((-902) * 65536)",
-		"$name": "tile.stone_slab.wood.name"
-	},
-	"small_dripleaf@assets.block_renderer": {
-		"$aux": "((-336) * 65536)",
-		"$name": "tile.small_dripleaf_block.name"
-	},
-	"chorus_plant@assets.block_renderer": {
-		"$aux": "((240) * 65536)",
-		"$id": "chorus_plant"
-	},
-	"chorus_flower@assets.block_renderer": {
-		"$aux": "((200) * 65536)",
-		"$id": "chorus_flower"
-	},
-	
-	
-	
-	
-//**************************************************************	
-	"deepslate_coal_ore@assets.item_renderer": {
-		"$id": "deepslate_coal_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_copper_ore@assets.item_renderer": {
-		"$id": "deepslate_copper_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_iron_ore@assets.item_renderer": {
-		"$id": "deepslate_iron_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_gold_ore@assets.item_renderer": {
-		"$id": "deepslate_gold_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_emerald_ore@assets.item_renderer": {
-		"$id": "deepslate_emerald_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_diamond_ore@assets.item_renderer": {
-		"$id": "deepslate_diamond_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_lapis_lazuli_ore@item_renderer": {
-		"$id": "deepslate_lapis_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	"deepslate_redstone_ore@assets.item_renderer": {
-		"$id": "deepslate_redstone_ore",
-		"$texture": "('textures/ui/blocks/' + $id)",
-		"$name": "('tile.' + $id + '.name')"
-	},
-//**************************************************************
-
-	"wood_tier_pickaxe@assets.old_item_renderer": {
-		"$texture": "textures/items/wood_pickaxe",
-		"$text": "Wooden Pickaxe or higher"
-	},
-	"stone_tier_pickaxe@assets.old_item_renderer": {
-		"$texture": "textures/items/stone_pickaxe",
-		"$text": "Stone Pickaxe or higher"
-	},
-	"iron_tier_pickaxe@assets.old_item_renderer": {
-		"$texture": "textures/items/iron_pickaxe",
-		"$text": "Iron Pickaxe or higher"
-	},
-	"compass@assets.old_item_renderer": {
-		"$texture": "textures/items/compass_item",
-		"$text": "Compass"
-	},
-	"world_map@assets.old_item_renderer": {
-		"$texture": "textures/items/world_map",
-		"$text": "World Map"
-	},
-	"sky_treasure_map@assets.old_item_renderer": {
-		"$texture": "textures/items/sky_treasure_map",
-		"$text": "Sky Treasure Map"
-	},
-	"trial_inscription@assets.old_item_renderer": {
-		"$texture": "textures/items/map_trial_chambers",
-		"$text": "Trial Vault Inscription"
-	},
-	"map@assets.old_item_renderer": {
-		"$texture": "textures/items/map_empty",
-		"$text": "Empty Map"
-	},
-	"eye_of_ender@assets.old_item_renderer": {
-		"$texture": "textures/items/ender_eye",
-		"$text": "Eye of Ender"
-	},
-	
-	"disc5_fragment@assets.item_renderer": {
-		"$texture": "textures/items/disc_fragment_5",
-		"$name": "§e%item.disc_fragment.name\n§7%item.disc_fragment_5.desc"
-	},
-	"silence@assets.item_renderer": {
-		"$id": "silence_armor_trim_smithing_template",
-		"$prefix": "§d"
-	},
-	"scrape_sherd@assets.item_renderer": {
-		"$id": "scrape_pottery_sherd",
-		"$prefix": "§e"
-	},
-	"flow_sherd@assets.item_renderer": {
-		"$id": "flow_pottery_sherd",
-		"$prefix": "§e"
-	},
-	"cobweb@assets.item_renderer": {
-		"$texture": "textures/blocks/web",
-		"$name": "tile.web.name"
-	},
-	"frog_spawn@assets.item_renderer": {
-		"$texture": "textures/blocks/frogspawn",
-		"$name": "tile.frog_spawn.name"
-	},
-	"pigstep@assets.item_renderer": {
-		"$texture": "textures/items/record_pigstep",
-		"$name": "('§b%item.record.name\n§7%item.record_pigstep.desc')"
-	},
-	"snout_pattern@assets.item_renderer": {
-		"$id": "piglin_banner_pattern",
-		"$prefix": "§e"
-	},
-	"otherside@assets.item_renderer": {
-		"$texture": "textures/items/record_otherside",
-		"$name": "('§b%item.record.name\n§7%item.record_otherside.desc')"
-	},
-	"bamboo@assets.item_renderer": {
-		"$id": "bamboo",
-		"$name": "('tile.' + $id + '.name')"
-	},
-	
-	"spider_eye@assets.item_renderer": { "$id": "spider_eye" },
-	"string@assets.item_renderer": { "$id": "string" },
-	"gunpowder@assets.item_renderer": { "$id": "gunpowder" },
-	"blaze_rod@assets.item_renderer": { "$id": "blaze_rod" },
-	"glowstone_dust@assets.item_renderer": { "$id": "glowstone_dust" },
-	"trial_key@assets.item_renderer": { "$id": "trial_key" },
-	"ominous_trial_key@assets.item_renderer": { "$id": "ominous_trial_key" },
-	"magma_cream@assets.item_renderer": { "$id": "magma_cream" },
-	"bone@assets.item_renderer": { "$id": "bone" },
-	"sugar@assets.item_renderer": { "$id": "sugar" },
-	"stick@assets.item_renderer": { "$id": "stick" },
-	"brush@assets.item_renderer": { "$id": "brush" },
-
-	"ominous_banner@assets.item_renderer": {
-		"$id": "ominous_banner",
-		"$location": "textures/ui/blocks/",
-		"$name": "§e%item.banner.illager_captain.name"
-	},
-	"ominous_bottle@assets.item_renderer": {
-		"$id": "ominous_bottle",
-		"$name": "('§e%item.' + $id + '.name\n§7' + '%effect.badOmen %enchantment.level.1')"
-	},
-	"bone_meal@assets.item_renderer": {
-		"$texture": "textures/items/dye_powder_white",
-		"$name": "item.dye.white.name"
-	},
-	"glass_bottle@assets.item_renderer": {
-		"$id": "glass_bottle",
-		"$texture": "textures/items/potion_bottle_empty"
-	},
-	//}
-
-//entities {
+	// Entities
 	"zombie@assets.entity_renderer": {
 		"$face": [{"face": {
 			"type": "image",
@@ -2319,7 +1846,6 @@
 		],
 		"$name": "Sniffer"
 	},
-	
 	"creeper@assets.entity_renderer": {
 		"$face": [
 			{ "face": {
@@ -2891,6 +2417,6 @@
 		],
 		"$name": "Ender Dragon"
 	},
-	//}
+	
 	"empty": { "type": "panel" }
 }

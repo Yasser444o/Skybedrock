@@ -1,4 +1,23 @@
 export const change_logs = {
+  "v1.26.1": `\
+Additions:
+- Added the meadow biome to the amethyst geode.
+- Added a folder to the repository which contains the future plans for this project.
+
+Changes:
+- Changed "On the Radar" quest to no longer require completing all the quests associated with the structures; Instead you just have to visit each of them.
+- Changed some icons on the structures map to match the new vanilla structure icons.
+- Made the How to Play section for "Structure Locator" more clear.
+- Optimized the how to play screen and made more of its texts translatable.
+
+Bug Fixes:
+- Fixed a bug where TNT explosion drop decay was enabled by default.
+- Fixed a bug where fences connect to blue roses and paeonia and torches can be placed on them.
+- Fixed a bug that prevented "Remnants of the Past" from completing.
+- Fixed a bug that stopped "More Cat Gifts" from working and optimized it.
+- Fixed a mismatch between one loot table and its entry in the How to Play screen.
+- Fixed several spelling mistakes.
+  `,
   "v1.26.0": `\
 Additions:
 - Added the Sulfur Island, which replaces the Amethyst Island.

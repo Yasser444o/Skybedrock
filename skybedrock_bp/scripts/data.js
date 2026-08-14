@@ -104,8 +104,8 @@ export const overworld_structures = [
 		dim: "minecraft:overworld",
 	},
     {
-        id: 'desert_pyramid', x: -761.5, y: 65, z: -270.5,
-        structures: ['Desert Pyramid', 'Desert Well'], require: 'desert',
+        id: 'desert_pyramid', x: -761.5, y: 65, z: -270.5, require: 'desert',
+        structures: ['Desert Pyramid', 'Desert Well'], name: 'Desert Pyramid',
         biomes: [biome_names.desert_hills, biome_names.desert_mutated],
 		dim: "minecraft:overworld",
     },
@@ -133,7 +133,7 @@ export const overworld_structures = [
     {
 		id: 'amethyst_geode', x: -527.5, y: 27, z: -77.5,
 		structure: 'Amethyst Geode', require_any: ['lush_cave', 'dripstone', 'sulfur_cave'],
-		biome: biome_names.plains,
+		biome: biome_names.meadow,
 		place: {x: -535, y: 23, z: -82},
 		dim: "minecraft:overworld",
 	},
@@ -159,8 +159,8 @@ export const overworld_structures = [
 		dim: "minecraft:overworld",
 	},
     {
-        id: 'ocean_ruins', x: -640.5, y: 46, z: 262.5, icon: 'shipwreck',
-        structures: ['Warm Ocean Ruins', 'Cold Ocean Ruins', 'Shipwreck'], require: 'ocean',
+        id: 'ocean_ruins', x: -640.5, y: 46, z: 262.5, icon: 'shipwreck', require: 'ocean',
+        structures: ['Warm Ocean Ruins', 'Cold Ocean Ruins', 'Shipwreck'], name: 'Ocean Ruins',
         biomes: [biome_names.deep_warm_ocean, biome_names.deep_cold_ocean, biome_names.deep_lukewarm_ocean],
 		dim: "minecraft:overworld",
 	},
@@ -199,6 +199,9 @@ export const nether_structures = [
 		dim: "minecraft:nether",
 	},
 ]
+
+export const all_structures = overworld_structures.concat(nether_structures)
+
 export const destinations = {
 	starter_island: { coords: {x: 0.5, y: 64, z: 0.5}, place: {x: -7, y: 60, z: -7}},
 	desert_island: { coords: {x: 0.5, y: 64, z: 96.5}, place: {x: -7 , y: 60, z: 89}},
@@ -223,6 +226,8 @@ export const destinations = {
 	basalt_island: { coords: {x: 0.5, y: 64, z: 94.5}, dimension: "nether", place: {x: -7, y: 60, z: 89}},
 	soulsand_island: { coords: {x: 0.5, y: 64, z: -95.5}, dimension: "nether", place: {x: -7, y: 60, z: -103}},
 	the_end: { coords: {x: 100.5, y: 50, z: 0.5}, dimension: "the_end"},
+	// all overworld_structures
+	// all nether_structures
 }
 ;[...overworld_structures, ...nether_structures].forEach(({id, x, y, z, place}) => destinations[id] = {coords: {x, y, z}, place})
 nether_structures.forEach(({id}) => destinations[id].dimension = 'nether')

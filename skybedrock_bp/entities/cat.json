@@ -146,6 +146,9 @@
         }
       },
       "minecraft:cat_tame": {
+        // Added to make getComponent("tameable") work
+        "minecraft:tameable": {},
+
         "minecraft:is_tamed": {},
         "minecraft:health": {
           "value": 20,
@@ -424,10 +427,9 @@
       "skybedrock:cat_gift": {
         "filters": {
           "all_of": [
-            {"test": "is_sitting"},
-            {"test": "has_tag", "value": "fed"}
+            {"test": "is_sitting"}, // check if the cat is sitting
+            {"test": "has_tag", "value": "fed"} // check animation controller has given the tag fed to this cat
           ]
-          
         },
         "queue_command": {
           "command": "scriptevent skybedrock:cat_gift"

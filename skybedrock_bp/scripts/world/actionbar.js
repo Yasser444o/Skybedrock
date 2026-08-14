@@ -1,17 +1,15 @@
 import { system, world} from "@minecraft/server" ;
-import { locating_players } from "./maps";
-import { biome_names, nether_structures, overworld_structures } from "../data";
-import { cross, dot, normalize } from "../utilities";
-const all_structures = overworld_structures.concat(nether_structures)
+import { biome_names } from "../data";
+import { Vector } from "../utilities";
 
 function get_direction(target, player) {
 	if (target && target.dim == player.dimension.id) {
 		const view = player.getViewDirection()
 		const origin = player.location
-		const norm_view = normalize({x: view.x, y: 0, z: view.z})
-		const norm_distance = normalize({x: target.x - origin.x, y: 0, z: target.z - origin.z})
-		const cos = dot(norm_view, norm_distance)
-		const sin = dot(cross(norm_distance, norm_view), {x:0, y:1, z:0})
+		const norm_view = Vector.normalize({x: view.x, y: 0, z: view.z})
+		const norm_distance = Vector.normalize({x: target.x - origin.x, y: 0, z: target.z - origin.z})
+		const cos = Vector.dot(norm_view, norm_distance)
+		const sin = Vector.dot(Vector.cross(norm_distance, norm_view), {x:0, y:1, z:0})
 		const angle = Math.atan2(sin, cos)
 		return Math.floor(16 * angle / Math.PI + 16) || 0
 	} else return system.currentTick % 32

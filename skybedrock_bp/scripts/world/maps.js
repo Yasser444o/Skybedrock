@@ -8,8 +8,6 @@ import { nether_structures, overworld_structures, biome_names} from "../data"
 import world_map, { manage_waypoint, update_waypoints } from "../items/world_map"
 import { the_end } from "../startup"
 
-export const locating_players = new Map()
-
 const overworld_biomes = [
     { biome: biome_names.plains, offset: [6, 6], size: [4, 4] },
     { biome: biome_names.mangrove_swamp, offset: [10, 7], size: [2, 2] },
@@ -304,7 +302,7 @@ export function open_map(player, data) {
 		const original_x = x
 		const original_z = z
 		tag = deco ? '§deco§' : '§landmark§'  // add a tag
-		x = resize(x - data.center.x) + map_size // rezize the x
+		x = resize(x - data.center.x) + map_size // resize the x
 		z = resize(z - data.center.z) + map_size  // resize the z
 		return { tag, x, z, text, texture, dim, original_x, original_z }
 	})
@@ -314,7 +312,7 @@ export function open_map(player, data) {
 	form.title('§map_ui§' + (data.title ?? ''))  // Title
 	for (let i = 0; i < 10; i++) form.button((data.buttons ? data.buttons : [])[i] ?? '')
 	form.header(data.background ?? 'textures/map/map_background')  // Background
-	form.header(data.foreground ?? 'textures/none') // Forground
+	form.header(data.foreground ?? 'textures/none') // Foreground
 	form.header(data.chunk_borders ? chunks_element : '') // Chunk Borders
 	form.label(player.dimension.id == data.dim ? `X${player_place.x}Z${player_place.z}D${get_cardinal_direction(player)}` : '') // Player
 	markers?.forEach(marker => form.button(marker.text, marker.texture))  // Markers

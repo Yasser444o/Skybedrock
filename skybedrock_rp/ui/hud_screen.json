@@ -1,7 +1,7 @@
 {
   	"namespace": "hud",
 
-  	"biome_text": {
+	"biome_text": {
 		"type": "image",
 		"anchor_from": "top_left",
 		"anchor_to": "top_left",
@@ -21,7 +21,8 @@
 			}}
 		]
 	},
-  	"structure_locator": {
+
+	"structure_locator": {
 		"type": "image",
 		"size": [ "100%c + 12px", 16 ],
 		"offset": [ 0, "50%-68px" ],
@@ -91,48 +92,48 @@
 				}
 			}
 		]
-  	},
+	},
 
-  //vanilla elements
-  "hud_actionbar_text": {
-    "$action_text": "$actionbar_text",
-    "visible": "(($action_text - 'biome:' - 'waypoint:' = $action_text))"
-  },
+  	// Vanilla Overrides
+	"hud_actionbar_text": {
+		"$action_text": "$actionbar_text",
+		"visible": "(($action_text - 'biome:' - 'waypoint:' = $action_text))"
+	},
 
-  "root_panel": {
-    "modifications": [{
-      "array_name": "controls",
-      "operation": "insert_front",
-      "value": {
-        "structure_locator": {
-          "type": "panel",
-          "factory": {
-            "name": "hud_actionbar_text_factory",
-            "control_ids": {
-              "hud_actionbar_text": "hud_actionbar_text@hud.structure_locator"
-            }
-          }
-        }
-      }
-    }]
-  },
-  "root_panel/chat_stack": {
-    "modifications": [{
-      "array_name": "controls",
-      "operation": "insert_after",
-      "where": { "number_of_days_played@hud.number_of_days_played": {} },
-      "value": {
-        "biome_panel": {
-          "type": "panel",
-          "size": [ "100%c", "100%c" ],
-          "factory": {
-            "name": "hud_actionbar_text_factory",
-            "control_ids": {
-              "hud_actionbar_text": "hud_actionbar_text@hud.biome_text"
-            }
-          }
-        }
-      }
-    }]
-  }
+	"root_panel": {
+		"modifications": [{
+			"array_name": "controls",
+			"operation": "insert_front",
+			"value": {
+				"structure_locator": {
+				"type": "panel",
+				"factory": {
+					"name": "hud_actionbar_text_factory",
+					"control_ids": {
+					"hud_actionbar_text": "hud_actionbar_text@hud.structure_locator"
+					}
+				}
+				}
+			}
+		}]
+	},
+	"root_panel/chat_stack": {
+		"modifications": [{
+			"array_name": "controls",
+			"operation": "insert_after",
+			"where": { "number_of_days_played@hud.number_of_days_played": {} },
+			"value": {
+				"biome_panel": {
+				"type": "panel",
+				"size": [ "100%c", "100%c" ],
+				"factory": {
+					"name": "hud_actionbar_text_factory",
+					"control_ids": {
+					"hud_actionbar_text": "hud_actionbar_text@hud.biome_text"
+					}
+				}
+				}
+			}
+		}]
+	}
 }
