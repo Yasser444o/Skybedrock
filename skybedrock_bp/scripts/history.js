@@ -55,7 +55,7 @@ Daily Wandering trader:
 - Deleted the /request_trader command
 - Added a new toggle to the world settings section of the guidebook: Daily Wandering Trader
 - When enabled, a new wandering trader will spawn in the morning of everyday
-- They spawn near a random player intsead of at 0 64 0
+- They spawn near a random player instead of at 0 64 0
 - They spawn without trader llamas
 - They despawn at sunset or when loaded after passing their despawn time
 - They only spawn around players in the overworld
@@ -101,7 +101,7 @@ Technical:
 Bug Fixes:
 - Fixed a bug that prevented you from taking items from zombie villagers when you have an item in your off-hand
 - Copper Spears can now be smelted into copper ingots when "More Copper" is enabled
-- Fixed a mismatch between the addon versions in behaviour_packs.json file and the addons themselves
+- Fixed a mismatch between the addon versions in behavior_packs.json file and the addons themselves
 - Fixed a bug which broke the model and sounds for baby chickens 
   `,
   "v1.24.0": `\
@@ -250,7 +250,7 @@ Other Features:
 
 Bug Fixes:
 - Fixed a bug where UI buttons would turn invisible when clicked in a touch screen
-- Fixed a bug where zombified piglins won't attack turtle eggs
+- Fixed a bug where zombiefied piglins won't attack turtle eggs
 - Fixed a bug where the "Diamonds" achievement description was missing
 - Fixed a bug where cartographers were not selling sky treasure maps
   `,
@@ -421,7 +421,7 @@ World Generation:
 
 Technical Changes:
 - Updated all the map scripts to 2.0 then to 2.1 to unlock more scripting capabilities
-- Updated all the entity files to the latest format version to fix their faulty behaviour
+- Updated all the entity files to the latest format version to fix their faulty behavior
 - Optimized the end stone script
 - The technical blocks like sand support and shade are now hidden from commands
 - The technical blocks now react properly to pistons
@@ -467,7 +467,7 @@ Skybedrock Guidebook:
   `,
   "v1.21.11": `\
 - Fixed a bug that prevented ghasts from dropping Tears music disc when the Ghast Soul Soil addon is active
-- Added the dried ghast back to the pigins bartering table
+- Added the dried ghast back to the piglins bartering table
 - Added 2 new Achievements: Backridden, and Waypoints.
 - Increased the chance of catching a junk item while fishing in swamp biomes from 10% to 30%
 - Increased the chance of catching a lily pad as a junk item when fishing in swamp biomes from 17% to 50%
@@ -638,7 +638,7 @@ Bug Fixes:
 - End Phantoms are hostile flying creatures which rarely drop elytra when killed by a player.
 - Frogs can no longer eat bees.
 - Added a Hardcore version of the map.
-- Retextured the How to Play button to make it more noticeable.
+- Re-textured the How to Play button to make it more noticeable.
 - Changed the breaking and placing sounds for the empty spawners and empty vaults.
 - Activating a spawner no longer clears the nearby spawners, but it takes longer.
 - Activating a spawner will fail if there are other active spawners within the spawner range.
@@ -685,7 +685,7 @@ Bug Fixes:
 - Added a missing section to the how to play screen
 - Totems in the inventory will no longer get consumed before the totems in your hands
 - Fixed a bug where the vaults in the trial chambers were unusable
-- Fixed the icon for "Electricuted" achievement
+- Fixed the icon for "Electrocuted" achievement
   `,
   "v1.21.1": `\
 General
@@ -786,7 +786,7 @@ Bug Fixes
 - Trial vault inscriptions are sold by cartographer villagers.
 - Empty vaults can be crafted.
 - Vault altars are structures built by players to determine the type of vault.
-- Empty spawners have been retextured and renamed.
+- Empty spawners have been re-textured and renamed.
 - Added tuff to the stray loot tables.
 - Added calcite to the bogged loot tables.
 - Enchanted golden apples can no longer be crafted.
@@ -905,7 +905,7 @@ Extra Items addon changes:
 - When used at the X mark, the map is consumed and a treasure box is given. 
 - The treasure box contain a heart of the sea, some chain armor, a little bit of iron, gold, crystals and cooked cod.
 - Dolphin will no longer make hearts of the sea.
-- Strongholds have been revamped and will no longer generate in the same locations everytime.
+- Strongholds have been revamped and will no longer generate in the same locations every time.
 - Upon world creation, 3 strongholds are generated at equal angles 1280 blocks away from spawn.
 - Structure locators can no longer locate the strongholds.
 - Eyes of ender can locate them instead, when used in the overworld, purple particles will lead you to the nearest stronghold.
@@ -926,12 +926,12 @@ Extra Items addon changes:
 - Infested stone can no longer be used in a stonecutter. 
 - Sand or gravel particles will appear in the locations where sand or gravel can become suspicious. 
 - Suspicious block regeneration time is now more randomized. 
-- Petrified Oak Slab have been renamed and retextured. 
-- Vanilla ores have been retextured to indicate that they are affected by fortune, although they are currently unobtainable. Skybedrock ores are kept the same.
+- Petrified Oak Slab have been renamed and re-textured. 
+- Vanilla ores have been re-textured to indicate that they are affected by fortune, although they are currently unobtainable. Skybedrock ores are kept the same.
 - Skybedrock Guide Book has been renamed to Skybedrock Guidebook.
 - Using the structure locator will replace the item with a compass instead of deleting it and spawning a compass on the player, leaving no chance for other players to pick it up accidentally.
 - How to play screen has been optimized and updated.
-- Added lore to the guidebook and structure locator in the startet chest. 
+- Added lore to the guidebook and structure locator in the starter chest. 
 - Added a second chest to the jungle temple. 
   `,
   "v1.20.6": `\
@@ -1613,7 +1613,7 @@ export const feature_history = {
 - Custom crafting materials have been added to allow for ore crafting
 --> Coal Rocks: from black cats
 --> Iron Minerals: from scraping iron golem
---> Gold Minerals: from zombified piglins
+--> Gold Minerals: from zombiefied piglins
 --> Copper Minerals: from dripstone drowneds
 --> Emerald Gems: from foxes
 --> Diamond Gems: from diamond chicken
@@ -1657,11 +1657,11 @@ export const feature_history = {
 - Added glow lichen to the dripstone caves fishing table
   `,
   "Gold & Netherrack": `\
-1.0.3: Zombified piglins can drop netherrack and more gold nuggets
+1.0.3: Zombiefied piglins can drop netherrack and more gold nuggets
 
-1.10.0: Zombified piglins will drop netherrack in the nether only
+1.10.0: Zombiefied piglins will drop netherrack in the nether only
 
-1.15.0: Fixed a bug where zombified piglins can drop netherrack if spawned in the overworld and sent to the nether
+1.15.0: Fixed a bug where zombiefied piglins can drop netherrack if spawned in the overworld and sent to the nether
 
 1.18.0: Moved this feature to the QoL addon
 
@@ -1853,7 +1853,7 @@ export const feature_history = {
   `,
   "Shulker Duplication": `\
 1.0.3:
-- Shulkers can be spawned by putting poped purpur and dragon breath in a chest in the end dimension and standing on it.
+- Shulkers can be spawned by putting popped purpur and dragon breath in a chest in the end dimension and standing on it.
 - Shulkers always drop two shulker shells
 
 1.4.1:
@@ -1884,18 +1884,18 @@ export const feature_history = {
 1.20.2: Activating a spawner will no longer consume the item used to activate it
 
 1.20.9:
-- Redused the xp cost for activating Monster Spawners from 100 to 50 levels
+- Reduced the xp cost for activating Monster Spawners from 100 to 50 levels
 - This feature has been optimized
 
 1.21.0:
 - Added a way to build new trial spawners and vaults
 - Added the Trial vault inscription, a new item sold cartographers
 - Added a crafting recipe for empty vaults
-- Renamed and retextured the empty spawners
+- Renamed and re-textured the empty spawners
 
 1.21.1:
 - Added the Spawner Core, a new item dropped by ominous trial spawners
-- It can be used to craft empty spawers and empty vaults
+- It can be used to craft empty spawners and empty vaults
 - Nether Stars are no longer required to create monster spawners, trial spawners and vaults
 - Fixed a bug that prevented ominous vaults from being created
 
@@ -1985,7 +1985,7 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 - Structure mobs can despawn now
 - Optimized the structure spawning by using scripts instead of command blocks
 - Structure mobs can spawn on more blocks
-- Spawning duration have changed to be more consistant
+- Spawning duration have changed to be more consistent
 
 1.20.5: Fixed a bug where structure mobs try to spawn in peaceful difficulty
 
@@ -2033,7 +2033,7 @@ At some point: Added a lodestone compass to the starter chest, pointing towards 
 1.21.0: Blocks placed on the obsidian platform will break instead of disappear when a player crosses the end border
 `,
   "The Nether Barrier": `\
-1.0.3: Added a 320 by 320 barriar block border around the nether dimension
+1.0.3: Added a 320 by 320 barrier block border around the nether dimension
 
 1.2.1: Added a bedrock roof to the nether to allow for mob spawning
 
