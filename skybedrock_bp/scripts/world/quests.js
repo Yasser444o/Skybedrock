@@ -187,7 +187,7 @@ export function quest_screen(player, id, book) {
 	challenge ? active_challenges[`${player.id} ${id}`] ? 'stop' : 'start' : undefined
 
 	const form = new ActionFormData()
-	.title("§quest_screen§" + title)
+	.title("§quest_screen§" + title + `§8 | ID: ${id}`)
 	.button(book ? 'home' : '').button('back').button(book ? 'bookmark' : '')
 	.button('').button('').button('').button('').button('').button('').button('')
 

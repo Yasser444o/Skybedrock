@@ -179,11 +179,12 @@ export function see_a_map(player, map) {
         const place = ({x, z}) => `x${pin_to_map(x)}y${pin_to_map(z)}`
         const active = player.waypoint ? 'on' : 'off'
         const completed_achs = JSON.parse(player.getDynamicProperty("completed_achs") ?? '[]')
-        const structures = data.structures.filter(({require, require_any}) => {
+        const structures = map == 'overworld_structures' ? data.structures.filter(({require, require_any}) => {
             if (player.getGameMode() == "Creative") return true
+            if (!require && !require_any) return true
             if (require && completed_achs.includes(require)) return true 
-            if (require_any && require_any.some(ach => completed_achs.includes(ach))) return true
-        })
+            if (require_any?.some(ach => completed_achs.includes(ach))) return true
+        }) : data.structures
 
         const form = new ActionFormData().title('§map_ui§' + data.title)
         .button('home').button('back').button('bookmark')
