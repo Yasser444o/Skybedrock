@@ -28,7 +28,7 @@ const overworld_biomes = [
     { biome: biome_names.snowy_slopes, offset: [5, 2], size: [2, 2] },
     { biome: biome_names.grove, offset: [12, 5], size: [2, 2] },
     { biome: biome_names.mesa_plateau_stone, offset: [9, 12], size: [2, 2] },
-    { biome: biome_names.meadow, offset: [2, 9], size: [2, 2] },
+    { biome: biome_names.dappled_forest, offset: [2, 9], size: [2, 2] },
 
     { biome: biome_names.ice_plains, offset: [7, 3], size: [2, 1] },
     { biome: biome_names.ocean, offset: [12, 7], size: [1, 2] },

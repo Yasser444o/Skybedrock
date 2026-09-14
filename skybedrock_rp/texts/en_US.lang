@@ -55,6 +55,7 @@ biome.desert.name=Desert
 biome.savanna.name=Savanna
 biome.taiga.name=Taiga
 biome.cherry_grove.name=Cherry Grove
+biome.dappled_forest.name=Dappled Forest
 
 ## HUD
 hudScreen.tooltip.seeMap=See Map

@@ -4070,6 +4070,41 @@
 														{ "filler@assets.table_filler": {}}
 													]
 												}},
+												{ "red_shrubs@assets.table_row": {
+													"size": ["100%", 36],
+													"$content": [
+														{ "start_filler@assets.table_filler": {}},
+														{ "use@assets.table_input_key": { "$key": ":_input_key.use:" }},
+														{ "item@assets.table_box": {
+															"controls": [{"i@assets.item_renderer": {
+																"$texture": "textures/items/dye_powder_white",
+																"$name": "item.dye.white.name"
+															}}]
+														}},
+														{ "on@assets.table_instruction": { "$text": "on" }},
+														{ "block@assets.table_box": {
+															"controls": [{"i@assets.block_renderer": {
+																"$aux": 131072,
+																"$name": "tile.grass.name"
+															}}]
+														}},
+														{ "in@assets.table_instruction": { "$text": "in" }},
+														{ "biome@assets.table_box": {
+															"controls": [{"i@assets.item_renderer": {
+																"$texture": "textures/biomes/dappled_forest",
+																"$name": "biome.dappled_forest.name"
+															}}]
+														}},
+														{ "for@assets.table_instruction": { "$text": "-->" }},
+														{ "plant@assets.table_box": {
+															"controls": [{"i@assets.item_renderer": {
+																"$id": "red_shrub",
+																"$name": "('tile.' + $id + '.name')"
+															}}]
+														}},
+														{ "filler@assets.table_filler": {}}
+													]
+												}},
 												{ "twisting_vines@assets.table_row": {
 													"size": ["100%", 36],
 													"$content": [

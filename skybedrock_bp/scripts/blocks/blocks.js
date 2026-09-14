@@ -23,6 +23,7 @@ world.afterEvents.playerInteractWithBlock.subscribe(({block, itemStack, player})
 	)
 })
 
+// plants
 world.afterEvents.playerInteractWithBlock.subscribe(({block, itemStack}) => {
 	if (itemStack?.typeId != "minecraft:bone_meal") return
 	// spore blossom
@@ -38,6 +39,8 @@ world.afterEvents.playerInteractWithBlock.subscribe(({block, itemStack}) => {
 	if (block.typeId == "minecraft:grass_block") switch (block.dimension.getBiome(block.location).id) {
 		// taiga -> sweet berries
 		case 'minecraft:taiga': block.above().setType("minecraft:sweet_berry_bush"); break
+		// dappled forest -> red shrub
+		case 'minecraft:dappled_forest': block.above().setType("minecraft:red_shrub"); break
 		// cherry grove -> pink petals
 		case 'minecraft:cherry_grove': block.above().setPermutation(BlockPermutation.resolve('pink_petals', {
 			"minecraft:cardinal_direction": ['north', 'east', 'south', 'west'][(Math.random() * 4) | 0],
