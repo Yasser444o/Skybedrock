@@ -146,6 +146,13 @@ export const overworld_structures = [
 		dim: "minecraft:overworld",
 	},
     {
+		id: 'abandoned_camp', x: 444.5, y: 63, z: 112.5,  
+		structure: 'Abandoned Camp', require: 'dappled_forest',
+		biome: biome_names.birch_forest_mutated,
+		place: {x: 440, y: 61, z: 106},
+		dim: "minecraft:overworld",
+	},
+    {
 		id: 'woodland_mansion', x: 531.5, y: 64.06, z: -860.5,
 		structure: 'Woodland Mansion', require: 'dark_forest',
 		biome: biome_names.roofed_forest,

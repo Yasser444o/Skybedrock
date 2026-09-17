@@ -3,7 +3,7 @@ import { pillar_locations } from "./world/the_end"
 import { complete, stop_challenge, quest_tracker } from "./world/quests"
 import { overworld, stored_items, the_end } from "./startup"
 import { update_vision } from "./world/limited_vision"
-import { all_structures, nether_structures, overworld_structures } from "./data.js"
+import { all_structures, destinations } from "./data.js"
 
 export const version = "v5.2.0"
 const aux = 65536
@@ -62,7 +62,7 @@ function old_in_radius(player, center, dimension = "minecraft:overworld", radius
     return player.runCommand(`testfor @s[x=${x}, y=${y}, z=${z}, r=${radius ?? 5}]`).successCount
 }
 
-function in_radius(player, dimension = "minecraft:overworld", location, radius) {
+function in_radius(player, location, radius = 32, dimension = "minecraft:overworld") {
 	if (player.dimension.id != dimension) return
 	return get_distance(player.location, location) <= radius
 }
@@ -124,6 +124,7 @@ export const categories = {
 			badlands
 			resin_clump
 			cherry
+			dappled_forest
 			dripstone
 			lush_cave
 			sulfur_cave
@@ -139,6 +140,7 @@ export const categories = {
 			igloo
 			desert_pyramid
 			pillager_outpost
+			abandoned_camp
 			trail_ruins
 			woodland_mansion
 			trial_chambers
@@ -895,6 +897,20 @@ export const quests = {
 		`,
 		query: (player) => old_in_radius(player, '-192 63 0')
 	},
+	dappled_forest: {
+		data: `
+			require: (mushroom_island | jungle)
+			title: Dappled Timberland
+			icon: textures/blocks/poplar_sapling
+			* Venture to the dappled forest island for:
+			- Poplar Wood
+			- Shelf Mushrooms
+			- Red Shrubs
+			- Orange Grass
+			- Abandoned Camp
+		`,
+		query: (player) => old_in_radius(player, '-145 31 -49')
+	},
 	dripstone: {
 		data: `
 			require: dark_forest
@@ -1101,6 +1117,15 @@ export const quests = {
 			!player.runCommand('testfor @e[type=pillager, r=40]').successCount
 		),
 		reward: ["Bad Omen for 10 minutes", `effect @s bad_omen 600`]
+	},
+	abandoned_camp: {
+		data: `
+			require: (structure_locator & dappled_forest)
+			title: Nomad Shelter
+			icon: textures/items/straw_bed
+			* Find the lost abandoned camp
+		`,
+		query: (player) => in_radius(player, destinations.abandoned_camp.coords, 16)
 	},
 	trail_ruins: {
 		data: `
@@ -1546,7 +1571,7 @@ export const quests = {
 			all_structures.forEach(it => {
 				const tracker_id = `${player.id} ${id} ${it.id}`
 				if (quest_tracker[tracker_id]) return
-				if (in_radius(player, it.dim, it, 48)) quest_tracker[tracker_id] = true
+				if (in_radius(player, it, 48, it.dim)) quest_tracker[tracker_id] = true
 				else completed = false
 			})
 			return completed

@@ -4097,9 +4097,8 @@
 														}},
 														{ "for@assets.table_instruction": { "$text": "-->" }},
 														{ "plant@assets.table_box": {
-															"controls": [{"i@assets.item_renderer": {
-																"$id": "red_shrub",
-																"$name": "('tile.' + $id + '.name')"
+															"controls": [{"i@assets.block_face_renderer": {
+																"$id": "red_shrub"
 															}}]
 														}},
 														{ "filler@assets.table_filler": {}}
@@ -7183,6 +7182,9 @@
 					}},
 					{"s15@assets.text_box": {
 						"$text": "Trial Chambers: §2Old Growth Spruce Taiga"
+					}},
+					{"s15@assets.text_box": {
+						"$text": "Abandoned Camp: §aOld Growth Birch Forest"
 					}},
 					
 					{ "nether_gen@assets.header": {

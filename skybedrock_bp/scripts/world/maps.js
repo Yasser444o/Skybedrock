@@ -200,6 +200,7 @@ export function see_a_map(player, map) {
             }D${get_cardinal_direction(player)
         }` : '')
         if (structures.length) {
+            if (map == 'overworld_structures') form.button(`§deco§ ${place({ x: 0, z: 0 })}Spawn`, `textures/ui/map/structures/starter_island`)
             structures.forEach(({ id, x, z, icon, structure, structures, biome, biomes }) => {
                 const hover_text = `${
                     structure ? `Structure: ${structure}` : `Structures:\n   ${structures?.join(',\n   ') ?? ''}`
@@ -219,7 +220,7 @@ export function see_a_map(player, map) {
 				see_a_map(player, map); break
             }
             if (selection > 9) {
-				const structure = structures[selection - 10]
+				const structure = structures[selection - 11]
 				player.waypoint = {name: 'maps.structure.' + structure.id, x: structure.x, z: structure.z, dim: structure.dim}
 			}
         })
@@ -364,7 +365,7 @@ export function open_world_map(player, item) {
 			range: zoom_level,
 			chunk_borders,
 			markers: [
-				{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'},
+				{deco: true, text: 'Spawn', texture: 'textures/ui/map/structures/starter_island', x: 0, z: 0, dim: 'minecraft:overworld'},
 				...(Object.entries(waypoints).map(([hash, waypoint]) => {
 					const [x, _, z, dim] = hash.split(' ')
 					return {text: waypoint.name, texture: waypoint.icon, x, z, dim}
