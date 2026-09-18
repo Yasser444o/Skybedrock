@@ -50,6 +50,7 @@
 					{ "liquid_type": "water", "on_liquid_touches": "popped" }
 				]
 			},
+			"minecraft:sound": { "sound": "grass" },
 			// This is to prevent blocks that need support from being placed on it
 			"minecraft:support": { "shape": "stair" }
 		}

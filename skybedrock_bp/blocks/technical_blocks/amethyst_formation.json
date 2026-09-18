@@ -1,5 +1,5 @@
 {
-	"format_version": "1.26.10",
+	"format_version": "1.26.40",
 	"minecraft:block": {
 		"description": {
 			"identifier": "skybedrock:amethyst_formation",
@@ -16,6 +16,7 @@
 			"minecraft:loot": "loot_tables/empty.json",
 			"minecraft:movable": { "movement_type": "popped" },
 			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:sound": { "sound": "amethyst_block" },
 			"minecraft:material_instances": {
 				"*": { "texture": "none", "render_method": "alpha_test" }
 			},

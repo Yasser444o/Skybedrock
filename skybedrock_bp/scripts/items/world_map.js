@@ -44,7 +44,7 @@ const marker_types = Object.keys(map_markers.paths)
 
 export default function(player, item) {
 	system.run(() => {
-		if (player.is_confuguring_map) return
+		if (player.is_configuring_map) return
 		// const strings = encode_chunks(player)
 		// new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
 		// item.setDynamicProperty('map', encoded_map_data)
@@ -169,7 +169,7 @@ function bytes_to_base64(bytes) {
 }
 
 export function manage_waypoint(player, block, item) {
-	player.is_confuguring_map = true; system.runTimeout(() => delete player.is_confuguring_map, 2)
+	player.is_configuring_map = true; system.runTimeout(() => delete player.is_configuring_map, 2)
 	const {x, y, z, dimension:{id:d}} = block
 	const hash = `${x} ${y} ${z} ${d}`
 	const [waypoints, changed] = update_waypoints(player, item)
