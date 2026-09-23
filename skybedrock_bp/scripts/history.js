@@ -1,5 +1,8 @@
 export const change_logs = {
-  "v1.26.2": `\
+  "v1.26.2.1": `\
+Hotfix 1:
+- Lowered permission levels of custom commands from 2 to 1
+- Fixed a couple of warnings coming from the resource packs
 Additions:
 - Added the Dappled Island and the Dappled Forest biome 
 - Added the Abandoned Camp structure and Old Growth Birch Forest biome

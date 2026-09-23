@@ -7156,7 +7156,7 @@
 					{"s7@assets.text_box": {
 						"$text": "Mineshaft: §cModified Badlands"
 					}},
-					{"s7@assets.text_box": {
+					{"s71@assets.text_box": {
 						"$text": "Amethyst Geode: §qMeadow"
 					}},
 					{"s8@assets.text_box": {
@@ -7183,7 +7183,7 @@
 					{"s15@assets.text_box": {
 						"$text": "Trial Chambers: §2Old Growth Spruce Taiga"
 					}},
-					{"s15@assets.text_box": {
+					{"s151@assets.text_box": {
 						"$text": "Abandoned Camp: §aOld Growth Birch Forest"
 					}},
 					
