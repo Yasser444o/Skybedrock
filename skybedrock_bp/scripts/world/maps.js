@@ -28,7 +28,7 @@ const overworld_biomes = [
     { biome: biome_names.snowy_slopes, offset: [5, 2], size: [2, 2] },
     { biome: biome_names.grove, offset: [12, 5], size: [2, 2] },
     { biome: biome_names.mesa_plateau_stone, offset: [9, 12], size: [2, 2] },
-    { biome: biome_names.meadow, offset: [2, 9], size: [2, 2] },
+    { biome: biome_names.dappled_forest, offset: [2, 9], size: [2, 2] },
 
     { biome: biome_names.ice_plains, offset: [7, 3], size: [2, 1] },
     { biome: biome_names.ocean, offset: [12, 7], size: [1, 2] },
@@ -200,6 +200,7 @@ export function see_a_map(player, map) {
             }D${get_cardinal_direction(player)
         }` : '')
         if (structures.length) {
+            if (map == 'overworld_structures') form.button(`§deco§ ${place({ x: 0, z: 0 })}Spawn`, `textures/ui/map/structures/starter_island`)
             structures.forEach(({ id, x, z, icon, structure, structures, biome, biomes }) => {
                 const hover_text = `${
                     structure ? `Structure: ${structure}` : `Structures:\n   ${structures?.join(',\n   ') ?? ''}`
@@ -219,7 +220,7 @@ export function see_a_map(player, map) {
 				see_a_map(player, map); break
             }
             if (selection > 9) {
-				const structure = structures[selection - 10]
+				const structure = structures[selection - 11]
 				player.waypoint = {name: 'maps.structure.' + structure.id, x: structure.x, z: structure.z, dim: structure.dim}
 			}
         })
@@ -364,7 +365,7 @@ export function open_world_map(player, item) {
 			range: zoom_level,
 			chunk_borders,
 			markers: [
-				{deco: true, text: 'Spawn', texture: 'textures/ui/map/spawn', x: 0, z: 0, dim: 'minecraft:overworld'},
+				{deco: true, text: 'Spawn', texture: 'textures/ui/map/structures/starter_island', x: 0, z: 0, dim: 'minecraft:overworld'},
 				...(Object.entries(waypoints).map(([hash, waypoint]) => {
 					const [x, _, z, dim] = hash.split(' ')
 					return {text: waypoint.name, texture: waypoint.icon, x, z, dim}

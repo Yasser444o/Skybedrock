@@ -92,9 +92,6 @@
 	"petrified_oak_double_slab": {
 		"textures": "petrified_oak_slab"
 	},
-	"yasser444:empty_spawner": {
-		"sound": "mob_spawner"
-	},
 	"skybedrock:sand_support": {
 		"textures": "none",
 		"sound": "sand"
@@ -106,20 +103,5 @@
 	"skybedrock:nether_gravel": {
 		"textures": "nether_gravel",
 		"sound": "gravel"
-	},
-	"skybedrock:unsafe_copper": {
-		"sound": "copper"
-	},
-	"skybedrock:unsafe_tuff": {
-		"sound": "tuff"
-	},
-	"skybedrock:blue_rose": {
-		"sound": "grass"
-	},
-	"skybedrock:paeonia": {
-		"sound": "grass"
-	},
-	"skybedrock:amethyst_formation": {
-		"sound": "amethyst_block"
 	}
 }

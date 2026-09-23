@@ -1,0 +1,97 @@
+## Missing Biomes
+- Old Growth Birch Forest
+- Windswept Forest
+- Snowy Beach
+- Eroded Badlands
+- Frozen Peaks
+- Deep Frozen Ocean
+- Windswept Savanna
+
+## Removed Biomes
+- Wooded Hills
+- Birch Forest Hills
+- Tall Birch Hills
+- Bamboo Jungle Hills
+- Jungle Hills
+- Taiga Hills
+- Snowy Taiga Hills
+- Giant Tree Taiga Hills
+- Giant Spruce Taiga Hills
+- Modified Wooded Badlands Plateau
+- Shattered Savanna Plateau
+- Badlands Plateau
+- Taiga Mountains
+- Snowy Mountains
+- Snowy Taiga Mountains
+- Gravelly Mountains+
+- Legacy Frozen Ocean
+- Mushroom Field Shore
+- Modified Jungle
+- Mountain Edge
+
+## Map Biomes
+- Plains
+- Mangrove Swamp
+- Snowy Taiga
+- Desert
+- Jungle
+- Birch Forest
+- Dark Forest
+- Savanna
+- Mushroom Fields
+- Badlands
+- Cherry Grove
+- Warm Ocean
+- Pale Garden
+- Grove
+- Snowy Slopes
+- Dappled Forest
+- Wooded Badlands
+- Snowy Plains
+- Ocean
+- Deep Ocean
+- Flower Forest
+- Forest
+- Taiga
+- Swamp
+- Cold Ocean
+- River
+- Beach
+- Sparse Jungle
+- Bamboo Jungle
+- Dripstone Caves
+- Windswept Hills
+- Stony Peaks
+- Deep Dark
+- Jagged Peaks
+- Sulfur Caves
+- Sunflower Plains
+- Lush Caves
+- Stony Shore
+- Ice Spikes
+- Frozen Ocean
+- Windswept Gravelly Hills
+- Nether Wastes
+- Crimson Forest
+- Warped Forest
+- Soul Sand Valley
+- Basalt Deltas
+- The End
+
+## Structure Biomes
+- Frozen River
+- Modified Jungle Edge
+- Desert Hills
+- Desert Lakes
+- Lukewarm Ocean
+- Swamp Hills
+- Modified Badlands Plateau
+- Meadow
+- Savanna Plateau
+- Dark Forest Hills
+- Deep Dark
+- Deep Cold Ocean
+- Deep Warm Ocean
+- Deep Lukewarm Ocean
+- Old Growth Pine Taiga
+- Old Growth Spruce Taiga

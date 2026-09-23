@@ -1,5 +1,5 @@
 {
-	"format_version": "1.26.0",
+	"format_version": "1.26.40",
 	"minecraft:block": {
 		"description": {
 			"identifier": "skybedrock:unsafe_copper",
@@ -11,14 +11,17 @@
 		"components": {
 			"minecraft:destructible_by_explosion": { "explosion_resistance": 12 },
 			"minecraft:destructible_by_mining": { "seconds_to_destroy": 6 },
-			"minecraft:map_color": "#d87f33",
+			"minecraft:loot": "loot_tables/empty.json",
 			"minecraft:geometry": "minecraft:geometry.full_block",
 			"minecraft:material_instances": { "*": { "texture": "copper_block", "render_method": "opaque" } },
-			"tag:minecraft:is_pickaxe_item_destructible": {},
-			"tag:stone_pick_diggable": {},
-			"tag:minecraft:stone_tier_destructible": {},
-			"minecraft:loot": "loot_tables/empty.json",
-			"tag:skybedrock:unsafe": {}
+			"minecraft:sound": { "sound": "copper" },
+			"minecraft:map_color": "#d87f33",
+			"minecraft:tags": [
+				"minecraft:is_pickaxe_item_destructible",
+				"stone_pick_diggable",
+				"minecraft:stone_tier_destructible",
+				"skybedrock:unsafe"
+			]
 		},
 		"permutations": [
 			{

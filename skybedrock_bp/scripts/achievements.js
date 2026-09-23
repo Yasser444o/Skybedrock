@@ -3,9 +3,9 @@ import { pillar_locations } from "./world/the_end"
 import { complete, stop_challenge, quest_tracker } from "./world/quests"
 import { overworld, stored_items, the_end } from "./startup"
 import { update_vision } from "./world/limited_vision"
-import { all_structures, nether_structures, overworld_structures } from "./data.js"
+import { all_structures, destinations } from "./data.js"
 
-export const version = "v5.2.0"
+export const version = "v5.2.1"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
@@ -30,8 +30,8 @@ function check_item_enchants(player, item, enchant) {
     }
 }
 
-function view_stats(player, category, block_type) {
-    return JSON.parse(player.getDynamicProperty(category) || '{}')[block_type] ?? 0
+function view_stats(player, category, entry) {
+    return JSON.parse(player.getDynamicProperty(category) || '{}')[entry] ?? 0
 }
 
 function check_location(player, dimension, range, biome) {
@@ -56,13 +56,7 @@ function check_location(player, dimension, range, biome) {
     return true
 }
 
-function old_in_radius(player, center, dimension = "minecraft:overworld", radius) {
-    if (player.dimension.id != dimension) return
-    const [x, y, z] = center.split(' ') 
-    return player.runCommand(`testfor @s[x=${x}, y=${y}, z=${z}, r=${radius ?? 5}]`).successCount
-}
-
-function in_radius(player, dimension = "minecraft:overworld", location, radius) {
+function in_radius(player, location, radius = 32, dimension = "minecraft:overworld") {
 	if (player.dimension.id != dimension) return
 	return get_distance(player.location, location) <= radius
 }
@@ -124,6 +118,7 @@ export const categories = {
 			badlands
 			resin_clump
 			cherry
+			dappled_forest
 			dripstone
 			lush_cave
 			sulfur_cave
@@ -139,6 +134,7 @@ export const categories = {
 			igloo
 			desert_pyramid
 			pillager_outpost
+			abandoned_camp
 			trail_ruins
 			woodland_mansion
 			trial_chambers
@@ -717,7 +713,7 @@ export const quests = {
 			- Tropical Fish
 			- Unlock the Swamp Hut
 		`,
-		query: (player) => old_in_radius(player, '96 63 0'),
+		query: (player) => in_radius(player, destinations.swamp_island.coords, 5),
 		reward: ["A Frog", `summon frog`]
 	},
 	jungle: {
@@ -736,7 +732,7 @@ export const quests = {
 			- Pandas
 			- Unlock the Jungle Temple
 		`,
-		query: (player) => old_in_radius(player, '-96 63 0'),
+		query: (player) => in_radius(player, destinations.jungle_island.coords, 5),
 		reward: ["A Parrot", `summon parrot`]
 	},
 	taiga: {
@@ -754,7 +750,7 @@ export const quests = {
 			- Wolves
 			- Unlock the Igloo
 		`,
-		query: (player) => old_in_radius(player, '0 63 -96')
+		query: (player) => in_radius(player, destinations.taiga_island.coords, 5)
 	},
 	desert: {
 		data: `
@@ -771,7 +767,7 @@ export const quests = {
 			- Camels
 			- Unlock the Desert Pyramid
 		`,
-		query: (player) => old_in_radius(player, '0 63 96'),
+		query: (player) => in_radius(player, destinations.desert_island.coords, 5),
 		reward: ["A Rabbit", `summon rabbit`]
 	},
 	savanna: {
@@ -787,7 +783,7 @@ export const quests = {
 			- Armadillos
 			- Unlock the Pillager Outpost
 		`,
-		query: (player) => old_in_radius(player, '96 63 96')
+		query: (player) => in_radius(player, destinations.savanna_island.coords, 5)
 	},
 	dark_forest: {
 		data: `
@@ -802,7 +798,7 @@ export const quests = {
 			- Unlock the Woodland Mansion
 			(You need 4 saplings to grow a dark oak tree, take the reward if you got less than 4 saplings)
 		`,
-		query: (player) => old_in_radius(player, '96 63 -96'),
+		query: (player) => in_radius(player, destinations.roofed_island.coords, 5),
 		reward: ["3 Dark Oak Saplings", `give @s dark_oak_sapling 3`]
 	},
 	birch: {
@@ -817,7 +813,7 @@ export const quests = {
 			- Wildflowers
 			- Unlock the Trail Ruins
 		`,
-		query: (player) => old_in_radius(player, '-96 63 -96')
+		query: (player) => in_radius(player, destinations.birch_island.coords, 5)
 	},
 	mushroom_island: {
 		data: `
@@ -831,7 +827,7 @@ export const quests = {
 			- No Hostile mobs
 			- Unlock the Ocean Monument
 		`,
-		query: (player) => old_in_radius(player, '-96 63 96'),
+		query: (player) => in_radius(player, destinations.mushroom_island.coords, 5),
 		reward: ["4 Mushroom Stew", `give @s mushroom_stew 4`]
 	},
 	ocean: {
@@ -851,7 +847,7 @@ export const quests = {
 			- Dolphins
 			- Unlock the Ocean Ruins
 		`,
-		query: (player) => old_in_radius(player, '192 63 0')
+		query: (player) => in_radius(player, destinations.ocean_island.coords, 5)
 	},
 	badlands: {
 		data: `
@@ -865,7 +861,7 @@ export const quests = {
 			- Armadillos
 			- Unlock the Mineshaft
 		`,
-		query: (player) => old_in_radius(player, '0 63 192')
+		query: (player) => in_radius(player, destinations.badlands_island.coords, 5)
 	},
 	resin_clump: {
 		data: `
@@ -880,7 +876,7 @@ export const quests = {
 			- Pale Oak Wood
 			- Creakings
 		`,
-		query: (player) => old_in_radius(player, '0 63 -192')
+		query: (player) => in_radius(player, destinations.pale_island.coords, 5)
 	},
 	cherry: {
 		data: `
@@ -893,7 +889,21 @@ export const quests = {
 			- Bees
 			- Unlock the Trial Chambers
 		`,
-		query: (player) => old_in_radius(player, '-192 63 0')
+		query: (player) => in_radius(player, destinations.cherry_island.coords, 5)
+	},
+	dappled_forest: {
+		data: `
+			require: (mushroom_island | jungle)
+			title: Dappled Timberland
+			icon: textures/blocks/poplar_sapling
+			* Venture to the dappled forest island for:
+			- Poplar Wood
+			- Shelf Mushrooms
+			- Red Shrubs
+			- Orange Grass
+			- Abandoned Camp
+		`,
+		query: (player) => in_radius(player, destinations.dappled_island.coords, 5)
 	},
 	dripstone: {
 		data: `
@@ -907,7 +917,7 @@ export const quests = {
 			- Drowneds
 			- Unlock the Amethyst Geode
 		`,
-		query: (player) => old_in_radius(player, '45 31 -145')
+		query: (player) => in_radius(player, destinations.dripstone_island.coords, 5)
 	},
 	sulfur_cave: {
 		data: `
@@ -921,12 +931,12 @@ export const quests = {
 			- Cave Spiders
 			- Unlock the Amethyst Geode
 		`,
-		query: (player) => old_in_radius(player, '-45 32 145'),
+		query: (player) => in_radius(player, destinations.sulfur_island.coords, 5),
 	},
 	lush_cave: {
 		data: `
 			require: birch
-			title: The Underground Garden
+			title: Subterrestrial Garden
 			icon: textures/blocks/potted_azalea_bush_plant
 			* Dip down to the lush island for:
 			- Moss
@@ -938,7 +948,7 @@ export const quests = {
 			- Tropical Fish
 			- Unlock the Amethyst Geode
 		`,
-		query: (player) => old_in_radius(player, '-145 31 -49')
+		query: (player) => in_radius(player, destinations.lush_island.coords, 5)
 	},
 	deep_dark: {
 		data: `
@@ -952,7 +962,7 @@ export const quests = {
 			- Deepslate
 			- Unlock the Ancient City
 		`,
-		query: (player) => old_in_radius(player, '145 -33 49')
+		query: (player) => in_radius(player, destinations.deep_dark_island.coords, 5)
 	},
 	crimson: {
 		data: `
@@ -965,7 +975,7 @@ export const quests = {
 			- Crimson Fungi
 			- Hoglins
 		`,
-		query: (player) => old_in_radius(player, '96 63 0', 'minecraft:nether')
+		query: (player) => in_radius(player, destinations.crimson_island.coords, 5, 'minecraft:nether')
 	},
 	warped: {
 		data: `
@@ -978,7 +988,7 @@ export const quests = {
 			- Warped Fungi
 			- Endermen
 		`,
-		query: (player) => old_in_radius(player, '-96 63 0', 'minecraft:nether')
+		query: (player) => in_radius(player, destinations.warped_island.coords, 5, 'minecraft:nether')
 	},
 	soulsand_valley: {
 		data: `
@@ -992,7 +1002,7 @@ export const quests = {
 			- Ghasts
 			- Nether Skeletons
 		`,
-		query: (player) => old_in_radius(player, '0 63 -96', 'minecraft:nether')
+		query: (player) => in_radius(player, destinations.soulsand_island.coords, 5, 'minecraft:nether')
 	},
 	basalt_deltas: {
 		data: `
@@ -1005,7 +1015,7 @@ export const quests = {
 			- Blackstone
 			- Magma Cubes
 		`,
-		query: (player) => old_in_radius(player, '0 63 96', 'minecraft:nether')
+		query: (player) => in_radius(player, destinations.basalt_island.coords, 5, 'minecraft:nether')
 	},
 	biome_detector: {
 		data: `
@@ -1040,7 +1050,7 @@ export const quests = {
 			* Reach the Swamp Hut and kill the witch inside
 		`,
 		query: (player) => (
-			old_in_radius(player, `-252 67 516`, undefined, 10) && 
+			in_radius(player, destinations.swamp_hut.coords, 10) && 
 			!player.runCommand('testfor @e[type=witch, r=32]').successCount
 		)
 	},
@@ -1055,7 +1065,7 @@ export const quests = {
 			- loot all the items inside it
 		`,
 		query: (player) => {
-			const place = old_in_radius(player, '-459 69 886', undefined, 16)
+			const place = in_radius(player, destinations.jungle_temple.coords, 16)
 			const chest = player.dimension.getBlock({x:-456, y:66, z:883})?.getComponent("inventory")?.container
 			return place && (!chest || chest.emptySlotsCount > 26)
 		}
@@ -1069,7 +1079,7 @@ export const quests = {
 			(How is this furnace still burning?)
 		`,
 		query: (player) => (
-			old_in_radius(player, '-348 71 -717', undefined, 16) && 
+			in_radius(player, destinations.igloo.coords, 16) && 
 			player.runCommand('testfor @e[type=villager, r=16]').successCount > 1
 		)
 	},
@@ -1084,7 +1094,7 @@ export const quests = {
 			- loot the chest
 		`,
 		query: (player) => (
-			old_in_radius(player, '-762 65 -266', undefined, 32) && 
+			in_radius(player, destinations.desert_pyramid.coords, 32) && 
 			player.dimension.getBlock({x:-762, y: 63, z: -266})?.typeId == "minecraft:air"
 		),
 		reward: ["A redstone torch", `give @s redstone_torch`]
@@ -1097,10 +1107,19 @@ export const quests = {
 			* Find the pillager outpost and kill every pillager
 		`,
 		query: (player) => (
-			old_in_radius(player, '-901 94 379', undefined, 32) && 
+			in_radius(player, destinations.pillager_outpost.coords, 32) && 
 			!player.runCommand('testfor @e[type=pillager, r=40]').successCount
 		),
 		reward: ["Bad Omen for 10 minutes", `effect @s bad_omen 600`]
+	},
+	abandoned_camp: {
+		data: `
+			require: (structure_locator & dappled_forest)
+			title: Nomad Shelter
+			icon: textures/items/straw_bed
+			* Find the lost abandoned camp
+		`,
+		query: (player) => in_radius(player, destinations.abandoned_camp.coords, 16)
 	},
 	trail_ruins: {
 		data: `
@@ -1116,7 +1135,7 @@ export const quests = {
 			(Remember their locations because they will regenerate after a while)
 		`,
 		query: (player) => (
-			old_in_radius(player, '130 45 -840', undefined, 20) && [
+			in_radius(player, destinations.trail_ruins.coords, 20) && [
 				{x:131, y:45, z:-824}, {x:135, y:45, z:-829}, {x:128, y:40, z:-857}, {x:131, y:40, z:-855},
 				{x:134, y:41, z:-850}, {x:137, y:42, z:-853}, {x:126, y:43, z:-847}, {x:137, y:45, z:-842},
 				{x:136, y:43, z:-844}, {x:129, y:43, z:-843}, {x:127, y:44, z:-836}, {x:123, y:47, z:-832},
@@ -1140,7 +1159,7 @@ export const quests = {
 			(It's not a secret anymore now i told you)
 		`,
 		query: (player) => (
-			old_in_radius(player, '531 64 -862', undefined, 20) &&
+			in_radius(player, destinations.woodland_mansion.coords, 20) &&
 			check_items(player, 'vex_armor_trim_smithing_template')
 		)
 	},
@@ -1157,7 +1176,7 @@ export const quests = {
 			- use the trial key to open a vault
 		`,
 		query: (player) => (
-			old_in_radius(player, '375 13 -505', undefined, 40) &&
+			in_radius(player, destinations.trial_chambers.coords, 40) &&
 			view_stats(player, 'items_used_on', 'minecraft:trial_key')
 		),
 		reward: ["10 Copper Blocks", `give @s waxed_copper 10`]
@@ -1170,7 +1189,7 @@ export const quests = {
 			* Find the mineshaft and mine a sample of each ore
 		`,
 		query: (player) => (
-			old_in_radius(player, '696 32 -236', undefined, 20) &&
+			in_radius(player, destinations.mineshaft.coords, 20) &&
 			['coal_ore', 'iron_ore', 'gold_ore'].every(ore => 
 				view_stats(player, 'blocks_broken', 'minecraft:' + ore)
 			)
@@ -1184,7 +1203,7 @@ export const quests = {
 			* Pay a visit to the ocean ruins and find the treasure map
 		`,
 		query: (player) => (
-			old_in_radius(player, '-641 45 262', undefined, 30) &&
+			in_radius(player, destinations.ocean_ruins.coords, 30) &&
 			check_items(player, 'skybedrock:sky_treasure_map')
 		)
 	},
@@ -1195,7 +1214,7 @@ export const quests = {
 			icon: textures/blocks/amethyst_cluster
 			* Visit the Amethyst Geode
 		`,
-		query: (player) => old_in_radius(player, '-528 26 -78'),
+		query: (player) => in_radius(player, destinations.amethyst_geode.coords, 16),
 	},
 	ancient_city: {
 		data: `
@@ -1205,7 +1224,7 @@ export const quests = {
 			* Locate the ancient city and trigger a warden
 		`,
 		query: (player) => (
-			old_in_radius(player, '157 -43 764', undefined, 40) &&
+			in_radius(player, destinations.ancient_city.coords, 40) &&
 			player.runCommand('testfor @e[type=warden]').successCount
 		)
 	},
@@ -1217,7 +1236,7 @@ export const quests = {
 			* Raid the ocean monument and find the gold
 		`,
 		query: (player) => (
-			old_in_radius(player, '675 40 376', undefined, 30) &&
+			in_radius(player, destinations.ocean_monument.coords, 30) &&
 			check_block(overworld, {x: 691, y: 42, z: 373}, "!minecraft:raw_gold_block")
 		)
 	},
@@ -1269,7 +1288,7 @@ export const quests = {
 			- get inside the end city
 			- do not kill the shulkers, Head to "Shell Lurkers" achievement in Skyblock Path
 		`,
-		query: (player) => old_in_radius(player, '-298 71 -954', 'minecraft:the_end', 8)
+		query: (player) => in_radius(player, {x: -298, y: 71, z: -954}, 12, 'minecraft:the_end')
 	},
 	wheat_farm: {
 		data: `
@@ -1546,7 +1565,7 @@ export const quests = {
 			all_structures.forEach(it => {
 				const tracker_id = `${player.id} ${id} ${it.id}`
 				if (quest_tracker[tracker_id]) return
-				if (in_radius(player, it.dim, it, 48)) quest_tracker[tracker_id] = true
+				if (in_radius(player, it, 48, it.dim)) quest_tracker[tracker_id] = true
 				else completed = false
 			})
 			return completed

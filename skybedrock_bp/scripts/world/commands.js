@@ -48,7 +48,7 @@ export const commands = [
 		name: "skybedrock:visit",
 		description: "§.%command.visit.description§..",
 		cheatsRequired: true,
-		permissionLevel: 2,
+		permissionLevel: 1,
 		mandatoryParameters: [
 			{name: "skybedrock:destination", type: "Enum"}
 		],
@@ -71,7 +71,7 @@ export const commands = [
 		name: "skybedrock:circle",
 		description: "Builds a circle",
 		cheatsRequired: true,
-		permissionLevel: 2,
+		permissionLevel: 1,
 		mandatoryParameters: [
 			{name: "location", type: "Location"},
 			{name: "radius", type: "Integer"},
@@ -119,7 +119,7 @@ export const commands = [
 		name: "skybedrock:restore",
 		description: "§.%command.restore.description§..",
 		cheatsRequired: true,
-		permissionLevel: 2,
+		permissionLevel: 1,
 		mandatoryParameters: [
 			{name: "skybedrock:restorable", type: "Enum"}
 		],
@@ -245,7 +245,7 @@ export const commands = [
 		name: "skybedrock:settings",
 		description: "§.%command.settings.description§..",
 		cheatsRequired: false,
-		permissionLevel: 2,
+		permissionLevel: 1,
 		optionalParameters: [
 			{name: "skybedrock:settings", type: "Enum"},
 			{name: "skybedrock:settings_action", type: "Enum"},

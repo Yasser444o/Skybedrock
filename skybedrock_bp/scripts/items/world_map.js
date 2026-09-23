@@ -35,16 +35,16 @@ const map_markers = {
 		'wither', 'zoglin', 'zombie_pigman', 'enderman', 'endermite', 'shulker', 'end_phantom', 'ender_dragon',
 	],
 	structures: [
-		'village_plains', 'village_savanna', 'village_snowy', 'village_taiga', 'village_desert', 'swamp_hut', 'jungle_temple', 'trial_chambers',
+		'starter_island', 'village_plains', 'village_savanna', 'village_snowy', 'village_taiga', 'village_desert', 'swamp_hut', 'jungle_temple', 'trial_chambers',
 		'ancient_city', 'bastion_remnants', 'desert_pyramid', 'end_gateway', 'igloo', 'mineshaft', 'nether_fortress', 'ocean_monument',
-		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'woodland_mansion', 'x_mark', 'amethyst_geode'
+		'pillager_outpost', 'ruined_portal', 'shipwreck', 'trail_ruins', 'abandoned_camp', 'woodland_mansion', 'x_mark', 'amethyst_geode'
 	]
 }
 const marker_types = Object.keys(map_markers.paths)
 
 export default function(player, item) {
 	system.run(() => {
-		if (player.is_confuguring_map) return
+		if (player.is_configuring_map) return
 		// const strings = encode_chunks(player)
 		// new ModalFormData().textField('', '', {defaultValue: JSON.stringify(strings)}).show(player)
 		// item.setDynamicProperty('map', encoded_map_data)
@@ -169,7 +169,7 @@ function bytes_to_base64(bytes) {
 }
 
 export function manage_waypoint(player, block, item) {
-	player.is_confuguring_map = true; system.runTimeout(() => delete player.is_confuguring_map, 2)
+	player.is_configuring_map = true; system.runTimeout(() => delete player.is_configuring_map, 2)
 	const {x, y, z, dimension:{id:d}} = block
 	const hash = `${x} ${y} ${z} ${d}`
 	const [waypoints, changed] = update_waypoints(player, item)

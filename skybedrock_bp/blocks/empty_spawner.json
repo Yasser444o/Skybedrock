@@ -1,17 +1,17 @@
 {
-	"format_version": "1.26.0",
+	"format_version": "1.26.40",
 	"minecraft:block": {
 		"description": {
 			"identifier": "yasser444:empty_spawner",
 			"menu_category": { "category": "items" }
 		},
 		"components": {
-			// "minecraft:display_name": "§b\n%tile.skybedrock:empty_spawner.name",
 			"minecraft:destructible_by_mining": { "seconds_to_destroy": 1 },
 			"minecraft:destructible_by_explosion": false,
 			"minecraft:movable": { "movement_type": "immovable" },
 			"skybedrock:monster_spawner": {},
 			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:sound": { "sound": "mob_spawner" },
 			"minecraft:material_instances": {
 				"*": { "texture": "empty_spawner", "render_method": "alpha_test" }
 			}

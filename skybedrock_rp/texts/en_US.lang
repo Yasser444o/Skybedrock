@@ -55,6 +55,7 @@ biome.desert.name=Desert
 biome.savanna.name=Savanna
 biome.taiga.name=Taiga
 biome.cherry_grove.name=Cherry Grove
+biome.dappled_forest.name=Dappled Forest
 
 ## HUD
 hudScreen.tooltip.seeMap=See Map
@@ -150,6 +151,7 @@ maps.marker.item=Item
 maps.marker.block=Block
 maps.marker.mob=Mob
 
+maps.structure.starter_island=Starter Island
 maps.structure.village_plains=Plains Village
 maps.structure.village_savanna=Savanna Village
 maps.structure.village_snowy=Snowy Village
@@ -168,6 +170,7 @@ maps.structure.mineshaft=Mineshaft
 maps.structure.nether_fortress=Nether Fortress
 maps.structure.ocean_monument=Ocean Monument
 maps.structure.pillager_outpost=Pillager Outpost
+maps.structure.abandoned_camp=Abandoned Camp
 maps.structure.ruined_portal=Ruined Portal
 maps.structure.shipwreck=Shipwreck
 maps.structure.ocean_ruins=Ocean Ruins

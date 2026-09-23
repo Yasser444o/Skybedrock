@@ -1,5 +1,5 @@
 {
-	"format_version": "1.26.0",
+	"format_version": "1.26.40",
 	"minecraft:block": {
 		"description": {
 			"identifier": "skybedrock:unsafe_tuff",
@@ -11,11 +11,14 @@
 			"minecraft:destructible_by_explosion": { "explosion_resistance": 12 },
 			"minecraft:destructible_by_mining": { "seconds_to_destroy": 6 },
 			"minecraft:loot": "loot_tables/empty.json",
-			"minecraft:map_color": "#392923",
 			"minecraft:geometry": "minecraft:geometry.full_block",
 			"minecraft:material_instances": { "*": { "texture": "polished_tuff", "render_method": "opaque" } },
-			"tag:skybedrock:unsafe": {},
-			"tag:minecraft:is_pickaxe_item_destructible": {}
+			"minecraft:sound": { "sound": "tuff" },
+			"minecraft:map_color": "#392923",
+			"minecraft:tags": [
+				"minecraft:is_pickaxe_item_destructible",
+				"skybedrock:unsafe"
+			]
 		},
 		"permutations": [
 			{

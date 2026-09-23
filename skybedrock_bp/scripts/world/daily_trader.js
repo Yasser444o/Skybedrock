@@ -77,8 +77,8 @@ function summon() {
 	const penalty = world.getDynamicProperty('trader_penalty')
 	// skip if penalty still standing
 	if (penalty) if (penalty > system.currentTick) return
-		// else remove the penalty
-		else world.setDynamicProperty('trader_penalty')
+	// else remove the penalty
+	else world.setDynamicProperty('trader_penalty')
 	// skip if a vanilla wandering trader is present
 	if (overworld.getEntities({type: 'wandering_trader'}).length) return
 	// get a random player from the overworld
@@ -89,12 +89,12 @@ function summon() {
 	while (indices.length > 0) {
 		// select a random spot
 		const selected = (Math.random() * indices.length) | 0
-		// remove it from the array
-		indices[selected] = indices[indices.length - 1]; indices.pop()
 		// check if the spot is valid
 		const block = get_spawning_block(player.location, indices[selected])
-		if (!block) continue
+		// remove it from the array
+		indices[selected] = indices[indices.length - 1]; indices.pop()
 		// spawn a wandering trader
+		if (!block) continue
 		spawn_entity(block); break
 	}
 }
