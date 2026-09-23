@@ -1,4 +1,29 @@
 export const change_logs = {
+  "v1.26.2": `\
+Additions:
+- Added the Dappled Island and the Dappled Forest biome 
+- Added the Abandoned Camp structure and Old Growth Birch Forest biome
+- Added 2 new quests: "Dappled Timberland" and "Nomad Shelter"
+- Added 2 new waypoint icons to the world map: "Starter Island" and "Abandoned Camp"
+- Added more files to the ideas folder
+
+Changes: (Boredom Alert)
+- Red Shrubs can be grown by using bone meal in the Dappled Forest biome
+- Updated the biome detector to include the Dappled Forest biome
+- Changed the Spawn marker in World Maps to a Starter Island marker
+- Added a marker for the starter island to the structures map
+- Updated \`/visit\` and \`/restore\` commands to include the new island and structure
+- Updated the guidebook and how to play screen maps
+- Documented all the new features in the how to play screen
+
+Fixes:
+- Fixed a bug where daily wandering traders did not spawn in random locations
+
+Notes:
+- To add the dappled forest biome to an existing world using Editor: \`origin: -192 -64 32\`, \`size: 64 384 64\`
+- To add the old growth birch forest biome to an existing world using Editor: \`origin: 432 -64 96\`, \`size: 32 384 32\`
+- To add the new island and structure, you can use \`/visit\` then \`/restore\` command.
+  `,
   "v1.26.1": `\
 Additions:
 - Added the meadow biome to the amethyst geode.

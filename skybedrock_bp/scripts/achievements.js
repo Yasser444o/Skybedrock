@@ -5,7 +5,7 @@ import { overworld, stored_items, the_end } from "./startup"
 import { update_vision } from "./world/limited_vision"
 import { all_structures, destinations } from "./data.js"
 
-export const version = "v5.2.0"
+export const version = "v5.2.1"
 const aux = 65536
 
 export function check_items(player, item, count, data) {
