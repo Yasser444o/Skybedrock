@@ -10,6 +10,7 @@ const logs = {
 	'minecraft:mangrove_log': 'minecraft:mangrove_leaves',
 	'minecraft:cherry_log': 'minecraft:cherry_leaves',
 	'minecraft:pale_oak_log': 'minecraft:pale_oak_leaves',
+	'minecraft:poplar_log': ['minecraft:red_poplar_leaves', 'minecraft:orange_poplar_leaves', 'minecraft:yellow_poplar_leaves', ],
 	'minecraft:crimson_stem': 'minecraft:nether_wart_block',
 	'minecraft:warped_stem': 'minecraft:warped_wart_block',
 }
