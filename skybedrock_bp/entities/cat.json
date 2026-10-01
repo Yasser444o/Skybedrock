@@ -1,7 +1,9 @@
-{ //added an event, a AC, and a component to cat_tame
-  "format_version": "1.26.10",
+{
+  "format_version": "1.26.50",
   "minecraft:entity": {
     "description": {
+      "scripts": { "animate": [ "is_in_love" ] }, // addon: skybedrock
+      "animations": { "is_in_love": "controller.animation.is_in_love" }, // addon: skybedrock
       "identifier": "minecraft:cat",
       "spawn_category": "creature",
       "is_spawnable": true,
@@ -13,10 +15,7 @@
           "default": "default",
           "client_sync": true
         }
-      },
-			"scripts": { "animate": [ "is_in_love" ] },
-			"animations": { "is_in_love": "controller.animation.is_in_love"
-			}
+      }
     },
 
     "component_groups": {
@@ -47,7 +46,9 @@
         "minecraft:scale": {
           "value": 0.8
         },
-        "minecraft:leashable_to": {},
+        "minecraft:leashable_to": {
+          "unleash_on_removal": false
+        },
         "minecraft:breedable": {
           "require_tame": true,
           "require_full_health": true,
@@ -146,9 +147,7 @@
         }
       },
       "minecraft:cat_tame": {
-        // Added to make getComponent("tameable") work
-        "minecraft:tameable": {},
-
+        "minecraft:tameable": {}, // addon: skybedrock (Added to make getComponent("tameable") work)
         "minecraft:is_tamed": {},
         "minecraft:health": {
           "value": 20,
@@ -177,7 +176,6 @@
         "minecraft:behavior.pet_sleep_with_owner": {
           "priority": 2,
           "speed_multiplier": 1.2,
-          "search_radius": 10,
           "search_height": 10,
           "goal_radius": 1.0
         },
@@ -188,7 +186,9 @@
           "priority": 4,
           "speed_multiplier": 1.0,
           "start_distance": 10,
-          "stop_distance": 2
+          "stop_distance": 2,
+          "post_teleport_distance": -1,
+          "ignore_vibration": true
         },
         "minecraft:behavior.tempt": {
           "priority": 5,
@@ -216,10 +216,8 @@
             "min": 0.74999,
             "max": 0.8
           },
-          "speed_multiplier": 1.0,
           "search_range": 5,
           "search_height": 2,
-          "search_count": 0,
           "goal_radius": 1.0,
           "entity_types": [
             {
@@ -296,6 +294,17 @@
     },
 
     "components": {
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "event_names": [
+          {
+            "condition": "query.is_baby",
+            "event_name": "ambient.baby"
+          }
+        ],
+        "range": 16.0,
+        "value": 6.0
+      },
       "minecraft:offspring": {
         "offspring_pairs": {
           "minecraft:cat": "minecraft:cat"
@@ -303,7 +312,9 @@
         "combine_parent_colors": true
       },
       "minecraft:spawn_egg_interaction": {},
-      "minecraft:leashable": {},
+      "minecraft:leashable": {
+        "unleash_on_removal": false
+      },
       "minecraft:balloonable": {
         "mass": 0.6
       },
@@ -355,7 +366,8 @@
       "minecraft:navigation.walk": {
         "can_float": true,
         "avoid_water": true,
-        "avoid_damage_blocks": true
+        "avoid_damage_blocks": true,
+        "using_door_annotation": true
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
@@ -379,10 +391,8 @@
         "despawn_from_distance": {}
       },
       "minecraft:physics": {},
-      "minecraft:pushable_by_entity": {
-      },
-      "minecraft:pushable_by_block": {
-      },
+      "minecraft:pushable_by_entity": {},
+      "minecraft:pushable_by_block": {},
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:behavior.float": {
         "priority": 0
@@ -398,8 +408,7 @@
         "track_target": true
       },
       "minecraft:behavior.leap_at_target": {
-        "priority": 3,
-        "target_dist": 0.3
+        "priority": 3
       },
       "minecraft:behavior.ocelotattack": {
         "priority": 4,
@@ -420,11 +429,12 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 9
-      }
+      },
+      "minecraft:uses_legacy_friction": {}
     },
 
     "events": {
-      "skybedrock:cat_gift": {
+      "skybedrock:cat_gift": { // addon: skybedrock
         "filters": {
           "all_of": [
             {"test": "is_sitting"}, // check if the cat is sitting
@@ -435,7 +445,6 @@
           "command": "scriptevent skybedrock:cat_gift"
         }
       },
-
       "minecraft:entity_spawned": {
         "sequence": [
           {
@@ -521,7 +530,7 @@
               {
                 "weight": 15,
                 "add": {
-                  "component_groups": ["minecraft:cat_tabby"]
+                  "component_groups": ["minecraft:cat_black"]
                 }
               },
               {

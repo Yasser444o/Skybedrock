@@ -1,5 +1,5 @@
 {
-  "format_version": "1.26.10",
+  "format_version": "1.26.50",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:chicken",
@@ -7,6 +7,11 @@
       "is_spawnable": true,
       "is_summonable": true,
       "properties": {
+        "skybedrock:diamond_chicken": { // addon: skybedrock
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
         "minecraft:climate_variant": {
           "type": "enum",
           "values": ["temperate", "warm", "cold"],
@@ -17,11 +22,6 @@
           "type": "enum",
           "values": [ "default", "picky" ],
           "default": "default",
-          "client_sync": true
-        },
-        "skybedrock:diamond_chicken": {
-          "type": "bool",
-          "default": false,
           "client_sync": true
         }
       }
@@ -64,7 +64,9 @@
         "minecraft:loot": {
           "table": "loot_tables/entities/chicken.json"
         },
-        "minecraft:leashable_to": {},
+        "minecraft:leashable_to": {
+          "unleash_on_removal": false
+        },
         "minecraft:breedable": {
           "require_tame": false,
           "breeds_with": {
@@ -92,13 +94,35 @@
         },
         "minecraft:spawn_entity": {
           "entities": [
+            { // addon: skybedrock
+              "min_wait_time": 10800,
+              "max_wait_time": 10800,
+              "spawn_sound": "plop",
+              "spawn_item": "diamond",
+              "filters": [
+                {
+                  "test": "bool_property",
+                  "domain": "skybedrock:diamond_chicken"
+                },
+                {
+                  "test": "rider_count",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": 0
+                }
+              ],
+              "spawn_item_event": {
+                  "event": "laid_diamond",
+                  "target": "self"
+              }
+            },
             {
               "min_wait_time": 300,
               "max_wait_time": 600,
               "spawn_sound": "plop",
               "spawn_item": "egg",
               "filters": [
-                {
+                { // addon: skybedrock
                   "test": "bool_property",
                   "domain": "skybedrock:diamond_chicken",
                   "value": false
@@ -123,7 +147,7 @@
               "spawn_sound": "plop",
               "spawn_item": "brown_egg",
               "filters": [
-                {
+                { // addon: skybedrock
                   "test": "bool_property",
                   "domain": "skybedrock:diamond_chicken",
                   "value": false
@@ -148,7 +172,7 @@
               "spawn_sound": "plop",
               "spawn_item": "blue_egg",
               "filters": [
-                {
+                { // addon: skybedrock
                   "test": "bool_property",
                   "domain": "skybedrock:diamond_chicken",
                   "value": false
@@ -166,28 +190,6 @@
                   "value": "cold"
                 }
               ]
-            },
-            {
-              "min_wait_time": 10800,
-              "max_wait_time": 10800,
-              "spawn_sound": "plop",
-              "spawn_item": "diamond",
-              "filters": [
-                {
-                  "test": "bool_property",
-                  "domain": "skybedrock:diamond_chicken"
-                },
-                {
-                  "test": "rider_count",
-                  "subject": "self",
-                  "operator": "==",
-                  "value": 0
-                }
-              ],
-              "spawn_item_event": {
-                  "event": "layed_diamond",
-                  "target": "self"
-              }
             }
           ]
         }
@@ -195,6 +197,17 @@
     },
 
     "components": {
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "event_names": [
+          {
+            "condition": "query.is_baby",
+            "event_name": "ambient.baby"
+          }
+        ],
+        "range": 16.0,
+        "value": 6.0
+      },
       "minecraft:offspring": {
         "offspring_pairs": {
           "minecraft:chicken": "minecraft:chicken"
@@ -244,13 +257,16 @@
           "deals_damage": "no"
         }
       },
-      "minecraft:leashable": {},
+      "minecraft:leashable": {
+        "unleash_on_removal": false
+      },
       "minecraft:balloonable": {
         "mass": 0.5
       },
       "minecraft:navigation.walk": {
         "can_path_over_water": true,
-        "avoid_damage_blocks": true
+        "avoid_damage_blocks": true,
+        "using_door_annotation": true
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
@@ -301,16 +317,16 @@
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:game_event_movement_tracking": {
         "emit_flap": true
-      }
+      },
+      "minecraft:uses_legacy_friction": {}
     },
 
     "events": {
-      "layed_diamond": {
+      "laid_diamond": { // addon: skybedrock
         "set_property": {
           "skybedrock:diamond_chicken": false
         }
       },
-      
       "minecraft:entity_spawned": {
         "sequence": [
           {
@@ -370,7 +386,7 @@
               "component_groups": ["minecraft:chicken_adult"]
             }
           },
-          {
+          { // addon: skybedrock
             "randomize": [
                 { "weight": 99 },
                 {
@@ -390,9 +406,10 @@
             "add": {
               "component_groups": ["minecraft:chicken_adult"]
             },
-          	"trigger": "minecraft:randomize_sound_variant"
+            "trigger": "minecraft:randomize_sound_variant"
           },
-          {
+          
+          { // addon: skybedrock
             "randomize": [
                 { "weight": 95 },
                 {

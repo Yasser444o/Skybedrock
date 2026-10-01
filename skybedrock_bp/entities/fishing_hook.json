@@ -1,5 +1,5 @@
 {
-  "format_version": "1.26.0",
+  "format_version": "1.26.50",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:fishing_hook",
@@ -7,6 +7,12 @@
       "is_spawnable": false
     },
     "components": {
+      "minecraft:type_family": {
+        "family": [
+          "projectile",
+          "fishing_hook"
+        ]
+      },
       "minecraft:collision_box": {
         "height": 0.15,
         "width": 0.15
@@ -25,60 +31,45 @@
       "minecraft:physics": {},
       "minecraft:projectile": {
         "on_hit": {
-          "impact_damage": null,
           "stick_in_ground": {}
-        }
+        },
+        "isolated_physics": false
       },
-      "minecraft:pushable": {
-        "is_pushable": false,
-        "is_pushable_by_piston": true
-      },
+      "minecraft:pushable_by_block": {},
       "minecraft:transient": {}
     },
     "component_groups": {
-      "loot_jungle": {
-        "minecraft:loot": {
-          "table": "loot_tables/gameplay/jungle_fishing.json"
-        }
-      },
-      "loot_deep_dark": {
+      "loot_deep_dark": { // addon: skybedrock
           "minecraft:loot": {
               "table": "loot_tables/gameplay/deep_dark_fishing.json"
           }
       },
-      "loot_swamp": {
+      "loot_swamp": { // addon: skybedrock
           "minecraft:loot": {
               "table": "loot_tables/gameplay/swamp_fishing.json"
           }
       },
-      "loot_dripstone_caves": {
+      "loot_dripstone_caves": { // addon: skybedrock
           "minecraft:loot": {
               "table": "loot_tables/gameplay/dripstone_caves_fishing.json"
           }
+      },
+      "loot_jungle": {
+        "minecraft:loot": {
+          "table": "loot_tables/gameplay/jungle_fishing.json"
+        }
       }
     },
-
     "events": {
       "minecraft:entity_spawned": {
         "sequence": [
-          {
-            "filters": {
-              "test": "is_biome",
-              "value": "jungle"
-            },
-            "add": {
-              "component_groups": [
-                "loot_jungle"
-              ]
-            }
-          },
-          {
+          { // addon: skybedrock
             "filters": {
               "test": "has_biome_tag", "value": "deep_dark"
             },
             "add": { "component_groups": [ "loot_deep_dark" ] }
           },
-          {
+          { // addon: skybedrock
             "filters": {
                 "any_of": [
                     { "test": "has_biome_tag", "value": "swamp" },
@@ -87,11 +78,20 @@
             },
             "add": { "component_groups": [ "loot_swamp" ] }
           },
-          {
+          { // addon: skybedrock
             "filters": {
               "test": "has_biome_tag", "value": "dripstone_caves"
             },
             "add": { "component_groups": [ "loot_dripstone_caves" ] }
+          },
+          {
+            "filters": {
+              "test": "is_biome",
+              "value": "jungle"
+            },
+            "add": {
+              "component_groups": ["loot_jungle"]
+            }
           }
         ]
       }

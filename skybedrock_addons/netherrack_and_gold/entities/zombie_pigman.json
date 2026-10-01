@@ -1,5 +1,5 @@
 {
-  "format_version": "1.26.0",
+  "format_version": "1.26.20",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:zombie_pigman",
@@ -49,8 +49,8 @@
       "minecraft:behavior.stomp_turtle_egg": {
         "goal_radius": 1.14,
         "priority": 6,
-                "search_height": 2,
-                "interval": 20,
+        "search_height": 2,
+        "interval": 20,
         "search_range": 10,
         "speed_multiplier": 1
       },
@@ -98,7 +98,7 @@
       "minecraft:is_hidden_when_invisible": {},
       "minecraft:jump.static": {},
       "minecraft:loot": {
-        "table": "loot_tables/entities/pigman_gold.json"
+        "table": "loot_tables/entities/pigman_gold.json" // addon: netherrack_and_gold
       },
       "minecraft:movement": {
         "value": 0.23
@@ -119,9 +119,9 @@
         }
       },
       "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
+      "minecraft:pushable_by_entity": {
+      },
+      "minecraft:pushable_by_block": {
       },
       "minecraft:shareables": {
         "items": [
@@ -406,21 +406,22 @@
       "minecraft:spawn_egg_interaction": {}
     },
     "component_groups": {
-      "nether_zombie_pigman": {
+      "nether_zombie_pigman": { // addon: netherrack_and_gold
         "minecraft:loot": {
           "table": "loot_tables/entities/pigman_netherrack.json"
         }
       },
       "minecraft:pig_zombie_baby": {
         "minecraft:experience_reward": {
-          "on_death": {
-            "expression": "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0",
-            "version": 13
-          }
+          "on_death": "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0"
         },
         "minecraft:is_baby": {},
         "minecraft:scale": {
           "value": 0.5
+        },
+        "minecraft:collision_box": {
+          "height": 1.96, // 0.98/0.5
+          "width": 0.98   // 0.49/0.5
         },
         "minecraft:type_family": {
           "family": [
@@ -434,10 +435,7 @@
       },
       "minecraft:pig_zombie_adult": {
         "minecraft:experience_reward": {
-          "on_death": {
-            "expression": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0",
-            "version": 13
-          }
+          "on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
         },
         "minecraft:rideable": {
           "family_types": [
@@ -460,6 +458,10 @@
             "monster",
             "mob"
           ]
+        },
+        "minecraft:collision_box": {
+          "height": 1.9,
+          "width": 0.6
         }
       },
       "minecraft:strider_jockey": {
@@ -532,15 +534,9 @@
       },
       "minecraft:entity_spawned": {
         "sequence": [
-          {
-            "filters": {
-              "test": "in_nether"
-            },
-            "add": {
-              "component_groups": [
-                "nether_zombie_pigman"
-              ]
-            }
+          { // addon: netherrack_and_gold
+            "filters": { "test": "in_nether" },
+            "add": { "component_groups": [ "nether_zombie_pigman" ] }
           },
           {
             "randomize": [

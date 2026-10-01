@@ -1,22 +1,22 @@
 {
-  "format_version": "1.21.100",
+  "format_version": "1.26.50",
   "minecraft:entity": {
     "description": {
-      "identifier": "minecraft:enderman",
-      "spawn_category": "monster",
-      "is_spawnable": true,
-      "is_summonable": true,
-      "properties": {
+      "properties": { // addon: skybedrock
         "skybedrock:plus": {
           "type": "bool",
           "default": false,
           "client_sync": true
         }
-      }
+      },
+      "identifier": "minecraft:enderman",
+      "spawn_category": "monster",
+      "is_spawnable": true,
+      "is_summonable": true
     },
 
     "component_groups": {
-      "skybedrock:take_extra_blocks": {
+      "skybedrock:take_extra_blocks": { // addon: skybedrock
         "minecraft:behavior.take_block": {
           "requires_line_of_sight": false,
           "priority": 11,
@@ -28,6 +28,7 @@
             "frosted_ice",
             "suspicious_gravel",
             "suspicious_sand",
+            // sync those with components.behavior.take_block.blocks
             "dirt",
             "grass_block",
             "podzol",
@@ -71,11 +72,11 @@
             "cornflower",
             "lily_of_the_valley",
             "wither_rose",
-            "torchflower"
+            "torchflower",
+            "golden_dandelion"
           ]
         }
       },
-
       "minecraft:enderman_calm": {
         "minecraft:on_target_acquired": {
           "event": "minecraft:become_angry",
@@ -104,9 +105,9 @@
         "minecraft:environment_sensor": {
           "triggers": {
             "filters": {
-              "test": "is_riding", "subject": "self", "operator": "==", "value": true
+              "test": "is_riding", "subject": "self", "operator": "==", "value": false
             },
-            "event": "minecraft:started_riding"
+            "event": "minecraft:stopped_riding"
           }
         }
       },
@@ -125,7 +126,8 @@
           "random_teleport_cube": [ 32, 32, 32 ],
           "target_distance": 16,
           "target_teleport_chance": 0.05,
-          "light_teleport_chance": 0.05
+          "light_teleport_chance": 0.05,
+          "teleports_on_projectile_hit": true
         }
       }
     },
@@ -188,7 +190,8 @@
         "random_teleport_cube": [ 32, 32, 32 ],
         "target_distance": 16,
         "target_teleport_chance": 0.05,
-        "light_teleport_chance": 0.05
+        "light_teleport_chance": 0.05,
+        "teleports_on_projectile_hit": true
       },
       "minecraft:looked_at": {
         "search_radius": 64.0,
@@ -209,7 +212,10 @@
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 5,
         "must_see": true,
-        "attack_interval": 10,
+        "attack_interval": {
+          "min": 0,
+          "max": 10
+        },
         "entity_types": [
           {
             "filters": {
@@ -233,9 +239,9 @@
       },
       "minecraft:physics": {
       },
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
+      "minecraft:pushable_by_entity": {
+      },
+      "minecraft:pushable_by_block": {
       },
       "minecraft:conditional_bandwidth_optimization": {
         "default_values": {
@@ -258,7 +264,7 @@
       "minecraft:behavior.look_at_player": {
         "priority": 8,
         "look_distance": 8.0,
-        "probability": 8.0
+        "probability": 1.0
       },
       "minecraft:behavior.random_look_around": {
         "priority": 8
@@ -267,22 +273,34 @@
         "priority": 3
       },
       "minecraft:behavior.place_block": {
-        "can_place": {
+        "can_place": { // addon: skybedrock
           "any_of": [
             { "test": "in_nether", "value": false },
             {"test": "has_equipment", "domain": "hand", "operator": "!=", "value": "frosted_ice"}
           ]
         },
         "priority": 10,
-        "xz_range": [ -1, 1 ],
-        "y_range": [ 0, 2 ],
+        "xz_range": {
+          "min": -1,
+          "max": 1
+        },
+        "y_range": {
+          "min": 0,
+          "max": 2
+        },
         "chance": 0.0005
       },
       "minecraft:behavior.take_block": {
-        "requires_line_of_sight": false,
+        "requires_line_of_sight": false,  // addon: skybedrock
         "priority": 11,
-        "xz_range": [-2, 2],
-        "y_range": [ 0, 3 ],
+        "xz_range": {
+          "min": -2,
+          "max": 2
+        },
+        "y_range": {
+          "min": 0,
+          "max": 3
+        },
         "chance": 0.05,
         "blocks": [
           "dirt",
@@ -328,20 +346,20 @@
           "cornflower",
           "lily_of_the_valley",
           "wither_rose",
-          "torchflower"
+          "torchflower",
+          "golden_dandelion"
         ]
       }
     },
 
     "events": {
-      "skybedrock:enderman+": {
+      "skybedrock:enderman+": { // addon: skybedrock
         "add": {
           "component_groups": [
             "skybedrock:take_extra_blocks"
           ]
         }
       },
-
       "minecraft:entity_spawned": {
         "remove": {
         },

@@ -96,7 +96,7 @@
           {
             "filters": {
               "test": "in_lava",
-			  "subject": "self"
+              "subject": "self"
             },
             "cause": "lava",
             "damage_per_tick": 4
@@ -251,7 +251,7 @@
             "event": "on_searching_start",
             "target": "self"
           },
-          "on_fail_during_searching": { 
+          "on_fail_during_searching": {
             "event": "on_fail_during_searching",
             "target": "self"
           },
@@ -273,7 +273,7 @@
           }
         }
       },
-      "lushcaves_search_and_dig": {
+      "lushcaves_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -304,7 +304,7 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
-      "taiga_search_and_dig": {
+      "taiga_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -335,7 +335,7 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
-      "ice_spikes_search_and_dig": {
+      "ice_spikes_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -366,7 +366,7 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
-      "flower_forest_search_and_dig": {
+      "flower_forest_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -397,7 +397,7 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
-      "savanna_search_and_dig": {
+      "savanna_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -428,7 +428,7 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
-      "the_end_search_and_dig": {
+      "the_end_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -459,7 +459,7 @@
           "on_success": { "event": "on_search_and_digging_success", "target": "self"}
         }
       },
-      "crimson_forest_search_and_dig": {
+      "crimson_forest_search_and_dig": { // addon: skybedrock
         "minecraft:behavior.random_search_and_dig": {
           "priority": 5,
           "speed_multiplier": 1.25,
@@ -534,97 +534,105 @@
       },
       "on_scenting_success": {
         "sequence": [
-            {
-                "filters": {
-                    "none_of": [
-                        { "test": "has_component", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "value": "lush_caves" },
-                        { "test": "is_biome", "value": "savanna" },
-                        { "test": "is_biome", "value": "taiga" },
-                        { "all_of": [
-							{ "test": "has_biome_tag", "value": "ice_plains" },
-							{ "test": "has_biome_tag", "value": "mutated" }
-						]},
-						{ "test": "has_biome_tag", "value": "flower_forest" },
-                        { "test": "has_biome_tag", "value": "crimson_forest" },
-                        { "test": "has_biome_tag", "value": "the_end" }
-                    ]
-                },
-                "add": { "component_groups": ["sniffer_search_and_dig"] }
+          {
+            "filters": {
+              // addon: skybedrock
+              // "test": "has_component", // addon: skybedrock
+              // "subject": "self", // addon: skybedrock
+              // "operator": "!=", // addon: skybedrock
+              // "value": "minecraft:is_baby", // addon: skybedrock
+              "none_of": [ // addon: skybedrock
+                { "test": "has_component", "value": "minecraft:is_baby" },
+                { "test": "has_biome_tag", "value": "lush_caves" },
+                { "test": "is_biome", "value": "savanna" },
+                { "test": "is_biome", "value": "taiga" },
+                { "all_of": [
+                  { "test": "has_biome_tag", "value": "ice_plains" },
+                  { "test": "has_biome_tag", "value": "mutated" }
+                ]},
+                { "test": "has_biome_tag", "value": "flower_forest" },
+                { "test": "has_biome_tag", "value": "crimson_forest" },
+                { "test": "has_biome_tag", "value": "the_end" }
+              ]
             },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "value": "lush_caves" }
-                    ]
-                },
-                "add": { "component_groups": ["lushcaves_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "is_biome", "value": "taiga" }
-                    ]
-                },
-                "add": { "component_groups": ["taiga_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "value": "ice_plains" },
-                        { "test": "has_biome_tag", "value": "mutated" }
-                    ]
-                },
-                "add": { "component_groups": ["ice_spikes_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "value": "flower_forest" }
-                    ]
-                },
-                "add": { "component_groups": ["flower_forest_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "is_biome", "value": "taiga" }
-                    ]
-                },
-                "add": { "component_groups": ["taiga_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "is_biome", "value": "savanna" }
-                    ]
-                },
-                "add": { "component_groups": ["savanna_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "value": "crimson_forest" }
-                    ]
-                },
-                "add": { "component_groups": ["crimson_forest_search_and_dig"] }
-            },
-            {
-                "filters": {
-                    "all_of": [
-                        { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
-                        { "test": "has_biome_tag", "value": "the_end" }
-                    ]
-                },
-                "add": { "component_groups": ["the_end_search_and_dig"] }
+            "add": {
+              "component_groups": ["sniffer_search_and_dig"]
             }
+          }
+          ,{ // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "has_biome_tag", "value": "lush_caves" }
+              ]
+            },
+            "add": { "component_groups": ["lushcaves_search_and_dig"] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "is_biome", "value": "taiga" }
+              ]
+            },
+            "add": { "component_groups": ["taiga_search_and_dig"] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "has_biome_tag", "value": "ice_plains" },
+                { "test": "has_biome_tag", "value": "mutated" }
+              ]
+            },
+            "add": { "component_groups": ["ice_spikes_search_and_dig"] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "has_biome_tag", "value": "flower_forest" }
+              ]
+            },
+            "add": { "component_groups": ["flower_forest_search_and_dig"] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "is_biome", "value": "taiga" }
+              ]
+            },
+            "add": { "component_groups": ["taiga_search_and_dig"] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "is_biome", "value": "savanna" }
+              ]
+            },
+            "add": { "component_groups": [ "savanna_search_and_dig" ] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby" },
+                { "test": "has_biome_tag", "value": "crimson_forest" }
+              ]
+            },
+            "add": { "component_groups": [ "crimson_forest_search_and_dig" ] }
+          },
+          { // addon: skybedrock
+            "filters": {
+              "all_of": [
+                { "test": "has_component", "operator": "!=", "value": "minecraft:is_baby"
+                },
+                { "test": "has_biome_tag", "value": "the_end" }
+              ]
+            },
+            "add": { "component_groups": [ "the_end_search_and_dig" ] }
+          }
         ]
       },
       "on_digging_start": {
