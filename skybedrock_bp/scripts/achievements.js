@@ -183,7 +183,7 @@ export const quests = {
 	cobblestone: {
 		data: `
 			title: Cobble Gen
-			icon: 262144
+			icon: ${aux * 4}
 			* Build a cobblestone generator
 			- craft a wooden pickaxe
 			- place and break the ice to get water
@@ -489,10 +489,10 @@ export const quests = {
 			icon: textures/items/iron_ingot
 			* Obtain iron from iron golems
 			- craft or buy 20 beds
-			- place them sown in a village
+			- place them down in a village
 			- have at least 10 villagers
 			- make sure that over 70%% of the villagers in the village are employed
-			- wait for an iron golems to spawn
+			- wait for iron golems to spawn
 			- kill them to obtain iron ingots
 			- collect 32 iron ingots
 			(You can automate this process with water and lava to push and kill the iron golems)
@@ -1700,24 +1700,10 @@ for (const id in quests) { // for each quest
 const for_rework = { /*
 
 	new_format: {
-		data: `
-			icon: path or aux
-			title: Text
-			* summary
-			- bullets
-			! notes
-			# phrases
-			--- (dividers)
-			^ images
-			@ links
-			$ 
-			% 
-			& 
-			| 
-			: 
-			? 
-			/ 
-			~ 
+		icon: path or aux
+		title: Text or translation key
+		summary: Text
+		content: `
 		`,
 		require: id,                }
 		require_all: [id, id, id],  }  only one of these and can be ignored

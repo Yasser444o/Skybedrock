@@ -347,7 +347,7 @@ export const commands = [
 		}
 	},
 	{
-		name: "skybedrock:quests",
+		name: "skybedrock:achievements",
 		description: "§.%command.quests.description§..",
 		cheatsRequired: false,
 		permissionLevel: 0,

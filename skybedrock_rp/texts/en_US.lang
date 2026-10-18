@@ -96,7 +96,9 @@ howtoplay.loot.diamond_armor=Diamond Armor
 
 ## Guidebook
 guidebook.achievements.button=Achievements
-guidebook.maps.button=World Maps
+guidebook.guide.button=Guide
+guidebook.quests.button=Quests
+guidebook.maps.button=Maps
 guidebook.settings.button=Settings
 guidebook.history.button=History
 guidebook.support.button=Support The Map

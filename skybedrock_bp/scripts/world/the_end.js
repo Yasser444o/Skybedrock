@@ -121,8 +121,7 @@ export let active_gateways
 world.afterEvents.worldLoad.subscribe(()=> {
     active_gateways = JSON.parse(world.getDynamicProperty('open_gateways') ?? '[]')
     system.runInterval(() => {
-        const players = the_end.getPlayers()
-        players.forEach(player => {
+        the_end?.getPlayers()?.forEach(player => {
             if (used_new_gateway(player)) build_far_island(player)
             last_position.set(player.id, player.location)
         })
