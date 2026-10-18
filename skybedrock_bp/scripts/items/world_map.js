@@ -179,7 +179,7 @@ export function manage_waypoint(player, block, item) {
 	
 	system.runTimeout(() => {
 		new ModalFormData()
-		.title({ rawtext: [{ text: '§waypoint_ui§' }, { translate: `maps.waypoints.${mode}` }] })
+		.title({ rawtext: [{ text: '§custom-form§§waypoint-ui§' }, { translate: `maps.waypoints.${mode}` }] })
 		/*0*/.textField('Name:', default_name, { defaultValue: deafults[0] ?? default_name})
 		/*1*/.dropdown('Icon: ', marker_types, { defaultValueIndex: deafults[1]})
 		/*2*/.dropdown('Color: ', map_markers.colors, { defaultValueIndex: deafults[2]})

@@ -14,17 +14,17 @@ function is_unlocked(id, completed) {
 }
 
 export function complete(player, id) {
-  const completed = load_dynamic_object(player, "completed_achs", '[]')  // load
-  if (completed.includes(id)) return  // skip if completed
-  completed.push(id)  // add
-  save_dynamic_object(player, "completed_achs", completed)  // save
-  world.sendMessage({translate: 'achievements.announcement.message', with: [player.nameTag, quests[id].title]}) // announce
+	const completed = load_dynamic_object(player, "completed_achs", '[]')  // load
+	if (completed.includes(id)) return  // skip if completed
+	completed.push(id)  // add
+	save_dynamic_object(player, "completed_achs", completed)  // save
+	world.sendMessage({translate: 'achievements.announcement.message', with: [player.nameTag, quests[id].title]}) // announce
 }
 
 export function undo(player, id) {
-  let completed_achs = load_dynamic_object(player, "completed_achs", '[]')  // load
-  completed_achs = completed_achs.filter(i => i != id)  // remove
-  save_dynamic_object(player, "completed_achs", completed_achs)  // save
+	let completed_achs = load_dynamic_object(player, "completed_achs", '[]')  // load
+	completed_achs = completed_achs.filter(i => i != id)  // remove
+	save_dynamic_object(player, "completed_achs", completed_achs)  // save
 }
 
 function claim(player, id) {
@@ -111,7 +111,7 @@ export function quests_menu(player, book) {
 
 	const form = new ActionFormData()
 	.title({rawtext: [
-		{text: '§quests_ui§' + '§4'},
+		{text: '§custom-form§§quests_ui§' + '§4'},
 		{translate: `guidebook.achievements.button`},
 		{text: ' - §8'},
 		{translate: `quests.category.${category_id}`},
@@ -187,7 +187,7 @@ export function quest_screen(player, id, book) {
 	challenge ? active_challenges[`${player.id} ${id}`] ? 'stop' : 'start' : undefined
 
 	const form = new ActionFormData()
-	.title("§quest_screen§" + title + `§8 | ID: ${id}`)
+	.title("§custom-form§§quest_screen§" + title + `§8 | ID: ${id}`)
 	.button(book ? 'home' : '').button('back').button(book ? 'bookmark' : '')
 	.button('').button('').button('').button('').button('').button('').button('')
 

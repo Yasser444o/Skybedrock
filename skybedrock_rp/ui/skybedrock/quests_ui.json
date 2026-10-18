@@ -165,14 +165,11 @@
 		"controls": [
 			{ "button": {
 				"type": "button",
-				"focus_enabled": true,
 				"default_control": "default",
 				"hover_control": "hover",
 				"pressed_control": "pressed",
 				"sound_name": "random.click",
-				"anchor_from": "top_right",
-				"anchor_to": "top_right",
-				"size": ["100%c", "100%c"],
+				"focus_enabled": true,
 				"bindings": "$form_button",
 				"button_mappings": [
 					{
@@ -186,14 +183,19 @@
 						"mapping_type": "pressed"
 					}
 				],
+
+				"anchor_from": "top_right",
+				"anchor_to": "top_right",
+				"size": ["100%c", "100%c"],
+
 				"controls": [
 					{ "default": {
 						"type": "image",
+						"texture": "textures/ui/TabLeftFront",
 						"size": [38, 32],
 						"offset": [4, 0],
 						"anchor_from": "middle_right",
 						"anchor_to": "middle_right",
-						"texture": "textures/ui/TabLeftFront",
 						"color": "$button_color",
 						"layer": "$button_layer",
 						"controls": [
@@ -251,7 +253,7 @@
 	},
 
 	"quest_factory@server_form.long_form_dynamic_buttons_panel": {
-		"factory":{
+		"factory": {
 			"name": "buttons",
 			"control_ids": {
 				"button": "@quests.select_quest",
@@ -263,8 +265,8 @@
 	},
 
 	"select_quest": {
-		"orientation": "horizontal",
 		"type": "stack_panel",
+		"orientation": "horizontal",
 		"size": ["100%", 32],
 		"$condition": "(not (#form_button_text = #form_button_text - '§quest§'))",
 		"bindings": "$visible_button",
@@ -306,13 +308,13 @@
 
 	"quest_button": {
 		"type": "button",
-		"offset": [-1, 0],
 		"default_control": "default",
 		"hover_control": "hover",
 		"pressed_control": "pressed",
 		"sound_name": "random.click",
 		"focus_enabled": true,
 		"default_focus_precedence": 10,
+		"offset": [-1, 0],
 		"size": [ "fill", 32 ],
 		"button_mappings": [
 			{
@@ -327,62 +329,52 @@
 			}
 		],
 		"controls": [
-			{
-				"default": {
-					"type": "image",
-					"texture": "textures/ui/buttons/quest_button_default",
-					"color": "$color",
-					"size": [ "100%", "100% - 4px" ]
-				}
-			},
-			{
-				"hover": {
-					"type": "image",
-					"texture": "textures/ui/buttons/quest_button_hover",
-					"color": "$color",
-					"size": [ "100%", "100% - 4px" ]
-				}
-			},
-			{
-				"pressed": {
-					"type": "image",
-					"texture": "textures/ui/buttons/quest_button_hover",
-					"color": "$color",
-					"size": [ "100%", "100% - 4px" ]
-				}
-			},
-			{
-				"label_panel": {
-					"type": "panel",
-					"size": [ "100% - 8px", "100%" ],
-					"controls": [
-					  {
-							"label": {
-								"type": "label",
-								"text": "#text",
-								"anchor_from": "left_middle",
-								"anchor_to": "left_middle",
-								"layer": 10,
-								"$change": "(#form_button_text - '§quest§' - '§unlocked§' - '§done§' - '§locked§' - '§reward§'))",
-								"bindings": "$change_button_text"
-							}
+			{ "default": {
+				"type": "image",
+				"texture": "textures/ui/buttons/quest_button_default",
+				"color": "$color",
+				"size": [ "100%", "100% - 4px" ]
+			}},
+			{ "hover": {
+				"type": "image",
+				"texture": "textures/ui/buttons/quest_button_hover",
+				"color": "$color",
+				"size": [ "100%", "100% - 4px" ]
+			}},
+			{ "pressed": {
+				"type": "image",
+				"texture": "textures/ui/buttons/quest_button_hover",
+				"color": "$color",
+				"size": [ "100%", "100% - 4px" ]
+			}},
+			{ "label_panel": {
+				"type": "panel",
+				"size": [ "100% - 8px", "100%" ],
+				"controls": [
+					{
+						"label": {
+							"type": "label",
+							"text": "#text",
+							"anchor_from": "left_middle",
+							"anchor_to": "left_middle",
+							"layer": 10,
+							"$change": "(#form_button_text - '§quest§' - '§unlocked§' - '§done§' - '§locked§' - '§reward§'))",
+							"bindings": "$change_button_text"
 						}
-					]
-				}
-			},
-			{
-				"has_reward": {
-					"type": "image",
-					"anchor_from": "right_middle",
-					"anchor_to": "right_middle",
-					"offset": [-5, 0],
-					"size": [16, 16],
-					"layer": 1,
-					"texture": "textures/blocks/chest_front",
-					"$tag": "§reward§",
-					"bindings": "$has_button_tag"
-				}
-			}
+					}
+				]
+			}},
+			{ "has_reward": {
+				"type": "image",
+				"anchor_from": "right_middle",
+				"anchor_to": "right_middle",
+				"offset": [-5, 0],
+				"size": [16, 16],
+				"layer": 1,
+				"texture": "textures/blocks/chest_front",
+				"$tag": "§reward§",
+				"bindings": "$has_button_tag"
+			}}
 		]
 	},
 
@@ -405,12 +397,12 @@
 					},
 					{
 						"binding_type": "view",
-						"source_property_name": "(#title_text - '§quests_ui§')",
+						"source_property_name": "(#title_text - '§custom-form§' - '§quests_ui§')",
 						"target_property_name": "#text"
 					}
 				]
 			}},
-			{"side_buttons": {
+			{ "side_buttons": {
 				"type": "stack_panel",
 				"collection_name": "form_buttons",
 				"anchor_from": "top_right",
@@ -552,12 +544,10 @@
 				"text_alignment": "center",
 				"text": "#text",
 				"bindings": [
-					{
-						"binding_name": "#form_title"
-					},
+					{ "binding_name": "#form_title" },
 					{
 						"binding_type": "view",
-						"source_property_name": "(#title_text - '§quest_screen§')",
+						"source_property_name": "(#title_text - '§custom-form§' - '§quest_screen§')",
 						"target_property_name": "#text"
 					}
 				]

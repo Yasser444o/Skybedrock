@@ -99,7 +99,7 @@ export function see_maps(player) {
 	maps.push(["§5The End Map", 'the_end_map'])
 
 	const form = new ActionFormData()
-    .title('§book_ui§' + "Skybedrock Maps")
+    .title('§custom-form§§book_ui§' + "Skybedrock Maps")
     .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.set_bookmark`}]})
     .button("Back")
 	maps.forEach(map => form.button('§section ' + map[0]))
@@ -132,7 +132,7 @@ export function see_a_map(player, map) {
                 biomes: nether_biomes
             }
         }[map]
-        const form = new ActionFormData().title('§map_ui§' + data.title)
+        const form = new ActionFormData().title('§custom-form§§map_ui§' + data.title)
         .button('home').button('back').button('bookmark')
         .button('').button('').button('').button('').button('').button('').button('')
 
@@ -186,7 +186,7 @@ export function see_a_map(player, map) {
             if (require_any?.some(ach => completed_achs.includes(ach))) return true
         }) : data.structures
 
-        const form = new ActionFormData().title('§map_ui§' + data.title)
+        const form = new ActionFormData().title('§custom-form§§map_ui§' + data.title)
         .button('home').button('back').button('bookmark')
         .button(`switch_${active}`).button('').button('').button('').button('').button('').button('')
 
@@ -251,7 +251,7 @@ export function see_a_map(player, map) {
         }
         world.setDynamicProperty('end_crystals', JSON.stringify(end_crystals))
 
-        const form = new ActionFormData().title('§map_ui§' + "The End Map")
+        const form = new ActionFormData().title('§custom-form§§map_ui§' + "The End Map")
         .button('home').button('back').button('bookmark')
         .button('').button('').button('').button('').button('').button('').button('')
 
@@ -311,7 +311,7 @@ export function open_map(player, data) {
 	.filter(({x, z}) => x >= 0 && x <= map_size * 2 && z >= 0 && z <= map_size * 2) // does it fit in the map
 	const markers = options.map(({x, z, text, texture, tag}) => ({text: `${tag} x${x}y${z}${text ?? ''}`, texture})) //configure for a button
 	const form = new ActionFormData()
-	form.title('§map_ui§' + (data.title ?? ''))  // Title
+	form.title('§custom-form§§map_ui§' + (data.title ?? ''))  // Title
 	for (let i = 0; i < 10; i++) form.button((data.buttons ? data.buttons : [])[i] ?? '')
 	form.header(data.background ?? 'textures/map/map_background')  // Background
 	form.header(data.foreground ?? 'textures/none') // Foreground

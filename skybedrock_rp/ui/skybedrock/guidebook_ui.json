@@ -63,11 +63,11 @@
 	"left_page": {
 		"type": "panel",
 		"controls": [
-			{"content": {
+			{ "content": {
 				"type": "stack_panel",
 				"size": ["100%", "100%"],
 				"controls": [
-					{"title": {
+					{ "title": {
 						"type": "label",
 						"text": "#text",
 						"color": [0, 0, 0],
@@ -83,12 +83,12 @@
 							},
 							{
 								"binding_type": "view",
-								"source_property_name": "(#title_text - '§book_ui§')",
+								"source_property_name": "(#title_text - '§custom-form§' - '§book_ui§')",
 								"target_property_name": "#text"
 							},
 							{
 								"binding_type": "view",
-								"source_property_name": "(not (#title_text = '§6Settings'))",
+								"source_property_name": "(not (#title_text = '§custom-form§§skybedrock_settings§'))",
 								"target_property_name": "#visible"
 							}
 						]
@@ -102,7 +102,7 @@
 						"anchor_from": "top_middle",
 						"anchor_to": "top_middle",
 						"offset": [0, 4],
-						"$condition": "(#title_text = '§6Settings')",
+						"$condition": "(#title_text = '§custom-form§§skybedrock_settings§')",
 						"bindings": "$visible_by_title"
 					}},
 					{"content": {
@@ -147,7 +147,7 @@
 			"offset": [ -9, 6 ],
 			"anchor_from": "bottom_left",
 			"anchor_to": "bottom_left",
-			"$condition": "(#title_text = '§6Settings')",
+			"$condition": "(#title_text = '§custom-form§§skybedrock_settings§')",
 			"bindings": "$visible_by_title",
 				"controls": [
 					{"button@book.base_button": {
@@ -171,13 +171,13 @@
 		"controls": [
 			{"close@common.close_button": {
 				"offset": [5, -5],
-				"$condition": "(#title_text = (#title_text - '§6Settings'))",
+				"$condition": "(#title_text = (#title_text - '§custom-form§§skybedrock_settings§'))",
 				"bindings": "$visible_by_title"
 			}},
 			{"close_page@common.close_button": {
 				"sound_name": "item.book.page_turn",
 				"offset": [5, -5],
-				"$condition": "(#title_text = '§6Settings')",
+				"$condition": "(#title_text = '§custom-form§§skybedrock_settings§')",
 				"bindings": "$visible_by_title"
 			}},
 			{"title@assets.factory": {
@@ -201,7 +201,7 @@
 			{"world_settings": {
 				"type": "stack_panel",
 				"size": ["100%", "100%"],
-				"$condition": "(#title_text = '§6Settings')",
+				"$condition": "(#title_text = '§custom-form§§skybedrock_settings§')",
 				"bindings": "$visible_by_title",
 				"controls": [
 					{"title": {
@@ -240,7 +240,7 @@
 				"anchor_to": "bottom_right",
 				"size": [ 87, 24 ],
 				"offset": [9, 5],
-				"$condition": "(#title_text = '§6Settings')",
+				"$condition": "(#title_text = '§custom-form§§skybedrock_settings§')",
 				"bindings": "$visible_by_title"
 			}}
 		]

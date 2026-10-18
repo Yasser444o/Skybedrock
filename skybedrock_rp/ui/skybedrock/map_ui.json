@@ -578,7 +578,7 @@
 				"offset": [0, 12],
 				"layer": -1,
 				"bindings": "$visible_by_title",
-				"$condition": "(not (#title_text - '§map_ui§' = ''))",
+				"$condition": "(not (#title_text - '§custom-form§' - $ui_tag = ''))",
 				"controls": [
 					{ "title_text": {
 						"type": "label",
@@ -591,7 +591,7 @@
 							{ "binding_name": "#form_title" },
 							{
 								"binding_type": "view",
-								"source_property_name": "(#title_text - '§map_ui§')",
+								"source_property_name": "(#title_text - '§custom-form§' - $ui_tag)",
 								"target_property_name": "#text"
 							}
 						]
@@ -673,10 +673,10 @@
 		"size": [327, 260],
 		"max_size": ["100% - 40px", "100% - 40px"],
 		"controls": [
-			{"close@common.close_button": {
+			{ "close@common.close_button": {
 				"offset": [2, -2]
 			}},
-			{"title": {
+			{ "title": {
 				"type": "label",
 				"anchor_from": "top_middle",
 				"anchor_to": "top_middle",
@@ -690,7 +690,7 @@
 					},
 					{
 						"binding_type": "view",
-						"source_property_name": "(#title_text - '§waypoint_ui§')",
+						"source_property_name": "(#title_text - '§custom-form§' - $ui_tag)",
 						"target_property_name": "#text"
 					}
 				]

@@ -10,7 +10,7 @@ import { update_vision } from "../world/limited_vision.js"
 import daily_trader from "../world/daily_trader.js"
 
 const main_page = [
-  {color: "§4", key: "achievements", function: quests_menu},
+  {color: "§9", key: "quests", function: see_quests},
   {color: "§1", key: "maps", function: see_maps},
   {color: "§6", key: "settings", function: settings_page},
   {color: "§d", key: "history", function: history_page},
@@ -38,10 +38,10 @@ world.beforeEvents.playerInteractWithBlock.subscribe(({itemStack:item, player, b
 	})
 })
 
-export function open_book(player, body={translate: 'guidebook.intro_message'}) {
+export function open_book(player, body = {translate: 'guidebook.intro_message'}) {
 	const owner = player.nameTag == "HiYasser444" && player.getGameMode() == "Creative"
 	let form = new ActionFormData()
-	.title({rawtext: [{text: '§book_ui§'}, {translate: 'item.skybedrock:guidebook'}]})
+	.title({rawtext: [{text: '§custom-form§§book_ui§'}, {translate: 'item.skybedrock:guidebook'}]})
 	.body(body)
 	.button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.remove_bookmarks`}]})
 	for (const button of main_page) form.button({rawtext: [{text: '§section ' + button.color}, {translate: `guidebook.${button.key}.button`}]})
@@ -61,7 +61,6 @@ function view_commands(player, body="how did you get here?  :)") {
 		`Remove Trader Penalty`,
 		`View Your Stats`,
 		`Reset Your Stats`,
-		// `Teleport to a structure`,
 		`${timer ? 'Reset' : 'Initilize'} the Timer`,
 		`Show the Timer`,
 		`Hide the Timer`,
@@ -70,7 +69,7 @@ function view_commands(player, body="how did you get here?  :)") {
 		`Reset the End`,
 	]
 	const form = new ActionFormData()
-	.title('§book_ui§' + "Commands")
+	.title('§custom-form§§book_ui§' + "Commands")
 	.body(body)
 	.button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
 	.button("Back")
@@ -123,29 +122,6 @@ function view_commands(player, body="how did you get here?  :)") {
 				player.setDynamicProperty("free_vision")
         		update_vision(player, player.dimension)
 			}; break
-			case `Teleport to a structure`: {
-				const place_on_map = (pos, dimension) => Math.max(-256, Math.min(256, Math.floor((pos * 25 / (['minecraft:nether', 'minecraft:the_end'].includes(dimension) ? 25 : 100)) * 0.75)))
-				const form = new ActionFormData().title("Structure Locator")
-				const pois = {
-					...overworld_structures,
-					...nether_structures,
-					spawn: { structure: "Spawn", icon: "oak_tree", x:0, z:0},
-					commands: { name: "Commands", icon: "command_block", x:5600, z:4000},
-					the_end: { name: "The End", icon: "endstone", dim:"minecraft:the_end", x:100, z:0},
-				}
-				Object.keys(pois).forEach(id => {
-					const {name, location, icon} = pois[id]
-					const x = place_on_map(location.x, location.dim)
-					const z = place_on_map(location.z, location.dim)
-					form.button(`§structure §x${x} §y${z} ${name}`, `textures/ui/map/${icon ?? id}`)
-				})
-				form.show(player)
-				.then((response) => {
-					if (response.canceled) return
-					const location = Object.values(pois)[response.selection].location
-					player.teleport({x: location.x, y: 100, z: location.z}, {dimension: world.getDimension(location.dim ?? 'overworld')})
-				})
-			}; break
 			case `Make the Book Original`: {
 				const guidebook = new ItemStack("skybedrock:guidebook")
 				guidebook.setLore(["§r§7By Yasser444", "§r§7Original"])
@@ -185,6 +161,23 @@ function open_bookmark(player, page) {
 	else if (page.startsWith('Version ')) changelogs_page(player, versions.indexOf(page.replace('Version ', '')))
 	else if (page.startsWith('A: ')) quest_screen(player, Object.keys(quests).find(id => quests[id].title == page.replace('A: ', '')), true)
 	else open_book(player)
+}
+
+function see_quests(player) {
+	let questbook_loaded
+	const listener = system.afterEvents.scriptEventReceive
+	const return_id = "skybedrock:is_questbook_loaded"
+	const callback = ({id, message}) => {
+		if (id == return_id) questbook_loaded = message == 'true'
+	}
+	listener.subscribe(callback)
+	system.sendScriptEvent("questbook:is_loaded", return_id)
+	
+	system.runTimeout(() => {
+		listener.unsubscribe(callback)
+		if (questbook_loaded) player.runCommand('questbook:quests')
+		else player.sendMessage('§cQuestBook is not loaded')
+	}, 1)
 }
 
 const settings = [
@@ -242,7 +235,7 @@ const settings = [
 
 function settings_page(player) {
 	const form = new ModalFormData()
-	.title("§6Settings")
+	.title("§custom-form§§skybedrock_settings§")
 	.submitButton("Save Changes")
 	settings.forEach(setting => {
 		if (setting.toggle) {
@@ -276,7 +269,7 @@ function settings_page(player) {
 }
 function history_page(player) {
   new ActionFormData()
-  .title('§book_ui§' + "§5History")
+  .title('§custom-form§§book_ui§' + "§5History")
   .body('§d' + change_logs[versions[0]])
   .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
   .button("§title §5Current Version: " + versions[0])
@@ -295,7 +288,7 @@ function history_page(player) {
 
 function changelogs_page(player, index=0) {
   const form = new ActionFormData()
-  .title('§book_ui§' + "§5Changelogs")
+  .title('§custom-form§§book_ui§' + "§5Changelogs")
   .body('§d' + change_logs[versions[index]])
   .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
   .button("§title §5Version " + versions[index])
@@ -312,7 +305,7 @@ function changelogs_page(player, index=0) {
 function features_history(player, index) {
   const title = features[index]
   const form = new ActionFormData()
-  .title('§book_ui§' + "§5Features History")
+  .title('§custom-form§§book_ui§' + "§5Features History")
   .body(index == undefined ? {translate: 'guidebook.help_message'} : feature_history[title])
   .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
   .button("§title §5" + (index == undefined ? '' : title))
