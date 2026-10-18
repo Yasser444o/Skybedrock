@@ -355,6 +355,20 @@
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
+      // addon: no_trader_llama
+      //"minecraft:spawn_entity": {
+      //  "entities": [
+      //    {
+      //      "max_wait_time": 0,
+      //      "min_wait_time": 0,
+      //      "num_to_spawn": 2,
+      //      "single_use": true,
+      //      "should_leash": true,
+      //      "spawn_entity": "trader_llama",
+      //      "spawn_event": "minecraft:from_wandering_trader"
+      //    }
+      //  ]
+      //},
       "minecraft:timer": {
         "looping": false,
         "random_time_choices": [

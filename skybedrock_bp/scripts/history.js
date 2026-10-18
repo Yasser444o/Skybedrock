@@ -1,8 +1,5 @@
 export const change_logs = {
-  "v1.26.2.1": `\
-Hotfix 1:
-- Lowered permission levels of custom commands from 2 to 1
-- Fixed a couple of warnings coming from the resource packs
+  "v1.26.2": `\
 Additions:
 - Added the Dappled Island and the Dappled Forest biome 
 - Added the Abandoned Camp structure and Old Growth Birch Forest biome
@@ -10,7 +7,7 @@ Additions:
 - Added 2 new waypoint icons to the world map: "Starter Island" and "Abandoned Camp"
 - Added more files to the ideas folder
 
-Changes: (Boredom Alert)
+Changes:
 - Red Shrubs can be grown by using bone meal in the Dappled Forest biome
 - Updated the biome detector to include the Dappled Forest biome
 - Changed the Spawn marker in World Maps to a Starter Island marker
@@ -21,6 +18,16 @@ Changes: (Boredom Alert)
 
 Fixes:
 - Fixed a bug where daily wandering traders did not spawn in random locations
+
+Hotfix 1:
+- Lowered permission levels of custom commands from 2 to 1
+- Fixed a couple of warnings coming from the resource packs
+
+Hotfix 2:
+- Added Poplar logs to Sawdust addon
+
+Hotfix 3:
+- Updated all the entities
 
 Notes:
 - To add the dappled forest biome to an existing world using Editor: \`origin: -192 -64 32\`, \`size: 64 384 64\`
