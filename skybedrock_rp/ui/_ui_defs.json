@@ -2,6 +2,7 @@
   "ui_defs": [
     "ui/skybedrock/assets.json",
     
+    "ui/skybedrock/forms.json",
     "ui/skybedrock/quests_ui.json",
     "ui/skybedrock/map_ui.json",
     "ui/skybedrock/guidebook_ui.json"

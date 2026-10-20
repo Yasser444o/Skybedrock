@@ -1,0 +1,72 @@
+{
+  "namespace": "skybedrock_forms",
+
+  "action_forms": {
+    "type": "panel",
+    "$visible_when": [
+      { "binding_name": "#form_title" },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#title_text = #title_text - $ui_tag))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      { "guidebook@guidebook.main_panel": {
+        "bindings": "$visible_when",
+        "$ui_tag": "§book_ui§"
+      }},
+      { "quests_form@quests.quests_menu": {
+        "bindings": "$visible_when",
+        "$ui_tag": "§quests_ui§"
+      }},
+      { "quest_screen@quests.quest_screen": {
+        "bindings": "$visible_when",
+        "$ui_tag": "§quest_screen§"
+      }},
+      { "world_map_form@maps.world_map_form": {
+        "bindings": "$visible_when",
+        "$ui_tag": "§map_ui§"
+      }},
+
+      { "skypedia": {
+        "type": "collection_panel",
+        "property_bag": { "#skypedia_ui": ["screen"] },
+        "factory": {
+          "name": "skypedia_factory",
+          "control_ids": { "screen": "how_to_play.how_to_play_screen" }
+        },
+        "bindings": [
+          { "binding_name": "#form_title" },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#title_text - '§custom-form§')",
+            "target_property_name": "#collection_length"
+          }
+        ]
+      }}
+    ]
+  },
+
+  "modal_forms" : {
+    "type": "panel",
+    "$visible_when": [
+      { "binding_name": "#form_title" },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#title_text = #title_text - $ui_tag))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      { "guidebook@guidebook.main_panel": {
+        "bindings": "$visible_when",
+        "$ui_tag": "§skybedrock_settings§"
+      }},
+      { "waypoints@maps.manage_waypoint_screen": {
+        "bindings": "$visible_when",
+        "$ui_tag": "§waypoint-ui§"
+      }}
+    ]
+  }
+}

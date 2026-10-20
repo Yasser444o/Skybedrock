@@ -1,7 +1,10 @@
+// Compatibility Boilerplate v1.0.0
+// Usage:
+// - do not modify main_screen_content, long_form, custom_form and any form which was modified by another addon
+// - each addon can only claim one action_form_x and modal_form_x
 {
   "namespace": "server_form",
   
-  // Compatibility Boilerplate
   "main_screen_content": { "size": ["100%","100%"] },
 
   "long_form": {
@@ -26,15 +29,15 @@
           }
         ]
       }},
-      { "slot_1@server_form.addon_1_action_form": {}},
-      { "slot_2@server_form.addon_2_action_form": {}},
-      { "slot_3@server_form.addon_3_action_form": {}},
-      { "slot_4@server_form.addon_4_action_form": {}},
-      { "slot_5@server_form.addon_5_action_form": {}},
-      { "slot_6@server_form.addon_6_action_form": {}},
-      { "slot_7@server_form.addon_7_action_form": {}},
-      { "slot_8@server_form.addon_8_action_form": {}},
-      { "slot_9@server_form.addon_9_action_form": {}}
+      { "slot_1@server_form.action_form_1": {}},
+      { "slot_2@server_form.action_form_2": {}},
+      { "slot_3@server_form.action_form_3": {}},
+      { "slot_4@server_form.action_form_4": {}},
+      { "slot_5@server_form.action_form_5": {}},
+      { "slot_6@server_form.action_form_6": {}},
+      { "slot_7@server_form.action_form_7": {}},
+      { "slot_8@server_form.action_form_8": {}},
+      { "slot_9@server_form.action_form_9": {}}
     ]
   },
   "custom_form": {
@@ -59,107 +62,34 @@
           }
         ]
       }},
-      { "slot_1@server_form.addon_1_modal_form": {}},
-      { "slot_2@server_form.addon_2_modal_form": {}},
-      { "slot_3@server_form.addon_3_modal_form": {}},
-      { "slot_4@server_form.addon_4_modal_form": {}},
-      { "slot_5@server_form.addon_5_modal_form": {}},
-      { "slot_6@server_form.addon_6_modal_form": {}},
-      { "slot_7@server_form.addon_7_modal_form": {}},
-      { "slot_8@server_form.addon_8_modal_form": {}},
-      { "slot_9@server_form.addon_9_modal_form": {}}
+      { "slot_1@server_form.modal_form_1": {}},
+      { "slot_2@server_form.modal_form_2": {}},
+      { "slot_3@server_form.modal_form_3": {}},
+      { "slot_4@server_form.modal_form_4": {}},
+      { "slot_5@server_form.modal_form_5": {}},
+      { "slot_6@server_form.modal_form_6": {}},
+      { "slot_7@server_form.modal_form_7": {}},
+      { "slot_8@server_form.modal_form_8": {}},
+      { "slot_9@server_form.modal_form_9": {}}
     ]
   },
-  // "addon_1_action_form": { "type": "panel" }, // Used By Skybedrock
-  "addon_2_action_form": { "type": "panel" }, // Used By QuestBook
-  "addon_3_action_form": { "type": "panel" },
-  "addon_4_action_form": { "type": "panel" },
-  "addon_5_action_form": { "type": "panel" },
-  "addon_6_action_form": { "type": "panel" },
-  "addon_7_action_form": { "type": "panel" },
-  "addon_8_action_form": { "type": "panel" },
-  "addon_9_action_form": { "type": "panel" },
+  "action_form_1@skybedrock_forms.action_forms": { "type": "panel" }, // Used By Skybedrock
+  "action_form_2": { "type": "panel" }, // Used By QuestBook
+  "action_form_3": { "type": "panel" },
+  "action_form_4": { "type": "panel" },
+  "action_form_5": { "type": "panel" },
+  "action_form_6": { "type": "panel" },
+  "action_form_7": { "type": "panel" },
+  "action_form_8": { "type": "panel" },
+  "action_form_9": { "type": "panel" },
 
-  // "addon_1_modal_form": { "type": "panel" }, // Used By Skybedrock
-  "addon_2_modal_form": { "type": "panel" },
-  "addon_3_modal_form": { "type": "panel" },
-  "addon_4_modal_form": { "type": "panel" },
-  "addon_5_modal_form": { "type": "panel" },
-  "addon_6_modal_form": { "type": "panel" },
-  "addon_7_modal_form": { "type": "panel" },
-  "addon_8_modal_form": { "type": "panel" },
-  "addon_9_modal_form": { "type": "panel" },
-// ---
-
-  // Skybedrock Content
-  "addon_1_action_form": {
-    "type": "panel",
-    "$visible_when": [
-      { "binding_name": "#form_title" },
-      {
-        "binding_type": "view",
-        "source_property_name": "(not (#title_text = #title_text - $ui_tag))",
-        "target_property_name": "#visible"
-      }
-    ],
-    "controls": [
-      { "guidebook@guidebook.main_panel": {
-        "bindings": "$visible_when",
-        "$ui_tag": "§book_ui§"
-      }},
-      { "quests_form@quests.quests_menu": {
-        "bindings": "$visible_when",
-        "$ui_tag": "§quests_ui§"
-      }},
-      { "quest_screen@quests.quest_screen": {
-        "bindings": "$visible_when",
-        "$ui_tag": "§quest_screen§"
-      }},
-      { "world_map_form@maps.world_map_form": {
-        "bindings": "$visible_when",
-        "$ui_tag": "§map_ui§"
-      }},
-
-      { "skypedia": {
-        "ignored": true, // Disabled because to performance issues
-        "type": "collection_panel",
-        "$ui_tag": "§skypedia§",
-        
-        "factory": {
-          "name": "skypedia_factory",
-          "control_name": "how_to_play.how_to_play_screen"
-        },
-        "bindings": [
-          { "binding_name": "#form_title" },
-          {
-            "binding_type": "view",
-            "source_property_name": "(not (#title_text = #title_text - $ui_tag) + 0)",
-            "target_property_name": "#collection_length"
-          }
-        ]
-      }}
-    ]
-  },
-
-  "addon_1_modal_form" : {
-    "type": "panel",
-    "$visible_when": [
-      { "binding_name": "#form_title" },
-      {
-        "binding_type": "view",
-        "source_property_name": "(not (#title_text = #title_text - $ui_tag))",
-        "target_property_name": "#visible"
-      }
-    ],
-    "controls": [
-      { "guidebook@guidebook.main_panel": {
-        "bindings": "$visible_when",
-        "$ui_tag": "§skybedrock_settings§"
-      }},
-      { "waypoints@maps.manage_waypoint_screen": {
-        "bindings": "$visible_when",
-        "$ui_tag": "§waypoint-ui§"
-      }}
-    ]
-  }
+  "modal_form_1@skybedrock_forms.modal_forms": { "type": "panel" }, // Used By Skybedrock
+  "modal_form_2": { "type": "panel" },
+  "modal_form_3": { "type": "panel" },
+  "modal_form_4": { "type": "panel" },
+  "modal_form_5": { "type": "panel" },
+  "modal_form_6": { "type": "panel" },
+  "modal_form_7": { "type": "panel" },
+  "modal_form_8": { "type": "panel" },
+  "modal_form_9": { "type": "panel" }
 }

@@ -10,6 +10,7 @@ import { update_vision } from "../world/limited_vision.js"
 import daily_trader from "../world/daily_trader.js"
 
 const main_page = [
+//{color: "§w", key: "guide", function: (player) => new ActionFormData().title('§custom-form§#skypedia_ui').show(player)}, // WIP
   {color: "§9", key: "quests", function: see_quests},
   {color: "§1", key: "maps", function: see_maps},
   {color: "§6", key: "settings", function: settings_page},
@@ -267,58 +268,59 @@ function settings_page(player) {
 		}
 	})
 }
+
 function history_page(player) {
-  new ActionFormData()
-  .title('§custom-form§§book_ui§' + "§5History")
-  .body('§d' + change_logs[versions[0]])
-  .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
-  .button("§title §5Current Version: " + versions[0])
-  .button("Back")
-  .button("§section §dChangelogs")
-  .button("§section §dFeatures")
-  .show(player).then(({canceled, selection}) => {
-    if (canceled) return; selection--
-	if (selection == -1) bookmark(player, 'History')
-    if (selection == 1) open_book(player)
-    if (selection == 2) changelogs_page(player)
-    if (selection == 3) features_history(player)
-  })
+	new ActionFormData()
+	.title('§custom-form§§book_ui§' + "§5History")
+	.body('§d' + change_logs[versions[0]])
+	.button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
+	.button("§title §5Current Version: " + versions[0])
+	.button("Back")
+	.button("§section §dChangelogs")
+	.button("§section §dFeatures")
+	.show(player).then(({canceled, selection}) => {
+		if (canceled) return; selection--
+		if (selection == -1) bookmark(player, 'History')
+		if (selection == 1) open_book(player)
+		if (selection == 2) changelogs_page(player)
+		if (selection == 3) features_history(player)
+	})
 }
 
 
 function changelogs_page(player, index=0) {
-  const form = new ActionFormData()
-  .title('§custom-form§§book_ui§' + "§5Changelogs")
-  .body('§d' + change_logs[versions[index]])
-  .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
-  .button("§title §5Version " + versions[index])
-  .button("Back")
-  versions.forEach(version => form.button('§section §d' + (versions[index] == version ? '> ' : '') + version))
-  form.show(player).then(({canceled, selection}) => {
-    if (canceled) return; selection--
-	if (selection == -1) bookmark(player, 'Version ' + versions[index])
-    if (selection == 1) history_page(player)
-    if (selection > 1) changelogs_page(player, selection - 2)
-  })
+	const form = new ActionFormData()
+	.title('§custom-form§§book_ui§' + "§5Changelogs")
+	.body('§d' + change_logs[versions[index]])
+	.button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
+	.button("§title §5Version " + versions[index])
+	.button("Back")
+	versions.forEach(version => form.button('§section §d' + (versions[index] == version ? '> ' : '') + version))
+	form.show(player).then(({canceled, selection}) => {
+		if (canceled) return; selection--
+		if (selection == -1) bookmark(player, 'Version ' + versions[index])
+		if (selection == 1) history_page(player)
+		if (selection > 1) changelogs_page(player, selection - 2)
+	})
 }
 
 function features_history(player, index) {
-  const title = features[index]
-  const form = new ActionFormData()
-  .title('§custom-form§§book_ui§' + "§5Features History")
-  .body(index == undefined ? {translate: 'guidebook.help_message'} : feature_history[title])
-  .button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
-  .button("§title §5" + (index == undefined ? '' : title))
-  .button("Back")
-  features.forEach(feature => form.button('§section ' + (title == feature ? '§6> §r' : '') + feature))
-  form.show(player).then(({canceled, selection}) => {
-    if (canceled) return; selection--
-	if (selection == -1) bookmark(player, (index == undefined ? 'Features' : title) + ' History')
-    if (selection == 1) history_page(player)
-    if (selection > 1) features_history(player, selection - 2)
-  })
+	const title = features[index]
+	const form = new ActionFormData()
+	.title('§custom-form§§book_ui§' + "§5Features History")
+	.body(index == undefined ? {translate: 'guidebook.help_message'} : feature_history[title])
+	.button({rawtext: [{text: '§bookmark§'}, {translate: `guidebook.button.bookmark`}]})
+	.button("§title §5" + (index == undefined ? '' : title))
+	.button("Back")
+	features.forEach(feature => form.button('§section ' + (title == feature ? '§6> §r' : '') + feature))
+	form.show(player).then(({canceled, selection}) => {
+		if (canceled) return; selection--
+		if (selection == -1) bookmark(player, (index == undefined ? 'Features' : title) + ' History')
+		if (selection == 1) history_page(player)
+		if (selection > 1) features_history(player, selection - 2)
+	})
 }
 
 function support_the_map(player) {
-  open_book(player, {translate: 'guidebook.support_message'})
+	open_book(player, {translate: 'guidebook.support_message'})
 }

@@ -1,8 +1,13 @@
+## Implemented
+- QuestBook is a standalone addon
+- Quest categories are send as serialized data with the questbook:register_categories command
+- Quests are send as serialized data with the questbook:register_quests command
+- Quest IDs and category IDs are namespaced
+- Skybedrock Guidebook Achievements button is renamed to Quests and now runs `player.runCommand('questbook:quests')`
+
+
 ## Notes
-- Quest Book is a standalone addon
 - Have an api addon and data addons
-- Quests Data is send as a stringified object with the initialize command
-- Quest IDs and categories are namespaced
 - Quests are based on event subscription modal
 - The detect button will be the subscribe/unsubscribe button and is renamed to Watch/Unwatch
 - Subscribe on:
@@ -22,7 +27,7 @@
 - Revoking quests will also reset their stats
 
 ## Modifications
-- Rewire and optimize the quests system of skybedrock
+- Rewrite and optimize the quests system of skybedrock
 - Use the form body text as a tooltip for the category
 - Most stats based quests will use completion steps
 - Expand the addon capabilities by making use of molang queries and entity filters
@@ -56,7 +61,6 @@
 ## Integration
 - Addons can call the initialize function to send their quests data to Quest Book
 - Player data is stored in the Quest Book uuid, not the data addon
-- Skybedrock Guidebook Achievements button is renamed to quests and runs `player.runCommand('questbook:quests')`
 - Migrate all player quest data from Skybedrock to Quest Book
 
 ## Templates
