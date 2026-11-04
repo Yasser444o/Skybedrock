@@ -12,7 +12,7 @@ import maps from "./world/maps.js";
 import { commands, enums as command_enums } from "./world/commands.js";
 import daily_trader from "./world/daily_trader.js";
 
-// Register all the custom componenets
+// Register all the custom components and commands
 system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRegistry, customCommandRegistry }) => {
     blockComponentRegistry.registerCustomComponent('skybedrock:biome_cleaner', biome_cleaner)
 	blockComponentRegistry.registerCustomComponent('skybedrock:monster_spawner', monster_spawners)
@@ -33,7 +33,13 @@ system.beforeEvents.startup.subscribe(({ blockComponentRegistry, itemComponentRe
 	})
 })
 
-export let overworld, nether, the_end
+// a cache map for the dimension
+export const dimensions = new Map()
+world.afterEvents.worldLoad.subscribe(() => {
+	dimensions.set('overworld', world.getDimension('overworld'))
+	dimensions.set('nether', world.getDimension('nether'))
+	dimensions.set('the_end', world.getDimension('the_end'))
+})
 
 // This method extracts item stacks from structures containing a custom entity and stores them in memory
 export const stored_items = {}
@@ -67,9 +73,6 @@ export const stored_items = {}
 })()
 
 world.afterEvents.worldLoad.subscribe(() => {
-	overworld = world.getDimension('overworld')
-	nether = world.getDimension('nether')
-	the_end = world.getDimension('the_end')
 	JSON.parse(world.getDynamicProperty('geode_chunks') ?? '[]').forEach(hash => geode_chunks.add(hash))
 	daily_trader(world.getDynamicProperty('daily_trader'))
 })

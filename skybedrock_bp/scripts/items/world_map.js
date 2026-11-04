@@ -2,7 +2,7 @@ import { system, world } from "@minecraft/server"
 import { ModalFormData } from "@minecraft/server-ui"
 import { open_world_map } from "../world/maps"
 import { load_dynamic_object, save_dynamic_object } from "../utilities"
-import { overworld, nether, the_end } from "../startup"
+import { dimensions } from "../startup"
 
 const default_name = 'Waypoint'
 const map_markers = {
@@ -54,13 +54,10 @@ export default function(player, item) {
 	})
 }
 
-let vanilla_dimensions; system.runTimeout(() => 
-	vanilla_dimensions = new Map([overworld, nether, the_end].map(dimension => [dimension.id, dimension])),
-2)
 export function update_waypoints(player, item, changed) {
 	const waypoints = Object.fromEntries(Object.entries(load_dynamic_object(item, 'waypoints')).filter(([hash, waypoint]) => {
 		const [x, y, z, d] = hash.split(' ')
-		const dimension = vanilla_dimensions.get(d) ?? world.getDimension(d)
+		const dimension = dimensions.get(d) ?? world.getDimension(d)
 		const location = {x: +x, y: +y, z: +z}
 		if (!dimension.isChunkLoaded(location)) return true
 		const block = dimension.getBlock(location)

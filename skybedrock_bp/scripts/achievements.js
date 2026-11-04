@@ -1,7 +1,7 @@
 import { world, system, EnchantmentType, ItemStack } from "@minecraft/server"
 import { pillar_locations } from "./world/the_end"
 import { complete, stop_challenge, quest_tracker } from "./world/quests"
-import { overworld, stored_items, the_end } from "./startup"
+import { dimensions, stored_items } from "./startup"
 import { update_vision } from "./world/limited_vision"
 import { all_structures, destinations } from "./data.js"
 
@@ -72,9 +72,9 @@ export const categories = {
 			cobblestone
 			sapling
 			farm
-			animals
 			bridge
 			water
+			animals
 			mob_trap
 			craft_bed
 			copper_tools
@@ -679,7 +679,7 @@ export const quests = {
 			- wait for the 10 pillars to regenerate
 			(If you don't want to fight the ender dragon, you could interrupt its summoning by blowing up the end crystals right before it spawns)
 		`,
-		query: () => pillar_locations.every(loc => check_block(the_end, {...loc, y: 0}, "minecraft:obsidian", false))
+		query: () => pillar_locations.every(loc => check_block(dimensions.get('the_end'), {...loc, y: 0}, "minecraft:obsidian", false))
 	},
 	elytra: {
 		data: `
@@ -1237,7 +1237,7 @@ export const quests = {
 		`,
 		query: (player) => (
 			in_radius(player, destinations.ocean_monument.coords, 30) &&
-			check_block(overworld, {x: 691, y: 42, z: 373}, "!minecraft:raw_gold_block")
+			check_block(dimensions.get('overworld'), {x: 691, y: 42, z: 373}, "!minecraft:raw_gold_block")
 		)
 	},
 	fortress_loot: {

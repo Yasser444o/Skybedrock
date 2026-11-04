@@ -1,5 +1,5 @@
 import { system, world } from "@minecraft/server";
-import { nether, overworld, the_end } from "../startup";
+import { dimensions } from "../startup";
 
 let run_id = 0
 
@@ -51,7 +51,7 @@ for (let x = -max_range, i = 0; x <= max_range; x++) for (let z = -max_range; z 
 function get_spawning_block({x, z}, index) {
 	const relative = spawning_range[index]
 	const location = {x: x + relative.x, z: z + relative.z}
-	const block = overworld.getTopmostBlock(location)
+	const block = dimensions.get('overworld').getTopmostBlock(location)
 	if (!block) return
 	if (block.y != block.dimension.heightRange.max - 1) {
 		if (!block.above().isAir) return
@@ -73,6 +73,7 @@ function spawn_entity(block) {
 }
 
 function summon() {
+	const overworld = dimensions.get('overworld')
 	// process the penalty
 	const penalty = world.getDynamicProperty('trader_penalty')
 	// skip if penalty still standing
@@ -100,9 +101,9 @@ function summon() {
 }
 
 function leave() {
-	;[overworld, nether, the_end].forEach(dimension =>
+	for (const dimension of dimensions.values()) {
 		dimension.getEntities({type: 'wandering_trader'}).forEach(entity =>
 			entity.getDynamicProperty('departure_time') ? entity.remove() : null
 		)
-	)
+	}
 }

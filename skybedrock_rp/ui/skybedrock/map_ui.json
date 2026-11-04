@@ -423,18 +423,6 @@
 										}}
 									]
 								}},
-								{ "landmarks": {
-									"type": "collection_panel",
-									"collection_name": "form_buttons",
-									"size": ["0.390625%", "0.390625%"],  // 100 / 256
-									"anchor_from": "top_left",
-									"anchor_to": "top_left",
-									"bindings": "$get_form_button_details",
-									"factory":{
-										"name": "buttons",
-										"control_name": "maps.landmark"
-									}
-								}},
 								{ "decorations": {
 									"type": "collection_panel",
 									"collection_name": "form_buttons",
@@ -445,6 +433,18 @@
 									"factory":{
 										"name": "buttons",
 										"control_name": "maps.decoration"
+									}
+								}},
+								{ "landmarks": {
+									"type": "collection_panel",
+									"collection_name": "form_buttons",
+									"size": ["0.390625%", "0.390625%"],  // 100 / 256
+									"anchor_from": "top_left",
+									"anchor_to": "top_left",
+									"bindings": "$get_form_button_details",
+									"factory":{
+										"name": "buttons",
+										"control_name": "maps.landmark"
 									}
 								}},
 								{ "player_mark": {

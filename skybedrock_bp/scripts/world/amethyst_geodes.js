@@ -1,6 +1,6 @@
 import { world } from "@minecraft/server"
 import { MersenneTwister, multiply_lower_u32 } from "../utilities"
-import { overworld } from "../startup"
+import { dimensions } from "../startup"
 import { generated_chunks } from "../generated"
 
 const salt = 63457536
@@ -19,6 +19,7 @@ function has_geode(x, z) {
 
 
 function scan_chunks(location) {
+	const overworld = dimensions.get('overworld')
 	const chunk_x = Math.floor(location.x / 16), chunk_z = Math.floor(location.z / 16)
 	for (let x = chunk_x - 1; x <= chunk_x + 1; x++) for (let z = chunk_z - 1; z <= chunk_z + 1; z++) {
 		const hash = `${x} ${z}`
@@ -34,7 +35,7 @@ function scan_chunks(location) {
 
 world.afterEvents.itemUse.subscribe(({source: player, itemStack}) => {
 	if (player.typeId != 'minecraft:player') return
-	if (player.dimension != overworld) return
+	if (player.dimension.id != 'minecraft:overworld') return
 	if (itemStack.typeId != 'minecraft:goat_horn') return
 	scan_chunks(player.location)
 })

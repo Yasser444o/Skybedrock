@@ -1,5 +1,5 @@
-import { world, system } from "@minecraft/server"
-import { overworld } from "../startup"
+import { world } from "@minecraft/server"
+import { dimensions } from "../startup"
 
 
 function initialize() {
@@ -20,7 +20,7 @@ function getLocation(angle) {
 }
 
 function locate(player) {
-	const {location} = player
+	const {dimension, location} = player
 	const strongholds = [
 		world.getDynamicProperty("stronghold1"),
 		world.getDynamicProperty("stronghold2"),
@@ -28,7 +28,7 @@ function locate(player) {
 	]
 	strongholds.sort((v1, v2) => get_distance(location, v1) - get_distance(location, v2))
 	const nearest = strongholds[0];
-	make_particles(location, nearest)
+	make_particles(dimension, location, nearest)
 	consume_the_eye(player)
 	;[1, 2, 3].forEach(i => {
 		const distance = get_distance(location, world.getDynamicProperty(`stronghold${i}`))
@@ -45,10 +45,10 @@ function get_distance(a, b) {
 	return Math.sqrt(relative.x ** 2 + relative.z ** 2)
 }
 
-function make_particles(from, to) {
+function make_particles(dimension, from, to) {
 	const direction = normalize(from, to)
 	for (let i = 1; i <= 8; i++) {
-		overworld.spawnParticle(
+		dimension.spawnParticle(
 			"minecraft:dragon_breath_trail", {
 				x: from.x + i * direction.x,
 				y: from.y + 1,
@@ -62,7 +62,7 @@ function consume_the_eye(player) {
 	if (player.getGameMode() != 'Creative' && Math.random() < 0.1) {
 		world.playSound("block.itemframe.break", player.location, {volume: 1})
 		player.runCommand("clear @s ender_eye 0 1")
-	} else overworld.playSound("random.bow", player.location)
+	} else player.dimension.playSound("random.bow", player.location)
 }
 
 function normalize(a, b) {
@@ -76,12 +76,12 @@ function generate(i) {
 	const location = world.getDynamicProperty(`stronghold${i}`)
 	const [x, z] = [location.x, location.z]
 	world.setDynamicProperty(`generatedStronghold${i}`, true)
-	world.structureManager.place(`strongholds:stronghold${i}`, overworld, {x, y: 32, z})
+	world.structureManager.place(`strongholds:stronghold${i}`, dimensions.get('overworld'), {x, y: 32, z})
 }
 
 world.afterEvents.itemUse.subscribe(({itemStack, source:player}) => {
 	if (itemStack?.typeId != "minecraft:ender_eye") return
-	if (player.dimension != overworld) return 
+	if (player.dimension.id != 'minecraft:overworld') return 
 	if (!world.getDynamicProperty("stronghold1")) initialize()
 	locate(player)
 })

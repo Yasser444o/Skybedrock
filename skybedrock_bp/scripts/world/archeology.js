@@ -1,5 +1,5 @@
 import { world, system } from "@minecraft/server" ;
-import { overworld } from "../startup";
+import { dimensions } from "../startup";
 
 function choose_randomly(pools) {
 	const weights = []; let total = 0
@@ -149,6 +149,7 @@ world.afterEvents.worldLoad.subscribe(()=> {
 })
 
 system.runInterval(() => {
+	const overworld = dimensions.get('overworld')
 	// check if this scoreboard is still valid
 	if (!timer.scoreboard?.isValid) return
 	Object.keys(structures).forEach(name => {

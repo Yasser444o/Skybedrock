@@ -6,7 +6,7 @@ import { chorus_islands, end_cities, pillar_locations } from "./the_end"
 import { check_block } from "../achievements"
 import { nether_structures, overworld_structures, biome_names} from "../data"
 import world_map, { manage_waypoint, update_waypoints } from "../items/world_map"
-import { the_end } from "../startup"
+import { dimensions } from "../startup"
 
 const overworld_biomes = [
     { biome: biome_names.plains, offset: [6, 6], size: [4, 4] },
@@ -226,6 +226,7 @@ export function see_a_map(player, map) {
         })
     }
     else if (map == 'the_end_map') {
+        const the_end = dimensions.get('the_end')
         const pin_to_map = (axis) => Math.min(Math.max(Math.round(axis * 128 / 120) + 128, 0), 256)
         const place = ({ x, z }) => `x${pin_to_map(x)}y${pin_to_map(z)}`
         const check_crystal = (location, fallback) => {

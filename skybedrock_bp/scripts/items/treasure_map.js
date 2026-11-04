@@ -1,5 +1,5 @@
 import { system } from "@minecraft/server" ;
-import { overworld, stored_items } from "../startup";
+import { dimensions, stored_items } from "../startup";
 import { open_map } from "../world/maps";
 
 const beach = {min_x: 32, max_x: 64, min_z: 64, max_z: 128}
@@ -16,7 +16,7 @@ export function get_cardinal_direction(player) {
 
 export default function(player, item) {
 	const {dimension, location} = player
-	if (dimension != overworld) return
+	if (dimension.id != 'minecraft:overworld') return
 	const {x: tx, z: tz} = item.getDynamicProperty('treasure_location') ?? create_map(player, item)
 	const px = Math.floor(location.x), pz = Math.floor(location.z)
 	if (tx == px && tz == pz) give_treasure(player, item)
@@ -33,6 +33,7 @@ function create_map(player, item) {
 }
 
 function give_treasure(player, item) {
+	const overworld = dimensions.get('overworld')
 	const dig = () => overworld.playSound("dig.sand", player.location)
 	if (player.getGameMode() == "Creative") {
 		item.setDynamicProperty('treasure_location', undefined)
@@ -54,7 +55,7 @@ function show_map(player, tx, tz) {
 	const center = {x: min_x + range, z: (tz < part_z ? min_z : part_z) + range}
 	open_map(player, {
 		align_player: true,
-		dim: overworld.id, center, range,
+		dim: 'minecraft:overworld', center, range,
 		markers: [{
 			deco: true, dim: 'minecraft:overworld', text: '',
 			texture: 'textures/ui/map/structures/x_mark',
